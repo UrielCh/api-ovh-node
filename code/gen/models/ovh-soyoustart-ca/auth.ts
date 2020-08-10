@@ -1,175 +1,236 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.soyoustart.com:443/1.0/auth.json
+
 export const schema: Schema = {
-  "basePath": "https://ca.api.soyoustart.com/1.0",
-  "resourcePath": "/auth",
+  "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Details about the current authentication",
-      "path": "/auth/details",
-      "operations": [
-        {
-          "description": "Details about the current authentication",
-          "parameters": [],
-          "noAuthentication": false,
-          "httpMethod": "GET",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "responseType": "auth.Details",
-          "resellerOnly": false,
-          "responseFullType": "auth.Details"
-        }
-      ]
-    },
-    {
-      "path": "/auth/logout",
       "description": "Expire current credential",
       "operations": [
         {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Expire current credential",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [],
           "resellerOnly": false,
           "responseFullType": "void",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "responseType": "void",
-          "httpMethod": "POST",
-          "description": "Expire current credential",
-          "noAuthentication": false,
-          "parameters": []
+          "responseType": "void"
         }
-      ]
+      ],
+      "path": "/auth/logout"
     },
     {
+      "description": "Get the time of OVH servers",
       "operations": [
         {
-          "httpMethod": "POST",
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "responseType": "auth.Credential",
+          "description": "Get the current time of the OVH servers, since UNIX epoch",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long",
+          "responseType": "long"
+        }
+      ],
+      "path": "/auth/time"
+    },
+    {
+      "description": "Operations with credentials",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Request a new credential for your application",
+          "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
             {
-              "description": "Access required for your application",
-              "paramType": "body",
-              "required": true,
               "dataType": "auth.AccessRule[]",
+              "description": "Access required for your application",
               "fullType": "auth.AccessRule[]",
-              "name": "accessRules"
+              "name": "accessRules",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Where you want to redirect the user after sucessfull authentication",
               "fullType": "string",
               "name": "redirection",
-              "required": false,
               "paramType": "body",
-              "dataType": "string",
-              "description": "Where you want to redirect the user after sucessfull authentication"
+              "required": false
             }
           ],
+          "resellerOnly": false,
           "responseFullType": "auth.Credential",
-          "resellerOnly": false
+          "responseType": "auth.Credential"
         }
       ],
-      "description": "Operations with credentials",
       "path": "/auth/credential"
     },
     {
+      "description": "Get the current credential details",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "responseType": "api.Credential",
-          "httpMethod": "GET",
           "description": "Get the current credential details",
-          "parameters": [],
+          "httpMethod": "GET",
           "noAuthentication": false,
+          "parameters": [],
           "resellerOnly": false,
-          "responseFullType": "api.Credential"
+          "responseFullType": "api.Credential",
+          "responseType": "api.Credential"
         }
       ],
-      "path": "/auth/currentCredential",
-      "description": "Get the current credential details"
+      "path": "/auth/currentCredential"
     },
     {
+      "description": "Details about the current authentication",
       "operations": [
         {
-          "responseFullType": "long",
-          "resellerOnly": false,
-          "httpMethod": "GET",
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "responseType": "long",
-          "description": "Get the current time of the OVH servers, since UNIX epoch",
+          "description": "Details about the current authentication",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "noAuthentication": true
+          "resellerOnly": false,
+          "responseFullType": "auth.Details",
+          "responseType": "auth.Details"
         }
       ],
-      "description": "Get the time of OVH servers",
-      "path": "/auth/time"
+      "path": "/auth/details"
     }
   ],
+  "basePath": "https://ca.api.soyoustart.com/1.0",
   "models": {
-    "auth.AccessRule": {
-      "namespace": "auth",
-      "id": "AccessRule",
-      "description": "Access rule required for the application",
+    "api.Credential": {
+      "description": "API Credential",
+      "id": "Credential",
+      "namespace": "api",
       "properties": {
-        "path": {
-          "description": null,
-          "canBeNull": false,
-          "type": "string"
+        "allowedIPs": {
+          "canBeNull": true,
+          "description": "If defined, list of ip blocks which are allowed to call API with this credential",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "type": "ipBlock[]"
         },
-        "method": {
-          "description": null,
+        "applicationId": {
           "canBeNull": false,
+          "description": null,
+          "fullType": "long",
+          "readOnly": true,
+          "type": "long"
+        },
+        "creation": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "credentialId": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "long",
+          "readOnly": true,
+          "type": "long"
+        },
+        "expiration": {
+          "canBeNull": true,
+          "description": null,
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "lastUse": {
+          "canBeNull": true,
+          "description": null,
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "ovhSupport": {
+          "canBeNull": false,
+          "description": "States whether this credential has been created by yourself or by the OVH support team",
+          "fullType": "boolean",
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "rules": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "auth.AccessRule[]",
+          "readOnly": true,
+          "type": "auth.AccessRule[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "auth.CredentialStateEnum",
+          "readOnly": true,
+          "type": "auth.CredentialStateEnum"
+        }
+      }
+    },
+    "auth.AccessRule": {
+      "description": "Access rule required for the application",
+      "id": "AccessRule",
+      "namespace": "auth",
+      "properties": {
+        "method": {
+          "canBeNull": false,
+          "description": null,
           "type": "http.MethodEnum"
+        },
+        "path": {
+          "canBeNull": false,
+          "description": null,
+          "type": "string"
         }
       }
     },
     "auth.Credential": {
-      "id": "Credential",
       "description": "Credential request to get access to the API",
+      "id": "Credential",
+      "namespace": "auth",
       "properties": {
-        "state": {
-          "type": "auth.CredentialStateEnum",
+        "consumerKey": {
           "canBeNull": false,
-          "description": null
+          "description": null,
+          "type": "string"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": null,
+          "type": "auth.CredentialStateEnum"
         },
         "validationUrl": {
-          "type": "string",
           "canBeNull": true,
-          "description": null
-        },
-        "consumerKey": {
-          "type": "string",
-          "canBeNull": false,
-          "description": null
+          "description": null,
+          "type": "string"
         }
-      },
-      "namespace": "auth"
-    },
-    "http.MethodEnum": {
-      "enum": [
-        "DELETE",
-        "GET",
-        "POST",
-        "PUT"
-      ],
-      "enumType": "string",
-      "id": "MethodEnum",
-      "description": "All HTTP methods available",
-      "namespace": "http"
+      }
     },
     "auth.CredentialStateEnum": {
+      "description": "All states a Credential can be in",
       "enum": [
         "expired",
         "pendingValidation",
@@ -178,117 +239,58 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "CredentialStateEnum",
-      "description": "All states a Credential can be in",
       "namespace": "auth"
     },
-    "api.Credential": {
-      "properties": {
-        "creation": {
-          "description": null,
-          "readOnly": true,
-          "canBeNull": false,
-          "fullType": "datetime",
-          "type": "datetime"
-        },
-        "ovhSupport": {
-          "readOnly": true,
-          "description": "States whether this credential has been created by yourself or by the OVH support team",
-          "type": "boolean",
-          "fullType": "boolean",
-          "canBeNull": false
-        },
-        "credentialId": {
-          "canBeNull": false,
-          "fullType": "long",
-          "type": "long",
-          "description": null,
-          "readOnly": true
-        },
-        "allowedIPs": {
-          "description": "If defined, list of ip blocks which are allowed to call API with this credential",
-          "readOnly": false,
-          "canBeNull": true,
-          "fullType": "ipBlock[]",
-          "type": "ipBlock[]"
-        },
-        "applicationId": {
-          "description": null,
-          "readOnly": true,
-          "canBeNull": false,
-          "fullType": "long",
-          "type": "long"
-        },
-        "rules": {
-          "readOnly": true,
-          "description": null,
-          "canBeNull": false,
-          "fullType": "auth.AccessRule[]",
-          "type": "auth.AccessRule[]"
-        },
-        "lastUse": {
-          "canBeNull": true,
-          "fullType": "datetime",
-          "type": "datetime",
-          "description": null,
-          "readOnly": true
-        },
-        "status": {
-          "readOnly": true,
-          "description": null,
-          "type": "auth.CredentialStateEnum",
-          "fullType": "auth.CredentialStateEnum",
-          "canBeNull": false
-        },
-        "expiration": {
-          "canBeNull": true,
-          "fullType": "datetime",
-          "type": "datetime",
-          "description": null,
-          "readOnly": true
-        }
-      },
-      "description": "API Credential",
-      "id": "Credential",
-      "namespace": "api"
-    },
     "auth.Details": {
+      "description": "Details about the authentication used",
+      "id": "Details",
       "namespace": "auth",
       "properties": {
-        "user": {
-          "canBeNull": true,
-          "type": "string",
-          "description": "Username"
-        },
         "description": {
-          "type": "string",
           "canBeNull": true,
-          "description": "Description"
+          "description": "Description",
+          "type": "string"
+        },
+        "method": {
+          "canBeNull": false,
+          "description": "Authentication method",
+          "type": "auth.MethodEnum"
         },
         "roles": {
           "canBeNull": true,
-          "type": "string[]",
-          "description": "Roles"
+          "description": "Roles",
+          "type": "string[]"
         },
-        "method": {
-          "description": "Authentication method",
-          "canBeNull": false,
-          "type": "auth.MethodEnum"
+        "user": {
+          "canBeNull": true,
+          "description": "Username",
+          "type": "string"
         }
-      },
-      "id": "Details",
-      "description": "Details about the authentication used"
+      }
     },
     "auth.MethodEnum": {
-      "namespace": "auth",
-      "enumType": "string",
       "description": "All Authentication methods available",
-      "id": "MethodEnum",
       "enum": [
         "account",
         "provider",
         "user"
-      ]
+      ],
+      "enumType": "string",
+      "id": "MethodEnum",
+      "namespace": "auth"
+    },
+    "http.MethodEnum": {
+      "description": "All HTTP methods available",
+      "enum": [
+        "DELETE",
+        "GET",
+        "POST",
+        "PUT"
+      ],
+      "enumType": "string",
+      "id": "MethodEnum",
+      "namespace": "http"
     }
   },
-  "apiVersion": "1.0"
+  "resourcePath": "/auth"
 }

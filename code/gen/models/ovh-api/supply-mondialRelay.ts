@@ -1,65 +1,64 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/supply/mondialRelay.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/supply/mondialRelay",
+      "description": "Find the 10 nearest MondialRelay points from address or city.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Find the 10 nearest MondialRelay points from address or city.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zipcode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Address",
               "fullType": "string",
-              "required": false,
-              "description": "Zip Code"
-            },
-            {
-              "name": "city",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "City"
-            },
-            {
               "name": "address",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Address"
+              "required": false
             },
             {
-              "name": "country",
               "dataType": "coreTypes.CountryEnum",
-              "paramType": "body",
+              "description": "ISO country code",
               "fullType": "coreTypes.CountryEnum",
-              "required": true,
-              "description": "ISO country code"
+              "name": "country",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "City",
+              "fullType": "string",
+              "name": "city",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Zip Code",
+              "fullType": "string",
+              "name": "zipcode",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "supply.MondialRelayReturn",
-          "noAuthentication": false,
-          "description": "Find the 10 nearest MondialRelay points from address or city."
+          "responseType": "supply.MondialRelayReturn"
         }
       ],
-      "description": "Find the 10 nearest MondialRelay points from address or city."
+      "path": "/supply/mondialRelay"
     }
   ],
-  "resourcePath": "/supply/mondialRelay",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "coreTypes.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "coreTypes",
       "description": "ISO country codes",
       "enum": [
         "ac",
@@ -323,292 +322,295 @@ export const schema: Schema = {
         "zm",
         "zw"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "coreTypes"
     },
     "supply.MondialRelay": {
+      "description": "Mondial Relay Point Details",
       "id": "MondialRelay",
       "namespace": "supply",
-      "description": "Mondial Relay Point Details",
       "properties": {
         "address": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Relay point address",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "City",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "closing": {
-          "type": "supply.MondialRelayClosingPeriod[]",
-          "fullType": "supply.MondialRelayClosingPeriod[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Relay point closing dates",
-          "required": false
+          "fullType": "supply.MondialRelayClosingPeriod[]",
+          "readOnly": false,
+          "required": false,
+          "type": "supply.MondialRelayClosingPeriod[]"
         },
         "country": {
-          "type": "coreTypes.CountryEnum",
-          "fullType": "coreTypes.CountryEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Relay country",
-          "required": true
+          "fullType": "coreTypes.CountryEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "coreTypes.CountryEnum"
         },
         "distance": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Distance between address and relay point",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Mondial Relay point ID",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "lat": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Relay point latitude",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "lng": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Relay point longitude",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "mapUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "URL of short map",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Relay point name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "opening": {
-          "type": "supply.MondialRelayOpening",
-          "fullType": "supply.MondialRelayOpening",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Relay point opening hours",
-          "required": true
+          "fullType": "supply.MondialRelayOpening",
+          "readOnly": false,
+          "required": true,
+          "type": "supply.MondialRelayOpening"
         },
         "pictureUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Relay point picture\\s URL",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "zipcode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Zipcode",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "supply.MondialRelayClosingPeriod": {
+      "description": "Closing period for mondial relay point",
       "id": "MondialRelayClosingPeriod",
       "namespace": "supply",
-      "description": "Closing period for mondial relay point",
       "properties": {
         "end": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ending of closing period",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "start": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Beginning of closing period",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "supply.MondialRelayDayPeriod": {
+      "description": "Opening range for mondial relay point",
       "id": "MondialRelayDayPeriod",
       "namespace": "supply",
-      "description": "Opening range for mondial relay point",
       "properties": {
         "end": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ending time (00:00 format)",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "start": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Starting time (00:00 format)",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "supply.MondialRelayOpening": {
+      "description": "Day with schedule for mondial relay point opening",
       "id": "MondialRelayOpening",
       "namespace": "supply",
-      "description": "Day with schedule for mondial relay point opening",
       "properties": {
         "friday": {
-          "type": "supply.MondialRelayDayPeriod[]",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Opening range",
-          "required": false
+          "fullType": "supply.MondialRelayDayPeriod[]",
+          "readOnly": false,
+          "required": false,
+          "type": "supply.MondialRelayDayPeriod[]"
         },
         "monday": {
-          "type": "supply.MondialRelayDayPeriod[]",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Opening range",
-          "required": false
+          "fullType": "supply.MondialRelayDayPeriod[]",
+          "readOnly": false,
+          "required": false,
+          "type": "supply.MondialRelayDayPeriod[]"
         },
         "saturday": {
-          "type": "supply.MondialRelayDayPeriod[]",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Opening range",
-          "required": false
+          "fullType": "supply.MondialRelayDayPeriod[]",
+          "readOnly": false,
+          "required": false,
+          "type": "supply.MondialRelayDayPeriod[]"
         },
         "sunday": {
-          "type": "supply.MondialRelayDayPeriod[]",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Opening range",
-          "required": false
+          "fullType": "supply.MondialRelayDayPeriod[]",
+          "readOnly": false,
+          "required": false,
+          "type": "supply.MondialRelayDayPeriod[]"
         },
         "thursday": {
-          "type": "supply.MondialRelayDayPeriod[]",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Opening range",
-          "required": false
+          "fullType": "supply.MondialRelayDayPeriod[]",
+          "readOnly": false,
+          "required": false,
+          "type": "supply.MondialRelayDayPeriod[]"
         },
         "tuesday": {
-          "type": "supply.MondialRelayDayPeriod[]",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Opening range",
-          "required": false
+          "fullType": "supply.MondialRelayDayPeriod[]",
+          "readOnly": false,
+          "required": false,
+          "type": "supply.MondialRelayDayPeriod[]"
         },
         "wednesday": {
-          "type": "supply.MondialRelayDayPeriod[]",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Opening range",
-          "required": false
+          "fullType": "supply.MondialRelayDayPeriod[]",
+          "readOnly": false,
+          "required": false,
+          "type": "supply.MondialRelayDayPeriod[]"
         }
       }
     },
     "supply.MondialRelayResult": {
+      "description": "Status and Mondial Relay Point Details",
       "id": "MondialRelayResult",
       "namespace": "supply",
-      "description": "Status and Mondial Relay Point Details",
       "properties": {
         "referenceAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Reference address for finding RelayPoints",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "relayPoints": {
-          "type": "supply.MondialRelay[]",
-          "fullType": "supply.MondialRelay[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Array of relay points",
-          "required": true
+          "fullType": "supply.MondialRelay[]",
+          "readOnly": false,
+          "required": true,
+          "type": "supply.MondialRelay[]"
         }
       }
     },
     "supply.MondialRelayReturn": {
+      "description": "Status and Mondial Relay Point Details",
       "id": "MondialRelayReturn",
       "namespace": "supply",
-      "description": "Status and Mondial Relay Point Details",
       "properties": {
         "error": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Error",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "result": {
-          "type": "supply.MondialRelayResult",
-          "fullType": "supply.MondialRelayResult",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Relay points list and reference address",
-          "required": false
+          "fullType": "supply.MondialRelayResult",
+          "readOnly": false,
+          "required": false,
+          "type": "supply.MondialRelayResult"
         },
         "status": {
-          "type": "supply.Status",
-          "fullType": "supply.Status",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Request status",
-          "required": true
+          "fullType": "supply.Status",
+          "readOnly": false,
+          "required": true,
+          "type": "supply.Status"
         }
       }
     },
     "supply.Status": {
-      "id": "Status",
-      "namespace": "supply",
       "description": "Request status",
       "enum": [
         "error",
         "ok",
         "pending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "supply"
     }
-  }
+  },
+  "resourcePath": "/supply/mondialRelay"
 }

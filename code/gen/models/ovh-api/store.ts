@@ -1,1578 +1,1580 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/store.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/store/contact",
+      "description": "MarketPlaceContact",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List current customer contacts",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "MarketPlaceContact.Contact[]",
           "noAuthentication": false,
-          "description": "List current customer contacts"
+          "parameters": [],
+          "responseType": "MarketPlaceContact.Contact[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a 'marketplace' contact for current nic",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Title",
+              "fullType": "string",
               "name": "title",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Title"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "First name",
+              "fullType": "string",
               "name": "firstname",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "First name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Email address",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Email address"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Street address",
+              "fullType": "string",
               "name": "street",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Street address"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Zipcode",
+              "fullType": "string",
               "name": "zip",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Zipcode"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Last name",
+              "fullType": "string",
               "name": "lastname",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Last name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Country",
+              "fullType": "string",
               "name": "country",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Country"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Province name",
+              "fullType": "string",
               "name": "province",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Province name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "City",
+              "fullType": "string",
               "name": "city",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "City"
+              "required": false
             },
             {
-              "name": "phone",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Phone number",
               "fullType": "string",
-              "required": false,
-              "description": "Phone number"
+              "name": "phone",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "MarketPlaceContact.Contact",
-          "noAuthentication": false,
-          "description": "Create a 'marketplace' contact for current nic"
+          "responseType": "MarketPlaceContact.Contact"
         }
       ],
-      "description": "MarketPlaceContact"
+      "path": "/store/contact"
     },
     {
-      "path": "/store/contact/{contactId}",
+      "description": "MarketPlaceContact.contactId",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Remove an existing contact",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "string",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Remove an existing contact"
+          "responseType": "string"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get contact details",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "string",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "MarketPlaceContact.Contact",
-          "noAuthentication": false,
-          "description": "Get contact details"
+          "responseType": "MarketPlaceContact.Contact"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Edit contact information",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "City",
+              "fullType": "string",
               "name": "city",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "City"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Phone number",
+              "fullType": "string",
               "name": "phone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Phone number"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Title",
+              "fullType": "string",
               "name": "title",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Title"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Email address",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Email address"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Street address",
+              "fullType": "string",
               "name": "street",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Street address"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Country",
+              "fullType": "string",
               "name": "country",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Country"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Zipcode",
+              "fullType": "string",
               "name": "zip",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Zipcode"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Province name",
+              "fullType": "string",
               "name": "province",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Province name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "First name",
+              "fullType": "string",
               "name": "firstname",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "First name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Last name",
+              "fullType": "string",
               "name": "lastname",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Last name"
+              "required": false
             },
             {
-              "name": "contactId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "string",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "MarketPlaceContact.Contact",
-          "noAuthentication": false,
-          "description": "Edit contact information"
+          "responseType": "MarketPlaceContact.Contact"
         }
       ],
-      "description": "MarketPlaceContact.contactId"
+      "path": "/store/contact/{contactId}"
     },
     {
-      "path": "/store/contact/{contactId}/document",
+      "description": "MarketPlaceContact.doc",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List document associated with contact",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "string",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List document associated with contact"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a document to a contact",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "documentId",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Document id to link",
               "fullType": "string",
-              "required": true,
-              "description": "Document id to link"
+              "name": "documentId",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "contactId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "string",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Add a document to a contact"
+          "responseType": "string[]"
         }
       ],
-      "description": "MarketPlaceContact.doc"
+      "path": "/store/contact/{contactId}/document"
     },
     {
-      "path": "/store/contact/{contactId}/document/{documentId}",
+      "description": "MarketPlaceContact.doc_id",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Unlink a document from a contact",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "documentId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Document ID",
               "fullType": "string",
-              "required": true,
-              "description": "Document ID"
+              "name": "documentId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "contactId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "string",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Unlink a document from a contact"
+          "responseType": "string[]"
         }
       ],
-      "description": "MarketPlaceContact.doc_id"
+      "path": "/store/contact/{contactId}/document/{documentId}"
     },
     {
-      "path": "/store/document",
+      "description": "MarketPlaceDocument",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List current customer documents",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "MarketPlace.Document[]",
           "noAuthentication": false,
-          "description": "List current customer documents"
+          "parameters": [],
+          "responseType": "MarketPlace.Document[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a document",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Name of the document",
               "fullType": "string",
-              "required": true,
-              "description": "Name of the document"
+              "name": "name",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "tags",
               "dataType": "complexType.SafeKeyValue<string>[]",
-              "paramType": "body",
+              "description": "Optional tags for document",
               "fullType": "complexType.SafeKeyValue<string>[]",
-              "required": false,
-              "description": "Optional tags for document"
+              "name": "tags",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "MarketPlace.Document",
-          "noAuthentication": false,
-          "description": "Create a document"
+          "responseType": "MarketPlace.Document"
         }
       ],
-      "description": "MarketPlaceDocument"
+      "path": "/store/document"
     },
     {
-      "path": "/store/document/cors",
+      "description": "MarketPlaceDocument",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add CORS support on your container",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Allow this origin",
+              "fullType": "string",
               "name": "origin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Allow this origin"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Add CORS support on your container"
+          "responseType": "void"
         }
       ],
-      "description": "MarketPlaceDocument"
+      "path": "/store/document/cors"
     },
     {
-      "path": "/store/document/{documentId}",
+      "description": "MarketPlaceDocument.documentId",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete document",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "documentId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Document ID",
               "fullType": "string",
-              "required": true,
-              "description": "Document ID"
+              "name": "documentId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Delete document"
+          "responseType": "string"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get document info",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "documentId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Document ID",
               "fullType": "string",
-              "required": true,
-              "description": "Document ID"
+              "name": "documentId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "MarketPlace.Document",
-          "noAuthentication": false,
-          "description": "Get document info"
+          "responseType": "MarketPlace.Document"
         }
       ],
-      "description": "MarketPlaceDocument.documentId"
+      "path": "/store/document/{documentId}"
     },
     {
-      "path": "/store/partner",
+      "description": "MarketPlacePartner.search",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List current customer partners",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "MarketPlace.Partner[]",
-          "noAuthentication": false,
-          "description": "List current customer partners"
+          "responseType": "MarketPlace.Partner[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a 'marketplace' partner for current nic",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "description",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Complete description",
               "fullType": "string",
-              "required": false,
-              "description": "Complete description"
+              "name": "description",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Organisation display name",
+              "fullType": "string",
               "name": "organisationDisplayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Organisation display name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Complementary information",
+              "fullType": "string",
               "name": "otherDetails",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Complementary information"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Province name",
+              "fullType": "string",
               "name": "province",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Province name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Linked contact id",
+              "fullType": "string",
               "name": "contact",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Linked contact id"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Country",
+              "fullType": "string",
               "name": "country",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Country"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Company national identification number",
+              "fullType": "string",
               "name": "companyNationalIdentificationNumber",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company national identification number"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Organisation name",
+              "fullType": "string",
               "name": "organisationName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Organisation name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Street address",
+              "fullType": "string",
               "name": "street",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Street address"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "ZipCode",
+              "fullType": "string",
               "name": "zip",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "ZipCode"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Language",
+              "fullType": "string",
               "name": "language",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Language"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Category",
+              "fullType": "string",
               "name": "category",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Category"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Legal form",
+              "fullType": "string",
               "name": "legalForm",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Legal form"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "VAT number",
+              "fullType": "string",
               "name": "vat",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "VAT number"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Website address",
+              "fullType": "string",
               "name": "url",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Website address"
+              "required": false
             },
             {
-              "name": "city",
               "dataType": "string",
-              "paramType": "body",
+              "description": "City",
               "fullType": "string",
-              "required": true,
-              "description": "City"
+              "name": "city",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "MarketPlace.Partner",
-          "noAuthentication": false,
-          "description": "Create a 'marketplace' partner for current nic"
+          "responseType": "MarketPlace.Partner"
         }
       ],
-      "description": "MarketPlacePartner.search"
+      "path": "/store/partner"
     },
     {
-      "path": "/store/partner/{partnerId}",
+      "description": "MarketPlacePartner.get",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete partner",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "partnerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partner ID",
               "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Delete partner"
+          "responseType": "string"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get partner info",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "partnerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partner ID",
               "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "MarketPlace.Partner",
-          "noAuthentication": false,
-          "description": "Get partner info"
+          "responseType": "MarketPlace.Partner"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Edit partner info",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Complementary information",
+              "fullType": "string",
               "name": "otherDetails",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Complementary information"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Legal form",
+              "fullType": "string",
               "name": "legalForm",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Legal form"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Country",
+              "fullType": "string",
               "name": "country",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Country"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "City",
+              "fullType": "string",
               "name": "city",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "City"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Province name",
+              "fullType": "string",
               "name": "province",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Province name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Linked contact id",
+              "fullType": "string",
               "name": "contact",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Linked contact id"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Organisation name",
+              "fullType": "string",
               "name": "organisationName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Organisation name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "ZipCode",
+              "fullType": "string",
               "name": "zip",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "ZipCode"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Complete description",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Complete description"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Category",
+              "fullType": "string",
               "name": "category",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Category"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company national identification number",
+              "fullType": "string",
               "name": "companyNationalIdentificationNumber",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company national identification number"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Street address",
+              "fullType": "string",
               "name": "street",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Street address"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Language",
+              "fullType": "string",
               "name": "language",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Language"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "VAT number",
+              "fullType": "string",
               "name": "vat",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "VAT number"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Organisation display name",
+              "fullType": "string",
               "name": "organisationDisplayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Organisation display name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Website address",
+              "fullType": "string",
               "name": "url",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Website address"
+              "required": false
             },
             {
-              "name": "partnerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partner ID",
               "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "MarketPlace.Partner",
-          "noAuthentication": false,
-          "description": "Edit partner info"
+          "responseType": "MarketPlace.Partner"
         }
       ],
-      "description": "MarketPlacePartner.get"
+      "path": "/store/partner/{partnerId}"
     },
     {
-      "path": "/store/partner/{partnerId}/document",
+      "description": "MarketPlacePartner.doc",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List document associated with partner",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "partnerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partner ID",
               "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List document associated with partner"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a document to a partner",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "documentId",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Document id to link",
               "fullType": "string",
-              "required": true,
-              "description": "Document id to link"
+              "name": "documentId",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "partnerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partner ID",
               "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Add a document to a partner"
+          "responseType": "string[]"
         }
       ],
-      "description": "MarketPlacePartner.doc"
+      "path": "/store/partner/{partnerId}/document"
     },
     {
-      "path": "/store/partner/{partnerId}/document/{documentId}",
+      "description": "MarketPlacePartner.doc_id",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Unlink a document from a partner",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "partnerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partner ID",
               "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "documentId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Document ID",
               "fullType": "string",
-              "required": true,
-              "description": "Document ID"
+              "name": "documentId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Unlink a document from a partner"
+          "responseType": "string[]"
         }
       ],
-      "description": "MarketPlacePartner.doc_id"
+      "path": "/store/partner/{partnerId}/document/{documentId}"
     },
     {
-      "path": "/store/partner/{partnerId}/product",
+      "description": "MarketPlacePartnerProduct.search",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List partner's products",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "partnerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partner ID",
               "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "MarketPlacePartnerProduct.edit.response[]",
-          "noAuthentication": false,
-          "description": "List partner's products"
+          "responseType": "MarketPlacePartnerProduct.edit.response[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a new product for partner",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Description of product",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Description of product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name of product",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Additional information",
+              "fullType": "string",
               "name": "otherDetails",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Additional information"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Name of product category",
+              "fullType": "string",
               "name": "category",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of product category"
+              "required": true
             },
             {
-              "name": "partnerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partner ID",
               "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "MarketPlacePartnerProduct.edit.response",
-          "noAuthentication": false,
-          "description": "Create a new product for partner"
+          "responseType": "MarketPlacePartnerProduct.edit.response"
         }
       ],
-      "description": "MarketPlacePartnerProduct.search"
+      "path": "/store/partner/{partnerId}/product"
     },
     {
-      "path": "/store/partner/{partnerId}/product/{productId}",
+      "description": "MarketPlacePartnerProduct.get",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete product",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "partnerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partner ID",
               "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "productId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Product ID",
               "fullType": "string",
-              "required": true,
-              "description": "Product ID"
+              "name": "productId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Delete product"
+          "responseType": "string"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get partner info",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "partnerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partner ID",
               "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "productId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Product ID",
               "fullType": "string",
-              "required": true,
-              "description": "Product ID"
+              "name": "productId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "MarketPlacePartnerProduct.edit.response",
-          "noAuthentication": false,
-          "description": "Get partner info"
+          "responseType": "MarketPlacePartnerProduct.edit.response"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Edit product info",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Description of product",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Description of product"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Name of product",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Name of product"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Name of product category",
+              "fullType": "string",
               "name": "category",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Name of product category"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Additional information",
+              "fullType": "string",
               "name": "otherDetails",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Additional information"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Partner ID",
+              "fullType": "string",
               "name": "partnerId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "required": true
             },
             {
-              "name": "productId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Product ID",
               "fullType": "string",
-              "required": true,
-              "description": "Product ID"
+              "name": "productId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "MarketPlacePartnerProduct.edit.response",
-          "noAuthentication": false,
-          "description": "Edit product info"
+          "responseType": "MarketPlacePartnerProduct.edit.response"
         }
       ],
-      "description": "MarketPlacePartnerProduct.get"
+      "path": "/store/partner/{partnerId}/product/{productId}"
     },
     {
-      "path": "/store/partner/{partnerId}/product/{productId}/document",
+      "description": "MarketPlacePartnerProduct.doc",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List document associated with product",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "productId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Product ID",
               "fullType": "string",
-              "required": true,
-              "description": "Product ID"
+              "name": "productId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "partnerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partner ID",
               "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List document associated with product"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a document to a product",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Document id to link",
+              "fullType": "string",
               "name": "documentId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Document id to link"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Partner ID",
+              "fullType": "string",
               "name": "partnerId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "required": true
             },
             {
-              "name": "productId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Product ID",
               "fullType": "string",
-              "required": true,
-              "description": "Product ID"
+              "name": "productId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Add a document to a product"
+          "responseType": "string[]"
         }
       ],
-      "description": "MarketPlacePartnerProduct.doc"
+      "path": "/store/partner/{partnerId}/product/{productId}/document"
     },
     {
-      "path": "/store/partner/{partnerId}/product/{productId}/document/{documentId}",
+      "description": "MarketPlacePartnerProduct.doc_id",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Unlink a document from a product",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Document ID",
+              "fullType": "string",
               "name": "documentId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Document ID"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Partner ID",
+              "fullType": "string",
               "name": "partnerId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Partner ID"
+              "required": true
             },
             {
-              "name": "productId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Product ID",
               "fullType": "string",
-              "required": true,
-              "description": "Product ID"
+              "name": "productId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Unlink a document from a product"
+          "responseType": "string[]"
         }
       ],
-      "description": "MarketPlacePartnerProduct.doc_id"
+      "path": "/store/partner/{partnerId}/product/{productId}/document/{documentId}"
     }
   ],
-  "resourcePath": "/store",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "MarketPlace.Document": {
+      "description": "Document",
       "id": "Document",
       "namespace": "MarketPlace",
-      "description": "Document",
       "properties": {
         "creationDate": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "str",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "getUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "str",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Unique identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "str",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "putUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "str",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "size": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "str",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "tags": {
-          "type": "complexType.SafeKeyValue<string>[]",
-          "fullType": "complexType.SafeKeyValue<string>[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Attached tags",
-          "required": false
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.SafeKeyValue<string>[]"
         }
       }
     },
     "MarketPlace.Partner": {
+      "description": "partner",
       "id": "Partner",
       "namespace": "MarketPlace",
-      "description": "partner",
       "properties": {
         "category": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Category",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "City",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "companyNationalIdentificationNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Company national identification number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "contact": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "str",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "country": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Country",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Complete description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "language": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Language",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "legalForm": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Legal form",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationDisplayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Organisation display name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Organisation name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "otherDetails": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Complementary information",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "province": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Province name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "street": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Street address",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Website address",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "vat": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "VAT number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "zip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "ZipCode",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "MarketPlaceContact.Contact": {
+      "description": "Contact information",
       "id": "Contact",
       "namespace": "MarketPlaceContact",
-      "description": "Contact information",
       "properties": {
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "City",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "country": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Country",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Email address",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "firstname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "First name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Unique identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "lastname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Last name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "phone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Phone number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "province": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Province name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "street": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Street address",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Title",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "zip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Zipcode",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "MarketPlacePartnerProduct.edit.response": {
+      "description": "product",
       "id": "response",
       "namespace": "MarketPlacePartnerProduct.edit",
-      "description": "product",
       "properties": {
         "category": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of product category",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description of product",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of product",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "otherDetails": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Additional information",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "complexType.SafeKeyValue<T>": {
-      "id": "SafeKeyValue",
-      "namespace": "complexType",
       "description": "Key and value, with proper key strings",
       "generics": [
         "T"
       ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
       "properties": {
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/store"
 }

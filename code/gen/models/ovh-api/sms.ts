@@ -1,4453 +1,4452 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/sms.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/sms",
+      "description": "Operations about the VOIP service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the VOIP service"
+      "path": "/sms"
     },
     {
-      "path": "/sms/estimate",
+      "description": "Get the encoding, length and number of SMS parts of a text message",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the encoding, length and number of SMS parts of a text message",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "message",
               "dataType": "text",
-              "paramType": "body",
+              "description": "The message to send",
               "fullType": "text",
-              "required": true,
-              "description": "The message to send"
+              "name": "message",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "noStopClause",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message",
               "fullType": "boolean",
-              "required": true,
-              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message"
+              "name": "noStopClause",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "senderType",
               "dataType": "sms.TypeSenderEnum",
-              "paramType": "body",
+              "description": "Sender type that will be used to send the message",
               "fullType": "sms.TypeSenderEnum",
-              "required": true,
-              "description": "Sender type that will be used to send the message"
+              "name": "senderType",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "sms.JobEstimate",
-          "noAuthentication": false,
-          "description": "Get the encoding, length and number of SMS parts of a text message"
+          "responseType": "sms.JobEstimate"
         }
       ],
-      "description": "Get the encoding, length and number of SMS parts of a text message"
+      "path": "/sms/estimate"
     },
     {
-      "path": "/sms/ptts",
+      "description": "Get informations about the given ptt code",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about the given ptt code",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ptt",
               "dataType": "long",
-              "paramType": "query",
+              "description": "The premium transaction tracking code",
               "fullType": "long",
-              "required": true,
-              "description": "The premium transaction tracking code"
+              "name": "ptt",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "sms.PttDetails",
+          "responseType": "sms.PttDetails"
+        }
+      ],
+      "path": "/sms/ptts"
+    },
+    {
+      "description": "Get the prices and credits to send a SMS towards given country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the prices and credits to send a SMS towards given country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "sms.CountryEnum",
+              "description": "Country prices to send SMS",
+              "fullType": "sms.CountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "sms.DestinationRates"
+        }
+      ],
+      "path": "/sms/rates/destinations"
+    },
+    {
+      "description": "Get the prices and credits of all the SMS packs with informations about the destination country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the prices and credits of all the SMS packs with informations about the destination country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "sms.CountryEnum",
+              "description": "Destination country",
+              "fullType": "sms.CountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "sms.PackDetails[]"
+        }
+      ],
+      "path": "/sms/rates/packs"
+    },
+    {
+      "description": "Operations about the VOIP service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get informations about the given ptt code"
-        }
-      ],
-      "description": "Get informations about the given ptt code"
-    },
-    {
-      "path": "/sms/rates/destinations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "country",
-              "dataType": "sms.CountryEnum",
-              "paramType": "query",
-              "fullType": "sms.CountryEnum",
-              "required": true,
-              "description": "Country prices to send SMS"
-            }
-          ],
-          "responseType": "sms.DestinationRates",
-          "noAuthentication": true,
-          "description": "Get the prices and credits to send a SMS towards given country"
-        }
-      ],
-      "description": "Get the prices and credits to send a SMS towards given country"
-    },
-    {
-      "path": "/sms/rates/packs",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "country",
-              "dataType": "sms.CountryEnum",
-              "paramType": "query",
-              "fullType": "sms.CountryEnum",
-              "required": true,
-              "description": "Destination country"
-            }
-          ],
-          "responseType": "sms.PackDetails[]",
-          "noAuthentication": true,
-          "description": "Get the prices and credits of all the SMS packs with informations about the destination country"
-        }
-      ],
-      "description": "Get the prices and credits of all the SMS packs with informations about the destination country"
-    },
-    {
-      "path": "/sms/virtualNumbers",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the VOIP service"
+      "path": "/sms/virtualNumbers"
     },
     {
-      "path": "/sms/virtualNumbers/{number}",
+      "description": "Virtual numbers",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.VirtualNumberGenericService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.VirtualNumberGenericService"
         }
       ],
-      "description": "Virtual numbers"
+      "path": "/sms/virtualNumbers/{number}"
     },
     {
-      "path": "/sms/virtualNumbers/{number}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/sms/virtualNumbers/{number}/serviceInfos"
     },
     {
-      "path": "/sms/{serviceName}",
+      "description": "SMS details",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Account",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Account"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "sms.Account",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "sms.Account",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "SMS details"
+      "path": "/sms/{serviceName}"
     },
     {
-      "path": "/sms/{serviceName}/blacklists",
+      "description": "List the sms.Blacklist objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Numbers blacklisted associated to the sms account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "batchID",
               "dataType": "uuid",
-              "paramType": "query",
+              "description": "Filter the value of batchID property (=)",
               "fullType": "uuid",
-              "required": false,
-              "description": "Filter the value of batchID property (=)"
+              "name": "batchID",
+              "paramType": "query",
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of smsOutgoingID property (=)",
+              "fullType": "long",
               "name": "smsOutgoingID",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of smsOutgoingID property (=)"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Numbers blacklisted associated to the sms account"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the sms.Blacklist objects"
+      "path": "/sms/{serviceName}/blacklists"
     },
     {
-      "path": "/sms/{serviceName}/blacklists/{number}",
+      "description": "SMS blacklist",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the blacklisted sms number given",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the blacklisted sms number given"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Blacklist",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Blacklist"
         }
       ],
-      "description": "SMS blacklist"
+      "path": "/sms/{serviceName}/blacklists/{number}"
     },
     {
-      "path": "/sms/{serviceName}/document",
+      "description": "document operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the /me/document id generated",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "wayType",
               "dataType": "sms.DocumentWayTypeEnum",
-              "paramType": "query",
+              "description": "specify outgoing or incoming sms",
               "fullType": "sms.DocumentWayTypeEnum",
-              "required": true,
-              "description": "specify outgoing or incoming sms"
+              "name": "wayType",
+              "paramType": "query",
+              "required": true
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (>=)",
+              "fullType": "datetime",
               "name": "creationDatetime.from",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (>=)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (<=)",
+              "fullType": "datetime",
               "name": "creationDatetime.to",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (<=)"
+              "required": false
             },
             {
-              "name": "tag",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Select sms with a specific identifier group tag",
               "fullType": "string",
-              "required": false,
-              "description": "Select sms with a specific identifier group tag"
+              "name": "tag",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Get the /me/document id generated"
+          "responseType": "string"
         }
       ],
-      "description": "document operations"
+      "path": "/sms/{serviceName}/document"
     },
     {
-      "path": "/sms/{serviceName}/exceptions",
+      "description": "exceptions operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Describe filter exceptions in sms sending from a specific receiver.",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "The receiver number to check",
+              "fullType": "string",
               "name": "receiver",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "The receiver number to check"
+              "required": true
             }
           ],
-          "responseType": "sms.Exception[]",
-          "noAuthentication": false,
-          "description": "Describe filter exceptions in sms sending from a specific receiver."
+          "responseType": "sms.Exception[]"
         }
       ],
-      "description": "exceptions operations"
+      "path": "/sms/{serviceName}/exceptions"
     },
     {
-      "path": "/sms/{serviceName}/hlr",
+      "description": "List the sms.HlrLookupNumber objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Home Location Register informations. Give informations about a given cellular phone.",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Home Location Register informations. Give informations about a given cellular phone."
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add one or several sending hlr lookup request",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "receivers",
               "dataType": "string[]",
-              "paramType": "body",
+              "description": "The receivers",
               "fullType": "string[]",
-              "required": false,
-              "description": "The receivers"
-            },
-            {
-              "name": "receiversDocumentUrl",
-              "dataType": "string",
+              "name": "receivers",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The receivers document url link in csv format"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The receivers document url link in csv format",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "receiversDocumentUrl",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.SmsSendingReport",
-          "noAuthentication": false,
-          "description": "Add one or several sending hlr lookup request"
+          "responseType": "sms.SmsSendingReport"
         }
       ],
-      "description": "List the sms.HlrLookupNumber objects"
+      "path": "/sms/{serviceName}/hlr"
     },
     {
-      "path": "/sms/{serviceName}/hlr/{id}",
+      "description": "Home Location Register informations. Give informations about a given cellular phone.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "sms.HlrLookupNumber",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Home Location Register informations. Give informations about a given cellular phone."
-    },
-    {
-      "path": "/sms/{serviceName}/hlr/{id}/operator",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
               "name": "id",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "sms.Hlr",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.HlrLookupNumber"
         }
       ],
-      "description": "Sms operator informations"
+      "path": "/sms/{serviceName}/hlr/{id}"
     },
     {
-      "path": "/sms/{serviceName}/incoming",
+      "description": "Sms operator informations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.Hlr"
+        }
+      ],
+      "path": "/sms/{serviceName}/hlr/{id}/operator"
+    },
+    {
+      "description": "List the sms.Incoming objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Sms received associated to the sms account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of sender property (=)",
+              "fullType": "string",
               "name": "sender",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of sender property (=)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of tag property (=)",
+              "fullType": "string",
               "name": "tag",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of tag property (=)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (<=)",
+              "fullType": "datetime",
               "name": "creationDatetime.to",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (<=)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (>=)",
+              "fullType": "datetime",
               "name": "creationDatetime.from",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (>=)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Sms received associated to the sms account"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the sms.Incoming objects"
+      "path": "/sms/{serviceName}/incoming"
     },
     {
-      "path": "/sms/{serviceName}/incoming/{id}",
+      "description": "Sms history of sms incoming received",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the sms incoming history given",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms incoming history given"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Incoming",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Incoming"
         }
       ],
-      "description": "Sms history of sms incoming received"
+      "path": "/sms/{serviceName}/incoming/{id}"
     },
     {
-      "path": "/sms/{serviceName}/jobs",
+      "description": "List the sms.Job objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Sms in pending associated to the sms account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Sms in pending associated to the sms account"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add one or several sending jobs",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "boolean",
+              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message",
+              "fullType": "boolean",
               "name": "noStopClause",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message"
+              "required": false
             },
             {
-              "name": "tag",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The identifier group tag",
               "fullType": "string",
-              "required": false,
-              "description": "The identifier group tag"
+              "name": "tag",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The receivers document url link in csv format",
+              "fullType": "string",
               "name": "receiversDocumentUrl",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The receivers document url link in csv format"
+              "required": false
             },
             {
-              "name": "senderForResponse",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Set the flag to send a special sms which can be reply by the receiver (smsResponse).",
               "fullType": "boolean",
-              "required": false,
-              "description": "Set the flag to send a special sms which can be reply by the receiver (smsResponse)."
-            },
-            {
-              "name": "sender",
-              "dataType": "string",
+              "name": "senderForResponse",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The sender"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The sender",
+              "fullType": "string",
+              "name": "sender",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The receivers document slot id",
+              "fullType": "string",
               "name": "receiversSlotId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The receivers document slot id"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The sms message",
+              "fullType": "string",
               "name": "message",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The sms message"
+              "required": true
             },
             {
-              "name": "coding",
               "dataType": "sms.CodingEnum",
-              "paramType": "body",
+              "description": "The sms coding",
               "fullType": "sms.CodingEnum",
-              "required": false,
-              "description": "The sms coding"
+              "name": "coding",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "The time -in minute(s)- to wait before sending the message",
+              "fullType": "long",
               "name": "differedPeriod",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "The time -in minute(s)- to wait before sending the message"
+              "required": false
             },
             {
-              "name": "receivers",
               "dataType": "string[]",
-              "paramType": "body",
+              "description": "The receivers list",
               "fullType": "string[]",
-              "required": false,
-              "description": "The receivers list"
+              "name": "receivers",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "The maximum time -in minute(s)- before the message is dropped",
+              "fullType": "long",
               "name": "validityPeriod",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "The maximum time -in minute(s)- before the message is dropped"
+              "required": false
             },
             {
-              "name": "priority",
               "dataType": "sms.PriorityEnum",
-              "paramType": "body",
+              "description": "The priority of the message",
               "fullType": "sms.PriorityEnum",
-              "required": false,
-              "description": "The priority of the message"
+              "name": "priority",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "charset",
               "dataType": "sms.CharsetEnum",
-              "paramType": "body",
+              "description": "The sms coding",
               "fullType": "sms.CharsetEnum",
-              "required": false,
-              "description": "The sms coding"
+              "name": "charset",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "class",
               "dataType": "sms.ClassEnum",
-              "paramType": "body",
+              "description": "The sms class",
               "fullType": "sms.ClassEnum",
-              "required": false,
-              "description": "The sms class"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "sms.SmsSendingReport",
-          "noAuthentication": false,
-          "description": "Add one or several sending jobs"
-        }
-      ],
-      "description": "List the sms.Job objects"
-    },
-    {
-      "path": "/sms/{serviceName}/jobs/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms job given (stop sending)"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "sms.Job",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Sms job"
-    },
-    {
-      "path": "/sms/{serviceName}/outgoing",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "creationDatetime.to",
-              "dataType": "datetime",
-              "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (<=)"
-            },
-            {
-              "name": "ptt",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of ptt property (=)"
-            },
-            {
-              "name": "creationDatetime.from",
-              "dataType": "datetime",
-              "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (>=)"
-            },
-            {
-              "name": "sender",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of sender property (=)"
-            },
-            {
-              "name": "deliveryReceipt",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of deliveryReceipt property (=)"
-            },
-            {
-              "name": "differedDelivery",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of differedDelivery property (=)"
-            },
-            {
-              "name": "tag",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of tag property (=)"
-            },
-            {
-              "name": "receiver",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of receiver property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Sms sent associated to the sms account"
-        }
-      ],
-      "description": "List the sms.Outgoing objects"
-    },
-    {
-      "path": "/sms/{serviceName}/outgoing/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms outgoing history given"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "sms.Outgoing",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Sms history of sms outgoing sent"
-    },
-    {
-      "path": "/sms/{serviceName}/outgoing/{id}/hlr",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "sms.Hlr",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Sms operator informations"
-    },
-    {
-      "path": "/sms/{serviceName}/phonebooks",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Return phonebooks associated to this account"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "name",
-              "dataType": "string",
+              "name": "class",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of the wanted phonebook"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Add a phonebook. Return the bookKey."
+          "responseType": "sms.SmsSendingReport"
         }
       ],
-      "description": "List the sms.Phonebook objects"
+      "path": "/sms/{serviceName}/jobs"
     },
     {
-      "path": "/sms/{serviceName}/phonebooks/{bookKey}",
+      "description": "Sms job",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the sms job given (stop sending)",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "bookKey",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Book key"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a phonebook"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "bookKey",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Book key"
+              "required": true
             }
           ],
-          "responseType": "sms.Phonebook",
+          "responseType": "sms.Job"
+        }
+      ],
+      "path": "/sms/{serviceName}/jobs/{id}"
+    },
+    {
+      "description": "List the sms.Outgoing objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Sms sent associated to the sms account",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (<=)",
+              "fullType": "datetime",
+              "name": "creationDatetime.to",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of ptt property (=)",
+              "fullType": "long",
+              "name": "ptt",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (>=)",
+              "fullType": "datetime",
+              "name": "creationDatetime.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of sender property (=)",
+              "fullType": "string",
+              "name": "sender",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of deliveryReceipt property (=)",
+              "fullType": "long",
+              "name": "deliveryReceipt",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of differedDelivery property (=)",
+              "fullType": "long",
+              "name": "differedDelivery",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of tag property (=)",
+              "fullType": "string",
+              "name": "tag",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of receiver property (=)",
+              "fullType": "string",
+              "name": "receiver",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/sms/{serviceName}/outgoing"
+    },
+    {
+      "description": "Sms history of sms outgoing sent",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete the sms outgoing history given",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.Outgoing"
+        }
+      ],
+      "path": "/sms/{serviceName}/outgoing/{id}"
+    },
+    {
+      "description": "Sms operator informations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.Hlr"
+        }
+      ],
+      "path": "/sms/{serviceName}/outgoing/{id}/hlr"
+    },
+    {
+      "description": "List the sms.Phonebook objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return phonebooks associated to this account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a phonebook. Return the bookKey.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of the wanted phonebook",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/sms/{serviceName}/phonebooks"
+    },
+    {
+      "description": "Phone book",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete a phonebook",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Book key",
+              "fullType": "string",
+              "name": "bookKey",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Book key",
+              "fullType": "string",
+              "name": "bookKey",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.Phonebook"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "sms.Phonebook",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "sms.Phonebook",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "bookKey",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Book key",
               "fullType": "string",
-              "required": true,
-              "description": "Book key"
+              "name": "bookKey",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Phone book"
+      "path": "/sms/{serviceName}/phonebooks/{bookKey}"
     },
     {
-      "path": "/sms/{serviceName}/phonebooks/{bookKey}/export",
+      "description": "export operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Export the phonebook's contacts",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Book key",
+              "fullType": "string",
               "name": "bookKey",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Book key"
+              "required": true
             },
             {
-              "name": "format",
               "dataType": "telephony.ContactsExportFormatsEnum",
-              "paramType": "query",
+              "description": "Format of the file",
               "fullType": "telephony.ContactsExportFormatsEnum",
-              "required": true,
-              "description": "Format of the file"
+              "name": "format",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "telephony.PcsFile",
-          "noAuthentication": false,
-          "description": "Export the phonebook's contacts"
+          "responseType": "telephony.PcsFile"
         }
       ],
-      "description": "export operations"
+      "path": "/sms/{serviceName}/phonebooks/{bookKey}/export"
     },
     {
-      "path": "/sms/{serviceName}/phonebooks/{bookKey}/import",
+      "description": "import operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "ID of the /me/document file you want to import",
+              "fullType": "string",
               "name": "documentId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "ID of the /me/document file you want to import"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "bookKey",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Book key",
               "fullType": "string",
-              "required": true,
-              "description": "Book key"
+              "name": "bookKey",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "telephony.Task",
-          "noAuthentication": false,
-          "description": "Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV"
+          "responseType": "telephony.Task"
         }
       ],
-      "description": "import operations"
+      "path": "/sms/{serviceName}/phonebooks/{bookKey}/import"
     },
     {
-      "path": "/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact",
+      "description": "List the sms.PhonebookContact objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Phonebook contacts",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "bookKey",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Book key",
               "fullType": "string",
-              "required": true,
-              "description": "Book key"
+              "name": "bookKey",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Phonebook contacts"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a phonebook contact. Return identifier of the phonebook contact.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Group name of the phonebook",
+              "fullType": "string",
               "name": "group",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Group name of the phonebook"
+              "required": true
             },
             {
+              "dataType": "phoneNumber",
+              "description": "Home landline phone number of the contact",
+              "fullType": "phoneNumber",
               "name": "homePhone",
-              "dataType": "phoneNumber",
               "paramType": "body",
-              "fullType": "phoneNumber",
-              "required": false,
-              "description": "Home landline phone number of the contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact surname",
+              "fullType": "string",
               "name": "surname",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Contact surname"
+              "required": true
             },
             {
+              "dataType": "phoneNumber",
+              "description": "Landline phone office number of the contact",
+              "fullType": "phoneNumber",
               "name": "workPhone",
-              "dataType": "phoneNumber",
               "paramType": "body",
-              "fullType": "phoneNumber",
-              "required": false,
-              "description": "Landline phone office number of the contact"
+              "required": false
             },
             {
+              "dataType": "phoneNumber",
+              "description": "Mobile phone office number of the contact",
+              "fullType": "phoneNumber",
               "name": "workMobile",
-              "dataType": "phoneNumber",
               "paramType": "body",
-              "fullType": "phoneNumber",
-              "required": false,
-              "description": "Mobile phone office number of the contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Name of the contact",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of the contact"
+              "required": true
             },
             {
-              "name": "homeMobile",
               "dataType": "phoneNumber",
-              "paramType": "body",
+              "description": "Home mobile phone number of the contact",
               "fullType": "phoneNumber",
-              "required": false,
-              "description": "Home mobile phone number of the contact"
+              "name": "homeMobile",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "bookKey",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Book key",
               "fullType": "string",
-              "required": true,
-              "description": "Book key"
+              "name": "bookKey",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long",
-          "noAuthentication": false,
-          "description": "Create a phonebook contact. Return identifier of the phonebook contact."
+          "responseType": "long"
         }
       ],
-      "description": "List the sms.PhonebookContact objects"
+      "path": "/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact"
     },
     {
-      "path": "/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}",
+      "description": "Phone book contact",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a phonebook contact",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Book key",
+              "fullType": "string",
               "name": "bookKey",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Book key"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a phonebook contact"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Book key",
+              "fullType": "string",
               "name": "bookKey",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Book key"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.PhonebookContact",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.PhonebookContact"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "sms.PhonebookContact",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "sms.PhonebookContact",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
               "name": "id",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Book key",
+              "fullType": "string",
               "name": "bookKey",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Book key"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Phone book contact"
+      "path": "/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}"
     },
     {
-      "path": "/sms/{serviceName}/receivers",
+      "description": "List the sms.Receiver objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Receivers preloaded from text or csv document file",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Receivers preloaded from text or csv document file"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a new document of csv receivers",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Slot number id used to handle the document",
               "fullType": "long",
-              "required": true,
-              "description": "Slot number id used to handle the document"
+              "name": "slotId",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "ID of the /me/document file you want to import",
+              "fullType": "string",
               "name": "documentId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "ID of the /me/document file you want to import"
+              "required": false
             },
             {
-              "name": "autoUpdate",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Download file from URL before sending to contacts (works only with csvUrl and not document ID)",
               "fullType": "boolean",
-              "required": true,
-              "description": "Download file from URL before sending to contacts (works only with csvUrl and not document ID)"
+              "name": "autoUpdate",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "URL of the file you want to import",
+              "fullType": "string",
               "name": "csvUrl",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "URL of the file you want to import"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Description name of the document",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Description name of the document"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Receiver",
-          "noAuthentication": false,
-          "description": "Add a new document of csv receivers"
+          "responseType": "sms.Receiver"
         }
       ],
-      "description": "List the sms.Receiver objects"
+      "path": "/sms/{serviceName}/receivers"
     },
     {
-      "path": "/sms/{serviceName}/receivers/{slotId}",
+      "description": "Sms receivers preloaded",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the document from the slot",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Slot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Slot ID"
+              "name": "slotId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the document from the slot"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Slot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Slot ID"
+              "name": "slotId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Receiver",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Receiver"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "sms.Receiver",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "sms.Receiver",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Slot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Slot ID"
+              "name": "slotId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Sms receivers preloaded"
+      "path": "/sms/{serviceName}/receivers/{slotId}"
     },
     {
-      "path": "/sms/{serviceName}/receivers/{slotId}/clean",
+      "description": "clean operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "boolean",
+              "description": "Limit checks to syntaxical validation",
+              "fullType": "boolean",
               "name": "freemium",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Limit checks to syntaxical validation"
+              "required": true
             },
             {
+              "dataType": "boolean",
+              "description": "Only get action's price in credits without executing it",
+              "fullType": "boolean",
               "name": "priceOnly",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Only get action's price in credits without executing it"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Slot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Slot ID"
+              "name": "slotId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.ReceiversAsynchronousCleanReport",
-          "noAuthentication": false,
-          "description": "Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation."
+          "responseType": "sms.ReceiversAsynchronousCleanReport"
         }
       ],
-      "description": "clean operations"
+      "path": "/sms/{serviceName}/receivers/{slotId}/clean"
     },
     {
-      "path": "/sms/{serviceName}/receivers/{slotId}/csv",
+      "description": "csv operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the document data container",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Slot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Slot ID"
+              "name": "slotId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Get the document data container"
+          "responseType": "string"
         }
       ],
-      "description": "csv operations"
+      "path": "/sms/{serviceName}/receivers/{slotId}/csv"
     },
     {
-      "path": "/sms/{serviceName}/seeOffers",
+      "description": "seeOffers operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Describe SMS offers available.",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "countryCurrencyPrice",
               "dataType": "reference.CountryEnum",
-              "paramType": "query",
+              "description": "Filter to have the currency country prices",
               "fullType": "reference.CountryEnum",
-              "required": true,
-              "description": "Filter to have the currency country prices"
+              "name": "countryCurrencyPrice",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "countryDestination",
               "dataType": "sms.CountryEnum",
-              "paramType": "query",
+              "description": "Filter to have the country destination",
               "fullType": "sms.CountryEnum",
-              "required": true,
-              "description": "Filter to have the country destination"
-            },
-            {
-              "name": "quantity",
-              "dataType": "sms.PackQuantityEnum",
+              "name": "countryDestination",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "sms.PackQuantityEnum",
+              "description": "Sms pack offer quantity",
               "fullType": "sms.PackQuantityEnum",
-              "required": true,
-              "description": "Sms pack offer quantity"
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "sms.PackOffer[]",
-          "noAuthentication": false,
-          "description": "Describe SMS offers available."
+          "responseType": "sms.PackOffer[]"
         }
       ],
-      "description": "seeOffers operations"
+      "path": "/sms/{serviceName}/seeOffers"
     },
     {
-      "path": "/sms/{serviceName}/senders",
+      "description": "List the sms.Sender objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Senders allowed associated to the sms account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Senders allowed associated to the sms account"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create the sms sender given",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Message seen by the moderator",
+              "fullType": "string",
               "name": "reason",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Message seen by the moderator"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The sender (alpha or phone number)",
+              "fullType": "string",
               "name": "sender",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The sender (alpha or phone number)"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Sender description",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Sender description"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Create the sms sender given"
+          "responseType": "string"
         }
       ],
-      "description": "List the sms.Sender objects"
+      "path": "/sms/{serviceName}/senders"
     },
     {
-      "path": "/sms/{serviceName}/senders/{sender}",
+      "description": "SMS senders",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the sms sender given",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "sender",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Sender",
               "fullType": "string",
-              "required": true,
-              "description": "Sender"
+              "name": "sender",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms sender given"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "sender",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Sender",
               "fullType": "string",
-              "required": true,
-              "description": "Sender"
+              "name": "sender",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Sender",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Sender"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "sms.Sender",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "sms.Sender",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "sender",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Sender"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "SMS senders"
-    },
-    {
-      "path": "/sms/{serviceName}/senders/{sender}/validate",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "code",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The validation code"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Sender",
+              "fullType": "string",
               "name": "sender",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Sender"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Validate a given sender with an activation code."
+          "responseType": "void"
         }
       ],
-      "description": "validate operations"
+      "path": "/sms/{serviceName}/senders/{sender}"
     },
     {
-      "path": "/sms/{serviceName}/sendersAvailableForValidation",
+      "description": "validate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
+          "description": "Validate a given sender with an activation code.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The validation code",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "code",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "referer",
-              "dataType": "sms.SenderRefererEnum",
-              "paramType": "query",
-              "fullType": "sms.SenderRefererEnum",
-              "required": false,
-              "description": "Information type"
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Sender",
+              "fullType": "string",
+              "name": "sender",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.SenderAvailable[]",
-          "noAuthentication": false,
-          "description": "The senders that are attached to your personal informations or OVH services and that can be automatically validated"
+          "responseType": "void"
         }
       ],
-      "description": "sendersAvailableForValidation operations"
+      "path": "/sms/{serviceName}/senders/{sender}/validate"
     },
     {
-      "path": "/sms/{serviceName}/serviceInfos",
+      "description": "sendersAvailableForValidation operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "The senders that are attached to your personal informations or OVH services and that can be automatically validated",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "sms.SenderRefererEnum",
+              "description": "Information type",
+              "fullType": "sms.SenderRefererEnum",
+              "name": "referer",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "services.Service",
+          "responseType": "sms.SenderAvailable[]"
+        }
+      ],
+      "path": "/sms/{serviceName}/sendersAvailableForValidation"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/sms/{serviceName}/serviceInfos"
     },
     {
-      "path": "/sms/{serviceName}/task",
+      "description": "List the sms.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Operations on a SMS service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "status",
               "dataType": "telephony.TaskStatusEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "telephony.TaskStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Operations on a SMS service"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the sms.Task objects"
+      "path": "/sms/{serviceName}/task"
     },
     {
-      "path": "/sms/{serviceName}/task/{taskId}",
+      "description": "Operation on a SMS service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "taskId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Task ID",
               "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Task"
         }
       ],
-      "description": "Operation on a SMS service"
+      "path": "/sms/{serviceName}/task/{taskId}"
     },
     {
-      "path": "/sms/{serviceName}/templatesControl",
+      "description": "List the sms.TemplateControl objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Template pattern filled up for moderation (Needed to send in US country)",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Template pattern filled up for moderation (Needed to send in US country)"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create the sms template control given",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Name of the template",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of the template"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Message pattern to be moderated. Use \"#VALUE#\" format for dynamic text area.",
+              "fullType": "string",
               "name": "message",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Message pattern to be moderated. Use \"#VALUE#\" format for dynamic text area."
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Template description",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Template description"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Message seen by the moderator",
+              "fullType": "string",
               "name": "reason",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Message seen by the moderator"
+              "required": false
             },
             {
-              "name": "activity",
               "dataType": "sms.TypeTemplateEnum",
-              "paramType": "body",
+              "description": "Specify the kind of template",
               "fullType": "sms.TypeTemplateEnum",
-              "required": true,
-              "description": "Specify the kind of template"
+              "name": "activity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Create the sms template control given"
+          "responseType": "void"
         }
       ],
-      "description": "List the sms.TemplateControl objects"
+      "path": "/sms/{serviceName}/templatesControl"
     },
     {
-      "path": "/sms/{serviceName}/templatesControl/{name}",
+      "description": "Sms template for moderation (Needed to send in US country)",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the sms template control",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms template control"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.TemplateControl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.TemplateControl"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "sms.TemplateControl",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "sms.TemplateControl",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Sms template for moderation (Needed to send in US country)"
+      "path": "/sms/{serviceName}/templatesControl/{name}"
     },
     {
-      "path": "/sms/{serviceName}/templatesControl/{name}/relaunchValidation",
+      "description": "relaunchValidation operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Attempt a new validation after moderation refusal",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Template description",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Template description"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Message pattern to be moderated. Use \"#VALUE#\" format for dynamic text area",
+              "fullType": "string",
               "name": "message",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Message pattern to be moderated. Use \"#VALUE#\" format for dynamic text area"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Attempt a new validation after moderation refusal"
+          "responseType": "void"
         }
       ],
-      "description": "relaunchValidation operations"
+      "path": "/sms/{serviceName}/templatesControl/{name}/relaunchValidation"
     },
     {
-      "path": "/sms/{serviceName}/transferCredits",
+      "description": "transferCredits operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Credit transfer between two sms accounts.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "credits",
               "dataType": "double",
-              "paramType": "body",
+              "description": "Amount of credits to transfer.",
               "fullType": "double",
-              "required": true,
-              "description": "Amount of credits to transfer."
+              "name": "credits",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Sms account destination.",
+              "fullType": "string",
               "name": "smsAccountTarget",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Sms account destination."
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Credit transfer between two sms accounts."
+          "responseType": "void"
         }
       ],
-      "description": "transferCredits operations"
+      "path": "/sms/{serviceName}/transferCredits"
     },
     {
-      "path": "/sms/{serviceName}/users",
+      "description": "List the sms.User objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Users associated to the sms account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Users associated to the sms account"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new user for an sms account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The sms password",
+              "fullType": "string",
               "name": "password",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The sms password"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "The sms login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The sms login"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Create a new user for an sms account"
+          "responseType": "void"
         }
       ],
-      "description": "List the sms.User objects"
+      "path": "/sms/{serviceName}/users"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}",
+      "description": "SMS users",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the sms user given",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "login",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Login",
               "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "name": "login",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms user given"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "login",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Login",
               "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "name": "login",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.User",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.User"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "sms.User",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "sms.User",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "login",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Login",
               "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "name": "login",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "SMS users"
+      "path": "/sms/{serviceName}/users/{login}"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/document",
+      "description": "document operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the /me/document id generated",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "tag",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Select sms with a specific identifier group tag",
               "fullType": "string",
-              "required": false,
-              "description": "Select sms with a specific identifier group tag"
+              "name": "tag",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "wayType",
               "dataType": "sms.DocumentWayTypeEnum",
-              "paramType": "query",
+              "description": "specify outgoing or incoming sms",
               "fullType": "sms.DocumentWayTypeEnum",
-              "required": true,
-              "description": "specify outgoing or incoming sms"
+              "name": "wayType",
+              "paramType": "query",
+              "required": true
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (>=)",
+              "fullType": "datetime",
               "name": "creationDatetime.from",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (>=)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (<=)",
+              "fullType": "datetime",
               "name": "creationDatetime.to",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (<=)"
+              "required": false
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Get the /me/document id generated"
+          "responseType": "string"
         }
       ],
-      "description": "document operations"
+      "path": "/sms/{serviceName}/users/{login}/document"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/incoming",
+      "description": "List the sms.Incoming objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Sms received associated to the sms user",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of tag property (=)",
+              "fullType": "string",
               "name": "tag",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of tag property (=)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of sender property (=)",
+              "fullType": "string",
               "name": "sender",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of sender property (=)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Sms received associated to the sms user"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the sms.Incoming objects"
+      "path": "/sms/{serviceName}/users/{login}/incoming"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/incoming/{id}",
+      "description": "Sms history of sms incoming received",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the sms incoming history given",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms incoming history given"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Incoming",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Incoming"
         }
       ],
-      "description": "Sms history of sms incoming received"
+      "path": "/sms/{serviceName}/users/{login}/incoming/{id}"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/jobs",
+      "description": "List the sms.Job objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Sms in pending associated to the sms user",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "login",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Login",
               "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "name": "login",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Sms in pending associated to the sms user"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add one or several sending jobs",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The receivers document url link in csv format",
+              "fullType": "string",
               "name": "receiversDocumentUrl",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The receivers document url link in csv format"
+              "required": false
             },
             {
-              "name": "coding",
               "dataType": "sms.CodingEnum",
-              "paramType": "body",
+              "description": "The sms coding",
               "fullType": "sms.CodingEnum",
-              "required": false,
-              "description": "The sms coding"
+              "name": "coding",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "The maximum time -in minute(s)- before the message is dropped",
+              "fullType": "long",
               "name": "validityPeriod",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "The maximum time -in minute(s)- before the message is dropped"
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message",
+              "fullType": "boolean",
               "name": "noStopClause",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message"
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "Set the flag to send a special sms which can be reply by the receiver (smsResponse).",
+              "fullType": "boolean",
               "name": "senderForResponse",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Set the flag to send a special sms which can be reply by the receiver (smsResponse)."
+              "required": false
             },
             {
-              "name": "class",
               "dataType": "sms.ClassEnum",
-              "paramType": "body",
+              "description": "The sms class",
               "fullType": "sms.ClassEnum",
-              "required": false,
-              "description": "The sms class"
-            },
-            {
-              "name": "tag",
-              "dataType": "string",
+              "name": "class",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The identifier group tag"
+              "required": false
             },
             {
-              "name": "priority",
+              "dataType": "string",
+              "description": "The identifier group tag",
+              "fullType": "string",
+              "name": "tag",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "sms.PriorityEnum",
-              "paramType": "body",
+              "description": "The priority of the message",
               "fullType": "sms.PriorityEnum",
-              "required": false,
-              "description": "The priority of the message"
+              "name": "priority",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "charset",
               "dataType": "sms.CharsetEnum",
-              "paramType": "body",
+              "description": "The sms coding",
               "fullType": "sms.CharsetEnum",
-              "required": false,
-              "description": "The sms coding"
+              "name": "charset",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "The time -in minute(s)- to wait before sending the message",
+              "fullType": "long",
               "name": "differedPeriod",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "The time -in minute(s)- to wait before sending the message"
+              "required": false
             },
             {
-              "name": "receivers",
               "dataType": "string[]",
-              "paramType": "body",
+              "description": "The receivers list",
               "fullType": "string[]",
-              "required": false,
-              "description": "The receivers list"
-            },
-            {
-              "name": "sender",
-              "dataType": "string",
+              "name": "receivers",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The sender"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The sender",
+              "fullType": "string",
+              "name": "sender",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The sms message",
+              "fullType": "string",
               "name": "message",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The sms message"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "The receivers document slot id",
+              "fullType": "string",
               "name": "receiversSlotId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The receivers document slot id"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.SmsSendingReport",
-          "noAuthentication": false,
-          "description": "Add one or several sending jobs"
+          "responseType": "sms.SmsSendingReport"
         }
       ],
-      "description": "List the sms.Job objects"
+      "path": "/sms/{serviceName}/users/{login}/jobs"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/jobs/{id}",
+      "description": "Sms job",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the sms job given (stop sending)",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms job given (stop sending)"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "login",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Login",
               "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "name": "login",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Job",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Job"
         }
       ],
-      "description": "Sms job"
+      "path": "/sms/{serviceName}/users/{login}/jobs/{id}"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/outgoing",
+      "description": "List the sms.Outgoing objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Sms sent associated to the sms user",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of ptt property (=)",
+              "fullType": "long",
               "name": "ptt",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of ptt property (=)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of tag property (=)",
+              "fullType": "string",
               "name": "tag",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of tag property (=)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of sender property (=)",
+              "fullType": "string",
               "name": "sender",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of sender property (=)"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of differedDelivery property (=)",
+              "fullType": "long",
               "name": "differedDelivery",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of differedDelivery property (=)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of receiver property (=)",
+              "fullType": "string",
               "name": "receiver",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of receiver property (=)"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of deliveryReceipt property (=)",
+              "fullType": "long",
               "name": "deliveryReceipt",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of deliveryReceipt property (=)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Sms sent associated to the sms user"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the sms.Outgoing objects"
+      "path": "/sms/{serviceName}/users/{login}/outgoing"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/outgoing/{id}",
+      "description": "Sms history of sms outgoing sent",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the sms outgoing history given",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms outgoing history given"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Outgoing",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Outgoing"
         }
       ],
-      "description": "Sms history of sms outgoing sent"
+      "path": "/sms/{serviceName}/users/{login}/outgoing/{id}"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/outgoing/{id}/hlr",
+      "description": "Sms operator informations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Hlr",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Hlr"
         }
       ],
-      "description": "Sms operator informations"
+      "path": "/sms/{serviceName}/users/{login}/outgoing/{id}/hlr"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/receivers",
+      "description": "List the sms.Receiver objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Receivers preloaded from text or csv document file",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "login",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Login",
               "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "name": "login",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Receivers preloaded from text or csv document file"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a new document of csv receivers",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "autoUpdate",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Download file from URL before sending to contacts (works only with csvUrl and not document ID)",
               "fullType": "boolean",
-              "required": true,
-              "description": "Download file from URL before sending to contacts (works only with csvUrl and not document ID)"
+              "name": "autoUpdate",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "URL of the file you want to import",
+              "fullType": "string",
               "name": "csvUrl",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "URL of the file you want to import"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Description name of the document",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Description name of the document"
+              "required": true
             },
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Slot number id used to handle the document",
               "fullType": "long",
-              "required": true,
-              "description": "Slot number id used to handle the document"
-            },
-            {
-              "name": "documentId",
-              "dataType": "string",
+              "name": "slotId",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "ID of the /me/document file you want to import"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "ID of the /me/document file you want to import",
+              "fullType": "string",
+              "name": "documentId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Receiver",
-          "noAuthentication": false,
-          "description": "Add a new document of csv receivers"
+          "responseType": "sms.Receiver"
         }
       ],
-      "description": "List the sms.Receiver objects"
+      "path": "/sms/{serviceName}/users/{login}/receivers"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/receivers/{slotId}",
+      "description": "Sms receivers preloaded",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the document from the slot",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Slot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Slot ID"
+              "name": "slotId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the document from the slot"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Slot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Slot ID"
+              "name": "slotId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Receiver",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Receiver"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "sms.Receiver",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "sms.Receiver",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Slot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Slot ID"
+              "name": "slotId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Sms receivers preloaded"
+      "path": "/sms/{serviceName}/users/{login}/receivers/{slotId}"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/receivers/{slotId}/clean",
+      "description": "clean operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "boolean",
+              "description": "Only get action's price in credits without executing it",
+              "fullType": "boolean",
               "name": "priceOnly",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Only get action's price in credits without executing it"
+              "required": true
             },
             {
+              "dataType": "boolean",
+              "description": "Limit checks to syntaxical validation",
+              "fullType": "boolean",
               "name": "freemium",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Limit checks to syntaxical validation"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Slot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Slot ID"
+              "name": "slotId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.ReceiversAsynchronousCleanReport",
-          "noAuthentication": false,
-          "description": "Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation."
+          "responseType": "sms.ReceiversAsynchronousCleanReport"
         }
       ],
-      "description": "clean operations"
+      "path": "/sms/{serviceName}/users/{login}/receivers/{slotId}/clean"
     },
     {
-      "path": "/sms/{serviceName}/users/{login}/receivers/{slotId}/csv",
+      "description": "csv operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the document data container",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             },
             {
-              "name": "slotId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Slot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Slot ID"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Get the document data container"
-        }
-      ],
-      "description": "csv operations"
-    },
-    {
-      "path": "/sms/{serviceName}/virtualNumbers",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
+              "name": "slotId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Virtual numbers associated to the sms account"
+          "responseType": "string"
         }
       ],
-      "description": "List the sms.VirtualNumber objects"
+      "path": "/sms/{serviceName}/users/{login}/receivers/{slotId}/csv"
     },
     {
-      "path": "/sms/{serviceName}/virtualNumbers/{number}",
+      "description": "List the sms.VirtualNumber objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Virtual numbers associated to the sms account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/sms/{serviceName}/virtualNumbers"
+    },
+    {
+      "description": "Virtual numbers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
               "name": "number",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.VirtualNumber",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.VirtualNumber"
         }
       ],
-      "description": "Virtual numbers"
+      "path": "/sms/{serviceName}/virtualNumbers/{number}"
     },
     {
-      "path": "/sms/{serviceName}/virtualNumbers/{number}/chatAccess",
+      "description": "The web access for your virtual number chat application",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the given web access",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the given web access"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.ChatAccess",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.ChatAccess"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new web access for this ressource",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.ChatAccess",
-          "noAuthentication": false,
-          "description": "Create a new web access for this ressource"
+          "responseType": "sms.ChatAccess"
         }
       ],
-      "description": "The web access for your virtual number chat application"
+      "path": "/sms/{serviceName}/virtualNumbers/{number}/chatAccess"
     },
     {
-      "path": "/sms/{serviceName}/virtualNumbers/{number}/incoming",
+      "description": "List the sms.Incoming objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Sms received associated to the sms account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
               "name": "number",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of sender property (=)",
+              "fullType": "string",
               "name": "sender",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of sender property (=)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of tag property (=)",
+              "fullType": "string",
               "name": "tag",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of tag property (=)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (<=)",
+              "fullType": "datetime",
               "name": "creationDatetime.to",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (<=)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (>=)",
+              "fullType": "datetime",
               "name": "creationDatetime.from",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (>=)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Sms received associated to the sms account"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the sms.Incoming objects"
+      "path": "/sms/{serviceName}/virtualNumbers/{number}/incoming"
     },
     {
-      "path": "/sms/{serviceName}/virtualNumbers/{number}/incoming/{id}",
+      "description": "Sms history of sms incoming received",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the sms incoming history given",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms incoming history given"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
               "name": "number",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Incoming",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Incoming"
         }
       ],
-      "description": "Sms history of sms incoming received"
+      "path": "/sms/{serviceName}/virtualNumbers/{number}/incoming/{id}"
     },
     {
-      "path": "/sms/{serviceName}/virtualNumbers/{number}/jobs",
+      "description": "List the sms.VirtualNumberJob objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Sms in pending associated to the sms account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Sms in pending associated to the sms account"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add one or several sending jobs",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "The maximum time -in minute(s)- before the message is dropped",
+              "fullType": "long",
               "name": "validityPeriod",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "The maximum time -in minute(s)- before the message is dropped"
+              "required": false
             },
             {
-              "name": "class",
               "dataType": "sms.ClassEnum",
-              "paramType": "body",
+              "description": "The sms class",
               "fullType": "sms.ClassEnum",
-              "required": false,
-              "description": "The sms class"
+              "name": "class",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "priority",
               "dataType": "sms.PriorityEnum",
-              "paramType": "body",
+              "description": "The priority of the message",
               "fullType": "sms.PriorityEnum",
-              "required": false,
-              "description": "The priority of the message"
+              "name": "priority",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "charset",
               "dataType": "sms.CharsetEnum",
-              "paramType": "body",
+              "description": "The sms coding",
               "fullType": "sms.CharsetEnum",
-              "required": false,
-              "description": "The sms coding"
+              "name": "charset",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The receivers document url link in csv format",
+              "fullType": "string",
               "name": "receiversDocumentUrl",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The receivers document url link in csv format"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The receivers document slot id",
+              "fullType": "string",
               "name": "receiversSlotId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The receivers document slot id"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The sms message",
+              "fullType": "string",
               "name": "message",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The sms message"
+              "required": true
             },
             {
-              "name": "receivers",
               "dataType": "string[]",
-              "paramType": "body",
+              "description": "The receivers list",
               "fullType": "string[]",
-              "required": false,
-              "description": "The receivers list"
+              "name": "receivers",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "coding",
               "dataType": "sms.CodingEnum",
-              "paramType": "body",
+              "description": "The sms coding",
               "fullType": "sms.CodingEnum",
-              "required": false,
-              "description": "The sms coding"
-            },
-            {
-              "name": "tag",
-              "dataType": "string",
+              "name": "coding",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The identifier group tag"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The identifier group tag",
+              "fullType": "string",
+              "name": "tag",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "The time -in minute(s)- to wait before sending the message",
+              "fullType": "long",
               "name": "differedPeriod",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "The time -in minute(s)- to wait before sending the message"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.SmsSendingReport",
-          "noAuthentication": false,
-          "description": "Add one or several sending jobs"
+          "responseType": "sms.SmsSendingReport"
         }
       ],
-      "description": "List the sms.VirtualNumberJob objects"
+      "path": "/sms/{serviceName}/virtualNumbers/{number}/jobs"
     },
     {
-      "path": "/sms/{serviceName}/virtualNumbers/{number}/jobs/{id}",
+      "description": "Sms job",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the sms job given (stop sending)",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
               "name": "number",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms job given (stop sending)"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
               "name": "number",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.VirtualNumberJob",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.VirtualNumberJob"
         }
       ],
-      "description": "Sms job"
+      "path": "/sms/{serviceName}/virtualNumbers/{number}/jobs/{id}"
     },
     {
-      "path": "/sms/{serviceName}/virtualNumbers/{number}/outgoing",
+      "description": "List the sms.Outgoing objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Sms sent associated to the sms account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
               "name": "number",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of receiver property (=)",
+              "fullType": "string",
               "name": "receiver",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of receiver property (=)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of tag property (=)",
+              "fullType": "string",
               "name": "tag",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of tag property (=)"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of differedDelivery property (=)",
+              "fullType": "long",
               "name": "differedDelivery",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of differedDelivery property (=)"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of deliveryReceipt property (=)",
+              "fullType": "long",
               "name": "deliveryReceipt",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of deliveryReceipt property (=)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (>=)",
+              "fullType": "datetime",
               "name": "creationDatetime.from",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (>=)"
+              "required": false
             },
             {
-              "name": "ptt",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Filter the value of ptt property (=)",
               "fullType": "long",
-              "required": false,
-              "description": "Filter the value of ptt property (=)"
+              "name": "ptt",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "creationDatetime.to",
               "dataType": "datetime",
-              "paramType": "query",
+              "description": "Filter the value of creationDatetime property (<=)",
               "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDatetime property (<=)"
+              "name": "creationDatetime.to",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "sender",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of sender property (=)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of sender property (=)"
+              "name": "sender",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Sms sent associated to the sms account"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the sms.Outgoing objects"
+      "path": "/sms/{serviceName}/virtualNumbers/{number}/outgoing"
     },
     {
-      "path": "/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}",
+      "description": "Sms history of sms outgoing sent",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the sms outgoing history given",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
               "name": "number",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the sms outgoing history given"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
               "name": "number",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Outgoing",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Outgoing"
         }
       ],
-      "description": "Sms history of sms outgoing sent"
+      "path": "/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}"
     },
     {
-      "path": "/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}/hlr",
+      "description": "Sms operator informations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
               "name": "number",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sms.Hlr",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sms.Hlr"
         }
       ],
-      "description": "Sms operator informations"
+      "path": "/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}/hlr"
     }
   ],
-  "resourcePath": "/sms",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "order.CurrencyCodeEnum": {
-      "id": "CurrencyCodeEnum",
-      "namespace": "order",
       "enum": [
         "AUD",
         "CAD",
@@ -4464,39 +4463,39 @@ export const schema: Schema = {
         "XOF",
         "points"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
     },
     "order.Price": {
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
-      "description": "Price with it's currency and textual representation",
       "properties": {
         "currencyCode": {
-          "type": "order.CurrencyCodeEnum",
-          "fullType": "order.CurrencyCodeEnum",
           "canBeNull": false,
+          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.CurrencyCodeEnum"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         }
       }
     },
     "reference.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "reference",
       "description": "All country prices accessible from a reference",
       "enum": [
         "all",
@@ -4523,58 +4522,58 @@ export const schema: Schema = {
         "tn",
         "we"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "reference"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -4585,11 +4584,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -4597,318 +4596,318 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "sms.Account": {
+      "description": "SMS details",
       "id": "Account",
       "namespace": "sms",
-      "description": "SMS details",
       "properties": {
         "automaticRecreditAmount": {
-          "type": "sms.PackQuantityAutomaticRecreditEnum",
-          "fullType": "sms.PackQuantityAutomaticRecreditEnum",
           "canBeNull": true,
+          "fullType": "sms.PackQuantityAutomaticRecreditEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "sms.PackQuantityAutomaticRecreditEnum"
         },
         "callBack": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "URL called when state of a sent SMS changes",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "creditThresholdForAutomaticRecredit": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Credit threshold after which an automatic recredit is launched",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "creditsHoldByQuota": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "creditsLeft": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "smsResponse": {
-          "type": "sms.Response",
-          "fullType": "sms.Response",
           "canBeNull": false,
+          "fullType": "sms.Response",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "sms.Response"
         },
         "status": {
-          "type": "sms.StatusAccountEnum",
-          "fullType": "sms.StatusAccountEnum",
           "canBeNull": false,
+          "fullType": "sms.StatusAccountEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "sms.StatusAccountEnum"
         },
         "stopCallBack": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "URL called when a STOP is received after a receiver replied stop to a SMS",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "templates": {
-          "type": "sms.Templates",
-          "fullType": "sms.Templates",
           "canBeNull": false,
+          "fullType": "sms.Templates",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "sms.Templates"
         },
         "userQuantityWithQuota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "sms.AlertThreshold": {
+      "description": "A structure describing all information about alert threshold informations",
       "id": "AlertThreshold",
       "namespace": "sms",
-      "description": "A structure describing all information about alert threshold informations",
       "properties": {
         "alertEmail": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "alertNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "alertThreshold": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "support": {
-          "type": "sms.SupportEnum",
-          "fullType": "sms.SupportEnum",
           "canBeNull": false,
+          "fullType": "sms.SupportEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "sms.SupportEnum"
         }
       }
     },
     "sms.Blacklist": {
+      "description": "SMS blacklist",
       "id": "Blacklist",
       "namespace": "sms",
-      "description": "SMS blacklist",
       "properties": {
         "batchID": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ID of the batch responsible of the blacklist",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "dateCreation": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "number": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The sms number blacklisted",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "smsOutgoingID": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ID of the outgoing SMS responsible of the blacklist",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "sms.CharsetEnum": {
-      "id": "CharsetEnum",
-      "namespace": "sms",
       "description": "The charset format",
       "enum": [
         "UTF-8"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CharsetEnum",
+      "namespace": "sms"
     },
     "sms.ChatAccess": {
+      "description": "The web access for your virtual number chat application",
       "id": "ChatAccess",
       "namespace": "sms",
-      "description": "The web access for your virtual number chat application",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The creation date of this access",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The url of the web access",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "sms.ClassEnum": {
-      "id": "ClassEnum",
-      "namespace": "sms",
       "description": "The sms class of sms sending job",
       "enum": [
         "flash",
@@ -4916,21 +4915,21 @@ export const schema: Schema = {
         "sim",
         "toolkit"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ClassEnum",
+      "namespace": "sms"
     },
     "sms.CodingEnum": {
-      "id": "CodingEnum",
-      "namespace": "sms",
       "description": "The sms coding",
       "enum": [
         "7bit",
         "8bit"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CodingEnum",
+      "namespace": "sms"
     },
     "sms.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "sms",
       "description": "All country suffixes accessible for sms services and \"all\" available",
       "enum": [
         "ag",
@@ -5038,243 +5037,243 @@ export const schema: Schema = {
         "vn",
         "za"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "sms"
     },
     "sms.DestinationRates": {
+      "description": "Rates of a given destination",
       "id": "DestinationRates",
       "namespace": "sms",
-      "description": "Rates of a given destination",
       "properties": {
         "country": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The country full name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "countryCode": {
-          "type": "sms.CountryEnum",
-          "fullType": "sms.CountryEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The country 2-letters code",
-          "required": true
+          "fullType": "sms.CountryEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "sms.CountryEnum"
         },
         "credit": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Credits consumed by sending one SMS towards the given destination",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price of one SMS sent towards the given destination",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "sms.DocumentWayTypeEnum": {
-      "id": "DocumentWayTypeEnum",
-      "namespace": "sms",
       "description": "Way type",
       "enum": [
         "incoming",
         "outgoing"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DocumentWayTypeEnum",
+      "namespace": "sms"
     },
     "sms.EncodingEnum": {
-      "id": "EncodingEnum",
-      "namespace": "sms",
       "description": "The SMS available characters class",
       "enum": [
         "7bits",
         "unicode"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "EncodingEnum",
+      "namespace": "sms"
     },
     "sms.Exception": {
+      "description": "Sms reach list",
       "id": "Exception",
       "namespace": "sms",
-      "description": "Sms reach list",
       "properties": {
         "countrySuffixe": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The abreviated country code.",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "messages": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The exception message",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "operators": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The list of operators impacted.",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "restrictionCode": {
-          "type": "sms.RestrictionCodeEnum",
-          "fullType": "sms.RestrictionCodeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The type of routing restriction imposed by the operator",
-          "required": true
+          "fullType": "sms.RestrictionCodeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "sms.RestrictionCodeEnum"
         },
         "substitution": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The substitution sender used to bypass operator filter",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "sms.Hlr": {
+      "description": "Sms operator informations",
       "id": "Hlr",
       "namespace": "sms",
-      "description": "Sms operator informations",
       "properties": {
         "country": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The country",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "countryCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The countryCode prefix number",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "network": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The network name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "operator": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The operator name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The region",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "sms.HlrLookupNumber": {
+      "description": "Home Location Register informations. Give informations about a given cellular phone.",
       "id": "HlrLookupNumber",
       "namespace": "sms",
-      "description": "Home Location Register informations. Give informations about a given cellular phone.",
       "properties": {
         "datetime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "HLR creation datetime",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "HLR id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "msisdn": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "MSISDN",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "operatorCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The {Mobile Country Code, Mobile Network Code} unique identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "ported": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Has the MSISDN been ported from its original network",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "reachable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Is the MSISDN currently reachable",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "roaming": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Is the MSISDN currently roaming outside its natinal network",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "status": {
-          "type": "sms.HlrStatuses",
-          "fullType": "sms.HlrStatuses",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the HLR request",
-          "required": true
+          "fullType": "sms.HlrStatuses",
+          "readOnly": true,
+          "required": true,
+          "type": "sms.HlrStatuses"
         },
         "valid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Is the MSISDN valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "sms.HlrStatuses": {
-      "id": "HlrStatuses",
-      "namespace": "sms",
       "description": "The sms coding",
       "enum": [
         "doing",
@@ -5282,444 +5281,444 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "HlrStatuses",
+      "namespace": "sms"
     },
     "sms.Incoming": {
+      "description": "Sms history of sms incoming received",
       "id": "Incoming",
       "namespace": "sms",
-      "description": "Sms history of sms incoming received",
       "properties": {
         "creationDatetime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "credits": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "sender": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "tag": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "sms.Job": {
+      "description": "Sms job",
       "id": "Job",
       "namespace": "sms",
-      "description": "Sms job",
       "properties": {
         "creationDatetime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "credits": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "deliveredAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "deliveryReceipt": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "differedDelivery": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "messageLength": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "numberOfSms": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "ptt": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "receiver": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "sender": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "sentAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "sms.JobEstimate": {
+      "description": "A structure describing the encoding, length and number of SMS parts of a text message",
       "id": "JobEstimate",
       "namespace": "sms",
-      "description": "A structure describing the encoding, length and number of SMS parts of a text message",
       "properties": {
         "characters": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The number of characters the message contains, including invisible escaped characters",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "charactersClass": {
-          "type": "sms.EncodingEnum",
-          "fullType": "sms.EncodingEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The characters class that will be used to send the SMS, depending on characters in message",
-          "required": true
+          "fullType": "sms.EncodingEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "sms.EncodingEnum"
         },
         "maxCharactersPerPart": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The number of characters every SMS part can contain, depending on characters class and quantity of parts",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "parts": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The quantity of SMS parts the message will be split in",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "sms.Outgoing": {
+      "description": "Sms history of sms outgoing sent",
       "id": "Outgoing",
       "namespace": "sms",
-      "description": "Sms history of sms outgoing sent",
       "properties": {
         "creationDatetime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "credits": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "deliveredAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "deliveryReceipt": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "differedDelivery": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "messageLength": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "numberOfSms": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "ptt": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "receiver": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "sender": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "sentAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "tag": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "tariffCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Tariff code applied on the sms",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "sms.PackDetails": {
+      "description": "Details about a SMS pack",
       "id": "PackDetails",
       "namespace": "sms",
-      "description": "Details about a SMS pack",
       "properties": {
         "countryCode": {
-          "type": "sms.CountryEnum",
-          "fullType": "sms.CountryEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Destination country code",
-          "required": true
+          "fullType": "sms.CountryEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "sms.CountryEnum"
         },
         "credit": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Credits consumed by sending one SMS towards the given destination",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "creditPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price of one credit, including pack's promotion",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "creditQuantityMax": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Maximum quantity (excluded) of credit to order to have this price",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "creditQuantityMin": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum quantity (included) of credit to order to have this price",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "smsPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price of one SMS sent towards the given destination, including pack's promotion",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "smsQuantityMax": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Maximum quantity (excluded) of SMS you can obtain with this pack",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "smsQuantityMin": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum quantity (included) of SMS you can obtain with this pack",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "sms.PackOffer": {
+      "description": "A structure describing all information about an sms pack offer",
       "id": "PackOffer",
       "namespace": "sms",
-      "description": "A structure describing all information about an sms pack offer",
       "properties": {
         "countryDestination": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "giftPrice": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
+          "fullType": "double",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "double"
         },
         "giftQuantity": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
+          "fullType": "double",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "double"
         },
         "language": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "price": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "quantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "smsQuantity": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "totalPrice": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
+          "fullType": "double",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "double"
         }
       }
     },
     "sms.PackQuantityAutomaticRecreditEnum": {
-      "id": "PackQuantityAutomaticRecreditEnum",
-      "namespace": "sms",
       "description": "Pack quantity automatic recredit possibilities",
       "enum": [
         "100",
@@ -5730,11 +5729,11 @@ export const schema: Schema = {
         "500",
         "5000"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "PackQuantityAutomaticRecreditEnum",
+      "namespace": "sms"
     },
     "sms.PackQuantityEnum": {
-      "id": "PackQuantityEnum",
-      "namespace": "sms",
       "description": "Pack quantity levels",
       "enum": [
         "100",
@@ -5750,113 +5749,113 @@ export const schema: Schema = {
         "5000",
         "50000"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "PackQuantityEnum",
+      "namespace": "sms"
     },
     "sms.Phonebook": {
+      "description": "Phone book",
       "id": "Phonebook",
       "namespace": "sms",
-      "description": "Phone book",
       "properties": {
         "bookKey": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Identifier of the phonebook",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Phonebook name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "phoneKey": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Phone key identifier between the phone and phonebooks",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "sms.PhonebookContact": {
+      "description": "Phone book contact",
       "id": "PhonebookContact",
       "namespace": "sms",
-      "description": "Phone book contact",
       "properties": {
         "group": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Group name of the phonebook",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "homeMobile": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Home mobile phone number of the contact",
-          "required": false
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
         },
         "homePhone": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Home landline phone number of the contact",
-          "required": false
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact identifier",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contact name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "surname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contact surname",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "workMobile": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Mobile phone office number of the contact",
-          "required": false
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
         },
         "workPhone": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Landline phone office number of the contact",
-          "required": false
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
         }
       }
     },
     "sms.PriorityEnum": {
-      "id": "PriorityEnum",
-      "namespace": "sms",
       "description": "The priority of an sms sending",
       "enum": [
         "high",
@@ -5864,160 +5863,160 @@ export const schema: Schema = {
         "medium",
         "veryLow"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PriorityEnum",
+      "namespace": "sms"
     },
     "sms.PttDetails": {
+      "description": "A structure describing ptt details",
       "id": "PttDetails",
       "namespace": "sms",
-      "description": "A structure describing ptt details",
       "properties": {
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ptt informations",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ptt short description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "duration": {
-          "type": "sms.PttDurationTypeEnum",
-          "fullType": "sms.PttDurationTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ptt volatility type",
-          "required": true
+          "fullType": "sms.PttDurationTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "sms.PttDurationTypeEnum"
         }
       }
     },
     "sms.PttDurationTypeEnum": {
-      "id": "PttDurationTypeEnum",
-      "namespace": "sms",
       "description": "All typology of ptt duration",
       "enum": [
         "indeterminated",
         "permanent",
         "temporary"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PttDurationTypeEnum",
+      "namespace": "sms"
     },
     "sms.Quota": {
+      "description": "A structure describing all information about quota informations",
       "id": "Quota",
       "namespace": "sms",
-      "description": "A structure describing all information about quota informations",
       "properties": {
         "quotaLeft": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "quotaStatus": {
-          "type": "sms.QuotaStatusUserEnum",
-          "fullType": "sms.QuotaStatusUserEnum",
           "canBeNull": false,
+          "fullType": "sms.QuotaStatusUserEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "sms.QuotaStatusUserEnum"
         }
       }
     },
     "sms.QuotaStatusUserEnum": {
-      "id": "QuotaStatusUserEnum",
-      "namespace": "sms",
       "description": "Current quota status",
       "enum": [
         "active",
         "inactive"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "QuotaStatusUserEnum",
+      "namespace": "sms"
     },
     "sms.Receiver": {
+      "description": "Sms receivers preloaded",
       "id": "Receiver",
       "namespace": "sms",
-      "description": "Sms receivers preloaded",
       "properties": {
         "autoUpdate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Download file from URL before sending to contacts (works only with csvUrl and not document ID)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "canAutoUpdate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Is the object compatible with autoUpdate",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "datetime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of the document",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description name of the document",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "records": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Number of receiver records in the document",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "slotId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Slot number id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "sms.ReceiversAsynchronousCleanReport": {
+      "description": "A structure giving operation price and asynchronous task ID",
       "id": "ReceiversAsynchronousCleanReport",
       "namespace": "sms",
-      "description": "A structure giving operation price and asynchronous task ID",
       "properties": {
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "totalCreditsRemoved": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         }
       }
     },
     "sms.RefererSenderEnum": {
-      "id": "RefererSenderEnum",
-      "namespace": "sms",
       "description": "All tyoplogy of senders",
       "enum": [
         "custom",
@@ -6027,105 +6026,105 @@ export const schema: Schema = {
         "owner",
         "virtual"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RefererSenderEnum",
+      "namespace": "sms"
     },
     "sms.Response": {
+      "description": "A structure describing how to manage an sms Response",
       "id": "Response",
       "namespace": "sms",
-      "description": "A structure describing how to manage an sms Response",
       "properties": {
         "cgiUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Default url callback used for a given response.",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "responseType": {
-          "type": "sms.ResponseTypeEnum",
-          "fullType": "sms.ResponseTypeEnum",
           "canBeNull": false,
+          "fullType": "sms.ResponseTypeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "sms.ResponseTypeEnum"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Automatic notification sent by text in case of customer reply.",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "trackingDefaultSmsSender": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "trackingOptions": {
-          "type": "sms.ResponseTrackingOptions[]",
-          "fullType": "sms.ResponseTrackingOptions[]",
           "canBeNull": true,
+          "fullType": "sms.ResponseTrackingOptions[]",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "sms.ResponseTrackingOptions[]"
         }
       }
     },
     "sms.ResponseTrackingMediaEnum": {
-      "id": "ResponseTrackingMediaEnum",
-      "namespace": "sms",
       "description": "The tracking media response",
       "enum": [
         "email",
         "sms",
         "voice"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ResponseTrackingMediaEnum",
+      "namespace": "sms"
     },
     "sms.ResponseTrackingOptions": {
+      "description": "The tracking media response",
       "id": "ResponseTrackingOptions",
       "namespace": "sms",
-      "description": "The tracking media response",
       "properties": {
         "media": {
-          "type": "sms.ResponseTrackingMediaEnum",
-          "fullType": "sms.ResponseTrackingMediaEnum",
           "canBeNull": false,
+          "fullType": "sms.ResponseTrackingMediaEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "sms.ResponseTrackingMediaEnum"
         },
         "sender": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "target": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "sms.ResponseTypeEnum": {
-      "id": "ResponseTypeEnum",
-      "namespace": "sms",
       "description": "Response type",
       "enum": [
         "cgi",
         "none",
         "text"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ResponseTypeEnum",
+      "namespace": "sms"
     },
     "sms.RestrictionCodeEnum": {
-      "id": "RestrictionCodeEnum",
-      "namespace": "sms",
       "description": "Restriction type used by the operator to filter sms.",
       "enum": [
         "ALPHA",
@@ -6136,150 +6135,150 @@ export const schema: Schema = {
         "FLASHONLY",
         "MSISDN"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RestrictionCodeEnum",
+      "namespace": "sms"
     },
     "sms.Sender": {
+      "description": "SMS senders",
       "id": "Sender",
       "namespace": "sms",
-      "description": "SMS senders",
       "properties": {
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Message sent by the moderator",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Sender description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "referer": {
-          "type": "sms.RefererSenderEnum",
-          "fullType": "sms.RefererSenderEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Specify if the sender is custom or not",
-          "required": true
+          "fullType": "sms.RefererSenderEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "sms.RefererSenderEnum"
         },
         "sender": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The sms sender",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "sms.StatusSenderEnum",
-          "fullType": "sms.StatusSenderEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Sender status",
-          "required": true
+          "fullType": "sms.StatusSenderEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "sms.StatusSenderEnum"
         },
         "type": {
-          "type": "sms.TypeSenderEnum",
-          "fullType": "sms.TypeSenderEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Specify the kind of sender",
-          "required": false
+          "fullType": "sms.TypeSenderEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "sms.TypeSenderEnum"
         },
         "validationMedia": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Validation media identifier",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "sms.SenderAvailable": {
+      "description": "A structure describing all information about senders available",
       "id": "SenderAvailable",
       "namespace": "sms",
-      "description": "A structure describing all information about senders available",
       "properties": {
         "referer": {
-          "type": "sms.SenderRefererEnum",
-          "fullType": "sms.SenderRefererEnum",
           "canBeNull": false,
+          "fullType": "sms.SenderRefererEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "sms.SenderRefererEnum"
         },
         "sender": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "sms.SenderRefererEnum": {
-      "id": "SenderRefererEnum",
-      "namespace": "sms",
       "description": "The referer of the available sender",
       "enum": [
         "domain",
         "nichandle"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SenderRefererEnum",
+      "namespace": "sms"
     },
     "sms.SmsSendingReport": {
+      "description": "A structure describing all information about quota informations",
       "id": "SmsSendingReport",
       "namespace": "sms",
-      "description": "A structure describing all information about quota informations",
       "properties": {
         "ids": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": false,
+          "fullType": "long[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long[]"
         },
         "invalidReceivers": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
+          "fullType": "string[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string[]"
         },
         "totalCreditsRemoved": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "validReceivers": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
+          "fullType": "string[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string[]"
         }
       }
     },
     "sms.StatusAccountEnum": {
-      "id": "StatusAccountEnum",
-      "namespace": "sms",
       "description": "Account status",
       "enum": [
         "disable",
         "enable"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusAccountEnum",
+      "namespace": "sms"
     },
     "sms.StatusSenderEnum": {
-      "id": "StatusSenderEnum",
-      "namespace": "sms",
       "description": "All existing status for a given referer",
       "enum": [
         "disable",
@@ -6287,178 +6286,178 @@ export const schema: Schema = {
         "refused",
         "waitingValidation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusSenderEnum",
+      "namespace": "sms"
     },
     "sms.SupportEnum": {
-      "id": "SupportEnum",
-      "namespace": "sms",
       "description": "The media support used to be contacted in case of alert",
       "enum": [
         "both",
         "mail",
         "sms"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SupportEnum",
+      "namespace": "sms"
     },
     "sms.Task": {
+      "description": "Operation on a SMS service",
       "id": "Task",
       "namespace": "sms",
-      "description": "Operation on a SMS service",
       "properties": {
         "function": {
-          "type": "sms.TodoGeneralPublicFunctionsEnum",
-          "fullType": "sms.TodoGeneralPublicFunctionsEnum",
           "canBeNull": false,
+          "fullType": "sms.TodoGeneralPublicFunctionsEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "sms.TodoGeneralPublicFunctionsEnum"
         },
         "status": {
-          "type": "telephony.TaskStatusEnum",
-          "fullType": "telephony.TaskStatusEnum",
           "canBeNull": false,
+          "fullType": "telephony.TaskStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "telephony.TaskStatusEnum"
         },
         "step": {
-          "type": "sms.TodoGeneralPublicStepsEnum",
-          "fullType": "sms.TodoGeneralPublicStepsEnum",
           "canBeNull": false,
+          "fullType": "sms.TodoGeneralPublicStepsEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "sms.TodoGeneralPublicStepsEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "sms.TemplateControl": {
+      "description": "Sms template for moderation (Needed to send in US country)",
       "id": "TemplateControl",
       "namespace": "sms",
-      "description": "Sms template for moderation (Needed to send in US country)",
       "properties": {
         "activity": {
-          "type": "sms.TypeTemplateEnum",
-          "fullType": "sms.TypeTemplateEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Specify the kind of template",
-          "required": true
+          "fullType": "sms.TypeTemplateEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "sms.TypeTemplateEnum"
         },
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Message sent by the moderator",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "datetime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Template creation datetime",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Template description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Message pattern to be moderated. Use \"#VALUE#\" format for dynamic text area.",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the template",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "sms.StatusSenderEnum",
-          "fullType": "sms.StatusSenderEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Template status",
-          "required": true
+          "fullType": "sms.StatusSenderEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "sms.StatusSenderEnum"
         }
       }
     },
     "sms.Templates": {
+      "description": "A structure describing all information about templates informations",
       "id": "Templates",
       "namespace": "sms",
-      "description": "A structure describing all information about templates informations",
       "properties": {
         "customizedEmailMode": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "customizedSmsMode": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "emailBody": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "emailFrom": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "emailSubject": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "smsBody": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "sms.TodoGeneralPublicFunctionsEnum": {
-      "id": "TodoGeneralPublicFunctionsEnum",
-      "namespace": "sms",
       "description": "The task function",
       "enum": [
         "cleanSmsReceivers"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TodoGeneralPublicFunctionsEnum",
+      "namespace": "sms"
     },
     "sms.TodoGeneralPublicStepsEnum": {
-      "id": "TodoGeneralPublicStepsEnum",
-      "namespace": "sms",
       "description": "The task step",
       "enum": [
         "checkOrder",
@@ -6468,11 +6467,11 @@ export const schema: Schema = {
         "starting",
         "waitForHlrs"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TodoGeneralPublicStepsEnum",
+      "namespace": "sms"
     },
     "sms.TypeSenderEnum": {
-      "id": "TypeSenderEnum",
-      "namespace": "sms",
       "description": "All existing types for a given sender",
       "enum": [
         "alpha",
@@ -6480,127 +6479,127 @@ export const schema: Schema = {
         "shortcode",
         "virtual"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeSenderEnum",
+      "namespace": "sms"
     },
     "sms.TypeTemplateEnum": {
-      "id": "TypeTemplateEnum",
-      "namespace": "sms",
       "description": "All existing types for a given template",
       "enum": [
         "alerting",
         "authentification",
         "transactional"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeTemplateEnum",
+      "namespace": "sms"
     },
     "sms.User": {
+      "description": "SMS users",
       "id": "User",
       "namespace": "sms",
-      "description": "SMS users",
       "properties": {
         "alertThresholdInformations": {
-          "type": "sms.AlertThreshold",
-          "fullType": "sms.AlertThreshold",
           "canBeNull": false,
+          "fullType": "sms.AlertThreshold",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "sms.AlertThreshold"
         },
         "callBack": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "URL called when state of a sent SMS changes",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ipRestrictions": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
+          "fullType": "string[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string[]"
         },
         "login": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The sms user login",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "password": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "quotaInformations": {
-          "type": "sms.Quota",
-          "fullType": "sms.Quota",
           "canBeNull": false,
+          "fullType": "sms.Quota",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "sms.Quota"
         },
         "stopCallBack": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "URL called when a STOP is received after a receiver replied stop to a SMS",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "sms.VirtualNumber": {
+      "description": "Virtual numbers",
       "id": "VirtualNumber",
       "namespace": "sms",
-      "description": "Virtual numbers",
       "properties": {
         "countryCode": {
-          "type": "sms.VirtualNumberIsoCountryCodeEnum",
-          "fullType": "sms.VirtualNumberIsoCountryCodeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The ISO formated country code of the number",
-          "required": true
+          "fullType": "sms.VirtualNumberIsoCountryCodeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "sms.VirtualNumberIsoCountryCodeEnum"
         },
         "number": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The virtual number",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "sms.VirtualNumberGenericService": {
+      "description": "Virtual numbers",
       "id": "VirtualNumberGenericService",
       "namespace": "sms",
-      "description": "Virtual numbers",
       "properties": {
         "countryCode": {
-          "type": "sms.VirtualNumberIsoCountryCodeEnum",
-          "fullType": "sms.VirtualNumberIsoCountryCodeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The ISO formated country code of the number",
-          "required": true
+          "fullType": "sms.VirtualNumberIsoCountryCodeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "sms.VirtualNumberIsoCountryCodeEnum"
         },
         "number": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The virtual number",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "sms.VirtualNumberIsoCountryCodeEnum": {
-      "id": "VirtualNumberIsoCountryCodeEnum",
-      "namespace": "sms",
       "description": "The ISO formated country code of the number",
       "enum": [
         "be",
@@ -6610,132 +6609,132 @@ export const schema: Schema = {
         "fr",
         "uk"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VirtualNumberIsoCountryCodeEnum",
+      "namespace": "sms"
     },
     "sms.VirtualNumberJob": {
+      "description": "Sms job",
       "id": "VirtualNumberJob",
       "namespace": "sms",
-      "description": "Sms job",
       "properties": {
         "creationDatetime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "credits": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "deliveryReceipt": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "differedDelivery": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "messageLength": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "numberOfSms": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "ptt": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "receiver": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "telephony.ContactsExportFormatsEnum": {
-      "id": "ContactsExportFormatsEnum",
-      "namespace": "telephony",
       "description": "Export file format",
       "enum": [
         "csv"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ContactsExportFormatsEnum",
+      "namespace": "telephony"
     },
     "telephony.PcsFile": {
+      "description": "Telephony API related file hosted",
       "id": "PcsFile",
       "namespace": "telephony",
-      "description": "Telephony API related file hosted",
       "properties": {
         "filename": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "telephony.PcsFileStatusEnum",
-          "fullType": "telephony.PcsFileStatusEnum",
           "canBeNull": false,
+          "fullType": "telephony.PcsFileStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "telephony.PcsFileStatusEnum"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "urlExpirationDatetime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "telephony.PcsFileStatusEnum": {
-      "id": "PcsFileStatusEnum",
-      "namespace": "telephony",
       "description": "File providing task status",
       "enum": [
         "doing",
@@ -6743,64 +6742,64 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PcsFileStatusEnum",
+      "namespace": "telephony"
     },
     "telephony.Task": {
+      "description": "Operation on a telephony service",
       "id": "Task",
       "namespace": "telephony",
-      "description": "Operation on a telephony service",
       "properties": {
         "action": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Action associated with the task",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Potential failure reason of the task",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "objectCreated": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Object potentially created at the end of the task",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "serviceType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "telephony.TaskStatusEnum",
-          "fullType": "telephony.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the task",
-          "required": true
+          "fullType": "telephony.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "telephony.TaskStatusEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "telephony.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "telephony",
       "description": "Task status",
       "enum": [
         "doing",
@@ -6809,7 +6808,10 @@ export const schema: Schema = {
         "pause",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "telephony"
     }
-  }
+  },
+  "resourcePath": "/sms"
 }

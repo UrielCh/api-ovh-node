@@ -1,1669 +1,1668 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/cloudDB.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/cloudDB/enterprise/cluster",
+      "description": "Operations about the CLOUDDB service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the CLOUDDB service"
+      "path": "/cloudDB/enterprise/cluster"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}",
+      "description": "Cluster",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Cluster"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloudDB.enterprise.Cluster",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloudDB.enterprise.Cluster",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Cluster"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/backup",
+      "description": "List the cloudDB.enterprise.Cluster.Backup objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Backups of this cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Backups of this cluster"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a cluster backup",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "uuid",
+              "description": "Cluster id",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Backup name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Backup name"
-            },
-            {
               "name": "clusterId",
-              "dataType": "uuid",
-              "paramType": "body",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Cluster id"
-            },
-            {
-              "name": "clusterId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Backup",
-          "noAuthentication": false,
-          "description": "Create a cluster backup"
+          "responseType": "cloudDB.enterprise.Cluster.Backup"
         }
       ],
-      "description": "List the cloudDB.enterprise.Cluster.Backup objects"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/backup"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/backup/{backupId}",
+      "description": "Backup",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a cluster backup",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "backupId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Backup ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Backup ID"
+              "name": "backupId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a cluster backup"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "backupId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Backup ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Backup ID"
+              "name": "backupId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Backup",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Cluster.Backup"
         }
       ],
-      "description": "Backup"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/backup/{backupId}"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/confirmTermination"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/endpoint",
+      "description": "List the cloudDB.enterprise.Cluster.Endpoint objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Cluster endpoints",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Cluster endpoints"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "List the cloudDB.enterprise.Cluster.Endpoint objects"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/endpoint"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/endpoint/{endpointId}",
+      "description": "Endpoint",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Endpoint ID",
+              "fullType": "uuid",
               "name": "endpointId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Endpoint ID"
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Endpoint",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Cluster.Endpoint"
         }
       ],
-      "description": "Endpoint"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/endpoint/{endpointId}"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/host",
+      "description": "List the cloudDB.enterprise.Cluster.Host objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Hosts of this cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Hosts of this cluster"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "List the cloudDB.enterprise.Cluster.Host objects"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/host"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/host/{hostId}",
+      "description": "Host",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Host ID",
+              "fullType": "uuid",
               "name": "hostId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Host ID"
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Host",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Cluster.Host"
         }
       ],
-      "description": "Host"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/host/{hostId}"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/logs",
+      "description": "List the cloudDB.enterprise.Cluster.LdpMember objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Logs access for this cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Logs access for this cluster"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Grant access to cluster logs",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Note regarding this username",
+              "fullType": "string",
               "name": "note",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Note regarding this username"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Logs Data Platform username",
+              "fullType": "string",
               "name": "username",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Logs Data Platform username"
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.LdpMember",
-          "noAuthentication": false,
-          "description": "Grant access to cluster logs"
+          "responseType": "cloudDB.enterprise.Cluster.LdpMember"
         }
       ],
-      "description": "List the cloudDB.enterprise.Cluster.LdpMember objects"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/logs"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/logs/{logsId}",
+      "description": "Member",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Revoke access to cluster's logs",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Logs ID",
+              "fullType": "uuid",
               "name": "logsId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Logs ID"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Revoke access to cluster's logs"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Logs ID",
+              "fullType": "uuid",
               "name": "logsId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Logs ID"
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.LdpMember",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Cluster.LdpMember"
         }
       ],
-      "description": "Member"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/logs/{logsId}"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/maintenance",
+      "description": "List the cloudDB.enterprise.Cluster.Maintenance objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Cluster maintenances",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Cluster maintenances"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "List the cloudDB.enterprise.Cluster.Maintenance objects"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/maintenance"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/maintenance/{maintenanceId}",
+      "description": "Maintenance window",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the maintenance",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "maintenanceId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Maintenance ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Maintenance ID"
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the maintenance"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "maintenanceId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Maintenance ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Maintenance ID"
+              "name": "maintenanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Maintenance",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Cluster.Maintenance"
         }
       ],
-      "description": "Maintenance window"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/maintenance/{maintenanceId}"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow",
+      "description": "Maintenance window",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the maintenance window",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the maintenance window"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.MaintenanceWindow",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Cluster.MaintenanceWindow"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a maintenance window to this cluster",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Maximum duration of maintenance window in minutes",
+              "fullType": "long",
               "name": "duration",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Maximum duration of maintenance window in minutes"
+              "required": false
             },
             {
-              "name": "startTime",
               "dataType": "time",
-              "paramType": "body",
+              "description": "Hour and minute the maintenance will start in UTC",
               "fullType": "time",
-              "required": false,
-              "description": "Hour and minute the maintenance will start in UTC"
-            },
-            {
-              "name": "dayOfWeek",
-              "dataType": "long",
+              "name": "startTime",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Day of the week the maintenance will start with ISO 8601 numbering"
+              "required": false
             },
             {
-              "name": "clusterId",
+              "dataType": "long",
+              "description": "Day of the week the maintenance will start with ISO 8601 numbering",
+              "fullType": "long",
+              "name": "dayOfWeek",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.MaintenanceWindow",
-          "noAuthentication": false,
-          "description": "Add a maintenance window to this cluster"
+          "responseType": "cloudDB.enterprise.Cluster.MaintenanceWindow"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloudDB.enterprise.Cluster.MaintenanceWindow",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloudDB.enterprise.Cluster.MaintenanceWindow",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Maintenance window"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/restore",
+      "description": "List the cloudDB.enterprise.Cluster.Restore objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Restores of this cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Restores of this cluster"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a cluster restore at a given point in time",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "timestamp",
-              "dataType": "datetime",
-              "paramType": "body",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Date and time used for the PITR"
-            },
-            {
+              "dataType": "uuid",
+              "description": "Backup id",
+              "fullType": "uuid",
               "name": "backupId",
-              "dataType": "uuid",
               "paramType": "body",
-              "fullType": "uuid",
-              "required": false,
-              "description": "Backup id"
+              "required": false
             },
             {
-              "name": "clusterId",
+              "dataType": "datetime",
+              "description": "Date and time used for the PITR",
+              "fullType": "datetime",
+              "name": "timestamp",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Restore",
-          "noAuthentication": false,
-          "description": "Create a cluster restore at a given point in time"
+          "responseType": "cloudDB.enterprise.Cluster.Restore"
         }
       ],
-      "description": "List the cloudDB.enterprise.Cluster.Restore objects"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/restore"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}",
+      "description": "Restore",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a restore",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "restoreId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Restore ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Restore ID"
+              "name": "restoreId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a restore"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "restoreId",
-              "dataType": "uuid",
+              "dataType": "string",
+              "description": "Cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Restore ID"
+              "required": true
             },
             {
-              "name": "clusterId",
-              "dataType": "string",
+              "dataType": "uuid",
+              "description": "Restore ID",
+              "fullType": "uuid",
+              "name": "restoreId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Restore",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Cluster.Restore"
         }
       ],
-      "description": "Restore"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}/user",
+      "description": "User",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
-              "dataType": "string",
+              "dataType": "uuid",
+              "description": "Restore ID",
+              "fullType": "uuid",
+              "name": "restoreId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "required": true
             },
             {
-              "name": "restoreId",
-              "dataType": "uuid",
+              "dataType": "string",
+              "description": "Cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Restore ID"
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Restore.User",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Cluster.Restore.User"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a user on this restored instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Secret used to access this restored instance",
               "fullType": "password",
-              "required": true,
-              "description": "Secret used to access this restored instance"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Restore ID",
+              "fullType": "uuid",
               "name": "restoreId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Restore ID"
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.Restore.User",
-          "noAuthentication": false,
-          "description": "Create a user on this restored instance"
+          "responseType": "cloudDB.enterprise.Cluster.Restore.User"
         }
       ],
-      "description": "User"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}/user"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/scale",
+      "description": "scale operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Scale a cluster",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "count",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Number of nodes (positive for scaling up, negative for scaling down)",
               "fullType": "long",
-              "required": true,
-              "description": "Number of nodes (positive for scaling up, negative for scaling down)"
+              "name": "count",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster",
-          "noAuthentication": false,
-          "description": "Scale a cluster"
+          "responseType": "cloudDB.enterprise.Cluster"
         }
       ],
-      "description": "scale operations"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/scale"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup",
+      "description": "List the cloudDB.enterprise.Cluster.SecurityGroup objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Cluster security groups",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Cluster security groups"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a security group to this cluster",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Security group name"
-            },
-            {
-              "name": "clusterId",
               "dataType": "uuid",
-              "paramType": "body",
+              "description": "Cluster id",
               "fullType": "uuid",
-              "required": true,
-              "description": "Cluster id"
+              "name": "clusterId",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Security group name",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup",
-          "noAuthentication": false,
-          "description": "Add a security group to this cluster"
+          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup"
         }
       ],
-      "description": "List the cloudDB.enterprise.Cluster.SecurityGroup objects"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}",
+      "description": "Security group",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a security group from this cluster",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "securityGroupId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Security group ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Security group ID"
+              "name": "securityGroupId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a security group from this cluster"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "securityGroupId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Security group ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Security group ID"
+              "name": "securityGroupId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloudDB.enterprise.Cluster.SecurityGroup",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloudDB.enterprise.Cluster.SecurityGroup",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "clusterId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
-            },
-            {
-              "name": "securityGroupId",
-              "dataType": "uuid",
-              "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Security group ID"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Security group"
-    },
-    {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "securityGroupId",
-              "dataType": "uuid",
-              "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Security group ID"
-            },
-            {
-              "name": "clusterId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
-            }
-          ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Security group rules"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "source",
-              "dataType": "ipBlock",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Security group ID",
+              "fullType": "uuid",
+              "name": "securityGroupId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}"
+    },
+    {
+      "description": "List the cloudDB.enterprise.Cluster.SecurityGroup.Rule objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Security group rules",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Security group ID",
+              "fullType": "uuid",
+              "name": "securityGroupId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a rule to this security group",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Network range to allow",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Network range to allow"
+              "name": "source",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "securityGroupId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Security group ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Security group ID"
+              "name": "securityGroupId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup.Rule",
-          "noAuthentication": false,
-          "description": "Add a rule to this security group"
+          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup.Rule"
         }
       ],
-      "description": "List the cloudDB.enterprise.Cluster.SecurityGroup.Rule objects"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule/{ruleId}",
+      "description": "Security group rule",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a rule from this security group",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
-            },
-            {
-              "name": "securityGroupId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Rule ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Security group ID"
-            },
-            {
               "name": "ruleId",
-              "dataType": "uuid",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Security group ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Rule ID"
+              "name": "securityGroupId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a rule from this security group"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Security group ID",
+              "fullType": "uuid",
               "name": "securityGroupId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Security group ID"
+              "required": true
             },
             {
-              "name": "ruleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Rule ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Rule ID"
+              "name": "ruleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup.Rule",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Cluster.SecurityGroup.Rule"
         }
       ],
-      "description": "Security group rule"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule/{ruleId}"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/serviceInfos"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/task",
+      "description": "List the cloudDB.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Cluster tasks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "status",
               "dataType": "cloudDB.task.Status",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "cloudDB.task.Status",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "name": "function",
-              "dataType": "string",
+              "name": "status",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of function property (=)"
-            }
-          ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Cluster tasks"
-        }
-      ],
-      "description": "List the cloudDB.Task objects"
-    },
-    {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/task/{taskId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "taskId",
-              "dataType": "uuid",
-              "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Task ID"
+              "required": false
             },
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Filter the value of function property (=)",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "function",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "cloudDB.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "Task"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/task"
     },
     {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/terminate",
+      "description": "Task",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "clusterId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
-        }
-      ],
-      "description": "Terminate your service"
-    },
-    {
-      "path": "/cloudDB/enterprise/cluster/{clusterId}/user",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Task ID",
+              "fullType": "uuid",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.User",
+          "responseType": "cloudDB.Task"
+        }
+      ],
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/task/{taskId}"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/terminate"
+    },
+    {
+      "description": "User",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloudDB.enterprise.Cluster.User"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a user on this cluster",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Secret used to access cluster",
               "fullType": "password",
-              "required": true,
-              "description": "Secret used to access cluster"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Cluster ID",
+              "fullType": "string",
               "name": "clusterId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cluster ID"
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Cluster.User",
-          "noAuthentication": false,
-          "description": "Create a user on this cluster"
+          "responseType": "cloudDB.enterprise.Cluster.User"
         }
       ],
-      "description": "User"
+      "path": "/cloudDB/enterprise/cluster/{clusterId}/user"
     },
     {
-      "path": "/cloudDB/enterprise/offer",
+      "description": "List the cloudDB.enterprise.Offer objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Offers with their capabilities",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Offers with their capabilities"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the cloudDB.enterprise.Offer objects"
+      "path": "/cloudDB/enterprise/offer"
     },
     {
-      "path": "/cloudDB/enterprise/offer/{offerName}",
+      "description": "Offer",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "offerName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Offer name",
               "fullType": "string",
-              "required": true,
-              "description": "Offer name"
+              "name": "offerName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Offer",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Offer"
         }
       ],
-      "description": "Offer"
+      "path": "/cloudDB/enterprise/offer/{offerName}"
     },
     {
-      "path": "/cloudDB/enterprise/offer/{offerName}/region",
+      "description": "List the cloudDB.enterprise.Offer.Region objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Regions of this offer",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "offerName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Offer name",
               "fullType": "string",
-              "required": true,
-              "description": "Offer name"
+              "name": "offerName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Regions of this offer"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the cloudDB.enterprise.Offer.Region objects"
+      "path": "/cloudDB/enterprise/offer/{offerName}/region"
     },
     {
-      "path": "/cloudDB/enterprise/offer/{offerName}/region/{regionName}",
+      "description": "Offer capabilities for this region",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "offerName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Offer name",
               "fullType": "string",
-              "required": true,
-              "description": "Offer name"
+              "name": "offerName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "regionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Region name",
               "fullType": "string",
-              "required": true,
-              "description": "Region name"
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Offer.Region",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Offer.Region"
         }
       ],
-      "description": "Offer capabilities for this region"
+      "path": "/cloudDB/enterprise/offer/{offerName}/region/{regionName}"
     },
     {
-      "path": "/cloudDB/enterprise/region",
+      "description": "List the cloudDB.enterprise.Region objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Regions with their capabilities",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Regions with their capabilities"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the cloudDB.enterprise.Region objects"
+      "path": "/cloudDB/enterprise/region"
     },
     {
-      "path": "/cloudDB/enterprise/region/{regionName}",
+      "description": "Region",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "regionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Region name",
               "fullType": "string",
-              "required": true,
-              "description": "Region name"
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloudDB.enterprise.Region",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloudDB.enterprise.Region"
         }
       ],
-      "description": "Region"
+      "path": "/cloudDB/enterprise/region/{regionName}"
     }
   ],
-  "resourcePath": "/cloudDB",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "cloudDB.Task": {
+      "description": "Tasks",
       "id": "Task",
       "namespace": "cloudDB",
-      "description": "Tasks",
       "properties": {
         "endDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Task completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task function name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Task last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "progress": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task percentage progression (0 = begin / 100 = end)",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task start date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "cloudDB.task.Status",
-          "fullType": "cloudDB.task.Status",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "cloudDB.task.Status",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.task.Status"
         }
       }
     },
     "cloudDB.enterprise.Backup.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.Backup",
       "description": "Backup status",
       "enum": [
         "archived",
@@ -1672,864 +1671,864 @@ export const schema: Schema = {
         "creating",
         "deleting"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.Backup"
     },
     "cloudDB.enterprise.Cluster": {
+      "description": "Cluster",
       "id": "Cluster",
       "namespace": "cloudDB.enterprise",
-      "description": "Cluster",
       "properties": {
         "autoBackup": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Automatic managed backup activated",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "backupSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Total size of manual backups in bytes",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of this cluster",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "hostCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Number of hosts",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The last update date of this cluster",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Cluster name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "offerName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Offer name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "offerType": {
-          "type": "cloudDB.enterprise.Offer.TypeEnum",
-          "fullType": "cloudDB.enterprise.Offer.TypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Offer type",
-          "required": true
+          "fullType": "cloudDB.enterprise.Offer.TypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.Offer.TypeEnum"
         },
         "regionName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster region name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "restoredVolumeSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Total restored volume size in GB",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "status": {
-          "type": "cloudDB.enterprise.Cluster.StatusEnum",
-          "fullType": "cloudDB.enterprise.Cluster.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster status",
-          "required": true
+          "fullType": "cloudDB.enterprise.Cluster.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.Cluster.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The id of the task working on this object",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "version": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster version",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloudDB.enterprise.Cluster.Backup": {
+      "description": "Backup",
       "id": "Backup",
       "namespace": "cloudDB.enterprise.Cluster",
-      "description": "Backup",
       "properties": {
         "clusterId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Backup task creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "effectiveCreationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Backup object creation date and time",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Backup id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "internal": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Created by auto backup process",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this backup has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Backup name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "restoreDuration": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Time in seconds it took to restore this backup for validation",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Manual backup size in bytes",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "status": {
-          "type": "cloudDB.enterprise.Backup.StatusEnum",
-          "fullType": "cloudDB.enterprise.Backup.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Backup status",
-          "required": true
+          "fullType": "cloudDB.enterprise.Backup.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.Backup.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current task managing this backup",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "validationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Date and time when this backup has been validated",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "cloudDB.enterprise.Cluster.Endpoint": {
+      "description": "Endpoints",
       "id": "Endpoint",
       "namespace": "cloudDB.enterprise.Cluster",
-      "description": "Endpoints",
       "properties": {
         "clusterId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Endpoint creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "fqdn": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Endpoint fully qualified domain name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Endpoint id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this endpoint has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Endpoint name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Endpoint port",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "cloudDB.enterprise.Endpoint.StatusEnum",
-          "fullType": "cloudDB.enterprise.Endpoint.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Endpoint status",
-          "required": true
+          "fullType": "cloudDB.enterprise.Endpoint.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.Endpoint.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current task managing this endpoint",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "cloudDB.enterprise.Cluster.Host": {
+      "description": "Host",
       "id": "Host",
       "namespace": "cloudDB.enterprise.Cluster",
-      "description": "Host",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of this host",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Host id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The last update date of this host",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Host name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "cloudDB.enterprise.Host.StatusEnum",
-          "fullType": "cloudDB.enterprise.Host.StatusEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Host status",
-          "required": false
+          "fullType": "cloudDB.enterprise.Host.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.enterprise.Host.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The id of the task working on this object",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "cloudDB.enterprise.Cluster.LdpMember": {
+      "description": "Member",
       "id": "LdpMember",
       "namespace": "cloudDB.enterprise.Cluster",
-      "description": "Member",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Logs Data Platform access creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this ldp access has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "note": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Note regarding this username",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "cloudDB.enterprise.LdpMember.StatusEnum",
-          "fullType": "cloudDB.enterprise.LdpMember.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Logs Data Platform access status",
-          "required": true
+          "fullType": "cloudDB.enterprise.LdpMember.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.LdpMember.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current task managing this Logs Data Platform access",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Logs Data Platform username",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloudDB.enterprise.Cluster.Maintenance": {
+      "description": "Maintenance window",
       "id": "Maintenance",
       "namespace": "cloudDB.enterprise.Cluster",
-      "description": "Maintenance window",
       "properties": {
         "clusterId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maintenance creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "duration": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum duration of the maintenance in minutes",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maintenance id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this maintenance has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "scheduledAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date and time the maintenance will start in UTC",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "cloudDB.enterprise.Maintenance.StatusEnum",
-          "fullType": "cloudDB.enterprise.Maintenance.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maintenance status",
-          "required": true
+          "fullType": "cloudDB.enterprise.Maintenance.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.Maintenance.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current task managing this maintenance",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "cloudDB.enterprise.Cluster.MaintenanceWindow": {
+      "description": "Maintenance window",
       "id": "MaintenanceWindow",
       "namespace": "cloudDB.enterprise.Cluster",
-      "description": "Maintenance window",
       "properties": {
         "clusterId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maintenance window creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "dayOfWeek": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Day of the week the maintenance will start with ISO 8601 numbering",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "duration": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum duration of maintenance window in hours",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maintenance window id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this maintenance window has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "startTime": {
-          "type": "time",
-          "fullType": "time",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hour and minute the maintenance will start in UTC",
-          "required": true
+          "fullType": "time",
+          "readOnly": false,
+          "required": true,
+          "type": "time"
         },
         "status": {
-          "type": "cloudDB.enterprise.MaintenanceWindow.StatusEnum",
-          "fullType": "cloudDB.enterprise.MaintenanceWindow.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maintenance window status",
-          "required": true
+          "fullType": "cloudDB.enterprise.MaintenanceWindow.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.MaintenanceWindow.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current task managing this security group",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "cloudDB.enterprise.Cluster.Restore": {
+      "description": "Restore",
       "id": "Restore",
       "namespace": "cloudDB.enterprise.Cluster",
-      "description": "Restore",
       "properties": {
         "backupId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Base backup id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Restore creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "fqdn": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Restore fully qualified domain name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Restore id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this restore has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Restore port",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "status": {
-          "type": "cloudDB.enterprise.Restore.StatusEnum",
-          "fullType": "cloudDB.enterprise.Restore.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Restore status",
-          "required": true
+          "fullType": "cloudDB.enterprise.Restore.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.Restore.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current task managing this restore",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "timestamp": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Date and time used for PITR",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "volumeSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Restore volume size in GB",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloudDB.enterprise.Cluster.Restore.User": {
+      "description": "User",
       "id": "User",
       "namespace": "cloudDB.enterprise.Cluster.Restore",
-      "description": "User",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this user has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "restoreId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Restored instance id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "status": {
-          "type": "cloudDB.enterprise.Restore.User.StatusEnum",
-          "fullType": "cloudDB.enterprise.Restore.User.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User status",
-          "required": true
+          "fullType": "cloudDB.enterprise.Restore.User.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.Restore.User.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current task managing this user",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "cloudDB.enterprise.Cluster.SecurityGroup": {
+      "description": "Security group",
       "id": "SecurityGroup",
       "namespace": "cloudDB.enterprise.Cluster",
-      "description": "Security group",
       "properties": {
         "clusterId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Security group creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Security group id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this security group has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Security group name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "rulesCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Number of rules contained by this security group",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "cloudDB.enterprise.SecurityGroup.StatusEnum",
-          "fullType": "cloudDB.enterprise.SecurityGroup.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Security group status",
-          "required": true
+          "fullType": "cloudDB.enterprise.SecurityGroup.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.SecurityGroup.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current task managing this security group",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "cloudDB.enterprise.Cluster.SecurityGroup.Rule": {
+      "description": "Security group rule",
       "id": "Rule",
       "namespace": "cloudDB.enterprise.Cluster.SecurityGroup",
-      "description": "Security group rule",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Rule creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Rule id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this rule has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "securityGroupId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Security group id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "source": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network range to allow",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         },
         "status": {
-          "type": "cloudDB.enterprise.SecurityGroupRule.StatusEnum",
-          "fullType": "cloudDB.enterprise.SecurityGroupRule.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Rule status",
-          "required": true
+          "fullType": "cloudDB.enterprise.SecurityGroupRule.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.SecurityGroupRule.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current task managing this rule",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "cloudDB.enterprise.Cluster.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.Cluster",
       "description": "Cluster status",
       "enum": [
         "created",
@@ -2542,74 +2541,74 @@ export const schema: Schema = {
         "suspending",
         "updating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.Cluster"
     },
     "cloudDB.enterprise.Cluster.User": {
+      "description": "User",
       "id": "User",
       "namespace": "cloudDB.enterprise.Cluster",
-      "description": "User",
       "properties": {
         "clusterId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this user has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "cloudDB.enterprise.User.StatusEnum",
-          "fullType": "cloudDB.enterprise.User.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User status",
-          "required": true
+          "fullType": "cloudDB.enterprise.User.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.User.StatusEnum"
         },
         "taskId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current task managing this user",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "cloudDB.enterprise.Endpoint.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.Endpoint",
       "description": "Endpoint status",
       "enum": [
         "created",
@@ -2620,11 +2619,11 @@ export const schema: Schema = {
         "enabled",
         "enabling"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.Endpoint"
     },
     "cloudDB.enterprise.Host.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.Host",
       "description": "Host status",
       "enum": [
         "configured",
@@ -2639,11 +2638,11 @@ export const schema: Schema = {
         "suspended",
         "suspending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.Host"
     },
     "cloudDB.enterprise.LdpMember.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.LdpMember",
       "description": "LdpMember status",
       "enum": [
         "created",
@@ -2652,11 +2651,11 @@ export const schema: Schema = {
         "updated",
         "updating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.LdpMember"
     },
     "cloudDB.enterprise.Maintenance.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.Maintenance",
       "description": "Maintenance status",
       "enum": [
         "cancelled",
@@ -2664,126 +2663,126 @@ export const schema: Schema = {
         "running",
         "scheduled"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.Maintenance"
     },
     "cloudDB.enterprise.MaintenanceWindow.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.MaintenanceWindow",
       "description": "Maintenance window status",
       "enum": [
         "created",
         "creating",
         "deleting"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.MaintenanceWindow"
     },
     "cloudDB.enterprise.Offer": {
+      "description": "Offer",
       "id": "Offer",
       "namespace": "cloudDB.enterprise",
-      "description": "Offer",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Offer creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this offer has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "maxHostCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Maximum number of hosts required",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "minHostCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Minimum number of hosts required",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Offer name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "cloudDB.enterprise.Offer.StatusEnum",
-          "fullType": "cloudDB.enterprise.Offer.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Offer status",
-          "required": true
+          "fullType": "cloudDB.enterprise.Offer.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.Offer.StatusEnum"
         }
       }
     },
     "cloudDB.enterprise.Offer.Region": {
+      "description": "Offer capabilities for this region",
       "id": "Region",
       "namespace": "cloudDB.enterprise.Offer",
-      "description": "Offer capabilities for this region",
       "properties": {
         "hostLeft": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Number of hosts available for this offer in this region",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "offerName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Offer name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "regionName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "cloudDB.enterprise.Offer.Region.StatusEnum",
-          "fullType": "cloudDB.enterprise.Offer.Region.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of an offer in a region",
-          "required": true
+          "fullType": "cloudDB.enterprise.Offer.Region.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.Offer.Region.StatusEnum"
         }
       }
     },
     "cloudDB.enterprise.Offer.Region.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.Offer.Region",
       "description": "Status of an offer in a region",
       "enum": [
         "available",
         "unavailable"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.Offer.Region"
     },
     "cloudDB.enterprise.Offer.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.Offer",
       "description": "Offer status",
       "enum": [
         "available",
@@ -2791,103 +2790,103 @@ export const schema: Schema = {
         "testing",
         "unavailable"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.Offer"
     },
     "cloudDB.enterprise.Offer.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "cloudDB.enterprise.Offer",
       "description": "Offer type",
       "enum": [
         "postgresql"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloudDB.enterprise.Offer"
     },
     "cloudDB.enterprise.Region": {
+      "description": "Region",
       "id": "Region",
       "namespace": "cloudDB.enterprise",
-      "description": "Region",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region creation date and time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last time this region has been updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "maintenanceDayOfWeek": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Day of the week the maintenance will start with ISO 8601 numbering",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maintenanceDuration": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum duration of maintenance window in hours",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maintenanceStartTime": {
-          "type": "time",
-          "fullType": "time",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Hour and minute the maintenance will start in UTC",
-          "required": true
+          "fullType": "time",
+          "readOnly": true,
+          "required": true,
+          "type": "time"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "cloudDB.enterprise.Region.StatusEnum",
-          "fullType": "cloudDB.enterprise.Region.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region status",
-          "required": true
+          "fullType": "cloudDB.enterprise.Region.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloudDB.enterprise.Region.StatusEnum"
         }
       }
     },
     "cloudDB.enterprise.Region.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.Region",
       "description": "Region status",
       "enum": [
         "created"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.Region"
     },
     "cloudDB.enterprise.Restore.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.Restore",
       "description": "Restore status",
       "enum": [
         "created",
         "creating",
         "deleting"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.Restore"
     },
     "cloudDB.enterprise.Restore.User.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.Restore.User",
       "description": "User status",
       "enum": [
         "created",
@@ -2896,11 +2895,11 @@ export const schema: Schema = {
         "updated",
         "updating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.Restore.User"
     },
     "cloudDB.enterprise.SecurityGroup.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.SecurityGroup",
       "description": "Security group status",
       "enum": [
         "created",
@@ -2909,11 +2908,11 @@ export const schema: Schema = {
         "updated",
         "updating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.SecurityGroup"
     },
     "cloudDB.enterprise.SecurityGroupRule.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.SecurityGroupRule",
       "description": "Security group rule status",
       "enum": [
         "created",
@@ -2922,11 +2921,11 @@ export const schema: Schema = {
         "updated",
         "updating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.SecurityGroupRule"
     },
     "cloudDB.enterprise.User.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloudDB.enterprise.User",
       "description": "User status",
       "enum": [
         "created",
@@ -2935,11 +2934,11 @@ export const schema: Schema = {
         "updated",
         "updating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloudDB.enterprise.User"
     },
     "cloudDB.task.Status": {
-      "id": "Status",
-      "namespace": "cloudDB.task",
       "description": "Task status",
       "enum": [
         "cancelled",
@@ -2948,58 +2947,58 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.task"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -3010,11 +3009,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -3022,11 +3021,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -3035,11 +3034,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -3057,108 +3056,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/cloudDB"
 }

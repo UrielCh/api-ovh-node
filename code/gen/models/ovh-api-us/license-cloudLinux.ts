@@ -1,297 +1,296 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://api.us.ovhcloud.com:443/1.0/license/cloudLinux.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/license/cloudLinux",
+      "description": "Operations about the LICENSE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the LICENSE service"
+      "path": "/license/cloudLinux"
     },
     {
-      "path": "/license/cloudLinux/orderableVersions",
+      "description": "Get the orderable CloudLinux versions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the orderable CloudLinux versions",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipv4",
-              "paramType": "query",
+              "description": "Your license Ip",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Your license Ip"
+              "name": "ip",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "license.CloudLinuxOrderConfiguration[]",
-          "noAuthentication": false,
-          "description": "Get the orderable CloudLinux versions"
+          "responseType": "license.CloudLinuxOrderConfiguration[]"
         }
       ],
-      "description": "Get the orderable CloudLinux versions"
+      "path": "/license/cloudLinux/orderableVersions"
     },
     {
-      "path": "/license/cloudLinux/{serviceName}",
+      "description": "Your CloudLinux license",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "license.cloudLinux.CloudLinux",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "license.cloudLinux.CloudLinux"
         }
       ],
-      "description": "Your CloudLinux license"
+      "path": "/license/cloudLinux/{serviceName}"
     },
     {
-      "path": "/license/cloudLinux/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
-              "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
-              "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
-            },
-            {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/license/cloudLinux/{serviceName}/confirmTermination"
     },
     {
-      "path": "/license/cloudLinux/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/license/cloudLinux/{serviceName}/serviceInfos"
     },
     {
-      "path": "/license/cloudLinux/{serviceName}/tasks",
+      "description": "List the license.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Tasks linked to this license",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "action",
-              "dataType": "license.ActionType",
-              "paramType": "query",
-              "fullType": "license.ActionType",
-              "required": false,
-              "description": "Filter the value of action property (=)"
-            },
-            {
-              "name": "status",
               "dataType": "license.TaskStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "license.TaskStateEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks linked to this license"
-        }
-      ],
-      "description": "List the license.Task objects"
-    },
-    {
-      "path": "/license/cloudLinux/{serviceName}/tasks/{taskId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "taskId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "dataType": "license.ActionType",
+              "description": "Filter the value of action property (=)",
+              "fullType": "license.ActionType",
+              "name": "action",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "license.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "long[]"
         }
       ],
-      "description": "licenses Todos"
+      "path": "/license/cloudLinux/{serviceName}/tasks"
     },
     {
-      "path": "/license/cloudLinux/{serviceName}/terminate",
+      "description": "licenses Todos",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Task ID",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "license.Task"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/license/cloudLinux/{serviceName}/tasks/{taskId}"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/license/cloudLinux/{serviceName}/terminate"
     }
   ],
-  "resourcePath": "/license/cloudLinux",
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "license.ActionType": {
-      "id": "ActionType",
-      "namespace": "license",
       "description": "A short description of what does the Task on your license",
       "enum": [
         "addWindowFromExistingSerial",
@@ -302,41 +301,41 @@ export const schema: Schema = {
         "releaseOption",
         "versionUpgrade"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ActionType",
+      "namespace": "license"
     },
     "license.CloudLinuxOrderConfiguration": {
+      "description": "Allowed CloudLinux versions per matching serviceTypes",
       "id": "CloudLinuxOrderConfiguration",
       "namespace": "license",
-      "description": "Allowed CloudLinux versions per matching serviceTypes",
       "properties": {
         "orderableVersions": {
-          "type": "license.OrderableCloudLinuxCompatibilityInfos[]",
-          "fullType": "license.OrderableCloudLinuxCompatibilityInfos[]",
           "canBeNull": false,
+          "fullType": "license.OrderableCloudLinuxCompatibilityInfos[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "license.OrderableCloudLinuxCompatibilityInfos[]"
         },
         "serviceType": {
-          "type": "license.LicenseTypeEnum",
-          "fullType": "license.LicenseTypeEnum",
           "canBeNull": false,
+          "fullType": "license.LicenseTypeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "license.LicenseTypeEnum"
         }
       }
     },
     "license.CloudLinuxVersionEnum": {
-      "id": "CloudLinuxVersionEnum",
-      "namespace": "license",
       "description": "All versions for CloudLinux product",
       "enum": [
         "cloudlinux-license"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CloudLinuxVersionEnum",
+      "namespace": "license"
     },
     "license.LicenseTypeEnum": {
-      "id": "LicenseTypeEnum",
-      "namespace": "license",
       "description": "Possible values for license type",
       "enum": [
         "dedicated",
@@ -351,25 +350,25 @@ export const schema: Schema = {
         "vps_cloud_2016",
         "vps_ssd"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LicenseTypeEnum",
+      "namespace": "license"
     },
     "license.OrderableCloudLinuxCompatibilityInfos": {
+      "description": "All versions available for CloudLinux products",
       "id": "OrderableCloudLinuxCompatibilityInfos",
       "namespace": "license",
-      "description": "All versions available for CloudLinux products",
       "properties": {
         "version": {
-          "type": "license.CloudLinuxVersionEnum",
-          "fullType": "license.CloudLinuxVersionEnum",
           "canBeNull": false,
+          "fullType": "license.CloudLinuxVersionEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "license.CloudLinuxVersionEnum"
         }
       }
     },
     "license.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "license",
       "description": "All states a license can be in",
       "enum": [
         "ok",
@@ -377,74 +376,74 @@ export const schema: Schema = {
         "terminated",
         "toDeliver"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "license"
     },
     "license.Task": {
+      "description": "licenses Todos",
       "id": "Task",
       "namespace": "license",
-      "description": "licenses Todos",
       "properties": {
         "action": {
-          "type": "license.ActionType",
-          "fullType": "license.ActionType",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This Task description",
-          "required": true
+          "fullType": "license.ActionType",
+          "readOnly": true,
+          "required": true,
+          "type": "license.ActionType"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "When was this Task done",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The last time this Task was updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This Task name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "license.TaskStateEnum",
-          "fullType": "license.TaskStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current Taks status",
-          "required": true
+          "fullType": "license.TaskStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "license.TaskStateEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This Task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "When was this Task created",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "license.TaskStateEnum": {
-      "id": "TaskStateEnum",
-      "namespace": "license",
       "description": "All states a license Task can be in",
       "enum": [
         "cancelled",
@@ -453,113 +452,113 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "license"
     },
     "license.cloudLinux.CloudLinux": {
+      "description": "Your CloudLinux license",
       "id": "CloudLinux",
       "namespace": "license.cloudLinux",
-      "description": "Your CloudLinux license",
       "properties": {
         "creation": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This license creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The internal name of your license",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The ip on which this license is attached",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "licenseId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The license id on license provider side",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "license.StateEnum",
-          "fullType": "license.StateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This license state",
-          "required": true
+          "fullType": "license.StateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "license.StateEnum"
         },
         "version": {
-          "type": "license.CloudLinuxVersionEnum",
-          "fullType": "license.CloudLinuxVersionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This license version",
-          "required": true
+          "fullType": "license.CloudLinuxVersionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "license.CloudLinuxVersionEnum"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -570,11 +569,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -582,11 +581,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -595,11 +594,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -617,108 +616,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/license/cloudLinux"
 }

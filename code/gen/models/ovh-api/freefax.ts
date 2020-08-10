@@ -1,513 +1,512 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/freefax.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/freefax",
+      "description": "Operations about the VOIP service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the VOIP service"
+      "path": "/freefax"
     },
     {
-      "path": "/freefax/credits",
+      "description": "Get the credit balance and the remaining pages available for all our freefax",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the credit balance and the remaining pages available for all our freefax",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "freefax.BalanceInformations",
           "noAuthentication": false,
-          "description": "Get the credit balance and the remaining pages available for all our freefax"
+          "parameters": [],
+          "responseType": "freefax.BalanceInformations"
         }
       ],
-      "description": "Get the credit balance and the remaining pages available for all our freefax"
+      "path": "/freefax/credits"
     },
     {
-      "path": "/freefax/{serviceName}",
+      "description": "Freefax properties",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "freefax.FreefaxProperties",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "freefax.FreefaxProperties"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "freefax.FreefaxProperties",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "freefax.FreefaxProperties",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Freefax properties"
+      "path": "/freefax/{serviceName}"
     },
     {
-      "path": "/freefax/{serviceName}/changePassword",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Generates a new password for your fax account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "password",
-          "noAuthentication": false,
-          "description": "Generates a new password for your fax account"
+          "responseType": "password"
         }
       ],
-      "description": "changePassword operations"
+      "path": "/freefax/{serviceName}/changePassword"
     },
     {
-      "path": "/freefax/{serviceName}/mainService",
+      "description": "mainService operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Main service attached to freefax",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Main service attached to freefax"
+          "responseType": "string"
         }
       ],
-      "description": "mainService operations"
+      "path": "/freefax/{serviceName}/mainService"
     },
     {
-      "path": "/freefax/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/freefax/{serviceName}/serviceInfos"
     },
     {
-      "path": "/freefax/{serviceName}/voicemail",
+      "description": "Voicemail Properties",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "telephony.VoicemailProperties",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "telephony.VoicemailProperties"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "telephony.VoicemailProperties",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "telephony.VoicemailProperties",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Voicemail Properties"
+      "path": "/freefax/{serviceName}/voicemail"
     },
     {
-      "path": "/freefax/{serviceName}/voicemail/changePassword",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the voicemail password. It must be 4 digit",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "The password",
               "fullType": "password",
-              "required": true,
-              "description": "The password"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Change the voicemail password. It must be 4 digit"
-        }
-      ],
-      "description": "changePassword operations"
-    },
-    {
-      "path": "/freefax/{serviceName}/voicemail/changeRouting",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "routing",
-              "dataType": "telephony.VoicefaxRoutingEnum",
+              "name": "password",
               "paramType": "body",
-              "fullType": "telephony.VoicefaxRoutingEnum",
-              "required": true,
-              "description": "Activate or Desactivate voicemail on the line"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Disable/Enable voicemail. Available only if the line has fax capabilities"
+          "responseType": "void"
         }
       ],
-      "description": "changeRouting operations"
+      "path": "/freefax/{serviceName}/voicemail/changePassword"
     },
     {
-      "path": "/freefax/{serviceName}/voicemail/routing",
+      "description": "changeRouting operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
+          "description": "Disable/Enable voicemail. Available only if the line has fax capabilities",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
+              "dataType": "telephony.VoicefaxRoutingEnum",
+              "description": "Activate or Desactivate voicemail on the line",
+              "fullType": "telephony.VoicefaxRoutingEnum",
+              "name": "routing",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "telephony.VoicefaxRoutingEnum",
-          "noAuthentication": false,
-          "description": "Get the status of the voicemail. Available only if the line has fax capabilities"
+          "responseType": "void"
         }
       ],
-      "description": "routing operations"
+      "path": "/freefax/{serviceName}/voicemail/changeRouting"
     },
     {
-      "path": "/freefax/{serviceName}/voicemail/voicemailNumbers",
+      "description": "routing operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the status of the voicemail. Available only if the line has fax capabilities",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "telephony.VoicemailNumbers",
-          "noAuthentication": false,
-          "description": "Get number for internal and external voicemail"
+          "responseType": "telephony.VoicefaxRoutingEnum"
         }
       ],
-      "description": "voicemailNumbers operations"
+      "path": "/freefax/{serviceName}/voicemail/routing"
+    },
+    {
+      "description": "voicemailNumbers operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get number for internal and external voicemail",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.VoicemailNumbers"
+        }
+      ],
+      "path": "/freefax/{serviceName}/voicemail/voicemailNumbers"
     }
   ],
-  "resourcePath": "/freefax",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "freefax.BalanceInformations": {
+      "description": "Return credit balance informations structure",
       "id": "BalanceInformations",
       "namespace": "freefax",
-      "description": "Return credit balance informations structure",
       "properties": {
         "faxs": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The number of equivalement remaining french faxs",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "points": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Total balance available in points",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "freefax.FreefaxProperties": {
+      "description": "Freefax properties",
       "id": "FreefaxProperties",
       "namespace": "freefax",
-      "description": "Freefax properties",
       "properties": {
         "faxMaxCall": {
-          "type": "telephony.FaxSendingTries",
-          "fullType": "telephony.FaxSendingTries",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of max tentative of fax sending",
-          "required": true
+          "fullType": "telephony.FaxSendingTries",
+          "readOnly": false,
+          "required": true,
+          "type": "telephony.FaxSendingTries"
         },
         "faxQuality": {
-          "type": "telephony.FaxQualityEnum",
-          "fullType": "telephony.FaxQualityEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Quality of fax sending",
-          "required": true
+          "fullType": "telephony.FaxQualityEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "telephony.FaxQualityEnum"
         },
         "faxTagLine": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Customised freefax header",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "fromEmail": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "FROM email header",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "fromName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the sender of the email",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "number": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Freefax number in international format",
-          "required": true
+          "fullType": "phoneNumber",
+          "readOnly": true,
+          "required": true,
+          "type": "phoneNumber"
         },
         "redirectionEmail": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Email address to redirect fax response.",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -518,11 +517,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -530,123 +529,123 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "telephony.FaxQualityEnum": {
-      "id": "FaxQualityEnum",
-      "namespace": "telephony",
       "description": "Available quality for fax documents",
       "enum": [
         "best",
         "high",
         "normal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FaxQualityEnum",
+      "namespace": "telephony"
     },
     "telephony.FaxSendingTries": {
-      "id": "FaxSendingTries",
-      "namespace": "telephony",
       "description": "Number of tries when sending a fax",
       "enum": [
         "1",
@@ -659,11 +658,11 @@ export const schema: Schema = {
         "8",
         "9"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "FaxSendingTries",
+      "namespace": "telephony"
     },
     "telephony.ServiceVoicemailAudioFormatEnum": {
-      "id": "ServiceVoicemailAudioFormatEnum",
-      "namespace": "telephony",
       "description": "Voicemail audio format",
       "enum": [
         "aiff",
@@ -673,209 +672,212 @@ export const schema: Schema = {
         "ogg",
         "wav"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceVoicemailAudioFormatEnum",
+      "namespace": "telephony"
     },
     "telephony.ServiceVoicemailMailOptionEnum": {
-      "id": "ServiceVoicemailMailOptionEnum",
-      "namespace": "telephony",
       "description": "Voicemail configuration",
       "enum": [
         "attachment",
         "simple"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceVoicemailMailOptionEnum",
+      "namespace": "telephony"
     },
     "telephony.ServiceVoicemailNotifications": {
+      "description": "Voicemail configuration",
       "id": "ServiceVoicemailNotifications",
       "namespace": "telephony",
-      "description": "Voicemail configuration",
       "properties": {
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "telephony.ServiceVoicemailMailOptionEnum",
-          "fullType": "telephony.ServiceVoicemailMailOptionEnum",
           "canBeNull": false,
+          "fullType": "telephony.ServiceVoicemailMailOptionEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "telephony.ServiceVoicemailMailOptionEnum"
         }
       }
     },
     "telephony.VoicefaxRoutingEnum": {
-      "id": "VoicefaxRoutingEnum",
-      "namespace": "telephony",
       "description": "All existing type of routing for a voicemail",
       "enum": [
         "fax",
         "voicemail"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VoicefaxRoutingEnum",
+      "namespace": "telephony"
     },
     "telephony.VoicemailGreetingEnum": {
-      "id": "VoicemailGreetingEnum",
-      "namespace": "telephony",
       "description": "Greeting type",
       "enum": [
         "default",
         "full",
         "short"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VoicemailGreetingEnum",
+      "namespace": "telephony"
     },
     "telephony.VoicemailNumbers": {
+      "description": "Internal and external numbers for voicemail service",
       "id": "VoicemailNumbers",
       "namespace": "telephony",
-      "description": "Internal and external numbers for voicemail service",
       "properties": {
         "external": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The external voicemail number",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "internal": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The internal voicemail number",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "telephony.VoicemailProperties": {
+      "description": "Voicemail Properties",
       "id": "VoicemailProperties",
       "namespace": "telephony",
-      "description": "Voicemail Properties",
       "properties": {
         "annouceMessage": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the voicemail panel announce file",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "audioFormat": {
-          "type": "telephony.ServiceVoicemailAudioFormatEnum",
-          "fullType": "telephony.ServiceVoicemailAudioFormatEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Format of the voicemail audio file attached to emails",
-          "required": true
+          "fullType": "telephony.ServiceVoicemailAudioFormatEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "telephony.ServiceVoicemailAudioFormatEnum"
         },
         "doNotRecord": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Don't allow callers to leave voicemails",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forcePassword": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Force password request to access the voicemail panel",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "fromEmail": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Email address from which emails will be sent",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "fromName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name from which emails will be sent",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "fullGreetingSoundId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Sound ID of the long greeeting",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "greetingType": {
-          "type": "telephony.VoicemailGreetingEnum",
-          "fullType": "telephony.VoicemailGreetingEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of the greeting to play",
-          "required": true
+          "fullType": "telephony.VoicemailGreetingEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "telephony.VoicemailGreetingEnum"
         },
         "isNewVersion": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current voicemail version",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "keepMessage": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Don't delete voicemails after they've been sent by email",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "redirectionEmails": {
-          "type": "telephony.ServiceVoicemailNotifications[]",
-          "fullType": "telephony.ServiceVoicemailNotifications[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Email addresses to notify when a new voicemail is left",
-          "required": true
+          "fullType": "telephony.ServiceVoicemailNotifications[]",
+          "readOnly": false,
+          "required": true,
+          "type": "telephony.ServiceVoicemailNotifications[]"
         },
         "shortGreetingSoundId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Sound ID of the short greeting played before an automated message",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "temporaryGreetingActivated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Play the temporary greeting instead of the regular one",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "temporaryGreetingSoundId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Sound ID of the temporary greeeting",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "unreadMessages": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Quantity of unread voicemails",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/freefax"
 }

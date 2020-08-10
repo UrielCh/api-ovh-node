@@ -1,434 +1,433 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://api.us.ovhcloud.com:443/1.0/veeam/veeamEnterprise.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/veeam/veeamEnterprise",
+      "description": "Operations about the VEEAMENTERPRISE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the VEEAMENTERPRISE service"
+      "path": "/veeam/veeamEnterprise"
     },
     {
-      "path": "/veeam/veeamEnterprise/{serviceName}",
+      "description": "Veeeam Enterprise offer",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "veeam.veeamEnterprise.Account",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "veeam.veeamEnterprise.Account"
         }
       ],
-      "description": "Veeeam Enterprise offer"
+      "path": "/veeam/veeamEnterprise/{serviceName}"
     },
     {
-      "path": "/veeam/veeamEnterprise/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/veeam/veeamEnterprise/{serviceName}/confirmTermination"
     },
     {
-      "path": "/veeam/veeamEnterprise/{serviceName}/register",
+      "description": "register operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Register Veeam Backup Server to Veeam Enterprise",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "port",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Your Veeam Backup And Replication Server Port"
-            },
-            {
-              "name": "username",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Your Veeam Backup And Replication username"
-            },
-            {
-              "name": "ip",
               "dataType": "ip",
-              "paramType": "body",
+              "description": "Your Veeam Backup And Replication Server IP",
               "fullType": "ip",
-              "required": true,
-              "description": "Your Veeam Backup And Replication Server IP"
-            },
-            {
-              "name": "password",
-              "dataType": "password",
+              "name": "ip",
               "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "Your Veeam Backup And Replication associated password"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Your Veeam Backup And Replication username",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "username",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "Your Veeam Backup And Replication associated password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Your Veeam Backup And Replication Server Port",
+              "fullType": "long",
+              "name": "port",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "veeam.veeamEnterprise.Task[]",
-          "noAuthentication": false,
-          "description": "Register Veeam Backup Server to Veeam Enterprise"
+          "responseType": "veeam.veeamEnterprise.Task[]"
         }
       ],
-      "description": "register operations"
+      "path": "/veeam/veeamEnterprise/{serviceName}/register"
     },
     {
-      "path": "/veeam/veeamEnterprise/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/veeam/veeamEnterprise/{serviceName}/serviceInfos"
     },
     {
-      "path": "/veeam/veeamEnterprise/{serviceName}/task",
+      "description": "List the veeam.veeamEnterprise.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Tasks associated with Veeam Enterprise",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of name property (like)",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of name property (like)"
+              "required": false
             },
             {
-              "name": "state",
               "dataType": "veeamEnterprise.TaskStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of state property (=)",
               "fullType": "veeamEnterprise.TaskStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (=)"
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks associated with Veeam Enterprise"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the veeam.veeamEnterprise.Task objects"
+      "path": "/veeam/veeamEnterprise/{serviceName}/task"
     },
     {
-      "path": "/veeam/veeamEnterprise/{serviceName}/task/{taskId}",
+      "description": "Operation with the Enterprise Account",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Task ID",
+              "fullType": "long",
               "name": "taskId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Task ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "veeam.veeamEnterprise.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "veeam.veeamEnterprise.Task"
         }
       ],
-      "description": "Operation with the Enterprise Account"
+      "path": "/veeam/veeamEnterprise/{serviceName}/task/{taskId}"
     },
     {
-      "path": "/veeam/veeamEnterprise/{serviceName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/veeam/veeamEnterprise/{serviceName}/terminate"
     },
     {
-      "path": "/veeam/veeamEnterprise/{serviceName}/update",
+      "description": "update operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Update Veeam enterprise configuration",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "port",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Your Veeam Backup And Replication Server Port"
-            },
-            {
-              "name": "username",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Your Veeam Backup And Replication username"
-            },
-            {
-              "name": "ip",
               "dataType": "ip",
-              "paramType": "body",
+              "description": "Your Veeam Backup And Replication Server IP",
               "fullType": "ip",
-              "required": true,
-              "description": "Your Veeam Backup And Replication Server IP"
-            },
-            {
-              "name": "password",
-              "dataType": "password",
+              "name": "ip",
               "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "Your Veeam Backup And Replication associated password"
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Your Veeam Backup And Replication Server Port",
+              "fullType": "long",
+              "name": "port",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "Your Veeam Backup And Replication associated password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Your Veeam Backup And Replication username",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "username",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "veeam.veeamEnterprise.Task[]",
-          "noAuthentication": false,
-          "description": "Update Veeam enterprise configuration"
+          "responseType": "veeam.veeamEnterprise.Task[]"
         }
       ],
-      "description": "update operations"
+      "path": "/veeam/veeamEnterprise/{serviceName}/update"
     }
   ],
-  "resourcePath": "/veeam/veeamEnterprise",
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -439,11 +438,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -451,11 +450,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -464,11 +463,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -486,206 +485,206 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "veeam.veeamEnterprise.Account": {
+      "description": "Veeeam Enterprise offer",
       "id": "Account",
       "namespace": "veeam.veeamEnterprise",
-      "description": "Veeeam Enterprise offer",
       "properties": {
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This Backup Server IP",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This Backup Server port",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Your Veeam Enterprise Service name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "sourceIp": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OVH Enterprise Manager IP",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         }
       }
     },
     "veeam.veeamEnterprise.Task": {
+      "description": "Operation with the Enterprise Account",
       "id": "Task",
       "namespace": "veeam.veeamEnterprise",
-      "description": "Operation with the Enterprise Account",
       "properties": {
         "endDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Task completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "progress": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current progress",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Task creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "state": {
-          "type": "veeamEnterprise.TaskStateEnum",
-          "fullType": "veeamEnterprise.TaskStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current Task state",
-          "required": true
+          "fullType": "veeamEnterprise.TaskStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "veeamEnterprise.TaskStateEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "veeamEnterprise.TaskStateEnum": {
-      "id": "TaskStateEnum",
-      "namespace": "veeamEnterprise",
       "description": "All possible states for a Veeam Enterprise Task",
       "enum": [
         "canceled",
@@ -698,7 +697,10 @@ export const schema: Schema = {
         "waiting",
         "waitingForChilds"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "veeamEnterprise"
     }
-  }
+  },
+  "resourcePath": "/veeam/veeamEnterprise"
 }

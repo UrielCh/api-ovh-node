@@ -1,679 +1,678 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/deskaas.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/deskaas",
+      "description": "Operations about the DESKAAS service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DESKAAS service"
+      "path": "/deskaas"
     },
     {
-      "path": "/deskaas/{serviceName}",
+      "description": "Desktop As A Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "deskaas.deskaas",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "deskaas.deskaas"
         }
       ],
-      "description": "Desktop As A Service"
+      "path": "/deskaas/{serviceName}"
     },
     {
-      "path": "/deskaas/{serviceName}/changeAlias",
+      "description": "changeAlias operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the Virtual Desktop alias",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "New alias of Desktop As A Service",
+              "fullType": "string",
               "name": "alias",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "New alias of Desktop As A Service"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "deskaas.Task",
-          "noAuthentication": false,
-          "description": "Change the Virtual Desktop alias"
+          "responseType": "deskaas.Task"
         }
       ],
-      "description": "changeAlias operations"
+      "path": "/deskaas/{serviceName}/changeAlias"
     },
     {
-      "path": "/deskaas/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactTech",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The contact to set as billing contact",
               "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
-            },
-            {
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The contact to set as tech contact",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "contactTech",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/deskaas/{serviceName}/changeContact"
     },
     {
-      "path": "/deskaas/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/deskaas/{serviceName}/confirmTermination"
     },
     {
-      "path": "/deskaas/{serviceName}/console",
+      "description": "console operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "New console access",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "deskaas.Task",
-          "noAuthentication": false,
-          "description": "New console access"
+          "responseType": "deskaas.Task"
         }
       ],
-      "description": "console operations"
+      "path": "/deskaas/{serviceName}/console"
     },
     {
-      "path": "/deskaas/{serviceName}/passwordPolicy",
+      "description": "passwordPolicy operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the current password policy for your Desktop As A Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "deskaas.passwordPolicy",
-          "noAuthentication": false,
-          "description": "Get the current password policy for your Desktop As A Service"
+          "responseType": "deskaas.passwordPolicy"
         }
       ],
-      "description": "passwordPolicy operations"
+      "path": "/deskaas/{serviceName}/passwordPolicy"
     },
     {
-      "path": "/deskaas/{serviceName}/reboot",
+      "description": "reboot operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Reboot the Operating system of the Cloud Desktop.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "deskaas.Task",
-          "noAuthentication": false,
-          "description": "Reboot the Operating system of the Cloud Desktop."
+          "responseType": "deskaas.Task"
         }
       ],
-      "description": "reboot operations"
+      "path": "/deskaas/{serviceName}/reboot"
     },
     {
-      "path": "/deskaas/{serviceName}/refresh",
+      "description": "refresh operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Refresh the Operating system of the Desktop As A Service. All your personnal data are kept.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "deskaas.Task",
-          "noAuthentication": false,
-          "description": "Refresh the Operating system of the Desktop As A Service. All your personnal data are kept."
+          "responseType": "deskaas.Task"
         }
       ],
-      "description": "refresh operations"
+      "path": "/deskaas/{serviceName}/refresh"
     },
     {
-      "path": "/deskaas/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/deskaas/{serviceName}/serviceInfos"
     },
     {
-      "path": "/deskaas/{serviceName}/task",
+      "description": "List the deskaas.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Tasks associated with this Desktop As A Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "state",
               "dataType": "deskaas.TaskStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of state property (=)",
               "fullType": "deskaas.TaskStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (=)"
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks associated with this Desktop As A Service"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the deskaas.Task objects"
+      "path": "/deskaas/{serviceName}/task"
     },
     {
-      "path": "/deskaas/{serviceName}/task/{taskId}",
+      "description": "Operation on a Desktop As A Service component",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Task ID",
+              "fullType": "long",
+              "name": "taskId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "taskId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Task ID"
-            }
-          ],
-          "responseType": "deskaas.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Operation on a Desktop As A Service component"
-    },
-    {
-      "path": "/deskaas/{serviceName}/terminate",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "deskaas.Task"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/deskaas/{serviceName}/task/{taskId}"
     },
     {
-      "path": "/deskaas/{serviceName}/upgrade",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/deskaas/{serviceName}/terminate"
+    },
+    {
+      "description": "upgrade operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Upgrading the Desktop As A Service to another profile. The Virtual Desktop will not be available during upgrade and has to be restarted. You cannot downgrade a Virtual Desktop",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "New plan of Desktop As A Service",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "New plan of Desktop As A Service"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "New reference of Desktop As A Service",
+              "fullType": "string",
               "name": "newReference",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "New reference of Desktop As A Service"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "deskaas.Task",
-          "noAuthentication": false,
-          "description": "Upgrading the Desktop As A Service to another profile. The Virtual Desktop will not be available during upgrade and has to be restarted. You cannot downgrade a Virtual Desktop"
+          "responseType": "deskaas.Task"
         }
       ],
-      "description": "upgrade operations"
+      "path": "/deskaas/{serviceName}/upgrade"
     },
     {
-      "path": "/deskaas/{serviceName}/user",
+      "description": "Desktop As A Service User",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "deskaas.User",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "deskaas.User"
         }
       ],
-      "description": "Desktop As A Service User"
+      "path": "/deskaas/{serviceName}/user"
     },
     {
-      "path": "/deskaas/{serviceName}/user/changePassword",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change Desktop As A Service user password",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "New password for this Desktop As A Service user. It must fits your Desktop As A Service password policy. If this field is empty, a random password will be generated and sent by email.",
               "fullType": "password",
-              "required": false,
-              "description": "New password for this Desktop As A Service user. It must fits your Desktop As A Service password policy. If this field is empty, a random password will be generated and sent by email."
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "deskaas.Task",
-          "noAuthentication": false,
-          "description": "Change Desktop As A Service user password"
-        }
-      ],
-      "description": "changePassword operations"
-    },
-    {
-      "path": "/deskaas/{serviceName}/user/changeProperties",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "email",
-              "dataType": "string",
+              "name": "password",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": ""
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "deskaas.Task",
-          "noAuthentication": false,
-          "description": "Change Desktop As A Service user properties"
+          "responseType": "deskaas.Task"
         }
       ],
-      "description": "changeProperties operations"
+      "path": "/deskaas/{serviceName}/user/changePassword"
     },
     {
-      "path": "/deskaas/{serviceName}/user/task",
+      "description": "changeProperties operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
+          "description": "Change Desktop As A Service user properties",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "email",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "state",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "deskaas.Task"
+        }
+      ],
+      "path": "/deskaas/{serviceName}/user/changeProperties"
+    },
+    {
+      "description": "List the deskaas.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Tasks associated with this User",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "deskaas.TaskStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of state property (=)",
               "fullType": "deskaas.TaskStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (=)"
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks associated with this User"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the deskaas.Task objects"
+      "path": "/deskaas/{serviceName}/user/task"
     },
     {
-      "path": "/deskaas/{serviceName}/user/task/{taskId}",
+      "description": "Operation on a Desktop As A Service component",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "taskId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Task ID",
               "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "deskaas.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "deskaas.Task"
         }
       ],
-      "description": "Operation on a Desktop As A Service component"
+      "path": "/deskaas/{serviceName}/user/task/{taskId}"
     }
   ],
-  "resourcePath": "/deskaas",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "complexType.UnitAndValue<T>": {
-      "id": "UnitAndValue",
-      "namespace": "complexType",
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "deskaas.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "deskaas",
       "description": "All states a Desktop As A Service can be in",
       "enum": [
         "available",
@@ -682,66 +681,66 @@ export const schema: Schema = {
         "error",
         "reserved"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "deskaas"
     },
     "deskaas.Task": {
+      "description": "Operation on a Desktop As A Service component",
       "id": "Task",
       "namespace": "deskaas",
-      "description": "Operation on a Desktop As A Service component",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current progress description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "lastModificationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Task last modification date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "progress": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current progress",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "deskaas.TaskStateEnum",
-          "fullType": "deskaas.TaskStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current Task state",
-          "required": true
+          "fullType": "deskaas.TaskStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "deskaas.TaskStateEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "deskaas.TaskStateEnum": {
-      "id": "TaskStateEnum",
-      "namespace": "deskaas",
       "description": "All states a Desktop As A Service Task can be in",
       "enum": [
         "canceled",
@@ -756,219 +755,219 @@ export const schema: Schema = {
         "waitingForChilds",
         "waitingTodo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "deskaas"
     },
     "deskaas.User": {
+      "description": "Desktop As A Service User",
       "id": "User",
       "namespace": "deskaas",
-      "description": "Desktop As A Service User",
       "properties": {
         "activationState": {
-          "type": "deskaas.user.ActivationStateEnum",
-          "fullType": "deskaas.user.ActivationStateEnum",
           "canBeNull": false,
+          "fullType": "deskaas.user.ActivationStateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "deskaas.user.ActivationStateEnum"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "deskaas.user.StateEnum",
-          "fullType": "deskaas.user.StateEnum",
           "canBeNull": false,
+          "fullType": "deskaas.user.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "deskaas.user.StateEnum"
         },
         "userId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "deskaas.deskaas": {
+      "description": "Desktop As A Service",
       "id": "deskaas",
       "namespace": "deskaas",
-      "description": "Desktop As A Service",
       "properties": {
         "alias": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Alias determined by the use",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "dataDisk": {
-          "type": "complexType.UnitAndValue<double>",
-          "fullType": "complexType.UnitAndValue<double>",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Data allocated to desktop",
-          "required": true
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": true,
+          "required": true,
+          "type": "complexType.UnitAndValue<double>"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Outgoing ip",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "os": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operating system of desktop",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Profile of Virtual Desktop",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "ram": {
-          "type": "complexType.UnitAndValue<double>",
-          "fullType": "complexType.UnitAndValue<double>",
           "canBeNull": false,
-          "readOnly": true,
           "description": "RAM allocated to desktop",
-          "required": true
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": true,
+          "required": true,
+          "type": "complexType.UnitAndValue<double>"
         },
         "reference": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Reference of Virtual Desktop",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service name of your Desktop As A Service",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "deskaas.StateEnum",
-          "fullType": "deskaas.StateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current state of your Virtual Desktop",
-          "required": true
+          "fullType": "deskaas.StateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "deskaas.StateEnum"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "URL to connect to the virtualDesktop",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "vcpu": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Vcpu allocated to desktop",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "deskaas.passwordPolicy": {
+      "description": "A structure describing the current password policy for your Dedicated Cloud",
       "id": "passwordPolicy",
       "namespace": "deskaas",
-      "description": "A structure describing the current password policy for your Dedicated Cloud",
       "properties": {
         "deniedChars": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of denied characters in the password",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "digitMandatory": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not a digit (0-9) is mandatory in the password",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "letterMandatory": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not a letter (a-z or A-Z) is mandatory in the password",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "lowercaseLetterMandatory": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not a lowercase letter (a-z) is mandatory in the password",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "maxLength": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum lenght of the password",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "minLength": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum lenght of the password",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "specialMandatory": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not a special character (\\W or _) is mandatory in the password",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "uppercaseLetterMandatory": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not an uppercase letter (A-Z) is mandatory in the password",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "deskaas.user.ActivationStateEnum": {
-      "id": "ActivationStateEnum",
-      "namespace": "deskaas.user",
       "description": "All activation states a Dedicated Cloud User can have",
       "enum": [
         "disabled",
@@ -978,11 +977,11 @@ export const schema: Schema = {
         "toDisable",
         "toEnable"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ActivationStateEnum",
+      "namespace": "deskaas.user"
     },
     "deskaas.user.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "deskaas.user",
       "description": "All states a Dedicated Cloud User can be in",
       "enum": [
         "creating",
@@ -990,58 +989,58 @@ export const schema: Schema = {
         "delivered",
         "error"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "deskaas.user"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1052,11 +1051,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1064,11 +1063,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -1077,11 +1076,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -1099,108 +1098,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/deskaas"
 }

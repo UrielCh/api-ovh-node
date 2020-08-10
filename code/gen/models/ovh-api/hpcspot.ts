@@ -1,329 +1,328 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/hpcspot.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/hpcspot",
+      "description": "Operations about the HPCSPOT service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the HPCSPOT service"
+      "path": "/hpcspot"
     },
     {
-      "path": "/hpcspot/{serviceName}",
+      "description": "Account HPC Spot",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hpcspot.Account",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "hpcspot.Account"
         }
       ],
-      "description": "Account HPC Spot"
+      "path": "/hpcspot/{serviceName}"
     },
     {
-      "path": "/hpcspot/{serviceName}/consumption",
+      "description": "List the hpcspot.Consumption objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Details of the consumption of your account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "hpcspotItemEndDate.to",
               "dataType": "datetime",
-              "paramType": "query",
+              "description": "Filter the value of hpcspotItemEndDate property (>=)",
               "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of hpcspotItemEndDate property (<=)"
-            },
-            {
-              "name": "orderId",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of orderId property (=)"
-            },
-            {
               "name": "hpcspotItemEndDate.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of orderId property (=)",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "datetime",
-              "paramType": "query",
+              "description": "Filter the value of hpcspotItemEndDate property (<=)",
               "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of hpcspotItemEndDate property (>=)"
+              "name": "hpcspotItemEndDate.to",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "type",
               "dataType": "hpcspot.ConsumptionTypeEnum",
-              "paramType": "query",
+              "description": "Filter the value of type property (=)",
               "fullType": "hpcspot.ConsumptionTypeEnum",
-              "required": false,
-              "description": "Filter the value of type property (=)"
-            },
-            {
-              "name": "hpcspotItemId",
-              "dataType": "long",
+              "name": "type",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of hpcspotItemId property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Details of the consumption of your account"
-        }
-      ],
-      "description": "List the hpcspot.Consumption objects"
-    },
-    {
-      "path": "/hpcspot/{serviceName}/consumption/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": false
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Filter the value of hpcspotItemId property (=)",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "hpcspotItemId",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "hpcspot.Consumption",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "long[]"
         }
       ],
-      "description": "Detail of a HPC Spot consumtion"
+      "path": "/hpcspot/{serviceName}/consumption"
     },
     {
-      "path": "/hpcspot/{serviceName}/serviceInfos",
+      "description": "Detail of a HPC Spot consumtion",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
+          "responseType": "hpcspot.Consumption"
+        }
+      ],
+      "path": "/hpcspot/{serviceName}/consumption/{id}"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/hpcspot/{serviceName}/serviceInfos"
     }
   ],
-  "resourcePath": "/hpcspot",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "complexType.UnitAndValue<T>": {
-      "id": "UnitAndValue",
-      "namespace": "complexType",
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "hpcspot.Account": {
+      "description": "Account HPC Spot",
       "id": "Account",
       "namespace": "hpcspot",
-      "description": "Account HPC Spot",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the HPC Spot Account",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "hpcspot.Consumption": {
+      "description": "Detail of a HPC Spot consumtion",
       "id": "Consumption",
       "namespace": "hpcspot",
-      "description": "Detail of a HPC Spot consumtion",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Description of the ressource",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "hpcspotItemEndDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the completion of the item consumption",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "hpcspotItemId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ID of the linked job on HPC Spot interface",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "hpcspotUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "URL for the description of the consumption on the HPC Spot interface",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ID of the detail",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ID of the Order that billed this item. If null, this item has not been billed",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "quantity": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Quantity consumed (minutes, core minutes, licences, token)",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "reference": {
-          "type": "hpcspot.ConsumptionReferenceEnum",
-          "fullType": "hpcspot.ConsumptionReferenceEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Reference of the item. This reference is linked with the type of the item",
-          "required": true
+          "fullType": "hpcspot.ConsumptionReferenceEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "hpcspot.ConsumptionReferenceEnum"
         },
         "type": {
-          "type": "hpcspot.ConsumptionTypeEnum",
-          "fullType": "hpcspot.ConsumptionTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of consumption",
-          "required": true
+          "fullType": "hpcspot.ConsumptionTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "hpcspot.ConsumptionTypeEnum"
         }
       }
     },
     "hpcspot.ConsumptionReferenceEnum": {
-      "id": "ConsumptionReferenceEnum",
-      "namespace": "hpcspot",
       "description": "All references a HPC Spot consumption can be in",
       "enum": [
         "12core.60gb.quadrok4000",
@@ -339,69 +338,69 @@ export const schema: Schema = {
         "8core.30gb.quadrok4000",
         "8core.32gb.1teslak20"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ConsumptionReferenceEnum",
+      "namespace": "hpcspot"
     },
     "hpcspot.ConsumptionTypeEnum": {
-      "id": "ConsumptionTypeEnum",
-      "namespace": "hpcspot",
       "description": "All types a HPC Spot consumption can be in",
       "enum": [
         "job",
         "reservation",
         "session"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ConsumptionTypeEnum",
+      "namespace": "hpcspot"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -412,11 +411,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -424,108 +423,111 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/hpcspot"
 }

@@ -1,757 +1,756 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.ovh.com:443/1.0/sslGateway.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/sslGateway",
+      "description": "Operations about the SSLGATEWAY service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the SSLGATEWAY service"
-    },
-    {
-      "path": "/sslGateway/availableZones",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": true,
-          "description": "List of zone available for an SSL Gateway"
+          "responseType": "string[]"
         }
       ],
-      "description": "List of zone available for an SSL Gateway"
+      "path": "/sslGateway"
     },
     {
-      "path": "/sslGateway/eligibility",
+      "description": "List of zone available for an SSL Gateway",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List of zone available for an SSL Gateway",
           "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/sslGateway/availableZones"
+    },
+    {
+      "description": "Check domain eligibility. Return list of eligible IP(s) for this domain.",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Check domain eligibility. Return list of eligible IP(s) for this domain.",
+          "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "domain to check eligibility for SSL Gateway offer",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "domain to check eligibility for SSL Gateway offer"
+              "required": true
             }
           ],
-          "responseType": "sslGateway.EligibilityStatus",
-          "noAuthentication": true,
-          "description": "Check domain eligibility. Return list of eligible IP(s) for this domain."
+          "responseType": "sslGateway.EligibilityStatus"
         }
       ],
-      "description": "Check domain eligibility. Return list of eligible IP(s) for this domain."
+      "path": "/sslGateway/eligibility"
     },
     {
-      "path": "/sslGateway/{serviceName}",
+      "description": "Your SSL Gateway",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sslGateway.SslGateway",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sslGateway.SslGateway"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "sslGateway.SslGateway",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "sslGateway.SslGateway",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Your SSL Gateway"
+      "path": "/sslGateway/{serviceName}"
     },
     {
-      "path": "/sslGateway/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/sslGateway/{serviceName}/changeContact"
     },
     {
-      "path": "/sslGateway/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/sslGateway/{serviceName}/confirmTermination"
     },
     {
-      "path": "/sslGateway/{serviceName}/domain",
+      "description": "List the sslGateway.Domain objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Domains attached to your SSL Gateway",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Domains attached to your SSL Gateway"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Attach a new domain to your SSL Gateway",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Domain to attach",
               "fullType": "string",
-              "required": true,
-              "description": "Domain to attach"
+              "name": "domain",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sslGateway.Domain",
-          "noAuthentication": false,
-          "description": "Attach a new domain to your SSL Gateway"
+          "responseType": "sslGateway.Domain"
         }
       ],
-      "description": "List the sslGateway.Domain objects"
+      "path": "/sslGateway/{serviceName}/domain"
     },
     {
-      "path": "/sslGateway/{serviceName}/domain/{id}",
+      "description": "Domain attached to an SSL Gateway",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Detach a domain from your SSL Gateway",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Detach a domain from your SSL Gateway"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sslGateway.Domain",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sslGateway.Domain"
         }
       ],
-      "description": "Domain attached to an SSL Gateway"
+      "path": "/sslGateway/{serviceName}/domain/{id}"
     },
     {
-      "path": "/sslGateway/{serviceName}/natIp",
+      "description": "natIp operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Ip subnet used by OVH to nat requests to your SSL Gateway backends.",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sslGateway.NatIps[]",
-          "noAuthentication": false,
-          "description": "Ip subnet used by OVH to nat requests to your SSL Gateway backends."
+          "responseType": "sslGateway.NatIps[]"
         }
       ],
-      "description": "natIp operations"
+      "path": "/sslGateway/{serviceName}/natIp"
     },
     {
-      "path": "/sslGateway/{serviceName}/renewCertificate",
+      "description": "renewCertificate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Renew your SSL certificates",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain on which you want to renew certificate",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Domain on which you want to renew certificate"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Renew your SSL certificates"
+          "responseType": "string[]"
         }
       ],
-      "description": "renewCertificate operations"
+      "path": "/sslGateway/{serviceName}/renewCertificate"
     },
     {
-      "path": "/sslGateway/{serviceName}/server",
+      "description": "List the sslGateway.Server objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Servers attached to your SSL Gateway",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Servers attached to your SSL Gateway"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a new server to your SSL Gateway",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Port of your server",
+              "fullType": "long",
               "name": "port",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Port of your server"
+              "required": true
             },
             {
-              "name": "address",
               "dataType": "ip",
-              "paramType": "body",
+              "description": "IPv4 address of your server",
               "fullType": "ip",
-              "required": true,
-              "description": "IPv4 address of your server"
+              "name": "address",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sslGateway.Server",
-          "noAuthentication": false,
-          "description": "Add a new server to your SSL Gateway"
+          "responseType": "sslGateway.Server"
         }
       ],
-      "description": "List the sslGateway.Server objects"
+      "path": "/sslGateway/{serviceName}/server"
     },
     {
-      "path": "/sslGateway/{serviceName}/server/{id}",
+      "description": "Server attached to an SSL Gateway",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Remove a server",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove a server"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sslGateway.Server",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sslGateway.Server"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "sslGateway.Server",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "sslGateway.Server",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Server attached to an SSL Gateway"
+      "path": "/sslGateway/{serviceName}/server/{id}"
     },
     {
-      "path": "/sslGateway/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/sslGateway/{serviceName}/serviceInfos"
     },
     {
-      "path": "/sslGateway/{serviceName}/task",
+      "description": "List the sslGateway.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Task for this SSL Gateway",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Task for this SSL Gateway"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the sslGateway.Task objects"
+      "path": "/sslGateway/{serviceName}/task"
     },
     {
-      "path": "/sslGateway/{serviceName}/task/{id}",
+      "description": "SSL Gateway tasks",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "sslGateway.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "sslGateway.Task"
         }
       ],
-      "description": "SSL Gateway tasks"
+      "path": "/sslGateway/{serviceName}/task/{id}"
     },
     {
-      "path": "/sslGateway/{serviceName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/sslGateway/{serviceName}/terminate"
     }
   ],
-  "resourcePath": "/sslGateway",
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -762,11 +761,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -774,11 +773,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -787,11 +786,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -809,143 +808,143 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "sslGateway.Domain": {
+      "description": "Domain attached to an SSL Gateway",
       "id": "Domain",
       "namespace": "sslGateway",
-      "description": "Domain attached to an SSL Gateway",
       "properties": {
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain name attached to your SSL Gateway",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your domain",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "sslGateway.DomainStateEnum",
-          "fullType": "sslGateway.DomainStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain state",
-          "required": true
+          "fullType": "sslGateway.DomainStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "sslGateway.DomainStateEnum"
         }
       }
     },
     "sslGateway.DomainStateEnum": {
-      "id": "DomainStateEnum",
-      "namespace": "sslGateway",
       "description": "Possible values for SSL Gateway domain state",
       "enum": [
         "creating",
@@ -955,71 +954,71 @@ export const schema: Schema = {
         "internal",
         "ok"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainStateEnum",
+      "namespace": "sslGateway"
     },
     "sslGateway.EligibilityStatus": {
+      "description": "A structure describing the eligibility status of a domain",
       "id": "EligibilityStatus",
       "namespace": "sslGateway",
-      "description": "A structure describing the eligibility status of a domain",
       "properties": {
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Customer domain name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ip6s": {
-          "type": "ipv6[]",
-          "fullType": "ipv6[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Eligible IP(s) v6 for this domain",
-          "required": true
+          "fullType": "ipv6[]",
+          "readOnly": false,
+          "required": true,
+          "type": "ipv6[]"
         },
         "ips": {
-          "type": "ipv4[]",
-          "fullType": "ipv4[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Eligible IP(s) for this domain",
-          "required": true
+          "fullType": "ipv4[]",
+          "readOnly": false,
+          "required": true,
+          "type": "ipv4[]"
         },
         "isHostedByOvh": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether this domain is hosted by Ovh or not",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "sslGateway.NatIps": {
+      "description": "a list of {zone, nat Ip}",
       "id": "NatIps",
       "namespace": "sslGateway",
-      "description": "a list of {zone, nat Ip}",
       "properties": {
         "ip": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": false,
+          "fullType": "ipBlock[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "ipBlock[]"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "sslGateway.OfferEnum": {
-      "id": "OfferEnum",
-      "namespace": "sslGateway",
       "description": "List of SSL Gateway offers",
       "enum": [
         "advanced",
@@ -1027,50 +1026,50 @@ export const schema: Schema = {
         "free",
         "internal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OfferEnum",
+      "namespace": "sslGateway"
     },
     "sslGateway.Server": {
+      "description": "Server attached to an SSL Gateway",
       "id": "Server",
       "namespace": "sslGateway",
-      "description": "Server attached to an SSL Gateway",
       "properties": {
         "address": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "IP address of the server attached to your SSL Gateway",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your server",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Port of your server attached to your SSL Gateway",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "sslGateway.ServerStateEnum",
-          "fullType": "sslGateway.ServerStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Server state",
-          "required": true
+          "fullType": "sslGateway.ServerStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "sslGateway.ServerStateEnum"
         }
       }
     },
     "sslGateway.ServerStateEnum": {
-      "id": "ServerStateEnum",
-      "namespace": "sslGateway",
       "description": "Possible values for SSL Gateway server state",
       "enum": [
         "creating",
@@ -1080,141 +1079,141 @@ export const schema: Schema = {
         "ok",
         "updating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServerStateEnum",
+      "namespace": "sslGateway"
     },
     "sslGateway.SslConfigurationEnum": {
-      "id": "SslConfigurationEnum",
-      "namespace": "sslGateway",
       "description": "Possible values for ssl ciphers",
       "enum": [
         "intermediate",
         "internal",
         "modern"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SslConfigurationEnum",
+      "namespace": "sslGateway"
     },
     "sslGateway.SslGateway": {
+      "description": "Your SSL Gateway",
       "id": "SslGateway",
       "namespace": "sslGateway",
-      "description": "Your SSL Gateway",
       "properties": {
         "allowedSource": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Restrict SSL Gateway access to these ip block. No restriction if null",
-          "required": false
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Custom name of your SSL Gateway",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "hsts": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Set to true to enable Strict-Transport-Security HTTP header",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "httpsRedirect": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Set to true to enable https redirect",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "ipv4": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The IPv4 you need to put in the A field of your domain name",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "ipv6": {
-          "type": "ipv6",
-          "fullType": "ipv6",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The IPv6 you need to put in the AAAA field of your domain name",
-          "required": false
+          "fullType": "ipv6",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6"
         },
         "metricsToken": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The metrics token associated with your SSL Gateway",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "offer": {
-          "type": "sslGateway.OfferEnum",
-          "fullType": "sslGateway.OfferEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current offer for your SSL Gateway",
-          "required": true
+          "fullType": "sslGateway.OfferEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "sslGateway.OfferEnum"
         },
         "reverse": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Custom reverse for your SSL Gateway",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "serverHttps": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Set to true to contact backend servers over HTTPS",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The internal name of your SSL Gateway",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "sslConfiguration": {
-          "type": "sslGateway.SslConfigurationEnum",
-          "fullType": "sslGateway.SslConfigurationEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null.",
-          "required": false
+          "fullType": "sslGateway.SslConfigurationEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "sslGateway.SslConfigurationEnum"
         },
         "state": {
-          "type": "sslGateway.StateEnum",
-          "fullType": "sslGateway.StateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current state of your SSL Gateway",
-          "required": true
+          "fullType": "sslGateway.StateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "sslGateway.StateEnum"
         },
         "zones": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Zones of your SSL Gateway",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         }
       }
     },
     "sslGateway.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "sslGateway",
       "description": "Possible values for SSL Gateway state",
       "enum": [
         "creating",
@@ -1226,58 +1225,58 @@ export const schema: Schema = {
         "suspended",
         "upgrading"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "sslGateway"
     },
     "sslGateway.Task": {
+      "description": "SSL Gateway tasks",
       "id": "Task",
       "namespace": "sslGateway",
-      "description": "SSL Gateway tasks",
       "properties": {
         "action": {
-          "type": "sslGateway.TaskActionEnum",
-          "fullType": "sslGateway.TaskActionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The action made",
-          "required": true
+          "fullType": "sslGateway.TaskActionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "sslGateway.TaskActionEnum"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of your task",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the task",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "progress": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task progress percentage",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "sslGateway.TaskStatusEnum",
-          "fullType": "sslGateway.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current status of your task",
-          "required": true
+          "fullType": "sslGateway.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "sslGateway.TaskStatusEnum"
         }
       }
     },
     "sslGateway.TaskActionEnum": {
-      "id": "TaskActionEnum",
-      "namespace": "sslGateway",
       "description": "Possible task action",
       "enum": [
         "addDomain",
@@ -1292,11 +1291,11 @@ export const schema: Schema = {
         "updateService",
         "upgrade"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskActionEnum",
+      "namespace": "sslGateway"
     },
     "sslGateway.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "sslGateway",
       "description": "Possible task status",
       "enum": [
         "blocked",
@@ -1307,7 +1306,10 @@ export const schema: Schema = {
         "paused",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "sslGateway"
     }
-  }
+  },
+  "resourcePath": "/sslGateway"
 }

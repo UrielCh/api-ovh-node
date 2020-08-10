@@ -1,3667 +1,3666 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/domain.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/domain",
+      "description": "Operations about the DOMAIN service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "whoisOwner",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of whoisOwner property (=)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of whoisOwner property (=)"
+              "name": "whoisOwner",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DOMAIN service"
+      "path": "/domain"
     },
     {
-      "path": "/domain/configurationRule",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get configuration rule applied for a domain in a given action",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "query",
+              "description": "The domain to get the configuration rule for",
               "fullType": "string",
-              "required": true,
-              "description": "The domain to get the configuration rule for"
+              "name": "domain",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "action",
               "dataType": "domain.ActionEnum",
-              "paramType": "query",
+              "description": "Depending on the action, the applied rule will change (transfer vs create)",
               "fullType": "domain.ActionEnum",
-              "required": true,
-              "description": "Depending on the action, the applied rule will change (transfer vs create)"
+              "name": "action",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "domain.configuration.rules.Rule",
-          "noAuthentication": true,
-          "description": "Get configuration rule applied for a domain in a given action"
+          "responseType": "domain.configuration.rules.Rule"
         }
       ],
-      "description": ""
+      "path": "/domain/configurationRule"
     },
     {
-      "path": "/domain/configurationRule/check",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Validate a rule data for a specified domain",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
               "dataType": "domain.configuration.rules.RuleData",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "domain.configuration.rules.RuleData",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "query",
+              "description": "The domain to check the rule data for",
               "fullType": "string",
-              "required": true,
-              "description": "The domain to check the rule data for"
+              "name": "domain",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "action",
               "dataType": "domain.ActionEnum",
-              "paramType": "query",
+              "description": "Depending on the action, the applied rule will change (transfer vs create)",
               "fullType": "domain.ActionEnum",
-              "required": true,
-              "description": "Depending on the action, the applied rule will change (transfer vs create)"
+              "name": "action",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": true,
-          "description": "Validate a rule data for a specified domain"
+          "responseType": "void"
         }
       ],
-      "description": ""
+      "path": "/domain/configurationRule/check"
     },
     {
-      "path": "/domain/contact",
+      "description": "Operations on contacts",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List all contacts",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "domain.Contact[]",
-          "noAuthentication": false,
-          "description": "List all contacts"
+          "responseType": "domain.Contact[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a contact",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.Contact",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "domain.Contact",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "domain.Contact",
-          "noAuthentication": false,
-          "description": "Create a contact"
+          "responseType": "domain.Contact"
         }
       ],
-      "description": "Operations on contacts"
+      "path": "/domain/contact"
     },
     {
-      "path": "/domain/contact/{contactId}",
+      "description": "Operations on contacts",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get details about a contact",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "long",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.Contact",
-          "noAuthentication": false,
-          "description": "Get details about a contact"
+          "responseType": "domain.Contact"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update a contact",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.Contact",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "domain.Contact",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "contactId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "long",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.Contact",
-          "noAuthentication": false,
-          "description": "Update a contact"
+          "responseType": "domain.Contact"
         }
       ],
-      "description": "Operations on contacts"
+      "path": "/domain/contact/{contactId}"
     },
     {
-      "path": "/domain/data/afnicAssociationInformation",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve all association information according to Afnic",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "long[]",
           "noAuthentication": false,
-          "description": "Retrieve all association information according to Afnic"
+          "parameters": [],
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new association information according to Afnic",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "date",
+              "description": "Date of the declaration of the association",
+              "fullType": "date",
               "name": "declarationDate",
-              "dataType": "date",
               "paramType": "body",
-              "fullType": "date",
-              "required": true,
-              "description": "Date of the declaration of the association"
+              "required": true
             },
             {
+              "dataType": "date",
+              "description": "Date of the publication of the declaration of the association",
+              "fullType": "date",
               "name": "publicationDate",
-              "dataType": "date",
               "paramType": "body",
-              "fullType": "date",
-              "required": true,
-              "description": "Date of the publication of the declaration of the association"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Number of the publication of the declaration of the association",
+              "fullType": "string",
               "name": "publicationNumber",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Number of the publication of the declaration of the association"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Page number of the publication of the declaration of the association",
+              "fullType": "string",
               "name": "publicationPageNumber",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Page number of the publication of the declaration of the association"
+              "required": true
             },
             {
-              "name": "contactId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Contact ID related to the association contact information",
               "fullType": "long",
-              "required": true,
-              "description": "Contact ID related to the association contact information"
+              "name": "contactId",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "domain.data.AssociationContact",
-          "noAuthentication": false,
-          "description": "Post a new association information according to Afnic"
+          "responseType": "domain.data.AssociationContact"
         }
       ],
-      "description": "Missing description"
+      "path": "/domain/data/afnicAssociationInformation"
     },
     {
-      "path": "/domain/data/afnicAssociationInformation/{associationInformationId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve an association information according to Afnic",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Association information ID",
+              "fullType": "long",
               "name": "associationInformationId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Association information ID"
+              "required": true
             }
           ],
-          "responseType": "domain.data.AssociationContact",
-          "noAuthentication": false,
-          "description": "Retrieve an association information according to Afnic"
+          "responseType": "domain.data.AssociationContact"
         }
       ],
-      "description": "Missing description"
+      "path": "/domain/data/afnicAssociationInformation/{associationInformationId}"
     },
     {
-      "path": "/domain/data/afnicCorporationTrademarkInformation",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve all corporation trademark information according to Afnic",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "long[]",
           "noAuthentication": false,
-          "description": "Retrieve all corporation trademark information according to Afnic"
+          "parameters": [],
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new corporation trademark information according to Afnic",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Number of the Inpi declaration",
+              "fullType": "string",
               "name": "inpiNumber",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Number of the Inpi declaration"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Owner of the trademark",
+              "fullType": "string",
               "name": "inpiTrademarkOwner",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Owner of the trademark"
+              "required": true
             },
             {
-              "name": "contactId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Contact ID related to the Inpi additional information",
               "fullType": "long",
-              "required": true,
-              "description": "Contact ID related to the Inpi additional information"
+              "name": "contactId",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "domain.data.AfnicCorporationTrademarkContact",
-          "noAuthentication": false,
-          "description": "Post a new corporation trademark information according to Afnic"
+          "responseType": "domain.data.AfnicCorporationTrademarkContact"
         }
       ],
-      "description": "Missing description"
+      "path": "/domain/data/afnicCorporationTrademarkInformation"
     },
     {
-      "path": "/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve a corporation trademark information according to Afnic",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Afnic corporation trademark ID",
+              "fullType": "long",
               "name": "afnicCorporationTrademarkId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Afnic corporation trademark ID"
+              "required": true
             }
           ],
-          "responseType": "domain.data.AfnicCorporationTrademarkContact",
-          "noAuthentication": false,
-          "description": "Retrieve a corporation trademark information according to Afnic"
+          "responseType": "domain.data.AfnicCorporationTrademarkContact"
         }
       ],
-      "description": "Missing description"
+      "path": "/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}"
     },
     {
-      "path": "/domain/data/claimNotice",
+      "description": "Retrive claim notices",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve claim notices associated to a domain",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "required": true
             }
           ],
-          "responseType": "domain.data.claimNotice.ClaimNotice",
-          "noAuthentication": true,
-          "description": "Retrieve claim notices associated to a domain"
+          "responseType": "domain.data.claimNotice.ClaimNotice"
         }
       ],
-      "description": "Retrive claim notices"
+      "path": "/domain/data/claimNotice"
     },
     {
-      "path": "/domain/data/extension",
+      "description": "List all the extensions for a specific country",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List all the extensions for a specific country",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "country",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Ovh subsidiary targeted",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": false,
-              "description": "Ovh subsidiary targeted"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": true,
-          "description": "List all the extensions for a specific country"
-        }
-      ],
-      "description": "List all the extensions for a specific country"
-    },
-    {
-      "path": "/domain/data/proContact",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Retrieve all your Pro Contact"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "jobDescription",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Description of your job"
-            },
-            {
-              "name": "authority",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Authority that certify your profesional status"
-            },
-            {
-              "name": "authorityWebsite",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Website of the authority that certify your profesional status"
-            },
-            {
-              "name": "licenseNumber",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "License number given by the authority"
-            },
-            {
-              "name": "contactId",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Contact ID that refer to that .pro information"
-            }
-          ],
-          "responseType": "domain.data.ProContact",
-          "noAuthentication": false,
-          "description": "Post new information about .pro contact information"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/domain/data/proContact/{proContactId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "proContactId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Pro contact ID"
-            }
-          ],
-          "responseType": "domain.data.ProContact",
-          "noAuthentication": false,
-          "description": "Retrieve information about a Pro Contact"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/domain/data/smd",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "protectedLabels.label",
-              "dataType": "string",
+              "name": "country",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of protectedLabels.label property (=)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List all your SMD files"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "data",
-              "dataType": "text",
-              "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "SMD content file"
-            }
-          ],
-          "responseType": "domain.data.Smd",
-          "noAuthentication": false,
-          "description": "Post a new SMD file"
+          "responseType": "string[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/domain/data/extension"
     },
     {
-      "path": "/domain/data/smd/{smdId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "smdId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Smd ID"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a SMD file"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Retrieve all your Pro Contact",
           "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "smdId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Smd ID"
-            }
-          ],
-          "responseType": "domain.data.Smd",
           "noAuthentication": false,
-          "description": "Retrieve information about a SMD file"
+          "parameters": [],
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "PUT",
+          "description": "Post new information about .pro contact information",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "data",
-              "dataType": "text",
+              "dataType": "string",
+              "description": "Description of your job",
+              "fullType": "string",
+              "name": "jobDescription",
               "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "SMD content file"
+              "required": true
             },
             {
-              "name": "smdId",
+              "dataType": "string",
+              "description": "Authority that certify your profesional status",
+              "fullType": "string",
+              "name": "authority",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Website of the authority that certify your profesional status",
+              "fullType": "string",
+              "name": "authorityWebsite",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "License number given by the authority",
+              "fullType": "string",
+              "name": "licenseNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Contact ID that refer to that .pro information",
               "fullType": "long",
-              "required": true,
-              "description": "Smd ID"
+              "name": "contactId",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "domain.data.Smd",
-          "noAuthentication": false,
-          "description": "Modify an existing SMD file"
+          "responseType": "domain.data.ProContact"
         }
       ],
-      "description": "Missing description"
+      "path": "/domain/data/proContact"
     },
     {
-      "path": "/domain/rules",
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve information about a Pro Contact",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Pro contact ID",
+              "fullType": "long",
+              "name": "proContactId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.data.ProContact"
+        }
+      ],
+      "path": "/domain/data/proContact/{proContactId}"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List all your SMD files",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Filter the value of protectedLabels.label property (=)",
+              "fullType": "string",
+              "name": "protectedLabels.label",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new SMD file",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "SMD content file",
+              "fullType": "text",
+              "name": "data",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "domain.data.Smd"
+        }
+      ],
+      "path": "/domain/data/smd"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete a SMD file",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Smd ID",
+              "fullType": "long",
+              "name": "smdId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve information about a SMD file",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Smd ID",
+              "fullType": "long",
+              "name": "smdId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.data.Smd"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Modify an existing SMD file",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "SMD content file",
+              "fullType": "text",
+              "name": "data",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Smd ID",
+              "fullType": "long",
+              "name": "smdId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.data.Smd"
+        }
+      ],
+      "path": "/domain/data/smd/{smdId}"
+    },
+    {
+      "description": "Rules for creating a domain",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List all the rules for a specific cartId/itemId",
           "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "cartId",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart ID concerned for the rules"
-            },
-            {
-              "name": "itemId",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": true,
-              "description": "Item ID concerned for the rules"
-            }
-          ],
-          "responseType": "domain.Rule",
           "noAuthentication": true,
-          "description": "List all the rules for a specific cartId/itemId"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID concerned for the rules",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Item ID concerned for the rules",
+              "fullType": "long",
+              "name": "itemId",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "domain.Rule"
         }
       ],
-      "description": "Rules for creating a domain"
+      "path": "/domain/rules"
     },
     {
-      "path": "/domain/zone",
+      "description": "Operations about the DNS service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DNS service"
+      "path": "/domain/zone"
     },
     {
-      "path": "/domain/zone/{zoneName}",
+      "description": "Zone dns Management",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.Zone",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.zone.Zone"
         }
       ],
-      "description": "Zone dns Management"
+      "path": "/domain/zone/{zoneName}"
     },
     {
-      "path": "/domain/zone/{zoneName}/capabilities",
+      "description": "capabilities operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Zone capabilities",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "zone.Capabilities",
-          "noAuthentication": false,
-          "description": "Zone capabilities"
+          "responseType": "zone.Capabilities"
         }
       ],
-      "description": "capabilities operations"
+      "path": "/domain/zone/{zoneName}/capabilities"
     },
     {
-      "path": "/domain/zone/{zoneName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/domain/zone/{zoneName}/changeContact"
     },
     {
-      "path": "/domain/zone/{zoneName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/domain/zone/{zoneName}/confirmTermination"
     },
     {
-      "path": "/domain/zone/{zoneName}/dnssec",
+      "description": "Manage Dnssec for this zone",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Disable Dnssec",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Disable Dnssec"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.Dnssec",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.zone.Dnssec"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Enable Dnssec",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Enable Dnssec"
+          "responseType": "void"
         }
       ],
-      "description": "Manage Dnssec for this zone"
+      "path": "/domain/zone/{zoneName}/dnssec"
     },
     {
-      "path": "/domain/zone/{zoneName}/dynHost/login",
+      "description": "List the domain.zone.DynHostLogin objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "DynHost' logins",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
               "name": "zoneName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "required": true
             },
             {
-              "name": "subDomain",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of login property (like)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of subDomain property (like)"
-            },
-            {
               "name": "login",
-              "dataType": "string",
               "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of subDomain property (like)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of login property (like)"
+              "name": "subDomain",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "DynHost' logins"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new DynHost login",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Subdomain that the login will be allowed to update (use * to allow all)",
+              "fullType": "string",
+              "name": "subDomain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Suffix that will be concatenated to the zoneName to create the login",
+              "fullType": "string",
               "name": "loginSuffix",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Suffix that will be concatenated to the zoneName to create the login"
+              "required": true
             },
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Password of the login",
               "fullType": "password",
-              "required": true,
-              "description": "Password of the login"
-            },
-            {
-              "name": "subDomain",
-              "dataType": "string",
+              "name": "password",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Subdomain that the login will be allowed to update (use * to allow all)"
+              "required": true
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.DynHostLogin",
-          "noAuthentication": false,
-          "description": "Create a new DynHost login"
+          "responseType": "domain.zone.DynHostLogin"
         }
       ],
-      "description": "List the domain.zone.DynHostLogin objects"
+      "path": "/domain/zone/{zoneName}/dynHost/login"
     },
     {
-      "path": "/domain/zone/{zoneName}/dynHost/login/{login}",
+      "description": "Manage DynHost login",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a DynHost login",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "login",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Login",
               "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "name": "login",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a DynHost login"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "login",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Login",
               "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "name": "login",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.DynHostLogin",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.zone.DynHostLogin"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.zone.DynHostLogin",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "domain.zone.DynHostLogin",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
               "name": "zoneName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "required": true
             },
             {
-              "name": "login",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Login",
               "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "name": "login",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Manage DynHost login"
+      "path": "/domain/zone/{zoneName}/dynHost/login/{login}"
     },
     {
-      "path": "/domain/zone/{zoneName}/dynHost/login/{login}/changePassword",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change password of the DynHost login",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "New password of the DynHost login",
               "fullType": "password",
-              "required": true,
-              "description": "New password of the DynHost login"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Login"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Change password of the DynHost login"
+          "responseType": "void"
         }
       ],
-      "description": "changePassword operations"
+      "path": "/domain/zone/{zoneName}/dynHost/login/{login}/changePassword"
     },
     {
-      "path": "/domain/zone/{zoneName}/dynHost/record",
+      "description": "List the domain.zone.DynHostRecord objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "DynHost' records",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "subDomain",
               "dataType": "string",
+              "description": "Filter the value of subDomain property (like)",
+              "fullType": "string",
+              "name": "subDomain",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of subDomain property (like)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "DynHost' records"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new DynHost record (Don't forget to refresh the zone)",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "subDomain",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Subdomain of the DynHost record"
-            },
-            {
-              "name": "ip",
               "dataType": "ip",
-              "paramType": "body",
+              "description": "Ip address of the DynHost record",
               "fullType": "ip",
-              "required": true,
-              "description": "Ip address of the DynHost record"
+              "name": "ip",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Subdomain of the DynHost record",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "subDomain",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.DynHostRecord",
-          "noAuthentication": false,
-          "description": "Create a new DynHost record (Don't forget to refresh the zone)"
+          "responseType": "domain.zone.DynHostRecord"
         }
       ],
-      "description": "List the domain.zone.DynHostRecord objects"
+      "path": "/domain/zone/{zoneName}/dynHost/record"
     },
     {
-      "path": "/domain/zone/{zoneName}/dynHost/record/{id}",
+      "description": "DynHost record",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a DynHost record (Don't forget to refresh the zone)",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "required": true
             },
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
+              "name": "zoneName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a DynHost record (Don't forget to refresh the zone)"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.DynHostRecord",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.zone.DynHostRecord"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.zone.DynHostRecord",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "domain.zone.DynHostRecord",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "DynHost record"
+      "path": "/domain/zone/{zoneName}/dynHost/record/{id}"
     },
     {
-      "path": "/domain/zone/{zoneName}/export",
+      "description": "export operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Export zone",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "text",
-          "noAuthentication": false,
-          "description": "Export zone"
+          "responseType": "text"
         }
       ],
-      "description": "export operations"
+      "path": "/domain/zone/{zoneName}/export"
     },
     {
-      "path": "/domain/zone/{zoneName}/history",
+      "description": "List the domain.zone.ZoneRestorePoint objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Zone restore points",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "creationDate.from",
               "dataType": "datetime",
-              "paramType": "query",
+              "description": "Filter the value of creationDate property (<=)",
               "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDate property (>=)"
-            },
-            {
               "name": "creationDate.to",
-              "dataType": "datetime",
               "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDate property (>=)",
               "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDate property (<=)"
+              "name": "creationDate.from",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "datetime[]",
-          "noAuthentication": false,
-          "description": "Zone restore points"
+          "responseType": "datetime[]"
         }
       ],
-      "description": "List the domain.zone.ZoneRestorePoint objects"
+      "path": "/domain/zone/{zoneName}/history"
     },
     {
-      "path": "/domain/zone/{zoneName}/history/{creationDate}",
+      "description": "Zone restore point",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "creationDate",
-              "dataType": "datetime",
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
+              "name": "zoneName",
               "paramType": "path",
-              "fullType": "datetime",
-              "required": true,
-              "description": "Creation date"
+              "required": true
             },
             {
-              "name": "zoneName",
-              "dataType": "string",
+              "dataType": "datetime",
+              "description": "Creation date",
+              "fullType": "datetime",
+              "name": "creationDate",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "required": true
             }
           ],
-          "responseType": "domain.zone.ZoneRestorePoint",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.zone.ZoneRestorePoint"
         }
       ],
-      "description": "Zone restore point"
+      "path": "/domain/zone/{zoneName}/history/{creationDate}"
     },
     {
-      "path": "/domain/zone/{zoneName}/history/{creationDate}/restore",
+      "description": "restore operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Restore the DNS zone",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "creationDate",
               "dataType": "datetime",
-              "paramType": "path",
+              "description": "Creation date",
               "fullType": "datetime",
-              "required": true,
-              "description": "Creation date"
+              "name": "creationDate",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.Task",
-          "noAuthentication": false,
-          "description": "Restore the DNS zone"
+          "responseType": "domain.zone.Task"
         }
       ],
-      "description": "restore operations"
+      "path": "/domain/zone/{zoneName}/history/{creationDate}/restore"
     },
     {
-      "path": "/domain/zone/{zoneName}/import",
+      "description": "import operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Import zone",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneFile",
               "dataType": "text",
-              "paramType": "body",
+              "description": "Zone file that will be imported",
               "fullType": "text",
-              "required": true,
-              "description": "Zone file that will be imported"
+              "name": "zoneFile",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.Task",
-          "noAuthentication": false,
-          "description": "Import zone"
+          "responseType": "domain.zone.Task"
         }
       ],
-      "description": "import operations"
+      "path": "/domain/zone/{zoneName}/import"
     },
     {
-      "path": "/domain/zone/{zoneName}/record",
+      "description": "List the domain.zone.Record objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Records of the zone",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
               "name": "zoneName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "required": true
             },
             {
-              "name": "fieldType",
-              "dataType": "zone.NamedResolutionFieldTypeEnum",
-              "paramType": "query",
-              "fullType": "zone.NamedResolutionFieldTypeEnum",
-              "required": false,
-              "description": "Filter the value of fieldType property (like)"
-            },
-            {
-              "name": "subDomain",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of subDomain property (like)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of subDomain property (like)"
+              "name": "subDomain",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "zone.NamedResolutionFieldTypeEnum",
+              "description": "Filter the value of fieldType property (like)",
+              "fullType": "zone.NamedResolutionFieldTypeEnum",
+              "name": "fieldType",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Records of the zone"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new DNS record (Don't forget to refresh the zone)",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "target",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Resource record target"
-            },
-            {
-              "name": "subDomain",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Resource record subdomain"
-            },
-            {
-              "name": "ttl",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Resource record ttl"
-            },
-            {
-              "name": "fieldType",
               "dataType": "zone.NamedResolutionFieldTypeEnum",
-              "paramType": "body",
+              "description": "Resource record Name",
               "fullType": "zone.NamedResolutionFieldTypeEnum",
-              "required": true,
-              "description": "Resource record Name"
+              "name": "fieldType",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Resource record target",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "target",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Resource record ttl",
+              "fullType": "long",
+              "name": "ttl",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Resource record subdomain",
+              "fullType": "string",
+              "name": "subDomain",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.Record",
-          "noAuthentication": false,
-          "description": "Create a new DNS record (Don't forget to refresh the zone)"
+          "responseType": "domain.zone.Record"
         }
       ],
-      "description": "List the domain.zone.Record objects"
+      "path": "/domain/zone/{zoneName}/record"
     },
     {
-      "path": "/domain/zone/{zoneName}/record/{id}",
+      "description": "Zone resource records",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a DNS record (Don't forget to refresh the zone)",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a DNS record (Don't forget to refresh the zone)"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.Record",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.zone.Record"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.zone.Record",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "domain.zone.Record",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Zone resource records"
+      "path": "/domain/zone/{zoneName}/record/{id}"
     },
     {
-      "path": "/domain/zone/{zoneName}/redirection",
+      "description": "List the domain.zone.Redirection objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Redirections",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "subDomain",
               "dataType": "string",
+              "description": "Filter the value of subDomain property (like)",
+              "fullType": "string",
+              "name": "subDomain",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of subDomain property (like)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Redirections"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new redirection (Don't forget to refresh the zone)",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "title",
               "dataType": "string",
-              "paramType": "body",
+              "description": "subdomain to redirect",
               "fullType": "string",
-              "required": false,
-              "description": "Title for invisible redirection"
-            },
-            {
               "name": "subDomain",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "subdomain to redirect"
+              "required": false
             },
             {
-              "name": "type",
               "dataType": "zone.RedirectionTypeEnum",
-              "paramType": "body",
+              "description": "Redirection type",
               "fullType": "zone.RedirectionTypeEnum",
-              "required": true,
-              "description": "Redirection type"
+              "name": "type",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Keywords for invisible redirection",
+              "fullType": "string",
               "name": "keywords",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Keywords for invisible redirection"
+              "required": false
             },
             {
-              "name": "target",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Title for invisible redirection",
               "fullType": "string",
-              "required": true,
-              "description": "Target of the redirection"
+              "name": "title",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Desciption for invisible redirection",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Desciption for invisible redirection"
+              "required": false
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Target of the redirection",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "target",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.Redirection",
-          "noAuthentication": false,
-          "description": "Create a new redirection (Don't forget to refresh the zone)"
+          "responseType": "domain.zone.Redirection"
         }
       ],
-      "description": "List the domain.zone.Redirection objects"
+      "path": "/domain/zone/{zoneName}/redirection"
     },
     {
-      "path": "/domain/zone/{zoneName}/redirection/{id}",
+      "description": "Redirection",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a redirection (Don't forget to refresh the zone)",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
+              "name": "zoneName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             },
             {
-              "name": "zoneName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a redirection (Don't forget to refresh the zone)"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.Redirection",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.zone.Redirection"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.zone.Redirection",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "domain.zone.Redirection",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Redirection"
-    },
-    {
-      "path": "/domain/zone/{zoneName}/refresh",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "zoneName",
-              "dataType": "string",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Apply zone modification on DNS servers"
+          "responseType": "void"
         }
       ],
-      "description": "refresh operations"
+      "path": "/domain/zone/{zoneName}/redirection/{id}"
     },
     {
-      "path": "/domain/zone/{zoneName}/reset",
+      "description": "refresh operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Apply zone modification on DNS servers",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "minimized",
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/domain/zone/{zoneName}/refresh"
+    },
+    {
+      "description": "reset operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reset the DNS zone",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Create only mandatory records",
               "fullType": "boolean",
-              "required": false,
-              "description": "Create only mandatory records"
-            },
-            {
-              "name": "DnsRecords",
-              "dataType": "zone.ResetRecord[]",
+              "name": "minimized",
               "paramType": "body",
-              "fullType": "zone.ResetRecord[]",
-              "required": false,
-              "description": "Records that will be set after reset"
+              "required": false
             },
             {
-              "name": "zoneName",
+              "dataType": "zone.ResetRecord[]",
+              "description": "Records that will be set after reset",
+              "fullType": "zone.ResetRecord[]",
+              "name": "DnsRecords",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Reset the DNS zone"
+          "responseType": "void"
         }
       ],
-      "description": "reset operations"
+      "path": "/domain/zone/{zoneName}/reset"
     },
     {
-      "path": "/domain/zone/{zoneName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/domain/zone/{zoneName}/serviceInfos"
     },
     {
-      "path": "/domain/zone/{zoneName}/soa",
+      "description": "Zone Start Of Authority",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.Soa",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.zone.Soa"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.zone.Soa",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "domain.zone.Soa",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Zone Start Of Authority"
+      "path": "/domain/zone/{zoneName}/soa"
     },
     {
-      "path": "/domain/zone/{zoneName}/status",
+      "description": "status operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Zone status",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "zone.Status",
-          "noAuthentication": false,
-          "description": "Zone status"
+          "responseType": "zone.Status"
         }
       ],
-      "description": "status operations"
+      "path": "/domain/zone/{zoneName}/status"
     },
     {
-      "path": "/domain/zone/{zoneName}/task",
+      "description": "List the domain.zone.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Domain pending tasks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
               "name": "zoneName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "required": true
             },
             {
-              "name": "function",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of function property (like)"
-            },
-            {
-              "name": "status",
               "dataType": "domain.OperationStatusEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "domain.OperationStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of function property (like)",
+              "fullType": "string",
+              "name": "function",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Domain pending tasks"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the domain.zone.Task objects"
+      "path": "/domain/zone/{zoneName}/task"
     },
     {
-      "path": "/domain/zone/{zoneName}/task/{id}",
+      "description": "Tasks associated to a zone",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Zone name",
+              "fullType": "string",
+              "name": "zoneName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             },
             {
-              "name": "zoneName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "required": true
             }
           ],
-          "responseType": "domain.zone.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.zone.Task"
         }
       ],
-      "description": "Tasks associated to a zone"
+      "path": "/domain/zone/{zoneName}/task/{id}"
     },
     {
-      "path": "/domain/zone/{zoneName}/task/{id}/accelerate",
+      "description": "accelerate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Accelerate the task",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Accelerate the task"
+          "responseType": "void"
         }
       ],
-      "description": "accelerate operations"
+      "path": "/domain/zone/{zoneName}/task/{id}/accelerate"
     },
     {
-      "path": "/domain/zone/{zoneName}/task/{id}/cancel",
+      "description": "cancel operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Cancel the task",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Cancel the task"
+          "responseType": "void"
         }
       ],
-      "description": "cancel operations"
+      "path": "/domain/zone/{zoneName}/task/{id}/cancel"
     },
     {
-      "path": "/domain/zone/{zoneName}/task/{id}/relaunch",
+      "description": "relaunch operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Relaunch the task",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Relaunch the task"
+          "responseType": "void"
         }
       ],
-      "description": "relaunch operations"
+      "path": "/domain/zone/{zoneName}/task/{id}/relaunch"
     },
     {
-      "path": "/domain/zone/{zoneName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "zoneName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone name",
               "fullType": "string",
-              "required": true,
-              "description": "Zone name"
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/domain/zone/{zoneName}/terminate"
     },
     {
-      "path": "/domain/{serviceName}",
+      "description": "Domain name administration",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "domain.Domain",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.Domain"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "domain.Domain",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "domain.Domain",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Domain name administration"
+      "path": "/domain/{serviceName}"
     },
     {
-      "path": "/domain/{serviceName}/activateZone",
+      "description": "activateZone operations",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-12-15T00:00:00+01:00",
             "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/dns"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "minimized",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Create only mandatory records"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Activate the DNS zone for this domain"
-        }
-      ],
-      "description": "activateZone operations"
-    },
-    {
-      "path": "/domain/{serviceName}/authInfo",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "password",
-          "noAuthentication": false,
-          "description": "Return authInfo code if the domain is unlocked"
-        }
-      ],
-      "description": "authInfo operations"
-    },
-    {
-      "path": "/domain/{serviceName}/changeContact",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "contactAdmin",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
-            },
-            {
-              "name": "contactTech",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
-            },
-            {
-              "name": "contactBilling",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
-        }
-      ],
-      "description": "Change the contacts of this service"
-    },
-    {
-      "path": "/domain/{serviceName}/configurations/obfuscatedEmails",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "domain.configurations.ObfuscatedEmails[]",
-          "noAuthentication": false,
-          "description": "Retrieve obfuscated emails configuration"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "PUT",
-          "parameters": [
-            {
-              "name": "contacts",
-              "dataType": "domain.ContactAllTypesEnum[]",
-              "paramType": "body",
-              "fullType": "domain.ContactAllTypesEnum[]",
-              "required": true,
-              "description": "Contact types where obfuscated emails can be activated"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "domain.configurations.ObfuscatedEmails[]",
-          "noAuthentication": false,
-          "description": "Save a new obfuscated emails configuration"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/domain/{serviceName}/configurations/obfuscatedEmails/refresh",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "contacts",
-              "dataType": "domain.ContactAllTypesEnum[]",
-              "paramType": "body",
-              "fullType": "domain.ContactAllTypesEnum[]",
-              "required": true,
-              "description": "Contact types where obfuscated emails will be refreshed"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Refresh an obfuscated emails configuration"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/domain/{serviceName}/configurations/optin",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "domain.configurations.Optin[]",
-          "noAuthentication": false,
-          "description": "Retrieve optin configuration"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "PUT",
-          "parameters": [
-            {
-              "name": "optin",
-              "dataType": "domain.configurations.Optin[]",
-              "paramType": "body",
-              "fullType": "domain.configurations.Optin[]",
-              "required": true,
-              "description": "New configuration about optin"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "domain.configurations.Optin[]",
-          "noAuthentication": false,
-          "description": "Save a new optin configuration"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/domain/{serviceName}/dsRecord",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "status",
-              "dataType": "dnssec.KeyStatusEnum",
-              "paramType": "query",
-              "fullType": "dnssec.KeyStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "name": "flags",
-              "dataType": "dnssec.KeyFlagEnum",
-              "paramType": "query",
-              "fullType": "dnssec.KeyFlagEnum",
-              "required": false,
-              "description": "Filter the value of flags property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List of domain's DS Records"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "keys",
-              "dataType": "dnssec.Key[]",
-              "paramType": "body",
-              "fullType": "dnssec.Key[]",
-              "required": true,
-              "description": "New Keys"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "domain.Task",
-          "noAuthentication": false,
-          "description": "Update DS records"
-        }
-      ],
-      "description": "List the domain.DnssecKey objects"
-    },
-    {
-      "path": "/domain/{serviceName}/dsRecord/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "domain.DnssecKey",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Domain's DNSSEC Key"
-    },
-    {
-      "path": "/domain/{serviceName}/email/obfuscated/refresh",
-      "operations": [
-        {
-          "apiStatus": {
             "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
+            "replacement": "/order/cart/{cartId}/dns",
+            "value": "DEPRECATED"
+          },
+          "description": "Activate the DNS zone for this domain",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Create only mandatory records",
+              "fullType": "boolean",
+              "name": "minimized",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/domain/{serviceName}/activateZone"
+    },
+    {
+      "description": "authInfo operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return authInfo code if the domain is unlocked",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "password"
+        }
+      ],
+      "path": "/domain/{serviceName}/authInfo"
+    },
+    {
+      "description": "Change the contacts of this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Launch a contact change procedure",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
+              "name": "contactAdmin",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
+              "name": "contactTech",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
+              "name": "contactBilling",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/domain/{serviceName}/changeContact"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve obfuscated emails configuration",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.configurations.ObfuscatedEmails[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Save a new obfuscated emails configuration",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "domain.ContactAllTypesEnum[]",
+              "description": "Contact types where obfuscated emails can be activated",
+              "fullType": "domain.ContactAllTypesEnum[]",
+              "name": "contacts",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.configurations.ObfuscatedEmails[]"
+        }
+      ],
+      "path": "/domain/{serviceName}/configurations/obfuscatedEmails"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Refresh an obfuscated emails configuration",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "domain.ContactAllTypesEnum[]",
+              "description": "Contact types where obfuscated emails will be refreshed",
+              "fullType": "domain.ContactAllTypesEnum[]",
+              "name": "contacts",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/domain/{serviceName}/configurations/obfuscatedEmails/refresh"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve optin configuration",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.configurations.Optin[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Save a new optin configuration",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "domain.configurations.Optin[]",
+              "description": "New configuration about optin",
+              "fullType": "domain.configurations.Optin[]",
+              "name": "optin",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.configurations.Optin[]"
+        }
+      ],
+      "path": "/domain/{serviceName}/configurations/optin"
+    },
+    {
+      "description": "List the domain.DnssecKey objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of domain's DS Records",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dnssec.KeyStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "dnssec.KeyStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dnssec.KeyFlagEnum",
+              "description": "Filter the value of flags property (=)",
+              "fullType": "dnssec.KeyFlagEnum",
+              "name": "flags",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update DS records",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dnssec.Key[]",
+              "description": "New Keys",
+              "fullType": "dnssec.Key[]",
+              "name": "keys",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.Task"
+        }
+      ],
+      "path": "/domain/{serviceName}/dsRecord"
+    },
+    {
+      "description": "Domain's DNSSEC Key",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.DnssecKey"
+        }
+      ],
+      "path": "/domain/{serviceName}/dsRecord/{id}"
+    },
+    {
+      "description": "refresh operations",
+      "operations": [
+        {
+          "apiStatus": {
             "deletionDate": "2019-02-01T00:00:00+01:00",
             "deprecatedDate": "2018-11-19T00:00:00+01:00",
-            "replacement": "/domain/{serviceName}/configurations/obfuscatedEmails/refresh"
+            "description": "Deprecated, will be removed",
+            "replacement": "/domain/{serviceName}/configurations/obfuscatedEmails/refresh",
+            "value": "DEPRECATED"
           },
+          "description": "Regenerate the obfuscated email address",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactType",
               "dataType": "domain.DomainContactTypeEnum[]",
-              "paramType": "body",
+              "description": "Contact type",
               "fullType": "domain.DomainContactTypeEnum[]",
-              "required": true,
-              "description": "Contact type"
+              "name": "contactType",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Regenerate the obfuscated email address"
+          "responseType": "void"
         }
       ],
-      "description": "refresh operations"
+      "path": "/domain/{serviceName}/email/obfuscated/refresh"
     },
     {
-      "path": "/domain/{serviceName}/glueRecord",
+      "description": "List the domain.GlueRecord objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of glue record",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "host",
               "dataType": "string",
+              "description": "Filter the value of host property (like)",
+              "fullType": "string",
+              "name": "host",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of host property (like)"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of glue record"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a glue record",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ips",
               "dataType": "ip[]",
-              "paramType": "body",
+              "description": "Ips of the glue record",
               "fullType": "ip[]",
-              "required": true,
-              "description": "Ips of the glue record"
-            },
-            {
-              "name": "host",
-              "dataType": "string",
+              "name": "ips",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Host of the glue record"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Host of the glue record",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "host",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "noAuthentication": false,
-          "description": "Create a glue record"
+          "responseType": "domain.Task"
         }
       ],
-      "description": "List the domain.GlueRecord objects"
+      "path": "/domain/{serviceName}/glueRecord"
     },
     {
-      "path": "/domain/{serviceName}/glueRecord/{host}",
+      "description": "Glue record",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the glue record",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "host",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Host"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Host",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "host",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "noAuthentication": false,
-          "description": "Delete the glue record"
+          "responseType": "domain.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "host",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Host",
               "fullType": "string",
-              "required": true,
-              "description": "Host"
+              "name": "host",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.GlueRecord",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.GlueRecord"
         }
       ],
-      "description": "Glue record"
+      "path": "/domain/{serviceName}/glueRecord/{host}"
     },
     {
-      "path": "/domain/{serviceName}/glueRecord/{host}/update",
+      "description": "update operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update the glue record",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ips",
               "dataType": "ip[]",
-              "paramType": "body",
+              "description": "Ips of the glue record",
               "fullType": "ip[]",
-              "required": true,
-              "description": "Ips of the glue record"
+              "name": "ips",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "host",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Host"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Host",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "host",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "noAuthentication": false,
-          "description": "Update the glue record"
+          "responseType": "domain.Task"
         }
       ],
-      "description": "update operations"
+      "path": "/domain/{serviceName}/glueRecord/{host}/update"
     },
     {
-      "path": "/domain/{serviceName}/nameServer",
+      "description": "List the domain.CurrentNameServer objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of current name servers",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List of current name servers"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add new name server",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "domain.DomainNs[]",
+              "description": "New name server",
+              "fullType": "domain.DomainNs[]",
               "name": "nameServer",
-              "dataType": "domain.DomainNs[]",
               "paramType": "body",
-              "fullType": "domain.DomainNs[]",
-              "required": true,
-              "description": "New name server"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "noAuthentication": false,
-          "description": "Add new name server"
+          "responseType": "domain.Task"
         }
       ],
-      "description": "List the domain.CurrentNameServer objects"
+      "path": "/domain/{serviceName}/nameServer"
     },
     {
-      "path": "/domain/{serviceName}/nameServer/{id}",
+      "description": "CurrentNameServer",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a name server",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "noAuthentication": false,
-          "description": "Delete a name server"
+          "responseType": "domain.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.CurrentNameServer",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.CurrentNameServer"
         }
       ],
-      "description": "CurrentNameServer"
+      "path": "/domain/{serviceName}/nameServer/{id}"
     },
     {
-      "path": "/domain/{serviceName}/nameServer/{id}/status",
+      "description": "status operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get name server status",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "domain.DomainNsStatus",
-          "noAuthentication": false,
-          "description": "Get name server status"
+          "responseType": "domain.DomainNsStatus"
         }
       ],
-      "description": "status operations"
+      "path": "/domain/{serviceName}/nameServer/{id}/status"
     },
     {
-      "path": "/domain/{serviceName}/nameServers/update",
+      "description": "update operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update DNS servers",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "domain.DomainNs[]",
+              "description": "New name servers",
+              "fullType": "domain.DomainNs[]",
               "name": "nameServers",
-              "dataType": "domain.DomainNs[]",
               "paramType": "body",
-              "fullType": "domain.DomainNs[]",
-              "required": true,
-              "description": "New name servers"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "noAuthentication": false,
-          "description": "Update DNS servers"
+          "responseType": "domain.Task"
         }
       ],
-      "description": "update operations"
+      "path": "/domain/{serviceName}/nameServers/update"
     },
     {
-      "path": "/domain/{serviceName}/option",
+      "description": "List the domain.Option objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of domain options",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.DomainOptionEnum[]",
-          "noAuthentication": false,
-          "description": "List of domain options"
+          "responseType": "domain.DomainOptionEnum[]"
         }
       ],
-      "description": "List the domain.Option objects"
+      "path": "/domain/{serviceName}/option"
     },
     {
-      "path": "/domain/{serviceName}/option/{option}",
+      "description": "Information about the options of a domain",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Release a given option",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "option",
               "dataType": "domain.DomainOptionEnum",
-              "paramType": "path",
+              "description": "Option",
               "fullType": "domain.DomainOptionEnum",
-              "required": true,
-              "description": "Option"
+              "name": "option",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Release a given option"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "option",
               "dataType": "domain.DomainOptionEnum",
-              "paramType": "path",
+              "description": "Option",
               "fullType": "domain.DomainOptionEnum",
-              "required": true,
-              "description": "Option"
+              "name": "option",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.Option",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.Option"
         }
       ],
-      "description": "Information about the options of a domain"
+      "path": "/domain/{serviceName}/option/{option}"
     },
     {
-      "path": "/domain/{serviceName}/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve data about the options associated to a domain",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.services.options.Options",
-          "noAuthentication": false,
-          "description": "Retrieve data about the options associated to a domain"
+          "responseType": "domain.services.options.Options"
         }
       ],
-      "description": "Missing description"
+      "path": "/domain/{serviceName}/options"
     },
     {
-      "path": "/domain/{serviceName}/owo",
+      "description": "List the domain.Owo objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of whois obfuscators",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "field",
               "dataType": "domain.WhoisObfuscatorFieldsEnum",
+              "description": "Filter the value of field property (=)",
+              "fullType": "domain.WhoisObfuscatorFieldsEnum",
+              "name": "field",
               "paramType": "query",
-              "fullType": "domain.WhoisObfuscatorFieldsEnum",
-              "required": false,
-              "description": "Filter the value of field property (=)"
+              "required": false
             }
           ],
-          "responseType": "domain.WhoisObfuscatorFieldsEnum[]",
-          "noAuthentication": false,
-          "description": "List of whois obfuscators"
+          "responseType": "domain.WhoisObfuscatorFieldsEnum[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add whois obfuscators",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "fields",
               "dataType": "domain.WhoisObfuscatorFieldsEnum[]",
-              "paramType": "body",
+              "description": "Fields to obfuscate",
               "fullType": "domain.WhoisObfuscatorFieldsEnum[]",
-              "required": true,
-              "description": "Fields to obfuscate"
+              "name": "fields",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.WhoisObfuscatorFieldsEnum[]",
-          "noAuthentication": false,
-          "description": "Add whois obfuscators"
+          "responseType": "domain.WhoisObfuscatorFieldsEnum[]"
         }
       ],
-      "description": "List the domain.Owo objects"
+      "path": "/domain/{serviceName}/owo"
     },
     {
-      "path": "/domain/{serviceName}/owo/{field}",
+      "description": "Obfuscate whois",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a whois obfuscator",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "field",
               "dataType": "domain.WhoisObfuscatorFieldsEnum",
-              "paramType": "path",
+              "description": "Field",
               "fullType": "domain.WhoisObfuscatorFieldsEnum",
-              "required": true,
-              "description": "Field"
+              "name": "field",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a whois obfuscator"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "field",
               "dataType": "domain.WhoisObfuscatorFieldsEnum",
-              "paramType": "path",
+              "description": "Field",
               "fullType": "domain.WhoisObfuscatorFieldsEnum",
-              "required": true,
-              "description": "Field"
+              "name": "field",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.Owo",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.Owo"
         }
       ],
-      "description": "Obfuscate whois"
+      "path": "/domain/{serviceName}/owo/{field}"
     },
     {
-      "path": "/domain/{serviceName}/rules/emailsObfuscation",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve emails obfuscation rule",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.ContactAllTypesEnum[]",
-          "noAuthentication": false,
-          "description": "Retrieve emails obfuscation rule"
+          "responseType": "domain.ContactAllTypesEnum[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/domain/{serviceName}/rules/emailsObfuscation"
     },
     {
-      "path": "/domain/{serviceName}/rules/optin",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve optin rule",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.rules.Optin[]",
-          "noAuthentication": false,
-          "description": "Retrieve optin rule"
+          "responseType": "domain.rules.Optin[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/domain/{serviceName}/rules/optin"
     },
     {
-      "path": "/domain/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Details about a Service"
-    },
-    {
-      "path": "/domain/{serviceName}/task",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "status",
-              "dataType": "domain.OperationStatusEnum",
-              "paramType": "query",
-              "fullType": "domain.OperationStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "name": "function",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of function property (like)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Domain pending tasks"
-        }
-      ],
-      "description": "List the domain.Task objects"
-    },
-    {
-      "path": "/domain/{serviceName}/task/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "domain.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Tasks associated to domain"
-    },
-    {
-      "path": "/domain/{serviceName}/task/{id}/accelerate",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Accelerate the task"
-        }
-      ],
-      "description": "accelerate operations"
-    },
-    {
-      "path": "/domain/{serviceName}/task/{id}/cancel",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Cancel the task"
-        }
-      ],
-      "description": "cancel operations"
-    },
-    {
-      "path": "/domain/{serviceName}/task/{id}/relaunch",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Relaunch the task"
-        }
-      ],
-      "description": "relaunch operations"
-    },
-    {
-      "path": "/domain/{serviceName}/ukOutgoingTransfer",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "tag",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Tag of the new registrar"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.Task",
-          "noAuthentication": false,
-          "description": "Schedule an outgoing transfer task for this domain (.uk only)"
+          "responseType": "void"
         }
       ],
-      "description": "ukOutgoingTransfer operations"
+      "path": "/domain/{serviceName}/serviceInfos"
     },
     {
-      "path": "/domain/{serviceName}/ukRegistrars",
+      "description": "List the domain.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Domain pending tasks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "domain.OperationStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "domain.OperationStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of function property (like)",
+              "fullType": "string",
+              "name": "function",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "domain.UkRegistrar[]",
-          "noAuthentication": false,
-          "description": "Return the list of all .uk registrars"
+          "responseType": "long[]"
         }
       ],
-      "description": "ukRegistrars operations"
+      "path": "/domain/{serviceName}/task"
+    },
+    {
+      "description": "Tasks associated to domain",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.Task"
+        }
+      ],
+      "path": "/domain/{serviceName}/task/{id}"
+    },
+    {
+      "description": "accelerate operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Accelerate the task",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/domain/{serviceName}/task/{id}/accelerate"
+    },
+    {
+      "description": "cancel operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Cancel the task",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/domain/{serviceName}/task/{id}/cancel"
+    },
+    {
+      "description": "relaunch operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Relaunch the task",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/domain/{serviceName}/task/{id}/relaunch"
+    },
+    {
+      "description": "ukOutgoingTransfer operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Schedule an outgoing transfer task for this domain (.uk only)",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Tag of the new registrar",
+              "fullType": "string",
+              "name": "tag",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.Task"
+        }
+      ],
+      "path": "/domain/{serviceName}/ukOutgoingTransfer"
+    },
+    {
+      "description": "ukRegistrars operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return the list of all .uk registrars",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.UkRegistrar[]"
+        }
+      ],
+      "path": "/domain/{serviceName}/ukRegistrars"
     }
   ],
-  "resourcePath": "/domain",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "dnssec.DnssecStatusEnum": {
-      "id": "DnssecStatusEnum",
-      "namespace": "dnssec",
       "description": "Dnssec Status",
       "enum": [
         "disableInProgress",
@@ -3669,50 +3668,50 @@ export const schema: Schema = {
         "enableInProgress",
         "enabled"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DnssecStatusEnum",
+      "namespace": "dnssec"
     },
     "dnssec.Key": {
+      "description": "Key type",
       "id": "Key",
       "namespace": "dnssec",
-      "description": "Key type",
       "properties": {
         "algorithm": {
-          "type": "dnssec.KeyAlgorithmEnum",
-          "fullType": "dnssec.KeyAlgorithmEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Algorithm",
-          "required": true
+          "fullType": "dnssec.KeyAlgorithmEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dnssec.KeyAlgorithmEnum"
         },
         "flags": {
-          "type": "dnssec.KeyFlagEnum",
-          "fullType": "dnssec.KeyFlagEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Flag of the dnssec key",
-          "required": true
+          "fullType": "dnssec.KeyFlagEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dnssec.KeyFlagEnum"
         },
         "publicKey": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Public key",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "tag": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Key tag",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dnssec.KeyAlgorithmEnum": {
-      "id": "KeyAlgorithmEnum",
-      "namespace": "dnssec",
       "description": "Dnssec Algorithm\n                        ###\n                        5  : RSASHA1\n                        7  : RSASHA1-NSEC3-SHA1\n                        8  : RSASHA256\n                        10 : RSASHA512\n                        13 : ECDSAP256SHA256\n                        14 : ECDSAP384SHA384",
       "enum": [
         "10",
@@ -3722,21 +3721,21 @@ export const schema: Schema = {
         "7",
         "8"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "KeyAlgorithmEnum",
+      "namespace": "dnssec"
     },
     "dnssec.KeyFlagEnum": {
-      "id": "KeyFlagEnum",
-      "namespace": "dnssec",
       "description": "Dnssec Key Flag Type\n                        ###\n                        256 : Zone Signing Key (ZSK)\n                        257 : Key  Signing Key (KSK)",
       "enum": [
         "256",
         "257"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "KeyFlagEnum",
+      "namespace": "dnssec"
     },
     "dnssec.KeyStatusEnum": {
-      "id": "KeyStatusEnum",
-      "namespace": "dnssec",
       "description": "\n                Generated : The key has been created, but has not yet been used for anything.\n                ###\n                Published : The DNSKEY record is published in the zone, but predecessors of the key may be held in caches.\n                ###\n                Ready     : The new key data has been published for long enough to guarantee that any previous versions of the DNSKEY RRset have expired from caches.\n                ###\n                Active    : The key has started to be used to sign RRsets.\n                ###\n                Retired   : A successor key has become active and this key is no longer being used to generate RRSIGs.\n                ###\n                Removed   : The key has been removed from the zone.\n                ###\n                Revoked   : The key is published for a period with the \"revoke\" bit set as a way of notifying validating resolvers that have configured it as an trust anchor that it is about to be removed from the zone.",
       "enum": [
         "active",
@@ -3746,11 +3745,11 @@ export const schema: Schema = {
         "retired",
         "revoked"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "KeyStatusEnum",
+      "namespace": "dnssec"
     },
     "domain.ActionEnum": {
-      "id": "ActionEnum",
-      "namespace": "domain",
       "description": "An action to execute on a domain name",
       "enum": [
         "create",
@@ -3758,408 +3757,408 @@ export const schema: Schema = {
         "update",
         "trade"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ActionEnum",
+      "namespace": "domain"
     },
     "domain.Contact": {
+      "description": "A contact contains the personal data of a user",
       "id": "Contact",
       "namespace": "domain",
-      "description": "A contact contains the personal data of a user",
       "properties": {
         "accreditationCountry": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Country of lawyer accreditation",
-          "required": false
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
         },
         "accreditationId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Lawyer accreditation number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "accreditationOrganism": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Organism of lawyer accreditation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "accreditationYear": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Year of lawyer accreditation",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "address": {
-          "type": "domain.ContactAddress",
-          "fullType": "domain.ContactAddress",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The address of the contact",
-          "required": false
+          "fullType": "domain.ContactAddress",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.ContactAddress"
         },
         "birthCity": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "City of birth",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "birthCountry": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Birth Country",
-          "required": false
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
         },
         "birthDay": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Birth date",
-          "required": false
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
         },
         "birthZip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Birth Zipcode",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "cellPhone": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cellphone number",
-          "required": false
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
         },
         "companyNationalIdentificationNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Company National Identification Number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Email address",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "enterpriseId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Enterprise identifier",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "fax": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Fax number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "First name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "gender": {
-          "type": "nichandle.GenderEnum",
-          "fullType": "nichandle.GenderEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Gender",
-          "required": false
+          "fullType": "nichandle.GenderEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.GenderEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Unique identifier",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "insee": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "INSEE identifier",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "language": {
-          "type": "nichandle.LanguageEnum",
-          "fullType": "nichandle.LanguageEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Language",
-          "required": false
+          "fullType": "nichandle.LanguageEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.LanguageEnum"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Last name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "legalForm": {
-          "type": "nichandle.LegalFormEnum",
-          "fullType": "nichandle.LegalFormEnum",
           "canBeNull": true,
+          "fullType": "nichandle.LegalFormEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "nichandle.LegalFormEnum"
         },
         "legalFormCategory": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "category of legalForm",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "nationalIdentificationNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "National Identification Number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "nationality": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Nationality",
-          "required": false
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
         },
         "organisationAccountable": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "To whom is the organisation accountable",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationFunding": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "What is the source of funding",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationFundingOther": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Explain the source of funding if organisationFunding is other",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of organisation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationRole": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Role of your organisation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationRoleOther": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Explain the role of your organisation if organisationRole is other",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationStaffStatus": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Status of the staff",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationStaffStatusOther": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Explain the status of the staff if organisationStaffStatus is other",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "type of organisation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationTypeOther": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Explain the type of organisation if organisationType is other",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "phone": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Phone number",
-          "required": false
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
         },
         "registrantDocumentType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Type of registrant document",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "registrantDocumentTypeOther": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Explain the type of registrant document if registrantDocumentType is other",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "roleInOrganisation": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The role in the organisation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "vat": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "VAT number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "website": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Website",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "domain.ContactAddress": {
+      "description": "Missing description",
       "id": "ContactAddress",
       "namespace": "domain",
-      "description": "Missing description",
       "properties": {
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "City",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "country": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Country",
-          "required": false
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
         },
         "line1": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Address line 1",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "line2": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Address line 2",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "line3": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Address line 3",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "otherDetails": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Others details",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "province": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Province",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "zip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Zip code",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "domain.ContactAllTypesEnum": {
-      "id": "ContactAllTypesEnum",
-      "namespace": "domain",
       "description": "Contact type fields",
       "enum": [
         "admin",
@@ -4168,263 +4167,263 @@ export const schema: Schema = {
         "owner",
         "tech"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ContactAllTypesEnum",
+      "namespace": "domain"
     },
     "domain.CurrentNameServer": {
+      "description": "CurrentNameServer",
       "id": "CurrentNameServer",
       "namespace": "domain",
-      "description": "CurrentNameServer",
       "properties": {
         "host": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Host of the name server",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the name server",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Ip of the name server",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "isUsed": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "isUsed flag of the name server",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "toDelete": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "toDelete flag of the name server",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "domain.Data": {
+      "description": "A domain data",
       "id": "Data",
       "namespace": "domain",
-      "description": "A domain data",
       "properties": {
         "audience": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Domain name audience",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "authInfo": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Auth Info",
-          "required": false
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
         },
         "isFor": {
-          "type": "domain.IsForEnum[]",
-          "fullType": "domain.IsForEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Purposes of the domain",
-          "required": false
+          "fullType": "domain.IsForEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.IsForEnum[]"
         },
         "otherPurpose": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Domain name other purpose",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "reason": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Reason of the purchase of this domain",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "represent": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Represented company",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "domain.DnssecKey": {
+      "description": "Domain's DNSSEC Key",
       "id": "DnssecKey",
       "namespace": "domain",
-      "description": "Domain's DNSSEC Key",
       "properties": {
         "algorithm": {
-          "type": "dnssec.KeyAlgorithmEnum",
-          "fullType": "dnssec.KeyAlgorithmEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Algorithm number of the DNSSEC key",
-          "required": true
+          "fullType": "dnssec.KeyAlgorithmEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dnssec.KeyAlgorithmEnum"
         },
         "flags": {
-          "type": "dnssec.KeyFlagEnum",
-          "fullType": "dnssec.KeyFlagEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Flag of the DNSSEC key",
-          "required": true
+          "fullType": "dnssec.KeyFlagEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dnssec.KeyFlagEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the DNSSEC key",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "publicKey": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Public key",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "dnssec.KeyStatusEnum",
-          "fullType": "dnssec.KeyStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Key status of the DNSSEC key",
-          "required": true
+          "fullType": "dnssec.KeyStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dnssec.KeyStatusEnum"
         },
         "tag": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Tag of the DNSSEC key",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "domain.Domain": {
+      "description": "Domain name administration",
       "id": "Domain",
       "namespace": "domain",
-      "description": "Domain name administration",
       "properties": {
         "dnssecSupported": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Is DNSSEC implemented for this domain name's tld",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "glueRecordIpv6Supported": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Does the registry support ipv6 glue record",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "glueRecordMultiIpSupported": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Does the registry support multi ip glue record",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last update date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "nameServerType": {
-          "type": "domain.DomainNsTypeEnum",
-          "fullType": "domain.DomainNsTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name servers type",
-          "required": true
+          "fullType": "domain.DomainNsTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.DomainNsTypeEnum"
         },
         "offer": {
-          "type": "domain.OfferEnum",
-          "fullType": "domain.OfferEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain's offer",
-          "required": true
+          "fullType": "domain.OfferEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.OfferEnum"
         },
         "owoSupported": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Is whois obfuscation supported by this domain name's registry",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "parentService": {
-          "type": "domain.ParentService",
-          "fullType": "domain.ParentService",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Parent service",
-          "required": false
+          "fullType": "domain.ParentService",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ParentService"
         },
         "transferLockStatus": {
-          "type": "domain.DomainLockStatusEnum",
-          "fullType": "domain.DomainLockStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Transfer lock status",
-          "required": true
+          "fullType": "domain.DomainLockStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.DomainLockStatusEnum"
         },
         "whoisOwner": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact Owner (you can edit it via /me/contact/<ID>)",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.DomainContactTypeEnum": {
-      "id": "DomainContactTypeEnum",
-      "namespace": "domain",
       "description": "All contact type for a domain",
       "enum": [
         "admin",
@@ -4432,11 +4431,11 @@ export const schema: Schema = {
         "owner",
         "tech"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainContactTypeEnum",
+      "namespace": "domain"
     },
     "domain.DomainLockStatusEnum": {
-      "id": "DomainLockStatusEnum",
-      "namespace": "domain",
       "description": "Domain lock status",
       "enum": [
         "locked",
@@ -4445,127 +4444,127 @@ export const schema: Schema = {
         "unlocked",
         "unlocking"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainLockStatusEnum",
+      "namespace": "domain"
     },
     "domain.DomainNs": {
+      "description": "Name server",
       "id": "DomainNs",
       "namespace": "domain",
-      "description": "Name server",
       "properties": {
         "host": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Host",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Ip",
-          "required": false
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
         }
       }
     },
     "domain.DomainNsStateEnum": {
-      "id": "DomainNsStateEnum",
-      "namespace": "domain",
       "description": "DNS server state",
       "enum": [
         "ko",
         "ok"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainNsStateEnum",
+      "namespace": "domain"
     },
     "domain.DomainNsStatus": {
+      "description": "DNS server status",
       "id": "DomainNsStatus",
       "namespace": "domain",
-      "description": "DNS server status",
       "properties": {
         "state": {
-          "type": "domain.DomainNsStateEnum",
-          "fullType": "domain.DomainNsStateEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not the DNS server is working",
-          "required": true
+          "fullType": "domain.DomainNsStateEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.DomainNsStateEnum"
         },
         "type": {
-          "type": "domain.DomainNsTypeEnum",
-          "fullType": "domain.DomainNsTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not the DNS server is managed by OVH",
-          "required": true
+          "fullType": "domain.DomainNsTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.DomainNsTypeEnum"
         },
         "usedSince": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Date from which the DNS server is used by the domain",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "domain.DomainNsTypeEnum": {
-      "id": "DomainNsTypeEnum",
-      "namespace": "domain",
       "description": "DomainNS Type",
       "enum": [
         "external",
         "hosted"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainNsTypeEnum",
+      "namespace": "domain"
     },
     "domain.DomainOptionEnum": {
-      "id": "DomainOptionEnum",
-      "namespace": "domain",
       "description": "All options a domain can have",
       "enum": [
         "dnsAnycast"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainOptionEnum",
+      "namespace": "domain"
     },
     "domain.DomainOptionStateEnum": {
-      "id": "DomainOptionStateEnum",
-      "namespace": "domain",
       "description": "All states a domain Option can be in",
       "enum": [
         "released",
         "subscribed"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainOptionStateEnum",
+      "namespace": "domain"
     },
     "domain.GlueRecord": {
+      "description": "Glue record",
       "id": "GlueRecord",
       "namespace": "domain",
-      "description": "Glue record",
       "properties": {
         "host": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Host of the glue record",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "ips": {
-          "type": "ip[]",
-          "fullType": "ip[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ips of the glue record",
-          "required": true
+          "fullType": "ip[]",
+          "readOnly": true,
+          "required": true,
+          "type": "ip[]"
         }
       }
     },
     "domain.IsForEnum": {
-      "id": "IsForEnum",
-      "namespace": "domain",
       "description": "Possible purposes of the domain",
       "enum": [
         "campaign_website",
@@ -4576,22 +4575,22 @@ export const schema: Schema = {
         "emails",
         "other_purpose"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IsForEnum",
+      "namespace": "domain"
     },
     "domain.OfferEnum": {
-      "id": "OfferEnum",
-      "namespace": "domain",
       "description": "Offer",
       "enum": [
         "diamond",
         "gold",
         "platinum"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OfferEnum",
+      "namespace": "domain"
     },
     "domain.OperationStatusEnum": {
-      "id": "OperationStatusEnum",
-      "namespace": "domain",
       "description": "Operation status",
       "enum": [
         "cancelled",
@@ -4600,11 +4599,11 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationStatusEnum",
+      "namespace": "domain"
     },
     "domain.OptinFieldsEnum": {
-      "id": "OptinFieldsEnum",
-      "namespace": "domain",
       "description": "Whois optin fields",
       "enum": [
         "address",
@@ -4618,321 +4617,321 @@ export const schema: Schema = {
         "province",
         "zip"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OptinFieldsEnum",
+      "namespace": "domain"
     },
     "domain.Option": {
+      "description": "Information about the options of a domain",
       "id": "Option",
       "namespace": "domain",
-      "description": "Information about the options of a domain",
       "properties": {
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Expiration date of the option",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "option": {
-          "type": "domain.DomainOptionEnum",
-          "fullType": "domain.DomainOptionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The option name",
-          "required": true
+          "fullType": "domain.DomainOptionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.DomainOptionEnum"
         },
         "state": {
-          "type": "domain.DomainOptionStateEnum",
-          "fullType": "domain.DomainOptionStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The state of the option",
-          "required": true
+          "fullType": "domain.DomainOptionStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.DomainOptionStateEnum"
         }
       }
     },
     "domain.Owo": {
+      "description": "Obfuscate whois",
       "id": "Owo",
       "namespace": "domain",
-      "description": "Obfuscate whois",
       "properties": {
         "field": {
-          "type": "domain.WhoisObfuscatorFieldsEnum",
-          "fullType": "domain.WhoisObfuscatorFieldsEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Obfuscated field",
-          "required": true
+          "fullType": "domain.WhoisObfuscatorFieldsEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.WhoisObfuscatorFieldsEnum"
         }
       }
     },
     "domain.ParentService": {
+      "description": "Parent service",
       "id": "ParentService",
       "namespace": "domain",
-      "description": "Parent service",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the parent service",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "domain.ParentServiceTypeEnum",
-          "fullType": "domain.ParentServiceTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of the parent service",
-          "required": true
+          "fullType": "domain.ParentServiceTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.ParentServiceTypeEnum"
         }
       }
     },
     "domain.ParentServiceTypeEnum": {
-      "id": "ParentServiceTypeEnum",
-      "namespace": "domain",
       "description": "Parent service type enum",
       "enum": [
         "/allDom"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ParentServiceTypeEnum",
+      "namespace": "domain"
     },
     "domain.Rule": {
+      "description": "Description not available",
       "id": "Rule",
       "namespace": "domain",
-      "description": "Description not available",
       "properties": {
         "allowedValues": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
+          "fullType": "string[]",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string[]"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "fields": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
+          "fullType": "string[]",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string[]"
         },
         "innerConfigurations": {
-          "type": "domain.Rule[]",
-          "fullType": "domain.Rule[]",
           "canBeNull": true,
+          "fullType": "domain.Rule[]",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "domain.Rule[]"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "required": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "boolean"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.Task": {
+      "description": "Tasks associated to domain",
       "id": "Task",
       "namespace": "domain",
-      "description": "Tasks associated to domain",
       "properties": {
         "canAccelerate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Can accelerate the task",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "canCancel": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Can cancel the task",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "canRelaunch": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Can relaunch the task",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Comment about the task",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of the task",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Done date of the task",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Function of the task",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the task",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last update date of the task",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "domain.OperationStatusEnum",
-          "fullType": "domain.OperationStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the task",
-          "required": true
+          "fullType": "domain.OperationStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.OperationStatusEnum"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Todo date of the task",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "domain.UkRegistrar": {
+      "description": "Representation of a UK Registrar (used for outgoing transfer)",
       "id": "UkRegistrar",
       "namespace": "domain",
-      "description": "Representation of a UK Registrar (used for outgoing transfer)",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Registrar name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "tag": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Registrar tag",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.WhoisObfuscatorFieldsEnum": {
-      "id": "WhoisObfuscatorFieldsEnum",
-      "namespace": "domain",
       "description": "Whois obfuscable fields",
       "enum": [
         "address",
         "email",
         "phone"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "WhoisObfuscatorFieldsEnum",
+      "namespace": "domain"
     },
     "domain.configuration.rules.Constraint": {
+      "description": "A configuration rule defines validation to launch when executing an action on a domain (create, trade...). Depending on the extension, the rule may be different",
       "id": "Constraint",
       "namespace": "domain.configuration.rules",
-      "description": "A configuration rule defines validation to launch when executing an action on a domain (create, trade...). Depending on the extension, the rule may be different",
       "properties": {
         "conditions": {
-          "type": "domain.configuration.rules.Rule",
-          "fullType": "domain.configuration.rules.Rule",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Whether this constraint is applied or not",
-          "required": false
+          "fullType": "domain.configuration.rules.Rule",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configuration.rules.Rule"
         },
         "contexts": {
-          "type": "domain.configuration.rules.ContextEnum[]",
-          "fullType": "domain.configuration.rules.ContextEnum[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The context on which the constraint applies",
-          "required": false
+          "fullType": "domain.configuration.rules.ContextEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configuration.rules.ContextEnum[]"
         },
         "operator": {
-          "type": "domain.configuration.rules.OperatorEnum",
-          "fullType": "domain.configuration.rules.OperatorEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The operator of the constraint",
-          "required": false
+          "fullType": "domain.configuration.rules.OperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configuration.rules.OperatorEnum"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The value to match against",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "values": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The values to match against",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
     "domain.configuration.rules.ContextEnum": {
-      "id": "ContextEnum",
-      "namespace": "domain.configuration.rules",
       "description": "Used in rule to tell if rule (or part of the rule) is applicable for a given context",
       "enum": [
         "update",
@@ -4946,11 +4945,11 @@ export const schema: Schema = {
         "reason",
         "protected_code"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ContextEnum",
+      "namespace": "domain.configuration.rules"
     },
     "domain.configuration.rules.OperatorEnum": {
-      "id": "OperatorEnum",
-      "namespace": "domain.configuration.rules",
       "description": "Operator use in configuration rule to check content of a field",
       "enum": [
         "eq",
@@ -4971,168 +4970,168 @@ export const schema: Schema = {
         "required",
         "readonly"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperatorEnum",
+      "namespace": "domain.configuration.rules"
     },
     "domain.configuration.rules.Rule": {
+      "description": "A configuration rule defines validation to launch when executing an action on a domain (create, trade...). Depending on the extension, the rule may be different",
       "id": "Rule",
       "namespace": "domain.configuration.rules",
-      "description": "A configuration rule defines validation to launch when executing an action on a domain (create, trade...). Depending on the extension, the rule may be different",
       "properties": {
         "and": {
-          "type": "domain.configuration.rules.Rule[]",
-          "fullType": "domain.configuration.rules.Rule[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "An \"and\" operator on multiple rules",
-          "required": false
+          "fullType": "domain.configuration.rules.Rule[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configuration.rules.Rule[]"
         },
         "conditions": {
-          "type": "domain.configuration.rules.Rule",
-          "fullType": "domain.configuration.rules.Rule",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Whether this rule is applied or not",
-          "required": false
+          "fullType": "domain.configuration.rules.Rule",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configuration.rules.Rule"
         },
         "constraints": {
-          "type": "domain.configuration.rules.Constraint[]",
-          "fullType": "domain.configuration.rules.Constraint[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The constraints of the rule",
-          "required": false
+          "fullType": "domain.configuration.rules.Constraint[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configuration.rules.Constraint[]"
         },
         "contexts": {
-          "type": "domain.configuration.rules.ContextEnum[]",
-          "fullType": "domain.configuration.rules.ContextEnum[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The context on which the rule applies",
-          "required": false
+          "fullType": "domain.configuration.rules.ContextEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configuration.rules.ContextEnum[]"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The description of the rule",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "fields": {
-          "type": "domain.configuration.rules.Rule",
-          "fullType": "domain.configuration.rules.Rule",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The fields with specific rules",
-          "required": false
+          "fullType": "domain.configuration.rules.Rule",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configuration.rules.Rule"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The label of the rule",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "or": {
-          "type": "domain.configuration.rules.Rule[]",
-          "fullType": "domain.configuration.rules.Rule[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "An \"or\" operator on multiple rules",
-          "required": false
+          "fullType": "domain.configuration.rules.Rule[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configuration.rules.Rule[]"
         },
         "placeholder": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The default value used for the rule",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "domain.configuration.rules.TypeEnum",
-          "fullType": "domain.configuration.rules.TypeEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The type of the object the rule applies on",
-          "required": false
+          "fullType": "domain.configuration.rules.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configuration.rules.TypeEnum"
         }
       }
     },
     "domain.configuration.rules.RuleData": {
+      "description": "A rule data contains the fields that must be validated against a rule",
       "id": "RuleData",
       "namespace": "domain.configuration.rules",
-      "description": "A rule data contains the fields that must be validated against a rule",
       "properties": {
         "adminAccount": {
-          "type": "nichandle.Nichandle",
-          "fullType": "nichandle.Nichandle",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The admin contact data",
-          "required": false
+          "fullType": "nichandle.Nichandle",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.Nichandle"
         },
         "domain": {
-          "type": "domain.Data",
-          "fullType": "domain.Data",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The domain data",
-          "required": false
+          "fullType": "domain.Data",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.Data"
         },
         "extras": {
-          "type": "domain.configuration.rules.RuleExtraData",
-          "fullType": "domain.configuration.rules.RuleExtraData",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The extra data of the rule",
-          "required": false
+          "fullType": "domain.configuration.rules.RuleExtraData",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.configuration.rules.RuleExtraData"
         },
         "owner": {
-          "type": "domain.Contact",
-          "fullType": "domain.Contact",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The owner contact data",
-          "required": false
+          "fullType": "domain.Contact",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.Contact"
         },
         "techAccount": {
-          "type": "nichandle.Nichandle",
-          "fullType": "nichandle.Nichandle",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The tech contact data",
-          "required": false
+          "fullType": "nichandle.Nichandle",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.Nichandle"
         }
       }
     },
     "domain.configuration.rules.RuleExtraData": {
+      "description": "The extra data contain additional rule data fields",
       "id": "RuleExtraData",
       "namespace": "domain.configuration.rules",
-      "description": "The extra data contain additional rule data fields",
       "properties": {
         "acceptCondition": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Whether you accept the domain specific conditions or not",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "authInfo": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The auth info code for the domain",
-          "required": false
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
         }
       }
     },
     "domain.configuration.rules.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "domain.configuration.rules",
       "description": "Type of rule configuration",
       "enum": [
         "string",
@@ -5144,1154 +5143,1154 @@ export const schema: Schema = {
         "domain",
         "date_ISO8601"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "domain.configuration.rules"
     },
     "domain.configurations.ObfuscatedEmails": {
+      "description": "Representation of the obfuscated emails configuration",
       "id": "ObfuscatedEmails",
       "namespace": "domain.configurations",
-      "description": "Representation of the obfuscated emails configuration",
       "properties": {
         "type": {
-          "type": "domain.ContactAllTypesEnum",
-          "fullType": "domain.ContactAllTypesEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact's type associated to the obfuscated email",
-          "required": true
+          "fullType": "domain.ContactAllTypesEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.ContactAllTypesEnum"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Obfuscated email value",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.configurations.Optin": {
+      "description": "Representation of the optin configuration",
       "id": "Optin",
       "namespace": "domain.configurations",
-      "description": "Representation of the optin configuration",
       "properties": {
         "fields": {
-          "type": "domain.OptinFieldsEnum[]",
-          "fullType": "domain.OptinFieldsEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Displayed fields",
-          "required": true
+          "fullType": "domain.OptinFieldsEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.OptinFieldsEnum[]"
         },
         "type": {
-          "type": "domain.ContactAllTypesEnum",
-          "fullType": "domain.ContactAllTypesEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contact's type associated to the optin configuration",
-          "required": true
+          "fullType": "domain.ContactAllTypesEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.ContactAllTypesEnum"
         }
       }
     },
     "domain.data.AfnicCorporationTrademarkContact": {
+      "description": "Representation of an Inpi additional information for a corporation",
       "id": "AfnicCorporationTrademarkContact",
       "namespace": "domain.data",
-      "description": "Representation of an Inpi additional information for a corporation",
       "properties": {
         "contactId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contact ID related to the Inpi additional information",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Corporation Inpi additional information ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "inpiNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of the Inpi declaration",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "inpiTrademarkOwner": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Owner of the trademark",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.data.AssociationContact": {
+      "description": "Representation of a Association additional information",
       "id": "AssociationContact",
       "namespace": "domain.data",
-      "description": "Representation of a Association additional information",
       "properties": {
         "contactId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contact ID related to the association contact information",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "declarationDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Date of the declaration of the association",
-          "required": true
+          "fullType": "date",
+          "readOnly": false,
+          "required": true,
+          "type": "date"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Association additional information ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "publicationDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Date of the publication of the declaration of the association",
-          "required": true
+          "fullType": "date",
+          "readOnly": false,
+          "required": true,
+          "type": "date"
         },
         "publicationNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of the publication of the declaration of the association",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "publicationPageNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Page number of the publication of the declaration of the association",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.data.ProContact": {
+      "description": "Representation of an .pro Contact Resource",
       "id": "ProContact",
       "namespace": "domain.data",
-      "description": "Representation of an .pro Contact Resource",
       "properties": {
         "authority": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Authority that certify your profesional status",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "authorityWebsite": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Website of the authority that certify your profesional status",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": ".pro Contact ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "jobDescription": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description of your job",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "licenseNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "License number given by the authority",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.data.Smd": {
+      "description": "Representation of a SMD Resource file",
       "id": "Smd",
       "namespace": "domain.data",
-      "description": "Representation of a SMD Resource file",
       "properties": {
         "data": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SMD file content",
-          "required": true
+          "fullType": "text",
+          "readOnly": false,
+          "required": true,
+          "type": "text"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SMD file ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "notAfter": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Date when information about SMD file aren't valid anymore",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "notBefore": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Date before when information about SMD file aren't valid yet",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "protectedLabels": {
-          "type": "domain.data.SmdLabel[]",
-          "fullType": "domain.data.SmdLabel[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of the labels that are protected with that SMD file",
-          "required": true
+          "fullType": "domain.data.SmdLabel[]",
+          "readOnly": false,
+          "required": true,
+          "type": "domain.data.SmdLabel[]"
         },
         "smdId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "TMCH Internal identifier",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "domain.data.SmdLabel": {
+      "description": "Representation of a protected label",
       "id": "SmdLabel",
       "namespace": "domain.data",
-      "description": "Representation of a protected label",
       "properties": {
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Label that is protected",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "trademark": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Trademark associated to the protected label",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.data.claimNotice.Address": {
+      "description": "Address for a claim notice holder",
       "id": "Address",
       "namespace": "domain.data.claimNotice",
-      "description": "Address for a claim notice holder",
       "properties": {
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "City",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "countryCode": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Country code",
-          "required": false
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.CountryEnum"
         },
         "fax": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Fax number",
-          "required": false
+          "fullType": "phoneNumber",
+          "readOnly": true,
+          "required": false,
+          "type": "phoneNumber"
         },
         "faxExtension": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Fax number extension",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "postalCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Postal zip code",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "stateOrProvince": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "State of province",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "streets": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Array of street name",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "voice": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Phone number",
-          "required": false
+          "fullType": "phoneNumber",
+          "readOnly": true,
+          "required": false,
+          "type": "phoneNumber"
         },
         "voiceExtension": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Phone number extension",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "domain.data.claimNotice.ClaimNotice": {
+      "description": "Definition of claim notices applying to a domain name",
       "id": "ClaimNotice",
       "namespace": "domain.data.claimNotice",
-      "description": "Definition of claim notices applying to a domain name",
       "properties": {
         "claims": {
-          "type": "domain.data.claimNotice.ClaimNoticeDecision[]",
-          "fullType": "domain.data.claimNotice.ClaimNoticeDecision[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Array of claim notice for the domain",
-          "required": false
+          "fullType": "domain.data.claimNotice.ClaimNoticeDecision[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.data.claimNotice.ClaimNoticeDecision[]"
         },
         "endingDate": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ending date of claim notice",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Claim notice ID",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Label referring to claim notice",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "startingDate": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Beginning date of claim notice",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "domain.data.claimNotice.ClaimNoticeTypeEnum",
-          "fullType": "domain.data.claimNotice.ClaimNoticeTypeEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Type of claim notice",
-          "required": false
+          "fullType": "domain.data.claimNotice.ClaimNoticeTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.data.claimNotice.ClaimNoticeTypeEnum"
         }
       }
     },
     "domain.data.claimNotice.ClaimNoticeDecision": {
+      "description": "Definition of a single claim notice",
       "id": "ClaimNoticeDecision",
       "namespace": "domain.data.claimNotice",
-      "description": "Definition of a single claim notice",
       "properties": {
         "classifications": {
-          "type": "domain.data.claimNotice.Classification[]",
-          "fullType": "domain.data.claimNotice.Classification[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Classifications where trademark claim notice apply",
-          "required": false
+          "fullType": "domain.data.claimNotice.Classification[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.data.claimNotice.Classification[]"
         },
         "courtDecisions": {
-          "type": "domain.data.claimNotice.CourtDecision[]",
-          "fullType": "domain.data.claimNotice.CourtDecision[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Array of court decisions related to claim notice",
-          "required": false
+          "fullType": "domain.data.claimNotice.CourtDecision[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.data.claimNotice.CourtDecision[]"
         },
         "goodsAndServices": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Goods and services on which apply claim notice",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "jurisdiction": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of jurisdiction",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "jurisdictionCountryCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Jurisdiction country code",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "markName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Mark name implicated in claim notice",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "trademarkContacts": {
-          "type": "domain.data.claimNotice.Contact[]",
-          "fullType": "domain.data.claimNotice.Contact[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Trademark contacts",
-          "required": false
+          "fullType": "domain.data.claimNotice.Contact[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.data.claimNotice.Contact[]"
         },
         "trademarkHolders": {
-          "type": "domain.data.claimNotice.Contact[]",
-          "fullType": "domain.data.claimNotice.Contact[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Trademark holders",
-          "required": false
+          "fullType": "domain.data.claimNotice.Contact[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.data.claimNotice.Contact[]"
         },
         "trademarkUDRP": {
-          "type": "domain.data.claimNotice.UDRP[]",
-          "fullType": "domain.data.claimNotice.UDRP[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Trademark UDRP informations",
-          "required": false
+          "fullType": "domain.data.claimNotice.UDRP[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.data.claimNotice.UDRP[]"
         }
       }
     },
     "domain.data.claimNotice.ClaimNoticeTypeEnum": {
-      "id": "ClaimNoticeTypeEnum",
-      "namespace": "domain.data.claimNotice",
       "description": "Type of claim notice",
       "enum": [
         "UK",
         "TRADEMARK"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ClaimNoticeTypeEnum",
+      "namespace": "domain.data.claimNotice"
     },
     "domain.data.claimNotice.Classification": {
+      "description": "Definition of a trademark claim notice classification",
       "id": "Classification",
       "namespace": "domain.data.claimNotice",
-      "description": "Definition of a trademark claim notice classification",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Summary of the classification",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "number": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Code of the classification",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "domain.data.claimNotice.Contact": {
+      "description": "Contact definition of a claim notice holder",
       "id": "Contact",
       "namespace": "domain.data.claimNotice",
-      "description": "Contact definition of a claim notice holder",
       "properties": {
         "address": {
-          "type": "domain.data.claimNotice.Address",
-          "fullType": "domain.data.claimNotice.Address",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Address of holder",
-          "required": false
+          "fullType": "domain.data.claimNotice.Address",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.data.claimNotice.Address"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Email address",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "entitlement": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Legitimacy of holder",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Name of claim notice holder",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "organisation": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Organisation name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Type of contact",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "domain.data.claimNotice.CourtDecision": {
+      "description": "Definition of a court decision",
       "id": "CourtDecision",
       "namespace": "domain.data.claimNotice",
-      "description": "Definition of a court decision",
       "properties": {
         "countryCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Country code",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "courtName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Court name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "referenceNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Reference number of court decision",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "regions": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Regions where court decision apply",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
     "domain.data.claimNotice.UDRP": {
+      "description": "Definition of a UDRP procedure",
       "id": "UDRP",
       "namespace": "domain.data.claimNotice",
-      "description": "Definition of a UDRP procedure",
       "properties": {
         "caseNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Case number",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "udrpProvider": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "UDRP Provider",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "domain.rules.Optin": {
+      "description": "Representation of the optin rule",
       "id": "Optin",
       "namespace": "domain.rules",
-      "description": "Representation of the optin rule",
       "properties": {
         "fields": {
-          "type": "domain.OptinFieldsEnum[]",
-          "fullType": "domain.OptinFieldsEnum[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Displayed fields",
-          "required": true
+          "fullType": "domain.OptinFieldsEnum[]",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.OptinFieldsEnum[]"
         },
         "type": {
-          "type": "domain.ContactAllTypesEnum",
-          "fullType": "domain.ContactAllTypesEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact's type associated to the optin rule",
-          "required": true
+          "fullType": "domain.ContactAllTypesEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.ContactAllTypesEnum"
         }
       }
     },
     "domain.services.options.Option": {
+      "description": "Data of a domain option",
       "id": "Option",
       "namespace": "domain.services.options",
-      "description": "Data of a domain option",
       "properties": {
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service name of the option",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.services.options.Options": {
+      "description": "Representation of the domain options",
       "id": "Options",
       "namespace": "domain.services.options",
-      "description": "Representation of the domain options",
       "properties": {
         "hosting": {
-          "type": "domain.services.options.Option",
-          "fullType": "domain.services.options.Option",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Hosting option",
-          "required": false
+          "fullType": "domain.services.options.Option",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.services.options.Option"
         },
         "offer": {
-          "type": "domain.services.options.Option",
-          "fullType": "domain.services.options.Option",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Offer option (Diamond, Platinum)",
-          "required": false
+          "fullType": "domain.services.options.Option",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.services.options.Option"
         },
         "zone": {
-          "type": "domain.services.options.Option",
-          "fullType": "domain.services.options.Option",
           "canBeNull": true,
-          "readOnly": true,
           "description": "DNS zone option",
-          "required": false
+          "fullType": "domain.services.options.Option",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.services.options.Option"
         }
       }
     },
     "domain.zone.Dnssec": {
+      "description": "Manage Dnssec for this zone",
       "id": "Dnssec",
       "namespace": "domain.zone",
-      "description": "Manage Dnssec for this zone",
       "properties": {
         "status": {
-          "type": "dnssec.DnssecStatusEnum",
-          "fullType": "dnssec.DnssecStatusEnum",
           "canBeNull": false,
+          "fullType": "dnssec.DnssecStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "dnssec.DnssecStatusEnum"
         }
       }
     },
     "domain.zone.DynHostLogin": {
+      "description": "Manage DynHost login",
       "id": "DynHostLogin",
       "namespace": "domain.zone",
-      "description": "Manage DynHost login",
       "properties": {
         "login": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Login",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "subDomain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Subdomain that the login will be allowed to update (* to allow all)",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Zone",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.zone.DynHostRecord": {
+      "description": "DynHost record",
       "id": "DynHostRecord",
       "namespace": "domain.zone",
-      "description": "DynHost record",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the DynHost record",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ip address of the DynHost record",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "subDomain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Subdomain of the DynHost record",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ttl": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "DynHost record ttl",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Zone of the DynHost record",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.zone.Record": {
+      "description": "Zone resource records",
       "id": "Record",
       "namespace": "domain.zone",
-      "description": "Zone resource records",
       "properties": {
         "fieldType": {
-          "type": "zone.NamedResolutionFieldTypeEnum",
-          "fullType": "zone.NamedResolutionFieldTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Resource record Name",
-          "required": true
+          "fullType": "zone.NamedResolutionFieldTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "zone.NamedResolutionFieldTypeEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the zone resource record",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "subDomain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Resource record subdomain",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "target": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Resource record target",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ttl": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Resource record ttl",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Resource record zone",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.zone.Redirection": {
+      "description": "Redirection",
       "id": "Redirection",
       "namespace": "domain.zone",
-      "description": "Redirection",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Desciption for invisible redirection",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the redirection",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "keywords": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Keywords for invisible redirection",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "subDomain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "subdomain to redirect",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "target": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Target of the redirection",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Title for invisible redirection",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "zone.RedirectionTypeEnum",
-          "fullType": "zone.RedirectionTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Redirection type",
-          "required": true
+          "fullType": "zone.RedirectionTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "zone.RedirectionTypeEnum"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Redirection zone",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "domain.zone.Soa": {
+      "description": "Zone Start Of Authority",
       "id": "Soa",
       "namespace": "domain.zone",
-      "description": "Zone Start Of Authority",
       "properties": {
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Email address of the DNS Administrator",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "expire": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "When a zone transfer fails, a countdown clock begins. When the number of seconds set in the expire field elapses, the nameserver stops answering for that zone file",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "nxDomainTtl": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Non-Existent Domain TTL, if the name server returns a negative response, the remote server should wait the number of seconds set in the nxDomainTtl field before trying again",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "refresh": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The refresh value determines the interval in seconds between successful zone transfers of the entire zone file from a nameserver to another.",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "serial": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The serial number is used to indicate which copy of the zone file is the most current. When editing zone files, you must increment the serial number",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "server": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Primary authoritative server",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ttl": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Time To Live in seconds",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "domain.zone.Task": {
+      "description": "Tasks associated to a zone",
       "id": "Task",
       "namespace": "domain.zone",
-      "description": "Tasks associated to a zone",
       "properties": {
         "canAccelerate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Can accelerate the task",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "canCancel": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Can cancel the task",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "canRelaunch": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Can relaunch the task",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Comment about the task",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of the task",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Done date of the task",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Function of the task",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the task",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last update date of the task",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "domain.OperationStatusEnum",
-          "fullType": "domain.OperationStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the task",
-          "required": true
+          "fullType": "domain.OperationStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.OperationStatusEnum"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Todo date of the task",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "domain.zone.Zone": {
+      "description": "Zone dns Management",
       "id": "Zone",
       "namespace": "domain.zone",
-      "description": "Zone dns Management",
       "properties": {
         "dnssecSupported": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Is DNSSEC supported by this zone",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "hasDnsAnycast": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "hasDnsAnycast flag of the DNS zone",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last update date of the DNS zone",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Zone name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "nameServers": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name servers that host the DNS zone",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         }
       }
     },
     "domain.zone.ZoneRestorePoint": {
+      "description": "Zone restore point",
       "id": "ZoneRestorePoint",
       "namespace": "domain.zone",
-      "description": "Zone restore point",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of backup creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "zoneFileUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "URL to get backup content",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "nichandle.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "nichandle",
       "description": "Countries a nichandle can choose",
       "enum": [
         "AC",
@@ -6549,44 +6548,44 @@ export const schema: Schema = {
         "ZM",
         "ZW"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "nichandle"
     },
     "nichandle.Currency": {
+      "description": "Customer currency",
       "id": "Currency",
       "namespace": "nichandle",
-      "description": "Customer currency",
       "properties": {
         "code": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Currency code",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "symbol": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Currency symbol",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "nichandle.GenderEnum": {
-      "id": "GenderEnum",
-      "namespace": "nichandle",
       "description": "All genders a person can choose",
       "enum": [
         "female",
         "male"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "GenderEnum",
+      "namespace": "nichandle"
     },
     "nichandle.LanguageEnum": {
-      "id": "LanguageEnum",
-      "namespace": "nichandle",
       "description": "Languages a nichandle can choose",
       "enum": [
         "cs_CZ",
@@ -6609,11 +6608,11 @@ export const schema: Schema = {
         "pl_PL",
         "pt_PT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LanguageEnum",
+      "namespace": "nichandle"
     },
     "nichandle.LegalFormEnum": {
-      "id": "LegalFormEnum",
-      "namespace": "nichandle",
       "description": "Legal forms a nichandle can be registered as",
       "enum": [
         "administration",
@@ -6623,260 +6622,260 @@ export const schema: Schema = {
         "other",
         "personalcorporation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LegalFormEnum",
+      "namespace": "nichandle"
     },
     "nichandle.Nichandle": {
+      "description": "Details about your OVH identifier",
       "id": "Nichandle",
       "namespace": "nichandle",
-      "description": "Details about your OVH identifier",
       "properties": {
         "address": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Address of nichandle",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "area": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Area of nichandle",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "birthCity": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "City of birth",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "birthDay": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Birth date",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "City of nichandle",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "companyNationalIdentificationNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Company National Identification Number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "corporationType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Corporation type",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "country": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Customer country",
-          "required": false
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
         },
         "currency": {
-          "type": "nichandle.Currency",
-          "fullType": "nichandle.Currency",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer currency",
-          "required": false
+          "fullType": "nichandle.Currency",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.Currency"
         },
         "customerCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Your customer code (a numerical value used for identification when contacting support via phone call)",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Email address",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "fax": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Fax number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "firstname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "First name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "italianSDI": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Italian SDI",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "language": {
-          "type": "nichandle.LanguageEnum",
-          "fullType": "nichandle.LanguageEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Language",
-          "required": false
+          "fullType": "nichandle.LanguageEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.LanguageEnum"
         },
         "legalform": {
-          "type": "nichandle.LegalFormEnum",
-          "fullType": "nichandle.LegalFormEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Customer legal form",
-          "required": false
+          "fullType": "nichandle.LegalFormEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.LegalFormEnum"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Customer name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "nationalIdentificationNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "National Identification Number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "nichandle": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer identifier",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "organisation": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of organisation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ovhCompany": {
-          "type": "nichandle.OvhCompanyEnum",
-          "fullType": "nichandle.OvhCompanyEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OVH subsidiary",
-          "required": false
+          "fullType": "nichandle.OvhCompanyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.OvhCompanyEnum"
         },
         "ovhSubsidiary": {
-          "type": "nichandle.OvhSubsidiaryEnum",
-          "fullType": "nichandle.OvhSubsidiaryEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OVH subsidiary",
-          "required": false
+          "fullType": "nichandle.OvhSubsidiaryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.OvhSubsidiaryEnum"
         },
         "phone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Phone number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "phoneCountry": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": true,
+          "fullType": "nichandle.CountryEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "nichandle.CountryEnum"
         },
         "sex": {
-          "type": "nichandle.GenderEnum",
-          "fullType": "nichandle.GenderEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Gender",
-          "required": false
+          "fullType": "nichandle.GenderEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.GenderEnum"
         },
         "spareEmail": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Spare email",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "state": {
-          "type": "nichandle.StateEnum",
-          "fullType": "nichandle.StateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Nichandle state",
-          "required": false
+          "fullType": "nichandle.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.StateEnum"
         },
         "vat": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "VAT number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "zip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Zipcode",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "nichandle.OvhCompanyEnum": {
-      "id": "OvhCompanyEnum",
-      "namespace": "nichandle",
       "description": "OVH subsidiaries",
       "enum": [
         "kimsufi",
         "ovh",
         "soyoustart"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OvhCompanyEnum",
+      "namespace": "nichandle"
     },
     "nichandle.OvhSubsidiaryEnum": {
-      "id": "OvhSubsidiaryEnum",
-      "namespace": "nichandle",
       "description": "OVH subsidiaries",
       "enum": [
         "CZ",
@@ -6896,68 +6895,68 @@ export const schema: Schema = {
         "SN",
         "TN"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OvhSubsidiaryEnum",
+      "namespace": "nichandle"
     },
     "nichandle.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "nichandle",
       "description": "States a nichandle can be in",
       "enum": [
         "complete",
         "incomplete"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "nichandle"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -6968,11 +6967,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -6980,11 +6979,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -6993,11 +6992,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -7015,127 +7014,127 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "zone.Capabilities": {
+      "description": "Zone capabilities",
       "id": "Capabilities",
       "namespace": "zone",
-      "description": "Zone capabilities",
       "properties": {
         "dynHost": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "True if dynHost available for this zone",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "zone.NamedResolutionFieldTypeEnum": {
-      "id": "NamedResolutionFieldTypeEnum",
-      "namespace": "zone",
       "description": "Resource record fieldType",
       "enum": [
         "A",
@@ -7155,81 +7154,84 @@ export const schema: Schema = {
         "TLSA",
         "TXT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "NamedResolutionFieldTypeEnum",
+      "namespace": "zone"
     },
     "zone.RedirectionTypeEnum": {
-      "id": "RedirectionTypeEnum",
-      "namespace": "zone",
       "description": "Redirection type enum : visible -> Redirection by http code 302, visiblePermanent -> Redirection by http code 301, invisible -> Redirection by html frame",
       "enum": [
         "invisible",
         "visible",
         "visiblePermanent"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RedirectionTypeEnum",
+      "namespace": "zone"
     },
     "zone.ResetRecord": {
+      "description": "Resource record",
       "id": "ResetRecord",
       "namespace": "zone",
-      "description": "Resource record",
       "properties": {
         "fieldType": {
-          "type": "zone.ResettableNamedResolutionFieldTypeEnum",
-          "fullType": "zone.ResettableNamedResolutionFieldTypeEnum",
           "canBeNull": false,
+          "fullType": "zone.ResettableNamedResolutionFieldTypeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "zone.ResettableNamedResolutionFieldTypeEnum"
         },
         "target": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Resource record target",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "zone.ResettableNamedResolutionFieldTypeEnum": {
-      "id": "ResettableNamedResolutionFieldTypeEnum",
-      "namespace": "zone",
       "description": "Resource record type",
       "enum": [
         "A",
         "MX"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ResettableNamedResolutionFieldTypeEnum",
+      "namespace": "zone"
     },
     "zone.Status": {
+      "description": "Zone status",
       "id": "Status",
       "namespace": "zone",
-      "description": "Zone status",
       "properties": {
         "errors": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Error list",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "isDeployed": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "True if the zone has successfully been deployed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "warnings": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Warning list",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/domain"
 }

@@ -1,1319 +1,1318 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/partners.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/partners/register/company",
+      "description": "Company.list",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List created companies",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List created companies"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Created a new company for the inscription",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Company's twitter url, must resemble \"https://twitter.com/ovh\")",
+              "fullType": "string",
               "name": "twitter",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's twitter url, must resemble \"https://twitter.com/ovh\")"
+              "required": false
             },
             {
-              "name": "OVHTechnicalAdvancedResources",
               "dataType": "Partner.technicalAdvancedResourcesRangeEnum",
-              "paramType": "body",
+              "description": "Estimation of the number of resources that have technical skills on OVH solutions the company has",
               "fullType": "Partner.technicalAdvancedResourcesRangeEnum",
-              "required": true,
-              "description": "Estimation of the number of resources that have technical skills on OVH solutions the company has"
+              "name": "OVHTechnicalAdvancedResources",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "externalCertifications",
               "dataType": "Partner.externalCertifications",
-              "paramType": "body",
+              "description": "Certifications obtained from other enterprises",
               "fullType": "Partner.externalCertifications",
-              "required": false,
-              "description": "Certifications obtained from other enterprises"
+              "name": "externalCertifications",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "partnerKnowledges",
               "dataType": "Partner.partnerKnowledges",
-              "paramType": "body",
+              "description": "How did you heard about the OVH's partnership program",
               "fullType": "Partner.partnerKnowledges",
-              "required": false,
-              "description": "How did you heard about the OVH's partnership program"
-            },
-            {
-              "name": "city",
-              "dataType": "string",
+              "name": "partnerKnowledges",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Company's city"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's city",
+              "fullType": "string",
+              "name": "city",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "Partner.employeesNumberEnum",
+              "description": "Estimation of the number of employees",
+              "fullType": "Partner.employeesNumberEnum",
               "name": "employeesNumber",
-              "dataType": "Partner.employeesNumberEnum",
               "paramType": "body",
-              "fullType": "Partner.employeesNumberEnum",
-              "required": true,
-              "description": "Estimation of the number of employees"
+              "required": true
             },
             {
-              "name": "revenue",
               "dataType": "Partner.revenueRangeEnum",
-              "paramType": "body",
+              "description": "Estimation of the revenue of the company",
               "fullType": "Partner.revenueRangeEnum",
-              "required": true,
-              "description": "Estimation of the revenue of the company"
+              "name": "revenue",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "OVHCustomersAdvised",
               "dataType": "Partner.OVHCustomersAdvisedEnum",
-              "paramType": "body",
+              "description": "Estimation of the number of accompanied customers in using OVH's solutions",
               "fullType": "Partner.OVHCustomersAdvisedEnum",
-              "required": true,
-              "description": "Estimation of the number of accompanied customers in using OVH's solutions"
+              "name": "OVHCustomersAdvised",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Company's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
+              "fullType": "string",
               "name": "linkedin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's logo url",
+              "fullType": "string",
               "name": "logo",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Company's logo url"
+              "required": true
             },
             {
-              "name": "clientKinds",
               "dataType": "Partner.clientKinds",
-              "paramType": "body",
+              "description": "Kind of client the company target",
               "fullType": "Partner.clientKinds",
-              "required": false,
-              "description": "Kind of client the company target"
+              "name": "clientKinds",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "productCountries",
               "dataType": "Partner.productCountries",
-              "paramType": "body",
+              "description": "In which country the company products of solutions are available",
               "fullType": "Partner.productCountries",
-              "required": false,
-              "description": "In which country the company products of solutions are available"
+              "name": "productCountries",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's registration number",
+              "fullType": "string",
               "name": "registrationNumber",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's registration number"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's street address",
+              "fullType": "string",
               "name": "address",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Company's street address"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Company's email",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Company's email"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Company's facebook url, must resemble \"https://www.facebook.com/ovh\")",
+              "fullType": "string",
               "name": "facebook",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's facebook url, must resemble \"https://www.facebook.com/ovh\")"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's summary",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Company's summary"
+              "required": true
             },
             {
-              "name": "OVHTechnicalExpertResources",
               "dataType": "Partner.technicalExpertResourcesRangeEnum",
-              "paramType": "body",
+              "description": "Estimation of the number of expert resources for OVH solutions the company has",
               "fullType": "Partner.technicalExpertResourcesRangeEnum",
-              "required": true,
-              "description": "Estimation of the number of expert resources for OVH solutions the company has"
+              "name": "OVHTechnicalExpertResources",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "activitySectors",
               "dataType": "Partner.activitySectors",
-              "paramType": "body",
+              "description": "Company's sector of activity",
               "fullType": "Partner.activitySectors",
-              "required": false,
-              "description": "Company's sector of activity"
+              "name": "activitySectors",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Name of the company",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of the company"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "The commercial name of the company",
+              "fullType": "string",
               "name": "commercialName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The commercial name of the company"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Company's zipCode",
+              "fullType": "string",
               "name": "zipCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Company's zipCode"
+              "required": true
             },
             {
-              "name": "country",
               "dataType": "nichandle.CountryEnum",
-              "paramType": "body",
+              "description": "Company's country",
               "fullType": "nichandle.CountryEnum",
-              "required": true,
-              "description": "Company's country"
+              "name": "country",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Company's website",
+              "fullType": "string",
               "name": "website",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Company's website"
+              "required": true
             },
             {
-              "name": "expertises",
               "dataType": "Partner.expertisesChoices",
-              "paramType": "body",
+              "description": "Company's domain of expertises",
               "fullType": "Partner.expertisesChoices",
-              "required": false,
-              "description": "Company's domain of expertises"
+              "name": "expertises",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "OVHCertifications",
               "dataType": "Partner.OVHCertifications",
-              "paramType": "body",
+              "description": "OVH certification acquired",
               "fullType": "Partner.OVHCertifications",
-              "required": false,
-              "description": "OVH certification acquired"
+              "name": "OVHCertifications",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "OVHKnowledgeResources",
               "dataType": "Partner.knowledgeResourcesRangeEnum",
-              "paramType": "body",
+              "description": "Estimation of the number of resources knowing OVH product the company has",
               "fullType": "Partner.knowledgeResourcesRangeEnum",
-              "required": true,
-              "description": "Estimation of the number of resources knowing OVH product the company has"
+              "name": "OVHKnowledgeResources",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "OVHProductsUsed",
               "dataType": "Partner.OVHProductsUsed",
-              "paramType": "body",
+              "description": "OVH's product the company's solutions relies on",
               "fullType": "Partner.OVHProductsUsed",
-              "required": false,
-              "description": "OVH's product the company's solutions relies on"
+              "name": "OVHProductsUsed",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "phone",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Company's phone",
               "fullType": "string",
-              "required": true,
-              "description": "Company's phone"
+              "name": "phone",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "Partner.Company",
-          "noAuthentication": false,
-          "description": "Created a new company for the inscription"
+          "responseType": "Partner.Company"
         }
       ],
-      "description": "Company.list"
+      "path": "/partners/register/company"
     },
     {
-      "path": "/partners/register/company/{companyId}",
+      "description": "Company.get",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove a company",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "companyId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Company ID",
               "fullType": "string",
-              "required": true,
-              "description": "Company ID"
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Remove a company"
+          "responseType": "string"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get information on a created company",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "companyId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Company ID",
               "fullType": "string",
-              "required": true,
-              "description": "Company ID"
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "Partner.Company",
-          "noAuthentication": false,
-          "description": "Get information on a created company"
+          "responseType": "Partner.Company"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update some fields on a created company",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Company's street address",
+              "fullType": "string",
               "name": "address",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's street address"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's zipCode",
+              "fullType": "string",
               "name": "zipCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's zipCode"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's registration number",
+              "fullType": "string",
               "name": "registrationNumber",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's registration number"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
+              "fullType": "string",
               "name": "linkedin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")"
+              "required": false
             },
             {
+              "dataType": "Partner.employeesNumberEnum",
+              "description": "Estimation of the number of employees",
+              "fullType": "Partner.employeesNumberEnum",
               "name": "effective",
-              "dataType": "Partner.employeesNumberEnum",
               "paramType": "body",
-              "fullType": "Partner.employeesNumberEnum",
-              "required": false,
-              "description": "Estimation of the number of employees"
+              "required": false
             },
             {
-              "name": "OVHCertifications",
               "dataType": "Partner.OVHCertifications",
-              "paramType": "body",
+              "description": "OVH certification acquired",
               "fullType": "Partner.OVHCertifications",
-              "required": false,
-              "description": "OVH certification acquired"
+              "name": "OVHCertifications",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "partnerKnowledges",
               "dataType": "Partner.partnerKnowledges",
-              "paramType": "body",
+              "description": "How did you heard about the OVH's partnership program",
               "fullType": "Partner.partnerKnowledges",
-              "required": false,
-              "description": "How did you heard about the OVH's partnership program"
+              "name": "partnerKnowledges",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Name of the company",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Name of the company"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's phone",
+              "fullType": "string",
               "name": "phone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's phone"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's logo url",
+              "fullType": "string",
               "name": "logo",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's logo url"
+              "required": false
             },
             {
-              "name": "OVHKnowledgeResources",
               "dataType": "Partner.knowledgeResourcesRangeEnum",
-              "paramType": "body",
+              "description": "Estimation of the number of resources knowing OVH product the company has",
               "fullType": "Partner.knowledgeResourcesRangeEnum",
-              "required": false,
-              "description": "Estimation of the number of resources knowing OVH product the company has"
+              "name": "OVHKnowledgeResources",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "expertises",
               "dataType": "Partner.expertisesChoices",
-              "paramType": "body",
+              "description": "Company's domain of competence",
               "fullType": "Partner.expertisesChoices",
-              "required": false,
-              "description": "Company's domain of competence"
+              "name": "expertises",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "OVHCustomersAdvised",
               "dataType": "Partner.OVHCustomersAdvisedEnum",
-              "paramType": "body",
+              "description": "Estimation of the number of accompanied customers in using OVH's solutions",
               "fullType": "Partner.OVHCustomersAdvisedEnum",
-              "required": false,
-              "description": "Estimation of the number of accompanied customers in using OVH's solutions"
+              "name": "OVHCustomersAdvised",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "activitySectors",
               "dataType": "Partner.activitySectors",
-              "paramType": "body",
+              "description": "Company's sector of activity",
               "fullType": "Partner.activitySectors",
-              "required": false,
-              "description": "Company's sector of activity"
+              "name": "activitySectors",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "productCountries",
               "dataType": "Partner.productCountries",
-              "paramType": "body",
+              "description": "In which country the company products of solutions are available",
               "fullType": "Partner.productCountries",
-              "required": false,
-              "description": "In which country the company products of solutions are available"
+              "name": "productCountries",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The commercial name of the company",
+              "fullType": "string",
               "name": "commercialName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The commercial name of the company"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's city",
+              "fullType": "string",
               "name": "city",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's city"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's website",
+              "fullType": "string",
               "name": "website",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's website"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's email",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's email"
+              "required": false
             },
             {
-              "name": "revenue",
               "dataType": "Partner.revenueRangeEnum",
-              "paramType": "body",
+              "description": "Estimation of the revenue of the company",
               "fullType": "Partner.revenueRangeEnum",
-              "required": false,
-              "description": "Estimation of the revenue of the company"
+              "name": "revenue",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "OVHTechnicalExpertResources",
               "dataType": "Partner.technicalExpertResourcesRangeEnum",
-              "paramType": "body",
+              "description": "Estimation of the number of expert resources for OVH solutions the company has",
               "fullType": "Partner.technicalExpertResourcesRangeEnum",
-              "required": false,
-              "description": "Estimation of the number of expert resources for OVH solutions the company has"
+              "name": "OVHTechnicalExpertResources",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's summary",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's summary"
+              "required": false
             },
             {
-              "name": "clientKinds",
               "dataType": "Partner.clientKinds",
-              "paramType": "body",
+              "description": "Kind of client the company target",
               "fullType": "Partner.clientKinds",
-              "required": false,
-              "description": "Kind of client the company target"
+              "name": "clientKinds",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "externalCertifications",
               "dataType": "Partner.externalCertifications",
-              "paramType": "body",
+              "description": "Certifications obtained from other enterprises",
               "fullType": "Partner.externalCertifications",
-              "required": false,
-              "description": "Certifications obtained from other enterprises"
+              "name": "externalCertifications",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "country",
               "dataType": "nichandle.CountryEnum",
-              "paramType": "body",
+              "description": "Company's country",
               "fullType": "nichandle.CountryEnum",
-              "required": false,
-              "description": "Company's country"
+              "name": "country",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's facebook url, must resemble \"https://www.facebook.com/ovh\")",
+              "fullType": "string",
               "name": "facebook",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's facebook url, must resemble \"https://www.facebook.com/ovh\")"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's twitter url, must resemble \"https://twitter.com/ovh\")",
+              "fullType": "string",
               "name": "twitter",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company's twitter url, must resemble \"https://twitter.com/ovh\")"
+              "required": false
             },
             {
-              "name": "OVHTechnicalAdvancedResources",
               "dataType": "Partner.technicalAdvancedResourcesRangeEnum",
-              "paramType": "body",
+              "description": "Estimation of the number of resources that have technical skills on OVH solutions the company has",
               "fullType": "Partner.technicalAdvancedResourcesRangeEnum",
-              "required": false,
-              "description": "Estimation of the number of resources that have technical skills on OVH solutions the company has"
+              "name": "OVHTechnicalAdvancedResources",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "OVHProductsUsed",
               "dataType": "Partner.OVHProductsUsed",
-              "paramType": "body",
+              "description": "OVH's product the company's solutions relies on",
               "fullType": "Partner.OVHProductsUsed",
-              "required": false,
-              "description": "OVH's product the company's solutions relies on"
+              "name": "OVHProductsUsed",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "companyId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Company ID",
               "fullType": "string",
-              "required": true,
-              "description": "Company ID"
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "Partner.Company",
-          "noAuthentication": false,
-          "description": "Update some fields on a created company"
+          "responseType": "Partner.Company"
         }
       ],
-      "description": "Company.get"
+      "path": "/partners/register/company/{companyId}"
     },
     {
-      "path": "/partners/register/company/{companyId}/application",
+      "description": "Application.create",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Compute scoring score without submitting application",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "companyId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Company ID",
               "fullType": "string",
-              "required": true,
-              "description": "Company ID"
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "Partner.Application",
-          "noAuthentication": false,
-          "description": "Compute scoring score without submitting application"
+          "responseType": "Partner.Application"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Submit application information for validation",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "boolean",
+              "description": "I have read the terms and conditions of the OVH partner program and accept them",
+              "fullType": "boolean",
               "name": "termsAndConditionsOfServiceAccepted",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "I have read the terms and conditions of the OVH partner program and accept them"
+              "required": true
             },
             {
-              "name": "companyId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Company ID",
               "fullType": "string",
-              "required": true,
-              "description": "Company ID"
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "Partner.Application",
-          "noAuthentication": false,
-          "description": "Submit application information for validation"
+          "responseType": "Partner.Application"
         }
       ],
-      "description": "Application.create"
+      "path": "/partners/register/company/{companyId}/application"
     },
     {
-      "path": "/partners/register/company/{companyId}/contact",
+      "description": "Contact.list",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List created contacts",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "companyId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Company ID",
               "fullType": "string",
-              "required": true,
-              "description": "Company ID"
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List created contacts"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Created a new contact for the inscription",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Contact's twitter url, must resemble \"https://twitter.com/ovh\")",
+              "fullType": "string",
               "name": "twitter",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact's twitter url, must resemble \"https://twitter.com/ovh\")"
+              "required": false
             },
             {
-              "name": "otherNics",
               "dataType": "Partner.Nic[]",
-              "paramType": "body",
+              "description": "List of nics to associate with this contact",
               "fullType": "Partner.Nic[]",
-              "required": false,
-              "description": "List of nics to associate with this contact"
+              "name": "otherNics",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact's first name",
+              "fullType": "string",
               "name": "firstName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Contact's first name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Contact's last name",
+              "fullType": "string",
               "name": "lastName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Contact's last name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Contact's function in the company",
+              "fullType": "string",
               "name": "role",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Contact's function in the company"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Contact's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
+              "fullType": "string",
               "name": "linkedin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact's email",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Contact's email"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Contact's phone number",
+              "fullType": "string",
               "name": "phone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Contact's phone number"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Contact's facebook url, must resemble \"https://www.facebook.com/ovh\")",
+              "fullType": "string",
               "name": "facebook",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact's facebook url, must resemble \"https://www.facebook.com/ovh\")"
+              "required": false
             },
             {
-              "name": "newsletter",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Newsletter subscription choice",
               "fullType": "boolean",
-              "required": false,
-              "description": "Newsletter subscription choice"
+              "name": "newsletter",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "companyId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Company ID",
               "fullType": "string",
-              "required": true,
-              "description": "Company ID"
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "Partner.Contact",
-          "noAuthentication": false,
-          "description": "Created a new contact for the inscription"
+          "responseType": "Partner.Contact"
         }
       ],
-      "description": "Contact.list"
+      "path": "/partners/register/company/{companyId}/contact"
     },
     {
-      "path": "/partners/register/company/{companyId}/contact/{contactId}",
+      "description": "Contact.get",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove a contact",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "string",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "companyId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Company ID",
               "fullType": "string",
-              "required": true,
-              "description": "Company ID"
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Remove a contact"
+          "responseType": "string"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get information on a created contact",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "companyId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Company ID",
               "fullType": "string",
-              "required": true,
-              "description": "Company ID"
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "contactId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "string",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "Partner.Contact",
-          "noAuthentication": false,
-          "description": "Get information on a created contact"
+          "responseType": "Partner.Contact"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update some fields on a created contact",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "otherNics",
               "dataType": "Partner.Nic[]",
-              "paramType": "body",
+              "description": "List of nics to associate with this contact",
               "fullType": "Partner.Nic[]",
-              "required": false,
-              "description": "List of nics to associate with this contact"
+              "name": "otherNics",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact's phone number",
+              "fullType": "string",
               "name": "phone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact's phone number"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
+              "fullType": "string",
               "name": "linkedin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact's facebook url, must resemble \"https://www.facebook.com/ovh\")",
+              "fullType": "string",
               "name": "facebook",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact's facebook url, must resemble \"https://www.facebook.com/ovh\")"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact's first name",
+              "fullType": "string",
               "name": "firstName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact's first name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact's last name",
+              "fullType": "string",
               "name": "lastName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact's last name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact's email",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact's email"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact's role in the company",
+              "fullType": "string",
               "name": "role",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact's role in the company"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact's twitter url, must resemble \"https://twitter.com/ovh\")",
+              "fullType": "string",
               "name": "twitter",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact's twitter url, must resemble \"https://twitter.com/ovh\")"
+              "required": false
             },
             {
-              "name": "newsletter",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Newsletter subscription choice",
               "fullType": "boolean",
-              "required": false,
-              "description": "Newsletter subscription choice"
+              "name": "newsletter",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company ID",
+              "fullType": "string",
               "name": "companyId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Company ID"
+              "required": true
             },
             {
-              "name": "contactId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "string",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "Partner.Contact",
-          "noAuthentication": false,
-          "description": "Update some fields on a created contact"
+          "responseType": "Partner.Contact"
         }
       ],
-      "description": "Contact.get"
+      "path": "/partners/register/company/{companyId}/contact/{contactId}"
     }
   ],
-  "resourcePath": "/partners",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "Partner.Application": {
+      "description": "Partner Application",
       "id": "Application",
       "namespace": "Partner",
-      "description": "Partner Application",
       "properties": {
         "tieringLevel": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "You are eligible for the OVH Services Program Partners (OSPP) with the following tiering level",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "Partner.Company": {
+      "description": "Partner company",
       "id": "Company",
       "namespace": "Partner",
-      "description": "Partner company",
       "properties": {
         "OVHCertifications": {
-          "type": "Partner.OVHCertifications",
-          "fullType": "Partner.OVHCertifications",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OVH certification acquired",
-          "required": true
+          "fullType": "Partner.OVHCertifications",
+          "readOnly": true,
+          "required": true,
+          "type": "Partner.OVHCertifications"
         },
         "OVHCustomersAdvised": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Estimation of the number of accompanied customers in using OVH's solutions",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "OVHKnowledgeResources": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Estimation of the number of resources knowing OVH product the company has",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "OVHProductsUsed": {
-          "type": "Partner.OVHProductsUsed",
-          "fullType": "Partner.OVHProductsUsed",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OVH's product the company's solutions relies on",
-          "required": true
+          "fullType": "Partner.OVHProductsUsed",
+          "readOnly": true,
+          "required": true,
+          "type": "Partner.OVHProductsUsed"
         },
         "OVHTechnicalAdvancedResources": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Estimation of the number of resources that have technical skills on OVH solutions the company has",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "OVHTechnicalExpertResources": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Estimation of the number of expert resources for OVH solutions the company has",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "activitySectors": {
-          "type": "Partner.activitySectors",
-          "fullType": "Partner.activitySectors",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's sector of activity",
-          "required": true
+          "fullType": "Partner.activitySectors",
+          "readOnly": true,
+          "required": true,
+          "type": "Partner.activitySectors"
         },
         "address": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's street address",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's city",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "clientKinds": {
-          "type": "Partner.clientKinds",
-          "fullType": "Partner.clientKinds",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Kind of client the company target",
-          "required": true
+          "fullType": "Partner.clientKinds",
+          "readOnly": true,
+          "required": true,
+          "type": "Partner.clientKinds"
         },
         "commercialName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The commercial name of the company",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "country": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's country",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's summary",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's email",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "employeesNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Estimation of the number of employees",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "expertises": {
-          "type": "Partner.expertisesChoices",
-          "fullType": "Partner.expertisesChoices",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's domain of competence",
-          "required": true
+          "fullType": "Partner.expertisesChoices",
+          "readOnly": true,
+          "required": true,
+          "type": "Partner.expertisesChoices"
         },
         "externalCertifications": {
-          "type": "Partner.externalCertifications",
-          "fullType": "Partner.externalCertifications",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Certifications obtained from other enterprises",
-          "required": true
+          "fullType": "Partner.externalCertifications",
+          "readOnly": true,
+          "required": true,
+          "type": "Partner.externalCertifications"
         },
         "facebook": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's facebook profile url",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "linkedin": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's linkedin profile url",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "logo": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's logo",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the company",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "partnerKnowledges": {
-          "type": "Partner.partnerKnowledges",
-          "fullType": "Partner.partnerKnowledges",
           "canBeNull": false,
-          "readOnly": true,
           "description": "How did you heard about the OVH's partnership program",
-          "required": true
+          "fullType": "Partner.partnerKnowledges",
+          "readOnly": true,
+          "required": true,
+          "type": "Partner.partnerKnowledges"
         },
         "phone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's phone number",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "productCountries": {
-          "type": "Partner.productCountries",
-          "fullType": "Partner.productCountries",
           "canBeNull": false,
-          "readOnly": true,
           "description": "In which country the company products of solutions are available",
-          "required": true
+          "fullType": "Partner.productCountries",
+          "readOnly": true,
+          "required": true,
+          "type": "Partner.productCountries"
         },
         "registrationNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's registration number",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "revenue": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Estimation of the revenue of the company",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "Partner.companyStatusEnum",
-          "fullType": "Partner.companyStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Registration status ",
-          "required": true
+          "fullType": "Partner.companyStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "Partner.companyStatusEnum"
         },
         "twitter": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's twitter profile url",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "website": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's website",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "zipCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Company's zipCode",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "Partner.Contact": {
+      "description": "Partner contact",
       "id": "Contact",
       "namespace": "Partner",
-      "description": "Partner contact",
       "properties": {
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact's email",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "facebook": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Contact's facebook url",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact's first name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact's last name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "linkedin": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Contact's linkedin url",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "newsletter": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Newsletter subscription choice",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "otherNics": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of nics to associate with this contact",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "phone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact's phone number",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "role": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact's function in the company",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "twitter": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Contact's twitter url",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "Partner.Nic": {
+      "description": "Partner Nic",
       "id": "Nic",
       "namespace": "Partner",
-      "description": "Partner Nic",
       "properties": {
         "nic": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Nic",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "Partner.OVHCertifications": {
+      "description": "Possible choices for OVHCertifications",
       "id": "OVHCertifications",
       "namespace": "Partner",
-      "description": "Possible choices for OVHCertifications",
       "properties": {
         "advanced": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Advanced certification id",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "business": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Business certification id",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "technical": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Technical certification id",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "Partner.OVHCustomersAdvisedEnum": {
-      "id": "OVHCustomersAdvisedEnum",
-      "namespace": "Partner",
       "description": "Possible choices for OVHCustomersAdvisedEnum",
       "enum": [
         "none",
@@ -1322,436 +1321,436 @@ export const schema: Schema = {
         "from4To5",
         "moreThan5"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OVHCustomersAdvisedEnum",
+      "namespace": "Partner"
     },
     "Partner.OVHProductsUsed": {
+      "description": "Possible choices for OVHProductsUsed",
       "id": "OVHProductsUsed",
       "namespace": "Partner",
-      "description": "Possible choices for OVHProductsUsed",
       "properties": {
         "cloud": {
-          "type": "Partner.OVHProductsUsedCloud",
-          "fullType": "Partner.OVHProductsUsedCloud",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Cloud solutions",
-          "required": true
+          "fullType": "Partner.OVHProductsUsedCloud",
+          "readOnly": false,
+          "required": true,
+          "type": "Partner.OVHProductsUsedCloud"
         },
         "mobileHosting": {
-          "type": "Partner.OVHProductsUsedMobileHosting",
-          "fullType": "Partner.OVHProductsUsedMobileHosting",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Mobile Hosting solutions",
-          "required": true
+          "fullType": "Partner.OVHProductsUsedMobileHosting",
+          "readOnly": false,
+          "required": true,
+          "type": "Partner.OVHProductsUsedMobileHosting"
         },
         "telecom": {
-          "type": "Partner.OVHProductsUsedTelecom",
-          "fullType": "Partner.OVHProductsUsedTelecom",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Telecom solutions",
-          "required": true
+          "fullType": "Partner.OVHProductsUsedTelecom",
+          "readOnly": false,
+          "required": true,
+          "type": "Partner.OVHProductsUsedTelecom"
         },
         "web": {
-          "type": "Partner.OVHProductsUsedWeb",
-          "fullType": "Partner.OVHProductsUsedWeb",
           "canBeNull": false,
-          "readOnly": false,
           "description": "WEB solutions",
-          "required": true
+          "fullType": "Partner.OVHProductsUsedWeb",
+          "readOnly": false,
+          "required": true,
+          "type": "Partner.OVHProductsUsedWeb"
         }
       }
     },
     "Partner.OVHProductsUsedCloud": {
+      "description": "Possible options for OVHProductsUsed_cloud",
       "id": "OVHProductsUsedCloud",
       "namespace": "Partner",
-      "description": "Possible options for OVHProductsUsed_cloud",
       "properties": {
         "cloudDesktop": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Cloud Desktop",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "cloudDesktopInfrastructure": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Cloud Desktop Infrastructure",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "dedicated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Dedicated Serveurs",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "nas": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "NAS",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "networkAndSecurity": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Network and security solutions",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "privateCloud": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Private Cloud",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "publicCloud": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Public Cloud",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "vps": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "VPS",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "vrack": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "vRack / vRack Connect",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.OVHProductsUsedMobileHosting": {
+      "description": "Possible ranges for OVHProductsUsed_mobileHosting",
       "id": "OVHProductsUsedMobileHosting",
       "namespace": "Partner",
-      "description": "Possible ranges for OVHProductsUsed_mobileHosting",
       "properties": {
         "logs": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Logs Data Platforms",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "metrics": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Metrics Data Platforms",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.OVHProductsUsedTelecom": {
+      "description": "Possible ranges for OVHProductsUsed_telecom",
       "id": "OVHProductsUsedTelecom",
       "namespace": "Partner",
-      "description": "Possible ranges for OVHProductsUsed_telecom",
       "properties": {
         "dsl": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ADSL / SDSL",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "fax": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Fax",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "overTheBox": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "OverTheBox",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "sms": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SMS",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "voip": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "VoIP",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.OVHProductsUsedWeb": {
+      "description": "Possible ranges for OVHProductsUsed_web",
       "id": "OVHProductsUsedWeb",
       "namespace": "Partner",
-      "description": "Possible ranges for OVHProductsUsed_web",
       "properties": {
         "domainName": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Domain name",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "exchange": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Microsoft Exchange 2016",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "office": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Microsoft Office 365 (CSP2)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "sharepoint": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Microsoft Sharepoint 2016",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "webHosting": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Web Hosting",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.activitySectors": {
+      "description": "Possible choices for activitySectors",
       "id": "activitySectors",
       "namespace": "Partner",
-      "description": "Possible choices for activitySectors",
       "properties": {
         "bankInsuranceFinance": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Bank / Insurance / Finance",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "businessServiceOrIndividuals": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Business Services / Individuals",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "communicationOrMedia": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Communication / Media",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "digitalServicesCompanies": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Digital Services Companies",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "ecommerce": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "E-commerce",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "health": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Health",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "industryTransportationEnegy": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Industry / Transportation / Energy",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "other": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Other (specify)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "otherITOrTelecom": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Other IT / Telecom professions",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "publicSectorOrEducation": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Public Sector / Education",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "resellerITOrTelecom": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Reseller of IT / Telecom services",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "softwareEditor": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Software editor",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "tradeTradingDistribution": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Trade / Trading / Distribution",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "videoGames": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Video games / Online games",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "webAgency": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Web Agency",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.clientKinds": {
+      "description": "Possible choices for clientKinds",
       "id": "clientKinds",
       "namespace": "Partner",
-      "description": "Possible choices for clientKinds",
       "properties": {
         "association": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Associations",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "individual": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Individual",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "largeGroup": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Large Group",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "mediumBusiness": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Medium Business",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "other": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Other (specify)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "publicSector": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Public Sector",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "startup": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Startup",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.companyStatusEnum": {
-      "id": "companyStatusEnum",
-      "namespace": "Partner",
       "description": "Possible choices for companyStatusEnum",
       "enum": [
         "draft",
@@ -1759,11 +1758,11 @@ export const schema: Schema = {
         "validated",
         "rejected"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "companyStatusEnum",
+      "namespace": "Partner"
     },
     "Partner.employeesNumberEnum": {
-      "id": "employeesNumberEnum",
-      "namespace": "Partner",
       "description": "Possible ranges for company employees number",
       "enum": [
         "from1To10",
@@ -1772,261 +1771,261 @@ export const schema: Schema = {
         "from101To500",
         "moreThan500"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "employeesNumberEnum",
+      "namespace": "Partner"
     },
     "Partner.expertisesChoices": {
+      "description": "Possible choices for expertises",
       "id": "expertisesChoices",
       "namespace": "Partner",
-      "description": "Possible choices for expertises",
       "properties": {
         "consulting": {
-          "type": "Partner.expertisesChoicesConsulting",
-          "fullType": "Partner.expertisesChoicesConsulting",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Consulting",
-          "required": true
+          "fullType": "Partner.expertisesChoicesConsulting",
+          "readOnly": false,
+          "required": true,
+          "type": "Partner.expertisesChoicesConsulting"
         },
         "installationAndIntegration": {
-          "type": "Partner.expertisesChoicesInstallationAndIntegration",
-          "fullType": "Partner.expertisesChoicesInstallationAndIntegration",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Installation and integration",
-          "required": true
+          "fullType": "Partner.expertisesChoicesInstallationAndIntegration",
+          "readOnly": false,
+          "required": true,
+          "type": "Partner.expertisesChoicesInstallationAndIntegration"
         },
         "outsourcingAndMaintenance": {
-          "type": "Partner.expertisesChoicesOutsourcingAndMaintenance",
-          "fullType": "Partner.expertisesChoicesOutsourcingAndMaintenance",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Outsourcing And Maintenance",
-          "required": true
+          "fullType": "Partner.expertisesChoicesOutsourcingAndMaintenance",
+          "readOnly": false,
+          "required": true,
+          "type": "Partner.expertisesChoicesOutsourcingAndMaintenance"
         },
         "softwareAndDevelopment": {
-          "type": "Partner.expertisesChoicesSoftwareAndDevelopment",
-          "fullType": "Partner.expertisesChoicesSoftwareAndDevelopment",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Software And Development",
-          "required": true
+          "fullType": "Partner.expertisesChoicesSoftwareAndDevelopment",
+          "readOnly": false,
+          "required": true,
+          "type": "Partner.expertisesChoicesSoftwareAndDevelopment"
         }
       }
     },
     "Partner.expertisesChoicesConsulting": {
+      "description": "Possible options for consulting expertises",
       "id": "expertisesChoicesConsulting",
       "namespace": "Partner",
-      "description": "Possible options for consulting expertises",
       "properties": {
         "ITSecurity": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "IT security",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "auditAndConsulting": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Audit and Consulting",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "infrastructureArchitecture": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Infrastructure Architecture",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "marketingCommerceAndCommunication": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Marketing, Commerce and Communication",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "searchEngineOptimization": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SEO-SEA Search Engine Optimization",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.expertisesChoicesInstallationAndIntegration": {
+      "description": "Possible options for installation and integration expertises",
       "id": "expertisesChoicesInstallationAndIntegration",
       "namespace": "Partner",
-      "description": "Possible options for installation and integration expertises",
       "properties": {
         "cloudInfrastructure": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Cloud infrastructure installation and integration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "networkEquipment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Installation and integration of network equipment",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "peripheralsAndMobilitySolutions": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Installation and integration of peripherals and mobility solutions",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "telecomEquipmentAndInfrastructure": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Installation and integration of telecom equipment and infrastructure",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.expertisesChoicesOutsourcingAndMaintenance": {
+      "description": "Possible options for outsourcing and maintenance expertises",
       "id": "expertisesChoicesOutsourcingAndMaintenance",
       "namespace": "Partner",
-      "description": "Possible options for outsourcing and maintenance expertises",
       "properties": {
         "cmputerSupport": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Computer support",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "maintenanceOfNetworkEquipment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maintenance of network equipment / servers",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "outsourcing": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Outsourcing",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.expertisesChoicesSoftwareAndDevelopment": {
+      "description": "Possible options for software and development expertises",
       "id": "expertisesChoicesSoftwareAndDevelopment",
       "namespace": "Partner",
-      "description": "Possible options for software and development expertises",
       "properties": {
         "adviceAndexpertises": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Advice and expertises",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "maintenanceOrApplicationManagement": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maintenance / Application Management",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "networkEquipment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Installation and integration of network equipment",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "softwareSolutions": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Software solutions (collaborative solutions, virtual offices)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.externalCertifications": {
+      "description": "Possible choices for externalCertifications",
       "id": "externalCertifications",
       "namespace": "Partner",
-      "description": "Possible choices for externalCertifications",
       "properties": {
         "aws": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "AWS",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "cisco": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Cisco",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "intel": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Intel",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "microsoft": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Microsoft",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "other": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Other (specify)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "vmware": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "VMWare",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.knowledgeResourcesRangeEnum": {
-      "id": "knowledgeResourcesRangeEnum",
-      "namespace": "Partner",
       "description": "Possible ranges for knowledgeResources",
       "enum": [
         "none",
@@ -2034,241 +2033,241 @@ export const schema: Schema = {
         "from4To10",
         "moreThan10"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "knowledgeResourcesRangeEnum",
+      "namespace": "Partner"
     },
     "Partner.partnerKnowledges": {
+      "description": "Possible choices for partnerKnowledges",
       "id": "partnerKnowledges",
       "namespace": "Partner",
-      "description": "Possible choices for partnerKnowledges",
       "properties": {
         "events": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Events",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forum": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Forum",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "media": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Media",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "other": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Other (specify)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "searchEngine": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Search engine",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "socialNetwork": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Social Networks",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "website": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "OVH website",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.productCountries": {
+      "description": "Possible choices for productCountries",
       "id": "productCountries",
       "namespace": "Partner",
-      "description": "Possible choices for productCountries",
       "properties": {
         "australia": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Australia",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "brazil": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Brazil",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "canada": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Canada",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "czechRepublic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Czech republic",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "finland": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Finland",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "france": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "France",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "germany": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Germany",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "ireland": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ireland",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "italy": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Italy",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "lithuania": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Lithuania",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "morocco": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Morocco",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "netherlands": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Netherlands",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "other": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Other (specify)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "poland": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Poland",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "portugal": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Portugal",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "senegal": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Senegal",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "singapore": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Singapore",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "spain": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Spain",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "tunisia": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Tunisia",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "uk": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "UK",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "Partner.revenueRangeEnum": {
-      "id": "revenueRangeEnum",
-      "namespace": "Partner",
       "description": "Possible ranges for revenue",
       "enum": [
         "lessThan50000Euros",
@@ -2277,11 +2276,11 @@ export const schema: Schema = {
         "moreThan5000000Euros",
         "IDoNotWishToDiscloseThisInformation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "revenueRangeEnum",
+      "namespace": "Partner"
     },
     "Partner.technicalAdvancedResourcesRangeEnum": {
-      "id": "technicalAdvancedResourcesRangeEnum",
-      "namespace": "Partner",
       "description": "Possible ranges for AdvancedResources",
       "enum": [
         "none",
@@ -2289,11 +2288,11 @@ export const schema: Schema = {
         "from4To10",
         "moreThan10"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "technicalAdvancedResourcesRangeEnum",
+      "namespace": "Partner"
     },
     "Partner.technicalExpertResourcesRangeEnum": {
-      "id": "technicalExpertResourcesRangeEnum",
-      "namespace": "Partner",
       "description": "Possible ranges for revenue",
       "enum": [
         "none",
@@ -2301,11 +2300,11 @@ export const schema: Schema = {
         "from4To10",
         "moreThan10"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "technicalExpertResourcesRangeEnum",
+      "namespace": "Partner"
     },
     "nichandle.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "nichandle",
       "description": "Countries a nichandle can choose",
       "enum": [
         "AC",
@@ -2563,7 +2562,10 @@ export const schema: Schema = {
         "ZM",
         "ZW"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "nichandle"
     }
-  }
+  },
+  "resourcePath": "/partners"
 }

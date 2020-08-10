@@ -1,218 +1,217 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/ssl.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/ssl",
+      "description": "Operations about the SSL service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the SSL service"
+      "path": "/ssl"
     },
     {
-      "path": "/ssl/{serviceName}",
+      "description": "Certificate of an SSL customer",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ssl.Certificate",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ssl.Certificate"
         }
       ],
-      "description": "Certificate of an SSL customer"
+      "path": "/ssl/{serviceName}"
     },
     {
-      "path": "/ssl/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/ssl/{serviceName}/serviceInfos"
     },
     {
-      "path": "/ssl/{serviceName}/tasks",
+      "description": "List the ssl.Operation objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Tasks associated to this ssl",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks associated to this ssl"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the ssl.Operation objects"
+      "path": "/ssl/{serviceName}/tasks"
     },
     {
-      "path": "/ssl/{serviceName}/tasks/{taskId}",
+      "description": "Task on a SSL",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "taskId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Task ID",
               "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ssl.Operation",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ssl.Operation"
         }
       ],
-      "description": "Task on a SSL"
+      "path": "/ssl/{serviceName}/tasks/{taskId}"
     }
   ],
-  "resourcePath": "/ssl",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -223,11 +222,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -235,217 +234,217 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "ssl.Certificate": {
+      "description": "Certificate of an SSL customer",
       "id": "Certificate",
       "namespace": "ssl",
-      "description": "Certificate of an SSL customer",
       "properties": {
         "authority": {
-          "type": "ssl.CertificateAuthorityEnum",
-          "fullType": "ssl.CertificateAuthorityEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The authority your certificate is issued from",
-          "required": true
+          "fullType": "ssl.CertificateAuthorityEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ssl.CertificateAuthorityEnum"
         },
         "certificate": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Your certificate",
-          "required": false
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
         },
         "chain": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The issuer chain of your certificate",
-          "required": false
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
         },
         "commonName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The CN field in your certificate",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "csr": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The CSR used to create your certificate",
-          "required": true
+          "fullType": "text",
+          "readOnly": true,
+          "required": true,
+          "type": "text"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The internal name of your certificate offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "ssl.CertificateStatusEnum",
-          "fullType": "ssl.CertificateStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current status of your certificate",
-          "required": true
+          "fullType": "ssl.CertificateStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ssl.CertificateStatusEnum"
         },
         "subjectAltName": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The SAN field for multidomain certificate",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "type": {
-          "type": "ssl.CertificateTypeEnum",
-          "fullType": "ssl.CertificateTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of your certificate",
-          "required": true
+          "fullType": "ssl.CertificateTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ssl.CertificateTypeEnum"
         },
         "validityEnd": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Your certificate is invalid from this date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "validityStart": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Your certificate is valid from this date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "ssl.CertificateAuthorityEnum": {
-      "id": "CertificateAuthorityEnum",
-      "namespace": "ssl",
       "description": "All authority a SSL certificate can be issued from",
       "enum": [
         "comodo",
         "sectigo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CertificateAuthorityEnum",
+      "namespace": "ssl"
     },
     "ssl.CertificateStatusEnum": {
-      "id": "CertificateStatusEnum",
-      "namespace": "ssl",
       "description": "All status a SSL certificate can be in",
       "enum": [
         "creating",
@@ -453,85 +452,85 @@ export const schema: Schema = {
         "ok",
         "validating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CertificateStatusEnum",
+      "namespace": "ssl"
     },
     "ssl.CertificateTypeEnum": {
-      "id": "CertificateTypeEnum",
-      "namespace": "ssl",
       "description": "All type a SSL certificate can be",
       "enum": [
         "DV",
         "EV",
         "OV"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CertificateTypeEnum",
+      "namespace": "ssl"
     },
     "ssl.Operation": {
+      "description": "Task on a SSL",
       "id": "Operation",
       "namespace": "ssl",
-      "description": "Task on a SSL",
       "properties": {
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "ssl.OperationFunctionEnum",
-          "fullType": "ssl.OperationFunctionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task function name",
-          "required": true
+          "fullType": "ssl.OperationFunctionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ssl.OperationFunctionEnum"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task last update",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "ssl.OperationStatusEnum",
-          "fullType": "ssl.OperationStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "ssl.OperationStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ssl.OperationStatusEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ssl.OperationFunctionEnum": {
-      "id": "OperationFunctionEnum",
-      "namespace": "ssl",
       "description": "All functions a SSL operation can handle",
       "enum": [
         "createCertificate"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationFunctionEnum",
+      "namespace": "ssl"
     },
     "ssl.OperationStatusEnum": {
-      "id": "OperationStatusEnum",
-      "namespace": "ssl",
       "description": "All status a SSL operation can be in",
       "enum": [
         "cancelled",
@@ -540,7 +539,10 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationStatusEnum",
+      "namespace": "ssl"
     }
-  }
+  },
+  "resourcePath": "/ssl"
 }

@@ -1,4279 +1,4278 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://api.us.ovhcloud.com:443/1.0/dbaas/logs.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/dbaas/logs",
+      "description": "Operations about the DBAAS-LOGS service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DBAAS-LOGS service"
+      "path": "/dbaas/logs"
     },
     {
-      "path": "/dbaas/logs/input/engine",
+      "description": "Engines",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of available input engines",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "uuid[]",
           "noAuthentication": false,
-          "description": "Returns the list of available input engines"
+          "parameters": [],
+          "responseType": "uuid[]"
         }
       ],
-      "description": "Engines"
+      "path": "/dbaas/logs/input/engine"
     },
     {
-      "path": "/dbaas/logs/input/engine/{engineId}",
+      "description": "Engine",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of specified input engine",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "engineId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Engine ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Engine ID"
+              "name": "engineId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Engine",
-          "noAuthentication": false,
-          "description": "Returns details of specified input engine"
+          "responseType": "dbaas.logs.Engine"
         }
       ],
-      "description": "Engine"
+      "path": "/dbaas/logs/input/engine/{engineId}"
     },
     {
-      "path": "/dbaas/logs/input/engine/{engineId}/helper",
+      "description": "Input engine helpers",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return the list of available helpers for the given input engine",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "engineId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Engine ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Engine ID"
+              "name": "engineId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Return the list of available helpers for the given input engine"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "Input engine helpers"
+      "path": "/dbaas/logs/input/engine/{engineId}/helper"
     },
     {
-      "path": "/dbaas/logs/input/engine/{engineId}/helper/{helperId}",
+      "description": "Input engine helpers",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of specified input engine helper",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "engineId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Helper ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Engine ID"
+              "name": "helperId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "helperId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Engine ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Helper ID"
+              "name": "engineId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Helper",
-          "noAuthentication": false,
-          "description": "Returns details of specified input engine helper"
+          "responseType": "dbaas.logs.Helper"
         }
       ],
-      "description": "Input engine helpers"
+      "path": "/dbaas/logs/input/engine/{engineId}/helper/{helperId}"
     },
     {
-      "path": "/dbaas/logs/offer/{reference}",
+      "description": "Offer",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "Display specified offer",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "reference",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Reference",
               "fullType": "string",
-              "required": true,
-              "description": "Reference"
+              "name": "reference",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.PublicOffer",
-          "noAuthentication": false,
-          "description": "Display specified offer"
+          "responseType": "dbaas.logs.PublicOffer"
         }
       ],
-      "description": "Offer"
+      "path": "/dbaas/logs/offer/{reference}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}",
+      "description": "Operations about the DBAAS-LOGS service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the service object of connected identity.",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Service",
-          "noAuthentication": false,
-          "description": "Returns the service object of connected identity."
+          "responseType": "dbaas.logs.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update the service properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.Update",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.Update",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update the service properties"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Operations about the DBAAS-LOGS service"
+      "path": "/dbaas/logs/{serviceName}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/dbaas/logs/{serviceName}/changeContact"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/cluster",
+      "description": "Service Clusters",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of allowed cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of allowed cluster"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "Service Clusters"
+      "path": "/dbaas/logs/{serviceName}/cluster"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}",
+      "description": "Service Clusters",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of an allowed cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Cluster",
-          "noAuthentication": false,
-          "description": "Returns details of an allowed cluster"
+          "responseType": "dbaas.logs.Cluster"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update details of an allowed cluster",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.ClusterAllowedNetworks",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.ClusterAllowedNetworks",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "clusterId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update details of an allowed cluster"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Service Clusters"
+      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork",
+      "description": "Cluster allowed networks",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "List all the network ID allowed to contact given cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "List all the network ID allowed to contact given cluster"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "Allow an IP to contact cluster",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.ClusterAllowedNetworkCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.ClusterAllowedNetworkCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Allow an IP to contact cluster"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Cluster allowed networks"
+      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}",
+      "description": "Cluster allowed networks",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "Remove the specified IP from the list of allowed networks",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "uuid",
+              "description": "Allowed network ID",
+              "fullType": "uuid",
               "name": "allowedNetworkId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Allowed network ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "clusterId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove the specified IP from the list of allowed networks"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "Returns details of an allowed network",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "clusterId",
-              "dataType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Cluster ID"
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Allowed network ID",
+              "fullType": "uuid",
               "name": "allowedNetworkId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Allowed network ID"
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.ClusterAllowedNetwork",
-          "noAuthentication": false,
-          "description": "Returns details of an allowed network"
+          "responseType": "dbaas.logs.ClusterAllowedNetwork"
         }
       ],
-      "description": "Cluster allowed networks"
+      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/retention",
+      "description": "Cluster available retentions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List all the retention ID available for a given cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Cluster ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Cluster ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "List all the retention ID available for a given cluster"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "Cluster available retentions"
+      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/retention"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/retention/{retentionId}",
+      "description": "Cluster available retentions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of a retention",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "clusterId",
-              "dataType": "uuid",
-              "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Cluster ID"
-            },
-            {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Retention ID",
+              "fullType": "uuid",
               "name": "retentionId",
-              "dataType": "uuid",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Cluster ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Retention ID"
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.ClusterRetention",
-          "noAuthentication": false,
-          "description": "Returns details of a retention"
+          "responseType": "dbaas.logs.ClusterRetention"
         }
       ],
-      "description": "Cluster available retentions"
+      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/retention/{retentionId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input",
+      "description": "Inputs",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of registered input attached to the logged user",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of registered input attached to the logged user"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Register a new input object",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.InputCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.InputCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Register a new input object"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Inputs"
+      "path": "/dbaas/logs/{serviceName}/input"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}",
+      "description": "Input",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove the specified input object",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove the specified input object"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of specified input",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Input",
-          "noAuthentication": false,
-          "description": "Returns details of specified input"
+          "responseType": "dbaas.logs.Input"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update information of specified input object",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.InputUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.InputUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update information of specified input object"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Input"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/action",
+      "description": "InputActions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns actions of specified input",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "uuid",
+              "description": "Input ID",
+              "fullType": "uuid",
+              "name": "inputId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "inputId",
-              "dataType": "uuid",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.InputAction[]",
-          "noAuthentication": false,
-          "description": "Returns actions of specified input"
+          "responseType": "dbaas.logs.InputAction[]"
         }
       ],
-      "description": "InputActions"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/action"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork",
+      "description": "InputAllowedNetworks",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "List all network ID allowed to join input",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "List all network ID allowed to join input"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "Allow an ip to join input",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.InputAllowedNetworkCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.InputAllowedNetworkCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Allow an ip to join input"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "InputAllowedNetworks"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}",
+      "description": "InputAllowedNetwork",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "Remove the specified IP from the list of allowed networks",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "allowedNetworkId",
-              "dataType": "uuid",
-              "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Allowed network ID"
-            },
-            {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Allowed network ID",
+              "fullType": "uuid",
+              "name": "allowedNetworkId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove the specified IP from the list of allowed networks"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "List all network ID allowed to join input",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "inputId",
-              "dataType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Input ID",
+              "fullType": "uuid",
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Allowed network ID",
+              "fullType": "uuid",
               "name": "allowedNetworkId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Allowed network ID"
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.AllowedNetwork",
-          "noAuthentication": false,
-          "description": "List all network ID allowed to join input"
+          "responseType": "dbaas.logs.AllowedNetwork"
         }
       ],
-      "description": "InputAllowedNetwork"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/configtest",
+      "description": "InputConfigtest",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Validate configuration of specified input",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Validate configuration of specified input"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "InputConfigtest"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/configtest"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/configtest/result",
+      "description": "InputConfigtestResult",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the config test operation result",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.TestResult",
-          "noAuthentication": false,
-          "description": "Returns the config test operation result"
+          "responseType": "dbaas.logs.TestResult"
         }
       ],
-      "description": "InputConfigtestResult"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/configtest/result"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger",
+      "description": "FlowggerConfiguration",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the flowgger configuration",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "inputId",
-              "dataType": "uuid",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "uuid",
+              "description": "Input ID",
+              "fullType": "uuid",
+              "name": "inputId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.FlowggerConfiguration",
-          "noAuthentication": false,
-          "description": "Returns the flowgger configuration"
+          "responseType": "dbaas.logs.FlowggerConfiguration"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update the flowgger configuration",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.InputConfigurationFlowggerUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.InputConfigurationFlowggerUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update the flowgger configuration"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "FlowggerConfiguration"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash",
+      "description": "LogstashConfiguration",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the logstash configuration",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.LogstashConfiguration",
-          "noAuthentication": false,
-          "description": "Returns the logstash configuration"
+          "responseType": "dbaas.logs.LogstashConfiguration"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update the logstash configuration",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.InputConfigurationLogstashUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.InputConfigurationLogstashUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "inputId",
-              "dataType": "uuid",
-              "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
-            },
-            {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Input ID",
+              "fullType": "uuid",
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update the logstash configuration"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "LogstashConfiguration"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/end",
+      "description": "InputEnd",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Schedule the end of specified input",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Schedule the end of specified input"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "InputEnd"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/end"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/logs/url",
+      "description": "InputLogs",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Generate a temporary url to retrieve input logs",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.TemporaryLogsLink",
-          "noAuthentication": false,
-          "description": "Generate a temporary url to retrieve input logs"
+          "responseType": "dbaas.logs.TemporaryLogsLink"
         }
       ],
-      "description": "InputLogs"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/logs/url"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/restart",
+      "description": "InputRestart",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Schedule the restart of specified input",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "inputId",
-              "dataType": "uuid",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "uuid",
+              "description": "Input ID",
+              "fullType": "uuid",
+              "name": "inputId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Schedule the restart of specified input"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "InputRestart"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/restart"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/start",
+      "description": "InputStart",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Schedule the start of specified input",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Schedule the start of specified input"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "InputStart"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/start"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/url",
+      "description": "InputUrls",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of urls of specified input",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "inputId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Input ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Input ID"
+              "name": "inputId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]",
-          "noAuthentication": false,
-          "description": "Returns the list of urls of specified input"
+          "responseType": "dbaas.logs.Url[]"
         }
       ],
-      "description": "InputUrls"
+      "path": "/dbaas/logs/{serviceName}/input/{inputId}/url"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/metrics",
+      "description": "Service Metrics",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns Metrics credentials",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.ServiceMetric",
-          "noAuthentication": false,
-          "description": "Returns Metrics credentials"
+          "responseType": "dbaas.logs.ServiceMetric"
         }
       ],
-      "description": "Service Metrics"
+      "path": "/dbaas/logs/{serviceName}/metrics"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/offer",
+      "description": "ServiceOffer",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "Returns the subscribed offer",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Offer",
-          "noAuthentication": false,
-          "description": "Returns the subscribed offer"
+          "responseType": "dbaas.logs.Offer"
         }
       ],
-      "description": "ServiceOffer"
+      "path": "/dbaas/logs/{serviceName}/offer"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/operation",
+      "description": "Operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Latest operations",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Latest operations"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "Operations"
+      "path": "/dbaas/logs/{serviceName}/operation"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/operation/{operationId}",
+      "description": "Operation",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of specified operation",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Operation ID",
+              "fullType": "uuid",
               "name": "operationId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Operation ID"
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Returns details of specified operation"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Operation"
+      "path": "/dbaas/logs/{serviceName}/operation/{operationId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/option",
+      "description": "ServiceOptions",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "Returns the subscribed additional options",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the subscribed additional options"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "ServiceOptions"
+      "path": "/dbaas/logs/{serviceName}/option"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/option/{optionId}",
+      "description": "ServiceOption",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "Returns details of a subscribed option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "optionId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Option ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Option ID"
+              "name": "optionId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Option",
-          "noAuthentication": false,
-          "description": "Returns details of a subscribed option"
+          "responseType": "dbaas.logs.Option"
         }
       ],
-      "description": "ServiceOption"
+      "path": "/dbaas/logs/{serviceName}/option/{optionId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/option/{optionId}/terminate",
+      "description": "ServiceOption",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "Remove the specified subscribed option",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "optionId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Option ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Option ID"
+              "name": "optionId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove the specified subscribed option"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "ServiceOption"
+      "path": "/dbaas/logs/{serviceName}/option/{optionId}/terminate"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias",
+      "description": "Aliases",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of alias for connected user",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of alias for connected user"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Register a new elasticsearch alias",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputElasticsearchAliasCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputElasticsearchAliasCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Register a new elasticsearch alias"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Aliases"
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}",
+      "description": "Alia",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove specified elasticsearch alias",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "aliasId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Alias ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Alias ID"
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove specified elasticsearch alias"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns specified elasticsearch alias",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "aliasId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Alias ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Alias ID"
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Alias",
-          "noAuthentication": false,
-          "description": "Returns specified elasticsearch alias"
+          "responseType": "dbaas.logs.Alias"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update specified elasticsearch alias",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputElasticsearchAliasUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputElasticsearchAliasUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "aliasId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Alias ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Alias ID"
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update specified elasticsearch alias"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Alia"
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index",
+      "description": "AliasStreams",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of elasticsearch indexes attached to specified\n        elasticsearch alias",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "aliasId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Alias ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Alias ID"
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of elasticsearch indexes attached to specified\n        elasticsearch alias"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Attach a elasticsearch index to specified elasticsearch alias",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputElasticsearchAliasIndexCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputElasticsearchAliasIndexCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "aliasId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Alias ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Alias ID"
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Attach a elasticsearch index to specified elasticsearch alias"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "AliasStreams"
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}",
+      "description": "AliasStream",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Detach a elasticsearch index from specified elasticsearch alias",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
               "name": "aliasId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Alias ID"
+              "required": true
             },
             {
-              "name": "indexId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Index ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Index ID"
+              "name": "indexId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Detach a elasticsearch index from specified elasticsearch alias"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "AliasStream"
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream",
+      "description": "AliasStreams",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of graylog streams attached to specified\n        elasticsearch alias",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "aliasId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Alias ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Alias ID"
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of graylog streams attached to specified\n        elasticsearch alias"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Attach a graylog stream to specified elasticsearch alias",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputElasticsearchAliasStreamCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputElasticsearchAliasStreamCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "aliasId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Alias ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Alias ID"
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Attach a graylog stream to specified elasticsearch alias"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "AliasStreams"
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}",
+      "description": "AliasStream",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Detach a graylog stream from specified elasticsearch alias",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "aliasId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Alias ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Alias ID"
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
               "name": "streamId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
-            }
-          ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Detach a graylog stream from specified elasticsearch alias"
-        }
-      ],
-      "description": "AliasStream"
-    },
-    {
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "aliasId",
-              "dataType": "uuid",
-              "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Alias ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]",
-          "noAuthentication": false,
-          "description": "Returns the list of urls of specified alias"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "AliasUrls"
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index",
+      "description": "AliasUrls",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of urls of specified alias",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
+          "responseType": "dbaas.logs.Url[]"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url"
+    },
+    {
+      "description": "Indexes",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of elasticsearch indexes",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Returns the list of elasticsearch indexes"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Register a new elasticsearch index",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputElasticsearchIndexCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputElasticsearchIndexCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Register a new elasticsearch index"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Indexes"
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}",
+      "description": "Index",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove specified elasticsearch index",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "indexId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Index ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Index ID"
+              "name": "indexId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove specified elasticsearch index"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns specified elasticsearch index",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "indexId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Index ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Index ID"
+              "name": "indexId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Index",
-          "noAuthentication": false,
-          "description": "Returns specified elasticsearch index"
+          "responseType": "dbaas.logs.Index"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update specified elasticsearch index",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputElasticsearchIndexUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputElasticsearchIndexUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "indexId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Index ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Index ID"
+              "name": "indexId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update specified elasticsearch index"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Index"
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url",
+      "description": "IndexUrls",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of urls of specified index",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "indexId",
-              "dataType": "uuid",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Index ID"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "uuid",
+              "description": "Index ID",
+              "fullType": "uuid",
+              "name": "indexId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]",
-          "noAuthentication": false,
-          "description": "Returns the list of urls of specified index"
+          "responseType": "dbaas.logs.Url[]"
         }
       ],
-      "description": "IndexUrls"
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana",
+      "description": "Kibana instances",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of Kibana instances",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of Kibana instances"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "Kibana instances"
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard",
+      "description": "Dashboards",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of graylog dashboards",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of graylog dashboards"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Register a new graylog dashboard",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputGraylogDashboardCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputGraylogDashboardCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Register a new graylog dashboard"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Dashboards"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}",
+      "description": "Dashboard",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove specified graylog dashboard",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "dashboardId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Dashboard ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Dashboard ID"
+              "name": "dashboardId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove specified graylog dashboard"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of specified graylog dashboard",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "dashboardId",
-              "dataType": "uuid",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Dashboard ID"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "uuid",
+              "description": "Dashboard ID",
+              "fullType": "uuid",
+              "name": "dashboardId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Dashboard",
-          "noAuthentication": false,
-          "description": "Returns details of specified graylog dashboard"
+          "responseType": "dbaas.logs.Dashboard"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update information of specified graylog dashboard",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputGraylogDashboardUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputGraylogDashboardUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "dashboardId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Dashboard ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Dashboard ID"
+              "name": "dashboardId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update information of specified graylog dashboard"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Dashboard"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate",
+      "description": "DashboardClone",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Copy all widgets from specified dashboard to a new one",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputGraylogDashboardDuplicateCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputGraylogDashboardDuplicateCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "dashboardId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Dashboard ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Dashboard ID"
+              "name": "dashboardId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Copy all widgets from specified dashboard to a new one"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "DashboardClone"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/url",
+      "description": "DashboardUrls",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of urls of specified graylog dashboard",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "dashboardId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Dashboard ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Dashboard ID"
+              "name": "dashboardId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]",
-          "noAuthentication": false,
-          "description": "Returns the list of urls of specified graylog dashboard"
+          "responseType": "dbaas.logs.Url[]"
         }
       ],
-      "description": "DashboardUrls"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/url"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/stream",
+      "description": "Streams",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of graylog streams",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of graylog streams"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Register a new graylog stream",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputGraylogStreamCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputGraylogStreamCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Register a new graylog stream"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Streams"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}",
+      "description": "Stream",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove specified graylog stream",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "streamId",
-              "dataType": "uuid",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
+              "name": "streamId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove specified graylog stream"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of specified graylog stream",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "streamId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Stream ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Stream",
-          "noAuthentication": false,
-          "description": "Returns details of specified graylog stream"
+          "responseType": "dbaas.logs.Stream"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update information of specified graylog stream",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputGraylogStreamUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputGraylogStreamUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "streamId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Stream ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update information of specified graylog stream"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Stream"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert",
+      "description": "StreamAlerts",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of configured alerts of specified graylog stream",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
+              "name": "streamId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "streamId",
-              "dataType": "uuid",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of configured alerts of specified graylog stream"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Register a new alert on specified graylog stream",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputGraylogStreamAlertCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputGraylogStreamAlertCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "streamId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Stream ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Register a new alert on specified graylog stream"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "StreamAlerts"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}",
+      "description": "StreamAlert",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove alert from specified graylog stream",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
               "name": "streamId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "alertId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Alert ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Alert ID"
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove alert from specified graylog stream"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of specified graylog stream alert",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
               "name": "streamId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "alertId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Alert ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Alert ID"
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.StreamAlertCondition",
-          "noAuthentication": false,
-          "description": "Returns details of specified graylog stream alert"
+          "responseType": "dbaas.logs.StreamAlertCondition"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update alert information of specified graylog stream",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputGraylogStreamAlertUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputGraylogStreamAlertUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "streamId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Stream ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
+              "name": "streamId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Alert ID",
+              "fullType": "uuid",
               "name": "alertId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Alert ID"
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update alert information of specified graylog stream"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "StreamAlert"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive",
+      "description": "StreamArchives",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of archives",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "streamId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Stream ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of archives"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "StreamArchives"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}",
+      "description": "StreamArchive",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of specified archive",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "uuid",
+              "description": "Archive ID",
+              "fullType": "uuid",
               "name": "archiveId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Archive ID"
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
               "name": "streamId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Archive",
-          "noAuthentication": false,
-          "description": "Returns details of specified archive"
+          "responseType": "dbaas.logs.Archive"
         }
       ],
-      "description": "StreamArchive"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url",
+      "description": "Streams",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get a public temporary URL to access the archive",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "archiveId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Stream ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Archive ID"
-            },
-            {
               "name": "streamId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Archive ID",
+              "fullType": "uuid",
+              "name": "archiveId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.ArchiveUrl",
-          "noAuthentication": false,
-          "description": "Get a public temporary URL to access the archive"
+          "responseType": "dbaas.logs.ArchiveUrl"
         }
       ],
-      "description": "Streams"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule",
+      "description": "StreamRules",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of rules of specified graylog stream",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "streamId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Stream ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of rules of specified graylog stream"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Register a new rule on specified graylog stream",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.OutputGraylogStreamRuleCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.OutputGraylogStreamRuleCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "streamId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Stream ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Register a new rule on specified graylog stream"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "StreamRules"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}",
+      "description": "StreamRule",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove specified graylog stream rule",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
               "name": "streamId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "required": true
             },
             {
-              "name": "ruleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Rule ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Rule ID"
+              "name": "ruleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove specified graylog stream rule"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of specified graylog stream rule",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Stream ID",
+              "fullType": "uuid",
               "name": "streamId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "required": true
             },
             {
-              "name": "ruleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Rule ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Rule ID"
+              "name": "ruleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.StreamRule[]",
-          "noAuthentication": false,
-          "description": "Returns details of specified graylog stream rule"
+          "responseType": "dbaas.logs.StreamRule[]"
         }
       ],
-      "description": "StreamRule"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url",
+      "description": "StreamUrls",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of urls of specified graylog stream",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "streamId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Stream ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Stream ID"
+              "name": "streamId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]",
-          "noAuthentication": false,
-          "description": "Returns the list of urls of specified graylog stream"
+          "responseType": "dbaas.logs.Url[]"
         }
       ],
-      "description": "StreamUrls"
+      "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/quota",
+      "description": "ServiceQuota",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2020-06-01T00:00:00+00:00",
             "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "replacement": "/dbaas/logs/{serviceName}"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
           },
+          "description": "Returns the overall quota limits",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Quota",
-          "noAuthentication": false,
-          "description": "Returns the overall quota limits"
+          "responseType": "dbaas.logs.Quota"
         }
       ],
-      "description": "ServiceQuota"
+      "path": "/dbaas/logs/{serviceName}/quota"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/role",
+      "description": "Roles",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of roles",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of roles"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Register a new role",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.RoleCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.RoleCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Register a new role"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Roles"
+      "path": "/dbaas/logs/{serviceName}/role"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}",
+      "description": "Role",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove specified role",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove specified role"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of specified role",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Role",
-          "noAuthentication": false,
-          "description": "Returns details of specified role"
+          "responseType": "dbaas.logs.Role"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update information of specified role",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.RoleUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.RoleUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update information of specified role"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Role"
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}/member",
+      "description": "RoleMembers",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the member list of specified role",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "uuid",
+              "description": "Role ID",
+              "fullType": "uuid",
+              "name": "roleId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "roleId",
-              "dataType": "uuid",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Returns the member list of specified role"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Append user into the member list of specified role",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.RoleMemberCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.RoleMemberCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Append user into the member list of specified role"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "RoleMembers"
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}/member"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}/member/{username}",
+      "description": "RoleMember",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove user from the member list of specified role",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "username",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Username",
               "fullType": "string",
-              "required": true,
-              "description": "Username"
+              "name": "username",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove user from the member list of specified role"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the member metadata",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "username",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Username",
               "fullType": "string",
-              "required": true,
-              "description": "Username"
+              "name": "username",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Member",
-          "noAuthentication": false,
-          "description": "Returns the member metadata"
+          "responseType": "dbaas.logs.Member"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update the member metadata",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.RoleMemberUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.RoleMemberUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "username",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Username"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Username",
+              "fullType": "string",
+              "name": "username",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Update the member metadata"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "RoleMember"
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}/member/{username}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission",
+      "description": "RolePermissions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of permissions of specified role",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of permissions of specified role"
+          "responseType": "uuid[]"
         }
       ],
-      "description": "RolePermissions"
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/alias",
+      "description": "RolePermissionAlias",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Append a elasticsearch alias permission to role",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.RolePermissionAliasCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.RolePermissionAliasCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Append a elasticsearch alias permission to role"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "RolePermissionAlias"
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/alias"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard",
+      "description": "RolePermissionIndex",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Append a graylog dashboard permission to role",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.RolePermissionDashboardCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.RolePermissionDashboardCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Append a graylog dashboard permission to role"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "RolePermissionIndex"
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/index",
+      "description": "RolePermissionIndex",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Append a elasticsearch index permission to role",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.RolePermissionIndexCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.RolePermissionIndexCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Append a elasticsearch index permission to role"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "RolePermissionIndex"
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/index"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/stream",
+      "description": "RolePermissionIndex",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Append a graylog stream permission to role",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.RolePermissionStreamCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.RolePermissionStreamCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Append a graylog stream permission to role"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "RolePermissionIndex"
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/stream"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}",
+      "description": "RolePermission",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove specified permission",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "uuid",
+              "description": "Permission ID",
+              "fullType": "uuid",
               "name": "permissionId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Permission ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Remove specified permission"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns details of specified permission",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "uuid",
+              "description": "Permission ID",
+              "fullType": "uuid",
               "name": "permissionId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Permission ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "roleId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Role ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Permission",
-          "noAuthentication": false,
-          "description": "Returns details of specified permission"
+          "responseType": "dbaas.logs.Permission"
         }
       ],
-      "description": "RolePermission"
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/dbaas/logs/{serviceName}/serviceInfos"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/token",
+      "description": "Tokens",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the list of service tokens",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "Returns the list of service tokens"
+          "responseType": "uuid[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a new token",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.TokenCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.TokenCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Add a new token"
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "Tokens"
+      "path": "/dbaas/logs/{serviceName}/token"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/token/{tokenId}",
+      "description": "Token",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the specified token",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "tokenId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Token ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Token ID"
+              "name": "tokenId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Delete the specified token"
+          "responseType": "dbaas.logs.Operation"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns the specified token",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "tokenId",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Token ID",
               "fullType": "uuid",
-              "required": true,
-              "description": "Token ID"
+              "name": "tokenId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Token",
-          "noAuthentication": false,
-          "description": "Returns the specified token"
+          "responseType": "dbaas.logs.Token"
         }
       ],
-      "description": "Token"
+      "path": "/dbaas/logs/{serviceName}/token/{tokenId}"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/url",
+      "description": "ServiceUrls",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns platform useful urls.",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Url[]",
-          "noAuthentication": false,
-          "description": "Returns platform useful urls."
+          "responseType": "dbaas.logs.Url[]"
         }
       ],
-      "description": "ServiceUrls"
+      "path": "/dbaas/logs/{serviceName}/url"
     },
     {
-      "path": "/dbaas/logs/{serviceName}/user/changePassword",
+      "description": "ServiceChangePassword",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Initiate a password change procedure.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dbaas.logs.UserChangePasswordCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dbaas.logs.UserChangePasswordCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dbaas.logs.Operation",
-          "noAuthentication": false,
-          "description": "Initiate a password change procedure."
+          "responseType": "dbaas.logs.Operation"
         }
       ],
-      "description": "ServiceChangePassword"
+      "path": "/dbaas/logs/{serviceName}/user/changePassword"
     }
   ],
-  "resourcePath": "/dbaas/logs",
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "dbaas.logs.Alias": {
+      "description": "Elasticsearch alias",
       "id": "Alias",
       "namespace": "dbaas.logs",
-      "description": "Elasticsearch alias",
       "properties": {
         "aliasId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Alias ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Input creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Alias description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "isEditable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if you are allowed to edit entry",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isShareable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if you are allowed to share entry",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Alias name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "DEPRECATED: Associated DBaaS Logs option",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Input last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "dbaas.logs.AllowedNetwork": {
+      "description": "Network allowed to join input",
       "id": "AllowedNetwork",
       "namespace": "dbaas.logs",
-      "description": "Network allowed to join input",
       "properties": {
         "allowedNetworkId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "network": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP block",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         }
       }
     },
     "dbaas.logs.Archive": {
+      "description": "Stream archive",
       "id": "Archive",
       "namespace": "dbaas.logs",
-      "description": "Stream archive",
       "properties": {
         "archiveId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Archive ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Create date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "filename": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Filename",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "md5": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "MD5 checksum",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "retrievalDelay": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Retrieval delay",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "retrievalState": {
-          "type": "dbaas.logs.ArchiveRetrievalStateEnum",
-          "fullType": "dbaas.logs.ArchiveRetrievalStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Retrieval state",
-          "required": true
+          "fullType": "dbaas.logs.ArchiveRetrievalStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.ArchiveRetrievalStateEnum"
         },
         "sha256": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "sha256 checksum",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "File size in bytes",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dbaas.logs.ArchiveRetrievalStateEnum": {
-      "id": "ArchiveRetrievalStateEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for ArchiveRetrievalStateEnum",
       "enum": [
         "sealed",
         "unsealing",
         "unsealed"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ArchiveRetrievalStateEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.ArchiveUrl": {
+      "description": "Stream archive url",
       "id": "ArchiveUrl",
       "namespace": "dbaas.logs",
-      "description": "Stream archive url",
       "properties": {
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Temporary URL expiration date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Temporary URL to get archive",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.Cluster": {
+      "description": "Cluster",
       "id": "Cluster",
       "namespace": "dbaas.logs",
-      "description": "Cluster",
       "properties": {
         "clusterId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "clusterType": {
-          "type": "dbaas.logs.ClusterClusterTypeEnum",
-          "fullType": "dbaas.logs.ClusterClusterTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster type",
-          "required": true
+          "fullType": "dbaas.logs.ClusterClusterTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.ClusterClusterTypeEnum"
         },
         "dedicatedInputPEM": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "PEM for dedicated inputs",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "defaultRetentionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Retention ID used by default when none is given on new stream",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "directInputAllowedNetworks": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Allowed networks for DIRECT_INPUT flow type",
-          "required": true
+          "fullType": "ipBlock[]",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock[]"
         },
         "directInputPEM": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "PEM for direct inputs",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "hostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Hostname",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "isDefault": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "All content generated by given service will be placed on this cluster",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isUnlocked": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Allow given service to perform advanced operations on cluster",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "queryAllowedNetworks": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Allowed networks for QUERY flow type",
-          "required": true
+          "fullType": "ipBlock[]",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock[]"
         },
         "region": {
-          "type": "dbaas.logs.ClusterRegionEnum",
-          "fullType": "dbaas.logs.ClusterRegionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Data center localization",
-          "required": true
+          "fullType": "dbaas.logs.ClusterRegionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.ClusterRegionEnum"
         }
       }
     },
     "dbaas.logs.ClusterAllowedNetwork": {
+      "description": "Cluster allowed network",
       "id": "ClusterAllowedNetwork",
       "namespace": "dbaas.logs",
-      "description": "Cluster allowed network",
       "properties": {
         "allowedNetworkId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "flowType": {
-          "type": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum",
-          "fullType": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Flow type",
-          "required": true
+          "fullType": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum"
         },
         "network": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP block",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         }
       }
     },
     "dbaas.logs.ClusterAllowedNetworkCreation": {
+      "description": "Missing description",
       "id": "ClusterAllowedNetworkCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "flowType": {
-          "type": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum",
-          "fullType": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Flow type",
-          "required": true
+          "fullType": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum"
         },
         "network": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": false,
           "description": "IP block",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": true,
+          "type": "ipBlock"
         }
       }
     },
     "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum": {
-      "id": "ClusterAllowedNetworkFlowTypeEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for ClusterAllowedNetworkFlowTypeEnum",
       "enum": [
         "QUERY",
         "DIRECT_INPUT",
         "ALL"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ClusterAllowedNetworkFlowTypeEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.ClusterAllowedNetworks": {
+      "description": "Cluster allowed networks",
       "id": "ClusterAllowedNetworks",
       "namespace": "dbaas.logs",
-      "description": "Cluster allowed networks",
       "properties": {
         "directInputAllowedNetworks": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Allowed networks for DIRECT_INPUT flow type",
-          "required": false
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
         },
         "queryAllowedNetworks": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Allowed networks for QUERY flow type",
-          "required": false
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
         }
       }
     },
     "dbaas.logs.ClusterClusterTypeEnum": {
-      "id": "ClusterClusterTypeEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for ClusterClusterTypeEnum",
       "enum": [
         "TRIAL",
         "PRO",
         "DEDICATED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ClusterClusterTypeEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.ClusterRegionEnum": {
-      "id": "ClusterRegionEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for ClusterRegionEnum",
       "enum": [
         "GRA",
@@ -4282,186 +4281,186 @@ export const schema: Schema = {
         "SBG",
         "P-19"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ClusterRegionEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.ClusterRetention": {
+      "description": "Cluster retention",
       "id": "ClusterRetention",
       "namespace": "dbaas.logs",
-      "description": "Cluster retention",
       "properties": {
         "duration": {
-          "type": "duration",
-          "fullType": "duration",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Indexed duration expressed in ISO-8601 format",
-          "required": false
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
         },
         "isSupported": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if a new stream can use it",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "retentionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Retention ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         }
       }
     },
     "dbaas.logs.Dashboard": {
+      "description": "Graylog dashboard",
       "id": "Dashboard",
       "namespace": "dbaas.logs",
-      "description": "Graylog dashboard",
       "properties": {
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dashboard creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "dashboardId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dashboard ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dashboard description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "isEditable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if you are allowed to edit entry",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isShareable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if you are allowed to share entry",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "DEPRECATED: Associated DBaaS Logs option",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dashboard description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Dashboard last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "dbaas.logs.Engine": {
+      "description": "Input engine",
       "id": "Engine",
       "namespace": "dbaas.logs",
-      "description": "Input engine",
       "properties": {
         "engineId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Input engine ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "isDeprecated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if engine will soon not be supported",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "name": {
-          "type": "dbaas.logs.EngineNameEnum",
-          "fullType": "dbaas.logs.EngineNameEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Software name",
-          "required": true
+          "fullType": "dbaas.logs.EngineNameEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.EngineNameEnum"
         },
         "version": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Software version",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.EngineNameEnum": {
-      "id": "EngineNameEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for EngineNameEnum",
       "enum": [
         "FLOWGGER",
         "LOGSTASH",
         "TEST"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "EngineNameEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.FlowggerConfiguration": {
+      "description": "Flowgger configuration",
       "id": "FlowggerConfiguration",
       "namespace": "dbaas.logs",
-      "description": "Flowgger configuration",
       "properties": {
         "logFormat": {
-          "type": "dbaas.logs.FlowggerConfigurationLogFormatEnum",
-          "fullType": "dbaas.logs.FlowggerConfigurationLogFormatEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of format to decode",
-          "required": true
+          "fullType": "dbaas.logs.FlowggerConfigurationLogFormatEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.FlowggerConfigurationLogFormatEnum"
         },
         "logFraming": {
-          "type": "dbaas.logs.FlowggerConfigurationLogFramingEnum",
-          "fullType": "dbaas.logs.FlowggerConfigurationLogFramingEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates how messages are delimited",
-          "required": true
+          "fullType": "dbaas.logs.FlowggerConfigurationLogFramingEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.FlowggerConfigurationLogFramingEnum"
         }
       }
     },
     "dbaas.logs.FlowggerConfigurationLogFormatEnum": {
-      "id": "FlowggerConfigurationLogFormatEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for FlowggerConfigurationLogFormatEnum",
       "enum": [
         "RFC5424",
@@ -4469,11 +4468,11 @@ export const schema: Schema = {
         "GELF",
         "CAPNP"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FlowggerConfigurationLogFormatEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.FlowggerConfigurationLogFramingEnum": {
-      "id": "FlowggerConfigurationLogFramingEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for FlowggerConfigurationLogFramingEnum",
       "enum": [
         "LINE",
@@ -4481,353 +4480,353 @@ export const schema: Schema = {
         "SYSLEN",
         "CAPNP"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FlowggerConfigurationLogFramingEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.Helper": {
+      "description": "Helper",
       "id": "Helper",
       "namespace": "dbaas.logs",
-      "description": "Helper",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Helper description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "engineId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Input engine UUID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "helperId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Helper UUID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "sections": {
-          "type": "dbaas.logs.HelperSection[]",
-          "fullType": "dbaas.logs.HelperSection[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Helper sections",
-          "required": true
+          "fullType": "dbaas.logs.HelperSection[]",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.HelperSection[]"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Helper title",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.HelperSection": {
+      "description": "Helper section",
       "id": "HelperSection",
       "namespace": "dbaas.logs",
-      "description": "Helper section",
       "properties": {
         "content": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Section content",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "dbaas.logs.HelperSectionNameEnum",
-          "fullType": "dbaas.logs.HelperSectionNameEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Section name",
-          "required": true
+          "fullType": "dbaas.logs.HelperSectionNameEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.HelperSectionNameEnum"
         }
       }
     },
     "dbaas.logs.HelperSectionNameEnum": {
-      "id": "HelperSectionNameEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for HelperSectionName",
       "enum": [
         "LOGSTASH_INPUT",
         "LOGSTASH_FILTER",
         "LOGSTASH_PATTERN"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "HelperSectionNameEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.Index": {
+      "description": "Elasticsearch index",
       "id": "Index",
       "namespace": "dbaas.logs",
-      "description": "Elasticsearch index",
       "properties": {
         "alertNotifyEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "If set, notify when size is near 80, 90 or 100 % of its maximum capacity",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Index creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Index description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "indexId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Index ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "isEditable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if you are allowed to edit entry",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isShareable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if you are allowed to share entry",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "maxSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum index size (in bytes)",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Index name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "nbShard": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Number of shard",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "DEPRECATED: Associated DBaaS Logs option",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Index last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "dbaas.logs.Input": {
+      "description": "Input",
       "id": "Input",
       "namespace": "dbaas.logs",
-      "description": "Input",
       "properties": {
         "allowedNetworks": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "IP blocks",
-          "required": false
+          "fullType": "ipBlock[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock[]"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Input creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Input description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "engineId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Input engine ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "exposedPort": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Port",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "hostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Hostname",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "inputId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Input ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "isRestartRequired": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicate if input need to be restarted",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "nbInstance": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Number of instance running",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "DEPRECATED: Associated DBaaS Logs option",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "publicAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Input IP address",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "singleInstanceEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "DEPRECATED: Force only one instance",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "sslCertificate": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Input SSL certificate",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "dbaas.logs.InputStatusEnum",
-          "fullType": "dbaas.logs.InputStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "init: configuration required, pending: ready to start, running: available",
-          "required": true
+          "fullType": "dbaas.logs.InputStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.InputStatusEnum"
         },
         "streamId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Associated Graylog stream",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Input title",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Input last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "dbaas.logs.InputAction": {
+      "description": "Action on input",
       "id": "InputAction",
       "namespace": "dbaas.logs",
-      "description": "Action on input",
       "properties": {
         "isAllowed": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if action is allowed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "type": {
-          "type": "dbaas.logs.InputActionTypeEnum",
-          "fullType": "dbaas.logs.InputActionTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Action type",
-          "required": true
+          "fullType": "dbaas.logs.InputActionTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.InputActionTypeEnum"
         }
       }
     },
     "dbaas.logs.InputActionTypeEnum": {
-      "id": "InputActionTypeEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for InputActionTypeEnum",
       "enum": [
         "END",
@@ -4837,167 +4836,167 @@ export const schema: Schema = {
         "DESTROY",
         "RESTART"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "InputActionTypeEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.InputAllowedNetworkCreation": {
+      "description": "Missing description",
       "id": "InputAllowedNetworkCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "network": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": false,
           "description": "IP block",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": true,
+          "type": "ipBlock"
         }
       }
     },
     "dbaas.logs.InputConfigurationFlowggerUpdate": {
+      "description": "Missing description",
       "id": "InputConfigurationFlowggerUpdate",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "logFormat": {
-          "type": "dbaas.logs.FlowggerConfigurationLogFormatEnum",
-          "fullType": "dbaas.logs.FlowggerConfigurationLogFormatEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "configuration log format",
-          "required": true
+          "fullType": "dbaas.logs.FlowggerConfigurationLogFormatEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dbaas.logs.FlowggerConfigurationLogFormatEnum"
         },
         "logFraming": {
-          "type": "dbaas.logs.FlowggerConfigurationLogFramingEnum",
-          "fullType": "dbaas.logs.FlowggerConfigurationLogFramingEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Log framing",
-          "required": true
+          "fullType": "dbaas.logs.FlowggerConfigurationLogFramingEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dbaas.logs.FlowggerConfigurationLogFramingEnum"
         }
       }
     },
     "dbaas.logs.InputConfigurationLogstashUpdate": {
+      "description": "Missing description",
       "id": "InputConfigurationLogstashUpdate",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "filterSection": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Filter section",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "inputSection": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Input section",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "patternSection": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Pattern section",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.InputCreation": {
+      "description": "Missing description",
       "id": "InputCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "allowedNetworks": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "IP blocks",
-          "required": false
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
         },
         "autoSelectOption": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "engineId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Engine ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         },
         "exposedPort": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Exposed port",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "nbInstance": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number of instance running",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "singleInstanceEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Indicate if input have only a single instance",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "streamId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Stream ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Title",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.InputStatusEnum": {
-      "id": "InputStatusEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for InputStatusEnum",
       "enum": [
         "INIT",
@@ -5005,374 +5004,374 @@ export const schema: Schema = {
         "RUNNING",
         "PROCESSING"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "InputStatusEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.InputUpdate": {
+      "description": "Missing description",
       "id": "InputUpdate",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "allowedNetworks": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "IP blocks",
-          "required": false
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "engineId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Engine ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         },
         "exposedPort": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Exposed port",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "nbInstance": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number of instance running",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "singleInstanceEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Indicate if input have only a single instance",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "streamId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Stream ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Title",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.LogstashConfiguration": {
+      "description": "Logstash configuration",
       "id": "LogstashConfiguration",
       "namespace": "dbaas.logs",
-      "description": "Logstash configuration",
       "properties": {
         "filterSection": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The filter section of logstash.conf",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "inputSection": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The filter section of logstash.conf",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "patternSection": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The list of customs Grok patterns",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.Member": {
+      "description": "Member",
       "id": "Member",
       "namespace": "dbaas.logs",
-      "description": "Member",
       "properties": {
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Membership creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "note": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Custom note",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Username on DBaaS Logs",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.Offer": {
+      "description": "DBaaS Logs offer",
       "id": "Offer",
       "namespace": "dbaas.logs",
-      "description": "DBaaS Logs offer",
       "properties": {
         "curNbAlias": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of alias booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbDashboard": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of dashboard booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbIndex": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of index booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbInput": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of input booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbRole": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of role booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbStream": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of stream booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "esStorage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Number of GB stored per month included",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "maxNbAlias": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of alias allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbDashboard": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of dashboard allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbIndex": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of index allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbInput": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of input allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbRole": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of role allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbStream": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of stream allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "reference": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Option unique reference",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "retention": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Data retention in hours",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "dbaas.logs.Operation": {
+      "description": "Asynchronous operation",
       "id": "Operation",
       "namespace": "dbaas.logs",
-      "description": "Asynchronous operation",
       "properties": {
         "aliasId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Alias used",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operation creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "dashboardId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Dashboard used",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "indexId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Index used",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "inputId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Input used",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "operationId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operation ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "DEPRECATED: Option used",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "roleId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Role used",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "state": {
-          "type": "dbaas.logs.OperationStateEnum",
-          "fullType": "dbaas.logs.OperationStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operation status",
-          "required": true
+          "fullType": "dbaas.logs.OperationStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.OperationStateEnum"
         },
         "streamId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Stream used",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Operation last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "dbaas.logs.OperationStateEnum": {
-      "id": "OperationStateEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for OperationStateEnum",
       "enum": [
         "PENDING",
@@ -5384,1538 +5383,1538 @@ export const schema: Schema = {
         "RETRY",
         "RUNNING"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationStateEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.Option": {
+      "description": "DBaaS Logs option",
       "id": "Option",
       "namespace": "dbaas.logs",
-      "description": "DBaaS Logs option",
       "properties": {
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "curNbAlias": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of alias booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbDashboard": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of dashboard booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbIndex": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of index booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbInput": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of input booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbRole": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of role booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbStream": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of stream booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "indexSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Index size in bytes",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "maxNbAlias": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of alias allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbDashboard": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of dashboard allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbIndex": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of index allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbInput": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of input allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbRole": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of role allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbStream": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of stream allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Option ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "reference": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Option unique reference",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "dbaas.logs.OptionStateEnum",
-          "fullType": "dbaas.logs.OptionStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Option state",
-          "required": true
+          "fullType": "dbaas.logs.OptionStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.OptionStateEnum"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Service last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "dbaas.logs.OptionStateEnum": {
-      "id": "OptionStateEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for OptionStateEnum",
       "enum": [
         "ENABLED",
         "DISABLED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OptionStateEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.OutputElasticsearchAliasCreation": {
+      "description": "Missing description",
       "id": "OutputElasticsearchAliasCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "autoSelectOption": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "suffix": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Suffix",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.OutputElasticsearchAliasIndexCreation": {
+      "description": "Missing description",
       "id": "OutputElasticsearchAliasIndexCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "indexId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Index ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         }
       }
     },
     "dbaas.logs.OutputElasticsearchAliasStreamCreation": {
+      "description": "Missing description",
       "id": "OutputElasticsearchAliasStreamCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "streamId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Stream ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         }
       }
     },
     "dbaas.logs.OutputElasticsearchAliasUpdate": {
+      "description": "Missing description",
       "id": "OutputElasticsearchAliasUpdate",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "dbaas.logs.OutputElasticsearchIndexCreation": {
+      "description": "Missing description",
       "id": "OutputElasticsearchIndexCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "alertNotifyEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "If set, notify when size is near 80, 90 or 100 % of its maximum capacity",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "autoSelectOption": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "nbShard": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number of shard",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "suffix": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Suffix",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.OutputElasticsearchIndexUpdate": {
+      "description": "Missing description",
       "id": "OutputElasticsearchIndexUpdate",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "alertNotifyEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "If set, notify when size is near 80, 90 or 100 % of its maximum capacity",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.OutputGraylogDashboardCreation": {
+      "description": "Missing description",
       "id": "OutputGraylogDashboardCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "autoSelectOption": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Title",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.OutputGraylogDashboardDuplicateCreation": {
+      "description": "Missing description",
       "id": "OutputGraylogDashboardDuplicateCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "autoSelectOption": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "streamId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Stream ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Title",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.OutputGraylogDashboardUpdate": {
+      "description": "Missing description",
       "id": "OutputGraylogDashboardUpdate",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Title",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.OutputGraylogStreamAlertCreation": {
+      "description": "Missing description",
       "id": "OutputGraylogStreamAlertCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "backlog": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Backlog",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "conditionType": {
-          "type": "dbaas.logs.StreamAlertConditionConditionTypeEnum",
-          "fullType": "dbaas.logs.StreamAlertConditionConditionTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Condition type",
-          "required": false
+          "fullType": "dbaas.logs.StreamAlertConditionConditionTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamAlertConditionConditionTypeEnum"
         },
         "constraintType": {
-          "type": "dbaas.logs.StreamAlertConditionConstraintTypeEnum",
-          "fullType": "dbaas.logs.StreamAlertConditionConstraintTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Constraint type",
-          "required": false
+          "fullType": "dbaas.logs.StreamAlertConditionConstraintTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamAlertConditionConstraintTypeEnum"
         },
         "field": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Field",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "grace": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Grace period",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "queryFilter": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Query filter",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "repeatNotificationsEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Repeat notifications enabled",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "threshold": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Threshold",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "thresholdType": {
-          "type": "dbaas.logs.StreamAlertConditionThresholdTypeEnum",
-          "fullType": "dbaas.logs.StreamAlertConditionThresholdTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Threshold type",
-          "required": false
+          "fullType": "dbaas.logs.StreamAlertConditionThresholdTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamAlertConditionThresholdTypeEnum"
         },
         "time": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Time",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Title",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Value",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.OutputGraylogStreamAlertUpdate": {
+      "description": "Missing description",
       "id": "OutputGraylogStreamAlertUpdate",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "backlog": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Backlog",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "conditionType": {
-          "type": "dbaas.logs.StreamAlertConditionConditionTypeEnum",
-          "fullType": "dbaas.logs.StreamAlertConditionConditionTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Condition type",
-          "required": false
+          "fullType": "dbaas.logs.StreamAlertConditionConditionTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamAlertConditionConditionTypeEnum"
         },
         "constraintType": {
-          "type": "dbaas.logs.StreamAlertConditionConstraintTypeEnum",
-          "fullType": "dbaas.logs.StreamAlertConditionConstraintTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Constraint type",
-          "required": false
+          "fullType": "dbaas.logs.StreamAlertConditionConstraintTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamAlertConditionConstraintTypeEnum"
         },
         "field": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Field",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "grace": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Grace period",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "queryFilter": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Query filter",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "repeatNotificationsEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Repeat notifications enabled",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "threshold": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Threshold",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "thresholdType": {
-          "type": "dbaas.logs.StreamAlertConditionThresholdTypeEnum",
-          "fullType": "dbaas.logs.StreamAlertConditionThresholdTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Threshold type",
-          "required": false
+          "fullType": "dbaas.logs.StreamAlertConditionThresholdTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamAlertConditionThresholdTypeEnum"
         },
         "time": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Time",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Title",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Value",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.OutputGraylogStreamCreation": {
+      "description": "Missing description",
       "id": "OutputGraylogStreamCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "autoSelectOption": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "coldStorageCompression": {
-          "type": "dbaas.logs.StreamColdStorageCompressionEnum",
-          "fullType": "dbaas.logs.StreamColdStorageCompressionEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage compression",
-          "required": false
+          "fullType": "dbaas.logs.StreamColdStorageCompressionEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamColdStorageCompressionEnum"
         },
         "coldStorageContent": {
-          "type": "dbaas.logs.StreamColdStorageContentEnum",
-          "fullType": "dbaas.logs.StreamColdStorageContentEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage archive content",
-          "required": false
+          "fullType": "dbaas.logs.StreamColdStorageContentEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamColdStorageContentEnum"
         },
         "coldStorageEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage enabled",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "coldStorageNotifyEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage notify enabled",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "coldStorageRetention": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage retention time",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "coldStorageTarget": {
-          "type": "dbaas.logs.StreamColdStorageTargetEnum",
-          "fullType": "dbaas.logs.StreamColdStorageTargetEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage destination",
-          "required": false
+          "fullType": "dbaas.logs.StreamColdStorageTargetEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamColdStorageTargetEnum"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "indexingEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "ES indexing enabled",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "indexingMaxSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Maximum indexing size (in GB)",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "indexingNotifyEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "If set, notify when size is near 80, 90 or 100 % of the maximum configured setting",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "parentStreamId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Parent stream ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "pauseIndexingOnMaxSize": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "If set, pause indexing when maximum size is reach",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "retentionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Retention ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Title",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "webSocketEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Web Socket enabled",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
     "dbaas.logs.OutputGraylogStreamRuleCreation": {
+      "description": "Missing description",
       "id": "OutputGraylogStreamRuleCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "field": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Field name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "isInverted": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Invert condition",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "operator": {
-          "type": "dbaas.logs.StreamRuleOperatorEnum",
-          "fullType": "dbaas.logs.StreamRuleOperatorEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Field operator",
-          "required": true
+          "fullType": "dbaas.logs.StreamRuleOperatorEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dbaas.logs.StreamRuleOperatorEnum"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Field value",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.OutputGraylogStreamUpdate": {
+      "description": "Missing description",
       "id": "OutputGraylogStreamUpdate",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "coldStorageCompression": {
-          "type": "dbaas.logs.StreamColdStorageCompressionEnum",
-          "fullType": "dbaas.logs.StreamColdStorageCompressionEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage compression",
-          "required": false
+          "fullType": "dbaas.logs.StreamColdStorageCompressionEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamColdStorageCompressionEnum"
         },
         "coldStorageContent": {
-          "type": "dbaas.logs.StreamColdStorageContentEnum",
-          "fullType": "dbaas.logs.StreamColdStorageContentEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage content",
-          "required": false
+          "fullType": "dbaas.logs.StreamColdStorageContentEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamColdStorageContentEnum"
         },
         "coldStorageEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage enabled",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "coldStorageNotifyEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage notify enabled",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "coldStorageRetention": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage retention time",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "coldStorageTarget": {
-          "type": "dbaas.logs.StreamColdStorageTargetEnum",
-          "fullType": "dbaas.logs.StreamColdStorageTargetEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cold storage destination",
-          "required": false
+          "fullType": "dbaas.logs.StreamColdStorageTargetEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.StreamColdStorageTargetEnum"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "indexingEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "ES indexing enabled",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "indexingMaxSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Maximum indexing size (in GB)",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "indexingNotifyEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "If set, notify when size is near 80, 90 or 100 % of the maximum configured setting",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "pauseIndexingOnMaxSize": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "If set, pause indexing when maximum size is reach",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Title",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "webSocketEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Web socket enabled",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
     "dbaas.logs.Permission": {
+      "description": "Role permission",
       "id": "Permission",
       "namespace": "dbaas.logs",
-      "description": "Role permission",
       "properties": {
         "aliasId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Associated Elasticsearch alias",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "dashboardId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Associated Graylog dashboard",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "indexId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Associated Elasticsearch index",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "kibanaId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Associated Kibana instance",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "permissionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Permission ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "permissionType": {
-          "type": "dbaas.logs.PermissionTypeEnum",
-          "fullType": "dbaas.logs.PermissionTypeEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Permission type",
-          "required": false
+          "fullType": "dbaas.logs.PermissionTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.PermissionTypeEnum"
         },
         "streamId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Associated Graylog stream",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "dbaas.logs.PermissionTypeEnum": {
-      "id": "PermissionTypeEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for PermissionTypeEnum",
       "enum": [
         "READ_ONLY",
         "READ_WRITE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PermissionTypeEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.PublicOffer": {
+      "description": "DBaaS Logs offer",
       "id": "PublicOffer",
       "namespace": "dbaas.logs",
-      "description": "DBaaS Logs offer",
       "properties": {
         "esStorage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Number of GB stored per month included",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbAlias": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of alias allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbDashboard": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of dashboard allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbIndex": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of index allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbInput": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of input allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbRole": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of role allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbStream": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of stream allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "reference": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Option unique reference",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.Quota": {
+      "description": "DBaaS Logs quota",
       "id": "Quota",
       "namespace": "dbaas.logs",
-      "description": "DBaaS Logs quota",
       "properties": {
         "curNbAlias": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of alias booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbDashboard": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of dashboard booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbIndex": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of index booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbInput": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of input booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbRole": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of role booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "curNbStream": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current number of stream booked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbAlias": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of alias allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbDashboard": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of dashboard allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbIndex": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of index allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbInput": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of input allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbRole": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of role allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "maxNbStream": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of stream allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dbaas.logs.Role": {
+      "description": "Role",
       "id": "Role",
       "namespace": "dbaas.logs",
-      "description": "Role",
       "properties": {
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Role creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Role description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Role name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "DEPRECATED: Associated DBaaS Logs option",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "roleId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Role ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Role last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "dbaas.logs.RoleCreation": {
+      "description": "Missing description",
       "id": "RoleCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "autoSelectOption": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "dbaas.logs.RoleMemberCreation": {
+      "description": "Missing description",
       "id": "RoleMemberCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "note": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Custom note",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Username",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.RoleMemberUpdate": {
+      "description": "Missing description",
       "id": "RoleMemberUpdate",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "note": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Custom note",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.RolePermissionAliasCreation": {
+      "description": "Missing description",
       "id": "RolePermissionAliasCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "aliasId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Alias ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         }
       }
     },
     "dbaas.logs.RolePermissionDashboardCreation": {
+      "description": "Missing description",
       "id": "RolePermissionDashboardCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "dashboardId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Dashboard ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         },
         "permissionType": {
-          "type": "dbaas.logs.PermissionTypeEnum",
-          "fullType": "dbaas.logs.PermissionTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Permission type",
-          "required": false
+          "fullType": "dbaas.logs.PermissionTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.PermissionTypeEnum"
         }
       }
     },
     "dbaas.logs.RolePermissionIndexCreation": {
+      "description": "Missing description",
       "id": "RolePermissionIndexCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "indexId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Index ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         },
         "permissionType": {
-          "type": "dbaas.logs.PermissionTypeEnum",
-          "fullType": "dbaas.logs.PermissionTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Permission type",
-          "required": false
+          "fullType": "dbaas.logs.PermissionTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.PermissionTypeEnum"
         }
       }
     },
     "dbaas.logs.RolePermissionStreamCreation": {
+      "description": "Missing description",
       "id": "RolePermissionStreamCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "streamId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Stream ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": true,
+          "type": "uuid"
         }
       }
     },
     "dbaas.logs.RoleUpdate": {
+      "description": "Missing description",
       "id": "RoleUpdate",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: Option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "dbaas.logs.Service": {
+      "description": "Service",
       "id": "Service",
       "namespace": "dbaas.logs",
-      "description": "Service",
       "properties": {
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Service custom name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "isCapped": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "DEPRECATED: Is capped plan enabled?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "dbaas.logs.ServiceStateEnum",
-          "fullType": "dbaas.logs.ServiceStateEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Service state",
-          "required": false
+          "fullType": "dbaas.logs.ServiceStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.ServiceStateEnum"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Service last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Username on DBaaS Logs",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.ServiceMetric": {
+      "description": "Metrics access",
       "id": "ServiceMetric",
       "namespace": "dbaas.logs",
-      "description": "Metrics access",
       "properties": {
         "host": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Metrics server url",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "token": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Metrics credentials",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.ServiceStateEnum": {
-      "id": "ServiceStateEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for ServiceStateEnum",
       "enum": [
         "INIT",
@@ -6923,332 +6922,332 @@ export const schema: Schema = {
         "ENABLED",
         "DISABLED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceStateEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.Stream": {
+      "description": "Graylog stream",
       "id": "Stream",
       "namespace": "dbaas.logs",
-      "description": "Graylog stream",
       "properties": {
         "canAlert": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if the current user can create alert on the stream",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "coldStorageCompression": {
-          "type": "dbaas.logs.StreamColdStorageCompressionEnum",
-          "fullType": "dbaas.logs.StreamColdStorageCompressionEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Cold storage compression method",
-          "required": false
+          "fullType": "dbaas.logs.StreamColdStorageCompressionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.StreamColdStorageCompressionEnum"
         },
         "coldStorageContent": {
-          "type": "dbaas.logs.StreamColdStorageContentEnum",
-          "fullType": "dbaas.logs.StreamColdStorageContentEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ColdStorage content",
-          "required": false
+          "fullType": "dbaas.logs.StreamColdStorageContentEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.StreamColdStorageContentEnum"
         },
         "coldStorageEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Is Cold storage enabled?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "coldStorageNotifyEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Notify on new Cold storage archive",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "coldStorageRetention": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Cold storage retention in year",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "coldStorageTarget": {
-          "type": "dbaas.logs.StreamColdStorageTargetEnum",
-          "fullType": "dbaas.logs.StreamColdStorageTargetEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ColdStorage destination",
-          "required": false
+          "fullType": "dbaas.logs.StreamColdStorageTargetEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.StreamColdStorageTargetEnum"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Stream creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Stream description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "indexingEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Enable ES indexing",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "indexingMaxSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Maximum indexing size (in GB)",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "indexingNotifyEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "If set, notify when size is near 80, 90 or 100 % of the maximum configured setting",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "isEditable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if you are allowed to edit entry",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isShareable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if you are allowed to share entry",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "nbAlertCondition": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Number of alert condition",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "nbArchive": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Number of coldstored archives",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "optionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "DEPRECATED: Associated DBaaS Logs option ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "parentStreamId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Parent stream ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "pauseIndexingOnMaxSize": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "If set, pause indexing when maximum size is reach",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "retentionId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Retention ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "streamId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Stream ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Stream description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Stream last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "webSocketEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Enable Websocket",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
     "dbaas.logs.StreamAlertCondition": {
+      "description": "Alert condition",
       "id": "StreamAlertCondition",
       "namespace": "dbaas.logs",
-      "description": "Alert condition",
       "properties": {
         "alertId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Stream alert condition ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "backlog": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Backlog size",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "conditionType": {
-          "type": "dbaas.logs.StreamAlertConditionConditionTypeEnum",
-          "fullType": "dbaas.logs.StreamAlertConditionConditionTypeEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Alert condition type",
-          "required": false
+          "fullType": "dbaas.logs.StreamAlertConditionConditionTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.StreamAlertConditionConditionTypeEnum"
         },
         "constraintType": {
-          "type": "dbaas.logs.StreamAlertConditionConstraintTypeEnum",
-          "fullType": "dbaas.logs.StreamAlertConditionConstraintTypeEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Constraint type",
-          "required": false
+          "fullType": "dbaas.logs.StreamAlertConditionConstraintTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.StreamAlertConditionConstraintTypeEnum"
         },
         "field": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Field name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "grace": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Grace period in minutes",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "queryFilter": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Query filter",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "repeatNotificationsEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Repeat notifications",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "threshold": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Threshold",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "thresholdType": {
-          "type": "dbaas.logs.StreamAlertConditionThresholdTypeEnum",
-          "fullType": "dbaas.logs.StreamAlertConditionThresholdTypeEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Threshold condition",
-          "required": false
+          "fullType": "dbaas.logs.StreamAlertConditionThresholdTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.StreamAlertConditionThresholdTypeEnum"
         },
         "time": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Time lapse in minutes",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Condition label",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Field value",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.StreamAlertConditionConditionTypeEnum": {
-      "id": "StreamAlertConditionConditionTypeEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for StreamAlertConditionConditionTypeEnum",
       "enum": [
         "MESSAGE_COUNT",
         "FIELD_VALUE",
         "FIELD_CONTENT_VALUE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StreamAlertConditionConditionTypeEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.StreamAlertConditionConstraintTypeEnum": {
-      "id": "StreamAlertConditionConstraintTypeEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for StreamAlertConditionConstraintTypeEnum",
       "enum": [
         "MEAN",
@@ -7257,11 +7256,11 @@ export const schema: Schema = {
         "SUM",
         "STDDEV"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StreamAlertConditionConstraintTypeEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.StreamAlertConditionThresholdTypeEnum": {
-      "id": "StreamAlertConditionThresholdTypeEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for StreamAlertConditionThresholdTypeEnum",
       "enum": [
         "MORE",
@@ -7269,11 +7268,11 @@ export const schema: Schema = {
         "LOWER",
         "HIGHER"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StreamAlertConditionThresholdTypeEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.StreamColdStorageCompressionEnum": {
-      "id": "StreamColdStorageCompressionEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for StreamColdStorageCompressionEnum",
       "enum": [
         "LZMA",
@@ -7281,79 +7280,79 @@ export const schema: Schema = {
         "DEFLATED",
         "ZSTD"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StreamColdStorageCompressionEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.StreamColdStorageContentEnum": {
-      "id": "StreamColdStorageContentEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for StreamColdStorageContentEnum",
       "enum": [
         "ALL",
         "GELF",
         "PLAIN"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StreamColdStorageContentEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.StreamColdStorageTargetEnum": {
-      "id": "StreamColdStorageTargetEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for StreamColdStorageTargetEnum",
       "enum": [
         "PCA",
         "PCS"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StreamColdStorageTargetEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.StreamRule": {
+      "description": "Stream rule",
       "id": "StreamRule",
       "namespace": "dbaas.logs",
-      "description": "Stream rule",
       "properties": {
         "field": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Field name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "isInverted": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Invert condition",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "operator": {
-          "type": "dbaas.logs.StreamRuleOperatorEnum",
-          "fullType": "dbaas.logs.StreamRuleOperatorEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Field operator",
-          "required": false
+          "fullType": "dbaas.logs.StreamRuleOperatorEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.StreamRuleOperatorEnum"
         },
         "ruleId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Stream rule ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Field value",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.StreamRuleOperatorEnum": {
-      "id": "StreamRuleOperatorEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for StreamRuleOperatorEnum",
       "enum": [
         "MATCH_EXACTLY",
@@ -7361,189 +7360,189 @@ export const schema: Schema = {
         "SMALLER_THAN",
         "FIELD_PRESENCE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StreamRuleOperatorEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.TemporaryLogsLink": {
+      "description": "Temporary url informations",
       "id": "TemporaryLogsLink",
       "namespace": "dbaas.logs",
-      "description": "Temporary url informations",
       "properties": {
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Temporary url expiration date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Temporary url",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.TestResult": {
+      "description": "Config test results",
       "id": "TestResult",
       "namespace": "dbaas.logs",
-      "description": "Config test results",
       "properties": {
         "stderr": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Standard error",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "stdout": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Standard output",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last config test update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "dbaas.logs.Token": {
+      "description": "Token",
       "id": "Token",
       "namespace": "dbaas.logs",
-      "description": "Token",
       "properties": {
         "clusterId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Cluster ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Token creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Token name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "tokenId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Token ID",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Token last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Token value",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.TokenCreation": {
+      "description": "Missing description",
       "id": "TokenCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "clusterId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cluster ID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Token name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dbaas.logs.Update": {
+      "description": "Missing description",
       "id": "Update",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Service custom name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "isCapped": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED: If set, block indexation when plan's limit is reached",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
     "dbaas.logs.Url": {
+      "description": "Web address",
       "id": "Url",
       "namespace": "dbaas.logs",
-      "description": "Web address",
       "properties": {
         "address": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Web URI",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "dbaas.logs.UrlTypeEnum",
-          "fullType": "dbaas.logs.UrlTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service type",
-          "required": true
+          "fullType": "dbaas.logs.UrlTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dbaas.logs.UrlTypeEnum"
         }
       }
     },
     "dbaas.logs.UrlTypeEnum": {
-      "id": "UrlTypeEnum",
-      "namespace": "dbaas.logs",
       "description": "Possible values for UrlTypeEnum",
       "enum": [
         "GRAYLOG_WEBUI",
@@ -7573,73 +7572,73 @@ export const schema: Schema = {
         "TCP_BEATS",
         "TCP_TLS_BEATS"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "UrlTypeEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.UserChangePasswordCreation": {
+      "description": "Missing description",
       "id": "UserChangePasswordCreation",
       "namespace": "dbaas.logs",
-      "description": "Missing description",
       "properties": {
         "password": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Password must be at least 12 characters long contain a number, an uppercase, a lowercase and a special letter",
-          "required": true
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -7650,11 +7649,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -7662,108 +7661,111 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/dbaas/logs"
 }

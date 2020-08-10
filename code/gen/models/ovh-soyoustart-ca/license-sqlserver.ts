@@ -1,512 +1,331 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.soyoustart.com:443/1.0/license/sqlserver.json
+
 export const schema: Schema = {
-  "basePath": "https://ca.api.soyoustart.com/1.0",
+  "apiVersion": "1.0",
   "apis": [
     {
-      "path": "/license/sqlserver/{serviceName}/terminate",
+      "description": "Operations about the LICENSE service",
       "operations": [
         {
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "required": true,
-              "description": "The name of your SQL Server license",
-              "paramType": "path",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "serviceName"
-            }
-          ],
-          "responseFullType": "string",
-          "resellerOnly": false,
-          "description": "Terminate your service",
-          "httpMethod": "POST",
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/license/sqlserver"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
           "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/license/sqlserver/{serviceName}/terminate"
     },
     {
+      "description": "licenses Todos",
       "operations": [
         {
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "paramType": "path",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "serviceName",
-              "required": true,
-              "description": "The name of your SQL Server license"
-            }
-          ],
-          "responseFullType": "license.sqlserver.SqlServer",
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "responseType": "license.sqlserver.SqlServer",
-          "resellerOnly": false,
           "description": "Get this object properties",
-          "httpMethod": "GET"
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This Task id",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
         }
       ],
-      "path": "/license/sqlserver/{serviceName}",
-      "description": "Your SQL Server license"
+      "path": "/license/sqlserver/{serviceName}/tasks/{taskId}"
+    },
+    {
+      "description": "List the license.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Tasks linked to this license",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.ActionType",
+              "description": "Filter the value of action property (=)",
+              "fullType": "license.ActionType",
+              "name": "action",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.TaskStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "license.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/license/sqlserver/{serviceName}/tasks"
+    },
+    {
+      "description": "Confirm termination of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Confirm termination of your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/license/sqlserver/{serviceName}/confirmTermination"
     },
     {
       "description": "Details about a Service",
       "operations": [
         {
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "description": "The name of your SQL Server license",
-              "required": true,
-              "dataType": "string",
-              "name": "serviceName",
-              "fullType": "string",
-              "paramType": "path"
-            }
-          ],
-          "responseFullType": "services.Service",
-          "description": "Get this object properties",
-          "resellerOnly": false,
-          "httpMethod": "GET",
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "services.Service",
           "responseType": "services.Service"
         },
         {
-          "noAuthentication": false,
-          "responseFullType": "void",
-          "parameters": [
-            {
-              "paramType": "body",
-              "fullType": "services.Service",
-              "dataType": "services.Service",
-              "name": null,
-              "required": true,
-              "description": "New object properties"
-            },
-            {
-              "description": "The name of your SQL Server license",
-              "required": true,
-              "name": "serviceName",
-              "dataType": "string",
-              "fullType": "string",
-              "paramType": "path"
-            }
-          ],
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "responseType": "void",
-          "resellerOnly": false,
           "description": "Alter this object properties",
-          "httpMethod": "PUT"
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
       "path": "/license/sqlserver/{serviceName}/serviceInfos"
     },
     {
-      "description": "Confirm termination of your service",
-      "path": "/license/sqlserver/{serviceName}/confirmTermination",
+      "description": "Your SQL Server license",
       "operations": [
         {
-          "description": "Confirm termination of your service",
-          "resellerOnly": false,
-          "httpMethod": "POST",
-          "responseType": "string",
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "name": "futureUse",
-              "dataType": "service.TerminationFutureUseEnum",
-              "fullType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
-              "description": "What next after your termination request",
-              "required": false
-            },
-            {
-              "name": "reason",
-              "dataType": "service.TerminationReasonEnum",
-              "fullType": "service.TerminationReasonEnum",
-              "paramType": "body",
-              "description": "Reason of your termination request",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "name": "commentary",
-              "fullType": "string",
-              "paramType": "body",
-              "description": "Commentary about your termination request",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "name": "token",
-              "fullType": "string",
-              "paramType": "body",
-              "description": "The termination token sent by mail to the admin contact",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "name": "serviceName",
-              "fullType": "string",
-              "paramType": "path",
-              "description": "The name of your SQL Server license",
-              "required": true
-            }
-          ],
-          "responseFullType": "string"
-        }
-      ]
-    },
-    {
-      "operations": [
-        {
-          "description": "Tasks linked to this license",
-          "resellerOnly": false,
-          "httpMethod": "GET",
-          "responseType": "long[]",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "noAuthentication": false,
-          "responseFullType": "long[]",
-          "parameters": [
-            {
-              "paramType": "query",
-              "fullType": "license.TaskStateEnum",
-              "dataType": "license.TaskStateEnum",
-              "name": "status",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "description": "Filter the value of action property (=)",
-              "required": false,
-              "name": "action",
-              "dataType": "license.ActionType",
-              "paramType": "query",
-              "fullType": "license.ActionType"
-            },
-            {
-              "description": "The name of your SQL Server license",
-              "required": true,
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string"
-            }
-          ]
-        }
-      ],
-      "path": "/license/sqlserver/{serviceName}/tasks",
-      "description": "List the license.Task objects"
-    },
-    {
-      "operations": [
-        {
-          "responseFullType": "license.Task",
-          "parameters": [
-            {
-              "description": "The name of your SQL Server license",
-              "required": true,
-              "dataType": "string",
-              "name": "serviceName",
-              "fullType": "string",
-              "paramType": "path"
-            },
-            {
-              "paramType": "path",
-              "fullType": "long",
-              "name": "taskId",
-              "dataType": "long",
-              "required": true,
-              "description": "This Task id"
-            }
-          ],
-          "noAuthentication": false,
-          "httpMethod": "GET",
           "description": "Get this object properties",
-          "resellerOnly": false,
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "responseType": "license.Task"
-        }
-      ],
-      "path": "/license/sqlserver/{serviceName}/tasks/{taskId}",
-      "description": "licenses Todos"
-    },
-    {
-      "path": "/license/sqlserver/orderableVersions",
-      "operations": [
-        {
           "httpMethod": "GET",
-          "description": "Get the orderable Sql Server versions",
-          "resellerOnly": false,
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "responseType": "license.SqlServerOrderConfiguration[]",
-          "responseFullType": "license.SqlServerOrderConfiguration[]",
+          "noAuthentication": false,
           "parameters": [
             {
-              "description": "Your license Ip",
-              "required": true,
-              "dataType": "ipv4",
-              "name": "ip",
-              "fullType": "ipv4",
-              "paramType": "query"
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "noAuthentication": false
+          "resellerOnly": false,
+          "responseFullType": "license.sqlserver.SqlServer",
+          "responseType": "license.sqlserver.SqlServer"
         }
       ],
-      "description": "Get the orderable Sql Server versions"
+      "path": "/license/sqlserver/{serviceName}"
     },
     {
+      "description": "Get the orderable Sql Server versions",
       "operations": [
         {
-          "httpMethod": "GET",
-          "resellerOnly": false,
-          "description": "List available services",
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "responseType": "string[]",
-          "responseFullType": "string[]",
-          "parameters": [],
-          "noAuthentication": false
+          "description": "Get the orderable Sql Server versions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.SqlServerOrderConfiguration[]",
+          "responseType": "license.SqlServerOrderConfiguration[]"
         }
       ],
-      "path": "/license/sqlserver",
-      "description": "Operations about the LICENSE service"
+      "path": "/license/sqlserver/orderableVersions"
     }
   ],
-  "apiVersion": "1.0",
+  "basePath": "https://ca.api.soyoustart.com/1.0",
   "models": {
-    "license.SqlServerOrderConfiguration": {
-      "id": "SqlServerOrderConfiguration",
-      "description": "Allowed SQL Server versions and their compliant options per matching serviceTypes",
-      "namespace": "license",
-      "properties": {
-        "serviceType": {
-          "canBeNull": false,
-          "description": null,
-          "type": "license.LicenseTypeEnum"
-        },
-        "orderableVersions": {
-          "description": null,
-          "type": "license.OrderableSqlServerCompatibilityInfos[]",
-          "canBeNull": false
-        }
-      }
-    },
-    "license.sqlserver.SqlServer": {
-      "id": "SqlServer",
-      "properties": {
-        "status": {
-          "fullType": "license.StateEnum",
-          "readOnly": true,
-          "canBeNull": false,
-          "type": "license.StateEnum",
-          "description": "This license state"
-        },
-        "licenseId": {
-          "fullType": "string",
-          "readOnly": true,
-          "canBeNull": false,
-          "description": "The license id on license provider side",
-          "type": "string"
-        },
-        "ip": {
-          "fullType": "ipv4",
-          "readOnly": true,
-          "canBeNull": false,
-          "description": "The ip on which this license is attached",
-          "type": "ipv4"
-        },
-        "domain": {
-          "readOnly": true,
-          "canBeNull": false,
-          "fullType": "string",
-          "description": "The internal name of your license",
-          "type": "string"
-        },
-        "creation": {
-          "description": "This license creation date",
-          "type": "datetime",
-          "canBeNull": false,
-          "readOnly": true,
-          "fullType": "datetime"
-        },
-        "version": {
-          "readOnly": true,
-          "canBeNull": false,
-          "fullType": "license.SqlServerVersionEnum",
-          "type": "license.SqlServerVersionEnum",
-          "description": "This license version"
-        }
-      },
-      "namespace": "license.sqlserver",
-      "description": "Your SQL Server license"
-    },
-    "service.RenewType": {
-      "id": "RenewType",
-      "properties": {
-        "forced": {
-          "canBeNull": false,
-          "type": "boolean",
-          "description": "The service forced to be renewed"
-        },
-        "automatic": {
-          "type": "boolean",
-          "description": "The service is automatically renewed",
-          "canBeNull": false
-        },
-        "period": {
-          "canBeNull": true,
-          "type": "long",
-          "description": "period of renew in month"
-        },
-        "deleteAtExpiration": {
-          "canBeNull": false,
-          "description": "The service will be deleted at expiration",
-          "type": "boolean"
-        },
-        "manualPayment": {
-          "description": "The service needs to be manually renewed and paid",
-          "type": "boolean",
-          "canBeNull": true
-        }
-      },
-      "description": "Map a possible renew for a specific service",
-      "namespace": "service"
-    },
-    "service.StateEnum": {
-      "id": "StateEnum",
+    "license.ActionType": {
+      "description": "A short description of what does the Task on your license",
       "enum": [
-        "expired",
-        "inCreation",
-        "ok",
-        "pendingDebt",
-        "unPaid"
-      ],
-      "namespace": "service",
-      "enumType": "string",
-      "description": ""
-    },
-    "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "enum": [
-        "automaticForcedProduct",
-        "automaticV2012",
-        "automaticV2014",
-        "automaticV2016",
-        "manual",
-        "oneShot",
-        "option"
-      ],
-      "namespace": "service",
-      "description": "Detailed renewal type of a service",
-      "enumType": "string"
-    },
-    "license.TaskStateEnum": {
-      "namespace": "license",
-      "enum": [
-        "cancelled",
-        "doing",
-        "done",
-        "error",
-        "todo"
+        "addWindowFromExistingSerial",
+        "changeIp",
+        "changeOs",
+        "installLicense",
+        "optionUpgrade",
+        "releaseOption",
+        "versionUpgrade"
       ],
       "enumType": "string",
-      "description": "All states a license Task can be in",
-      "id": "TaskStateEnum"
-    },
-    "license.Task": {
-      "id": "Task",
-      "description": "licenses Todos",
-      "namespace": "license",
-      "properties": {
-        "action": {
-          "fullType": "license.ActionType",
-          "readOnly": true,
-          "canBeNull": false,
-          "type": "license.ActionType",
-          "description": "This Task description"
-        },
-        "lastUpdate": {
-          "description": "The last time this Task was updated",
-          "type": "datetime",
-          "canBeNull": false,
-          "readOnly": true,
-          "fullType": "datetime"
-        },
-        "doneDate": {
-          "description": "When was this Task done",
-          "type": "datetime",
-          "readOnly": true,
-          "canBeNull": true,
-          "fullType": "datetime"
-        },
-        "todoDate": {
-          "description": "When was this Task created",
-          "type": "datetime",
-          "readOnly": true,
-          "canBeNull": false,
-          "fullType": "datetime"
-        },
-        "taskId": {
-          "description": "This Task id",
-          "type": "long",
-          "readOnly": true,
-          "canBeNull": false,
-          "fullType": "long"
-        },
-        "status": {
-          "type": "license.TaskStateEnum",
-          "description": "Current Taks status",
-          "readOnly": true,
-          "canBeNull": false,
-          "fullType": "license.TaskStateEnum"
-        },
-        "name": {
-          "fullType": "string",
-          "readOnly": true,
-          "canBeNull": false,
-          "type": "string",
-          "description": "This Task name"
-        }
-      }
+      "id": "ActionType",
+      "namespace": "license"
     },
     "license.LicenseTypeEnum": {
-      "id": "LicenseTypeEnum",
-      "enumType": "string",
       "description": "Possible values for license type",
-      "namespace": "license",
       "enum": [
         "dedicated",
         "dedicatedCloud",
@@ -519,183 +338,42 @@ export const schema: Schema = {
         "vps_cloud",
         "vps_cloud_2016",
         "vps_ssd"
-      ]
+      ],
+      "enumType": "string",
+      "id": "LicenseTypeEnum",
+      "namespace": "license"
     },
     "license.OrderableSqlServerCompatibilityInfos": {
+      "description": "All options available for SQL Server products",
       "id": "OrderableSqlServerCompatibilityInfos",
       "namespace": "license",
-      "description": "All options available for SQL Server products",
       "properties": {
         "version": {
+          "canBeNull": false,
           "description": null,
-          "type": "license.SqlServerVersionEnum",
-          "canBeNull": false
+          "type": "license.SqlServerVersionEnum"
         }
       }
     },
-    "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
-      "enum": [
-        "NOT_REPLACING_SERVICE",
-        "OTHER",
-        "SUBSCRIBE_AN_OTHER_SERVICE",
-        "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
-        "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-      ],
-      "enumType": "string",
-      "description": "All future uses you can provide for a service termination"
-    },
-    "service.TerminationReasonEnum": {
-      "enum": [
-        "FEATURES_DONT_SUIT_ME",
-        "LACK_OF_PERFORMANCES",
-        "MIGRATED_TO_ANOTHER_OVH_PRODUCT",
-        "MIGRATED_TO_COMPETITOR",
-        "NOT_ENOUGH_RECOGNITION",
-        "NOT_NEEDED_ANYMORE",
-        "NOT_RELIABLE",
-        "NO_ANSWER",
-        "OTHER",
-        "PRODUCT_DIMENSION_DONT_SUIT_ME",
-        "PRODUCT_TOOLS_DONT_SUIT_ME",
-        "TOO_EXPENSIVE",
-        "TOO_HARD_TO_USE",
-        "UNSATIFIED_BY_CUSTOMER_SUPPORT"
-      ],
-      "namespace": "service",
-      "enumType": "string",
-      "description": "All reasons you can provide for a service termination",
-      "id": "TerminationReasonEnum"
-    },
-    "license.ActionType": {
+    "license.SqlServerOrderConfiguration": {
+      "description": "Allowed SQL Server versions and their compliant options per matching serviceTypes",
+      "id": "SqlServerOrderConfiguration",
       "namespace": "license",
-      "enum": [
-        "addWindowFromExistingSerial",
-        "changeIp",
-        "changeOs",
-        "installLicense",
-        "optionUpgrade",
-        "releaseOption",
-        "versionUpgrade"
-      ],
-      "enumType": "string",
-      "description": "A short description of what does the Task on your license",
-      "id": "ActionType"
-    },
-    "license.StateEnum": {
-      "id": "StateEnum",
-      "description": "All states a license can be in",
-      "enumType": "string",
-      "namespace": "license",
-      "enum": [
-        "ok",
-        "released",
-        "terminated",
-        "toDeliver"
-      ]
-    },
-    "services.Service": {
-      "description": "Details about a Service",
-      "namespace": "services",
       "properties": {
-        "renew": {
-          "readOnly": false,
-          "canBeNull": true,
-          "fullType": "service.RenewType",
-          "description": "Way of handling the renew",
-          "type": "service.RenewType"
-        },
-        "contactBilling": {
-          "description": null,
-          "type": "string",
-          "canBeNull": false,
-          "readOnly": true,
-          "fullType": "coreTypes.AccountId:string"
-        },
-        "engagedUpTo": {
-          "type": "date",
-          "description": null,
-          "readOnly": true,
-          "fullType": "date",
-          "canBeNull": true
-        },
-        "domain": {
-          "readOnly": true,
-          "canBeNull": false,
-          "fullType": "string",
-          "description": null,
-          "type": "string"
-        },
-        "renewalType": {
-          "fullType": "service.RenewalTypeEnum",
-          "readOnly": true,
+        "orderableVersions": {
           "canBeNull": false,
           "description": null,
-          "type": "service.RenewalTypeEnum"
+          "type": "license.OrderableSqlServerCompatibilityInfos[]"
         },
-        "contactAdmin": {
-          "type": "string",
+        "serviceType": {
+          "canBeNull": false,
           "description": null,
-          "canBeNull": false,
-          "readOnly": true,
-          "fullType": "coreTypes.AccountId:string"
-        },
-        "expiration": {
-          "readOnly": true,
-          "canBeNull": false,
-          "fullType": "date",
-          "type": "date",
-          "description": null
-        },
-        "creation": {
-          "fullType": "date",
-          "readOnly": true,
-          "canBeNull": false,
-          "type": "date",
-          "description": null
-        },
-        "contactTech": {
-          "fullType": "coreTypes.AccountId:string",
-          "readOnly": true,
-          "canBeNull": false,
-          "type": "string",
-          "description": null
-        },
-        "canDeleteAtExpiration": {
-          "type": "boolean",
-          "description": "Indicates that the service can be set up to be deleted at expiration",
-          "canBeNull": false,
-          "readOnly": true,
-          "fullType": "boolean"
-        },
-        "serviceId": {
-          "fullType": "coreTypes.ServiceId:long",
-          "readOnly": true,
-          "canBeNull": false,
-          "type": "long",
-          "description": null
-        },
-        "status": {
-          "type": "service.StateEnum",
-          "description": null,
-          "readOnly": true,
-          "fullType": "service.StateEnum",
-          "canBeNull": false
-        },
-        "possibleRenewPeriod": {
-          "description": "All the possible renew period of your service in month",
-          "type": "long[]",
-          "canBeNull": true,
-          "readOnly": true,
-          "fullType": "long[]"
+          "type": "license.LicenseTypeEnum"
         }
-      },
-      "id": "Service"
+      }
     },
     "license.SqlServerVersionEnum": {
-      "id": "SqlServerVersionEnum",
-      "namespace": "license",
+      "description": "All versions for SQL Server product",
       "enum": [
         "SQL_SERVER_2008_STANDARD_EDITION_2_CPU",
         "SQL_SERVER_2008_STANDARD_EDITION_4_CPU",
@@ -933,7 +611,331 @@ export const schema: Schema = {
         "sql-server-2019-license-web-edition-8-cores"
       ],
       "enumType": "string",
-      "description": "All versions for SQL Server product"
+      "id": "SqlServerVersionEnum",
+      "namespace": "license"
+    },
+    "license.StateEnum": {
+      "description": "All states a license can be in",
+      "enum": [
+        "ok",
+        "released",
+        "terminated",
+        "toDeliver"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "license"
+    },
+    "license.Task": {
+      "description": "licenses Todos",
+      "id": "Task",
+      "namespace": "license",
+      "properties": {
+        "action": {
+          "canBeNull": false,
+          "description": "This Task description",
+          "fullType": "license.ActionType",
+          "readOnly": true,
+          "type": "license.ActionType"
+        },
+        "doneDate": {
+          "canBeNull": true,
+          "description": "When was this Task done",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "The last time this Task was updated",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "This Task name",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current Taks status",
+          "fullType": "license.TaskStateEnum",
+          "readOnly": true,
+          "type": "license.TaskStateEnum"
+        },
+        "taskId": {
+          "canBeNull": false,
+          "description": "This Task id",
+          "fullType": "long",
+          "readOnly": true,
+          "type": "long"
+        },
+        "todoDate": {
+          "canBeNull": false,
+          "description": "When was this Task created",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        }
+      }
+    },
+    "license.TaskStateEnum": {
+      "description": "All states a license Task can be in",
+      "enum": [
+        "cancelled",
+        "doing",
+        "done",
+        "error",
+        "todo"
+      ],
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "license"
+    },
+    "license.sqlserver.SqlServer": {
+      "description": "Your SQL Server license",
+      "id": "SqlServer",
+      "namespace": "license.sqlserver",
+      "properties": {
+        "creation": {
+          "canBeNull": false,
+          "description": "This license creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "The internal name of your license",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "The ip on which this license is attached",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "type": "ipv4"
+        },
+        "licenseId": {
+          "canBeNull": false,
+          "description": "The license id on license provider side",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "This license state",
+          "fullType": "license.StateEnum",
+          "readOnly": true,
+          "type": "license.StateEnum"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "This license version",
+          "fullType": "license.SqlServerVersionEnum",
+          "readOnly": true,
+          "type": "license.SqlServerVersionEnum"
+        }
+      }
+    },
+    "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
+      "id": "RenewType",
+      "namespace": "service",
+      "properties": {
+        "automatic": {
+          "canBeNull": false,
+          "description": "The service is automatically renewed",
+          "type": "boolean"
+        },
+        "deleteAtExpiration": {
+          "canBeNull": false,
+          "description": "The service will be deleted at expiration",
+          "type": "boolean"
+        },
+        "forced": {
+          "canBeNull": false,
+          "description": "The service forced to be renewed",
+          "type": "boolean"
+        },
+        "manualPayment": {
+          "canBeNull": true,
+          "description": "The service needs to be manually renewed and paid",
+          "type": "boolean"
+        },
+        "period": {
+          "canBeNull": true,
+          "description": "period of renew in month",
+          "type": "long"
+        }
+      }
+    },
+    "service.RenewalTypeEnum": {
+      "description": "Detailed renewal type of a service",
+      "enum": [
+        "automaticForcedProduct",
+        "automaticV2012",
+        "automaticV2014",
+        "automaticV2016",
+        "manual",
+        "oneShot",
+        "option"
+      ],
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
+    },
+    "service.StateEnum": {
+      "description": "",
+      "enum": [
+        "expired",
+        "inCreation",
+        "ok",
+        "pendingDebt",
+        "unPaid"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
+    },
+    "service.TerminationFutureUseEnum": {
+      "description": "All future uses you can provide for a service termination",
+      "enum": [
+        "NOT_REPLACING_SERVICE",
+        "OTHER",
+        "SUBSCRIBE_AN_OTHER_SERVICE",
+        "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
+        "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
+      ],
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
+    },
+    "service.TerminationReasonEnum": {
+      "description": "All reasons you can provide for a service termination",
+      "enum": [
+        "FEATURES_DONT_SUIT_ME",
+        "LACK_OF_PERFORMANCES",
+        "MIGRATED_TO_ANOTHER_OVH_PRODUCT",
+        "MIGRATED_TO_COMPETITOR",
+        "NOT_ENOUGH_RECOGNITION",
+        "NOT_NEEDED_ANYMORE",
+        "NOT_RELIABLE",
+        "NO_ANSWER",
+        "OTHER",
+        "PRODUCT_DIMENSION_DONT_SUIT_ME",
+        "PRODUCT_TOOLS_DONT_SUIT_ME",
+        "TOO_EXPENSIVE",
+        "TOO_HARD_TO_USE",
+        "UNSATIFIED_BY_CUSTOMER_SUPPORT"
+      ],
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
+    },
+    "services.Service": {
+      "description": "Details about a Service",
+      "id": "Service",
+      "namespace": "services",
+      "properties": {
+        "canDeleteAtExpiration": {
+          "canBeNull": false,
+          "description": "Indicates that the service can be set up to be deleted at expiration",
+          "fullType": "boolean",
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "contactAdmin": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "contactBilling": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "contactTech": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "creation": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "date",
+          "readOnly": true,
+          "type": "date"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "engagedUpTo": {
+          "canBeNull": true,
+          "description": null,
+          "fullType": "date",
+          "readOnly": true,
+          "type": "date"
+        },
+        "expiration": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "date",
+          "readOnly": true,
+          "type": "date"
+        },
+        "possibleRenewPeriod": {
+          "canBeNull": true,
+          "description": "All the possible renew period of your service in month",
+          "fullType": "long[]",
+          "readOnly": true,
+          "type": "long[]"
+        },
+        "renew": {
+          "canBeNull": true,
+          "description": "Way of handling the renew",
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "type": "service.RenewType"
+        },
+        "renewalType": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "service.RenewalTypeEnum",
+          "readOnly": true,
+          "type": "service.RenewalTypeEnum"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.ServiceId:long",
+          "readOnly": true,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "service.StateEnum",
+          "readOnly": true,
+          "type": "service.StateEnum"
+        }
+      }
     }
   },
   "resourcePath": "/license/sqlserver"

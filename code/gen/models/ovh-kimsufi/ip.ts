@@ -1,1051 +1,1050 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.kimsufi.com:443/1.0/ip.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/ip",
+      "description": "List the ip.Ip objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Your OVH IPs",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "description",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of description property (like)"
-            },
-            {
-              "name": "type",
               "dataType": "ip.IpTypeEnum",
-              "paramType": "query",
+              "description": "Filter the value of type property (=)",
               "fullType": "ip.IpTypeEnum",
-              "required": false,
-              "description": "Filter the value of type property (=)"
-            },
-            {
-              "name": "routedTo.serviceName",
-              "dataType": "string",
+              "name": "type",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of routedTo.serviceName property (like)"
+              "required": false
             },
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "query",
+              "description": "Filter the value of ip property (contains or equals)",
               "fullType": "ipBlock",
-              "required": false,
-              "description": "Filter the value of ip property (contains or equals)"
+              "name": "ip",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of description property (like)",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of routedTo.serviceName property (like)",
+              "fullType": "string",
+              "name": "routedTo.serviceName",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "Your OVH IPs"
+          "responseType": "ipBlock[]"
         }
       ],
-      "description": "List the ip.Ip objects"
+      "path": "/ip"
     },
     {
-      "path": "/ip/service",
+      "description": "Operations about the IP service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the IP service"
+      "path": "/ip/service"
     },
     {
-      "path": "/ip/service/{serviceName}",
+      "description": "Your IP linked to service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip.ServiceIp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ip.ServiceIp"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ip.ServiceIp",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ip.ServiceIp",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Your IP linked to service"
+      "path": "/ip/service/{serviceName}"
     },
     {
-      "path": "/ip/service/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "reason",
-              "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
-              "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
-            },
-            {
-              "name": "commentary",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
-            },
-            {
-              "name": "token",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
-            },
-            {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Commentary about your termination request",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/ip/service/{serviceName}/confirmTermination"
     },
     {
-      "path": "/ip/service/{serviceName}/serviceInfos",
+      "description": "Details about a non-expiring Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.NonExpiringService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.NonExpiringService"
         }
       ],
-      "description": "Details about a non-expiring Service"
+      "path": "/ip/service/{serviceName}/serviceInfos"
     },
     {
-      "path": "/ip/service/{serviceName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/ip/service/{serviceName}/terminate"
     },
     {
-      "path": "/ip/{ip}",
+      "description": "Your IP",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip.Ip",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ip.Ip"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ip.Ip",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ip.Ip",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Your IP"
+      "path": "/ip/{ip}"
     },
     {
-      "path": "/ip/{ip}/antihack",
+      "description": "List the ip.BlockedIp objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Anti-Hack blocked IP",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "state",
               "dataType": "ip.BlockedIpStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of state property (=)",
               "fullType": "ip.BlockedIpStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (=)"
-            }
-          ],
-          "responseType": "ipv4[]",
-          "noAuthentication": false,
-          "description": "Anti-Hack blocked IP"
-        }
-      ],
-      "description": "List the ip.BlockedIp objects"
-    },
-    {
-      "path": "/ip/{ip}/antihack/{ipBlocked}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "ipBlocked",
-              "dataType": "ipv4",
-              "paramType": "path",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip blocked"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            }
-          ],
-          "responseType": "ip.BlockedIp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Blocked IP information"
-    },
-    {
-      "path": "/ip/{ip}/antihack/{ipBlocked}/unblock",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            },
-            {
-              "name": "ipBlocked",
-              "dataType": "ipv4",
-              "paramType": "path",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip blocked"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Unblock this IP"
-        }
-      ],
-      "description": "unblock operations"
-    },
-    {
-      "path": "/ip/{ip}/arp",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            },
-            {
               "name": "state",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "ipv4[]"
+        }
+      ],
+      "path": "/ip/{ip}/antihack"
+    },
+    {
+      "description": "Blocked IP information",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip blocked",
+              "fullType": "ipv4",
+              "name": "ipBlocked",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.BlockedIp"
+        }
+      ],
+      "path": "/ip/{ip}/antihack/{ipBlocked}"
+    },
+    {
+      "description": "unblock operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Unblock this IP",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip blocked",
+              "fullType": "ipv4",
+              "name": "ipBlocked",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/ip/{ip}/antihack/{ipBlocked}/unblock"
+    },
+    {
+      "description": "List the ip.ArpBlockedIp objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "ARP blocked IP",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "ip.ArpStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of state property (=)",
               "fullType": "ip.ArpStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (=)"
-            }
-          ],
-          "responseType": "ipv4[]",
-          "noAuthentication": false,
-          "description": "ARP blocked IP"
-        }
-      ],
-      "description": "List the ip.ArpBlockedIp objects"
-    },
-    {
-      "path": "/ip/{ip}/arp/{ipBlocked}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            },
-            {
-              "name": "ipBlocked",
-              "dataType": "ipv4",
-              "paramType": "path",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip blocked"
-            }
-          ],
-          "responseType": "ip.ArpBlockedIp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "ARP blocked IP information"
-    },
-    {
-      "path": "/ip/{ip}/arp/{ipBlocked}/unblock",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            },
-            {
-              "name": "ipBlocked",
-              "dataType": "ipv4",
-              "paramType": "path",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip blocked"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Unblock this IP"
-        }
-      ],
-      "description": "unblock operations"
-    },
-    {
-      "path": "/ip/{ip}/license/cloudLinux",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            },
-            {
-              "name": "ipAddress",
-              "dataType": "ipv4",
-              "paramType": "query",
-              "fullType": "ipv4",
-              "required": false,
-              "description": "Filter the value of ipAddress property (=)"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Cloud Linux licenses associated to this IP"
-        }
-      ],
-      "description": "List the license.cloudLinux.CloudLinux objects"
-    },
-    {
-      "path": "/ip/{ip}/license/sqlserver",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            },
-            {
-              "name": "ipAddress",
-              "dataType": "ipv4",
-              "paramType": "query",
-              "fullType": "ipv4",
-              "required": false,
-              "description": "Filter the value of ipAddress property (=)"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "SQL Server licenses associated to this IP"
-        }
-      ],
-      "description": "List the license.sqlserver.SqlServer objects"
-    },
-    {
-      "path": "/ip/{ip}/phishing",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            },
-            {
               "name": "state",
-              "dataType": "ip.AntiphishingStateEnum",
               "paramType": "query",
-              "fullType": "ip.AntiphishingStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (=)"
+              "required": false
+            }
+          ],
+          "responseType": "ipv4[]"
+        }
+      ],
+      "path": "/ip/{ip}/arp"
+    },
+    {
+      "description": "ARP blocked IP information",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipOnAntiphishing",
               "dataType": "ipv4",
-              "paramType": "query",
+              "description": "Ip blocked",
               "fullType": "ipv4",
-              "required": false,
-              "description": "Filter the value of ipOnAntiphishing property (within or equals)"
+              "name": "ipBlocked",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Ip under anti-phishing"
+          "responseType": "ip.ArpBlockedIp"
         }
       ],
-      "description": "List the ip.Antiphishing objects"
+      "path": "/ip/{ip}/arp/{ipBlocked}"
     },
     {
-      "path": "/ip/{ip}/phishing/{id}",
+      "description": "unblock operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "ip.Antiphishing",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Phishing URLs hosted on your IP"
-    },
-    {
-      "path": "/ip/{ip}/reverse",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            }
-          ],
-          "responseType": "ip[]",
-          "noAuthentication": false,
-          "description": "Reverse on your ip"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Unblock this IP",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "reverse",
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip blocked",
+              "fullType": "ipv4",
+              "name": "ipBlocked",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/ip/{ip}/arp/{ipBlocked}/unblock"
+    },
+    {
+      "description": "List the license.cloudLinux.CloudLinux objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Cloud Linux licenses associated to this IP",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/ip/{ip}/license/cloudLinux"
+    },
+    {
+      "description": "List the license.sqlserver.SqlServer objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "SQL Server licenses associated to this IP",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/ip/{ip}/license/sqlserver"
+    },
+    {
+      "description": "List the ip.Antiphishing objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Ip under anti-phishing",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipOnAntiphishing property (within or equals)",
+              "fullType": "ipv4",
+              "name": "ipOnAntiphishing",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "ip.AntiphishingStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "ip.AntiphishingStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/ip/{ip}/phishing"
+    },
+    {
+      "description": "Phishing URLs hosted on your IP",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.Antiphishing"
+        }
+      ],
+      "path": "/ip/{ip}/phishing/{id}"
+    },
+    {
+      "description": "List the ip.ReverseIp objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reverse on your ip",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add reverse on an ip",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ip",
+              "description": "",
+              "fullType": "ip",
+              "name": "ipReverse",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "",
               "fullType": "string",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "ipReverse",
-              "dataType": "ip",
+              "name": "reverse",
               "paramType": "body",
-              "fullType": "ip",
-              "required": true,
-              "description": ""
+              "required": true
             },
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip.ReverseIp",
-          "noAuthentication": false,
-          "description": "Add reverse on an ip"
+          "responseType": "ip.ReverseIp"
         }
       ],
-      "description": "List the ip.ReverseIp objects"
+      "path": "/ip/{ip}/reverse"
     },
     {
-      "path": "/ip/{ip}/reverse/{ipReverse}",
+      "description": "Your reverse records on IP",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a reverse on one IP",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipReverse",
               "dataType": "ip",
-              "paramType": "path",
+              "description": "Ip reverse",
               "fullType": "ip",
-              "required": true,
-              "description": "Ip reverse"
+              "name": "ipReverse",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a reverse on one IP"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipReverse",
               "dataType": "ip",
-              "paramType": "path",
+              "description": "Ip reverse",
               "fullType": "ip",
-              "required": true,
-              "description": "Ip reverse"
+              "name": "ipReverse",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip.ReverseIp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ip.ReverseIp"
         }
       ],
-      "description": "Your reverse records on IP"
+      "path": "/ip/{ip}/reverse/{ipReverse}"
     },
     {
-      "path": "/ip/{ip}/ripe",
+      "description": "IP block RIPE informations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip.RipeInfos",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ip.RipeInfos"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ip.RipeInfos",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ip.RipeInfos",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "IP block RIPE informations"
+      "path": "/ip/{ip}/ripe"
     },
     {
-      "path": "/ip/{ip}/spam",
+      "description": "List the ip.SpamIp objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Ip spamming",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "state",
               "dataType": "ip.SpamStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of state property (=)",
               "fullType": "ip.SpamStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (=)"
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "ipv4[]",
-          "noAuthentication": false,
-          "description": "Ip spamming"
+          "responseType": "ipv4[]"
         }
       ],
-      "description": "List the ip.SpamIp objects"
+      "path": "/ip/{ip}/spam"
     },
     {
-      "path": "/ip/{ip}/spam/{ipSpamming}",
+      "description": "Your IP spam stats",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipSpamming",
               "dataType": "ipv4",
-              "paramType": "path",
+              "description": "Ip spamming",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Ip spamming"
+              "name": "ipSpamming",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip.SpamIp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ip.SpamIp"
         }
       ],
-      "description": "Your IP spam stats"
+      "path": "/ip/{ip}/spam/{ipSpamming}"
     },
     {
-      "path": "/ip/{ip}/spam/{ipSpamming}/stats",
+      "description": "stats operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get statistics about the email traffic",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            },
-            {
-              "name": "ipSpamming",
-              "dataType": "ipv4",
+              "name": "ip",
               "paramType": "path",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip spamming"
+              "required": true
             },
             {
+              "dataType": "ipv4",
+              "description": "Ip spamming",
+              "fullType": "ipv4",
+              "name": "ipSpamming",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Start date",
+              "fullType": "datetime",
               "name": "from",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": true,
-              "description": "Start date"
+              "required": true
             },
             {
+              "dataType": "datetime",
+              "description": "End date",
+              "fullType": "datetime",
               "name": "to",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": true,
-              "description": "End date"
+              "required": true
             }
           ],
-          "responseType": "ip.SpamStats[]",
-          "noAuthentication": false,
-          "description": "Get statistics about the email traffic"
+          "responseType": "ip.SpamStats[]"
         }
       ],
-      "description": "stats operations"
+      "path": "/ip/{ip}/spam/{ipSpamming}/stats"
     },
     {
-      "path": "/ip/{ip}/spam/{ipSpamming}/unblock",
+      "description": "unblock operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Release the ip from anti-spam system",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipSpamming",
               "dataType": "ipv4",
-              "paramType": "path",
+              "description": "Ip spamming",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Ip spamming"
+              "name": "ipSpamming",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip.SpamIp",
-          "noAuthentication": false,
-          "description": "Release the ip from anti-spam system"
+          "responseType": "ip.SpamIp"
         }
       ],
-      "description": "unblock operations"
+      "path": "/ip/{ip}/spam/{ipSpamming}/unblock"
     },
     {
-      "path": "/ip/{ip}/task",
+      "description": "List the ip.IpTask objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "IP tasks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "function",
-              "dataType": "ip.TaskFunctionEnum",
-              "paramType": "query",
-              "fullType": "ip.TaskFunctionEnum",
-              "required": false,
-              "description": "Filter the value of function property (=)"
-            },
-            {
-              "name": "status",
               "dataType": "ip.TaskStatusEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "ip.TaskStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "ip.TaskFunctionEnum",
+              "description": "Filter the value of function property (=)",
+              "fullType": "ip.TaskFunctionEnum",
+              "name": "function",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "IP tasks"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the ip.IpTask objects"
+      "path": "/ip/{ip}/task"
     },
     {
-      "path": "/ip/{ip}/task/{taskId}",
+      "description": "IP tasks",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "taskId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Task ID",
               "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip.IpTask",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ip.IpTask"
         }
       ],
-      "description": "IP tasks"
+      "path": "/ip/{ip}/task/{taskId}"
     }
   ],
-  "resourcePath": "/ip",
   "basePath": "https://eu.api.kimsufi.com/1.0",
   "models": {
     "coreTypes.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "coreTypes",
       "description": "ISO country codes",
       "enum": [
         "ac",
@@ -1309,58 +1308,58 @@ export const schema: Schema = {
         "zm",
         "zw"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "coreTypes"
     },
     "ip.Antiphishing": {
+      "description": "Phishing URLs hosted on your IP",
       "id": "Antiphishing",
       "namespace": "ip",
-      "description": "Phishing URLs hosted on your IP",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the event",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Internal ID of the phishing entry",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "ipOnAntiphishing": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP address hosting the phishing URL",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "state": {
-          "type": "ip.AntiphishingStateEnum",
-          "fullType": "ip.AntiphishingStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current state of the phishing",
-          "required": true
+          "fullType": "ip.AntiphishingStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ip.AntiphishingStateEnum"
         },
         "urlPhishing": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Phishing URL",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ip.AntiphishingStateEnum": {
-      "id": "AntiphishingStateEnum",
-      "namespace": "ip",
       "description": "Possible values for antiphishing state",
       "enum": [
         "blocked",
@@ -1368,255 +1367,255 @@ export const schema: Schema = {
         "unblocked",
         "unblocking"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AntiphishingStateEnum",
+      "namespace": "ip"
     },
     "ip.ArpBlockedIp": {
+      "description": "ARP blocked IP information",
       "id": "ArpBlockedIp",
       "namespace": "ip",
-      "description": "ARP blocked IP information",
       "properties": {
         "blockedSince": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The last blocking date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "ipBlocked": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "your IP",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "logs": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ARP logs",
-          "required": false
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
         },
         "state": {
-          "type": "ip.ArpStateEnum",
-          "fullType": "ip.ArpStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "this IP address state",
-          "required": true
+          "fullType": "ip.ArpStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ip.ArpStateEnum"
         },
         "time": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Time (in seconds) remaining before you can request your IP to be unblocked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ip.ArpStateEnum": {
-      "id": "ArpStateEnum",
-      "namespace": "ip",
       "description": "Possible values for IP state",
       "enum": [
         "blocked",
         "unblocking"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ArpStateEnum",
+      "namespace": "ip"
     },
     "ip.BlockedIp": {
+      "description": "Blocked IP information",
       "id": "BlockedIp",
       "namespace": "ip",
-      "description": "Blocked IP information",
       "properties": {
         "blockedSince": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The last blocking date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "ipBlocked": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "your IP",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "logs": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Logs",
-          "required": false
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
         },
         "state": {
-          "type": "ip.BlockedIpStateEnum",
-          "fullType": "ip.BlockedIpStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "this IP address state",
-          "required": true
+          "fullType": "ip.BlockedIpStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ip.BlockedIpStateEnum"
         },
         "time": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Time (in seconds) remaining before you can request your IP to be unblocked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ip.BlockedIpStateEnum": {
-      "id": "BlockedIpStateEnum",
-      "namespace": "ip",
       "description": "Possible values for IP state",
       "enum": [
         "blocked",
         "unblocking"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BlockedIpStateEnum",
+      "namespace": "ip"
     },
     "ip.Ip": {
+      "description": "Your IP",
       "id": "Ip",
       "namespace": "ip",
-      "description": "Your IP",
       "properties": {
         "canBeTerminated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "country": {
-          "type": "coreTypes.CountryEnum",
-          "fullType": "coreTypes.CountryEnum",
           "canBeNull": true,
+          "fullType": "coreTypes.CountryEnum",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "coreTypes.CountryEnum"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Custom description on your ip",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ip": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
+          "fullType": "ipBlock",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "ipBlock"
         },
         "organisationId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "IP block organisation Id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "routedTo": {
-          "type": "ip.RoutedTo",
-          "fullType": "ip.RoutedTo",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Routage information",
-          "required": false
+          "fullType": "ip.RoutedTo",
+          "readOnly": true,
+          "required": false,
+          "type": "ip.RoutedTo"
         },
         "type": {
-          "type": "ip.IpTypeEnum",
-          "fullType": "ip.IpTypeEnum",
           "canBeNull": false,
+          "fullType": "ip.IpTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "ip.IpTypeEnum"
         }
       }
     },
     "ip.IpTask": {
+      "description": "IP tasks",
       "id": "IpTask",
       "namespace": "ip",
-      "description": "IP tasks",
       "properties": {
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Details of this task",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "destination": {
-          "type": "ip.RoutedTo",
-          "fullType": "ip.RoutedTo",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Destination for moveFloatingIp tasks",
-          "required": false
+          "fullType": "ip.RoutedTo",
+          "readOnly": true,
+          "required": false,
+          "type": "ip.RoutedTo"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "ip.TaskFunctionEnum",
-          "fullType": "ip.TaskFunctionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Function name",
-          "required": true
+          "fullType": "ip.TaskFunctionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ip.TaskFunctionEnum"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "ip.TaskStatusEnum",
-          "fullType": "ip.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "ip.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ip.TaskStatusEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the id of the task",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ip.IpTypeEnum": {
-      "id": "IpTypeEnum",
-      "namespace": "ip",
       "description": "Possible values for ip type",
       "enum": [
         "cdn",
@@ -1636,263 +1635,263 @@ export const schema: Schema = {
         "vrack",
         "xdsl"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpTypeEnum",
+      "namespace": "ip"
     },
     "ip.ReverseIp": {
+      "description": "Your reverse records on IP",
       "id": "ReverseIp",
       "namespace": "ip",
-      "description": "Your reverse records on IP",
       "properties": {
         "ipReverse": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
+          "fullType": "ip",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "ip"
         },
         "reverse": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ip.RipeInfos": {
+      "description": "IP block RIPE informations",
       "id": "RipeInfos",
       "namespace": "ip",
-      "description": "IP block RIPE informations",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "netname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "ip.RoutedTo": {
+      "description": "Information about routing",
       "id": "RoutedTo",
       "namespace": "ip",
-      "description": "Information about routing",
       "properties": {
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Service where ip is routed to",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "ip.ServiceIp": {
+      "description": "Your IP linked to service",
       "id": "ServiceIp",
       "namespace": "ip",
-      "description": "Your IP linked to service",
       "properties": {
         "canBeTerminated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "country": {
-          "type": "coreTypes.CountryEnum",
-          "fullType": "coreTypes.CountryEnum",
           "canBeNull": true,
+          "fullType": "coreTypes.CountryEnum",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "coreTypes.CountryEnum"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Custom description on your ip",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ip": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
+          "fullType": "ipBlock",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "ipBlock"
         },
         "organisationId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "IP block organisation Id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "routedTo": {
-          "type": "ip.RoutedTo",
-          "fullType": "ip.RoutedTo",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Routage information",
-          "required": false
+          "fullType": "ip.RoutedTo",
+          "readOnly": true,
+          "required": false,
+          "type": "ip.RoutedTo"
         },
         "type": {
-          "type": "ip.IpTypeEnum",
-          "fullType": "ip.IpTypeEnum",
           "canBeNull": false,
+          "fullType": "ip.IpTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "ip.IpTypeEnum"
         }
       }
     },
     "ip.SpamIp": {
+      "description": "Your IP spam stats",
       "id": "SpamIp",
       "namespace": "ip",
-      "description": "Your IP spam stats",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last date the ip was blocked",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "ipSpamming": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP address which is sending spam",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "state": {
-          "type": "ip.SpamStateEnum",
-          "fullType": "ip.SpamStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current state of the ip",
-          "required": true
+          "fullType": "ip.SpamStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ip.SpamStateEnum"
         },
         "time": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Time (in seconds) while the IP will be blocked",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ip.SpamStateEnum": {
-      "id": "SpamStateEnum",
-      "namespace": "ip",
       "description": "Possible values for spam state",
       "enum": [
         "blockedForSpam",
         "unblocked",
         "unblocking"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SpamStateEnum",
+      "namespace": "ip"
     },
     "ip.SpamStats": {
+      "description": "Spam statistics about an IP address",
       "id": "SpamStats",
       "namespace": "ip",
-      "description": "Spam statistics about an IP address",
       "properties": {
         "averageSpamscore": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Average spam score.",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "detectedSpams": {
-          "type": "ip.SpamTarget[]",
-          "fullType": "ip.SpamTarget[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Detailed list of the spams",
-          "required": false
+          "fullType": "ip.SpamTarget[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ip.SpamTarget[]"
         },
         "numberOfSpams": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of spams sent",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "timestamp": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Time when the IP address was blocked",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "total": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of emails sent",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ip.SpamTarget": {
+      "description": "Spam's target information",
       "id": "SpamTarget",
       "namespace": "ip",
-      "description": "Spam's target information",
       "properties": {
         "date": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Timestamp when the email was sent",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "destinationIp": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": false,
           "description": "IP address of the target",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": true,
+          "type": "ipv4"
         },
         "messageId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The message-id of the email",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "spamscore": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Spam score for the email",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ip.TaskFunctionEnum": {
-      "id": "TaskFunctionEnum",
-      "namespace": "ip",
       "description": "different task operation",
       "enum": [
         "arinBlockReassign",
@@ -1900,11 +1899,11 @@ export const schema: Schema = {
         "checkAndReleaseIp",
         "genericMoveFloatingIp"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskFunctionEnum",
+      "namespace": "ip"
     },
     "ip.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "ip",
       "description": "different task status",
       "enum": [
         "cancelled",
@@ -1915,11 +1914,11 @@ export const schema: Schema = {
         "ovhError",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "ip"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1927,11 +1926,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -1940,11 +1939,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -1962,63 +1961,66 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.NonExpiringService": {
+      "description": "Details about a non-expiring Service",
       "id": "NonExpiringService",
       "namespace": "services",
-      "description": "Details about a non-expiring Service",
       "properties": {
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/ip"
 }

@@ -1,986 +1,671 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.kimsufi.com:443/1.0/newAccount.json
+
 export const schema: Schema = {
-  "resourcePath": "/newAccount",
+  "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Returns the contracts that governs the creation of an OVH identifier",
-      "path": "/newAccount/contracts",
-      "operations": [
-        {
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "company",
-              "required": true,
-              "paramType": "query",
-              "fullType": "nichandle.OvhCompanyEnum",
-              "description": null,
-              "dataType": "nichandle.OvhCompanyEnum"
-            },
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": null,
-              "paramType": "query",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "name": "subsidiary"
-            }
-          ],
-          "noAuthentication": true,
-          "responseFullType": "order.Contract[]",
-          "description": "Returns the contracts that governs the creation of an OVH identifier",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "resellerOnly": false,
-          "responseType": "order.Contract[]"
-        }
-      ]
-    },
-    {
-      "operations": [
-        {
-          "responseFullType": "string[]",
-          "resellerOnly": false,
-          "description": "All available corporation types for a given country",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "responseType": "string[]",
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "country",
-              "required": true,
-              "fullType": "nichandle.CountryEnum",
-              "paramType": "query",
-              "description": null,
-              "dataType": "nichandle.CountryEnum"
-            }
-          ],
-          "noAuthentication": true
-        }
-      ],
-      "description": "All available corporation types for a given country",
-      "path": "/newAccount/corporationType"
-    },
-    {
       "description": "Create a new OVH identifier",
-      "path": "/newAccount",
       "operations": [
         {
-          "responseType": "nichandle.NewAccountAndToken",
           "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Create a new OVH identifier",
-          "resellerOnly": false,
-          "responseFullType": "nichandle.NewAccountAndToken",
+          "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
             {
-              "name": "organisation",
-              "required": false,
-              "fullType": "string",
-              "paramType": "body",
-              "description": null,
-              "dataType": "string"
-            },
-            {
-              "required": true,
-              "name": "email",
               "dataType": "string",
-              "paramType": "body",
               "description": null,
-              "fullType": "string"
-            },
-            {
-              "description": null,
-              "paramType": "body",
               "fullType": "string",
-              "dataType": "string",
-              "name": "italianSDI",
+              "name": "companyNationalIdentificationNumber",
+              "paramType": "body",
               "required": false
             },
             {
-              "name": "country",
-              "required": true,
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "area",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": null,
               "fullType": "nichandle.CountryEnum",
+              "name": "country",
               "paramType": "body",
-              "description": null,
-              "dataType": "nichandle.CountryEnum"
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "corporationType",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "description": null,
-              "required": false,
-              "name": "city"
-            },
-            {
-              "required": false,
-              "name": "vat",
-              "dataType": "string",
-              "paramType": "body",
-              "description": null,
-              "fullType": "string"
-            },
-            {
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "description": null,
-              "required": false,
-              "name": "area"
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
               "required": true
             },
             {
               "dataType": "string",
-              "paramType": "body",
+              "description": null,
               "fullType": "string",
-              "description": null,
-              "required": false,
-              "name": "address"
-            },
-            {
-              "name": "spareEmail",
-              "required": false,
-              "fullType": "string",
+              "name": "vat",
               "paramType": "body",
-              "description": null,
-              "dataType": "string"
-            },
-            {
-              "name": "firstname",
-              "required": false,
-              "fullType": "string",
-              "paramType": "body",
-              "description": null,
-              "dataType": "string"
-            },
-            {
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "description": null,
-              "required": false,
-              "name": "phone"
-            },
-            {
-              "name": "sex",
-              "required": false,
-              "fullType": "nichandle.GenderEnum",
-              "paramType": "body",
-              "description": null,
-              "dataType": "nichandle.GenderEnum"
-            },
-            {
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "description": null,
-              "required": false,
-              "name": "companyNationalIdentificationNumber"
-            },
-            {
-              "name": "nationalIdentificationNumber",
-              "required": false,
-              "fullType": "string",
-              "paramType": "body",
-              "description": null,
-              "dataType": "string"
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "zip",
               "required": false
             },
             {
-              "name": "language",
-              "required": false,
-              "fullType": "nichandle.LanguageEnum",
-              "paramType": "body",
+              "dataType": "string",
               "description": null,
-              "dataType": "nichandle.LanguageEnum"
-            },
-            {
-              "name": "birthDay",
-              "required": false,
               "fullType": "string",
+              "name": "name",
               "paramType": "body",
-              "description": null,
-              "dataType": "string"
-            },
-            {
-              "name": "phoneCountry",
-              "required": false,
-              "fullType": "nichandle.CountryEnum",
-              "paramType": "body",
-              "description": null,
-              "dataType": "nichandle.CountryEnum"
+              "required": false
             },
             {
               "dataType": "nichandle.OvhCompanyEnum",
-              "paramType": "body",
+              "description": null,
               "fullType": "nichandle.OvhCompanyEnum",
-              "description": null,
-              "required": true,
-              "name": "ovhCompany"
-            },
-            {
-              "name": "name",
-              "required": false,
-              "fullType": "string",
+              "name": "ovhCompany",
               "paramType": "body",
-              "description": null,
-              "dataType": "string"
+              "required": true
             },
             {
-              "required": false,
-              "name": "fax",
               "dataType": "string",
-              "paramType": "body",
               "description": null,
-              "fullType": "string"
+              "fullType": "string",
+              "name": "nationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "nichandle.LegalFormEnum",
-              "paramType": "body",
-              "fullType": "nichandle.LegalFormEnum",
               "description": null,
-              "required": true,
-              "name": "legalform"
+              "fullType": "nichandle.LegalFormEnum",
+              "name": "legalform",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
-              "paramType": "body",
+              "description": null,
               "fullType": "string",
-              "description": null,
-              "required": false,
-              "name": "birthCity"
-            }
-          ],
-          "httpMethod": "POST"
-        }
-      ]
-    },
-    {
-      "description": "All available countries for an ovh company and an ovh subsidiary",
-      "path": "/newAccount/countries",
-      "operations": [
-        {
-          "parameters": [
-            {
-              "required": true,
-              "name": "ovhCompany",
-              "dataType": "nichandle.OvhCompanyEnum",
-              "paramType": "query",
-              "description": null,
-              "fullType": "nichandle.OvhCompanyEnum"
+              "name": "birthCity",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "nichandle.LanguageEnum",
               "description": null,
-              "paramType": "query",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "fullType": "nichandle.LanguageEnum",
+              "name": "language",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "city",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": null,
+              "fullType": "nichandle.OvhSubsidiaryEnum",
               "name": "ovhSubsidiary",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "firstname",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "italianSDI",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "corporationType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "zip",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "birthDay",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "fax",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "address",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "phone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.GenderEnum",
+              "description": null,
+              "fullType": "nichandle.GenderEnum",
+              "name": "sex",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "organisation",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "spareEmail",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": null,
+              "fullType": "nichandle.CountryEnum",
+              "name": "phoneCountry",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.NewAccountAndToken",
+          "responseType": "nichandle.NewAccountAndToken"
+        }
+      ],
+      "path": "/newAccount"
+    },
+    {
+      "description": "All available corporation types for a given country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "All available corporation types for a given country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": null,
+              "fullType": "nichandle.CountryEnum",
+              "name": "country",
+              "paramType": "query",
               "required": true
             }
           ],
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "responseFullType": "nichandle.CountryEnum[]",
-          "responseType": "nichandle.CountryEnum[]",
           "resellerOnly": false,
-          "description": "All available countries for an ovh company and an ovh subsidiary",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          }
+          "responseFullType": "string[]",
+          "responseType": "string[]"
         }
-      ]
+      ],
+      "path": "/newAccount/corporationType"
     },
     {
-      "path": "/newAccount/area",
+      "description": "Returns the contracts that governs the creation of an OVH identifier",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the contracts that governs the creation of an OVH identifier",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": null,
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "subsidiary",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhCompanyEnum",
+              "description": null,
+              "fullType": "nichandle.OvhCompanyEnum",
+              "name": "company",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Contract[]",
+          "responseType": "order.Contract[]"
+        }
+      ],
+      "path": "/newAccount/contracts"
+    },
+    {
+      "description": "Give all the rules to follow in order to create and update an OVH identifier",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Give all the rules to follow in order to create and update an OVH identifier",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.LegalFormEnum",
+              "description": null,
+              "fullType": "nichandle.LegalFormEnum",
+              "name": "legalform",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "birthCity",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.LanguageEnum",
+              "description": null,
+              "fullType": "nichandle.LanguageEnum",
+              "name": "language",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "city",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "vat",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": null,
+              "fullType": "nichandle.CountryEnum",
+              "name": "country",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "companyNationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "area",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.OvhCompanyEnum",
+              "description": null,
+              "fullType": "nichandle.OvhCompanyEnum",
+              "name": "ovhCompany",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "nationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "fax",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "birthDay",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "phone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "address",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.GenderEnum",
+              "description": null,
+              "fullType": "nichandle.GenderEnum",
+              "name": "sex",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "organisation",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "spareEmail",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": null,
+              "fullType": "nichandle.CountryEnum",
+              "name": "phoneCountry",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "firstname",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "italianSDI",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CreationRulesActionEnum",
+              "description": null,
+              "fullType": "nichandle.CreationRulesActionEnum",
+              "name": "action",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": null,
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "zip",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "corporationType",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.CreationRule[]",
+          "responseType": "nichandle.CreationRule[]"
+        }
+      ],
+      "path": "/newAccount/rules"
+    },
+    {
       "description": "All available areas for a given country",
       "operations": [
         {
           "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "All available areas for a given country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": null,
+              "fullType": "nichandle.CountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
           "resellerOnly": false,
-          "responseType": "string[]",
           "responseFullType": "string[]",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "name": "country",
-              "required": true,
-              "fullType": "nichandle.CountryEnum",
-              "paramType": "query",
-              "description": null,
-              "dataType": "nichandle.CountryEnum"
-            }
-          ],
-          "httpMethod": "GET"
-        }
-      ]
-    },
-    {
-      "description": "Give all the rules to follow in order to create and update an OVH identifier",
-      "path": "/newAccount/rules",
-      "operations": [
-        {
-          "responseType": "nichandle.CreationRule[]",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "description": "Give all the rules to follow in order to create and update an OVH identifier",
-          "resellerOnly": false,
-          "responseFullType": "nichandle.CreationRule[]",
-          "noAuthentication": true,
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "zip",
-              "required": false
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "nichandle.LanguageEnum",
-              "dataType": "nichandle.LanguageEnum",
-              "name": "language",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "description": null,
-              "required": false,
-              "name": "nationalIdentificationNumber"
-            },
-            {
-              "required": false,
-              "name": "action",
-              "dataType": "nichandle.CreationRulesActionEnum",
-              "paramType": "body",
-              "description": null,
-              "fullType": "nichandle.CreationRulesActionEnum"
-            },
-            {
-              "name": "companyNationalIdentificationNumber",
-              "required": false,
-              "fullType": "string",
-              "paramType": "body",
-              "description": null,
-              "dataType": "string"
-            },
-            {
-              "dataType": "nichandle.OvhCompanyEnum",
-              "paramType": "body",
-              "fullType": "nichandle.OvhCompanyEnum",
-              "description": null,
-              "required": false,
-              "name": "ovhCompany"
-            },
-            {
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "description": null,
-              "required": false,
-              "name": "birthDay"
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "nichandle.CountryEnum",
-              "dataType": "nichandle.CountryEnum",
-              "name": "phoneCountry",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "description": null,
-              "required": false,
-              "name": "fax"
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "name",
-              "required": false
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "birthCity",
-              "required": false
-            },
-            {
-              "required": false,
-              "name": "legalform",
-              "dataType": "nichandle.LegalFormEnum",
-              "paramType": "body",
-              "description": null,
-              "fullType": "nichandle.LegalFormEnum"
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "italianSDI",
-              "required": false
-            },
-            {
-              "required": false,
-              "name": "country",
-              "dataType": "nichandle.CountryEnum",
-              "paramType": "body",
-              "description": null,
-              "fullType": "nichandle.CountryEnum"
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "email",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "description": null,
-              "required": false,
-              "name": "organisation"
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "city",
-              "required": false
-            },
-            {
-              "name": "corporationType",
-              "required": false,
-              "fullType": "string",
-              "paramType": "body",
-              "description": null,
-              "dataType": "string"
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "firstname",
-              "required": false
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "spareEmail",
-              "required": false
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "address",
-              "required": false
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "required": false
-            },
-            {
-              "description": null,
-              "paramType": "body",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "vat",
-              "required": false
-            },
-            {
-              "required": false,
-              "name": "area",
-              "dataType": "string",
-              "paramType": "body",
-              "description": null,
-              "fullType": "string"
-            },
-            {
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "description": null,
-              "required": false,
-              "name": "phone"
-            },
-            {
-              "name": "sex",
-              "required": false,
-              "fullType": "nichandle.GenderEnum",
-              "paramType": "body",
-              "description": null,
-              "dataType": "nichandle.GenderEnum"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "operations": [
-        {
-          "noAuthentication": true,
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "country",
-              "required": true,
-              "fullType": "nichandle.CountryEnum",
-              "paramType": "query",
-              "description": null,
-              "dataType": "nichandle.CountryEnum"
-            }
-          ],
-          "responseType": "string[]",
-          "description": "All available legal forms for a given country",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "resellerOnly": false,
-          "responseFullType": "string[]"
+          "responseType": "string[]"
         }
       ],
-      "path": "/newAccount/legalform",
-      "description": "All available legal forms for a given country"
+      "path": "/newAccount/area"
     },
     {
+      "description": "Give all the rules to follow in order to create an OVH identifier",
       "operations": [
         {
-          "parameters": [
-            {
-              "dataType": "nichandle.CountryEnum",
-              "paramType": "query",
-              "fullType": "nichandle.CountryEnum",
-              "description": null,
-              "required": true,
-              "name": "country"
-            },
-            {
-              "required": true,
-              "name": "ovhSubsidiary",
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
-              "description": null,
-              "fullType": "nichandle.OvhSubsidiaryEnum"
-            },
-            {
-              "dataType": "nichandle.LegalFormEnum",
-              "paramType": "query",
-              "fullType": "nichandle.LegalFormEnum",
-              "description": null,
-              "required": true,
-              "name": "legalform"
-            },
-            {
-              "dataType": "nichandle.OvhCompanyEnum",
-              "paramType": "query",
-              "fullType": "nichandle.OvhCompanyEnum",
-              "description": null,
-              "required": true,
-              "name": "ovhCompany"
-            }
-          ],
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "responseFullType": "nichandle.CreationRules",
-          "responseType": "nichandle.CreationRules",
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Give all the rules to follow in order to create an OVH identifier",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "resellerOnly": false
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": null,
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhCompanyEnum",
+              "description": null,
+              "fullType": "nichandle.OvhCompanyEnum",
+              "name": "ovhCompany",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.LegalFormEnum",
+              "description": null,
+              "fullType": "nichandle.LegalFormEnum",
+              "name": "legalform",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": null,
+              "fullType": "nichandle.CountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.CreationRules",
+          "responseType": "nichandle.CreationRules"
         }
       ],
-      "path": "/newAccount/creationRules",
-      "description": "Give all the rules to follow in order to create an OVH identifier"
+      "path": "/newAccount/creationRules"
+    },
+    {
+      "description": "All available legal forms for a given country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "All available legal forms for a given country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": null,
+              "fullType": "nichandle.CountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/newAccount/legalform"
+    },
+    {
+      "description": "All available countries for an ovh company and an ovh subsidiary",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "All available countries for an ovh company and an ovh subsidiary",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": null,
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhCompanyEnum",
+              "description": null,
+              "fullType": "nichandle.OvhCompanyEnum",
+              "name": "ovhCompany",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.CountryEnum[]",
+          "responseType": "nichandle.CountryEnum[]"
+        }
+      ],
+      "path": "/newAccount/countries"
     }
   ],
-  "apiVersion": "1.0",
   "basePath": "https://ca.api.kimsufi.com/1.0",
   "models": {
-    "nichandle.GenderEnum": {
-      "enum": [
-        "female",
-        "male"
-      ],
-      "id": "GenderEnum",
-      "namespace": "nichandle",
-      "description": "All genders a person can choose",
-      "enumType": "string"
-    },
-    "nichandle.CreationRulesActionEnum": {
-      "id": "CreationRulesActionEnum",
-      "enum": [
-        "create",
-        "update"
-      ],
-      "enumType": "string",
-      "namespace": "nichandle",
-      "description": "Action a nichandle can perform on his account."
-    },
-    "nichandle.CreationRules": {
-      "properties": {
-        "fax": {
-          "description": null,
-          "type": "nichandle.CreationRule",
-          "canBeNull": false
-        },
-        "name": {
-          "description": null,
-          "type": "nichandle.CreationRule",
-          "canBeNull": false
-        },
-        "birthCity": {
-          "type": "nichandle.CreationRule",
-          "canBeNull": false,
-          "description": null
-        },
-        "legalform": {
-          "type": "nichandle.CreationRule",
-          "canBeNull": false,
-          "description": null
-        },
-        "language": {
-          "canBeNull": false,
-          "type": "nichandle.CreationRule",
-          "description": null
-        },
-        "zip": {
-          "canBeNull": false,
-          "type": "nichandle.CreationRule",
-          "description": null
-        },
-        "companyNationalIdentificationNumber": {
-          "description": null,
-          "type": "nichandle.CreationRule",
-          "canBeNull": false
-        },
-        "nationalIdentificationNumber": {
-          "description": null,
-          "type": "nichandle.CreationRule",
-          "canBeNull": false
-        },
-        "ovhCompany": {
-          "canBeNull": false,
-          "type": "nichandle.CreationRule",
-          "description": null
-        },
-        "phoneCountry": {
-          "type": "nichandle.CreationRule",
-          "canBeNull": false,
-          "description": null
-        },
-        "birthDay": {
-          "description": null,
-          "type": "nichandle.CreationRule",
-          "canBeNull": false
-        },
-        "spareEmail": {
-          "type": "nichandle.CreationRule",
-          "canBeNull": false,
-          "description": null
-        },
-        "firstname": {
-          "canBeNull": false,
-          "type": "nichandle.CreationRule",
-          "description": null
-        },
-        "area": {
-          "canBeNull": false,
-          "type": "nichandle.CreationRule",
-          "description": null
-        },
-        "vat": {
-          "description": null,
-          "type": "nichandle.CreationRule",
-          "canBeNull": false
-        },
-        "ovhSubsidiary": {
-          "description": null,
-          "type": "nichandle.CreationRule",
-          "canBeNull": false
-        },
-        "address": {
-          "type": "nichandle.CreationRule",
-          "canBeNull": false,
-          "description": null
-        },
-        "phone": {
-          "canBeNull": false,
-          "type": "nichandle.CreationRule",
-          "description": null
-        },
-        "sex": {
-          "canBeNull": false,
-          "type": "nichandle.CreationRule",
-          "description": null
-        },
-        "organisation": {
-          "description": null,
-          "canBeNull": false,
-          "type": "nichandle.CreationRule"
-        },
-        "email": {
-          "description": null,
-          "type": "nichandle.CreationRule",
-          "canBeNull": false
-        },
-        "italianSDI": {
-          "description": null,
-          "type": "nichandle.CreationRule",
-          "canBeNull": false
-        },
-        "country": {
-          "canBeNull": false,
-          "type": "nichandle.CreationRule",
-          "description": null
-        },
-        "city": {
-          "type": "nichandle.CreationRule",
-          "canBeNull": false,
-          "description": null
-        },
-        "corporationType": {
-          "description": null,
-          "type": "nichandle.CreationRule",
-          "canBeNull": false
-        }
-      },
-      "id": "CreationRules",
-      "namespace": "nichandle",
-      "description": "Describe rules foreach field in order to create a nic"
-    },
-    "nichandle.OvhCompanyEnum": {
-      "id": "OvhCompanyEnum",
-      "enum": [
-        "kimsufi",
-        "ovh",
-        "soyoustart"
-      ],
-      "description": "OVH subsidiaries",
-      "namespace": "nichandle",
-      "enumType": "string"
-    },
-    "nichandle.LanguageEnum": {
-      "enumType": "string",
-      "namespace": "nichandle",
-      "description": "Languages a nichandle can choose",
-      "enum": [
-        "cs_CZ",
-        "de_DE",
-        "en_AU",
-        "en_CA",
-        "en_GB",
-        "en_IE",
-        "en_US",
-        "es_ES",
-        "fi_FI",
-        "fr_CA",
-        "fr_FR",
-        "fr_MA",
-        "fr_SN",
-        "fr_TN",
-        "it_IT",
-        "lt_LT",
-        "nl_NL",
-        "pl_PL",
-        "pt_PT"
-      ],
-      "id": "LanguageEnum"
-    },
-    "nichandle.LegalFormEnum": {
-      "namespace": "nichandle",
-      "description": "Legal forms a nichandle can be registered as",
-      "enumType": "string",
-      "enum": [
-        "administration",
-        "association",
-        "corporation",
-        "individual",
-        "other",
-        "personalcorporation"
-      ],
-      "id": "LegalFormEnum"
-    },
-    "nichandle.NewAccountAndToken": {
-      "properties": {
-        "consumerKey": {
-          "description": null,
-          "canBeNull": true,
-          "type": "string"
-        },
-        "ovhIdentifier": {
-          "description": null,
-          "canBeNull": false,
-          "type": "string"
-        }
-      },
-      "id": "NewAccountAndToken",
-      "namespace": "nichandle",
-      "description": "Newly created OVH identifier and a login token for the API"
-    },
-    "nichandle.OvhSubsidiaryEnum": {
-      "id": "OvhSubsidiaryEnum",
-      "enum": [
-        "ASIA",
-        "AU",
-        "CA",
-        "CZ",
-        "DE",
-        "ES",
-        "EU",
-        "FI",
-        "FR",
-        "GB",
-        "IE",
-        "IT",
-        "LT",
-        "MA",
-        "NL",
-        "PL",
-        "PT",
-        "QC",
-        "SG",
-        "SN",
-        "TN",
-        "US",
-        "WE",
-        "WS"
-      ],
-      "enumType": "string",
-      "description": "OVH subsidiaries",
-      "namespace": "nichandle"
-    },
-    "nichandle.CreationRule": {
-      "id": "CreationRule",
-      "properties": {
-        "prefix": {
-          "type": "string",
-          "canBeNull": true,
-          "description": "Prefix of the field value"
-        },
-        "mandatory": {
-          "description": "Whether the field is mandatory",
-          "canBeNull": false,
-          "type": "boolean"
-        },
-        "defaultValue": {
-          "type": "string",
-          "canBeNull": true,
-          "description": "Default value of the field"
-        },
-        "regularExpression": {
-          "description": "Regular expression to validate the field value",
-          "type": "string",
-          "canBeNull": true
-        },
-        "examples": {
-          "type": "string[]",
-          "canBeNull": true,
-          "description": "Examples of values for the fields"
-        },
-        "fieldName": {
-          "type": "string",
-          "canBeNull": true,
-          "description": "Name of the field"
-        },
-        "in": {
-          "canBeNull": true,
-          "type": "string[]",
-          "description": "List of allowed values for the field"
-        }
-      },
-      "description": "Describe all rules for a given field",
-      "namespace": "nichandle"
-    },
-    "order.Contract": {
-      "id": "Contract",
-      "properties": {
-        "content": {
-          "type": "text",
-          "canBeNull": false,
-          "description": null
-        },
-        "url": {
-          "type": "string",
-          "canBeNull": false,
-          "description": null
-        },
-        "name": {
-          "description": null,
-          "canBeNull": false,
-          "type": "string"
-        }
-      },
-      "namespace": "order",
-      "description": "A contract"
-    },
     "nichandle.CountryEnum": {
+      "description": "Countries a nichandle can choose",
       "enum": [
         "AC",
         "AD",
@@ -1237,10 +922,327 @@ export const schema: Schema = {
         "ZM",
         "ZW"
       ],
+      "enumType": "string",
       "id": "CountryEnum",
+      "namespace": "nichandle"
+    },
+    "nichandle.CreationRule": {
+      "description": "Describe all rules for a given field",
+      "id": "CreationRule",
       "namespace": "nichandle",
-      "description": "Countries a nichandle can choose",
-      "enumType": "string"
+      "properties": {
+        "defaultValue": {
+          "canBeNull": true,
+          "description": "Default value of the field",
+          "type": "string"
+        },
+        "examples": {
+          "canBeNull": true,
+          "description": "Examples of values for the fields",
+          "type": "string[]"
+        },
+        "fieldName": {
+          "canBeNull": true,
+          "description": "Name of the field",
+          "type": "string"
+        },
+        "in": {
+          "canBeNull": true,
+          "description": "List of allowed values for the field",
+          "type": "string[]"
+        },
+        "mandatory": {
+          "canBeNull": false,
+          "description": "Whether the field is mandatory",
+          "type": "boolean"
+        },
+        "prefix": {
+          "canBeNull": true,
+          "description": "Prefix of the field value",
+          "type": "string"
+        },
+        "regularExpression": {
+          "canBeNull": true,
+          "description": "Regular expression to validate the field value",
+          "type": "string"
+        }
+      }
+    },
+    "nichandle.CreationRules": {
+      "description": "Describe rules foreach field in order to create a nic",
+      "id": "CreationRules",
+      "namespace": "nichandle",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "area": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "birthCity": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "birthDay": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "city": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "companyNationalIdentificationNumber": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "corporationType": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "country": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "email": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "fax": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "firstname": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "italianSDI": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "language": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "legalform": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "nationalIdentificationNumber": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "organisation": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "ovhCompany": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "ovhSubsidiary": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "phone": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "phoneCountry": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "sex": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "spareEmail": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "vat": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        },
+        "zip": {
+          "canBeNull": false,
+          "description": null,
+          "type": "nichandle.CreationRule"
+        }
+      }
+    },
+    "nichandle.CreationRulesActionEnum": {
+      "description": "Action a nichandle can perform on his account.",
+      "enum": [
+        "create",
+        "update"
+      ],
+      "enumType": "string",
+      "id": "CreationRulesActionEnum",
+      "namespace": "nichandle"
+    },
+    "nichandle.GenderEnum": {
+      "description": "All genders a person can choose",
+      "enum": [
+        "female",
+        "male"
+      ],
+      "enumType": "string",
+      "id": "GenderEnum",
+      "namespace": "nichandle"
+    },
+    "nichandle.LanguageEnum": {
+      "description": "Languages a nichandle can choose",
+      "enum": [
+        "cs_CZ",
+        "de_DE",
+        "en_AU",
+        "en_CA",
+        "en_GB",
+        "en_IE",
+        "en_US",
+        "es_ES",
+        "fi_FI",
+        "fr_CA",
+        "fr_FR",
+        "fr_MA",
+        "fr_SN",
+        "fr_TN",
+        "it_IT",
+        "lt_LT",
+        "nl_NL",
+        "pl_PL",
+        "pt_PT"
+      ],
+      "enumType": "string",
+      "id": "LanguageEnum",
+      "namespace": "nichandle"
+    },
+    "nichandle.LegalFormEnum": {
+      "description": "Legal forms a nichandle can be registered as",
+      "enum": [
+        "administration",
+        "association",
+        "corporation",
+        "individual",
+        "other",
+        "personalcorporation"
+      ],
+      "enumType": "string",
+      "id": "LegalFormEnum",
+      "namespace": "nichandle"
+    },
+    "nichandle.NewAccountAndToken": {
+      "description": "Newly created OVH identifier and a login token for the API",
+      "id": "NewAccountAndToken",
+      "namespace": "nichandle",
+      "properties": {
+        "consumerKey": {
+          "canBeNull": true,
+          "description": null,
+          "type": "string"
+        },
+        "ovhIdentifier": {
+          "canBeNull": false,
+          "description": null,
+          "type": "string"
+        }
+      }
+    },
+    "nichandle.OvhCompanyEnum": {
+      "description": "OVH subsidiaries",
+      "enum": [
+        "kimsufi",
+        "ovh",
+        "soyoustart"
+      ],
+      "enumType": "string",
+      "id": "OvhCompanyEnum",
+      "namespace": "nichandle"
+    },
+    "nichandle.OvhSubsidiaryEnum": {
+      "description": "OVH subsidiaries",
+      "enum": [
+        "ASIA",
+        "AU",
+        "CA",
+        "CZ",
+        "DE",
+        "ES",
+        "EU",
+        "FI",
+        "FR",
+        "GB",
+        "IE",
+        "IT",
+        "LT",
+        "MA",
+        "NL",
+        "PL",
+        "PT",
+        "QC",
+        "SG",
+        "SN",
+        "TN",
+        "US",
+        "WE",
+        "WS"
+      ],
+      "enumType": "string",
+      "id": "OvhSubsidiaryEnum",
+      "namespace": "nichandle"
+    },
+    "order.Contract": {
+      "description": "A contract",
+      "id": "Contract",
+      "namespace": "order",
+      "properties": {
+        "content": {
+          "canBeNull": false,
+          "description": null,
+          "type": "text"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": null,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": null,
+          "type": "string"
+        }
+      }
     }
-  }
+  },
+  "resourcePath": "/newAccount"
 }

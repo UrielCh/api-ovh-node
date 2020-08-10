@@ -1,619 +1,618 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.ovh.com:443/1.0/support.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/support/tickets",
+      "description": "List support tickets identifiers for this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List support tickets identifiers for this service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Ticket message service name",
               "fullType": "string",
-              "required": false,
-              "description": "Ticket message service name"
+              "name": "serviceName",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "category",
               "dataType": "support.TicketCategoryEnum",
-              "paramType": "query",
+              "description": "Search by ticket category",
               "fullType": "support.TicketCategoryEnum",
-              "required": false,
-              "description": "Search by ticket category"
-            },
-            {
-              "name": "product",
-              "dataType": "support.TicketProductEnum",
+              "name": "category",
               "paramType": "query",
-              "fullType": "support.TicketProductEnum",
-              "required": false,
-              "description": "Search by ticket product"
+              "required": false
             },
             {
-              "name": "status",
+              "dataType": "support.TicketProductEnum",
+              "description": "Search by ticket product",
+              "fullType": "support.TicketProductEnum",
+              "name": "product",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "support.TicketStatusEnum",
-              "paramType": "query",
+              "description": "Status of ticket",
               "fullType": "support.TicketStatusEnum",
-              "required": false,
-              "description": "Status of ticket"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Minimum creation date",
+              "fullType": "datetime",
               "name": "minCreationDate",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Minimum creation date"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Maximum creation date",
+              "fullType": "datetime",
               "name": "maxCreationDate",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Maximum creation date"
+              "required": false
             },
             {
-              "name": "archived",
               "dataType": "boolean",
-              "paramType": "query",
+              "description": "Search archived tickets",
               "fullType": "boolean",
-              "required": false,
-              "description": "Search archived tickets"
+              "name": "archived",
+              "paramType": "query",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Search by ticket number",
+              "fullType": "string",
               "name": "ticketNumber",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Search by ticket number"
+              "required": false
             },
             {
-              "name": "subject",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Search by ticket subject",
               "fullType": "string",
-              "required": false,
-              "description": "Search by ticket subject"
+              "name": "subject",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List support tickets identifiers for this service"
+          "responseType": "long[]"
         }
       ],
-      "description": "List support tickets identifiers for this service"
+      "path": "/support/tickets"
     },
     {
-      "path": "/support/tickets/create",
+      "description": "Create a new ticket",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new ticket",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "category",
-              "dataType": "support.TicketCategoryEnum",
-              "paramType": "body",
-              "fullType": "support.TicketCategoryEnum",
-              "required": false,
-              "description": "Ticket message category"
-            },
-            {
-              "name": "type",
-              "dataType": "support.TicketTypeEnum",
-              "paramType": "body",
-              "fullType": "support.TicketTypeEnum",
-              "required": true,
-              "description": "Ticket type (criticalIntervention requires VIP support level)"
-            },
-            {
-              "name": "body",
-              "dataType": "text",
-              "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "Ticket message body"
-            },
-            {
-              "name": "subcategory",
-              "dataType": "support.TicketSubCategoryEnum",
-              "paramType": "body",
-              "fullType": "support.TicketSubCategoryEnum",
-              "required": false,
-              "description": "Ticket message subcategory"
-            },
-            {
-              "name": "subject",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Ticket message subject"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Ticket message service name"
-            },
-            {
-              "name": "product",
               "dataType": "support.TicketProductEnum",
-              "paramType": "body",
+              "description": "Ticket message product",
               "fullType": "support.TicketProductEnum",
-              "required": false,
-              "description": "Ticket message product"
-            }
-          ],
-          "responseType": "support.NewMessageInfo",
-          "noAuthentication": false,
-          "description": "Create a new ticket"
-        }
-      ],
-      "description": "Create a new ticket"
-    },
-    {
-      "path": "/support/tickets/{ticketId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
+              "name": "product",
+              "paramType": "body",
+              "required": false
+            },
             {
-              "name": "ticketId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Ticket ID"
-            }
-          ],
-          "responseType": "support.Ticket",
-          "noAuthentication": false,
-          "description": "Get ticket"
-        }
-      ],
-      "description": "Get ticket"
-    },
-    {
-      "path": "/support/tickets/{ticketId}/canBeScored",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
+              "dataType": "support.TicketCategoryEnum",
+              "description": "Ticket message category",
+              "fullType": "support.TicketCategoryEnum",
+              "name": "category",
+              "paramType": "body",
+              "required": false
+            },
             {
-              "name": "ticketId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Ticket ID"
-            }
-          ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Checks whether ticket can be scored"
-        }
-      ],
-      "description": "Check whether ticket can be scored"
-    },
-    {
-      "path": "/support/tickets/{ticketId}/close",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
+              "dataType": "support.TicketTypeEnum",
+              "description": "Ticket type (criticalIntervention requires VIP support level)",
+              "fullType": "support.TicketTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
             {
-              "name": "ticketId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Ticket ID"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Close ticket"
-        }
-      ],
-      "description": "Close ticket"
-    },
-    {
-      "path": "/support/tickets/{ticketId}/messages",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "ticketId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Ticket ID"
-            }
-          ],
-          "responseType": "support.Message[]",
-          "noAuthentication": false,
-          "description": "Get ticket messages"
-        }
-      ],
-      "description": "Get ticket messages"
-    },
-    {
-      "path": "/support/tickets/{ticketId}/reopen",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
+              "dataType": "text",
+              "description": "Ticket message body",
+              "fullType": "text",
               "name": "body",
-              "dataType": "text",
               "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "ticket reopen reason"
+              "required": true
             },
             {
-              "name": "ticketId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Ticket ID"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Reopen a ticket"
-        }
-      ],
-      "description": "Reopen a ticket"
-    },
-    {
-      "path": "/support/tickets/{ticketId}/reply",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "body",
-              "dataType": "text",
+              "dataType": "support.TicketSubCategoryEnum",
+              "description": "Ticket message subcategory",
+              "fullType": "support.TicketSubCategoryEnum",
+              "name": "subcategory",
               "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "text body of ticket response"
+              "required": false
             },
             {
-              "name": "ticketId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Ticket ID"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Reply to ticket"
-        }
-      ],
-      "description": "Reply to ticket"
-    },
-    {
-      "path": "/support/tickets/{ticketId}/score",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "scoreComment",
-              "dataType": "text",
-              "paramType": "body",
-              "fullType": "text",
-              "required": false,
-              "description": "ticket comment about the score"
-            },
-            {
-              "name": "score",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Ticket message subject",
               "fullType": "string",
-              "required": true,
-              "description": "ticket score"
+              "name": "subject",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "ticketId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Ticket ID"
+              "dataType": "string",
+              "description": "Ticket message service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Set ticket score"
+          "responseType": "support.NewMessageInfo"
         }
       ],
-      "description": "Set ticket score"
+      "path": "/support/tickets/create"
+    },
+    {
+      "description": "Get ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get ticket",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Ticket ID",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "support.Ticket"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}"
+    },
+    {
+      "description": "Check whether ticket can be scored",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Checks whether ticket can be scored",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Ticket ID",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/canBeScored"
+    },
+    {
+      "description": "Close ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Close ticket",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Ticket ID",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/close"
+    },
+    {
+      "description": "Get ticket messages",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get ticket messages",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Ticket ID",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "support.Message[]"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/messages"
+    },
+    {
+      "description": "Reopen a ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reopen a ticket",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "ticket reopen reason",
+              "fullType": "text",
+              "name": "body",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Ticket ID",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/reopen"
+    },
+    {
+      "description": "Reply to ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reply to ticket",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "text body of ticket response",
+              "fullType": "text",
+              "name": "body",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Ticket ID",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/reply"
+    },
+    {
+      "description": "Set ticket score",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Set ticket score",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "ticket comment about the score",
+              "fullType": "text",
+              "name": "scoreComment",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "ticket score",
+              "fullType": "string",
+              "name": "score",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Ticket ID",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/score"
     }
   ],
-  "resourcePath": "/support",
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "support.Message": {
+      "description": "Support ticket message",
       "id": "Message",
       "namespace": "support",
-      "description": "Support ticket message",
       "properties": {
         "body": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Message body",
-          "required": true
+          "fullType": "text",
+          "readOnly": false,
+          "required": true,
+          "type": "text"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Message creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "from": {
-          "type": "support.MessageSenderEnum",
-          "fullType": "support.MessageSenderEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Message sender type",
-          "required": true
+          "fullType": "support.MessageSenderEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "support.MessageSenderEnum"
         },
         "messageId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Message identifier",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "ticketId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket identifier",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "updateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Message last update date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "support.MessageSenderEnum": {
-      "id": "MessageSenderEnum",
-      "namespace": "support",
       "description": "Message sender type",
       "enum": [
         "customer",
         "support"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MessageSenderEnum",
+      "namespace": "support"
     },
     "support.NewMessageInfo": {
+      "description": "Newly created support identifiers",
       "id": "NewMessageInfo",
       "namespace": "support",
-      "description": "Newly created support identifiers",
       "properties": {
         "messageId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Message identifier",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "ticketId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket identifier",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "ticketNumber": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket external number",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "support.Ticket": {
+      "description": "Support Ticket",
       "id": "Ticket",
       "namespace": "support",
-      "description": "Support Ticket",
       "properties": {
         "accountId": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Customer account identifier",
-          "required": true
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": false,
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "canBeClosed": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Can this ticket be closed or not",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "category": {
-          "type": "support.TicketCategoryEnum",
-          "fullType": "support.TicketCategoryEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Ticket request category",
-          "required": false
+          "fullType": "support.TicketCategoryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "support.TicketCategoryEnum"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "lastMessageFrom": {
-          "type": "support.MessageSenderEnum",
-          "fullType": "support.MessageSenderEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Sender type of last message",
-          "required": true
+          "fullType": "support.MessageSenderEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "support.MessageSenderEnum"
         },
         "product": {
-          "type": "support.TicketProductEnum",
-          "fullType": "support.TicketProductEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Product service concerned by ticket",
-          "required": false
+          "fullType": "support.TicketProductEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "support.TicketProductEnum"
         },
         "score": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket score",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of service concerned by ticket",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "state": {
-          "type": "support.TicketStatusEnum",
-          "fullType": "support.TicketStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "State of ticket",
-          "required": true
+          "fullType": "support.TicketStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "support.TicketStatusEnum"
         },
         "subject": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket subject",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ticketId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket identifier",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "ticketNumber": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket external number",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "support.TicketTypeEnum",
-          "fullType": "support.TicketTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket type",
-          "required": true
+          "fullType": "support.TicketTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "support.TicketTypeEnum"
         },
         "updateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket last update date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "support.TicketCategoryEnum": {
-      "id": "TicketCategoryEnum",
-      "namespace": "support",
       "description": "Ticket request category",
       "enum": [
         "assistance",
         "billing",
         "incident"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TicketCategoryEnum",
+      "namespace": "support"
     },
     "support.TicketProductEnum": {
-      "id": "TicketProductEnum",
-      "namespace": "support",
       "description": "Ticket product",
       "enum": [
         "adsl",
@@ -642,22 +641,22 @@ export const schema: Schema = {
         "web-billing",
         "web-other"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TicketProductEnum",
+      "namespace": "support"
     },
     "support.TicketStatusEnum": {
-      "id": "TicketStatusEnum",
-      "namespace": "support",
       "description": "Support ticket statuses",
       "enum": [
         "closed",
         "open",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TicketStatusEnum",
+      "namespace": "support"
     },
     "support.TicketSubCategoryEnum": {
-      "id": "TicketSubCategoryEnum",
-      "namespace": "support",
       "description": "Ticket request subcategory",
       "enum": [
         "alerts",
@@ -671,17 +670,20 @@ export const schema: Schema = {
         "start",
         "usage"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TicketSubCategoryEnum",
+      "namespace": "support"
     },
     "support.TicketTypeEnum": {
-      "id": "TicketTypeEnum",
-      "namespace": "support",
       "description": "Ticket type (criticalIntervention requires VIP support level)",
       "enum": [
         "criticalIntervention",
         "genericRequest"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TicketTypeEnum",
+      "namespace": "support"
     }
-  }
+  },
+  "resourcePath": "/support"
 }

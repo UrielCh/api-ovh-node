@@ -1,1379 +1,1378 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/cluster/hadoop.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/cluster/hadoop",
+      "description": "Operations about the HADOOPCLUSTER service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the HADOOPCLUSTER service"
+      "path": "/cluster/hadoop"
     },
     {
-      "path": "/cluster/hadoop/orderInformations",
+      "description": "Get informations about the order of one cluster",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about the order of one cluster",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "cluster.hadoop.OrderInformations",
           "noAuthentication": false,
-          "description": "Get informations about the order of one cluster"
+          "parameters": [],
+          "responseType": "cluster.hadoop.OrderInformations"
         }
       ],
-      "description": "Get informations about the order of one cluster"
+      "path": "/cluster/hadoop/orderInformations"
     },
     {
-      "path": "/cluster/hadoop/orderableNodeProfiles",
+      "description": "Get the orderable node profiles and their characteristics",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the orderable node profiles and their characteristics",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "cluster.hadoop.NodeBillingProfile[]",
           "noAuthentication": false,
-          "description": "Get the orderable node profiles and their characteristics"
+          "parameters": [],
+          "responseType": "cluster.hadoop.NodeBillingProfile[]"
         }
       ],
-      "description": "Get the orderable node profiles and their characteristics"
+      "path": "/cluster/hadoop/orderableNodeProfiles"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}",
+      "description": "Managed Hadoop Cluster",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.hadoop",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cluster.hadoop.hadoop"
         }
       ],
-      "description": "Managed Hadoop Cluster"
+      "path": "/cluster/hadoop/{serviceName}"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/consumptions",
+      "description": "consumptions operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the current consumptions that you will billed for on the next bill",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.ClusterConsumption",
-          "noAuthentication": false,
-          "description": "Get the current consumptions that you will billed for on the next bill"
+          "responseType": "cluster.hadoop.ClusterConsumption"
         }
       ],
-      "description": "consumptions operations"
+      "path": "/cluster/hadoop/{serviceName}/consumptions"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/networkAcl",
+      "description": "List the cluster.hadoop.NetworkAcl objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Network ACL associated with this Hadoop Cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "Network ACL associated with this Hadoop Cluster"
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add an ACL to your cluster",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Free description",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Free description"
+              "required": false
             },
             {
-              "name": "block",
               "dataType": "ipBlock",
-              "paramType": "body",
+              "description": "IP block to allow",
               "fullType": "ipBlock",
-              "required": false,
-              "description": "IP block to allow"
+              "name": "block",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Add an ACL to your cluster"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "List the cluster.hadoop.NetworkAcl objects"
+      "path": "/cluster/hadoop/{serviceName}/networkAcl"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/networkAcl/{block}",
+      "description": "ACL for allowing ip blocks to access to your cluster",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this ACL",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "ipBlock",
+              "description": "Block",
+              "fullType": "ipBlock",
+              "name": "block",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "block",
-              "dataType": "ipBlock",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Block"
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Remove this ACL"
+          "responseType": "cluster.hadoop.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "block",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Block",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Block"
+              "name": "block",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.NetworkAcl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cluster.hadoop.NetworkAcl"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cluster.hadoop.NetworkAcl",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cluster.hadoop.NetworkAcl",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "block",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Block",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Block"
+              "name": "block",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "ACL for allowing ip blocks to access to your cluster"
+      "path": "/cluster/hadoop/{serviceName}/networkAcl/{block}"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/node",
+      "description": "List the cluster.hadoop.Node objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Nodes of the Cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "softwareProfile",
               "dataType": "cluster.hadoop.NodeProfileEnum",
-              "paramType": "query",
+              "description": "Filter the value of softwareProfile property (=)",
               "fullType": "cluster.hadoop.NodeProfileEnum",
-              "required": false,
-              "description": "Filter the value of softwareProfile property (=)"
+              "name": "softwareProfile",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Nodes of the Cluster"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the cluster.hadoop.Node objects"
+      "path": "/cluster/hadoop/{serviceName}/node"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/node/{hostname}",
+      "description": "Physical or Virtual Node",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this Node from the Cluster",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "hostname",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Hostname",
               "fullType": "string",
-              "required": true,
-              "description": "Hostname"
+              "name": "hostname",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Remove this Node from the Cluster"
+          "responseType": "cluster.hadoop.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "hostname",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Hostname",
               "fullType": "string",
-              "required": true,
-              "description": "Hostname"
+              "name": "hostname",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Node",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cluster.hadoop.Node"
         }
       ],
-      "description": "Physical or Virtual Node"
+      "path": "/cluster/hadoop/{serviceName}/node/{hostname}"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/decommission",
+      "description": "decommission operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Decommission the node and all the services on it",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "hostname",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Hostname",
               "fullType": "string",
-              "required": true,
-              "description": "Hostname"
+              "name": "hostname",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Decommission the node and all the services on it"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "decommission operations"
+      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/decommission"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/recommission",
+      "description": "recommission operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Recommission the node and all the services on it",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "hostname",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Hostname"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Hostname",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "hostname",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Recommission the node and all the services on it"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "recommission operations"
+      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/recommission"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role",
+      "description": "List the cluster.hadoop.Role objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Roles (ie set of Hadoop services) of the Node",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "hostname",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Hostname",
               "fullType": "string",
-              "required": true,
-              "description": "Hostname"
+              "name": "hostname",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.RoleTypeEnum[]",
-          "noAuthentication": false,
-          "description": "Roles (ie set of Hadoop services) of the Node"
+          "responseType": "cluster.hadoop.RoleTypeEnum[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add the Role to the Node",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "type",
               "dataType": "cluster.hadoop.RoleTypeEnum",
+              "description": "Role name",
+              "fullType": "cluster.hadoop.RoleTypeEnum",
+              "name": "type",
               "paramType": "body",
-              "fullType": "cluster.hadoop.RoleTypeEnum",
-              "required": true,
-              "description": "Role name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "hostname",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Hostname",
               "fullType": "string",
-              "required": true,
-              "description": "Hostname"
+              "name": "hostname",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Add the Role to the Node"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "List the cluster.hadoop.Role objects"
+      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}",
+      "description": "Role (ie set of Hadoop services) of the Node",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this Role from the Node",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "type",
-              "dataType": "cluster.hadoop.RoleTypeEnum",
-              "paramType": "path",
-              "fullType": "cluster.hadoop.RoleTypeEnum",
-              "required": true,
-              "description": "Type"
-            },
-            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "hostname",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Hostname",
               "fullType": "string",
-              "required": true,
-              "description": "Hostname"
+              "name": "hostname",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "cluster.hadoop.RoleTypeEnum",
+              "description": "Type",
+              "fullType": "cluster.hadoop.RoleTypeEnum",
+              "name": "type",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Remove this Role from the Node"
+          "responseType": "cluster.hadoop.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "type",
-              "dataType": "cluster.hadoop.RoleTypeEnum",
-              "paramType": "path",
-              "fullType": "cluster.hadoop.RoleTypeEnum",
-              "required": true,
-              "description": "Type"
-            },
-            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "hostname",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Hostname",
               "fullType": "string",
-              "required": true,
-              "description": "Hostname"
+              "name": "hostname",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "cluster.hadoop.RoleTypeEnum",
+              "description": "Type",
+              "fullType": "cluster.hadoop.RoleTypeEnum",
+              "name": "type",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Role",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cluster.hadoop.Role"
         }
       ],
-      "description": "Role (ie set of Hadoop services) of the Node"
+      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart",
+      "description": "restart operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Restart the role on the node (THIS ACTION WILL RESTART OTHER DEPENDANT ROLES)",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Hostname",
+              "fullType": "string",
               "name": "hostname",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Hostname"
+              "required": true
             },
             {
-              "name": "type",
               "dataType": "cluster.hadoop.RoleTypeEnum",
-              "paramType": "path",
+              "description": "Type",
               "fullType": "cluster.hadoop.RoleTypeEnum",
-              "required": true,
-              "description": "Type"
+              "name": "type",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Restart the role on the node (THIS ACTION WILL RESTART OTHER DEPENDANT ROLES)"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "restart operations"
+      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start",
+      "description": "start operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Start the role on the node",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Hostname",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "hostname",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Hostname"
+              "required": true
             },
             {
-              "name": "type",
               "dataType": "cluster.hadoop.RoleTypeEnum",
-              "paramType": "path",
+              "description": "Type",
               "fullType": "cluster.hadoop.RoleTypeEnum",
-              "required": true,
-              "description": "Type"
+              "name": "type",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Start the role on the node"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "start operations"
+      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop",
+      "description": "stop operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Stop the role on the node (THIS ACTION WILL STOP OTHER DEPENDANT ROLES)",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Hostname",
+              "fullType": "string",
               "name": "hostname",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Hostname"
+              "required": true
             },
             {
-              "name": "type",
               "dataType": "cluster.hadoop.RoleTypeEnum",
-              "paramType": "path",
+              "description": "Type",
               "fullType": "cluster.hadoop.RoleTypeEnum",
-              "required": true,
-              "description": "Type"
+              "name": "type",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Stop the role on the node (THIS ACTION WILL STOP OTHER DEPENDANT ROLES)"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "stop operations"
+      "path": "/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/nodeBillingProfiles",
+      "description": "nodeBillingProfiles operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Detailed description for each Node profile",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.NodeBillingProfile[]",
-          "noAuthentication": false,
-          "description": "Detailed description for each Node profile"
+          "responseType": "cluster.hadoop.NodeBillingProfile[]"
         }
       ],
-      "description": "nodeBillingProfiles operations"
+      "path": "/cluster/hadoop/{serviceName}/nodeBillingProfiles"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/nodeConsumptions",
+      "description": "nodeConsumptions operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the current node consumptions that you will billed for on the next bill",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.NodeConsumption[]",
-          "noAuthentication": false,
-          "description": "Get the current node consumptions that you will billed for on the next bill"
+          "responseType": "cluster.hadoop.NodeConsumption[]"
         }
       ],
-      "description": "nodeConsumptions operations"
+      "path": "/cluster/hadoop/{serviceName}/nodeConsumptions"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/orderNewNodeHourly",
+      "description": "orderNewNodeHourly operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Order a new node in the cluster",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Node profile you want to order",
+              "fullType": "string",
               "name": "nodeProfile",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Node profile you want to order"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Order a new node in the cluster"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "orderNewNodeHourly operations"
+      "path": "/cluster/hadoop/{serviceName}/orderNewNodeHourly"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/orderableNodeProfiles",
+      "description": "orderableNodeProfiles operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of orderable Node profiles",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of orderable Node profiles"
+          "responseType": "string[]"
         }
       ],
-      "description": "orderableNodeProfiles operations"
+      "path": "/cluster/hadoop/{serviceName}/orderableNodeProfiles"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/restart",
+      "description": "restart operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Restart the Cloudera Manager Hadoop Cluster (THIS ACTION WILL RESTART EVERY SERVICE)",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Restart the Cloudera Manager Hadoop Cluster (THIS ACTION WILL RESTART EVERY SERVICE)"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "restart operations"
+      "path": "/cluster/hadoop/{serviceName}/restart"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/service/restart",
+      "description": "restart operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Restart a Cloudera Manager service (THIS ACTION WILL RESTART OTHER DEPENDANT SERVICES)",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "cluster.hadoop.ClusterServiceNameEnum",
-              "paramType": "body",
+              "description": "Name of the service to be restarted",
               "fullType": "cluster.hadoop.ClusterServiceNameEnum",
-              "required": true,
-              "description": "Name of the service to be restarted"
+              "name": "service",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Restart a Cloudera Manager service (THIS ACTION WILL RESTART OTHER DEPENDANT SERVICES)"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "restart operations"
+      "path": "/cluster/hadoop/{serviceName}/service/restart"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/service/start",
+      "description": "start operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Start a Cloudera Manager service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "cluster.hadoop.ClusterServiceNameEnum",
-              "paramType": "body",
+              "description": "Name of the service to be started",
               "fullType": "cluster.hadoop.ClusterServiceNameEnum",
-              "required": true,
-              "description": "Name of the service to be started"
+              "name": "service",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Start a Cloudera Manager service"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "start operations"
+      "path": "/cluster/hadoop/{serviceName}/service/start"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/service/stop",
+      "description": "stop operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Stop a Cloudera Manager service (THIS ACTION WILL STOP OTHER DEPENDANT SERVICES)",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "cluster.hadoop.ClusterServiceNameEnum",
-              "paramType": "body",
+              "description": "Name of the service to be stopped",
               "fullType": "cluster.hadoop.ClusterServiceNameEnum",
-              "required": true,
-              "description": "Name of the service to be stopped"
+              "name": "service",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Stop a Cloudera Manager service (THIS ACTION WILL STOP OTHER DEPENDANT SERVICES)"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "stop operations"
+      "path": "/cluster/hadoop/{serviceName}/service/stop"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/cluster/hadoop/{serviceName}/serviceInfos"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/start",
+      "description": "start operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Start the Cloudera Manager Hadoop Cluster",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Start the Cloudera Manager Hadoop Cluster"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "start operations"
+      "path": "/cluster/hadoop/{serviceName}/start"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/stop",
+      "description": "stop operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Stop a Cloudera Manager Hadoop Cluster (THIS ACTION WILL STOP EVERY SERVICE)",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Stop a Cloudera Manager Hadoop Cluster (THIS ACTION WILL STOP EVERY SERVICE)"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "stop operations"
+      "path": "/cluster/hadoop/{serviceName}/stop"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/task",
+      "description": "List the cluster.hadoop.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Tasks associated with this Hadoop Cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "status",
               "dataType": "cluster.hadoop.OperationStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "cluster.hadoop.OperationStateEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks associated with this Hadoop Cluster"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the cluster.hadoop.Task objects"
+      "path": "/cluster/hadoop/{serviceName}/task"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/task/{taskId}",
+      "description": "Operation on a Hadoop Cluster component",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "taskId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Task ID",
               "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "Operation on a Hadoop Cluster component"
+      "path": "/cluster/hadoop/{serviceName}/task/{taskId}"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/terminate",
+      "description": "terminate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Terminate your service. THE CLUSTER WILL BE DELETED. ALL YOUR DATA WILL BE LOST",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Terminate your service. THE CLUSTER WILL BE DELETED. ALL YOUR DATA WILL BE LOST"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "terminate operations"
+      "path": "/cluster/hadoop/{serviceName}/terminate"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/user",
+      "description": "List the cluster.hadoop.User objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Users associated with this Hadoop Cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Users associated with this Hadoop Cluster"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add an User to your cluster",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "boolean",
+              "description": "Whether or not the User is allowed to access to the WebUI interfaces",
+              "fullType": "boolean",
               "name": "httpFrontend",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Whether or not the User is allowed to access to the Cloudera Manager interface",
               "fullType": "boolean",
-              "required": true,
-              "description": "Whether or not the User is allowed to access to the WebUI interfaces"
-            },
-            {
-              "name": "password",
-              "dataType": "password",
-              "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "Password of the User"
-            },
-            {
-              "name": "hue",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Whether or not the User is allowed to access to the Hue interface"
-            },
-            {
               "name": "clouderaManager",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Whether or not the User is allowed to access to the Cloudera Manager interface"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Username of the User",
+              "fullType": "string",
               "name": "username",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Username of the User"
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "password",
+              "description": "Password of the User",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Whether or not the User is allowed to access to the Hue interface",
+              "fullType": "boolean",
+              "name": "hue",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Add an User to your cluster"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "List the cluster.hadoop.User objects"
+      "path": "/cluster/hadoop/{serviceName}/user"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/user/{username}",
+      "description": "User allowed to access interfaces on your cluster",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this User",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "username",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Username",
               "fullType": "string",
-              "required": true,
-              "description": "Username"
+              "name": "username",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Remove this User"
+          "responseType": "cluster.hadoop.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "username",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Username",
               "fullType": "string",
-              "required": true,
-              "description": "Username"
+              "name": "username",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.User",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cluster.hadoop.User"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cluster.hadoop.User",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cluster.hadoop.User",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "username",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Username"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Username",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "username",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "User allowed to access interfaces on your cluster"
+      "path": "/cluster/hadoop/{serviceName}/user/{username}"
     },
     {
-      "path": "/cluster/hadoop/{serviceName}/user/{username}/resetPassword",
+      "description": "resetPassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Reset the password for a given Hadoop Cluster User",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Password of the User",
               "fullType": "password",
-              "required": true,
-              "description": "Password of the User"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "username",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Username",
               "fullType": "string",
-              "required": true,
-              "description": "Username"
+              "name": "username",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cluster.hadoop.Task",
-          "noAuthentication": false,
-          "description": "Reset the password for a given Hadoop Cluster User"
+          "responseType": "cluster.hadoop.Task"
         }
       ],
-      "description": "resetPassword operations"
+      "path": "/cluster/hadoop/{serviceName}/user/{username}/resetPassword"
     }
   ],
-  "resourcePath": "/cluster/hadoop",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "cluster.hadoop.BillingNameEnum": {
-      "id": "BillingNameEnum",
-      "namespace": "cluster.hadoop",
       "description": "All billing profile names",
       "enum": [
         "100-small",
@@ -1383,26 +1382,26 @@ export const schema: Schema = {
         "310-disk-3",
         "900-vm-1"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BillingNameEnum",
+      "namespace": "cluster.hadoop"
     },
     "cluster.hadoop.ClusterConsumption": {
+      "description": "Detailed information on a Hadoop Cluster consumption",
       "id": "ClusterConsumption",
       "namespace": "cluster.hadoop",
-      "description": "Detailed information on a Hadoop Cluster consumption",
       "properties": {
         "quantity": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of hours consummed",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         }
       }
     },
     "cluster.hadoop.ClusterServiceNameEnum": {
-      "id": "ClusterServiceNameEnum",
-      "namespace": "cluster.hadoop",
       "description": "All services names in a Hadoop Cluster",
       "enum": [
         "HBase",
@@ -1416,11 +1415,11 @@ export const schema: Schema = {
         "YARN",
         "ZooKeeper"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ClusterServiceNameEnum",
+      "namespace": "cluster.hadoop"
     },
     "cluster.hadoop.ClusterStateEnum": {
-      "id": "ClusterStateEnum",
-      "namespace": "cluster.hadoop",
       "description": "All states a Hadoop Cluster can be in",
       "enum": [
         "created",
@@ -1431,202 +1430,202 @@ export const schema: Schema = {
         "delivering",
         "toDeliver"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ClusterStateEnum",
+      "namespace": "cluster.hadoop"
     },
     "cluster.hadoop.NetworkAcl": {
+      "description": "ACL for allowing ip blocks to access to your cluster",
       "id": "NetworkAcl",
       "namespace": "cluster.hadoop",
-      "description": "ACL for allowing ip blocks to access to your cluster",
       "properties": {
         "block": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP Block to allow",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "description of this ACL",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "state": {
-          "type": "cluster.hadoop.NetworkAclStateEnum",
-          "fullType": "cluster.hadoop.NetworkAclStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "State of the NetworkAcl.",
-          "required": true
+          "fullType": "cluster.hadoop.NetworkAclStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cluster.hadoop.NetworkAclStateEnum"
         }
       }
     },
     "cluster.hadoop.NetworkAclStateEnum": {
-      "id": "NetworkAclStateEnum",
-      "namespace": "cluster.hadoop",
       "description": "All states a Hadoop Cluster NetworkAcl can be in",
       "enum": [
         "disabled",
         "enabled",
         "pending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "NetworkAclStateEnum",
+      "namespace": "cluster.hadoop"
     },
     "cluster.hadoop.Node": {
+      "description": "Physical or Virtual Node",
       "id": "Node",
       "namespace": "cluster.hadoop",
-      "description": "Physical or Virtual Node",
       "properties": {
         "billingProfileName": {
-          "type": "cluster.hadoop.BillingNameEnum",
-          "fullType": "cluster.hadoop.BillingNameEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the billing profile attached to the node",
-          "required": true
+          "fullType": "cluster.hadoop.BillingNameEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cluster.hadoop.BillingNameEnum"
         },
         "hostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Hostname of the node",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP of the Node",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "isRemovable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Wether or not the Node is removable",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "softwareProfile": {
-          "type": "cluster.hadoop.NodeProfileEnum",
-          "fullType": "cluster.hadoop.NodeProfileEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Profile of the Node",
-          "required": true
+          "fullType": "cluster.hadoop.NodeProfileEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cluster.hadoop.NodeProfileEnum"
         },
         "state": {
-          "type": "cluster.hadoop.NodeStateEnum",
-          "fullType": "cluster.hadoop.NodeStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "State of the Node",
-          "required": true
+          "fullType": "cluster.hadoop.NodeStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cluster.hadoop.NodeStateEnum"
         }
       }
     },
     "cluster.hadoop.NodeBillingProfile": {
+      "description": "Detailed information on a node billing profile",
       "id": "NodeBillingProfile",
       "namespace": "cluster.hadoop",
-      "description": "Detailed information on a node billing profile",
       "properties": {
         "CPUFrequency": {
-          "type": "complexType.UnitAndValue<double>",
-          "fullType": "complexType.UnitAndValue<double>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Frequency of one CPU core",
-          "required": true
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<double>"
         },
         "diskCapacity": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Total capacity available for HDFS",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "nbCPUCores": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Total number of the CPU cores",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "nbCPUThreads": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Total number of the CPU threads",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "networkBandwidth": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Network speed of the link used for the Hadoop process",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "nodeProfile": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the Node billing profile",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ramQuantity": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Total amount of RAM",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         }
       }
     },
     "cluster.hadoop.NodeConsumption": {
+      "description": "Detailed information on a node consumption of a Hadoop Cluster",
       "id": "NodeConsumption",
       "namespace": "cluster.hadoop",
-      "description": "Detailed information on a node consumption of a Hadoop Cluster",
       "properties": {
         "hostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hostname of the consumed resource",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "nodeProfile": {
-          "type": "cluster.hadoop.BillingNameEnum",
-          "fullType": "cluster.hadoop.BillingNameEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the node profile for the consumptions",
-          "required": true
+          "fullType": "cluster.hadoop.BillingNameEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cluster.hadoop.BillingNameEnum"
         },
         "quantity": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of hours consummed",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         }
       }
     },
     "cluster.hadoop.NodeProfileEnum": {
-      "id": "NodeProfileEnum",
-      "namespace": "cluster.hadoop",
       "description": "All profiles a Hadoop Cluster Node can be",
       "enum": [
         "ApplicationServer",
@@ -1635,11 +1634,11 @@ export const schema: Schema = {
         "MasterServer",
         "SecondaryServer"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "NodeProfileEnum",
+      "namespace": "cluster.hadoop"
     },
     "cluster.hadoop.NodeStateEnum": {
-      "id": "NodeStateEnum",
-      "namespace": "cluster.hadoop",
       "description": "All states a Hadoop Cluster Node can be in",
       "enum": [
         "available",
@@ -1647,11 +1646,11 @@ export const schema: Schema = {
         "toDeploy",
         "unavailable"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "NodeStateEnum",
+      "namespace": "cluster.hadoop"
     },
     "cluster.hadoop.OperationStateEnum": {
-      "id": "OperationStateEnum",
-      "namespace": "cluster.hadoop",
       "description": "All states a Hadoop Cluster Cloud Task can be in",
       "enum": [
         "cancelled",
@@ -1660,57 +1659,57 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationStateEnum",
+      "namespace": "cluster.hadoop"
     },
     "cluster.hadoop.OrderInformations": {
+      "description": "Detailed information on the order of one Hadoop Cluster",
       "id": "OrderInformations",
       "namespace": "cluster.hadoop",
-      "description": "Detailed information on the order of one Hadoop Cluster",
       "properties": {
         "maximumOrderableNodes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximal number of Node allowed in one order",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "minimumOrderableNodes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum number of Node allowed in one order",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "cluster.hadoop.Role": {
+      "description": "Role (ie set of Hadoop services) of the Node",
       "id": "Role",
       "namespace": "cluster.hadoop",
-      "description": "Role (ie set of Hadoop services) of the Node",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ID of the Role",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "cluster.hadoop.RoleTypeEnum",
-          "fullType": "cluster.hadoop.RoleTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Role name",
-          "required": true
+          "fullType": "cluster.hadoop.RoleTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cluster.hadoop.RoleTypeEnum"
         }
       }
     },
     "cluster.hadoop.RoleTypeEnum": {
-      "id": "RoleTypeEnum",
-      "namespace": "cluster.hadoop",
       "description": "All roles a Hadoop Cluster Node can be",
       "enum": [
         "cloudera_manager",
@@ -1735,190 +1734,190 @@ export const schema: Schema = {
         "yarn_resource_manager",
         "zoo_keeper"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RoleTypeEnum",
+      "namespace": "cluster.hadoop"
     },
     "cluster.hadoop.Task": {
+      "description": "Operation on a Hadoop Cluster component",
       "id": "Task",
       "namespace": "cluster.hadoop",
-      "description": "Operation on a Hadoop Cluster component",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operation name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "cluster.hadoop.OperationStateEnum",
-          "fullType": "cluster.hadoop.OperationStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current Task state",
-          "required": true
+          "fullType": "cluster.hadoop.OperationStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cluster.hadoop.OperationStateEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "cluster.hadoop.User": {
+      "description": "User allowed to access interfaces on your cluster",
       "id": "User",
       "namespace": "cluster.hadoop",
-      "description": "User allowed to access interfaces on your cluster",
       "properties": {
         "clouderaManager": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not the User is allowed to access to the Cloudera Manager interface",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "httpFrontend": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not the User is allowed to access to the WebUI interfaces",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "hue": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not the User is allowed to access to the Hue interface",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The username of the User",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cluster.hadoop.hadoop": {
+      "description": "Managed Hadoop Cluster",
       "id": "hadoop",
       "namespace": "cluster.hadoop",
-      "description": "Managed Hadoop Cluster",
       "properties": {
         "clouderaVersion": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "CDH and Cloudera Manager version",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "maxOrderableNodes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum quantity of nodes allowed to be ordered in the cluster",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service name of your Cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "cluster.hadoop.ClusterStateEnum",
-          "fullType": "cluster.hadoop.ClusterStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "State of the Hadoop Cluster",
-          "required": true
+          "fullType": "cluster.hadoop.ClusterStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cluster.hadoop.ClusterStateEnum"
         }
       }
     },
     "complexType.UnitAndValue<T>": {
-      "id": "UnitAndValue",
-      "namespace": "complexType",
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1929,11 +1928,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1941,108 +1940,111 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/cluster/hadoop"
 }

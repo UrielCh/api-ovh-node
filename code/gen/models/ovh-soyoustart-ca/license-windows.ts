@@ -1,9 +1,499 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.soyoustart.com:443/1.0/license/windows.json
+
 export const schema: Schema = {
   "apiVersion": "1.0",
+  "apis": [
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/license/windows/{serviceName}/terminate"
+    },
+    {
+      "description": "sqlServer operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Link your own sql server license to this Windows license",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "Your license version",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your license serial number",
+              "fullType": "string",
+              "name": "licenseId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
+        }
+      ],
+      "path": "/license/windows/{serviceName}/sqlServer"
+    },
+    {
+      "description": "List the license.Option objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "options attached to this license",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.OptionLabel[]",
+          "responseType": "license.OptionLabel[]"
+        }
+      ],
+      "path": "/license/windows/{serviceName}/option"
+    },
+    {
+      "description": "Your License options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OptionLabel",
+              "description": "This option designation",
+              "fullType": "license.OptionLabel",
+              "name": "label",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Option",
+          "responseType": "license.Option"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "release this Option",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OptionLabel",
+              "description": "This option designation",
+              "fullType": "license.OptionLabel",
+              "name": "label",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
+        }
+      ],
+      "path": "/license/windows/{serviceName}/option/{label}"
+    },
+    {
+      "description": "Your Windows license",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.windows.Windows",
+          "responseType": "license.windows.Windows"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.windows.Windows",
+              "description": "New object properties",
+              "fullType": "license.windows.Windows",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/license/windows/{serviceName}"
+    },
+    {
+      "description": "Confirm termination of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Confirm termination of your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/license/windows/{serviceName}/confirmTermination"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "services.Service",
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/license/windows/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "licenses Todos",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This Task id",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
+        }
+      ],
+      "path": "/license/windows/{serviceName}/tasks/{taskId}"
+    },
+    {
+      "description": "List the license.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "tasks linked to this license",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.TaskStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "license.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.ActionType",
+              "description": "Filter the value of action property (=)",
+              "fullType": "license.ActionType",
+              "name": "action",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/license/windows/{serviceName}/tasks"
+    },
+    {
+      "description": "Get the orderable Windows versions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the orderable Windows versions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.WindowsOrderConfiguration[]",
+          "responseType": "license.WindowsOrderConfiguration[]"
+        }
+      ],
+      "path": "/license/windows/orderableVersions"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/license/windows"
+    }
+  ],
+  "basePath": "https://ca.api.soyoustart.com/1.0",
   "models": {
+    "license.ActionType": {
+      "description": "A short description of what does the Task on your license",
+      "enum": [
+        "addWindowFromExistingSerial",
+        "changeIp",
+        "changeOs",
+        "installLicense",
+        "optionUpgrade",
+        "releaseOption",
+        "versionUpgrade"
+      ],
+      "enumType": "string",
+      "id": "ActionType",
+      "namespace": "license"
+    },
     "license.LicenseTypeEnum": {
+      "description": "Possible values for license type",
       "enum": [
         "dedicated",
         "dedicatedCloud",
@@ -17,12 +507,54 @@ export const schema: Schema = {
         "vps_cloud_2016",
         "vps_ssd"
       ],
-      "description": "Possible values for license type",
       "enumType": "string",
       "id": "LicenseTypeEnum",
       "namespace": "license"
     },
+    "license.Option": {
+      "description": "Your License options",
+      "id": "Option",
+      "namespace": "license",
+      "properties": {
+        "amount": {
+          "canBeNull": true,
+          "description": "Quantity or corresponding label of the designated option enabled on your license",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "canBeDeleted": {
+          "canBeNull": false,
+          "description": "Specifies whether this option can be released or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "This option expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "label": {
+          "canBeNull": false,
+          "description": "This option designation",
+          "fullType": "license.OptionLabel",
+          "readOnly": true,
+          "type": "license.OptionLabel"
+        },
+        "version": {
+          "canBeNull": true,
+          "description": "This option related version",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        }
+      }
+    },
     "license.OptionLabel": {
+      "description": "The name of an option currently enabled on your license",
       "enum": [
         "ANTISPAM_SPAMASSASSIN",
         "ANTIVIRUS_DRWEB",
@@ -33,49 +565,94 @@ export const schema: Schema = {
         "SQL_SERVER",
         "VIRTUOZZO_CONTAINERS"
       ],
-      "description": "The name of an option currently enabled on your license",
       "enumType": "string",
       "id": "OptionLabel",
       "namespace": "license"
     },
     "license.OrderableWindowsCompatibilityInfos": {
       "description": "All SQL options available for Windows products",
+      "id": "OrderableWindowsCompatibilityInfos",
+      "namespace": "license",
       "properties": {
-        "version": {
-          "description": null,
-          "type": "license.WindowsOsVersionEnum",
-          "canBeNull": false
-        },
         "compliantSql": {
           "canBeNull": false,
-          "type": "license.WindowsSqlVersionEnum[]",
-          "description": null
+          "description": null,
+          "type": "license.WindowsSqlVersionEnum[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.WindowsOsVersionEnum"
         }
-      },
-      "id": "OrderableWindowsCompatibilityInfos",
+      }
+    },
+    "license.StateEnum": {
+      "description": "All states a license can be in",
+      "enum": [
+        "ok",
+        "released",
+        "terminated",
+        "toDeliver"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
       "namespace": "license"
     },
-    "service.TerminationReasonEnum": {
-      "enumType": "string",
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
-      "enum": [
-        "FEATURES_DONT_SUIT_ME",
-        "LACK_OF_PERFORMANCES",
-        "MIGRATED_TO_ANOTHER_OVH_PRODUCT",
-        "MIGRATED_TO_COMPETITOR",
-        "NOT_ENOUGH_RECOGNITION",
-        "NOT_NEEDED_ANYMORE",
-        "NOT_RELIABLE",
-        "NO_ANSWER",
-        "OTHER",
-        "PRODUCT_DIMENSION_DONT_SUIT_ME",
-        "PRODUCT_TOOLS_DONT_SUIT_ME",
-        "TOO_EXPENSIVE",
-        "TOO_HARD_TO_USE",
-        "UNSATIFIED_BY_CUSTOMER_SUPPORT"
-      ],
-      "description": "All reasons you can provide for a service termination"
+    "license.Task": {
+      "description": "licenses Todos",
+      "id": "Task",
+      "namespace": "license",
+      "properties": {
+        "action": {
+          "canBeNull": false,
+          "description": "This Task description",
+          "fullType": "license.ActionType",
+          "readOnly": true,
+          "type": "license.ActionType"
+        },
+        "doneDate": {
+          "canBeNull": true,
+          "description": "When was this Task done",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "The last time this Task was updated",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "This Task name",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current Taks status",
+          "fullType": "license.TaskStateEnum",
+          "readOnly": true,
+          "type": "license.TaskStateEnum"
+        },
+        "taskId": {
+          "canBeNull": false,
+          "description": "This Task id",
+          "fullType": "long",
+          "readOnly": true,
+          "type": "long"
+        },
+        "todoDate": {
+          "canBeNull": false,
+          "description": "When was this Task created",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        }
+      }
     },
     "license.TaskStateEnum": {
       "description": "All states a license Task can be in",
@@ -87,94 +664,25 @@ export const schema: Schema = {
         "todo"
       ],
       "enumType": "string",
-      "namespace": "license",
-      "id": "TaskStateEnum"
+      "id": "TaskStateEnum",
+      "namespace": "license"
     },
-    "service.RenewalTypeEnum": {
-      "enumType": "string",
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
-      "enum": [
-        "automaticForcedProduct",
-        "automaticV2012",
-        "automaticV2014",
-        "automaticV2016",
-        "manual",
-        "oneShot",
-        "option"
-      ],
-      "description": "Detailed renewal type of a service"
-    },
-    "license.Task": {
-      "id": "Task",
+    "license.WindowsOrderConfiguration": {
+      "description": "Allowed windows versions and their compliant options per matching serviceTypes",
+      "id": "WindowsOrderConfiguration",
       "namespace": "license",
       "properties": {
-        "name": {
-          "type": "string",
+        "orderableVersions": {
           "canBeNull": false,
-          "readOnly": true,
-          "fullType": "string",
-          "description": "This Task name"
+          "description": null,
+          "type": "license.OrderableWindowsCompatibilityInfos[]"
         },
-        "action": {
-          "description": "This Task description",
-          "fullType": "license.ActionType",
-          "readOnly": true,
+        "serviceType": {
           "canBeNull": false,
-          "type": "license.ActionType"
-        },
-        "lastUpdate": {
-          "fullType": "datetime",
-          "description": "The last time this Task was updated",
-          "canBeNull": false,
-          "type": "datetime",
-          "readOnly": true
-        },
-        "todoDate": {
-          "readOnly": true,
-          "type": "datetime",
-          "canBeNull": false,
-          "description": "When was this Task created",
-          "fullType": "datetime"
-        },
-        "taskId": {
-          "readOnly": true,
-          "type": "long",
-          "canBeNull": false,
-          "description": "This Task id",
-          "fullType": "long"
-        },
-        "status": {
-          "description": "Current Taks status",
-          "fullType": "license.TaskStateEnum",
-          "readOnly": true,
-          "type": "license.TaskStateEnum",
-          "canBeNull": false
-        },
-        "doneDate": {
-          "type": "datetime",
-          "canBeNull": true,
-          "readOnly": true,
-          "fullType": "datetime",
-          "description": "When was this Task done"
+          "description": null,
+          "type": "license.LicenseTypeEnum"
         }
-      },
-      "description": "licenses Todos"
-    },
-    "license.ActionType": {
-      "enumType": "string",
-      "id": "ActionType",
-      "namespace": "license",
-      "description": "A short description of what does the Task on your license",
-      "enum": [
-        "addWindowFromExistingSerial",
-        "changeIp",
-        "changeOs",
-        "installLicense",
-        "optionUpgrade",
-        "releaseOption",
-        "versionUpgrade"
-      ]
+      }
     },
     "license.WindowsOsVersionEnum": {
       "description": "All versions for Windows products",
@@ -452,113 +960,11 @@ export const schema: Schema = {
         "windows-server-2019-license-standard-edition-64-cores",
         "windows-server-2019-license-standard-edition-8-cores"
       ],
-      "namespace": "license",
+      "enumType": "string",
       "id": "WindowsOsVersionEnum",
-      "enumType": "string"
-    },
-    "license.Option": {
-      "id": "Option",
-      "namespace": "license",
-      "description": "Your License options",
-      "properties": {
-        "canBeDeleted": {
-          "readOnly": true,
-          "canBeNull": false,
-          "type": "boolean",
-          "description": "Specifies whether this option can be released or not",
-          "fullType": "boolean"
-        },
-        "label": {
-          "readOnly": true,
-          "type": "license.OptionLabel",
-          "canBeNull": false,
-          "description": "This option designation",
-          "fullType": "license.OptionLabel"
-        },
-        "expirationDate": {
-          "fullType": "datetime",
-          "description": "This option expiration date",
-          "type": "datetime",
-          "canBeNull": false,
-          "readOnly": true
-        },
-        "amount": {
-          "description": "Quantity or corresponding label of the designated option enabled on your license",
-          "fullType": "string",
-          "readOnly": true,
-          "canBeNull": true,
-          "type": "string"
-        },
-        "version": {
-          "type": "string",
-          "canBeNull": true,
-          "readOnly": true,
-          "fullType": "string",
-          "description": "This option related version"
-        }
-      }
-    },
-    "license.StateEnum": {
-      "enumType": "string",
-      "namespace": "license",
-      "id": "StateEnum",
-      "description": "All states a license can be in",
-      "enum": [
-        "ok",
-        "released",
-        "terminated",
-        "toDeliver"
-      ]
-    },
-    "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
-      "enumType": "string",
-      "enum": [
-        "expired",
-        "inCreation",
-        "ok",
-        "pendingDebt",
-        "unPaid"
-      ],
-      "description": ""
-    },
-    "service.RenewType": {
-      "namespace": "service",
-      "id": "RenewType",
-      "properties": {
-        "period": {
-          "description": "period of renew in month",
-          "type": "long",
-          "canBeNull": true
-        },
-        "manualPayment": {
-          "description": "The service needs to be manually renewed and paid",
-          "canBeNull": true,
-          "type": "boolean"
-        },
-        "deleteAtExpiration": {
-          "description": "The service will be deleted at expiration",
-          "type": "boolean",
-          "canBeNull": false
-        },
-        "forced": {
-          "canBeNull": false,
-          "type": "boolean",
-          "description": "The service forced to be renewed"
-        },
-        "automatic": {
-          "description": "The service is automatically renewed",
-          "type": "boolean",
-          "canBeNull": false
-        }
-      },
-      "description": "Map a possible renew for a specific service"
+      "namespace": "license"
     },
     "license.WindowsSqlVersionEnum": {
-      "enumType": "string",
-      "namespace": "license",
-      "id": "WindowsSqlVersionEnum",
       "description": "All SQL Server versions for Windows products",
       "enum": [
         "SQL_SERVER_2008_STANDARD_EDITION",
@@ -585,122 +991,126 @@ export const schema: Schema = {
         "SQL_SERVER_2012_WEB_EDITION_4_CORES",
         "SQL_SERVER_2012_WEB_EDITION_6_CORES",
         "SQL_SERVER_2012_WEB_EDITION_8_CORES"
-      ]
+      ],
+      "enumType": "string",
+      "id": "WindowsSqlVersionEnum",
+      "namespace": "license"
     },
-    "services.Service": {
-      "description": "Details about a Service",
+    "license.windows.Windows": {
+      "description": "Your Windows license",
+      "id": "Windows",
+      "namespace": "license.windows",
       "properties": {
-        "domain": {
-          "readOnly": true,
+        "creation": {
           "canBeNull": false,
-          "type": "string",
-          "description": null,
-          "fullType": "string"
+          "description": "This license creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
         },
-        "contactAdmin": {
-          "description": null,
-          "fullType": "coreTypes.AccountId:string",
-          "readOnly": true,
+        "deleteAtExpiration": {
           "canBeNull": false,
+          "description": "Shall we delete this on expiration ?",
+          "fullType": "boolean",
+          "readOnly": false,
+          "type": "boolean"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "The internal name of your license",
+          "fullType": "string",
+          "readOnly": true,
           "type": "string"
         },
-        "possibleRenewPeriod": {
-          "fullType": "long[]",
-          "description": "All the possible renew period of your service in month",
-          "canBeNull": true,
-          "type": "long[]",
-          "readOnly": true
-        },
-        "renew": {
-          "description": "Way of handling the renew",
-          "fullType": "service.RenewType",
-          "readOnly": false,
-          "canBeNull": true,
-          "type": "service.RenewType"
-        },
-        "engagedUpTo": {
-          "type": "date",
-          "canBeNull": true,
+        "ip": {
+          "canBeNull": false,
+          "description": "The ip on which this license is attached",
+          "fullType": "ipv4",
           "readOnly": true,
-          "description": null,
-          "fullType": "date"
+          "type": "ipv4"
+        },
+        "licenseId": {
+          "canBeNull": false,
+          "description": "The license id on license provider side",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
         },
         "status": {
-          "description": null,
-          "fullType": "service.StateEnum",
           "canBeNull": false,
-          "type": "service.StateEnum",
-          "readOnly": true
-        },
-        "expiration": {
-          "type": "date",
-          "canBeNull": false,
+          "description": "This license state",
+          "fullType": "license.StateEnum",
           "readOnly": true,
-          "description": null,
-          "fullType": "date"
+          "type": "license.StateEnum"
         },
-        "creation": {
-          "description": null,
-          "fullType": "date",
-          "type": "date",
+        "version": {
           "canBeNull": false,
-          "readOnly": true
-        },
-        "serviceId": {
+          "description": "This license version",
+          "fullType": "license.WindowsOsVersionEnum",
           "readOnly": true,
-          "type": "long",
-          "canBeNull": false,
-          "fullType": "coreTypes.ServiceId:long",
-          "description": null
-        },
-        "contactTech": {
-          "description": null,
-          "fullType": "coreTypes.AccountId:string",
-          "type": "string",
-          "canBeNull": false,
-          "readOnly": true
-        },
-        "canDeleteAtExpiration": {
-          "readOnly": true,
-          "canBeNull": false,
-          "type": "boolean",
-          "fullType": "boolean",
-          "description": "Indicates that the service can be set up to be deleted at expiration"
-        },
-        "renewalType": {
-          "canBeNull": false,
-          "type": "service.RenewalTypeEnum",
-          "readOnly": true,
-          "description": null,
-          "fullType": "service.RenewalTypeEnum"
-        },
-        "contactBilling": {
-          "type": "string",
-          "canBeNull": false,
-          "readOnly": true,
-          "description": null,
-          "fullType": "coreTypes.AccountId:string"
+          "type": "license.WindowsOsVersionEnum"
         }
-      },
-      "namespace": "services",
-      "id": "Service"
+      }
     },
-    "license.WindowsOrderConfiguration": {
-      "description": "Allowed windows versions and their compliant options per matching serviceTypes",
+    "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
+      "id": "RenewType",
+      "namespace": "service",
       "properties": {
-        "serviceType": {
-          "description": null,
+        "automatic": {
           "canBeNull": false,
-          "type": "license.LicenseTypeEnum"
+          "description": "The service is automatically renewed",
+          "type": "boolean"
         },
-        "orderableVersions": {
-          "description": null,
-          "type": "license.OrderableWindowsCompatibilityInfos[]",
-          "canBeNull": false
+        "deleteAtExpiration": {
+          "canBeNull": false,
+          "description": "The service will be deleted at expiration",
+          "type": "boolean"
+        },
+        "forced": {
+          "canBeNull": false,
+          "description": "The service forced to be renewed",
+          "type": "boolean"
+        },
+        "manualPayment": {
+          "canBeNull": true,
+          "description": "The service needs to be manually renewed and paid",
+          "type": "boolean"
+        },
+        "period": {
+          "canBeNull": true,
+          "description": "period of renew in month",
+          "type": "long"
         }
-      },
-      "namespace": "license",
-      "id": "WindowsOrderConfiguration"
+      }
+    },
+    "service.RenewalTypeEnum": {
+      "description": "Detailed renewal type of a service",
+      "enum": [
+        "automaticForcedProduct",
+        "automaticV2012",
+        "automaticV2014",
+        "automaticV2016",
+        "manual",
+        "oneShot",
+        "option"
+      ],
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
+    },
+    "service.StateEnum": {
+      "description": "",
+      "enum": [
+        "expired",
+        "inCreation",
+        "ok",
+        "pendingDebt",
+        "unPaid"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
       "description": "All future uses you can provide for a service termination",
@@ -715,534 +1125,126 @@ export const schema: Schema = {
       "id": "TerminationFutureUseEnum",
       "namespace": "service"
     },
-    "license.windows.Windows": {
-      "description": "Your Windows license",
+    "service.TerminationReasonEnum": {
+      "description": "All reasons you can provide for a service termination",
+      "enum": [
+        "FEATURES_DONT_SUIT_ME",
+        "LACK_OF_PERFORMANCES",
+        "MIGRATED_TO_ANOTHER_OVH_PRODUCT",
+        "MIGRATED_TO_COMPETITOR",
+        "NOT_ENOUGH_RECOGNITION",
+        "NOT_NEEDED_ANYMORE",
+        "NOT_RELIABLE",
+        "NO_ANSWER",
+        "OTHER",
+        "PRODUCT_DIMENSION_DONT_SUIT_ME",
+        "PRODUCT_TOOLS_DONT_SUIT_ME",
+        "TOO_EXPENSIVE",
+        "TOO_HARD_TO_USE",
+        "UNSATIFIED_BY_CUSTOMER_SUPPORT"
+      ],
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
+    },
+    "services.Service": {
+      "description": "Details about a Service",
+      "id": "Service",
+      "namespace": "services",
       "properties": {
-        "status": {
-          "readOnly": true,
-          "type": "license.StateEnum",
+        "canDeleteAtExpiration": {
           "canBeNull": false,
-          "description": "This license state",
-          "fullType": "license.StateEnum"
-        },
-        "version": {
-          "readOnly": true,
-          "canBeNull": false,
-          "type": "license.WindowsOsVersionEnum",
-          "description": "This license version",
-          "fullType": "license.WindowsOsVersionEnum"
-        },
-        "licenseId": {
-          "fullType": "string",
-          "description": "The license id on license provider side",
-          "canBeNull": false,
-          "type": "string",
-          "readOnly": true
-        },
-        "deleteAtExpiration": {
+          "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
-          "description": "Shall we delete this on expiration ?",
-          "type": "boolean",
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "contactAdmin": {
           "canBeNull": false,
-          "readOnly": false
+          "description": null,
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "contactBilling": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "contactTech": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "type": "string"
         },
         "creation": {
-          "readOnly": true,
-          "type": "datetime",
           "canBeNull": false,
-          "description": "This license creation date",
-          "fullType": "datetime"
-        },
-        "ip": {
+          "description": null,
+          "fullType": "date",
           "readOnly": true,
-          "type": "ipv4",
-          "canBeNull": false,
-          "description": "The ip on which this license is attached",
-          "fullType": "ipv4"
+          "type": "date"
         },
         "domain": {
-          "readOnly": true,
           "canBeNull": false,
-          "type": "string",
-          "description": "The internal name of your license",
-          "fullType": "string"
+          "description": null,
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "engagedUpTo": {
+          "canBeNull": true,
+          "description": null,
+          "fullType": "date",
+          "readOnly": true,
+          "type": "date"
+        },
+        "expiration": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "date",
+          "readOnly": true,
+          "type": "date"
+        },
+        "possibleRenewPeriod": {
+          "canBeNull": true,
+          "description": "All the possible renew period of your service in month",
+          "fullType": "long[]",
+          "readOnly": true,
+          "type": "long[]"
+        },
+        "renew": {
+          "canBeNull": true,
+          "description": "Way of handling the renew",
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "type": "service.RenewType"
+        },
+        "renewalType": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "service.RenewalTypeEnum",
+          "readOnly": true,
+          "type": "service.RenewalTypeEnum"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.ServiceId:long",
+          "readOnly": true,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "service.StateEnum",
+          "readOnly": true,
+          "type": "service.StateEnum"
         }
-      },
-      "namespace": "license.windows",
-      "id": "Windows"
+      }
     }
   },
-  "basePath": "https://ca.api.soyoustart.com/1.0",
-  "apis": [
-    {
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "responseType": "license.Task",
-          "description": "Link your own sql server license to this Windows license",
-          "parameters": [
-            {
-              "required": true,
-              "paramType": "body",
-              "dataType": "string",
-              "name": "licenseId",
-              "description": "Your license serial number",
-              "fullType": "string"
-            },
-            {
-              "fullType": "license.WindowsSqlVersionEnum",
-              "description": "Your license version",
-              "required": true,
-              "paramType": "body",
-              "dataType": "license.WindowsSqlVersionEnum",
-              "name": "version"
-            },
-            {
-              "required": true,
-              "paramType": "path",
-              "dataType": "string",
-              "name": "serviceName",
-              "description": "The name of your Windows license",
-              "fullType": "string"
-            }
-          ],
-          "responseFullType": "license.Task",
-          "noAuthentication": false,
-          "resellerOnly": false
-        }
-      ],
-      "path": "/license/windows/{serviceName}/sqlServer",
-      "description": "sqlServer operations"
-    },
-    {
-      "description": "Your Windows license",
-      "path": "/license/windows/{serviceName}",
-      "operations": [
-        {
-          "httpMethod": "GET",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "responseType": "license.windows.Windows",
-          "description": "Get this object properties",
-          "resellerOnly": false,
-          "parameters": [
-            {
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "paramType": "path",
-              "name": "serviceName",
-              "dataType": "string",
-              "required": true
-            }
-          ],
-          "responseFullType": "license.windows.Windows",
-          "noAuthentication": false
-        },
-        {
-          "responseType": "void",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "responseFullType": "void",
-          "parameters": [
-            {
-              "paramType": "body",
-              "name": null,
-              "dataType": "license.windows.Windows",
-              "required": true,
-              "fullType": "license.windows.Windows",
-              "description": "New object properties"
-            },
-            {
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "description": "Alter this object properties"
-        }
-      ]
-    },
-    {
-      "operations": [
-        {
-          "noAuthentication": false,
-          "responseFullType": "long[]",
-          "parameters": [
-            {
-              "description": "Filter the value of action property (=)",
-              "fullType": "license.ActionType",
-              "paramType": "query",
-              "name": "action",
-              "dataType": "license.ActionType",
-              "required": false
-            },
-            {
-              "required": false,
-              "dataType": "license.TaskStateEnum",
-              "name": "status",
-              "paramType": "query",
-              "description": "Filter the value of status property (=)",
-              "fullType": "license.TaskStateEnum"
-            },
-            {
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "paramType": "path",
-              "name": "serviceName",
-              "dataType": "string",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "description": "tasks linked to this license",
-          "responseType": "long[]",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET"
-        }
-      ],
-      "path": "/license/windows/{serviceName}/tasks",
-      "description": "List the license.Task objects"
-    },
-    {
-      "description": "licenses Todos",
-      "path": "/license/windows/{serviceName}/tasks/{taskId}",
-      "operations": [
-        {
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "required": true,
-              "dataType": "long",
-              "name": "taskId",
-              "paramType": "path",
-              "description": "This Task id",
-              "fullType": "long"
-            }
-          ],
-          "description": "Get this object properties",
-          "responseType": "license.Task",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET"
-        }
-      ]
-    },
-    {
-      "operations": [
-        {
-          "resellerOnly": false,
-          "parameters": [
-            {
-              "required": true,
-              "dataType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "description": "The name of your Windows license",
-              "fullType": "string"
-            }
-          ],
-          "noAuthentication": false,
-          "responseFullType": "string",
-          "description": "Terminate your service",
-          "responseType": "string",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST"
-        }
-      ],
-      "path": "/license/windows/{serviceName}/terminate",
-      "description": "Terminate your service"
-    },
-    {
-      "operations": [
-        {
-          "responseType": "services.Service",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "resellerOnly": false,
-          "parameters": [
-            {
-              "required": true,
-              "dataType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "description": "The name of your Windows license",
-              "fullType": "string"
-            }
-          ],
-          "responseFullType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        },
-        {
-          "responseType": "void",
-          "httpMethod": "PUT",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "parameters": [
-            {
-              "fullType": "services.Service",
-              "description": "New object properties",
-              "required": true,
-              "paramType": "body",
-              "dataType": "services.Service",
-              "name": null
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "required": true,
-              "fullType": "string",
-              "description": "The name of your Windows license"
-            }
-          ],
-          "responseFullType": "void",
-          "noAuthentication": false,
-          "resellerOnly": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "path": "/license/windows/{serviceName}/serviceInfos",
-      "description": "Details about a Service"
-    },
-    {
-      "operations": [
-        {
-          "description": "options attached to this license",
-          "resellerOnly": false,
-          "responseFullType": "license.OptionLabel[]",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "required": true,
-              "paramType": "path",
-              "dataType": "string",
-              "name": "serviceName",
-              "description": "The name of your Windows license",
-              "fullType": "string"
-            }
-          ],
-          "httpMethod": "GET",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "responseType": "license.OptionLabel[]"
-        }
-      ],
-      "path": "/license/windows/{serviceName}/option",
-      "description": "List the license.Option objects"
-    },
-    {
-      "operations": [
-        {
-          "description": "Get this object properties",
-          "resellerOnly": false,
-          "responseFullType": "license.Option",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "fullType": "license.OptionLabel",
-              "description": "This option designation",
-              "required": true,
-              "dataType": "license.OptionLabel",
-              "name": "label",
-              "paramType": "path"
-            }
-          ],
-          "httpMethod": "GET",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "responseType": "license.Option"
-        },
-        {
-          "description": "release this Option",
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "parameters": [
-            {
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "label",
-              "dataType": "license.OptionLabel",
-              "required": true,
-              "fullType": "license.OptionLabel",
-              "description": "This option designation"
-            }
-          ],
-          "noAuthentication": false,
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "responseType": "license.Task"
-        }
-      ],
-      "path": "/license/windows/{serviceName}/option/{label}",
-      "description": "Your License options"
-    },
-    {
-      "operations": [
-        {
-          "responseType": "string",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "parameters": [
-            {
-              "description": "What next after your termination request",
-              "fullType": "service.TerminationFutureUseEnum",
-              "name": "futureUse",
-              "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "fullType": "service.TerminationReasonEnum",
-              "description": "Reason of your termination request",
-              "required": false,
-              "paramType": "body",
-              "dataType": "service.TerminationReasonEnum",
-              "name": "reason"
-            },
-            {
-              "paramType": "body",
-              "name": "commentary",
-              "dataType": "string",
-              "required": false,
-              "fullType": "string",
-              "description": "Commentary about your termination request"
-            },
-            {
-              "name": "token",
-              "dataType": "string",
-              "paramType": "body",
-              "required": true,
-              "fullType": "string",
-              "description": "The termination token sent by mail to the admin contact"
-            },
-            {
-              "fullType": "string",
-              "description": "The name of your Windows license",
-              "required": true,
-              "dataType": "string",
-              "name": "serviceName",
-              "paramType": "path"
-            }
-          ],
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
-        }
-      ],
-      "path": "/license/windows/{serviceName}/confirmTermination",
-      "description": "Confirm termination of your service"
-    },
-    {
-      "operations": [
-        {
-          "responseType": "license.WindowsOrderConfiguration[]",
-          "httpMethod": "GET",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "resellerOnly": false,
-          "parameters": [
-            {
-              "paramType": "query",
-              "name": "ip",
-              "dataType": "ipv4",
-              "required": true,
-              "fullType": "ipv4",
-              "description": "Your license Ip"
-            }
-          ],
-          "responseFullType": "license.WindowsOrderConfiguration[]",
-          "noAuthentication": false,
-          "description": "Get the orderable Windows versions"
-        }
-      ],
-      "path": "/license/windows/orderableVersions",
-      "description": "Get the orderable Windows versions"
-    },
-    {
-      "description": "Operations about the LICENSE service",
-      "path": "/license/windows",
-      "operations": [
-        {
-          "resellerOnly": false,
-          "parameters": [],
-          "responseFullType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services",
-          "responseType": "string[]",
-          "httpMethod": "GET",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          }
-        }
-      ]
-    }
-  ],
   "resourcePath": "/license/windows"
 }

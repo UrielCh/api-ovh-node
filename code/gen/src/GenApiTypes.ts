@@ -136,7 +136,7 @@ export default class GenApiTypes {
         // Fetch all APIs
         let destination = '';
         if (apiPath) {
-            destination = path.join(__dirname, '..', 'models' , this.namespace);
+            destination = path.join(__dirname, '..', 'models', this.namespace);
             await fse.ensureDir(destination);
             const filename = apiPath.substr(1).replace(/\//g, '-').replace('.json', '.ts');
             destination = path.join(destination, filename);
@@ -149,8 +149,18 @@ export default class GenApiTypes {
         });
 
         if (destination) {
-            const prefix = `import {Schema} from '../../src/schema';${EOL}${EOL}// imported from  https://${this.host}:${this.port}${this.basePath}${apiPath}${EOL}${EOL}export const schema: Schema = `;
-            await fse.writeFile(destination, prefix + JSON.stringify(schema, undefined, 2), { encoding: 'UTF8' });
+            const replacer = (key: string, value: any) =>
+                value instanceof Object && !(value instanceof Array) ?
+                    Object.keys(value).sort().reduce((sorted: any, key: string) => {
+                        sorted[key] = value[key];
+                        return sorted
+                    }, {}) :
+                    value;
+            const importHeader = `import {Schema} from '../../src/schema';${EOL}${EOL}`;
+            const commentHeader = `// imported from https://${this.host}:${this.port}${this.basePath}${apiPath}${EOL}${EOL}`;
+            const exportHeader = `export const schema: Schema = `;
+            const json = JSON.stringify(schema, replacer, 2);
+            await fse.writeFile(destination, `${importHeader}${commentHeader}${exportHeader}${json}`, { encoding: 'UTF8' });
         }
 
         // Entry Points

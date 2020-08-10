@@ -1,558 +1,557 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/analytics.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/analytics/capabilities/platforms",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Platform capabilities",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "analytics.platform.Capability[]",
           "noAuthentication": true,
-          "description": "Platform capabilities"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "path": "/analytics/platforms",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
           "parameters": [],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "analytics.platform.Capability[]"
         }
       ],
-      "description": ""
+      "path": "/analytics/capabilities/platforms"
     },
     {
-      "path": "/analytics/platforms/{serviceName}",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "uuid[]"
+        }
+      ],
+      "path": "/analytics/platforms"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about a service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "analytics.Cluster",
-          "noAuthentication": false,
-          "description": "Get details about a service"
+          "responseType": "analytics.Cluster"
         }
       ],
-      "description": ""
+      "path": "/analytics/platforms/{serviceName}"
     },
     {
-      "path": "/analytics/platforms/{serviceName}/activity",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get activity logs",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "analytics.cluster.Activity[]",
-          "noAuthentication": false,
-          "description": "Get activity logs"
+          "responseType": "analytics.cluster.Activity[]"
         }
       ],
-      "description": ""
+      "path": "/analytics/platforms/{serviceName}/activity"
     },
     {
-      "path": "/analytics/platforms/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/analytics/platforms/{serviceName}/changeContact"
     },
     {
-      "path": "/analytics/platforms/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
-            },
-            {
-              "name": "reason",
-              "dataType": "service.TerminationReasonEnum",
+              "name": "futureUse",
               "paramType": "body",
-              "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/analytics/platforms/{serviceName}/confirmTermination"
     },
     {
-      "path": "/analytics/platforms/{serviceName}/deploy",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Deploy an Analytics Data Platform",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "analytics.cluster.Deploy",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "analytics.cluster.Deploy",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "analytics.cluster.Deploy",
-          "noAuthentication": false,
-          "description": "Deploy an Analytics Data Platform"
+          "responseType": "analytics.cluster.Deploy"
         }
       ],
-      "description": ""
+      "path": "/analytics/platforms/{serviceName}/deploy"
     },
     {
-      "path": "/analytics/platforms/{serviceName}/destroy",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Destroy an Analytics Data Platform",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "analytics.cluster.Destroy",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "analytics.cluster.Destroy",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Destroy an Analytics Data Platform"
+          "responseType": "void"
         }
       ],
-      "description": ""
+      "path": "/analytics/platforms/{serviceName}/destroy"
     },
     {
-      "path": "/analytics/platforms/{serviceName}/nodes",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available nodes",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "List available nodes"
+          "responseType": "uuid[]"
         }
       ],
-      "description": ""
+      "path": "/analytics/platforms/{serviceName}/nodes"
     },
     {
-      "path": "/analytics/platforms/{serviceName}/nodes/{nodeId}",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get details about nodes",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "uuid",
+              "description": "Node ID",
+              "fullType": "uuid",
               "name": "nodeId",
-              "dataType": "uuid",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Node ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "analytics.cluster.Node",
-          "noAuthentication": false,
-          "description": "Get details about nodes"
+          "responseType": "analytics.cluster.Node"
         }
       ],
-      "description": ""
+      "path": "/analytics/platforms/{serviceName}/nodes/{nodeId}"
     },
     {
-      "path": "/analytics/platforms/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/analytics/platforms/{serviceName}/serviceInfos"
     },
     {
-      "path": "/analytics/platforms/{serviceName}/status",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get cluster deployment status",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "analytics.cluster.deploy.Status[]",
-          "noAuthentication": false,
-          "description": "Get cluster deployment status"
+          "responseType": "analytics.cluster.deploy.Status[]"
         }
       ],
-      "description": ""
+      "path": "/analytics/platforms/{serviceName}/status"
     },
     {
-      "path": "/analytics/platforms/{serviceName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/analytics/platforms/{serviceName}/terminate"
     }
   ],
-  "resourcePath": "/analytics",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "analytics.Cluster": {
+      "description": "Cluster information",
       "id": "Cluster",
       "namespace": "analytics",
-      "description": "Cluster information",
       "properties": {
         "analyticsProjectId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Analytics Project ID needed to generate cluster credentials",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "clusterName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Analytics cluster name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "clusterType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Type of analytics stack deployed",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "deploymentEndDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Analytics cluster deployment end date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "deploymentStartDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Analytics cluster deployment start date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Analytics cluster domain name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "nodes": {
-          "type": "analytics.cluster.Node[]",
-          "fullType": "analytics.cluster.Node[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Analytics cluster nodes topology",
-          "required": false
+          "fullType": "analytics.cluster.Node[]",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.cluster.Node[]"
         },
         "osProjectId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Public Cloud project unique identifier",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "osRegion": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Public Cloud region of analytics cluster deployment",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "serviceName": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Analytics cluster unique identifier",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "status": {
-          "type": "analytics.StatusEnum",
-          "fullType": "analytics.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Analytics cluster current status",
-          "required": false
+          "fullType": "analytics.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.StatusEnum"
         }
       }
     },
     "analytics.Component": {
+      "description": "Component of the service",
       "id": "Component",
       "namespace": "analytics",
-      "description": "Component of the service",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Component name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "version": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Component version",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "analytics.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "analytics",
       "description": "Status code",
       "enum": [
         "PENDING",
@@ -571,364 +570,364 @@ export const schema: Schema = {
         "DESTROYED",
         "INITIALIZED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "analytics"
     },
     "analytics.cluster.Activity": {
+      "description": "Cluster activity",
       "id": "Activity",
       "namespace": "analytics.cluster",
-      "description": "Cluster activity",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Activity log description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "analytics.StatusEnum",
-          "fullType": "analytics.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status associated to this event",
-          "required": false
+          "fullType": "analytics.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.StatusEnum"
         },
         "timestamp": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Activity log timestamp",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "user": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Event author",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "analytics.cluster.Deploy": {
+      "description": "Analytics Cluster deployment parameters",
       "id": "Deploy",
       "namespace": "analytics.cluster",
-      "description": "Analytics Cluster deployment parameters",
       "properties": {
         "clusterName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the Analytics Data Platform cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "clusterType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Analytics type of stack to deploy (according to capabilities version)",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "edgeNodeStorage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Storage per edge node",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "hdfsEffectiveStorage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Analytics cluster total effective storage (HDFS)",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "hdfsReplicationFactor": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Analytics cluster HDFS replication factor",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "masterNodeStorage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Storage per master node",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "masterPassword": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Analytics cluster master password used to derive services passwords",
-          "required": true
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
         },
         "nodes": {
-          "type": "analytics.node.Deploy[]",
-          "fullType": "analytics.node.Deploy[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Analytics cluster nodes topology",
-          "required": true
+          "fullType": "analytics.node.Deploy[]",
+          "readOnly": false,
+          "required": true,
+          "type": "analytics.node.Deploy[]"
         },
         "osProjectId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Public Cloud project ID to deploy the cluster into",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "osProjectName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Public Cloud project name to deploy the cluster into",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "osRegion": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Public Cloud region to deploy the cluster into (according to capabilities regions)",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "osToken": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Public Cloud project token to deploy the cluster",
-          "required": true
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
         },
         "sshPublicKey": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SSH Public Key uploaded to the cluster to give access to the customer (content of my_key.pub)",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "analytics.cluster.Destroy": {
+      "description": "Analytics Cluster destruction parameters",
       "id": "Destroy",
       "namespace": "analytics.cluster",
-      "description": "Analytics Cluster destruction parameters",
       "properties": {
         "osToken": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Public Cloud project token to destroy the cluster",
-          "required": true
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
         }
       }
     },
     "analytics.cluster.Node": {
+      "description": "Cluster node information",
       "id": "Node",
       "namespace": "analytics.cluster",
-      "description": "Cluster node information",
       "properties": {
         "deploymentEndDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Deployment end date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "deploymentStartDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Deployment start date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "flavor": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Public Cloud flavor of the node",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "hostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Hostname for this node",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "IP address of the node inside the vRack",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "nodeId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Unique identifier for this node",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "nodeType": {
-          "type": "analytics.node.TypeEnum",
-          "fullType": "analytics.node.TypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Node type",
-          "required": false
+          "fullType": "analytics.node.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.node.TypeEnum"
         },
         "osRegion": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Public Cloud region of the node",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "analytics.StatusEnum",
-          "fullType": "analytics.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Node status",
-          "required": false
+          "fullType": "analytics.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.StatusEnum"
         },
         "storage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Size of storage in GB",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "analytics.cluster.deploy.Status": {
+      "description": "Cluster deployment status",
       "id": "Status",
       "namespace": "analytics.cluster.deploy",
-      "description": "Cluster deployment status",
       "properties": {
         "percentage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task percentage",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "status": {
-          "type": "analytics.StatusEnum",
-          "fullType": "analytics.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": false
+          "fullType": "analytics.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.StatusEnum"
         },
         "task": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "analytics.node.Capability": {
+      "description": "node capability",
       "id": "Capability",
       "namespace": "analytics.node",
-      "description": "node capability",
       "properties": {
         "instanceMax": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of instances",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "instanceMin": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Minimum number of instances",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "instanceType": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of available instances",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "rawStorageMaxGb": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "maximum raw storage in GB",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "rawStorageMinGb": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "minimum raw storage in GB",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "analytics.node.Deploy": {
+      "description": "Node information",
       "id": "Deploy",
       "namespace": "analytics.node",
-      "description": "Node information",
       "properties": {
         "nodeFlavor": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of flavor to deploy",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "nodeType": {
-          "type": "analytics.node.TypeEnum",
-          "fullType": "analytics.node.TypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Node type",
-          "required": true
+          "fullType": "analytics.node.TypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "analytics.node.TypeEnum"
         }
       }
     },
     "analytics.node.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "analytics.node",
       "description": "Node type",
       "enum": [
         "MASTER",
@@ -936,176 +935,176 @@ export const schema: Schema = {
         "EDGE",
         "UTILITY"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "analytics.node"
     },
     "analytics.platform.Capability": {
+      "description": "Platform capabilities",
       "id": "Capability",
       "namespace": "analytics.platform",
-      "description": "Platform capabilities",
       "properties": {
         "availableRegion": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Available Public Cloud regions",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "bastionNode": {
-          "type": "analytics.node.Capability",
-          "fullType": "analytics.node.Capability",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Bastion node capabilities",
-          "required": false
+          "fullType": "analytics.node.Capability",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.node.Capability"
         },
         "components": {
-          "type": "analytics.Component[]",
-          "fullType": "analytics.Component[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Analytic Data Platform Components list",
-          "required": false
+          "fullType": "analytics.Component[]",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.Component[]"
         },
         "edgeNode": {
-          "type": "analytics.node.Capability",
-          "fullType": "analytics.node.Capability",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Edge node capabilities",
-          "required": false
+          "fullType": "analytics.node.Capability",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.node.Capability"
         },
         "hdfsReplicationFactor": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Analytic Data Platform replication factor",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "masterNode": {
-          "type": "analytics.node.Capability",
-          "fullType": "analytics.node.Capability",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Master node capabilities",
-          "required": false
+          "fullType": "analytics.node.Capability",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.node.Capability"
         },
         "requirements": {
-          "type": "analytics.platform.Capability.Requirement[]",
-          "fullType": "analytics.platform.Capability.Requirement[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "List of fields to hide or display",
-          "required": false
+          "fullType": "analytics.platform.Capability.Requirement[]",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.platform.Capability.Requirement[]"
         },
         "utilityNode": {
-          "type": "analytics.node.Capability",
-          "fullType": "analytics.node.Capability",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Utility node capabilities",
-          "required": false
+          "fullType": "analytics.node.Capability",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.node.Capability"
         },
         "version": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Analytic Data Platform software version",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "versionDescription": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Analytic Data Platform software version description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "workerNode": {
-          "type": "analytics.node.Capability",
-          "fullType": "analytics.node.Capability",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Worker node capabilities",
-          "required": false
+          "fullType": "analytics.node.Capability",
+          "readOnly": true,
+          "required": false,
+          "type": "analytics.node.Capability"
         }
       }
     },
     "analytics.platform.Capability.Requirement": {
+      "description": "Requirement for fields to be displayed or hidden",
       "id": "Requirement",
       "namespace": "analytics.platform.Capability",
-      "description": "Requirement for fields to be displayed or hidden",
       "properties": {
         "display": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Field display flag. True for display, false to hide",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "fieldName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Field name to be displayed or hidden",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1116,11 +1115,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1128,11 +1127,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -1141,11 +1140,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -1163,108 +1162,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/analytics"
 }

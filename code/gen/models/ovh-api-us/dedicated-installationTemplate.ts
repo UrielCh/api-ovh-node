@@ -1,294 +1,293 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://api.us.ovhcloud.com:443/1.0/dedicated/installationTemplate.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/dedicated/installationTemplate",
+      "description": "List the dedicated.installationTemplate.Templates objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "OVH operating system installation templates",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [],
-          "responseType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicated/installationTemplate"
+    },
+    {
+      "description": "Available installation templates",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
           "noAuthentication": true,
-          "description": "OVH operating system installation templates"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.installationTemplate.Templates"
         }
       ],
-      "description": "List the dedicated.installationTemplate.Templates objects"
+      "path": "/dedicated/installationTemplate/{templateName}"
     },
     {
-      "path": "/dedicated/installationTemplate/{templateName}",
+      "description": "List the dedicated.installationTemplate.templatePartitioningSchemes objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Partitioning schemes available on this template",
           "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "templateName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
-            }
-          ],
-          "responseType": "dedicated.installationTemplate.Templates",
-          "noAuthentication": true,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Available installation templates"
-    },
-    {
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "templateName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
-            }
-          ],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "Partitioning schemes available on this template"
-        }
-      ],
-      "description": "List the dedicated.installationTemplate.templatePartitioningSchemes objects"
-    },
-    {
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
-            },
-            {
-              "name": "schemeName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "string[]"
         }
       ],
-      "description": "Partitioning schemes available on this template"
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme"
     },
     {
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid",
+      "description": "Partitioning schemes available on this template",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "schemeName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Scheme name",
               "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Hardware RAIDs defined in this partitioning scheme"
+          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes"
         }
       ],
-      "description": "List the dedicated.installationTemplate.hardwareRaid objects"
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}"
     },
     {
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}",
+      "description": "List the dedicated.installationTemplate.hardwareRaid objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Hardware RAIDs defined in this partitioning scheme",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Scheme name",
+              "fullType": "string",
               "name": "schemeName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid"
+    },
+    {
+      "description": "Hardware RAID defined in this partitioning scheme",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Scheme name",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.hardwareRaid",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.installationTemplate.hardwareRaid"
         }
       ],
-      "description": "Hardware RAID defined in this partitioning scheme"
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}"
     },
     {
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition",
+      "description": "List the dedicated.installationTemplate.templatePartitions objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Partitions defined in this partitioning scheme",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "schemeName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Scheme name",
               "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Partitions defined in this partitioning scheme"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the dedicated.installationTemplate.templatePartitions objects"
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition"
     },
     {
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}",
+      "description": " Partitions defined in this partitioning scheme",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Scheme name",
+              "fullType": "string",
               "name": "schemeName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Mountpoint",
+              "fullType": "string",
               "name": "mountpoint",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mountpoint"
+              "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.templatePartitions",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.installationTemplate.templatePartitions"
         }
       ],
-      "description": " Partitions defined in this partitioning scheme"
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}"
     }
   ],
-  "resourcePath": "/dedicated/installationTemplate",
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "complexType.UnitAndValue<T>": {
-      "id": "UnitAndValue",
-      "namespace": "complexType",
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "dedicated.TemplateOsFileSystemEnum": {
-      "id": "TemplateOsFileSystemEnum",
-      "namespace": "dedicated",
       "description": "Filesystems available",
       "enum": [
         "btrfs",
@@ -301,11 +300,11 @@ export const schema: Schema = {
         "xfs",
         "zfs"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplateOsFileSystemEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TemplateOsHardwareRaidEnum": {
-      "id": "TemplateOsHardwareRaidEnum",
-      "namespace": "dedicated",
       "description": "Hardware RAID enum",
       "enum": [
         "raid0",
@@ -316,11 +315,11 @@ export const schema: Schema = {
         "raid6",
         "raid60"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplateOsHardwareRaidEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TemplateOsLanguageEnum": {
-      "id": "TemplateOsLanguageEnum",
-      "namespace": "dedicated",
       "description": "all language available",
       "enum": [
         "ar",
@@ -360,73 +359,73 @@ export const schema: Schema = {
         "zh-Hans-CN",
         "zh-Hans-HK"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplateOsLanguageEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TemplateOsProperties": {
+      "description": "A structure describing properties customizables about this dedicated installation template",
       "id": "TemplateOsProperties",
       "namespace": "dedicated",
-      "description": "A structure describing properties customizables about this dedicated installation template",
       "properties": {
         "changeLog": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Template change log details",
-          "required": false
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
         },
         "customHostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Set up the server using the provided hostname instead of the default hostname",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "postInstallationScriptLink": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Indicate the URL where your postinstall customisation script is located",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "postInstallationScriptReturn": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is \"loh1Xee7eo OK OK OK UGh8Ang1Gu",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "rating": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "sshKeyName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the ssh key that should be installed. Password login will be disabled",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "useDistributionKernel": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Use the distribution's native kernel instead of the recommended OVH Kernel",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
     "dedicated.TemplateOsTypeEnum": {
-      "id": "TemplateOsTypeEnum",
-      "namespace": "dedicated",
       "description": "Os type",
       "enum": [
         "bsd",
@@ -434,11 +433,11 @@ export const schema: Schema = {
         "solaris",
         "windows"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplateOsTypeEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TemplateOsUsageEnum": {
-      "id": "TemplateOsUsageEnum",
-      "namespace": "dedicated",
       "description": "Os usage definition",
       "enum": [
         "basic",
@@ -448,323 +447,323 @@ export const schema: Schema = {
         "readyToUse",
         "virtualisation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplateOsUsageEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TemplatePartitionTypeEnum": {
-      "id": "TemplatePartitionTypeEnum",
-      "namespace": "dedicated",
       "description": "partition type",
       "enum": [
         "logical",
         "lv",
         "primary"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplatePartitionTypeEnum",
+      "namespace": "dedicated"
     },
     "dedicated.installationTemplate.Templates": {
+      "description": "Available installation templates",
       "id": "Templates",
       "namespace": "dedicated.installationTemplate",
-      "description": "Available installation templates",
       "properties": {
         "availableLanguages": {
-          "type": "dedicated.TemplateOsLanguageEnum[]",
-          "fullType": "dedicated.TemplateOsLanguageEnum[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "list of all language available for this template",
-          "required": true
+          "fullType": "dedicated.TemplateOsLanguageEnum[]",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TemplateOsLanguageEnum[]"
         },
         "beta": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution is new, and although tested and functional, may still display odd behaviour",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "bitFormat": {
-          "type": "dedicated.server.BitFormatEnum",
-          "fullType": "dedicated.server.BitFormatEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "this template  bit format",
-          "required": true
+          "fullType": "dedicated.server.BitFormatEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.BitFormatEnum"
         },
         "category": {
-          "type": "dedicated.TemplateOsUsageEnum",
-          "fullType": "dedicated.TemplateOsUsageEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "category of this template (informative only)",
-          "required": true
+          "fullType": "dedicated.TemplateOsUsageEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TemplateOsUsageEnum"
         },
         "customization": {
-          "type": "dedicated.TemplateOsProperties",
-          "fullType": "dedicated.TemplateOsProperties",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Customizable template properties ",
-          "required": false
+          "fullType": "dedicated.TemplateOsProperties",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsProperties"
         },
         "defaultLanguage": {
-          "type": "dedicated.TemplateOsLanguageEnum",
-          "fullType": "dedicated.TemplateOsLanguageEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "the default language of this template",
-          "required": true
+          "fullType": "dedicated.TemplateOsLanguageEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.TemplateOsLanguageEnum"
         },
         "deprecated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "is this distribution deprecated",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "information about this template",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "distribution": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the distribution this template is based on",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "family": {
-          "type": "dedicated.TemplateOsTypeEnum",
-          "fullType": "dedicated.TemplateOsTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "this template family type",
-          "required": true
+          "fullType": "dedicated.TemplateOsTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TemplateOsTypeEnum"
         },
         "filesystems": {
-          "type": "dedicated.TemplateOsFileSystemEnum[]",
-          "fullType": "dedicated.TemplateOsFileSystemEnum[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "list of all filesystems  available for this template",
-          "required": true
+          "fullType": "dedicated.TemplateOsFileSystemEnum[]",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TemplateOsFileSystemEnum[]"
         },
         "hardRaidConfiguration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports hardware raid configuration through the OVH API",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "lastModification": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Date of last modification of the base image",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lvmReady": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports Logical Volumes (Linux LVM)",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "supportsDistributionKernel": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports installation using the distribution's native kernel instead of the recommended OVH kernel",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "supportsGptLabel": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports the GUID Partition Table (GPT), providing up to 128 partitions that can have more than 2 TB",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "supportsRTM": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This distribution supports RTM software",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "supportsSqlServer": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports the microsoft SQL server",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "supportsUEFI": {
-          "type": "dedicated.server.SupportsUEFIEnum",
-          "fullType": "dedicated.server.SupportsUEFIEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports UEFI setup",
-          "required": false
+          "fullType": "dedicated.server.SupportsUEFIEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.SupportsUEFIEnum"
         },
         "templateName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "This template name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.installationTemplate.hardwareRaid": {
+      "description": "Hardware RAID defined in this partitioning scheme",
       "id": "hardwareRaid",
       "namespace": "dedicated.installationTemplate",
-      "description": "Hardware RAID defined in this partitioning scheme",
       "properties": {
         "disks": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Disk list",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "mode": {
-          "type": "dedicated.TemplateOsHardwareRaidEnum",
-          "fullType": "dedicated.TemplateOsHardwareRaidEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "RAID mode",
-          "required": true
+          "fullType": "dedicated.TemplateOsHardwareRaidEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.TemplateOsHardwareRaidEnum"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hardware RAID name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "step": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Specifies the creation order of the hardware RAID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dedicated.installationTemplate.templatePartitioningSchemes": {
+      "description": "Partitioning schemes available on this template",
       "id": "templatePartitioningSchemes",
       "namespace": "dedicated.installationTemplate",
-      "description": "Partitioning schemes available on this template",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "name of this partitioning scheme",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "priority": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dedicated.installationTemplate.templatePartitions": {
+      "description": " Partitions defined in this partitioning scheme",
       "id": "templatePartitions",
       "namespace": "dedicated.installationTemplate",
-      "description": " Partitions defined in this partitioning scheme",
       "properties": {
         "filesystem": {
-          "type": "dedicated.TemplateOsFileSystemEnum",
-          "fullType": "dedicated.TemplateOsFileSystemEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Partition filesytem",
-          "required": true
+          "fullType": "dedicated.TemplateOsFileSystemEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.TemplateOsFileSystemEnum"
         },
         "mountpoint": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "partition mount point",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "order": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "specifies the creation order of the partition on the disk",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "raid": {
-          "type": "dedicated.server.PartitionRaidEnum",
-          "fullType": "dedicated.server.PartitionRaidEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "raid partition type",
-          "required": false
+          "fullType": "dedicated.server.PartitionRaidEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.PartitionRaidEnum"
         },
         "size": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "size of partition in Mb, 0 => rest of the space",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "type": {
-          "type": "dedicated.TemplatePartitionTypeEnum",
-          "fullType": "dedicated.TemplatePartitionTypeEnum",
           "canBeNull": false,
+          "fullType": "dedicated.TemplatePartitionTypeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "dedicated.TemplatePartitionTypeEnum"
         },
         "volumeName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The volume name needed for proxmox distribution",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.BitFormatEnum": {
-      "id": "BitFormatEnum",
-      "namespace": "dedicated.server",
       "description": "Available os bit format",
       "enum": [
         "32",
         "64"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "BitFormatEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.PartitionRaidEnum": {
-      "id": "PartitionRaidEnum",
-      "namespace": "dedicated.server",
       "description": "partition raid type",
       "enum": [
         "0",
@@ -773,18 +772,21 @@ export const schema: Schema = {
         "5",
         "6"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PartitionRaidEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.SupportsUEFIEnum": {
-      "id": "SupportsUEFIEnum",
-      "namespace": "dedicated.server",
       "description": "supports UEFI setup",
       "enum": [
         "no",
         "only",
         "yes"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SupportsUEFIEnum",
+      "namespace": "dedicated.server"
     }
-  }
+  },
+  "resourcePath": "/dedicated/installationTemplate"
 }

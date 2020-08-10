@@ -1,6999 +1,6998 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://api.us.ovhcloud.com:443/1.0/me.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/me",
+      "description": "Details about your OVH identifier",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "nichandle.Nichandle",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [],
+          "responseType": "nichandle.Nichandle"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.Nichandle",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "nichandle.Nichandle",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about your OVH identifier"
+      "path": "/me"
     },
     {
-      "path": "/me/accessRestriction/backupCode",
+      "description": "SOTP Two-Factor Authentication",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this Two-Factor",
           "httpMethod": "DELETE",
-          "parameters": [],
-          "responseType": "void",
           "noAuthentication": false,
-          "description": "Delete this Two-Factor"
+          "parameters": [],
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "nichandle.accessRestriction.SOTPAccount",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [],
+          "responseType": "nichandle.accessRestriction.SOTPAccount"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a SOTP access restriction",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.accessRestriction.SOTPSecret",
-          "noAuthentication": false,
-          "description": "Add a SOTP access restriction"
+          "responseType": "nichandle.accessRestriction.SOTPSecret"
         }
       ],
-      "description": "SOTP Two-Factor Authentication"
+      "path": "/me/accessRestriction/backupCode"
     },
     {
-      "path": "/me/accessRestriction/backupCode/disable",
+      "description": "disable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Disable this SOTP account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "code",
               "dataType": "password",
-              "paramType": "body",
+              "description": "OTP code given by the application",
               "fullType": "password",
-              "required": true,
-              "description": "OTP code given by the application"
+              "name": "code",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Disable this SOTP account"
+          "responseType": "void"
         }
       ],
-      "description": "disable operations"
+      "path": "/me/accessRestriction/backupCode/disable"
     },
     {
-      "path": "/me/accessRestriction/backupCode/enable",
+      "description": "enable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Enable this SOTP account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "code",
               "dataType": "password",
-              "paramType": "body",
+              "description": "OTP code given by the application",
               "fullType": "password",
-              "required": true,
-              "description": "OTP code given by the application"
+              "name": "code",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Enable this SOTP account"
+          "responseType": "void"
         }
       ],
-      "description": "enable operations"
+      "path": "/me/accessRestriction/backupCode/enable"
     },
     {
-      "path": "/me/accessRestriction/backupCode/validate",
+      "description": "validate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Validate your SOTP account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "code",
               "dataType": "password",
-              "paramType": "body",
+              "description": "OTP code given by the application",
               "fullType": "password",
-              "required": true,
-              "description": "OTP code given by the application"
+              "name": "code",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "nichandle.accessRestriction.SOTPValidate",
-          "noAuthentication": false,
-          "description": "Validate your SOTP account"
+          "responseType": "nichandle.accessRestriction.SOTPValidate"
         }
       ],
-      "description": "validate operations"
+      "path": "/me/accessRestriction/backupCode/validate"
     },
     {
-      "path": "/me/accessRestriction/developerMode",
+      "description": "Login restrictions on a development version of the Manager",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "nichandle.DeveloperModeRestriction",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [],
+          "responseType": "nichandle.DeveloperModeRestriction"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.DeveloperModeRestriction",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "nichandle.DeveloperModeRestriction",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Login restrictions on a development version of the Manager"
+      "path": "/me/accessRestriction/developerMode"
     },
     {
-      "path": "/me/accessRestriction/ip",
+      "description": "List the nichandle.IpRestriction objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of IP restrictions",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List of IP restrictions"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add an IP access restriction",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "rule",
-              "dataType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
-              "paramType": "body",
-              "fullType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
-              "required": true,
-              "description": "Accept or deny IP access"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "body",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "An IP range where we will apply the rule"
-            },
-            {
-              "name": "warning",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Send an email if someone try to access with this IP address",
               "fullType": "boolean",
-              "required": true,
-              "description": "Send an email if someone try to access with this IP address"
+              "name": "warning",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
+              "description": "Accept or deny IP access",
+              "fullType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
+              "name": "rule",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "An IP range where we will apply the rule",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Add an IP access restriction"
+          "responseType": "void"
         }
       ],
-      "description": "List the nichandle.IpRestriction objects"
+      "path": "/me/accessRestriction/ip"
     },
     {
-      "path": "/me/accessRestriction/ip/{id}",
+      "description": "List of all IP Restrictions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this restriction rule",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this restriction rule"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "nichandle.IpRestriction",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "nichandle.IpRestriction"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.IpRestriction",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "nichandle.IpRestriction",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "List of all IP Restrictions"
+      "path": "/me/accessRestriction/ip/{id}"
     },
     {
-      "path": "/me/accessRestriction/ipDefaultRule",
+      "description": "IP Restriction default rule",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "nichandle.IpRestrictionDefaultRule",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [],
+          "responseType": "nichandle.IpRestrictionDefaultRule"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.IpRestrictionDefaultRule",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "nichandle.IpRestrictionDefaultRule",
-              "required": true,
-              "description": "Request Body"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "IP Restriction default rule"
-    },
-    {
-      "path": "/me/accessRestriction/sms",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List of Sms accounts"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "phone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Cell phone number to register"
+              "required": true
             }
           ],
-          "responseType": "nichandle.accessRestriction.SmsSecret",
-          "noAuthentication": false,
-          "description": "Add a SMS access restriction"
+          "responseType": "void"
         }
       ],
-      "description": "List the nichandle.accessRestriction.SmsAccount objects"
+      "path": "/me/accessRestriction/ipDefaultRule"
     },
     {
-      "path": "/me/accessRestriction/sms/{id}",
+      "description": "List the nichandle.accessRestriction.SmsAccount objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this Two-Factor"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "List of Sms accounts",
           "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "nichandle.accessRestriction.SmsAccount",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [],
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a SMS access restriction",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cell phone number to register",
+              "fullType": "string",
+              "name": "phone",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.accessRestriction.SmsSecret"
+        }
+      ],
+      "path": "/me/accessRestriction/sms"
+    },
+    {
+      "description": "Sms Two-Factor Authentication",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete this Two-Factor",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.accessRestriction.SmsAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.accessRestriction.SmsAccount",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "nichandle.accessRestriction.SmsAccount",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Sms Two-Factor Authentication"
-    },
-    {
-      "path": "/me/accessRestriction/sms/{id}/disable",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "code",
-              "dataType": "password",
               "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "SMS code send by a cellphone"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Disable this SMS account"
+          "responseType": "void"
         }
       ],
-      "description": "disable operations"
+      "path": "/me/accessRestriction/sms/{id}"
     },
     {
-      "path": "/me/accessRestriction/sms/{id}/enable",
+      "description": "disable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Disable this SMS account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "code",
               "dataType": "password",
-              "paramType": "body",
+              "description": "SMS code send by a cellphone",
               "fullType": "password",
-              "required": true,
-              "description": "SMS code send by a cellphone"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Enable this SMS account"
-        }
-      ],
-      "description": "enable operations"
-    },
-    {
-      "path": "/me/accessRestriction/sms/{id}/sendCode",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "nichandle.accessRestriction.SmsCode",
-          "noAuthentication": false,
-          "description": "Send a SMS to this account"
-        }
-      ],
-      "description": "sendCode operations"
-    },
-    {
-      "path": "/me/accessRestriction/sms/{id}/validate",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
               "name": "code",
-              "dataType": "password",
               "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "SMS code send to a cellphone"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Validate your SMS account"
+          "responseType": "void"
         }
       ],
-      "description": "validate operations"
+      "path": "/me/accessRestriction/sms/{id}/disable"
     },
     {
-      "path": "/me/accessRestriction/totp",
+      "description": "enable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Enable this SMS account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "SMS code send by a cellphone",
+              "fullType": "password",
+              "name": "code",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/sms/{id}/enable"
+    },
+    {
+      "description": "sendCode operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Send a SMS to this account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.accessRestriction.SmsCode"
+        }
+      ],
+      "path": "/me/accessRestriction/sms/{id}/sendCode"
+    },
+    {
+      "description": "validate operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Validate your SMS account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "SMS code send to a cellphone",
+              "fullType": "password",
+              "name": "code",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/sms/{id}/validate"
+    },
+    {
+      "description": "List the nichandle.accessRestriction.TOTPAccount objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of TOTP accounts",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "long[]",
           "noAuthentication": false,
-          "description": "List of TOTP accounts"
+          "parameters": [],
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a TOTP access restriction",
           "httpMethod": "POST",
-          "parameters": [],
-          "responseType": "nichandle.accessRestriction.TOTPSecret",
           "noAuthentication": false,
-          "description": "Add a TOTP access restriction"
+          "parameters": [],
+          "responseType": "nichandle.accessRestriction.TOTPSecret"
         }
       ],
-      "description": "List the nichandle.accessRestriction.TOTPAccount objects"
+      "path": "/me/accessRestriction/totp"
     },
     {
-      "path": "/me/accessRestriction/totp/{id}",
+      "description": "TOTP Two-Factor Authentication",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this Two-Factor",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this Two-Factor"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "nichandle.accessRestriction.TOTPAccount",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "nichandle.accessRestriction.TOTPAccount"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.accessRestriction.TOTPAccount",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "nichandle.accessRestriction.TOTPAccount",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "TOTP Two-Factor Authentication"
+      "path": "/me/accessRestriction/totp/{id}"
     },
     {
-      "path": "/me/accessRestriction/totp/{id}/disable",
+      "description": "disable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Disable this TOTP account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "code",
               "dataType": "password",
-              "paramType": "body",
+              "description": "OTP code given by the application",
               "fullType": "password",
-              "required": true,
-              "description": "OTP code given by the application"
+              "name": "code",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Disable this TOTP account"
+          "responseType": "void"
         }
       ],
-      "description": "disable operations"
+      "path": "/me/accessRestriction/totp/{id}/disable"
     },
     {
-      "path": "/me/accessRestriction/totp/{id}/enable",
+      "description": "enable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Enable this TOTP account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "code",
               "dataType": "password",
-              "paramType": "body",
+              "description": "OTP code given by the application",
               "fullType": "password",
-              "required": true,
-              "description": "OTP code given by the application"
+              "name": "code",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Enable this TOTP account"
+          "responseType": "void"
         }
       ],
-      "description": "enable operations"
+      "path": "/me/accessRestriction/totp/{id}/enable"
     },
     {
-      "path": "/me/accessRestriction/totp/{id}/validate",
+      "description": "validate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Validate your TOTP account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "code",
               "dataType": "password",
-              "paramType": "body",
+              "description": "OTP code given by the application",
               "fullType": "password",
-              "required": true,
-              "description": "OTP code given by the application"
+              "name": "code",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Validate your TOTP account"
+          "responseType": "void"
         }
       ],
-      "description": "validate operations"
+      "path": "/me/accessRestriction/totp/{id}/validate"
     },
     {
-      "path": "/me/accessRestriction/u2f",
+      "description": "List the nichandle.accessRestriction.U2FAccount objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of U2F accounts",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "long[]",
           "noAuthentication": false,
-          "description": "List of U2F accounts"
+          "parameters": [],
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a U2F access restriction",
           "httpMethod": "POST",
-          "parameters": [],
-          "responseType": "nichandle.accessRestriction.U2FRegisterChallenge",
           "noAuthentication": false,
-          "description": "Add a U2F access restriction"
+          "parameters": [],
+          "responseType": "nichandle.accessRestriction.U2FRegisterChallenge"
         }
       ],
-      "description": "List the nichandle.accessRestriction.U2FAccount objects"
+      "path": "/me/accessRestriction/u2f"
     },
     {
-      "path": "/me/accessRestriction/u2f/{id}",
+      "description": "U2F Two-Factor Authentication",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this Two-Factor",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this Two-Factor"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "nichandle.accessRestriction.U2FAccount",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "nichandle.accessRestriction.U2FAccount"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.accessRestriction.U2FAccount",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "nichandle.accessRestriction.U2FAccount",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "U2F Two-Factor Authentication"
-    },
-    {
-      "path": "/me/accessRestriction/u2f/{id}/challenge",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "nichandle.accessRestriction.U2FSignChallenge",
-          "noAuthentication": false,
-          "description": "Get an U2F Challenge"
-        }
-      ],
-      "description": "challenge operations"
-    },
-    {
-      "path": "/me/accessRestriction/u2f/{id}/disable",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "signatureData",
-              "dataType": "password",
               "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": ""
+              "required": true
             },
             {
-              "name": "clientData",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/u2f/{id}"
+    },
+    {
+      "description": "challenge operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get an U2F Challenge",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.accessRestriction.U2FSignChallenge"
+        }
+      ],
+      "path": "/me/accessRestriction/u2f/{id}/challenge"
+    },
+    {
+      "description": "disable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Disable this U2F account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "",
               "fullType": "string",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Disable this U2F account"
-        }
-      ],
-      "description": "disable operations"
-    },
-    {
-      "path": "/me/accessRestriction/u2f/{id}/enable",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "signatureData",
-              "dataType": "password",
-              "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": ""
-            },
-            {
               "name": "clientData",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": ""
+              "required": true
             },
             {
-              "name": "id",
+              "dataType": "password",
+              "description": "",
+              "fullType": "password",
+              "name": "signatureData",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Enable this U2F account"
+          "responseType": "void"
         }
       ],
-      "description": "enable operations"
+      "path": "/me/accessRestriction/u2f/{id}/disable"
     },
     {
-      "path": "/me/accessRestriction/u2f/{id}/validate",
+      "description": "enable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Enable this U2F account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "clientData",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "",
+              "fullType": "password",
+              "name": "signatureData",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/u2f/{id}/enable"
+    },
+    {
+      "description": "validate operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Validate your U2F account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "clientData",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "",
+              "fullType": "password",
               "name": "registrationData",
-              "dataType": "password",
               "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": ""
+              "required": true
             },
             {
-              "name": "clientData",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Validate your U2F account"
+          "responseType": "void"
         }
       ],
-      "description": "validate operations"
+      "path": "/me/accessRestriction/u2f/{id}/validate"
     },
     {
-      "path": "/me/agreements",
+      "description": "List of contracts signed between you and OVH",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of contracts signed between you and OVH",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "agreed",
               "dataType": "agreements.AgreementStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of agreed property",
               "fullType": "agreements.AgreementStateEnum",
-              "required": false,
-              "description": "Filter the value of agreed property"
+              "name": "agreed",
+              "paramType": "query",
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of contractId property",
+              "fullType": "long",
               "name": "contractId",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of contractId property"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List of contracts signed between you and OVH"
+          "responseType": "long[]"
         }
       ],
-      "description": "List of contracts signed between you and OVH"
+      "path": "/me/agreements"
     },
     {
-      "path": "/me/agreements/{id}",
+      "description": "Get this object properties",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "agreements.ContractAgreement",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "agreements.ContractAgreement"
         }
       ],
-      "description": "Get this object properties"
+      "path": "/me/agreements/{id}"
     },
     {
-      "path": "/me/agreements/{id}/accept",
+      "description": "Accept this contract",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Accept this contract",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Accept this contract"
+          "responseType": "string"
         }
       ],
-      "description": "Accept this contract"
+      "path": "/me/agreements/{id}/accept"
     },
     {
-      "path": "/me/agreements/{id}/contract",
+      "description": "Get this object properties",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "agreements.Contract",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "agreements.Contract"
         }
       ],
-      "description": "Get this object properties"
+      "path": "/me/agreements/{id}/contract"
     },
     {
-      "path": "/me/api/application",
+      "description": "List the api.Application objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of your Api Application",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List of your Api Application"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the api.Application objects"
+      "path": "/me/api/application"
     },
     {
-      "path": "/me/api/application/{applicationId}",
+      "description": "API Application",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this application. It will revoke all credential belonging to this application.",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "applicationId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Application ID",
               "fullType": "long",
-              "required": true,
-              "description": "Application ID"
+              "name": "applicationId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove this application. It will revoke all credential belonging to this application."
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "applicationId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Application ID",
               "fullType": "long",
-              "required": true,
-              "description": "Application ID"
+              "name": "applicationId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "api.Application",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "api.Application"
         }
       ],
-      "description": "API Application"
+      "path": "/me/api/application/{applicationId}"
     },
     {
-      "path": "/me/api/credential",
+      "description": "List the api.Credential objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of your Api Credentials",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "status",
-              "dataType": "auth.CredentialStateEnum",
+              "dataType": "long",
+              "description": "Filter the value of applicationId property (like)",
+              "fullType": "long",
+              "name": "applicationId",
               "paramType": "query",
-              "fullType": "auth.CredentialStateEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
+              "required": false
             },
             {
-              "name": "applicationId",
-              "dataType": "long",
+              "dataType": "auth.CredentialStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "auth.CredentialStateEnum",
+              "name": "status",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of applicationId property (like)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List of your Api Credentials"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the api.Credential objects"
+      "path": "/me/api/credential"
     },
     {
-      "path": "/me/api/credential/{credentialId}",
+      "description": "API Credential",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this credential",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "credentialId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Credential ID",
               "fullType": "long",
-              "required": true,
-              "description": "Credential ID"
+              "name": "credentialId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove this credential"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "credentialId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Credential ID",
               "fullType": "long",
-              "required": true,
-              "description": "Credential ID"
+              "name": "credentialId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "api.Credential",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "api.Credential"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "api.Credential",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "api.Credential",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "credentialId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Credential ID",
               "fullType": "long",
-              "required": true,
-              "description": "Credential ID"
+              "name": "credentialId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "API Credential"
+      "path": "/me/api/credential/{credentialId}"
     },
     {
-      "path": "/me/api/credential/{credentialId}/application",
+      "description": "API Application",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "credentialId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Credential ID",
               "fullType": "long",
-              "required": true,
-              "description": "Credential ID"
+              "name": "credentialId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "api.Application",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "api.Application"
         }
       ],
-      "description": "API Application"
+      "path": "/me/api/credential/{credentialId}/application"
     },
     {
-      "path": "/me/availableAutomaticPaymentMeans",
+      "description": "availableAutomaticPaymentMeans operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available payment methods in this Nic's country",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "billing.AutomaticPaymentMean",
-          "noAuthentication": false,
-          "description": "List available payment methods in this Nic's country"
+          "responseType": "billing.AutomaticPaymentMean"
         }
       ],
-      "description": "availableAutomaticPaymentMeans operations"
+      "path": "/me/availableAutomaticPaymentMeans"
     },
     {
-      "path": "/me/bill",
+      "description": "List the billing.Invoice objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of all the bills the logged account has",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Filter the value of orderId property (=)",
+              "fullType": "long",
               "name": "orderId",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of orderId property (=)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (<=)",
+              "fullType": "datetime",
               "name": "date.to",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of date property (<=)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (>=)",
+              "fullType": "datetime",
               "name": "date.from",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of date property (>=)"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of all the bills the logged account has"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the billing.Invoice objects"
+      "path": "/me/bill"
     },
     {
-      "path": "/me/bill/{billId}",
+      "description": "Details about a Bill",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "billId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Bill ID",
               "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
+              "name": "billId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.Invoice",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "billing.Invoice"
         }
       ],
-      "description": "Details about a Bill"
+      "path": "/me/bill/{billId}"
     },
     {
-      "path": "/me/bill/{billId}/debt",
+      "description": "State of a balance",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "billId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Bill ID",
               "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
+              "name": "billId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "balance.InvoicingBalance",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "balance.InvoicingBalance"
         }
       ],
-      "description": "State of a balance"
+      "path": "/me/bill/{billId}/debt"
     },
     {
-      "path": "/me/bill/{billId}/debt/operation",
+      "description": "List the balance.OperationBalance objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "All operations related to these debts",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "billId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Bill ID",
               "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
+              "name": "billId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of depositOrderId property (=)",
+              "fullType": "long",
               "name": "depositOrderId",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of depositOrderId property (=)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "All operations related to these debts"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the balance.OperationBalance objects"
+      "path": "/me/bill/{billId}/debt/operation"
     },
     {
-      "path": "/me/bill/{billId}/debt/operation/{operationId}",
+      "description": "Operation that happend on a debt",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "operationId",
+              "dataType": "string",
+              "description": "Bill ID",
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Operation ID",
               "fullType": "long",
-              "required": true,
-              "description": "Operation ID"
-            },
-            {
-              "name": "billId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
-            }
-          ],
-          "responseType": "balance.OperationBalance",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Operation that happend on a debt"
-    },
-    {
-      "path": "/me/bill/{billId}/debt/operation/{operationId}/associatedObject",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "billId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
-            },
-            {
               "name": "operationId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "balance.OperationBalance"
+        }
+      ],
+      "path": "/me/bill/{billId}/debt/operation/{operationId}"
+    },
+    {
+      "description": "associatedObject operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return main data about the object related to this operation",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Operation ID",
               "fullType": "long",
-              "required": true,
-              "description": "Operation ID"
-            }
-          ],
-          "responseType": "debt.entry.AssociatedObject",
-          "noAuthentication": false,
-          "description": "Return main data about the object related to this operation"
-        }
-      ],
-      "description": "associatedObject operations"
-    },
-    {
-      "path": "/me/bill/{billId}/details",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "billId",
-              "dataType": "string",
+              "name": "operationId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Give access to all entries of the bill"
-        }
-      ],
-      "description": "List the billing.InvoiceDetail objects"
-    },
-    {
-      "path": "/me/bill/{billId}/details/{billDetailId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "billId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Bill ID",
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "debt.entry.AssociatedObject"
+        }
+      ],
+      "path": "/me/bill/{billId}/debt/operation/{operationId}/associatedObject"
+    },
+    {
+      "description": "List the billing.InvoiceDetail objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Give access to all entries of the bill",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Bill ID",
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/bill/{billId}/details"
+    },
+    {
+      "description": "Information about an invoice entry",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Bill ID",
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Bill detail ID",
+              "fullType": "string",
               "name": "billDetailId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill detail ID"
+              "required": true
             }
           ],
-          "responseType": "billing.InvoiceDetail",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "billing.InvoiceDetail"
         }
       ],
-      "description": "Information about an invoice entry"
+      "path": "/me/bill/{billId}/details/{billDetailId}"
     },
     {
-      "path": "/me/bill/{billId}/download",
+      "description": "download operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Generate download link for the document",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Bill ID",
+              "fullType": "string",
               "name": "billId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
+              "required": true
             },
             {
-              "name": "extension",
               "dataType": "billing.DocumentExtensionEnum",
-              "paramType": "query",
+              "description": "Document suffix",
               "fullType": "billing.DocumentExtensionEnum",
-              "required": false,
-              "description": "Document suffix"
+              "name": "extension",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Generate download link for the document"
+          "responseType": "string"
         }
       ],
-      "description": "download operations"
+      "path": "/me/bill/{billId}/download"
     },
     {
-      "path": "/me/billing/group",
+      "description": "Manage billing groups",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve all billing groups",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter by name",
               "fullType": "string",
-              "required": false,
-              "description": "Filter by name"
-            },
-            {
-              "name": "serviceId",
-              "dataType": "long",
+              "name": "name",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter by Service ID"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Retrieve all billing groups"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "dataType": "me.billing.group.BillingGroup",
-              "paramType": "body",
-              "fullType": "me.billing.group.BillingGroup",
-              "required": true,
-              "description": "Request Body"
-            }
-          ],
-          "responseType": "me.billing.group.BillingGroup",
-          "noAuthentication": false,
-          "description": "Create a new billing group"
-        }
-      ],
-      "description": "Manage billing groups"
-    },
-    {
-      "path": "/me/billing/group/{groupId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "groupId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Group ID"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a billing group"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "groupId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Group ID"
-            }
-          ],
-          "responseType": "me.billing.group.BillingGroup",
-          "noAuthentication": false,
-          "description": "Retrieve information about a billing group"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "PUT",
-          "parameters": [
-            {
-              "dataType": "me.billing.group.BillingGroup",
-              "paramType": "body",
-              "fullType": "me.billing.group.BillingGroup",
-              "required": true,
-              "description": "Request Body"
+              "required": false
             },
             {
-              "name": "groupId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Filter by Service ID",
               "fullType": "long",
-              "required": true,
-              "description": "Group ID"
+              "name": "serviceId",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Edit billing group"
-        }
-      ],
-      "description": "Manage billing groups"
-    },
-    {
-      "path": "/me/billing/group/{groupId}/service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "groupId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Group ID"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Retrieve billing group service ID list"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a new billing group",
           "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.billing.group.BillingGroup",
+              "description": "Request Body",
+              "fullType": "me.billing.group.BillingGroup",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "me.billing.group.BillingGroup"
+        }
+      ],
+      "path": "/me/billing/group"
+    },
+    {
+      "description": "Manage billing groups",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a billing group",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Group ID",
+              "fullType": "long",
+              "name": "groupId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve information about a billing group",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Group ID",
+              "fullType": "long",
+              "name": "groupId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "me.billing.group.BillingGroup"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Edit billing group",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.billing.group.BillingGroup",
+              "description": "Request Body",
+              "fullType": "me.billing.group.BillingGroup",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Group ID",
+              "fullType": "long",
+              "name": "groupId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/billing/group/{groupId}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve billing group service ID list",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Group ID",
+              "fullType": "long",
+              "name": "groupId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Associate a service to a billing group",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "me.billing.group.service.Create",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "me.billing.group.service.Create",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "groupId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Group ID",
               "fullType": "long",
-              "required": true,
-              "description": "Group ID"
+              "name": "groupId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "me.billing.group.Service",
-          "noAuthentication": false,
-          "description": "Associate a service to a billing group"
+          "responseType": "me.billing.group.Service"
         }
       ],
-      "description": ""
+      "path": "/me/billing/group/{groupId}/service"
     },
     {
-      "path": "/me/billing/group/{groupId}/service/{serviceId}",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Unlink a service from a billing group",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "groupId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Service ID",
               "fullType": "long",
-              "required": true,
-              "description": "Group ID"
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Group ID",
               "fullType": "long",
-              "required": true,
-              "description": "Service ID"
+              "name": "groupId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Unlink a service from a billing group"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information about a billing group service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Group ID",
+              "fullType": "long",
               "name": "groupId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Group ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
               "name": "serviceId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Service ID"
+              "required": true
             }
           ],
-          "responseType": "me.billing.group.Service",
-          "noAuthentication": false,
-          "description": "Retrieve information about a billing group service"
+          "responseType": "me.billing.group.Service"
         }
       ],
-      "description": ""
+      "path": "/me/billing/group/{groupId}/service/{serviceId}"
     },
     {
-      "path": "/me/certificates",
+      "description": "Get all certificates of the account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get all certificates of the account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Certificate definition name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Certificate definition name"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get all certificates of the account"
+          "responseType": "string[]"
         }
       ],
-      "description": "Get all certificates of the account"
+      "path": "/me/certificates"
     },
     {
-      "path": "/me/changeEmail",
+      "description": "changeEmail operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Initiate an email change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "New email to associate to your account",
+              "fullType": "string",
               "name": "newEmail",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "New email to associate to your account"
+              "required": true
             }
           ],
-          "responseType": "nichandle.emailChange.Task",
-          "noAuthentication": false,
-          "description": "Initiate an email change procedure"
+          "responseType": "nichandle.emailChange.Task"
         }
       ],
-      "description": "changeEmail operations"
+      "path": "/me/changeEmail"
     },
     {
-      "path": "/me/changePassword",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Initiate a password change procedure",
           "httpMethod": "POST",
-          "parameters": [],
-          "responseType": "void",
           "noAuthentication": false,
-          "description": "Initiate a password change procedure"
+          "parameters": [],
+          "responseType": "void"
         }
       ],
-      "description": "changePassword operations"
+      "path": "/me/changePassword"
     },
     {
-      "path": "/me/consent",
+      "description": "List all consent campaign available",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List all consent campaign available",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "me.consent.Campaign[]",
           "noAuthentication": false,
-          "description": "List all consent campaign available"
+          "parameters": [],
+          "responseType": "me.consent.Campaign[]"
         }
       ],
-      "description": "List all consent campaign available"
+      "path": "/me/consent"
     },
     {
-      "path": "/me/consent/{campaignName}",
+      "description": "Retrieve information about a consent campaign",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve information about a consent campaign",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "campaignName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Campaign name",
               "fullType": "string",
-              "required": true,
-              "description": "Campaign name"
+              "name": "campaignName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "me.consent.Campaign",
-          "noAuthentication": false,
-          "description": "Retrieve information about a consent campaign"
+          "responseType": "me.consent.Campaign"
         }
       ],
-      "description": "Retrieve information about a consent campaign"
+      "path": "/me/consent/{campaignName}"
     },
     {
-      "path": "/me/consent/{campaignName}/decision",
+      "description": "Get decision value for a consent campaign",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get decision value for a consent campaign",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "campaignName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Campaign name",
               "fullType": "string",
-              "required": true,
-              "description": "Campaign name"
+              "name": "campaignName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "me.consent.Consent",
-          "noAuthentication": false,
-          "description": "Get decision value for a consent campaign"
+          "responseType": "me.consent.Consent"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update decision of a consent campaign",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "value",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Decision value",
               "fullType": "boolean",
-              "required": true,
-              "description": "Decision value"
+              "name": "value",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Campaign name",
+              "fullType": "string",
               "name": "campaignName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Campaign name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Update decision of a consent campaign"
+          "responseType": "void"
         }
       ],
-      "description": "Get decision value for a consent campaign"
+      "path": "/me/consent/{campaignName}/decision"
     },
     {
-      "path": "/me/consumption/usage/current",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get on-going consumptions for all services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "me.consumption.Transaction[]",
-          "noAuthentication": false,
-          "description": "Get on-going consumptions for all services"
+          "responseType": "me.consumption.Transaction[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/me/consumption/usage/current"
     },
     {
-      "path": "/me/consumption/usage/forecast",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get forecasted consumptions for all services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "me.consumption.Transaction[]",
-          "noAuthentication": false,
-          "description": "Get forecasted consumptions for all services"
+          "responseType": "me.consumption.Transaction[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/me/consumption/usage/forecast"
     },
     {
-      "path": "/me/consumption/usage/history",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get list of transactions between two dates",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "datetime",
+              "description": "Begin date",
+              "fullType": "datetime",
               "name": "beginDate",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": true,
-              "description": "Begin date"
+              "required": true
             },
             {
+              "dataType": "datetime",
+              "description": "End date",
+              "fullType": "datetime",
               "name": "endDate",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": true,
-              "description": "End date"
+              "required": true
             }
           ],
-          "responseType": "me.consumption.Transaction[]",
-          "noAuthentication": false,
-          "description": "Get list of transactions between two dates"
+          "responseType": "me.consumption.Transaction[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/me/consumption/usage/history"
     },
     {
-      "path": "/me/contact",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve all contact that you created",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Retrieve all contact that you created"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new contact",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "birthZip",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Name of your organisation",
               "fullType": "string",
-              "required": false,
-              "description": "Birth Zipcode"
-            },
-            {
-              "name": "gender",
-              "dataType": "nichandle.GenderEnum",
-              "paramType": "body",
-              "fullType": "nichandle.GenderEnum",
-              "required": false,
-              "description": "Gender"
-            },
-            {
-              "name": "nationality",
-              "dataType": "nichandle.CountryEnum",
-              "paramType": "body",
-              "fullType": "nichandle.CountryEnum",
-              "required": false,
-              "description": "Nationality"
-            },
-            {
-              "name": "cellPhone",
-              "dataType": "phoneNumber",
-              "paramType": "body",
-              "fullType": "phoneNumber",
-              "required": false,
-              "description": "Cellphone number"
-            },
-            {
-              "name": "birthDay",
-              "dataType": "date",
-              "paramType": "body",
-              "fullType": "date",
-              "required": false,
-              "description": "Birthday date"
-            },
-            {
-              "name": "birthCity",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "City of birth"
-            },
-            {
-              "name": "vat",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "VAT number"
-            },
-            {
-              "name": "nationalIdentificationNumber",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "National identification number"
-            },
-            {
-              "name": "organisationType",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Type of your organisation"
-            },
-            {
-              "name": "language",
-              "dataType": "nichandle.LanguageEnum",
-              "paramType": "body",
-              "fullType": "nichandle.LanguageEnum",
-              "required": true,
-              "description": "Language"
-            },
-            {
               "name": "organisationName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Name of your organisation"
+              "required": false
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "body",
+              "description": "First name",
               "fullType": "string",
-              "required": true,
-              "description": "Email address"
-            },
-            {
               "name": "firstName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "First name"
+              "required": true
             },
             {
-              "name": "address",
-              "dataType": "contact.Address",
-              "paramType": "body",
-              "fullType": "contact.Address",
-              "required": true,
-              "description": "Address of the contact"
-            },
-            {
-              "name": "phone",
-              "dataType": "phoneNumber",
-              "paramType": "body",
-              "fullType": "phoneNumber",
-              "required": true,
-              "description": "Landline phone number"
-            },
-            {
-              "name": "fax",
-              "dataType": "phoneNumber",
-              "paramType": "body",
-              "fullType": "phoneNumber",
-              "required": false,
-              "description": "Fax phone number"
-            },
-            {
-              "name": "birthCountry",
-              "dataType": "nichandle.CountryEnum",
-              "paramType": "body",
-              "fullType": "nichandle.CountryEnum",
-              "required": false,
-              "description": "Birth Country"
-            },
-            {
-              "name": "companyNationalIdentificationNumber",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company national identification number"
-            },
-            {
-              "name": "lastName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Last name"
-            },
-            {
-              "name": "legalForm",
               "dataType": "nichandle.LegalFormEnum",
-              "paramType": "body",
+              "description": "Legal form of the contact",
               "fullType": "nichandle.LegalFormEnum",
-              "required": true,
-              "description": "Legal form of the contact"
+              "name": "legalForm",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Cellphone number",
+              "fullType": "phoneNumber",
+              "name": "cellPhone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "date",
+              "description": "Birthday date",
+              "fullType": "date",
+              "name": "birthDay",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "City of birth",
+              "fullType": "string",
+              "name": "birthCity",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "VAT number",
+              "fullType": "string",
+              "name": "vat",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Landline phone number",
+              "fullType": "phoneNumber",
+              "name": "phone",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Birth Zipcode",
+              "fullType": "string",
+              "name": "birthZip",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "Birth Country",
+              "fullType": "nichandle.CountryEnum",
+              "name": "birthCountry",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.GenderEnum",
+              "description": "Gender",
+              "fullType": "nichandle.GenderEnum",
+              "name": "gender",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Type of your organisation",
+              "fullType": "string",
+              "name": "organisationType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Email address",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.LanguageEnum",
+              "description": "Language",
+              "fullType": "nichandle.LanguageEnum",
+              "name": "language",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "Nationality",
+              "fullType": "nichandle.CountryEnum",
+              "name": "nationality",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Last name",
+              "fullType": "string",
+              "name": "lastName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "contact.Address",
+              "description": "Address of the contact",
+              "fullType": "contact.Address",
+              "name": "address",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Fax phone number",
+              "fullType": "phoneNumber",
+              "name": "fax",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company national identification number",
+              "fullType": "string",
+              "name": "companyNationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "National identification number",
+              "fullType": "string",
+              "name": "nationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "contact.Contact",
-          "noAuthentication": false,
-          "description": "Create a new contact"
+          "responseType": "contact.Contact"
         }
       ],
-      "description": "Missing description"
+      "path": "/me/contact"
     },
     {
-      "path": "/me/contact/{contactId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve information about a contact",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "long",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "contact.Contact",
-          "noAuthentication": false,
-          "description": "Retrieve information about a contact"
+          "responseType": "contact.Contact"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update an existing contact",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "gender",
-              "dataType": "nichandle.GenderEnum",
-              "paramType": "body",
-              "fullType": "nichandle.GenderEnum",
-              "required": false,
-              "description": "Gender"
-            },
-            {
-              "name": "language",
-              "dataType": "nichandle.LanguageEnum",
-              "paramType": "body",
-              "fullType": "nichandle.LanguageEnum",
-              "required": false,
-              "description": "Language"
-            },
-            {
-              "name": "cellPhone",
-              "dataType": "phoneNumber",
-              "paramType": "body",
-              "fullType": "phoneNumber",
-              "required": false,
-              "description": "Cellphone number"
-            },
-            {
-              "name": "fax",
-              "dataType": "phoneNumber",
-              "paramType": "body",
-              "fullType": "phoneNumber",
-              "required": false,
-              "description": "Fax phone number"
-            },
-            {
-              "name": "birthZip",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Birth Zipcode"
-            },
-            {
-              "name": "vat",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "VAT number"
-            },
-            {
-              "name": "organisationType",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Type of your organisation"
-            },
-            {
-              "name": "organisationName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Name of your organisation"
-            },
-            {
-              "name": "legalForm",
-              "dataType": "nichandle.LegalFormEnum",
-              "paramType": "body",
-              "fullType": "nichandle.LegalFormEnum",
-              "required": false,
-              "description": "Legal form of the contact"
-            },
-            {
-              "name": "address",
-              "dataType": "contact.Address",
-              "paramType": "body",
-              "fullType": "contact.Address",
-              "required": false,
-              "description": "Address of the contact"
-            },
-            {
-              "name": "phone",
-              "dataType": "phoneNumber",
-              "paramType": "body",
-              "fullType": "phoneNumber",
-              "required": false,
-              "description": "Landline phone number"
-            },
-            {
-              "name": "birthDay",
-              "dataType": "date",
-              "paramType": "body",
-              "fullType": "date",
-              "required": false,
-              "description": "Birthday date"
-            },
-            {
-              "name": "nationalIdentificationNumber",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "National identification number"
-            },
-            {
-              "name": "nationality",
               "dataType": "nichandle.CountryEnum",
-              "paramType": "body",
+              "description": "Birth Country",
               "fullType": "nichandle.CountryEnum",
-              "required": false,
-              "description": "Nationality"
-            },
-            {
-              "name": "birthCity",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "City of birth"
-            },
-            {
               "name": "birthCountry",
-              "dataType": "nichandle.CountryEnum",
               "paramType": "body",
-              "fullType": "nichandle.CountryEnum",
-              "required": false,
-              "description": "Birth Country"
+              "required": false
             },
             {
+              "dataType": "nichandle.LanguageEnum",
+              "description": "Language",
+              "fullType": "nichandle.LanguageEnum",
+              "name": "language",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "contact.Address",
+              "description": "Address of the contact",
+              "fullType": "contact.Address",
+              "name": "address",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "City of birth",
+              "fullType": "string",
+              "name": "birthCity",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company national identification number",
+              "fullType": "string",
               "name": "companyNationalIdentificationNumber",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Company national identification number"
+              "required": false
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "body",
+              "description": "First name",
               "fullType": "string",
-              "required": false,
-              "description": "Email address"
-            },
-            {
               "name": "firstName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "First name"
+              "required": false
             },
             {
+              "dataType": "nichandle.GenderEnum",
+              "description": "Gender",
+              "fullType": "nichandle.GenderEnum",
+              "name": "gender",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.LegalFormEnum",
+              "description": "Legal form of the contact",
+              "fullType": "nichandle.LegalFormEnum",
+              "name": "legalForm",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Fax phone number",
+              "fullType": "phoneNumber",
+              "name": "fax",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Birth Zipcode",
+              "fullType": "string",
+              "name": "birthZip",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "VAT number",
+              "fullType": "string",
+              "name": "vat",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name of your organisation",
+              "fullType": "string",
+              "name": "organisationName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Email address",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "Nationality",
+              "fullType": "nichandle.CountryEnum",
+              "name": "nationality",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Last name",
+              "fullType": "string",
               "name": "lastName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Last name"
+              "required": false
             },
             {
-              "name": "contactId",
+              "dataType": "phoneNumber",
+              "description": "Cellphone number",
+              "fullType": "phoneNumber",
+              "name": "cellPhone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Landline phone number",
+              "fullType": "phoneNumber",
+              "name": "phone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "date",
+              "description": "Birthday date",
+              "fullType": "date",
+              "name": "birthDay",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "National identification number",
+              "fullType": "string",
+              "name": "nationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Type of your organisation",
+              "fullType": "string",
+              "name": "organisationType",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "long",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "contact.Contact",
-          "noAuthentication": false,
-          "description": "Update an existing contact"
+          "responseType": "contact.Contact"
         }
       ],
-      "description": "Missing description"
+      "path": "/me/contact/{contactId}"
     },
     {
-      "path": "/me/contact/{contactId}/fields",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Display mandatory/read-only informations of a contact",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Contact ID",
               "fullType": "long",
-              "required": true,
-              "description": "Contact ID"
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "contact.FieldInformation[]",
-          "noAuthentication": false,
-          "description": "Display mandatory/read-only informations of a contact"
+          "responseType": "contact.FieldInformation[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/me/contact/{contactId}/fields"
     },
     {
-      "path": "/me/credit/balance",
+      "description": "Manage credit balances",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve all credit balances",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "type",
               "dataType": "me.credit.balance.TypeEnum",
-              "paramType": "query",
+              "description": "Filter by balance type",
               "fullType": "me.credit.balance.TypeEnum",
-              "required": false,
-              "description": "Filter by balance type"
+              "name": "type",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Retrieve all credit balances"
+          "responseType": "string[]"
         }
       ],
-      "description": "Manage credit balances"
+      "path": "/me/credit/balance"
     },
     {
-      "path": "/me/credit/balance/{balanceName}",
+      "description": "Manage credit balances",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve a credit balance",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "balanceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Balance name",
               "fullType": "string",
-              "required": true,
-              "description": "Balance name"
+              "name": "balanceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "me.credit.Balance",
-          "noAuthentication": false,
-          "description": "Retrieve a credit balance"
+          "responseType": "me.credit.Balance"
         }
       ],
-      "description": "Manage credit balances"
+      "path": "/me/credit/balance/{balanceName}"
     },
     {
-      "path": "/me/credit/balance/{balanceName}/movement",
+      "description": "Manage credit balance movements",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve movements for a specific balance",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "balanceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Balance name",
               "fullType": "string",
-              "required": true,
-              "description": "Balance name"
+              "name": "balanceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Retrieve movements for a specific balance"
+          "responseType": "long[]"
         }
       ],
-      "description": "Manage credit balance movements"
+      "path": "/me/credit/balance/{balanceName}/movement"
     },
     {
-      "path": "/me/credit/balance/{balanceName}/movement/{movementId}",
+      "description": "Manage credit balance movements",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve a specific movement for a credit balance",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "balanceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Balance name",
               "fullType": "string",
-              "required": true,
-              "description": "Balance name"
+              "name": "balanceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "movementId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Movement ID",
               "fullType": "long",
-              "required": true,
-              "description": "Movement ID"
+              "name": "movementId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "me.credit.balance.Movement",
-          "noAuthentication": false,
-          "description": "Retrieve a specific movement for a credit balance"
+          "responseType": "me.credit.balance.Movement"
         }
       ],
-      "description": "Manage credit balance movements"
+      "path": "/me/credit/balance/{balanceName}/movement/{movementId}"
     },
     {
-      "path": "/me/credit/code",
+      "description": "Validate a code to generate associated credit movement",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Validate a code to generate associated credit movement",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "me.credit.code.Redeem",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "me.credit.code.Redeem",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "me.credit.balance.Movement",
-          "noAuthentication": false,
-          "description": "Validate a code to generate associated credit movement"
+          "responseType": "me.credit.balance.Movement"
         }
       ],
-      "description": "Validate a code to generate associated credit movement"
+      "path": "/me/credit/code"
     },
     {
-      "path": "/me/debtAccount",
+      "description": "Balance of the account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "balance.CustomerBalance",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "balance.CustomerBalance"
         }
       ],
-      "description": "Balance of the account"
+      "path": "/me/debtAccount"
     },
     {
-      "path": "/me/debtAccount/debt",
+      "description": "List the balance.InvoicingBalance objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "All debts related to your account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "All debts related to your account"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the balance.InvoicingBalance objects"
+      "path": "/me/debtAccount/debt"
     },
     {
-      "path": "/me/debtAccount/debt/{debtId}",
+      "description": "State of a balance",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "debtId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Debt ID",
               "fullType": "long",
-              "required": true,
-              "description": "Debt ID"
+              "name": "debtId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "balance.InvoicingBalance",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "balance.InvoicingBalance"
         }
       ],
-      "description": "State of a balance"
+      "path": "/me/debtAccount/debt/{debtId}"
     },
     {
-      "path": "/me/debtAccount/debt/{debtId}/operation",
+      "description": "List the balance.OperationBalance objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "All operations related to these debts",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "debtId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Debt ID",
               "fullType": "long",
-              "required": true,
-              "description": "Debt ID"
+              "name": "debtId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of depositOrderId property (=)",
+              "fullType": "long",
               "name": "depositOrderId",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of depositOrderId property (=)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "All operations related to these debts"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the balance.OperationBalance objects"
+      "path": "/me/debtAccount/debt/{debtId}/operation"
     },
     {
-      "path": "/me/debtAccount/debt/{debtId}/operation/{operationId}",
+      "description": "Operation that happend on a debt",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "debtId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Debt ID",
               "fullType": "long",
-              "required": true,
-              "description": "Debt ID"
+              "name": "debtId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "operationId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Operation ID",
               "fullType": "long",
-              "required": true,
-              "description": "Operation ID"
+              "name": "operationId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "balance.OperationBalance",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "balance.OperationBalance"
         }
       ],
-      "description": "Operation that happend on a debt"
+      "path": "/me/debtAccount/debt/{debtId}/operation/{operationId}"
     },
     {
-      "path": "/me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject",
+      "description": "associatedObject operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return main data about the object related to this operation",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "debtId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Debt ID",
               "fullType": "long",
-              "required": true,
-              "description": "Debt ID"
+              "name": "debtId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "operationId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Operation ID",
               "fullType": "long",
-              "required": true,
-              "description": "Operation ID"
+              "name": "operationId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "debt.entry.AssociatedObject",
-          "noAuthentication": false,
-          "description": "Return main data about the object related to this operation"
+          "responseType": "debt.entry.AssociatedObject"
         }
       ],
-      "description": "associatedObject operations"
+      "path": "/me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject"
     },
     {
-      "path": "/me/debtAccount/pay",
+      "description": "pay operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create an order in order to pay selected invoices",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderIds",
               "dataType": "long[]",
-              "paramType": "body",
+              "description": "If set, specify order ids to regulate",
               "fullType": "long[]",
-              "required": false,
-              "description": "If set, specify order ids to regulate"
-            },
-            {
-              "name": "paymentMethodId",
-              "dataType": "long",
+              "name": "orderIds",
               "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Force the use of the payment method id",
               "fullType": "long",
-              "required": false,
-              "description": "Force the use of the payment method id"
+              "name": "paymentMethodId",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "billing.InvoiceDepositRequest",
-          "noAuthentication": false,
-          "description": "Create an order in order to pay selected invoices"
+          "responseType": "billing.InvoiceDepositRequest"
         }
       ],
-      "description": "pay operations"
+      "path": "/me/debtAccount/pay"
     },
     {
-      "path": "/me/deposit",
+      "description": "List the billing.InvoiceDeposit objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of all the deposits made to your prepaid account or debt account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of orderId property (=)"
-            },
-            {
+              "dataType": "string",
+              "description": "Filter the value of date property (<=)",
+              "fullType": "string",
               "name": "date.to",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of date property (<=)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of date property (>=)",
+              "fullType": "string",
               "name": "date.from",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of date property (>=)"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of all the deposits made to your prepaid account or debt account"
-        }
-      ],
-      "description": "List the billing.InvoiceDeposit objects"
-    },
-    {
-      "path": "/me/deposit/{depositId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "depositId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Deposit ID"
-            }
-          ],
-          "responseType": "billing.InvoiceDeposit",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Details about a deposit"
-    },
-    {
-      "path": "/me/deposit/{depositId}/download",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "depositId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Deposit ID"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Generate download link for the pdf document"
-        }
-      ],
-      "description": "download operations"
-    },
-    {
-      "path": "/me/deposit/{depositId}/paidBills",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "depositId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Deposit ID"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get invoices paid by this deposit"
-        }
-      ],
-      "description": "List the billing.Invoice objects"
-    },
-    {
-      "path": "/me/deposit/{depositId}/paidBills/{billId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "depositId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Deposit ID"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of orderId property (=)",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/deposit"
+    },
+    {
+      "description": "Details about a deposit",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Deposit ID",
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.InvoiceDeposit"
+        }
+      ],
+      "path": "/me/deposit/{depositId}"
+    },
+    {
+      "description": "download operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Generate download link for the pdf document",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Deposit ID",
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/download"
+    },
+    {
+      "description": "List the billing.Invoice objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get invoices paid by this deposit",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Deposit ID",
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/paidBills"
+    },
+    {
+      "description": "Details about a Bill",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Deposit ID",
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Bill ID",
+              "fullType": "string",
               "name": "billId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
+              "required": true
             }
           ],
-          "responseType": "billing.Invoice",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "billing.Invoice"
         }
       ],
-      "description": "Details about a Bill"
+      "path": "/me/deposit/{depositId}/paidBills/{billId}"
     },
     {
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt",
+      "description": "State of a balance",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "depositId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Deposit ID",
               "fullType": "string",
-              "required": true,
-              "description": "Deposit ID"
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "billId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Bill ID",
               "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
+              "name": "billId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "balance.InvoicingBalance",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "balance.InvoicingBalance"
         }
       ],
-      "description": "State of a balance"
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt"
     },
     {
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation",
+      "description": "List the balance.OperationBalance objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "All operations related to these debts",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Deposit ID",
+              "fullType": "string",
               "name": "depositId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Deposit ID"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Bill ID",
+              "fullType": "string",
               "name": "billId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Filter the value of depositOrderId property (=)",
+              "fullType": "long",
               "name": "depositOrderId",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of depositOrderId property (=)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "All operations related to these debts"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the balance.OperationBalance objects"
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation"
     },
     {
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}",
+      "description": "Operation that happend on a debt",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "operationId",
+              "dataType": "string",
+              "description": "Deposit ID",
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Bill ID",
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Operation ID",
               "fullType": "long",
-              "required": true,
-              "description": "Operation ID"
-            },
-            {
-              "name": "depositId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Deposit ID"
-            },
-            {
-              "name": "billId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
-            }
-          ],
-          "responseType": "balance.OperationBalance",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Operation that happend on a debt"
-    },
-    {
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "depositId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Deposit ID"
-            },
-            {
-              "name": "billId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
-            },
-            {
               "name": "operationId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Operation ID"
+              "required": true
             }
           ],
-          "responseType": "debt.entry.AssociatedObject",
-          "noAuthentication": false,
-          "description": "Return main data about the object related to this operation"
+          "responseType": "balance.OperationBalance"
         }
       ],
-      "description": "associatedObject operations"
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}"
     },
     {
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/details",
+      "description": "associatedObject operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return main data about the object related to this operation",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "billId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Deposit ID",
               "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
-            },
-            {
               "name": "depositId",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Bill ID",
               "fullType": "string",
-              "required": true,
-              "description": "Deposit ID"
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Operation ID",
+              "fullType": "long",
+              "name": "operationId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Give access to all entries of the bill"
+          "responseType": "debt.entry.AssociatedObject"
         }
       ],
-      "description": "List the billing.InvoiceDetail objects"
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject"
     },
     {
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}",
+      "description": "List the billing.InvoiceDetail objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Give access to all entries of the bill",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "billId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Bill ID",
               "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
+              "name": "billId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Deposit ID",
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/details"
+    },
+    {
+      "description": "Information about an invoice entry",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Deposit ID",
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Bill ID",
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Bill detail ID",
+              "fullType": "string",
               "name": "billDetailId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill detail ID"
-            },
-            {
-              "name": "depositId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Deposit ID"
+              "required": true
             }
           ],
-          "responseType": "billing.InvoiceDetail",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "billing.InvoiceDetail"
         }
       ],
-      "description": "Information about an invoice entry"
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}"
     },
     {
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/download",
+      "description": "download operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Generate download link for the document",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "depositId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Deposit ID",
               "fullType": "string",
-              "required": true,
-              "description": "Deposit ID"
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Bill ID",
+              "fullType": "string",
               "name": "billId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Bill ID"
+              "required": true
             },
             {
-              "name": "extension",
               "dataType": "billing.DocumentExtensionEnum",
-              "paramType": "query",
+              "description": "Document suffix",
               "fullType": "billing.DocumentExtensionEnum",
-              "required": false,
-              "description": "Document suffix"
+              "name": "extension",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Generate download link for the document"
+          "responseType": "string"
         }
       ],
-      "description": "download operations"
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/download"
     },
     {
-      "path": "/me/depositRequest",
+      "description": "List the billing.InvoiceDepositRequest objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of all the deposit requests made",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "creationDate.to",
               "dataType": "datetime",
-              "paramType": "query",
+              "description": "Filter the value of creationDate property (<=)",
               "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDate property (<=)"
+              "name": "creationDate.to",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "creationDate.from",
               "dataType": "datetime",
-              "paramType": "query",
+              "description": "Filter the value of creationDate property (>=)",
               "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDate property (>=)"
+              "name": "creationDate.from",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List of all the deposit requests made"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the billing.InvoiceDepositRequest objects"
+      "path": "/me/depositRequest"
     },
     {
-      "path": "/me/depositRequest/{id}",
+      "description": "Details about a deposit",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.InvoiceDepositRequest",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "billing.InvoiceDepositRequest"
         }
       ],
-      "description": "Details about a deposit"
+      "path": "/me/depositRequest/{id}"
     },
     {
-      "path": "/me/fidelityAccount",
+      "description": "Balance of the fidelity account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "billing.FidelityAccount",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [],
+          "responseType": "billing.FidelityAccount"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "billing.FidelityAccount",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "billing.FidelityAccount",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Balance of the fidelity account"
+      "path": "/me/fidelityAccount"
     },
     {
-      "path": "/me/fidelityAccount/creditOrder",
+      "description": "creditOrder operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Generate an order that can be paid in order to credit the fidelity account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "The amount of points you want to credit your fidelity account of",
+              "fullType": "long",
               "name": "amount",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "The amount of points you want to credit your fidelity account of"
+              "required": true
             }
           ],
-          "responseType": "billing.Order",
-          "noAuthentication": false,
-          "description": "Generate an order that can be paid in order to credit the fidelity account"
+          "responseType": "billing.Order"
         }
       ],
-      "description": "creditOrder operations"
+      "path": "/me/fidelityAccount/creditOrder"
     },
     {
-      "path": "/me/fidelityAccount/movements",
+      "description": "List the billing.FidelityMovement objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of entries of the fidelity account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "date.from",
               "dataType": "datetime",
-              "paramType": "query",
+              "description": "Filter the value of date property (<=)",
               "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of date property (>=)"
-            },
-            {
               "name": "date.to",
-              "dataType": "datetime",
               "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (>=)",
               "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of date property (<=)"
+              "name": "date.from",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List of entries of the fidelity account"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the billing.FidelityMovement objects"
+      "path": "/me/fidelityAccount/movements"
     },
     {
-      "path": "/me/fidelityAccount/movements/{movementId}",
+      "description": "Details about a fidelity account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "movementId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Movement ID",
               "fullType": "long",
-              "required": true,
-              "description": "Movement ID"
+              "name": "movementId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.FidelityMovement",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "billing.FidelityMovement"
         }
       ],
-      "description": "Details about a fidelity account"
+      "path": "/me/fidelityAccount/movements/{movementId}"
     },
     {
-      "path": "/me/geolocation",
+      "description": "Route for getting visitor's country and continent",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Fetch visitor country & region",
           "httpMethod": "POST",
-          "parameters": [],
-          "responseType": "geolocation.ContinentCountryLocation",
           "noAuthentication": true,
-          "description": "Fetch visitor country & region"
+          "parameters": [],
+          "responseType": "geolocation.ContinentCountryLocation"
         }
       ],
-      "description": "Route for getting visitor's country and continent"
+      "path": "/me/geolocation"
     },
     {
-      "path": "/me/identity/group",
+      "description": "Groups linked to this account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve all groups of this account",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "Retrieve all groups of this account"
+          "parameters": [],
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new group",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Group's name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Group's name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Group's description",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Group's description"
+              "required": false
             },
             {
-              "name": "role",
               "dataType": "nichandle.RoleEnum",
-              "paramType": "body",
+              "description": "Group's Role",
               "fullType": "nichandle.RoleEnum",
-              "required": false,
-              "description": "Group's Role"
+              "name": "role",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "nichandle.Authentication.Group",
-          "noAuthentication": false,
-          "description": "Create a new group"
+          "responseType": "nichandle.Authentication.Group"
         }
       ],
-      "description": "Groups linked to this account"
+      "path": "/me/identity/group"
     },
     {
-      "path": "/me/identity/group/{group}",
+      "description": "A group linked to this account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this object",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "group",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Group",
               "fullType": "string",
-              "required": true,
-              "description": "Group"
+              "name": "group",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this object"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "group",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Group",
               "fullType": "string",
-              "required": true,
-              "description": "Group"
+              "name": "group",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "nichandle.Authentication.Group",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "nichandle.Authentication.Group"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter a group",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Group's description",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Group's description"
+              "required": false
             },
             {
-              "name": "role",
               "dataType": "nichandle.RoleEnum",
-              "paramType": "body",
+              "description": "Group's role",
               "fullType": "nichandle.RoleEnum",
-              "required": false,
-              "description": "Group's role"
+              "name": "role",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "group",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Group",
               "fullType": "string",
-              "required": true,
-              "description": "Group"
+              "name": "group",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter a group"
+          "responseType": "void"
         }
       ],
-      "description": "A group linked to this account"
+      "path": "/me/identity/group/{group}"
     },
     {
-      "path": "/me/identity/user",
+      "description": "Users linked to this account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve all users of this account",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "Retrieve all users of this account"
+          "parameters": [],
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new user",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "User's login",
+              "fullType": "string",
               "name": "login",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "User's login"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "User's description",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "User's description"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "User's email",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "User's email"
+              "required": true
             },
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "User's password",
               "fullType": "password",
-              "required": true,
-              "description": "User's password"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "group",
               "dataType": "string",
-              "paramType": "body",
+              "description": "User's group",
               "fullType": "string",
-              "required": false,
-              "description": "User's group"
+              "name": "group",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Create a new user"
+          "responseType": "void"
         }
       ],
-      "description": "Users linked to this account"
+      "path": "/me/identity/user"
     },
     {
-      "path": "/me/identity/user/{user}",
+      "description": "A user linked to this account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this object",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "user",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User",
               "fullType": "string",
-              "required": true,
-              "description": "User"
+              "name": "user",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this object"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "user",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User",
               "fullType": "string",
-              "required": true,
-              "description": "User"
+              "name": "user",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "nichandle.User",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "nichandle.User"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter a user",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "group",
               "dataType": "string",
-              "paramType": "body",
+              "description": "User's email",
               "fullType": "string",
-              "required": false,
-              "description": "User's group"
-            },
-            {
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "User's email"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "User's description",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "User's description"
+              "required": false
             },
             {
-              "name": "user",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User's group",
               "fullType": "string",
-              "required": true,
-              "description": "User"
+              "name": "group",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "User",
+              "fullType": "string",
+              "name": "user",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter a user"
+          "responseType": "void"
         }
       ],
-      "description": "A user linked to this account"
+      "path": "/me/identity/user/{user}"
     },
     {
-      "path": "/me/identity/user/{user}/disable",
+      "description": "A user linked to this account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Disable this user",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "user",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User",
               "fullType": "string",
-              "required": true,
-              "description": "User"
+              "name": "user",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Disable this user"
+          "responseType": "void"
         }
       ],
-      "description": "A user linked to this account"
+      "path": "/me/identity/user/{user}/disable"
     },
     {
-      "path": "/me/identity/user/{user}/enable",
+      "description": "A user linked to this account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Enable this user",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "user",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User",
               "fullType": "string",
-              "required": true,
-              "description": "User"
+              "name": "user",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Enable this user"
+          "responseType": "void"
         }
       ],
-      "description": "A user linked to this account"
+      "path": "/me/identity/user/{user}/enable"
     },
     {
-      "path": "/me/installationTemplate",
+      "description": "List the dedicated.installationTemplate.Templates objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Your customized operating system installation templates",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Your customized operating system installation templates"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a template",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Your template name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Your template name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "OVH template name yours will be based on, choose one among the list given by compatibleTemplates function",
+              "fullType": "string",
               "name": "baseTemplateName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "OVH template name yours will be based on, choose one among the list given by compatibleTemplates function"
+              "required": true
             },
             {
-              "name": "defaultLanguage",
               "dataType": "dedicated.TemplateOsLanguageEnum",
-              "paramType": "body",
+              "description": "",
               "fullType": "dedicated.TemplateOsLanguageEnum",
-              "required": true,
-              "description": ""
+              "name": "defaultLanguage",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Create a template"
+          "responseType": "void"
         }
       ],
-      "description": "List the dedicated.installationTemplate.Templates objects"
+      "path": "/me/installationTemplate"
     },
     {
-      "path": "/me/installationTemplate/{templateName}",
+      "description": "Available installation templates",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "remove this template",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "remove this template"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.Templates",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.installationTemplate.Templates"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.installationTemplate.Templates",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.installationTemplate.Templates",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Available installation templates"
+      "path": "/me/installationTemplate/{templateName}"
     },
     {
-      "path": "/me/installationTemplate/{templateName}/checkIntegrity",
+      "description": "checkIntegrity operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Check the integrity of this template",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Check the integrity of this template"
+          "responseType": "void"
         }
       ],
-      "description": "checkIntegrity operations"
+      "path": "/me/installationTemplate/{templateName}/checkIntegrity"
     },
     {
-      "path": "/me/installationTemplate/{templateName}/partitionScheme",
+      "description": "List the dedicated.installationTemplate.templatePartitioningSchemes objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Partitioning schemes available on this template",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Partitioning schemes available on this template"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a scheme of partition",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "priority",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)"
-            },
-            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "name of this partitioning scheme"
+              "required": true
             },
             {
-              "name": "templateName",
+              "dataType": "long",
+              "description": "on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)",
+              "fullType": "long",
+              "name": "priority",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Add a scheme of partition"
+          "responseType": "void"
         }
       ],
-      "description": "List the dedicated.installationTemplate.templatePartitioningSchemes objects"
+      "path": "/me/installationTemplate/{templateName}/partitionScheme"
     },
     {
-      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}",
+      "description": "Partitioning schemes available on this template",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "remove this scheme of partition",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "schemeName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Scheme name",
               "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "remove this scheme of partition"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "schemeName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Scheme name",
               "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.installationTemplate.templatePartitioningSchemes",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.installationTemplate.templatePartitioningSchemes",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "required": true
             },
             {
-              "name": "schemeName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Scheme name",
               "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Partitioning schemes available on this template"
+      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}"
     },
     {
-      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid",
+      "description": "List the dedicated.installationTemplate.hardwareRaid objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Hardware RAIDs defined in this partitioning scheme",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "schemeName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Scheme name",
               "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Hardware RAIDs defined in this partitioning scheme"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add an hardware RAID in this partitioning scheme",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "mode",
-              "dataType": "dedicated.TemplateOsHardwareRaidEnum",
-              "paramType": "body",
-              "fullType": "dedicated.TemplateOsHardwareRaidEnum",
-              "required": true,
-              "description": "RAID mode"
-            },
-            {
-              "name": "disks",
               "dataType": "string[]",
-              "paramType": "body",
+              "description": "Disk list. Syntax is cX:dY for disks and [cX:dY, cX:dY] for groups. With X and Y resp. the controler id and the disk id.",
               "fullType": "string[]",
-              "required": true,
-              "description": "Disk list. Syntax is cX:dY for disks and [cX:dY, cX:dY] for groups. With X and Y resp. the controler id and the disk id."
-            },
-            {
-              "name": "step",
-              "dataType": "long",
+              "name": "disks",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Specifies the creation order of the hardware RAID"
+              "required": true
             },
             {
+              "dataType": "dedicated.TemplateOsHardwareRaidEnum",
+              "description": "RAID mode",
+              "fullType": "dedicated.TemplateOsHardwareRaidEnum",
+              "name": "mode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Hardware RAID name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Hardware RAID name"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Specifies the creation order of the hardware RAID",
+              "fullType": "long",
+              "name": "step",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "required": true
             },
             {
-              "name": "schemeName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Scheme name",
               "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Add an hardware RAID in this partitioning scheme"
+          "responseType": "void"
         }
       ],
-      "description": "List the dedicated.installationTemplate.hardwareRaid objects"
+      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid"
     },
     {
-      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}",
+      "description": "Hardware RAID defined in this partitioning scheme",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this RAID",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "required": true
             },
             {
-              "name": "schemeName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Scheme name",
               "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove this RAID"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Scheme name",
+              "fullType": "string",
               "name": "schemeName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.hardwareRaid",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.installationTemplate.hardwareRaid"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.installationTemplate.hardwareRaid",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.installationTemplate.hardwareRaid",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Scheme name",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            },
-            {
-              "name": "templateName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
-            },
-            {
-              "name": "schemeName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Hardware RAID defined in this partitioning scheme"
+      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}"
     },
     {
-      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition",
+      "description": "List the dedicated.installationTemplate.templatePartitions objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Partitions defined in this partitioning scheme",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "schemeName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Scheme name",
               "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Partitions defined in this partitioning scheme"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a partition in this partitioning scheme",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "mountpoint",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "partition mount point"
-            },
-            {
-              "name": "step",
               "dataType": "long",
-              "paramType": "body",
+              "description": "",
               "fullType": "long",
-              "required": true,
-              "description": ""
-            },
-            {
               "name": "raid",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": ""
+              "required": false
             },
             {
-              "name": "size",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "size of partition in Mb, 0 => rest of the space"
-            },
-            {
-              "name": "type",
-              "dataType": "dedicated.TemplatePartitionTypeEnum",
-              "paramType": "body",
-              "fullType": "dedicated.TemplatePartitionTypeEnum",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "filesystem",
               "dataType": "dedicated.TemplateOsFileSystemEnum",
-              "paramType": "body",
+              "description": "Partition filesytem",
               "fullType": "dedicated.TemplateOsFileSystemEnum",
-              "required": true,
-              "description": "Partition filesytem"
-            },
-            {
-              "name": "volumeName",
-              "dataType": "string",
+              "name": "filesystem",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The volume name needed for proxmox distribution"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "The volume name needed for proxmox distribution",
+              "fullType": "string",
+              "name": "volumeName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.TemplatePartitionTypeEnum",
+              "description": "",
+              "fullType": "dedicated.TemplatePartitionTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "step",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "partition mount point",
+              "fullType": "string",
+              "name": "mountpoint",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "size of partition in Mb, 0 => rest of the space",
+              "fullType": "long",
+              "name": "size",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "required": true
             },
             {
-              "name": "schemeName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Scheme name",
               "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Add a partition in this partitioning scheme"
+          "responseType": "void"
         }
       ],
-      "description": "List the dedicated.installationTemplate.templatePartitions objects"
+      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition"
     },
     {
-      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}",
+      "description": " Partitions defined in this partitioning scheme",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "remove this partition",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mountpoint",
               "fullType": "string",
-              "required": true,
-              "description": "Template name"
-            },
-            {
-              "name": "schemeName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
-            },
-            {
               "name": "mountpoint",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Mountpoint"
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Scheme name",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "remove this partition"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Scheme name",
+              "fullType": "string",
               "name": "schemeName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "required": true
             },
             {
-              "name": "mountpoint",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mountpoint",
               "fullType": "string",
-              "required": true,
-              "description": "Mountpoint"
+              "name": "mountpoint",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.installationTemplate.templatePartitions",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.installationTemplate.templatePartitions"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.installationTemplate.templatePartitions",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.installationTemplate.templatePartitions",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Scheme name",
+              "fullType": "string",
               "name": "schemeName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Scheme name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Mountpoint",
+              "fullType": "string",
               "name": "mountpoint",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mountpoint"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": " Partitions defined in this partitioning scheme"
+      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}"
     },
     {
-      "path": "/me/ipOrganisation",
+      "description": "List the nichandle.Ipv4Org objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of organisations",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of organisations"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add an organisation",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "city",
               "dataType": "string",
-              "paramType": "body",
+              "description": "",
               "fullType": "string",
-              "required": true,
-              "description": ""
-            },
-            {
               "name": "lastname",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": ""
+              "required": true
             },
             {
-              "name": "phone",
               "dataType": "phoneNumber",
-              "paramType": "body",
+              "description": "",
               "fullType": "phoneNumber",
-              "required": true,
-              "description": ""
+              "name": "phone",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
               "name": "state",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "",
               "fullType": "string",
-              "required": false,
-              "description": ""
-            },
-            {
-              "name": "firstname",
-              "dataType": "string",
+              "name": "city",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": ""
+              "required": true
             },
             {
-              "name": "zip",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": ""
-            },
-            {
-              "name": "registry",
-              "dataType": "nichandle.IpRegistryEnum",
-              "paramType": "body",
-              "fullType": "nichandle.IpRegistryEnum",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "country",
               "dataType": "nichandle.CountryEnum",
-              "paramType": "body",
+              "description": "",
               "fullType": "nichandle.CountryEnum",
-              "required": true,
-              "description": ""
+              "name": "country",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
               "name": "abuse_mailbox",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": ""
+              "required": true
             },
             {
-              "name": "address",
               "dataType": "string",
-              "paramType": "body",
+              "description": "",
               "fullType": "string",
-              "required": true,
-              "description": ""
+              "name": "firstname",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "zip",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "address",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.IpRegistryEnum",
+              "description": "",
+              "fullType": "nichandle.IpRegistryEnum",
+              "name": "registry",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Add an organisation"
+          "responseType": "void"
         }
       ],
-      "description": "List the nichandle.Ipv4Org objects"
+      "path": "/me/ipOrganisation"
     },
     {
-      "path": "/me/ipOrganisation/{organisationId}",
+      "description": "Details about an IP block organisation",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this organisation",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organisationId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organisation ID",
               "fullType": "string",
-              "required": true,
-              "description": "Organisation ID"
+              "name": "organisationId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this organisation"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organisationId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organisation ID",
               "fullType": "string",
-              "required": true,
-              "description": "Organisation ID"
+              "name": "organisationId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "nichandle.Ipv4Org",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "nichandle.Ipv4Org"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.Ipv4Org",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "nichandle.Ipv4Org",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organisation ID",
+              "fullType": "string",
               "name": "organisationId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organisation ID"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about an IP block organisation"
+      "path": "/me/ipOrganisation/{organisationId}"
     },
     {
-      "path": "/me/ipxeScript",
+      "description": "List the nichandle.ipxe objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of all your IPXE scripts",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List of all your IPXE scripts"
+          "parameters": [],
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add an IPXE script",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "body",
+              "description": "name of your script",
               "fullType": "string",
-              "required": true,
-              "description": "name of your script"
+              "name": "name",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "A personnal description of this script",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "text",
+              "description": "Content of your IPXE script",
+              "fullType": "text",
               "name": "script",
-              "dataType": "text",
               "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "Content of your IPXE script"
-            },
-            {
-              "name": "description",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "A personnal description of this script"
+              "required": true
             }
           ],
-          "responseType": "nichandle.ipxe",
-          "noAuthentication": false,
-          "description": "Add an IPXE script"
+          "responseType": "nichandle.ipxe"
         }
       ],
-      "description": "List the nichandle.ipxe objects"
+      "path": "/me/ipxeScript"
     },
     {
-      "path": "/me/ipxeScript/{name}",
+      "description": "Customer IPXE scripts",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this IPXE Script",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove this IPXE Script"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "nichandle.ipxe",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "nichandle.ipxe"
         }
       ],
-      "description": "Customer IPXE scripts"
+      "path": "/me/ipxeScript/{name}"
     },
     {
-      "path": "/me/order",
+      "description": "Retrieve order list",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve order list",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Retrieve order list"
+          "responseType": "long[]"
         }
       ],
-      "description": "Retrieve order list"
+      "path": "/me/order"
     },
     {
-      "path": "/me/order/{orderId}",
+      "description": "Retrieve an order",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve an order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.Order",
-          "noAuthentication": false,
-          "description": "Retrieve an order"
+          "responseType": "billing.Order"
         }
       ],
-      "description": "Retrieve an order"
+      "path": "/me/order/{orderId}"
     },
     {
-      "path": "/me/order/{orderId}/associatedObject",
+      "description": "Return data about the object associated to the order",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return data about the object associated to the order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.order.AssociatedObject",
-          "noAuthentication": false,
-          "description": "Return data about the object associated to the order"
+          "responseType": "billing.order.AssociatedObject"
         }
       ],
-      "description": "Return data about the object associated to the order"
+      "path": "/me/order/{orderId}/associatedObject"
     },
     {
-      "path": "/me/order/{orderId}/availablePaymentMethod",
+      "description": "List of payment methods you can use to pay this order",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of payment methods you can use to pay this order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.order.AvailablePaymentMethod[]",
-          "noAuthentication": false,
-          "description": "List of payment methods you can use to pay this order"
+          "responseType": "billing.order.AvailablePaymentMethod[]"
         }
       ],
-      "description": "List of payment methods you can use to pay this order"
+      "path": "/me/order/{orderId}/availablePaymentMethod"
     },
     {
-      "path": "/me/order/{orderId}/availableRegisteredPaymentMean",
+      "description": "List of registered payment mean you can use to pay this order",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2018-02-01T00:00:00+00:00",
             "deprecatedDate": "2017-12-28T00:00:00+00:00",
-            "replacement": "/me/order/{orderId}/availablePaymentMethod"
+            "description": "Deprecated, will be removed",
+            "replacement": "/me/order/{orderId}/availablePaymentMethod",
+            "value": "DEPRECATED"
           },
+          "description": "List of registered payment mean you can use to pay this order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.order.RegisteredPaymentMean[]",
-          "noAuthentication": false,
-          "description": "List of registered payment mean you can use to pay this order"
+          "responseType": "billing.order.RegisteredPaymentMean[]"
         }
       ],
-      "description": "List of registered payment mean you can use to pay this order"
+      "path": "/me/order/{orderId}/availableRegisteredPaymentMean"
     },
     {
-      "path": "/me/order/{orderId}/balance",
+      "description": "Interact with credit balances linked to this Order",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List credit balances applied on this Order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List credit balances applied on this Order"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Use a credit balance on this Order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "balanceName",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Balance name to use on this Order",
               "fullType": "string",
-              "required": true,
-              "description": "Balance name to use on this Order"
+              "name": "balanceName",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.order.credit.Balance",
-          "noAuthentication": false,
-          "description": "Use a credit balance on this Order"
+          "responseType": "billing.order.credit.Balance"
         }
       ],
-      "description": "Interact with credit balances linked to this Order"
+      "path": "/me/order/{orderId}/balance"
     },
     {
-      "path": "/me/order/{orderId}/balance/{balanceName}",
+      "description": "Interact with a credit balance linked to this Order",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Remove a credit balance from this Order",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "balanceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Balance name",
               "fullType": "string",
-              "required": true,
-              "description": "Balance name"
+              "name": "balanceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove a credit balance from this Order"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve Credit applied on this Order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "balanceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Balance name",
               "fullType": "string",
-              "required": true,
-              "description": "Balance name"
-            }
-          ],
-          "responseType": "billing.order.credit.Balance",
-          "noAuthentication": false,
-          "description": "Retrieve Credit applied on this Order"
-        }
-      ],
-      "description": "Interact with a credit balance linked to this Order"
-    },
-    {
-      "path": "/me/order/{orderId}/details",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "orderId",
-              "dataType": "long",
+              "name": "balanceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Retrieve details of an order"
+          "responseType": "billing.order.credit.Balance"
         }
       ],
-      "description": "Retrieve details of an order"
+      "path": "/me/order/{orderId}/balance/{balanceName}"
     },
     {
-      "path": "/me/order/{orderId}/details/{detailId}",
+      "description": "Retrieve details of an order",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve details of an order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Order ID",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/order/{orderId}/details"
+    },
+    {
+      "description": "Retrieve an order detail",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve an order detail",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Detail ID",
+              "fullType": "long",
               "name": "detailId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Detail ID"
+              "required": true
             },
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.OrderDetail",
-          "noAuthentication": false,
-          "description": "Retrieve an order detail"
+          "responseType": "billing.OrderDetail"
         }
       ],
-      "description": "Retrieve an order detail"
+      "path": "/me/order/{orderId}/details/{detailId}"
     },
     {
-      "path": "/me/order/{orderId}/details/{detailId}/extension",
+      "description": "Retrieve an order detail extensions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve an order detail extensions",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "detailId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Detail ID",
               "fullType": "long",
-              "required": true,
-              "description": "Detail ID"
+              "name": "detailId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.ItemDetail",
-          "noAuthentication": false,
-          "description": "Retrieve an order detail extensions"
+          "responseType": "billing.ItemDetail"
         }
       ],
-      "description": "Retrieve an order detail extensions"
+      "path": "/me/order/{orderId}/details/{detailId}/extension"
     },
     {
-      "path": "/me/order/{orderId}/details/{detailId}/operations",
+      "description": "Retrieve a list of operations linked to this order detail",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve a list of operations linked to this order detail",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Detail ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "detailId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "detailId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Detail ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Retrieve a list of operations linked to this order detail"
+          "responseType": "long[]"
         }
       ],
-      "description": "Retrieve a list of operations linked to this order detail"
+      "path": "/me/order/{orderId}/details/{detailId}/operations"
     },
     {
-      "path": "/me/order/{orderId}/details/{detailId}/operations/{operationId}",
+      "description": "Retrieve informations about an Operation linked to the order detail",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve a list of operations linked to this order detail",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Detail ID",
+              "fullType": "long",
               "name": "detailId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Detail ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Order ID",
+              "fullType": "long",
               "name": "orderId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Operation ID",
+              "fullType": "long",
               "name": "operationId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Operation ID"
+              "required": true
             }
           ],
-          "responseType": "service.Operation",
-          "noAuthentication": false,
-          "description": "Retrieve a list of operations linked to this order detail"
+          "responseType": "service.Operation"
         }
       ],
-      "description": "Retrieve informations about an Operation linked to the order detail"
+      "path": "/me/order/{orderId}/details/{detailId}/operations/{operationId}"
     },
     {
-      "path": "/me/order/{orderId}/followUp",
+      "description": "Return tracking of the order",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Return tracking of the order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.order.FollowUp[]",
-          "noAuthentication": false,
-          "description": "Return tracking of the order"
+          "responseType": "billing.order.FollowUp[]"
         }
       ],
-      "description": "Return tracking of the order"
+      "path": "/me/order/{orderId}/followUp"
     },
     {
-      "path": "/me/order/{orderId}/pay",
+      "description": "Pay this Order",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Pay this Order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "paymentMethod",
               "dataType": "billing.order.AvailablePaymentMethod",
-              "paramType": "body",
+              "description": "The payment method to use",
               "fullType": "billing.order.AvailablePaymentMethod",
-              "required": true,
-              "description": "The payment method to use"
+              "name": "paymentMethod",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Pay this Order"
+          "responseType": "void"
         }
       ],
-      "description": "Pay this Order"
+      "path": "/me/order/{orderId}/pay"
     },
     {
-      "path": "/me/order/{orderId}/payWithRegisteredPaymentMean",
+      "description": "Pay with an already registered payment mean",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2018-02-01T00:00:00+00:00",
             "deprecatedDate": "2017-12-28T00:00:00+00:00",
-            "replacement": "/me/order/{orderId}/pay"
+            "description": "Deprecated, will be removed",
+            "replacement": "/me/order/{orderId}/pay",
+            "value": "DEPRECATED"
           },
+          "description": "Pay with an already registered payment mean",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "billing.paymentMethod.PaymentTypeEnum",
+              "description": "The registered payment mean you want to use",
+              "fullType": "billing.paymentMethod.PaymentTypeEnum",
               "name": "paymentMean",
-              "dataType": "billing.paymentMethod.PaymentTypeEnum",
               "paramType": "body",
-              "fullType": "billing.paymentMethod.PaymentTypeEnum",
-              "required": true,
-              "description": "The registered payment mean you want to use"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "ID of registered payment mean, mandatory for bankAccount, creditCard and paypal",
+              "fullType": "long",
               "name": "paymentMeanId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "ID of registered payment mean, mandatory for bankAccount, creditCard and paypal"
+              "required": false
             },
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Pay with an already registered payment mean"
+          "responseType": "void"
         }
       ],
-      "description": "Pay with an already registered payment mean"
+      "path": "/me/order/{orderId}/payWithRegisteredPaymentMean"
     },
     {
-      "path": "/me/order/{orderId}/paymentMethods",
+      "description": "List of registered payment method you can use to pay this order",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List of registered payment method you can use to pay this order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.order.PaymentMethods",
-          "noAuthentication": false,
-          "description": "List of registered payment method you can use to pay this order"
+          "responseType": "billing.order.PaymentMethods"
         }
       ],
-      "description": "List of registered payment method you can use to pay this order"
+      "path": "/me/order/{orderId}/paymentMethods"
     },
     {
-      "path": "/me/order/{orderId}/retraction",
+      "description": "Request retraction of order",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Request retraction of order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "comment",
               "dataType": "text",
-              "paramType": "body",
+              "description": "An optional comment of why you want to retract",
               "fullType": "text",
-              "required": false,
-              "description": "An optional comment of why you want to retract"
+              "name": "comment",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "billing.order.RetractionReasonEnum",
-              "paramType": "body",
+              "description": "The reason why you want to retract",
               "fullType": "billing.order.RetractionReasonEnum",
-              "required": true,
-              "description": "The reason why you want to retract"
+              "name": "reason",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Request retraction of order"
+          "responseType": "void"
         }
       ],
-      "description": "Request retraction of order"
+      "path": "/me/order/{orderId}/retraction"
     },
     {
-      "path": "/me/order/{orderId}/status",
+      "description": "Return status of order",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return status of order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.order.OrderStatusEnum",
-          "noAuthentication": false,
-          "description": "Return status of order"
+          "responseType": "billing.order.OrderStatusEnum"
         }
       ],
-      "description": "Return status of order"
+      "path": "/me/order/{orderId}/status"
     },
     {
-      "path": "/me/order/{orderId}/voucher",
+      "description": "Interact with Vouchers linked to this Order",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List vouchers applied on this Order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List vouchers applied on this Order"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Use a Voucher on this Order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "balanceName",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Balance name to use as Voucher",
               "fullType": "string",
-              "required": true,
-              "description": "Balance name to use as Voucher"
+              "name": "balanceName",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.order.OrderVoucher",
-          "noAuthentication": false,
-          "description": "Use a Voucher on this Order"
+          "responseType": "billing.order.OrderVoucher"
         }
       ],
-      "description": "Interact with Vouchers linked to this Order"
+      "path": "/me/order/{orderId}/voucher"
     },
     {
-      "path": "/me/order/{orderId}/voucher/{balanceName}",
+      "description": "Interact with a specific Voucher linked to this Order",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove Voucher from this Order",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "balanceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Balance name",
               "fullType": "string",
-              "required": true,
-              "description": "Balance name"
+              "name": "balanceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove Voucher from this Order"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve Voucher applied on this Order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Order ID",
               "fullType": "long",
-              "required": true,
-              "description": "Order ID"
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "balanceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Balance name",
               "fullType": "string",
-              "required": true,
-              "description": "Balance name"
+              "name": "balanceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.order.OrderVoucher",
-          "noAuthentication": false,
-          "description": "Retrieve Voucher applied on this Order"
+          "responseType": "billing.order.OrderVoucher"
         }
       ],
-      "description": "Interact with a specific Voucher linked to this Order"
+      "path": "/me/order/{orderId}/voucher/{balanceName}"
     },
     {
-      "path": "/me/passwordRecover",
+      "description": "Request a password recover",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Request a password recover",
           "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "ovhCompany",
-              "dataType": "nichandle.OvhCompanyEnum",
-              "paramType": "body",
-              "fullType": "nichandle.OvhCompanyEnum",
-              "required": true,
-              "description": "Company of your OVH Account Id"
-            },
-            {
-              "name": "ovhId",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Your OVH Account Id"
-            }
-          ],
-          "responseType": "void",
           "noAuthentication": true,
-          "description": "Request a password recover"
-        }
-      ],
-      "description": "Request a password recover"
-    },
-    {
-      "path": "/me/payment/availableMethods",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "me.payment.method.AvailablePaymentMethod[]",
-          "noAuthentication": false,
-          "description": "Retrieve available payment method"
-        }
-      ],
-      "description": "Available payment methods"
-    },
-    {
-      "path": "/me/payment/method",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
           "parameters": [
             {
-              "name": "status",
+              "dataType": "nichandle.OvhCompanyEnum",
+              "description": "Company of your OVH Account Id",
+              "fullType": "nichandle.OvhCompanyEnum",
+              "name": "ovhCompany",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your OVH Account Id",
+              "fullType": "string",
+              "name": "ovhId",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/passwordRecover"
+    },
+    {
+      "description": "Available payment methods",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available payment method",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "me.payment.method.AvailablePaymentMethod[]"
+        }
+      ],
+      "path": "/me/payment/availableMethods"
+    },
+    {
+      "description": "Manage payment method",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve payment method ID list",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "me.payment.method.PaymentMethod.Status",
-              "paramType": "query",
+              "description": "Status",
               "fullType": "me.payment.method.PaymentMethod.Status",
-              "required": false,
-              "description": "Status"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "paymentType",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Payment method type",
               "fullType": "string",
-              "required": false,
-              "description": "Payment method type"
+              "name": "paymentType",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Retrieve payment method ID list"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Pay an order and register a new payment method if necessary",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "callbackUrl",
               "dataType": "me.payment.method.CallbackUrl",
-              "paramType": "body",
+              "description": "URL's necessary to register",
               "fullType": "me.payment.method.CallbackUrl",
-              "required": true,
-              "description": "URL's necessary to register"
+              "name": "callbackUrl",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "default",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Is this payment method set as the default one",
               "fullType": "boolean",
-              "required": false,
-              "description": "Is this payment method set as the default one"
+              "name": "default",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Customer personalized description",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Customer personalized description"
+              "required": false
             },
             {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "The ID of one order to pay it",
               "fullType": "long",
-              "required": false,
-              "description": "The ID of one order to pay it"
-            },
-            {
-              "name": "paymentType",
-              "dataType": "string",
+              "name": "orderId",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Payment type"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Payment type",
+              "fullType": "string",
+              "name": "paymentType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Register this payment method if it's possible (by default it's false and do a oneshot transaction)",
+              "fullType": "boolean",
               "name": "register",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Register this payment method if it's possible (by default it's false and do a oneshot transaction)"
+              "required": false
             }
           ],
-          "responseType": "me.payment.method.Register.ValidationResult",
-          "noAuthentication": false,
-          "description": "Pay an order and register a new payment method if necessary"
+          "responseType": "me.payment.method.Register.ValidationResult"
         }
       ],
-      "description": "Manage payment method"
+      "path": "/me/payment/method"
     },
     {
-      "path": "/me/payment/method/{paymentMethodId}",
+      "description": "Manage payment method",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Cancel one payment method",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "paymentMethodId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Payment method ID",
               "fullType": "long",
-              "required": true,
-              "description": "Payment method ID"
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod",
-          "noAuthentication": false,
-          "description": "Cancel one payment method"
+          "responseType": "me.payment.method.PaymentMethod"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get one payment method",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "paymentMethodId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Payment method ID",
               "fullType": "long",
-              "required": true,
-              "description": "Payment method ID"
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod",
-          "noAuthentication": false,
-          "description": "Get one payment method"
+          "responseType": "me.payment.method.PaymentMethod"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Edit payment method",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "description",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Customer personalized description"
-            },
-            {
-              "name": "default",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Set this method like default",
               "fullType": "boolean",
-              "required": false,
-              "description": "Set this method like default"
+              "name": "default",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "paymentMethodId",
+              "dataType": "string",
+              "description": "Customer personalized description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Payment method ID",
               "fullType": "long",
-              "required": true,
-              "description": "Payment method ID"
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.PaymentMethod",
-          "noAuthentication": false,
-          "description": "Edit payment method"
+          "responseType": "billing.PaymentMethod"
         }
       ],
-      "description": "Manage payment method"
+      "path": "/me/payment/method/{paymentMethodId}"
     },
     {
-      "path": "/me/payment/method/{paymentMethodId}/challenge",
+      "description": "Challenge your payment method",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Challenge one payment method",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Challenge",
+              "fullType": "string",
               "name": "challenge",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Challenge"
+              "required": true
             },
             {
-              "name": "paymentMethodId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Payment method ID",
               "fullType": "long",
-              "required": true,
-              "description": "Payment method ID"
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod",
-          "noAuthentication": false,
-          "description": "Challenge one payment method"
+          "responseType": "me.payment.method.PaymentMethod"
         }
       ],
-      "description": "Challenge your payment method"
+      "path": "/me/payment/method/{paymentMethodId}/challenge"
     },
     {
-      "path": "/me/payment/method/{paymentMethodId}/finalize",
+      "description": "Finalize one payment method registration",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Finalize one payment method registration",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Expiration month",
+              "fullType": "long",
               "name": "expirationMonth",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Expiration month"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Expiration year",
+              "fullType": "long",
               "name": "expirationYear",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Expiration year"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Registration ID",
+              "fullType": "string",
               "name": "registrationId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Registration ID"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Form Session ID",
+              "fullType": "string",
               "name": "formSessionId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Form Session ID"
+              "required": false
             },
             {
-              "name": "paymentMethodId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Payment method ID",
               "fullType": "long",
-              "required": true,
-              "description": "Payment method ID"
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod",
-          "noAuthentication": false,
-          "description": "Finalize one payment method registration"
+          "responseType": "me.payment.method.PaymentMethod"
         }
       ],
-      "description": "Finalize one payment method registration"
+      "path": "/me/payment/method/{paymentMethodId}/finalize"
     },
     {
-      "path": "/me/payment/transaction",
+      "description": "Retrieve payment method transaction ID list",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve associated payment method transaction ID list",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "paymentMethodId",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Payment method ID",
               "fullType": "long",
-              "required": false,
-              "description": "Payment method ID"
+              "name": "paymentMethodId",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "status",
               "dataType": "me.payment.method.Transaction.Status",
-              "paramType": "query",
+              "description": "Transaction status",
               "fullType": "me.payment.method.Transaction.Status",
-              "required": false,
-              "description": "Transaction status"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Retrieve associated payment method transaction ID list"
+          "responseType": "long[]"
         }
       ],
-      "description": "Retrieve payment method transaction ID list"
+      "path": "/me/payment/transaction"
     },
     {
-      "path": "/me/payment/transaction/{transactionId}",
+      "description": "Manage payment method transaction",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get associated payment method transaction",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Transaction ID",
+              "fullType": "long",
               "name": "transactionId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Transaction ID"
+              "required": true
             }
           ],
-          "responseType": "me.payment.method.Transaction",
-          "noAuthentication": false,
-          "description": "Get associated payment method transaction"
+          "responseType": "me.payment.method.Transaction"
         }
       ],
-      "description": "Manage payment method transaction"
+      "path": "/me/payment/transaction/{transactionId}"
     },
     {
-      "path": "/me/paymentMethod",
+      "description": "Retrieve payment method list",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve payment method id list",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "status",
               "dataType": "billing.paymentMethod.StatusEnum",
-              "paramType": "query",
+              "description": "Status",
               "fullType": "billing.paymentMethod.StatusEnum",
-              "required": false,
-              "description": "Status"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "paymentType",
               "dataType": "billing.paymentMethod.PaymentTypeEnum",
-              "paramType": "query",
+              "description": "Payment type",
               "fullType": "billing.paymentMethod.PaymentTypeEnum",
-              "required": false,
-              "description": "Payment type"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Retrieve payment method id list"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "billingContactId",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Billing contact id"
-            },
-            {
-              "name": "description",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Customer personalized description"
-            },
-            {
               "name": "paymentType",
-              "dataType": "billing.paymentMethod.CreatePaymentTypeEnum",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create payment method",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Billing contact id",
+              "fullType": "long",
+              "name": "billingContactId",
               "paramType": "body",
-              "fullType": "billing.paymentMethod.CreatePaymentTypeEnum",
-              "required": true,
-              "description": "Payment type"
+              "required": false
             },
             {
-              "name": "urlCallback",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Customer personalized description",
               "fullType": "string",
-              "required": false,
-              "description": "Payment url callback"
-            },
-            {
-              "name": "default",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Is this payment method set as the default one"
-            }
-          ],
-          "responseType": "billing.PaymentMeanValidation",
-          "noAuthentication": false,
-          "description": "Create payment method"
-        }
-      ],
-      "description": "Retrieve payment method list"
-    },
-    {
-      "path": "/me/paymentMethod/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the selected payment mean"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "billing.PaymentMethod",
-          "noAuthentication": false,
-          "description": "Get one payment method"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "PUT",
-          "parameters": [
-            {
-              "name": "default",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Is this payment method set as the default one"
-            },
-            {
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Customer personalized description"
+              "required": false
             },
             {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "billing.PaymentMethod",
-          "noAuthentication": false,
-          "description": "Edit payment method"
-        }
-      ],
-      "description": "Manage the payment mean."
-    },
-    {
-      "path": "/me/refund",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "date.from",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of date property (>=)"
-            },
-            {
-              "name": "date.to",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of date property (<=)"
-            },
-            {
-              "name": "orderId",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of orderId property (=)"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of all the refunds the logged account has"
-        }
-      ],
-      "description": "List the billing.InvoiceRefund objects"
-    },
-    {
-      "path": "/me/refund/{refundId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "refundId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Refund ID"
-            }
-          ],
-          "responseType": "billing.InvoiceRefund",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Details about a Refund"
-    },
-    {
-      "path": "/me/refund/{refundId}/details",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "refundId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Refund ID"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Give access to all entries of the refund"
-        }
-      ],
-      "description": "List the billing.InvoiceRefundDetail objects"
-    },
-    {
-      "path": "/me/refund/{refundId}/details/{refundDetailId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "refundId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Refund ID"
-            },
-            {
-              "name": "refundDetailId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Refund detail ID"
-            }
-          ],
-          "responseType": "billing.InvoiceRefundDetail",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Information about refund entry"
-    },
-    {
-      "path": "/me/refund/{refundId}/download",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "refundId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Refund ID"
-            },
-            {
-              "name": "extension",
-              "dataType": "billing.DocumentExtensionEnum",
-              "paramType": "query",
-              "fullType": "billing.DocumentExtensionEnum",
-              "required": false,
-              "description": "Document suffix"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Generate download link for the document"
-        }
-      ],
-      "description": "download operations"
-    },
-    {
-      "path": "/me/sla",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List active SLA"
-        }
-      ],
-      "description": "List the billing.SlaOperation objects"
-    },
-    {
-      "path": "/me/sla/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "billing.SlaOperation",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "SLA properties"
-    },
-    {
-      "path": "/me/sla/{id}/apply",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Ask for SLA application"
-        }
-      ],
-      "description": "apply operations"
-    },
-    {
-      "path": "/me/sla/{id}/canBeApplied",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Check whether this SLA can be applied on your services"
-        }
-      ],
-      "description": "canBeApplied operations"
-    },
-    {
-      "path": "/me/sla/{id}/services",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "billing.SlaOperationService[]",
-          "noAuthentication": false,
-          "description": "Get services impacted by this SLA"
-        }
-      ],
-      "description": "services operations"
-    },
-    {
-      "path": "/me/sla/{id}/status",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Get the status request of this SLA"
-        }
-      ],
-      "description": "status operations"
-    },
-    {
-      "path": "/me/sshKey",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of your public SSH keys"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "key",
-              "dataType": "string",
+              "dataType": "billing.paymentMethod.CreatePaymentTypeEnum",
+              "description": "Payment type",
+              "fullType": "billing.paymentMethod.CreatePaymentTypeEnum",
+              "name": "paymentType",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "ASCII encoded public SSH key to add"
+              "required": true
             },
             {
-              "name": "keyName",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Payment url callback",
               "fullType": "string",
-              "required": true,
-              "description": "name of the new public SSH key"
+              "name": "urlCallback",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Is this payment method set as the default one",
+              "fullType": "boolean",
+              "name": "default",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Add a new public SSH key"
+          "responseType": "billing.PaymentMeanValidation"
         }
       ],
-      "description": "List the nichandle.sshKey objects"
+      "path": "/me/paymentMethod"
     },
     {
-      "path": "/me/sshKey/{keyName}",
+      "description": "Manage the payment mean.",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the selected payment mean",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "keyName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Key name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove this public SSH key"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get one payment method",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "keyName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Key name"
+              "required": true
             }
           ],
-          "responseType": "nichandle.sshKey",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "billing.PaymentMethod"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Edit payment method",
           "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Is this payment method set as the default one",
+              "fullType": "boolean",
+              "name": "default",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Customer personalized description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.PaymentMethod"
+        }
+      ],
+      "path": "/me/paymentMethod/{id}"
+    },
+    {
+      "description": "List the billing.InvoiceRefund objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of all the refunds the logged account has",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Filter the value of date property (>=)",
+              "fullType": "string",
+              "name": "date.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of date property (<=)",
+              "fullType": "string",
+              "name": "date.to",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of orderId property (=)",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/refund"
+    },
+    {
+      "description": "Details about a Refund",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Refund ID",
+              "fullType": "string",
+              "name": "refundId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.InvoiceRefund"
+        }
+      ],
+      "path": "/me/refund/{refundId}"
+    },
+    {
+      "description": "List the billing.InvoiceRefundDetail objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Give access to all entries of the refund",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Refund ID",
+              "fullType": "string",
+              "name": "refundId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/refund/{refundId}/details"
+    },
+    {
+      "description": "Information about refund entry",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Refund ID",
+              "fullType": "string",
+              "name": "refundId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Refund detail ID",
+              "fullType": "string",
+              "name": "refundDetailId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.InvoiceRefundDetail"
+        }
+      ],
+      "path": "/me/refund/{refundId}/details/{refundDetailId}"
+    },
+    {
+      "description": "download operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Generate download link for the document",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Refund ID",
+              "fullType": "string",
+              "name": "refundId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "billing.DocumentExtensionEnum",
+              "description": "Document suffix",
+              "fullType": "billing.DocumentExtensionEnum",
+              "name": "extension",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/me/refund/{refundId}/download"
+    },
+    {
+      "description": "List the billing.SlaOperation objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List active SLA",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/sla"
+    },
+    {
+      "description": "SLA properties",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.SlaOperation"
+        }
+      ],
+      "path": "/me/sla/{id}"
+    },
+    {
+      "description": "apply operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Ask for SLA application",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/sla/{id}/apply"
+    },
+    {
+      "description": "canBeApplied operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Check whether this SLA can be applied on your services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/me/sla/{id}/canBeApplied"
+    },
+    {
+      "description": "services operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get services impacted by this SLA",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.SlaOperationService[]"
+        }
+      ],
+      "path": "/me/sla/{id}/services"
+    },
+    {
+      "description": "status operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the status request of this SLA",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/me/sla/{id}/status"
+    },
+    {
+      "description": "List the nichandle.sshKey objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of your public SSH keys",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a new public SSH key",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "ASCII encoded public SSH key to add",
+              "fullType": "string",
+              "name": "key",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of the new public SSH key",
+              "fullType": "string",
+              "name": "keyName",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/sshKey"
+    },
+    {
+      "description": "Customer public SSH key, can be used for rescue netboot or server access after reinstallation",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove this public SSH key",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Key name",
+              "fullType": "string",
+              "name": "keyName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Key name",
+              "fullType": "string",
+              "name": "keyName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.sshKey"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.sshKey",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "nichandle.sshKey",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Key name",
+              "fullType": "string",
               "name": "keyName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Key name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Customer public SSH key, can be used for rescue netboot or server access after reinstallation"
+      "path": "/me/sshKey/{keyName}"
     },
     {
-      "path": "/me/subAccount",
+      "description": "List the nichandle.SubAccount objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of sub-accounts",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List of sub-accounts"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new sub-account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "description",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Description of the new sub-account",
               "fullType": "string",
-              "required": false,
-              "description": "Description of the new sub-account"
+              "name": "description",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "long",
-          "noAuthentication": false,
-          "description": "Create a new sub-account"
+          "responseType": "long"
         }
       ],
-      "description": "List the nichandle.SubAccount objects"
+      "path": "/me/subAccount"
     },
     {
-      "path": "/me/subAccount/{id}",
+      "description": "Sub Account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "nichandle.SubAccount",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "nichandle.SubAccount"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "nichandle.SubAccount",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "nichandle.SubAccount",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Sub Account"
+      "path": "/me/subAccount/{id}"
     },
     {
-      "path": "/me/subAccount/{id}/createConsumerKey",
+      "description": "createConsumerKey operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a consumer key for the current application",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "nichandle.SubAccountConsumerKey",
-          "noAuthentication": false,
-          "description": "Create a consumer key for the current application"
+          "responseType": "nichandle.SubAccountConsumerKey"
         }
       ],
-      "description": "createConsumerKey operations"
+      "path": "/me/subAccount/{id}/createConsumerKey"
     },
     {
-      "path": "/me/task/emailChange",
+      "description": "List the nichandle.emailChange.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of email change tasks you are involved in",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "state",
               "dataType": "nichandle.changeEmail.TaskStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of state property (like)",
               "fullType": "nichandle.changeEmail.TaskStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (like)"
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List of email change tasks you are involved in"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the nichandle.emailChange.Task objects"
+      "path": "/me/task/emailChange"
     },
     {
-      "path": "/me/task/emailChange/{id}",
+      "description": "Task running an email change on an account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "nichandle.emailChange.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "nichandle.emailChange.Task"
         }
       ],
-      "description": "Task running an email change on an account"
+      "path": "/me/task/emailChange/{id}"
     },
     {
-      "path": "/me/task/emailChange/{id}/accept",
+      "description": "accept operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Accept this change request",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "token",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The token you received by email for this request",
               "fullType": "string",
-              "required": true,
-              "description": "The token you received by email for this request"
+              "name": "token",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Accept this change request"
+          "responseType": "void"
         }
       ],
-      "description": "accept operations"
+      "path": "/me/task/emailChange/{id}/accept"
     },
     {
-      "path": "/me/task/emailChange/{id}/refuse",
+      "description": "refuse operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Refuse this change request",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "token",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The token you received by email for this request",
               "fullType": "string",
-              "required": true,
-              "description": "The token you received by email for this request"
+              "name": "token",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Refuse this change request"
+          "responseType": "void"
         }
       ],
-      "description": "refuse operations"
+      "path": "/me/task/emailChange/{id}/refuse"
     },
     {
-      "path": "/me/vipStatus",
+      "description": "vipStatus operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "VIP Status of this account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "nichandle.VipStatus",
-          "noAuthentication": false,
-          "description": "VIP Status of this account"
+          "responseType": "nichandle.VipStatus"
         }
       ],
-      "description": "vipStatus operations"
+      "path": "/me/vipStatus"
     },
     {
-      "path": "/me/voucher/checkValidity",
+      "description": "checkValidity operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Verify existing voucher",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Voucher value",
+              "fullType": "string",
               "name": "voucher",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Voucher value"
+              "required": true
             }
           ],
-          "responseType": "nichandle.VoucherStatus",
-          "noAuthentication": false,
-          "description": "Verify existing voucher"
+          "responseType": "nichandle.VoucherStatus"
         }
       ],
-      "description": "checkValidity operations"
+      "path": "/me/voucher/checkValidity"
     },
     {
-      "path": "/me/withdrawal",
+      "description": "List the billing.InvoiceWithdrawal objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of all the withdrawals made from your prepaid account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "date.from",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of date property (>=)"
-            },
-            {
-              "name": "orderId",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Filter the value of orderId property (=)",
               "fullType": "long",
-              "required": false,
-              "description": "Filter the value of orderId property (=)"
+              "name": "orderId",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "date.to",
               "dataType": "string",
+              "description": "Filter the value of date property (>=)",
+              "fullType": "string",
+              "name": "date.from",
               "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of date property (<=)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of date property (<=)"
+              "name": "date.to",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of all the withdrawals made from your prepaid account"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the billing.InvoiceWithdrawal objects"
+      "path": "/me/withdrawal"
     },
     {
-      "path": "/me/withdrawal/{withdrawalId}",
+      "description": "Details about a withdrawal",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "withdrawalId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Withdrawal ID",
               "fullType": "string",
-              "required": true,
-              "description": "Withdrawal ID"
+              "name": "withdrawalId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "billing.InvoiceWithdrawal",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "billing.InvoiceWithdrawal"
         }
       ],
-      "description": "Details about a withdrawal"
+      "path": "/me/withdrawal/{withdrawalId}"
     },
     {
-      "path": "/me/withdrawal/{withdrawalId}/download",
+      "description": "download operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Generate download link for the pdf document",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "withdrawalId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Withdrawal ID",
               "fullType": "string",
-              "required": true,
-              "description": "Withdrawal ID"
+              "name": "withdrawalId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Generate download link for the pdf document"
+          "responseType": "string"
         }
       ],
-      "description": "download operations"
+      "path": "/me/withdrawal/{withdrawalId}/download"
     }
   ],
-  "resourcePath": "/me",
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "agreements.AgreementStateEnum": {
-      "id": "AgreementStateEnum",
-      "namespace": "agreements",
       "description": "The current state of a contract agreement",
       "enum": [
         "ko",
@@ -7001,139 +7000,139 @@ export const schema: Schema = {
         "ok",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AgreementStateEnum",
+      "namespace": "agreements"
     },
     "agreements.Contract": {
+      "description": "Contract of service",
       "id": "Contract",
       "namespace": "agreements",
-      "description": "Contract of service",
       "properties": {
         "active": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Is this contract currently active or not ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "date": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date the contract was created on",
-          "required": true
+          "fullType": "date",
+          "readOnly": true,
+          "required": true,
+          "type": "date"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of of the contract",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "pdf": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "URL you can download the contract at",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Full text of the contract",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "agreements.ContractAgreement": {
+      "description": "Contract agreement",
       "id": "ContractAgreement",
       "namespace": "agreements",
-      "description": "Contract agreement",
       "properties": {
         "agreed": {
-          "type": "agreements.AgreementStateEnum",
-          "fullType": "agreements.AgreementStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "State of the agreement",
-          "required": true
+          "fullType": "agreements.AgreementStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "agreements.AgreementStateEnum"
         },
         "contractId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the agreed contract",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date the agreed contract was effective",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the contract",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "api.Application": {
+      "description": "API Application",
       "id": "Application",
       "namespace": "api",
-      "description": "API Application",
       "properties": {
         "applicationId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "applicationKey": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "api.ApplicationStatusEnum",
-          "fullType": "api.ApplicationStatusEnum",
           "canBeNull": false,
+          "fullType": "api.ApplicationStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "api.ApplicationStatusEnum"
         }
       }
     },
     "api.ApplicationStatusEnum": {
-      "id": "ApplicationStatusEnum",
-      "namespace": "api",
       "description": "List of state of an Api Application",
       "enum": [
         "active",
@@ -7141,104 +7140,104 @@ export const schema: Schema = {
         "inactive",
         "trusted"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ApplicationStatusEnum",
+      "namespace": "api"
     },
     "api.Credential": {
+      "description": "API Credential",
       "id": "Credential",
       "namespace": "api",
-      "description": "API Credential",
       "properties": {
         "allowedIPs": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "If defined, list of ip blocks which are allowed to call API with this credential",
-          "required": false
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
         },
         "applicationId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "creation": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "credentialId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "expiration": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "lastUse": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "ovhSupport": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "States whether this credential has been created by yourself or by the OVH support team",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "rules": {
-          "type": "auth.AccessRule[]",
-          "fullType": "auth.AccessRule[]",
           "canBeNull": false,
+          "fullType": "auth.AccessRule[]",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "auth.AccessRule[]"
         },
         "status": {
-          "type": "auth.CredentialStateEnum",
-          "fullType": "auth.CredentialStateEnum",
           "canBeNull": false,
+          "fullType": "auth.CredentialStateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "auth.CredentialStateEnum"
         }
       }
     },
     "auth.AccessRule": {
+      "description": "Access rule required for the application",
       "id": "AccessRule",
       "namespace": "auth",
-      "description": "Access rule required for the application",
       "properties": {
         "method": {
-          "type": "http.MethodEnum",
-          "fullType": "http.MethodEnum",
           "canBeNull": false,
+          "fullType": "http.MethodEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "http.MethodEnum"
         },
         "path": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "auth.CredentialStateEnum": {
-      "id": "CredentialStateEnum",
-      "namespace": "auth",
       "description": "All states a Credential can be in",
       "enum": [
         "expired",
@@ -7246,825 +7245,825 @@ export const schema: Schema = {
         "refused",
         "validated"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CredentialStateEnum",
+      "namespace": "auth"
     },
     "balance.CustomerBalance": {
+      "description": "Balance of the account",
       "id": "CustomerBalance",
       "namespace": "balance",
-      "description": "Balance of the account",
       "properties": {
         "active": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "dueAmount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Amount of balance the account has",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "pendingAmount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Amount currently being processed",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "todoAmount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Reserved amount awaiting payment",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "unmaturedAmount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Unmatured amount for deferred payment term",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "balance.InvoicingBalance": {
+      "description": "State of a balance",
       "id": "InvoicingBalance",
       "namespace": "balance",
-      "description": "State of a balance",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Original amount of the debt",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date the balance was created on",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "debtId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "dueAmount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Amount you still owe for that debt",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "dueDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "If specified, the balance will not be recovered before that date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The estimate id the invoicing balance relates to",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "pendingAmount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Amount currently being processed",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "todoAmount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Reserved amount awaiting payment",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "unmaturedAmount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Unmatured amount for deferred payment term",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "balance.OperationBalance": {
+      "description": "Operation that happend on a debt",
       "id": "OperationBalance",
       "namespace": "balance",
-      "description": "Operation that happend on a debt",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Amount of the operation",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date the operation took place on",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "depositOrderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Order id associated to the deposit",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "operationId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "debt.entry.StatusEnum",
-          "fullType": "debt.entry.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the operation",
-          "required": true
+          "fullType": "debt.entry.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "debt.entry.StatusEnum"
         },
         "type": {
-          "type": "debt.entry.OperationEnum",
-          "fullType": "debt.entry.OperationEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Type of movement this operation represents",
-          "required": false
+          "fullType": "debt.entry.OperationEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "debt.entry.OperationEnum"
         }
       }
     },
     "billing.AutomaticPaymentMean": {
+      "description": "Available automatic payment means",
       "id": "AutomaticPaymentMean",
       "namespace": "billing",
-      "description": "Available automatic payment means",
       "properties": {
         "bankAccount": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Bank Account",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "creditCard": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Credit Card",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deferredPaymentAccount": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Deferred invoice payment account for authorized customers",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "paypal": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Paypal account",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "billing.DocumentExtensionEnum": {
-      "id": "DocumentExtensionEnum",
-      "namespace": "billing",
       "description": "List of available extension",
       "enum": [
         "html",
         "pdf"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DocumentExtensionEnum",
+      "namespace": "billing"
     },
     "billing.FidelityAccount": {
+      "description": "Balance of the fidelity account",
       "id": "FidelityAccount",
       "namespace": "billing",
-      "description": "Balance of the fidelity account",
       "properties": {
         "alertThreshold": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "balance": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "canBeCredited": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "openDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "billing.FidelityMovement": {
+      "description": "Details about a fidelity account",
       "id": "FidelityMovement",
       "namespace": "billing",
-      "description": "Details about a fidelity account",
       "properties": {
         "amount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "balance": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "movementId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "operation": {
-          "type": "billing.fidelityAccount.OperationEnum",
-          "fullType": "billing.fidelityAccount.OperationEnum",
           "canBeNull": false,
+          "fullType": "billing.fidelityAccount.OperationEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "billing.fidelityAccount.OperationEnum"
         },
         "order": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "previousBalance": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "billing.Invoice": {
+      "description": "Details about a Bill",
       "id": "Invoice",
       "namespace": "billing",
-      "description": "Details about a Bill",
       "properties": {
         "billId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "htmlUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "password": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "pdfUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "priceWithTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "priceWithoutTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "tax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "billing.InvoiceDeposit": {
+      "description": "Details about a deposit",
       "id": "InvoiceDeposit",
       "namespace": "billing",
-      "description": "Details about a deposit",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "date": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "depositId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "password": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "paymentInfo": {
-          "type": "billing.paymentMethod.PaymentInfo",
-          "fullType": "billing.paymentMethod.PaymentInfo",
           "canBeNull": true,
+          "fullType": "billing.paymentMethod.PaymentInfo",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "billing.paymentMethod.PaymentInfo"
         },
         "pdfUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "billing.InvoiceDepositRequest": {
+      "description": "Details about a deposit",
       "id": "InvoiceDepositRequest",
       "namespace": "billing",
-      "description": "Details about a deposit",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "creation date of the deposit request",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "deposit request id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "orderIds": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "order ids relative to this deposit request",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         }
       }
     },
     "billing.InvoiceDetail": {
+      "description": "Information about an invoice entry",
       "id": "InvoiceDetail",
       "namespace": "billing",
-      "description": "Information about an invoice entry",
       "properties": {
         "billDetailId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "periodEnd": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "periodStart": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "quantity": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "totalPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "unitPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "billing.InvoiceRefund": {
+      "description": "Details about a Refund",
       "id": "InvoiceRefund",
       "namespace": "billing",
-      "description": "Details about a Refund",
       "properties": {
         "date": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "htmlUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "originalBillId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "password": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "pdfUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "priceWithTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "priceWithoutTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "refundId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "tax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "billing.InvoiceRefundDetail": {
+      "description": "Information about refund entry",
       "id": "InvoiceRefundDetail",
       "namespace": "billing",
-      "description": "Information about refund entry",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "quantity": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "refundDetailId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "refundId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "totalPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "unitPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "billing.InvoiceWithdrawal": {
+      "description": "Details about a withdrawal",
       "id": "InvoiceWithdrawal",
       "namespace": "billing",
-      "description": "Details about a withdrawal",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "country": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "date": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "password": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "pdfUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "withdrawalId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "billing.ItemDetail": {
+      "description": "Extensions of a detail",
       "id": "ItemDetail",
       "namespace": "billing",
-      "description": "Extensions of a detail",
       "properties": {
         "order": {
-          "type": "billing.ItemDetail.Order",
-          "fullType": "billing.ItemDetail.Order",
           "canBeNull": false,
+          "fullType": "billing.ItemDetail.Order",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "billing.ItemDetail.Order"
         }
       }
     },
     "billing.ItemDetail.Order": {
+      "description": "Order data for this Detail",
       "id": "Order",
       "namespace": "billing.ItemDetail",
-      "description": "Order data for this Detail",
       "properties": {
         "action": {
-          "type": "billing.ItemDetail.OrderActionEnum",
-          "fullType": "billing.ItemDetail.OrderActionEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The meaning of this order detail",
-          "required": false
+          "fullType": "billing.ItemDetail.OrderActionEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "billing.ItemDetail.OrderActionEnum"
         },
         "configurations": {
-          "type": "billing.ItemDetail.OrderConfiguration[]",
-          "fullType": "billing.ItemDetail.OrderConfiguration[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Configurations chosen during the order",
-          "required": true
+          "fullType": "billing.ItemDetail.OrderConfiguration[]",
+          "readOnly": false,
+          "required": true,
+          "type": "billing.ItemDetail.OrderConfiguration[]"
         },
         "plan": {
-          "type": "billing.ItemDetail.OrderPlan",
-          "fullType": "billing.ItemDetail.OrderPlan",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Plan from /order/cart",
-          "required": true
+          "fullType": "billing.ItemDetail.OrderPlan",
+          "readOnly": false,
+          "required": true,
+          "type": "billing.ItemDetail.OrderPlan"
         }
       }
     },
     "billing.ItemDetail.OrderActionEnum": {
-      "id": "OrderActionEnum",
-      "namespace": "billing.ItemDetail",
       "description": "List of order actions",
       "enum": [
         "consumption",
@@ -8072,229 +8071,229 @@ export const schema: Schema = {
         "renew",
         "upgrade"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderActionEnum",
+      "namespace": "billing.ItemDetail"
     },
     "billing.ItemDetail.OrderConfiguration": {
+      "description": "Configuration of order",
       "id": "OrderConfiguration",
       "namespace": "billing.ItemDetail",
-      "description": "Configuration of order",
       "properties": {
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Label of the configuration",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Value of the configuration",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "billing.ItemDetail.OrderPlan": {
+      "description": "Plan data from order",
       "id": "OrderPlan",
       "namespace": "billing.ItemDetail",
-      "description": "Plan data from order",
       "properties": {
         "code": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Plan code used when ordering through /order/cart",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "duration": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Duration chosen when ordering through /order/cart (ISO 8601)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "pricingMode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Pricing mode used when ordering through /order/cart",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "product": {
-          "type": "billing.ItemDetail.OrderPlanProduct",
-          "fullType": "billing.ItemDetail.OrderPlanProduct",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Product from /order/cart",
-          "required": true
+          "fullType": "billing.ItemDetail.OrderPlanProduct",
+          "readOnly": false,
+          "required": true,
+          "type": "billing.ItemDetail.OrderPlanProduct"
         },
         "quantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Quantity ordered",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "billing.ItemDetail.OrderPlanProduct": {
+      "description": "Product data from order",
       "id": "OrderPlanProduct",
       "namespace": "billing.ItemDetail",
-      "description": "Product data from order",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the product used when ordering through /order/cart",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "billing.Order": {
+      "description": "Details about an Order",
       "id": "Order",
       "namespace": "billing",
-      "description": "Details about an Order",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "password": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "pdfUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "priceWithTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "priceWithoutTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "retractionDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "tax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "billing.OrderDetail": {
+      "description": "Information about a Bill entry",
       "id": "OrderDetail",
       "namespace": "billing",
-      "description": "Information about a Bill entry",
       "properties": {
         "cancelled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "orderDetailId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "quantity": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "totalPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "unitPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "billing.PaymentMeanEnum": {
-      "id": "PaymentMeanEnum",
-      "namespace": "billing",
       "description": "All payment means you might have use on an OVH order",
       "enum": [
         "cash",
@@ -8322,136 +8321,136 @@ export const schema: Schema = {
         "transfer",
         "withdrawal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PaymentMeanEnum",
+      "namespace": "billing"
     },
     "billing.PaymentMeanValidation": {
+      "description": "A validation required to add a payment mean",
       "id": "PaymentMeanValidation",
       "namespace": "billing",
-      "description": "A validation required to add a payment mean",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "submitUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "validationType": {
-          "type": "billing.PaymentMeanValidationType",
-          "fullType": "billing.PaymentMeanValidationType",
           "canBeNull": false,
+          "fullType": "billing.PaymentMeanValidationType",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "billing.PaymentMeanValidationType"
         }
       }
     },
     "billing.PaymentMeanValidationType": {
-      "id": "PaymentMeanValidationType",
-      "namespace": "billing",
       "description": "All the validation you may have to do",
       "enum": [
         "creditAccount",
         "documentToSend",
         "simpleValidation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PaymentMeanValidationType",
+      "namespace": "billing"
     },
     "billing.PaymentMethod": {
+      "description": "Available payment methods",
       "id": "PaymentMethod",
       "namespace": "billing",
-      "description": "Available payment methods",
       "properties": {
         "billingContactId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Billing contact ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Creation date of the payment method",
-          "required": true
+          "fullType": "date",
+          "readOnly": false,
+          "required": true,
+          "type": "date"
         },
         "default": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Is this payment method set as the default one",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Customer personalized description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method id",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "paymentSubType": {
-          "type": "billing.paymentMethod.PaymentSubTypeEnum",
-          "fullType": "billing.paymentMethod.PaymentSubTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Payment sub type",
-          "required": false
+          "fullType": "billing.paymentMethod.PaymentSubTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "billing.paymentMethod.PaymentSubTypeEnum"
         },
         "paymentType": {
-          "type": "billing.paymentMethod.PaymentTypeEnum",
-          "fullType": "billing.paymentMethod.PaymentTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment type",
-          "required": true
+          "fullType": "billing.paymentMethod.PaymentTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "billing.paymentMethod.PaymentTypeEnum"
         },
         "publicLabel": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Public payment method label",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "billing.paymentMethod.StatusEnum",
-          "fullType": "billing.paymentMethod.StatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method status enum",
-          "required": true
+          "fullType": "billing.paymentMethod.StatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "billing.paymentMethod.StatusEnum"
         }
       }
     },
     "billing.ReusablePaymentMeanEnum": {
-      "id": "ReusablePaymentMeanEnum",
-      "namespace": "billing",
       "description": "Reusable payment mean type",
       "enum": [
         "CREDIT_CARD",
@@ -8464,105 +8463,105 @@ export const schema: Schema = {
         "ovhAccount",
         "paypal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ReusablePaymentMeanEnum",
+      "namespace": "billing"
     },
     "billing.SlaOperation": {
+      "description": "SLA properties",
       "id": "SlaOperation",
       "namespace": "billing",
-      "description": "SLA properties",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the event that led to SLA",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Description of the SLA operation for this incident",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "endDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Date of the end of the SLA",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "SLA identifier",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sla operation name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the start of the SLA",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "billing.SlaOperationService": {
+      "description": "Describe all services impacted by SLA",
       "id": "SlaOperationService",
       "namespace": "billing",
-      "description": "Describe all services impacted by SLA",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Service description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Impacted service name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "slaApplication": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SLA plan application",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "slaPlan": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SLA plan description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "billing.fidelityAccount.OperationEnum": {
-      "id": "OperationEnum",
-      "namespace": "billing.fidelityAccount",
       "description": "Operations a fidelity account movement can represent",
       "enum": [
         "bonus",
@@ -8575,86 +8574,86 @@ export const schema: Schema = {
         "pre-credit",
         "pre-debit"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationEnum",
+      "namespace": "billing.fidelityAccount"
     },
     "billing.order.AssociatedObject": {
+      "description": "The object the processing of the order leaded to",
       "id": "AssociatedObject",
       "namespace": "billing.order",
-      "description": "The object the processing of the order leaded to",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "billing.order.associatedObject.TypeEnum",
-          "fullType": "billing.order.associatedObject.TypeEnum",
           "canBeNull": true,
+          "fullType": "billing.order.associatedObject.TypeEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "billing.order.associatedObject.TypeEnum"
         }
       }
     },
     "billing.order.AvailablePaymentMethod": {
+      "description": "Payment method that can be used on an Order",
       "id": "AvailablePaymentMethod",
       "namespace": "billing.order",
-      "description": "Payment method that can be used on an Order",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "billing.paymentMethod.PaymentTypeEnum",
-          "fullType": "billing.paymentMethod.PaymentTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Payment method type",
-          "required": true
+          "fullType": "billing.paymentMethod.PaymentTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "billing.paymentMethod.PaymentTypeEnum"
         }
       }
     },
     "billing.order.FollowUp": {
+      "description": "Follow up history of an order",
       "id": "FollowUp",
       "namespace": "billing.order",
-      "description": "Follow up history of an order",
       "properties": {
         "history": {
-          "type": "billing.order.followUp.History[]",
-          "fullType": "billing.order.followUp.History[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Step history of order follow-up",
-          "required": true
+          "fullType": "billing.order.followUp.History[]",
+          "readOnly": false,
+          "required": true,
+          "type": "billing.order.followUp.History[]"
         },
         "status": {
-          "type": "billing.order.followUp.StatusEnum",
-          "fullType": "billing.order.followUp.StatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Step status of order follow-up",
-          "required": true
+          "fullType": "billing.order.followUp.StatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "billing.order.followUp.StatusEnum"
         },
         "step": {
-          "type": "billing.order.followUp.StepEnum",
-          "fullType": "billing.order.followUp.StepEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Step of order follow-up",
-          "required": true
+          "fullType": "billing.order.followUp.StepEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "billing.order.followUp.StepEnum"
         }
       }
     },
     "billing.order.OrderStatusEnum": {
-      "id": "OrderStatusEnum",
-      "namespace": "billing.order",
       "description": "All possible order status",
       "enum": [
         "cancelled",
@@ -8666,71 +8665,71 @@ export const schema: Schema = {
         "notPaid",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderStatusEnum",
+      "namespace": "billing.order"
     },
     "billing.order.OrderVoucher": {
+      "description": "Voucher applied on an Order",
       "id": "OrderVoucher",
       "namespace": "billing.order",
-      "description": "Voucher applied on an Order",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Amount applied from the balance",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "balanceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Credit balance name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "billing.order.PaymentMethods": {
+      "description": "Payment methods",
       "id": "PaymentMethods",
       "namespace": "billing.order",
-      "description": "Payment methods",
       "properties": {
         "available": {
-          "type": "payment.method.AvailablePaymentMethod[]",
-          "fullType": "payment.method.AvailablePaymentMethod[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method available on this order",
-          "required": true
+          "fullType": "payment.method.AvailablePaymentMethod[]",
+          "readOnly": false,
+          "required": true,
+          "type": "payment.method.AvailablePaymentMethod[]"
         },
         "registered": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "IDs of registered payment method usable on this order",
-          "required": true
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": true,
+          "type": "long[]"
         }
       }
     },
     "billing.order.RegisteredPaymentMean": {
+      "description": "A registered payment mean",
       "id": "RegisteredPaymentMean",
       "namespace": "billing.order",
-      "description": "A registered payment mean",
       "properties": {
         "paymentMean": {
-          "type": "billing.ReusablePaymentMeanEnum",
-          "fullType": "billing.ReusablePaymentMeanEnum",
           "canBeNull": false,
+          "fullType": "billing.ReusablePaymentMeanEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "billing.ReusablePaymentMeanEnum"
         }
       }
     },
     "billing.order.RetractionReasonEnum": {
-      "id": "RetractionReasonEnum",
-      "namespace": "billing.order",
       "description": "Retraction reason type",
       "enum": [
         "competitor",
@@ -8741,11 +8740,11 @@ export const schema: Schema = {
         "reliability",
         "unused"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RetractionReasonEnum",
+      "namespace": "billing.order"
     },
     "billing.order.associatedObject.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "billing.order.associatedObject",
       "description": "Type of objects an order can be linked to",
       "enum": [
         "Bill",
@@ -8753,65 +8752,65 @@ export const schema: Schema = {
         "Refund",
         "Withdrawal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "billing.order.associatedObject"
     },
     "billing.order.credit.Balance": {
+      "description": "Credit balance applied on an Order",
       "id": "Balance",
       "namespace": "billing.order.credit",
-      "description": "Credit balance applied on an Order",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Amount applied from the balance",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "balanceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Credit balance name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "billing.order.followUp.History": {
+      "description": "Step history of order follow-up",
       "id": "History",
       "namespace": "billing.order.followUp",
-      "description": "Step history of order follow-up",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "History date of order follow-up",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "History description of order follow-up",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "label": {
-          "type": "billing.order.followUp.HistoryStatusEnum",
-          "fullType": "billing.order.followUp.HistoryStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "History label of order follow-up",
-          "required": true
+          "fullType": "billing.order.followUp.HistoryStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "billing.order.followUp.HistoryStatusEnum"
         }
       }
     },
     "billing.order.followUp.HistoryStatusEnum": {
-      "id": "HistoryStatusEnum",
-      "namespace": "billing.order.followUp",
       "description": "History label of order follow-up",
       "enum": [
         "DELIVERY",
@@ -8828,11 +8827,11 @@ export const schema: Schema = {
         "PAYMENT_RECEIVED",
         "REGISTERED_PAYMENT_INITIATED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "HistoryStatusEnum",
+      "namespace": "billing.order.followUp"
     },
     "billing.order.followUp.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "billing.order.followUp",
       "description": "Step status of order follow-up",
       "enum": [
         "DOING",
@@ -8840,11 +8839,11 @@ export const schema: Schema = {
         "ERROR",
         "TODO"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "billing.order.followUp"
     },
     "billing.order.followUp.StepEnum": {
-      "id": "StepEnum",
-      "namespace": "billing.order.followUp",
       "description": "Status of order follow-up",
       "enum": [
         "AVAILABLE",
@@ -8852,64 +8851,64 @@ export const schema: Schema = {
         "VALIDATED",
         "VALIDATING"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StepEnum",
+      "namespace": "billing.order.followUp"
     },
     "billing.paymentMethod.CreatePaymentTypeEnum": {
-      "id": "CreatePaymentTypeEnum",
-      "namespace": "billing.paymentMethod",
       "description": "List of payment type enum possible to create",
       "enum": [
         "BANK_ACCOUNT",
         "CREDIT_CARD",
         "PAYPAL"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CreatePaymentTypeEnum",
+      "namespace": "billing.paymentMethod"
     },
     "billing.paymentMethod.PaymentInfo": {
+      "description": "The payment infos linked to this debt entry",
       "id": "PaymentInfo",
       "namespace": "billing.paymentMethod",
-      "description": "The payment infos linked to this debt entry",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Optional customer description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "paymentType": {
-          "type": "billing.paymentMethod.PaymentTypeEnum",
-          "fullType": "billing.paymentMethod.PaymentTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method used for this debt operation",
-          "required": true
+          "fullType": "billing.paymentMethod.PaymentTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "billing.paymentMethod.PaymentTypeEnum"
         },
         "publicLabel": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Public payment method label",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "billing.paymentMethod.PaymentSubTypeEnum": {
-      "id": "PaymentSubTypeEnum",
-      "namespace": "billing.paymentMethod",
       "description": "List of payment sub type enum",
       "enum": [
         "AMERICAN_EXPRESS",
         "MASTERCARD",
         "VISA"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PaymentSubTypeEnum",
+      "namespace": "billing.paymentMethod"
     },
     "billing.paymentMethod.PaymentTypeEnum": {
-      "id": "PaymentTypeEnum",
-      "namespace": "billing.paymentMethod",
       "description": "List of payment type enum",
       "enum": [
         "BANK_ACCOUNT",
@@ -8919,11 +8918,11 @@ export const schema: Schema = {
         "INTERNAL_TRUSTED_ACCOUNT",
         "PAYPAL"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PaymentTypeEnum",
+      "namespace": "billing.paymentMethod"
     },
     "billing.paymentMethod.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "billing.paymentMethod",
       "description": "List of payment method status enum",
       "enum": [
         "BLOCKED",
@@ -8938,320 +8937,320 @@ export const schema: Schema = {
         "VALID",
         "VALID_FOR_CREDIT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "billing.paymentMethod"
     },
     "complexType.UnitAndValue<T>": {
-      "id": "UnitAndValue",
-      "namespace": "complexType",
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "contact.Address": {
+      "description": "Representation of an Address",
       "id": "Address",
       "namespace": "contact",
-      "description": "Representation of an Address",
       "properties": {
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "City",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "country": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Country",
-          "required": true
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "nichandle.CountryEnum"
         },
         "line1": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "First line of the address",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "line2": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Second line of the address",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "line3": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Third line of the address",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "otherDetails": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Others details",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "province": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Province name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "zip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Zipcode",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "contact.Contact": {
+      "description": "Representation of a Contact",
       "id": "Contact",
       "namespace": "contact",
-      "description": "Representation of a Contact",
       "properties": {
         "address": {
-          "type": "contact.Address",
-          "fullType": "contact.Address",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Address for this contact",
-          "required": true
+          "fullType": "contact.Address",
+          "readOnly": false,
+          "required": true,
+          "type": "contact.Address"
         },
         "birthCity": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Birth city",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "birthCountry": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Birth Country",
-          "required": false
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
         },
         "birthDay": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Birth date",
-          "required": false
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
         },
         "birthZip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Birth Zipcode",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "cellPhone": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Cellphone number",
-          "required": false
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
         },
         "companyNationalIdentificationNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "National identification number of your company",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Email address",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "fax": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Fax number",
-          "required": false
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "First name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "gender": {
-          "type": "nichandle.GenderEnum",
-          "fullType": "nichandle.GenderEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Gender",
-          "required": false
+          "fullType": "nichandle.GenderEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.GenderEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact Identifier",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "language": {
-          "type": "nichandle.LanguageEnum",
-          "fullType": "nichandle.LanguageEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Language",
-          "required": true
+          "fullType": "nichandle.LanguageEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "nichandle.LanguageEnum"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Last name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "legalForm": {
-          "type": "nichandle.LegalFormEnum",
-          "fullType": "nichandle.LegalFormEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Legal form of the contact",
-          "required": true
+          "fullType": "nichandle.LegalFormEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "nichandle.LegalFormEnum"
         },
         "nationalIdentificationNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "National identification number of the contact",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "nationality": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Nationality",
-          "required": false
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
         },
         "organisationName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Organisation name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisationType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Organisation type",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "phone": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Telephone number",
-          "required": false
+          "fullType": "phoneNumber",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber"
         },
         "spareEmail": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Spare email address",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "vat": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "VAT number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "contact.FieldInformation": {
+      "description": "Extras informations about a field",
       "id": "FieldInformation",
       "namespace": "contact",
-      "description": "Extras informations about a field",
       "properties": {
         "fieldName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the field concerned by restrictions",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "mandatory": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Indicates if the field is mandatory when editing",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "readOnly": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Indicates if the field can't be edited",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "coreTypes.ContinentEnum": {
-      "id": "ContinentEnum",
-      "namespace": "coreTypes",
       "description": "Continents",
       "enum": [
         "africa",
@@ -9262,11 +9261,11 @@ export const schema: Schema = {
         "oceania",
         "south-america"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ContinentEnum",
+      "namespace": "coreTypes"
     },
     "coreTypes.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "coreTypes",
       "description": "ISO country codes",
       "enum": [
         "ac",
@@ -9530,42 +9529,42 @@ export const schema: Schema = {
         "zm",
         "zw"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "coreTypes"
     },
     "debt.associatedObject.PaymentInfo": {
+      "description": "The payment infos linked to this debt entry",
       "id": "PaymentInfo",
       "namespace": "debt.associatedObject",
-      "description": "The payment infos linked to this debt entry",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Optional customer description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "paymentType": {
-          "type": "billing.PaymentMeanEnum",
-          "fullType": "billing.PaymentMeanEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment mean used for this debt operation",
-          "required": true
+          "fullType": "billing.PaymentMeanEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "billing.PaymentMeanEnum"
         },
         "publicLabel": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Public payment mean label",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "debt.associatedObject.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "debt.associatedObject",
       "description": "Type of objects an order can be linked to",
       "enum": [
         "Bill",
@@ -9576,46 +9575,46 @@ export const schema: Schema = {
         "Refund",
         "Withdrawal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "debt.associatedObject"
     },
     "debt.entry.AssociatedObject": {
+      "description": "The object linked to this debt entry",
       "id": "AssociatedObject",
       "namespace": "debt.entry",
-      "description": "The object linked to this debt entry",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "paymentInfo": {
-          "type": "debt.associatedObject.PaymentInfo",
-          "fullType": "debt.associatedObject.PaymentInfo",
           "canBeNull": true,
+          "fullType": "debt.associatedObject.PaymentInfo",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "debt.associatedObject.PaymentInfo"
         },
         "subId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "debt.associatedObject.TypeEnum",
-          "fullType": "debt.associatedObject.TypeEnum",
           "canBeNull": true,
+          "fullType": "debt.associatedObject.TypeEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "debt.associatedObject.TypeEnum"
         }
       }
     },
     "debt.entry.OperationEnum": {
-      "id": "OperationEnum",
-      "namespace": "debt.entry",
       "description": "All operations a debt entry can represent",
       "enum": [
         "CANCEL",
@@ -9654,11 +9653,11 @@ export const schema: Schema = {
         "WARRANT_MANUAL",
         "WITHDRAW_AUTOMATIC"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationEnum",
+      "namespace": "debt.entry"
     },
     "debt.entry.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "debt.entry",
       "description": "All status a debt entry can be in",
       "enum": [
         "CANCELLED",
@@ -9668,11 +9667,11 @@ export const schema: Schema = {
         "PENDING",
         "TODO"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "debt.entry"
     },
     "dedicated.TemplateOsFileSystemEnum": {
-      "id": "TemplateOsFileSystemEnum",
-      "namespace": "dedicated",
       "description": "Filesystems available",
       "enum": [
         "btrfs",
@@ -9685,11 +9684,11 @@ export const schema: Schema = {
         "xfs",
         "zfs"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplateOsFileSystemEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TemplateOsHardwareRaidEnum": {
-      "id": "TemplateOsHardwareRaidEnum",
-      "namespace": "dedicated",
       "description": "Hardware RAID enum",
       "enum": [
         "raid0",
@@ -9700,11 +9699,11 @@ export const schema: Schema = {
         "raid6",
         "raid60"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplateOsHardwareRaidEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TemplateOsLanguageEnum": {
-      "id": "TemplateOsLanguageEnum",
-      "namespace": "dedicated",
       "description": "all language available",
       "enum": [
         "ar",
@@ -9744,73 +9743,73 @@ export const schema: Schema = {
         "zh-Hans-CN",
         "zh-Hans-HK"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplateOsLanguageEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TemplateOsProperties": {
+      "description": "A structure describing properties customizables about this dedicated installation template",
       "id": "TemplateOsProperties",
       "namespace": "dedicated",
-      "description": "A structure describing properties customizables about this dedicated installation template",
       "properties": {
         "changeLog": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Template change log details",
-          "required": false
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
         },
         "customHostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Set up the server using the provided hostname instead of the default hostname",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "postInstallationScriptLink": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Indicate the URL where your postinstall customisation script is located",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "postInstallationScriptReturn": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is \"loh1Xee7eo OK OK OK UGh8Ang1Gu",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "rating": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "sshKeyName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the ssh key that should be installed. Password login will be disabled",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "useDistributionKernel": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Use the distribution's native kernel instead of the recommended OVH Kernel",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
     "dedicated.TemplateOsTypeEnum": {
-      "id": "TemplateOsTypeEnum",
-      "namespace": "dedicated",
       "description": "Os type",
       "enum": [
         "bsd",
@@ -9818,11 +9817,11 @@ export const schema: Schema = {
         "solaris",
         "windows"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplateOsTypeEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TemplateOsUsageEnum": {
-      "id": "TemplateOsUsageEnum",
-      "namespace": "dedicated",
       "description": "Os usage definition",
       "enum": [
         "basic",
@@ -9832,323 +9831,323 @@ export const schema: Schema = {
         "readyToUse",
         "virtualisation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplateOsUsageEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TemplatePartitionTypeEnum": {
-      "id": "TemplatePartitionTypeEnum",
-      "namespace": "dedicated",
       "description": "partition type",
       "enum": [
         "logical",
         "lv",
         "primary"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TemplatePartitionTypeEnum",
+      "namespace": "dedicated"
     },
     "dedicated.installationTemplate.Templates": {
+      "description": "Available installation templates",
       "id": "Templates",
       "namespace": "dedicated.installationTemplate",
-      "description": "Available installation templates",
       "properties": {
         "availableLanguages": {
-          "type": "dedicated.TemplateOsLanguageEnum[]",
-          "fullType": "dedicated.TemplateOsLanguageEnum[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "list of all language available for this template",
-          "required": true
+          "fullType": "dedicated.TemplateOsLanguageEnum[]",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TemplateOsLanguageEnum[]"
         },
         "beta": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution is new, and although tested and functional, may still display odd behaviour",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "bitFormat": {
-          "type": "dedicated.server.BitFormatEnum",
-          "fullType": "dedicated.server.BitFormatEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "this template  bit format",
-          "required": true
+          "fullType": "dedicated.server.BitFormatEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.BitFormatEnum"
         },
         "category": {
-          "type": "dedicated.TemplateOsUsageEnum",
-          "fullType": "dedicated.TemplateOsUsageEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "category of this template (informative only)",
-          "required": true
+          "fullType": "dedicated.TemplateOsUsageEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TemplateOsUsageEnum"
         },
         "customization": {
-          "type": "dedicated.TemplateOsProperties",
-          "fullType": "dedicated.TemplateOsProperties",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Customizable template properties ",
-          "required": false
+          "fullType": "dedicated.TemplateOsProperties",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsProperties"
         },
         "defaultLanguage": {
-          "type": "dedicated.TemplateOsLanguageEnum",
-          "fullType": "dedicated.TemplateOsLanguageEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "the default language of this template",
-          "required": true
+          "fullType": "dedicated.TemplateOsLanguageEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.TemplateOsLanguageEnum"
         },
         "deprecated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "is this distribution deprecated",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "information about this template",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "distribution": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the distribution this template is based on",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "family": {
-          "type": "dedicated.TemplateOsTypeEnum",
-          "fullType": "dedicated.TemplateOsTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "this template family type",
-          "required": true
+          "fullType": "dedicated.TemplateOsTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TemplateOsTypeEnum"
         },
         "filesystems": {
-          "type": "dedicated.TemplateOsFileSystemEnum[]",
-          "fullType": "dedicated.TemplateOsFileSystemEnum[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "list of all filesystems  available for this template",
-          "required": true
+          "fullType": "dedicated.TemplateOsFileSystemEnum[]",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TemplateOsFileSystemEnum[]"
         },
         "hardRaidConfiguration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports hardware raid configuration through the OVH API",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "lastModification": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Date of last modification of the base image",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lvmReady": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports Logical Volumes (Linux LVM)",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "supportsDistributionKernel": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports installation using the distribution's native kernel instead of the recommended OVH kernel",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "supportsGptLabel": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports the GUID Partition Table (GPT), providing up to 128 partitions that can have more than 2 TB",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "supportsRTM": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This distribution supports RTM software",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "supportsSqlServer": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports the microsoft SQL server",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "supportsUEFI": {
-          "type": "dedicated.server.SupportsUEFIEnum",
-          "fullType": "dedicated.server.SupportsUEFIEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "This distribution supports UEFI setup",
-          "required": false
+          "fullType": "dedicated.server.SupportsUEFIEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.SupportsUEFIEnum"
         },
         "templateName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "This template name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.installationTemplate.hardwareRaid": {
+      "description": "Hardware RAID defined in this partitioning scheme",
       "id": "hardwareRaid",
       "namespace": "dedicated.installationTemplate",
-      "description": "Hardware RAID defined in this partitioning scheme",
       "properties": {
         "disks": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Disk list",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "mode": {
-          "type": "dedicated.TemplateOsHardwareRaidEnum",
-          "fullType": "dedicated.TemplateOsHardwareRaidEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "RAID mode",
-          "required": true
+          "fullType": "dedicated.TemplateOsHardwareRaidEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.TemplateOsHardwareRaidEnum"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hardware RAID name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "step": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Specifies the creation order of the hardware RAID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dedicated.installationTemplate.templatePartitioningSchemes": {
+      "description": "Partitioning schemes available on this template",
       "id": "templatePartitioningSchemes",
       "namespace": "dedicated.installationTemplate",
-      "description": "Partitioning schemes available on this template",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "name of this partitioning scheme",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "priority": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dedicated.installationTemplate.templatePartitions": {
+      "description": " Partitions defined in this partitioning scheme",
       "id": "templatePartitions",
       "namespace": "dedicated.installationTemplate",
-      "description": " Partitions defined in this partitioning scheme",
       "properties": {
         "filesystem": {
-          "type": "dedicated.TemplateOsFileSystemEnum",
-          "fullType": "dedicated.TemplateOsFileSystemEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Partition filesytem",
-          "required": true
+          "fullType": "dedicated.TemplateOsFileSystemEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.TemplateOsFileSystemEnum"
         },
         "mountpoint": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "partition mount point",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "order": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "specifies the creation order of the partition on the disk",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "raid": {
-          "type": "dedicated.server.PartitionRaidEnum",
-          "fullType": "dedicated.server.PartitionRaidEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "raid partition type",
-          "required": false
+          "fullType": "dedicated.server.PartitionRaidEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.PartitionRaidEnum"
         },
         "size": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "size of partition in Mb, 0 => rest of the space",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "type": {
-          "type": "dedicated.TemplatePartitionTypeEnum",
-          "fullType": "dedicated.TemplatePartitionTypeEnum",
           "canBeNull": false,
+          "fullType": "dedicated.TemplatePartitionTypeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "dedicated.TemplatePartitionTypeEnum"
         },
         "volumeName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The volume name needed for proxmox distribution",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.BitFormatEnum": {
-      "id": "BitFormatEnum",
-      "namespace": "dedicated.server",
       "description": "Available os bit format",
       "enum": [
         "32",
         "64"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "BitFormatEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.PartitionRaidEnum": {
-      "id": "PartitionRaidEnum",
-      "namespace": "dedicated.server",
       "description": "partition raid type",
       "enum": [
         "0",
@@ -10157,53 +10156,53 @@ export const schema: Schema = {
         "5",
         "6"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PartitionRaidEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.SupportsUEFIEnum": {
-      "id": "SupportsUEFIEnum",
-      "namespace": "dedicated.server",
       "description": "supports UEFI setup",
       "enum": [
         "no",
         "only",
         "yes"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SupportsUEFIEnum",
+      "namespace": "dedicated.server"
     },
     "geolocation.ContinentCountryLocation": {
+      "description": "Representation of country and continent from visitor IP",
       "id": "ContinentCountryLocation",
       "namespace": "geolocation",
-      "description": "Representation of country and continent from visitor IP",
       "properties": {
         "continent": {
-          "type": "coreTypes.ContinentEnum",
-          "fullType": "coreTypes.ContinentEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Continent",
-          "required": true
+          "fullType": "coreTypes.ContinentEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "coreTypes.ContinentEnum"
         },
         "countryCode": {
-          "type": "coreTypes.CountryEnum",
-          "fullType": "coreTypes.CountryEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Country iso code",
-          "required": true
+          "fullType": "coreTypes.CountryEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "coreTypes.CountryEnum"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The IP address processed, the user's origin one",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         }
       }
     },
     "http.MethodEnum": {
-      "id": "MethodEnum",
-      "namespace": "http",
       "description": "All HTTP methods available",
       "enum": [
         "DELETE",
@@ -10211,658 +10210,658 @@ export const schema: Schema = {
         "POST",
         "PUT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MethodEnum",
+      "namespace": "http"
     },
     "me.billing.group.BillingGroup": {
+      "description": "Missing description",
       "id": "BillingGroup",
       "namespace": "me.billing.group",
-      "description": "Missing description",
       "properties": {
         "contactId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact ID from /me/contact",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "groupId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Billing group ID",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last update date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Billing group unique name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "paymentMethodId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Payment method ID associated to the billing group",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "me.billing.group.Service": {
+      "description": "Missing description",
       "id": "Service",
       "namespace": "me.billing.group",
-      "description": "Missing description",
       "properties": {
         "groupId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Billing group ID",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "serviceId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service ID",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "me.billing.group.service.Create": {
+      "description": "Missing description",
       "id": "Create",
       "namespace": "me.billing.group.service",
-      "description": "Missing description",
       "properties": {
         "serviceId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A service ID to associate",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "me.consent.Campaign": {
+      "description": "Consent campaign",
       "id": "Campaign",
       "namespace": "me.consent",
-      "description": "Consent campaign",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Campaign description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Campaign name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "me.consent.CampaignTypeEnum",
-          "fullType": "me.consent.CampaignTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Campaign type",
-          "required": true
+          "fullType": "me.consent.CampaignTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "me.consent.CampaignTypeEnum"
         }
       }
     },
     "me.consent.CampaignTypeEnum": {
-      "id": "CampaignTypeEnum",
-      "namespace": "me.consent",
       "description": "Campaign type",
       "enum": [
         "OPTIN",
         "OPTOUT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CampaignTypeEnum",
+      "namespace": "me.consent"
     },
     "me.consent.Consent": {
+      "description": "Customer consent information for a campaign",
       "id": "Consent",
       "namespace": "me.consent",
-      "description": "Customer consent information for a campaign",
       "properties": {
         "campaign": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Campaign name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "history": {
-          "type": "me.consent.Decision[]",
-          "fullType": "me.consent.Decision[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Consent decisions history for this campaign",
-          "required": true
+          "fullType": "me.consent.Decision[]",
+          "readOnly": true,
+          "required": true,
+          "type": "me.consent.Decision[]"
         },
         "type": {
-          "type": "me.consent.CampaignTypeEnum",
-          "fullType": "me.consent.CampaignTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Campaign type",
-          "required": true
+          "fullType": "me.consent.CampaignTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "me.consent.CampaignTypeEnum"
         },
         "value": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current consent value",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "me.consent.Decision": {
+      "description": "Customer consent decision",
       "id": "Decision",
       "namespace": "me.consent",
-      "description": "Customer consent decision",
       "properties": {
         "timestamp": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Consent decision datetime",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "value": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Consent decision value",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "me.consumption.Price": {
+      "description": "Price with currency and amount in micro-cents",
       "id": "Price",
       "namespace": "me.consumption",
-      "description": "Price with currency and amount in micro-cents",
       "properties": {
         "currencyCode": {
-          "type": "order.CurrencyCodeEnum",
-          "fullType": "order.CurrencyCodeEnum",
           "canBeNull": false,
+          "fullType": "order.CurrencyCodeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "order.CurrencyCodeEnum"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "valueInUcents": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "me.consumption.Transaction": {
+      "description": "List of consumptions recorded in a range",
       "id": "Transaction",
       "namespace": "me.consumption",
-      "description": "List of consumptions recorded in a range",
       "properties": {
         "beginDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Begin date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "elements": {
-          "type": "me.consumption.transaction.Element[]",
-          "fullType": "me.consumption.transaction.Element[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of product plan code consumption",
-          "required": true
+          "fullType": "me.consumption.transaction.Element[]",
+          "readOnly": true,
+          "required": true,
+          "type": "me.consumption.transaction.Element[]"
         },
         "endDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "End date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Transaction ID",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "price": {
-          "type": "me.consumption.Price",
-          "fullType": "me.consumption.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Consumption amount price",
-          "required": true
+          "fullType": "me.consumption.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "me.consumption.Price"
         },
         "serviceId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "me.consumption.transaction.Element": {
+      "description": "Element of consumption for resource",
       "id": "Element",
       "namespace": "me.consumption.transaction",
-      "description": "Element of consumption for resource",
       "properties": {
         "details": {
-          "type": "me.consumption.transaction.Element.Detail[]",
-          "fullType": "me.consumption.transaction.Element.Detail[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of consumption details for this planCode",
-          "required": true
+          "fullType": "me.consumption.transaction.Element.Detail[]",
+          "readOnly": true,
+          "required": true,
+          "type": "me.consumption.transaction.Element.Detail[]"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Identifier of the offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "planFamily": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Family of the offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "price": {
-          "type": "me.consumption.Price",
-          "fullType": "me.consumption.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Consumption amount price",
-          "required": true
+          "fullType": "me.consumption.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "me.consumption.Price"
         },
         "quantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Consumption quantity",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "me.consumption.transaction.Element.Detail": {
+      "description": "Element of consumption for resource",
       "id": "Detail",
       "namespace": "me.consumption.transaction.Element",
-      "description": "Element of consumption for resource",
       "properties": {
         "price": {
-          "type": "me.consumption.Price",
-          "fullType": "me.consumption.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Consumption amount price",
-          "required": true
+          "fullType": "me.consumption.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "me.consumption.Price"
         },
         "quantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Consumption quantity",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "unique_id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Unique ID associated to one service element",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "me.credit.Balance": {
+      "description": "Missing description",
       "id": "Balance",
       "namespace": "me.credit",
-      "description": "Missing description",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Balance amount",
-          "required": false
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
         },
         "balanceDetails": {
-          "type": "me.credit.balance.BalanceDetails[]",
-          "fullType": "me.credit.balance.BalanceDetails[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Balance details, amounts by serviceID",
-          "required": false
+          "fullType": "me.credit.balance.BalanceDetails[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.BalanceDetails[]"
         },
         "balanceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Balance name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "booked": {
-          "type": "me.credit.balance.BookedMovement[]",
-          "fullType": "me.credit.balance.BookedMovement[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement already booked on orders",
-          "required": false
+          "fullType": "me.credit.balance.BookedMovement[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.BookedMovement[]"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Balance creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "expiring": {
-          "type": "me.credit.balance.ExpiringMovement[]",
-          "fullType": "me.credit.balance.ExpiringMovement[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement expiring soon",
-          "required": false
+          "fullType": "me.credit.balance.ExpiringMovement[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.ExpiringMovement[]"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Balance last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "type": {
-          "type": "me.credit.balance.TypeEnum",
-          "fullType": "me.credit.balance.TypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Balance type",
-          "required": false
+          "fullType": "me.credit.balance.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.TypeEnum"
         }
       }
     },
     "me.credit.balance.BalanceDetails": {
+      "description": "Missing description",
       "id": "BalanceDetails",
       "namespace": "me.credit.balance",
-      "description": "Missing description",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Balance part amount",
-          "required": false
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
         },
         "balanceSubName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Balance sub name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "expiring": {
-          "type": "me.credit.balance.ExpiringMovement[]",
-          "fullType": "me.credit.balance.ExpiringMovement[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Expiring parts of this balance",
-          "required": false
+          "fullType": "me.credit.balance.ExpiringMovement[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.ExpiringMovement[]"
         },
         "serviceId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Service ID of this balance part",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "me.credit.balance.BookedMovement": {
+      "description": "Missing description",
       "id": "BookedMovement",
       "namespace": "me.credit.balance",
-      "description": "Missing description",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement amount",
-          "required": false
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
         },
         "balanceSubName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Balance sub name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Order ID",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "me.credit.balance.ExpiringMovement": {
+      "description": "Missing description",
       "id": "ExpiringMovement",
       "namespace": "me.credit.balance",
-      "description": "Missing description",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement amount",
-          "required": false
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "sourceObject": {
-          "type": "me.credit.balance.movement.SubObject",
-          "fullType": "me.credit.balance.movement.SubObject",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Object source of this credit movement",
-          "required": false
+          "fullType": "me.credit.balance.movement.SubObject",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.movement.SubObject"
         }
       }
     },
     "me.credit.balance.Movement": {
+      "description": "Missing description",
       "id": "Movement",
       "namespace": "me.credit.balance",
-      "description": "Missing description",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement amount",
-          "required": false
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
         },
         "balanceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Balance name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Movement expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "movementId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement ID",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Order ID associated to this credit movement",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "sourceObject": {
-          "type": "me.credit.balance.movement.SubObject",
-          "fullType": "me.credit.balance.movement.SubObject",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Object source of this credit movement",
-          "required": false
+          "fullType": "me.credit.balance.movement.SubObject",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.movement.SubObject"
         },
         "type": {
-          "type": "me.credit.balance.movement.TypeEnum",
-          "fullType": "me.credit.balance.movement.TypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Movement type",
-          "required": false
+          "fullType": "me.credit.balance.movement.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.movement.TypeEnum"
         }
       }
     },
     "me.credit.balance.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "me.credit.balance",
       "description": "Balance type",
       "enum": [
         "PREPAID_ACCOUNT",
@@ -10870,34 +10869,34 @@ export const schema: Schema = {
         "DEPOSIT",
         "BONUS"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "me.credit.balance"
     },
     "me.credit.balance.movement.SubObject": {
+      "description": "Missing description",
       "id": "SubObject",
       "namespace": "me.credit.balance.movement",
-      "description": "Missing description",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sub object ID",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sub object name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "me.credit.balance.movement.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "me.credit.balance.movement",
       "description": "Balance movement type",
       "enum": [
         "BONUS",
@@ -10911,270 +10910,270 @@ export const schema: Schema = {
         "USE",
         "VOUCHER"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "me.credit.balance.movement"
     },
     "me.credit.code.Redeem": {
+      "description": "Missing description",
       "id": "Redeem",
       "namespace": "me.credit.code",
-      "description": "Missing description",
       "properties": {
         "inputCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Code to validate",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "serviceId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Restrict credit to a specific service",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "me.payment.method.AvailablePaymentMethod": {
+      "description": "Available payment method object",
       "id": "AvailablePaymentMethod",
       "namespace": "me.payment.method",
-      "description": "Available payment method object",
       "properties": {
         "icon": {
-          "type": "me.payment.method.Icon",
-          "fullType": "me.payment.method.Icon",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type icon",
-          "required": true
+          "fullType": "me.payment.method.Icon",
+          "readOnly": false,
+          "required": true,
+          "type": "me.payment.method.Icon"
         },
         "integration": {
-          "type": "payment.method.IntegrationType",
-          "fullType": "payment.method.IntegrationType",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method integration type",
-          "required": true
+          "fullType": "payment.method.IntegrationType",
+          "readOnly": false,
+          "required": true,
+          "type": "payment.method.IntegrationType"
         },
         "oneshot": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type is possible to pay in oneshot mode ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "paymentType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "registerable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type is registerable ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "registerableWithTransaction": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type is registerable with the possibility to pay in same time an order ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "me.payment.method.CallbackUrl": {
+      "description": "Callback URL's to register a new payment method",
       "id": "CallbackUrl",
       "namespace": "me.payment.method",
-      "description": "Callback URL's to register a new payment method",
       "properties": {
         "cancel": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "URL when customer cancels the action",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "error": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "URL when registration encounters an error",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "failure": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "URL when registration failed",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "pending": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "URL when payment method is in validation",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "success": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "URL when payment method registration success",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "me.payment.method.Icon": {
+      "description": "Icon",
       "id": "Icon",
       "namespace": "me.payment.method",
-      "description": "Icon",
       "properties": {
         "data": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Icon in base64",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Icon name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "me.payment.method.PaymentMethod": {
+      "description": "Payment method object",
       "id": "PaymentMethod",
       "namespace": "me.payment.method",
-      "description": "Payment method object",
       "properties": {
         "billingContactId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Associated billing contact ID",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "default": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Creation date",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Custom customer description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "icon": {
-          "type": "me.payment.method.Icon",
-          "fullType": "me.payment.method.Icon",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type icon",
-          "required": true
+          "fullType": "me.payment.method.Icon",
+          "readOnly": false,
+          "required": true,
+          "type": "me.payment.method.Icon"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Payment method public label",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Last update date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "paymentMeanId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Payment mean ID associated to this payment method",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "paymentMethodId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "paymentSubType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Payment method sub-type",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "paymentType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "me.payment.method.PaymentMethod.Status",
-          "fullType": "me.payment.method.PaymentMethod.Status",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method status",
-          "required": true
+          "fullType": "me.payment.method.PaymentMethod.Status",
+          "readOnly": false,
+          "required": true,
+          "type": "me.payment.method.PaymentMethod.Status"
         }
       }
     },
     "me.payment.method.PaymentMethod.Status": {
-      "id": "Status",
-      "namespace": "me.payment.method.PaymentMethod",
       "description": "Payment method status enum",
       "enum": [
         "CANCELED",
@@ -11187,113 +11186,113 @@ export const schema: Schema = {
         "PAUSED",
         "VALID"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "me.payment.method.PaymentMethod"
     },
     "me.payment.method.Register.ValidationResult": {
+      "description": "Register validation payload result",
       "id": "ValidationResult",
       "namespace": "me.payment.method.Register",
-      "description": "Register validation payload result",
       "properties": {
         "formSessionId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Form session ID",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "merchantId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Merchant ID",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organizationId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Organization ID",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "paymentMethodId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Register new payment method ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Register validation URL",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "validationType": {
-          "type": "payment.method.IntegrationType",
-          "fullType": "payment.method.IntegrationType",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Register validation type",
-          "required": true
+          "fullType": "payment.method.IntegrationType",
+          "readOnly": false,
+          "required": true,
+          "type": "payment.method.IntegrationType"
         }
       }
     },
     "me.payment.method.Transaction": {
+      "description": "Payment method transaction object",
       "id": "Transaction",
       "namespace": "me.payment.method",
-      "description": "Payment method transaction object",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Transaction amount",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "me.payment.method.Transaction.Status",
-          "fullType": "me.payment.method.Transaction.Status",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Transaction status",
-          "required": true
+          "fullType": "me.payment.method.Transaction.Status",
+          "readOnly": false,
+          "required": true,
+          "type": "me.payment.method.Transaction.Status"
         },
         "transactionId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Transaction ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "me.payment.method.Transaction.Type",
-          "fullType": "me.payment.method.Transaction.Type",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Transaction type",
-          "required": true
+          "fullType": "me.payment.method.Transaction.Type",
+          "readOnly": false,
+          "required": true,
+          "type": "me.payment.method.Transaction.Type"
         }
       }
     },
     "me.payment.method.Transaction.Status": {
-      "id": "Status",
-      "namespace": "me.payment.method.Transaction",
       "description": "Payment transaction status enum",
       "enum": [
         "CANCELED",
@@ -11305,76 +11304,76 @@ export const schema: Schema = {
         "READY",
         "SUCCESS"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "me.payment.method.Transaction"
     },
     "me.payment.method.Transaction.Type": {
-      "id": "Type",
-      "namespace": "me.payment.method.Transaction",
       "description": "Payment transaction type enum",
       "enum": [
         "CREDIT",
         "DEBIT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Type",
+      "namespace": "me.payment.method.Transaction"
     },
     "nichandle.Authentication.Group": {
+      "description": "A group",
       "id": "Group",
       "namespace": "nichandle.Authentication",
-      "description": "A group",
       "properties": {
         "creation": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of this group",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "defaultGroup": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "True if it is an default group. This kind of group can't be edited or deleted",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Group's description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last update of this group",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Group's name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "role": {
-          "type": "nichandle.RoleEnum",
-          "fullType": "nichandle.RoleEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Group's role",
-          "required": true
+          "fullType": "nichandle.RoleEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "nichandle.RoleEnum"
         }
       }
     },
     "nichandle.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "nichandle",
       "description": "Countries a nichandle can choose",
       "enum": [
         "AC",
@@ -11632,215 +11631,215 @@ export const schema: Schema = {
         "ZM",
         "ZW"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "nichandle"
     },
     "nichandle.Currency": {
+      "description": "Customer currency",
       "id": "Currency",
       "namespace": "nichandle",
-      "description": "Customer currency",
       "properties": {
         "code": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Currency code",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "symbol": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Currency symbol",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "nichandle.DeveloperModeRestriction": {
+      "description": "Login restrictions on a development version of the Manager",
       "id": "DeveloperModeRestriction",
       "namespace": "nichandle",
-      "description": "Login restrictions on a development version of the Manager",
       "properties": {
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Allow login on your account on a development version of the Manager",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "nichandle.GenderEnum": {
-      "id": "GenderEnum",
-      "namespace": "nichandle",
       "description": "All genders a person can choose",
       "enum": [
         "female",
         "male"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "GenderEnum",
+      "namespace": "nichandle"
     },
     "nichandle.IpRegistryEnum": {
-      "id": "IpRegistryEnum",
-      "namespace": "nichandle",
       "description": "Ip registries",
       "enum": [
         "ARIN",
         "RIPE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpRegistryEnum",
+      "namespace": "nichandle"
     },
     "nichandle.IpRestriction": {
+      "description": "List of all IP Restrictions",
       "id": "IpRestriction",
       "namespace": "nichandle",
-      "description": "List of all IP Restrictions",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The Id of the restriction",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "ip": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "An IP range where we will apply the rule",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         },
         "rule": {
-          "type": "nichandle.accessRestriction.IpRestrictionRuleEnum",
-          "fullType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Accept or deny IP access",
-          "required": true
+          "fullType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "nichandle.accessRestriction.IpRestrictionRuleEnum"
         },
         "warning": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Send an email if someone try to access with this IP address",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "nichandle.IpRestrictionDefaultRule": {
+      "description": "IP Restriction default rule",
       "id": "IpRestrictionDefaultRule",
       "namespace": "nichandle",
-      "description": "IP Restriction default rule",
       "properties": {
         "rule": {
-          "type": "nichandle.accessRestriction.IpRestrictionRuleEnum",
-          "fullType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Accept or deny access",
-          "required": true
+          "fullType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "nichandle.accessRestriction.IpRestrictionRuleEnum"
         },
         "warning": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Send an email if someone try to access",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "nichandle.Ipv4Org": {
+      "description": "Details about an IP block organisation",
       "id": "Ipv4Org",
       "namespace": "nichandle",
-      "description": "Details about an IP block organisation",
       "properties": {
         "abuse_mailbox": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "address": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "country": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": false,
+          "fullType": "nichandle.CountryEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "nichandle.CountryEnum"
         },
         "firstname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "lastname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "organisationId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "phone": {
-          "type": "phoneNumber",
-          "fullType": "phoneNumber",
           "canBeNull": false,
+          "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "phoneNumber"
         },
         "registry": {
-          "type": "nichandle.IpRegistryEnum",
-          "fullType": "nichandle.IpRegistryEnum",
           "canBeNull": false,
+          "fullType": "nichandle.IpRegistryEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "nichandle.IpRegistryEnum"
         },
         "state": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "zip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "nichandle.LanguageEnum": {
-      "id": "LanguageEnum",
-      "namespace": "nichandle",
       "description": "Languages a nichandle can choose",
       "enum": [
         "cs_CZ",
@@ -11863,11 +11862,11 @@ export const schema: Schema = {
         "pl_PL",
         "pt_PT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LanguageEnum",
+      "namespace": "nichandle"
     },
     "nichandle.LegalFormEnum": {
-      "id": "LegalFormEnum",
-      "namespace": "nichandle",
       "description": "Legal forms a nichandle can be registered as",
       "enum": [
         "administration",
@@ -11877,234 +11876,234 @@ export const schema: Schema = {
         "other",
         "personalcorporation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LegalFormEnum",
+      "namespace": "nichandle"
     },
     "nichandle.Nichandle": {
+      "description": "Details about your OVH identifier",
       "id": "Nichandle",
       "namespace": "nichandle",
-      "description": "Details about your OVH identifier",
       "properties": {
         "address": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "area": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "birthCity": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "birthDay": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "companyNationalIdentificationNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "corporationType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "country": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": false,
+          "fullType": "nichandle.CountryEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "nichandle.CountryEnum"
         },
         "currency": {
-          "type": "nichandle.Currency",
-          "fullType": "nichandle.Currency",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer currency",
-          "required": true
+          "fullType": "nichandle.Currency",
+          "readOnly": true,
+          "required": true,
+          "type": "nichandle.Currency"
         },
         "customerCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Your customer code (a numerical value used for identification when contacting support via phone call)",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "fax": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "firstname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "italianSDI": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "language": {
-          "type": "nichandle.LanguageEnum",
-          "fullType": "nichandle.LanguageEnum",
           "canBeNull": true,
+          "fullType": "nichandle.LanguageEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "nichandle.LanguageEnum"
         },
         "legalform": {
-          "type": "nichandle.LegalFormEnum",
-          "fullType": "nichandle.LegalFormEnum",
           "canBeNull": false,
+          "fullType": "nichandle.LegalFormEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "nichandle.LegalFormEnum"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "nationalIdentificationNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "nichandle": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "organisation": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "ovhCompany": {
-          "type": "nichandle.OvhCompanyEnum",
-          "fullType": "nichandle.OvhCompanyEnum",
           "canBeNull": false,
+          "fullType": "nichandle.OvhCompanyEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "nichandle.OvhCompanyEnum"
         },
         "ovhSubsidiary": {
-          "type": "nichandle.OvhSubsidiaryEnum",
-          "fullType": "nichandle.OvhSubsidiaryEnum",
           "canBeNull": false,
+          "fullType": "nichandle.OvhSubsidiaryEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "nichandle.OvhSubsidiaryEnum"
         },
         "phone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "phoneCountry": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": true,
+          "fullType": "nichandle.CountryEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "nichandle.CountryEnum"
         },
         "sex": {
-          "type": "nichandle.GenderEnum",
-          "fullType": "nichandle.GenderEnum",
           "canBeNull": true,
+          "fullType": "nichandle.GenderEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "nichandle.GenderEnum"
         },
         "spareEmail": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "state": {
-          "type": "nichandle.StateEnum",
-          "fullType": "nichandle.StateEnum",
           "canBeNull": false,
+          "fullType": "nichandle.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "nichandle.StateEnum"
         },
         "vat": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "zip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "nichandle.OvhCompanyEnum": {
-      "id": "OvhCompanyEnum",
-      "namespace": "nichandle",
       "description": "OVH subsidiaries",
       "enum": [
         "kimsufi",
         "ovh",
         "soyoustart"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OvhCompanyEnum",
+      "namespace": "nichandle"
     },
     "nichandle.OvhSubsidiaryEnum": {
-      "id": "OvhSubsidiaryEnum",
-      "namespace": "nichandle",
       "description": "OVH subsidiaries",
       "enum": [
         "ASIA",
@@ -12132,277 +12131,277 @@ export const schema: Schema = {
         "WE",
         "WS"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OvhSubsidiaryEnum",
+      "namespace": "nichandle"
     },
     "nichandle.RoleEnum": {
-      "id": "RoleEnum",
-      "namespace": "nichandle",
       "description": "Permission given on the account",
       "enum": [
         "REGULAR",
         "ADMIN",
         "UNPRIVILEGED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RoleEnum",
+      "namespace": "nichandle"
     },
     "nichandle.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "nichandle",
       "description": "States a nichandle can be in",
       "enum": [
         "complete",
         "incomplete"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "nichandle"
     },
     "nichandle.SubAccount": {
+      "description": "Sub Account",
       "id": "SubAccount",
       "namespace": "nichandle",
-      "description": "Sub Account",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "This sub-account description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This sub-account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "nichandle.SubAccountConsumerKey": {
+      "description": "Credentials to interact with the api on behalf of the sub-account",
       "id": "SubAccountConsumerKey",
       "namespace": "nichandle",
-      "description": "Credentials to interact with the api on behalf of the sub-account",
       "properties": {
         "consumerKey": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The consumer key",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "nichandle.User": {
+      "description": "A user",
       "id": "User",
       "namespace": "nichandle",
-      "description": "A user",
       "properties": {
         "creation": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of this user",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "User's description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "User's email",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "group": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "User's group",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last update of this user",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "login": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User's login suffix",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "passwordLastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "When the user changed his password for the last time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "nichandle.UserStatus",
-          "fullType": "nichandle.UserStatus",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current user's status",
-          "required": true
+          "fullType": "nichandle.UserStatus",
+          "readOnly": true,
+          "required": true,
+          "type": "nichandle.UserStatus"
         }
       }
     },
     "nichandle.UserStatus": {
-      "id": "UserStatus",
-      "namespace": "nichandle",
       "description": "Status of a User",
       "enum": [
         "OK",
         "DISABLED",
         "PASSWORD_CHANGE_REQUIRED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "UserStatus",
+      "namespace": "nichandle"
     },
     "nichandle.VipStatus": {
+      "description": "VIP Status by Universe",
       "id": "VipStatus",
       "namespace": "nichandle",
-      "description": "VIP Status by Universe",
       "properties": {
         "cloud": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is account VIP for Cloud Universe",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "dedicated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is account VIP for Dedicated Universe",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "telecom": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is account VIP for Telecom Universe",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "web": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is account VIP for Web Universe",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "nichandle.VoucherStatus": {
+      "description": "Voucher Status and Information",
       "id": "VoucherStatus",
       "namespace": "nichandle",
-      "description": "Voucher Status and Information",
       "properties": {
         "validity": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is voucher valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "nichandle.accessRestriction.IpRestrictionRuleEnum": {
-      "id": "IpRestrictionRuleEnum",
-      "namespace": "nichandle.accessRestriction",
       "description": "Accept or deny IP access",
       "enum": [
         "accept",
         "deny"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpRestrictionRuleEnum",
+      "namespace": "nichandle.accessRestriction"
     },
     "nichandle.accessRestriction.SOTPAccount": {
+      "description": "SOTP Two-Factor Authentication",
       "id": "SOTPAccount",
       "namespace": "nichandle.accessRestriction",
-      "description": "SOTP Two-Factor Authentication",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "lastUsedDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last used date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "remaining": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Number of remaining codes",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "nichandle.accessRestriction.SOTPStatusEnum",
-          "fullType": "nichandle.accessRestriction.SOTPStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of this account",
-          "required": true
+          "fullType": "nichandle.accessRestriction.SOTPStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "nichandle.accessRestriction.SOTPStatusEnum"
         }
       }
     },
     "nichandle.accessRestriction.SOTPSecret": {
+      "description": "Describe SOTP secret keys",
       "id": "SOTPSecret",
       "namespace": "nichandle.accessRestriction",
-      "description": "Describe SOTP secret keys",
       "properties": {
         "codes": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
+          "fullType": "string[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string[]"
         }
       }
     },
     "nichandle.accessRestriction.SOTPStatusEnum": {
-      "id": "SOTPStatusEnum",
-      "namespace": "nichandle.accessRestriction",
       "description": "Status of SOTP account",
       "enum": [
         "disabled",
@@ -12410,115 +12409,115 @@ export const schema: Schema = {
         "needCodeValidation",
         "needEmailValidation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SOTPStatusEnum",
+      "namespace": "nichandle.accessRestriction"
     },
     "nichandle.accessRestriction.SOTPValidate": {
+      "description": "Describe SOTP validation status",
       "id": "SOTPValidate",
       "namespace": "nichandle.accessRestriction",
-      "description": "Describe SOTP validation status",
       "properties": {
         "remainingCodes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "nichandle.accessRestriction.SmsAccount": {
+      "description": "Sms Two-Factor Authentication",
       "id": "SmsAccount",
       "namespace": "nichandle.accessRestriction",
-      "description": "Sms Two-Factor Authentication",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description of this phone",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The Id of the restriction",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "lastUsedDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last used date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "phoneNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Associated phone number",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "nichandle.accessRestriction.SmsStatusEnum",
-          "fullType": "nichandle.accessRestriction.SmsStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of this account",
-          "required": true
+          "fullType": "nichandle.accessRestriction.SmsStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "nichandle.accessRestriction.SmsStatusEnum"
         }
       }
     },
     "nichandle.accessRestriction.SmsCode": {
+      "description": "Send secret code",
       "id": "SmsCode",
       "namespace": "nichandle.accessRestriction",
-      "description": "Send secret code",
       "properties": {
         "challenge": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "nichandle.accessRestriction.SmsSecret": {
+      "description": "Describe secret key",
       "id": "SmsSecret",
       "namespace": "nichandle.accessRestriction",
-      "description": "Describe secret key",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "remainingTry": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "nichandle.accessRestriction.SmsStatusEnum": {
-      "id": "SmsStatusEnum",
-      "namespace": "nichandle.accessRestriction",
       "description": "Status of the Sms account",
       "enum": [
         "disabled",
@@ -12526,86 +12525,86 @@ export const schema: Schema = {
         "needCodeValidation",
         "needEmailValidation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SmsStatusEnum",
+      "namespace": "nichandle.accessRestriction"
     },
     "nichandle.accessRestriction.TOTPAccount": {
+      "description": "TOTP Two-Factor Authentication",
       "id": "TOTPAccount",
       "namespace": "nichandle.accessRestriction",
-      "description": "TOTP Two-Factor Authentication",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description of this TOTP",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The Id of the restriction",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "lastUsedDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last used date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "status": {
-          "type": "nichandle.accessRestriction.TOTPStatusEnum",
-          "fullType": "nichandle.accessRestriction.TOTPStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of this account",
-          "required": true
+          "fullType": "nichandle.accessRestriction.TOTPStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "nichandle.accessRestriction.TOTPStatusEnum"
         }
       }
     },
     "nichandle.accessRestriction.TOTPSecret": {
+      "description": "Describe TOTP secret keys",
       "id": "TOTPSecret",
       "namespace": "nichandle.accessRestriction",
-      "description": "Describe TOTP secret keys",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "qrcodeHelper": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
+          "fullType": "password",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "password"
         },
         "secret": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
+          "fullType": "password",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "password"
         }
       }
     },
     "nichandle.accessRestriction.TOTPStatusEnum": {
-      "id": "TOTPStatusEnum",
-      "namespace": "nichandle.accessRestriction",
       "description": "Status of TOTP account",
       "enum": [
         "disabled",
@@ -12613,167 +12612,167 @@ export const schema: Schema = {
         "needCodeValidation",
         "needEmailValidation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TOTPStatusEnum",
+      "namespace": "nichandle.accessRestriction"
     },
     "nichandle.accessRestriction.U2FAccount": {
+      "description": "U2F Two-Factor Authentication",
       "id": "U2FAccount",
       "namespace": "nichandle.accessRestriction",
-      "description": "U2F Two-Factor Authentication",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description of this U2F key",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The Id of the restriction",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "lastUsedDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last used date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "status": {
-          "type": "nichandle.accessRestriction.U2FStatusEnum",
-          "fullType": "nichandle.accessRestriction.U2FStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of this account",
-          "required": true
+          "fullType": "nichandle.accessRestriction.U2FStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "nichandle.accessRestriction.U2FStatusEnum"
         }
       }
     },
     "nichandle.accessRestriction.U2FRegisterChallenge": {
+      "description": "U2F Register Request",
       "id": "U2FRegisterChallenge",
       "namespace": "nichandle.accessRestriction",
-      "description": "U2F Register Request",
       "properties": {
         "applicationId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "request": {
-          "type": "nichandle.accessRestriction.U2FRegistrationRequest",
-          "fullType": "nichandle.accessRestriction.U2FRegistrationRequest",
           "canBeNull": false,
+          "fullType": "nichandle.accessRestriction.U2FRegistrationRequest",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "nichandle.accessRestriction.U2FRegistrationRequest"
         }
       }
     },
     "nichandle.accessRestriction.U2FRegistrationRequest": {
+      "description": "Describe U2F RegistrationRequest",
       "id": "U2FRegistrationRequest",
       "namespace": "nichandle.accessRestriction",
-      "description": "Describe U2F RegistrationRequest",
       "properties": {
         "challenge": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "version": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "nichandle.accessRestriction.U2FSignChallenge": {
+      "description": "U2F Register Request",
       "id": "U2FSignChallenge",
       "namespace": "nichandle.accessRestriction",
-      "description": "U2F Register Request",
       "properties": {
         "applicationId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "request": {
-          "type": "nichandle.accessRestriction.U2FSignRequest",
-          "fullType": "nichandle.accessRestriction.U2FSignRequest",
           "canBeNull": false,
+          "fullType": "nichandle.accessRestriction.U2FSignRequest",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "nichandle.accessRestriction.U2FSignRequest"
         }
       }
     },
     "nichandle.accessRestriction.U2FSignRequest": {
+      "description": "Describe U2F SignRequest",
       "id": "U2FSignRequest",
       "namespace": "nichandle.accessRestriction",
-      "description": "Describe U2F SignRequest",
       "properties": {
         "challenge": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "keyHandle": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "version": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "nichandle.accessRestriction.U2FStatusEnum": {
-      "id": "U2FStatusEnum",
-      "namespace": "nichandle.accessRestriction",
       "description": "Status of U2F account",
       "enum": [
         "disabled",
         "enabled",
         "needCodeValidation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "U2FStatusEnum",
+      "namespace": "nichandle.accessRestriction"
     },
     "nichandle.changeEmail.TaskStateEnum": {
-      "id": "TaskStateEnum",
-      "namespace": "nichandle.changeEmail",
       "description": "State of email change task",
       "enum": [
         "aborted",
@@ -12781,111 +12780,111 @@ export const schema: Schema = {
         "refused",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "nichandle.changeEmail"
     },
     "nichandle.emailChange.Task": {
+      "description": "Task running an email change on an account",
       "id": "Task",
       "namespace": "nichandle.emailChange",
-      "description": "Task running an email change on an account",
       "properties": {
         "dateDone": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "End date of that request",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "dateRequest": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of that request",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "newEmail": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The email address to change for",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "nichandle.changeEmail.TaskStateEnum",
-          "fullType": "nichandle.changeEmail.TaskStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current state of the request",
-          "required": true
+          "fullType": "nichandle.changeEmail.TaskStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "nichandle.changeEmail.TaskStateEnum"
         }
       }
     },
     "nichandle.ipxe": {
+      "description": "Customer IPXE scripts",
       "id": "ipxe",
       "namespace": "nichandle",
-      "description": "Customer IPXE scripts",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of this script",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "script": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Content of your IPXE script",
-          "required": true
+          "fullType": "text",
+          "readOnly": true,
+          "required": true,
+          "type": "text"
         }
       }
     },
     "nichandle.sshKey": {
+      "description": "Customer public SSH key, can be used for rescue netboot or server access after reinstallation",
       "id": "sshKey",
       "namespace": "nichandle",
-      "description": "Customer public SSH key, can be used for rescue netboot or server access after reinstallation",
       "properties": {
         "default": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "True when this public SSH key is used for rescue mode and reinstallations",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ASCII encoded public SSH key",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "keyName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of this public SSH key",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.CurrencyCodeEnum": {
-      "id": "CurrencyCodeEnum",
-      "namespace": "order",
       "enum": [
         "AUD",
         "CAD",
@@ -12902,117 +12901,117 @@ export const schema: Schema = {
         "XOF",
         "points"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
     },
     "order.Price": {
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
-      "description": "Price with it's currency and textual representation",
       "properties": {
         "currencyCode": {
-          "type": "order.CurrencyCodeEnum",
-          "fullType": "order.CurrencyCodeEnum",
           "canBeNull": false,
+          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.CurrencyCodeEnum"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         }
       }
     },
     "payment.method.AvailablePaymentMethod": {
+      "description": "Available payment methods",
       "id": "AvailablePaymentMethod",
       "namespace": "payment.method",
-      "description": "Available payment methods",
       "properties": {
         "icon": {
-          "type": "payment.method.Icon",
-          "fullType": "payment.method.Icon",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type icon",
-          "required": true
+          "fullType": "payment.method.Icon",
+          "readOnly": false,
+          "required": true,
+          "type": "payment.method.Icon"
         },
         "integration": {
-          "type": "payment.method.IntegrationType",
-          "fullType": "payment.method.IntegrationType",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Graphical payment integration to use",
-          "required": true
+          "fullType": "payment.method.IntegrationType",
+          "readOnly": false,
+          "required": true,
+          "type": "payment.method.IntegrationType"
         },
         "oneshot": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type is possible to pay in oneshot mode ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "paymentType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "registerable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type is registerable ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "registerableWithTransaction": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Payment method type is registerable with the possibility to pay in same time an order ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "payment.method.Icon": {
+      "description": "Payment icon",
       "id": "Icon",
       "namespace": "payment.method",
-      "description": "Payment icon",
       "properties": {
         "data": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Icon data in base64",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Icon name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "payment.method.IntegrationType": {
-      "id": "IntegrationType",
-      "namespace": "payment.method",
       "description": "Payment method integration type",
       "enum": [
         "DONE",
@@ -13020,58 +13019,58 @@ export const schema: Schema = {
         "IN_CONTEXT",
         "REDIRECT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IntegrationType",
+      "namespace": "payment.method"
     },
     "service.Operation": {
+      "description": "Service operation",
       "id": "Operation",
       "namespace": "service",
-      "description": "Service operation",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operation ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "quantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Quantity",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "resource": {
-          "type": "service.Resource",
-          "fullType": "service.Resource",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Resource delivered",
-          "required": false
+          "fullType": "service.Resource",
+          "readOnly": true,
+          "required": false,
+          "type": "service.Resource"
         },
         "status": {
-          "type": "service.OperationStatus",
-          "fullType": "service.OperationStatus",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operation status",
-          "required": true
+          "fullType": "service.OperationStatus",
+          "readOnly": true,
+          "required": true,
+          "type": "service.OperationStatus"
         },
         "type": {
-          "type": "service.OperationType",
-          "fullType": "service.OperationType",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operation type",
-          "required": true
+          "fullType": "service.OperationType",
+          "readOnly": true,
+          "required": true,
+          "type": "service.OperationType"
         }
       }
     },
     "service.OperationStatus": {
-      "id": "OperationStatus",
-      "namespace": "service",
       "description": "Operation type",
       "enum": [
         "todo",
@@ -13083,52 +13082,52 @@ export const schema: Schema = {
         "scheduled",
         "delayed"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationStatus",
+      "namespace": "service"
     },
     "service.OperationType": {
-      "id": "OperationType",
-      "namespace": "service",
       "description": "Operation type",
       "enum": [
         "installation",
         "upgrade"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationType",
+      "namespace": "service"
     },
     "service.Resource": {
+      "description": "Resource service informations",
       "id": "Resource",
       "namespace": "service",
-      "description": "Resource service informations",
       "properties": {
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Custom display name of the service",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the service",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "state": {
-          "type": "service.ResourceStateEnum",
-          "fullType": "service.ResourceStateEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Resource state",
-          "required": false
+          "fullType": "service.ResourceStateEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "service.ResourceStateEnum"
         }
       }
     },
     "service.ResourceStateEnum": {
-      "id": "ResourceStateEnum",
-      "namespace": "service",
       "description": "Possible resource states",
       "enum": [
         "deleted",
@@ -13141,7 +13140,10 @@ export const schema: Schema = {
         "toOpen",
         "toSuspend"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ResourceStateEnum",
+      "namespace": "service"
     }
-  }
+  },
+  "resourcePath": "/me"
 }

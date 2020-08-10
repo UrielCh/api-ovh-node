@@ -1,1981 +1,1980 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.ovh.com:443/1.0/horizonView.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/horizonView",
+      "description": "Operations about the HORIZONVIEW service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the HORIZONVIEW service"
+      "path": "/horizonView"
     },
     {
-      "path": "/horizonView/{serviceName}",
+      "description": "Cloud Desktop Infrastructure Datacenter",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "horizonView.Datacenter",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "horizonView.Datacenter"
         }
       ],
-      "description": "Cloud Desktop Infrastructure Datacenter"
+      "path": "/horizonView/{serviceName}"
     },
     {
-      "path": "/horizonView/{serviceName}/accessPoint",
+      "description": "List the horizonView.Pool objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Pool associated with this Datacenter",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Pool associated with this Datacenter"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add new access point to create a new network",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "vrouterPoolPublicIp",
-              "dataType": "ip",
-              "paramType": "body",
-              "fullType": "ip",
-              "required": false,
-              "description": "You need to use a public Ip if you want to deploy a public pool. "
-            },
-            {
-              "name": "poolType",
-              "dataType": "horizonView.PoolType",
-              "paramType": "body",
-              "fullType": "horizonView.PoolType",
-              "required": true,
-              "description": "The type of pool you want to deploy. "
-            },
-            {
+              "dataType": "ipBlock",
+              "description": "You can customize your pool by choosing the private network (Ex : 10.0.0.0/16)",
+              "fullType": "ipBlock",
               "name": "privateBlock",
-              "dataType": "ipBlock",
               "paramType": "body",
-              "fullType": "ipBlock",
-              "required": false,
-              "description": "You can customize your pool by choosing the private network (Ex : 10.0.0.0/16)"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "You can customize your pool by choosing its private Vlan ID. (smaller than 4095) ",
+              "fullType": "long",
               "name": "privateVlan",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "You can customize your pool by choosing its private Vlan ID. (smaller than 4095) "
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "horizonView.PoolType",
+              "description": "The type of pool you want to deploy. ",
+              "fullType": "horizonView.PoolType",
+              "name": "poolType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip",
+              "description": "You need to use a public Ip if you want to deploy a public pool. ",
+              "fullType": "ip",
+              "name": "vrouterPoolPublicIp",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "horizonView.Task[]",
-          "noAuthentication": false,
-          "description": "Add new access point to create a new network"
+          "responseType": "horizonView.Task[]"
         }
       ],
-      "description": "List the horizonView.Pool objects"
+      "path": "/horizonView/{serviceName}/accessPoint"
     },
     {
-      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}",
+      "description": "All informations about access point",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this access point ",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accessPointId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Access point ID",
               "fullType": "long",
-              "required": true,
-              "description": "Access point ID"
+              "name": "accessPointId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "horizonView.Task[]",
-          "noAuthentication": false,
-          "description": "Delete this access point "
+          "responseType": "horizonView.Task[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accessPointId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Access point ID",
               "fullType": "long",
-              "required": true,
-              "description": "Access point ID"
+              "name": "accessPointId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "horizonView.Pool",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "horizonView.Pool"
         }
       ],
-      "description": "All informations about access point"
+      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}"
     },
     {
-      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout",
+      "description": "changeSessionTimeout operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Manage your session Timeout on Unified Access Gateway",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "horizonView.AccessPointTypeEnum",
+              "description": "Update timeout session on a single Unified Access Gateway (only for hybrid Pool)",
+              "fullType": "horizonView.AccessPointTypeEnum",
+              "name": "onSingleAP",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Timeout (in hour)",
+              "fullType": "long",
               "name": "expiration",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "body",
+              "description": "Access point ID",
               "fullType": "long",
-              "required": true,
-              "description": "Timeout (in hour)"
-            },
-            {
-              "name": "onSingleAP",
-              "dataType": "horizonView.AccessPointTypeEnum",
-              "paramType": "body",
-              "fullType": "horizonView.AccessPointTypeEnum",
-              "required": false,
-              "description": "Update timeout session on a single Unified Access Gateway (only for hybrid Pool)"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "accessPointId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Access point ID"
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Manage your session Timeout on Unified Access Gateway"
+          "responseType": "horizonView.Task"
         }
       ],
-      "description": "changeSessionTimeout operations"
+      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout"
     },
     {
-      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork",
+      "description": "List the horizonView.CustomerNetworkPool objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "You can reach from the Desktops your private network",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accessPointId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Access point ID",
               "fullType": "long",
-              "required": true,
-              "description": "Access point ID"
+              "name": "accessPointId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "You can reach from the Desktops your private network"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a new network ",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "network",
               "dataType": "ipBlock",
-              "paramType": "body",
+              "description": "The private network you want to reach.",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "The private network you want to reach."
+              "name": "network",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accessPointId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Access point ID",
               "fullType": "long",
-              "required": true,
-              "description": "Access point ID"
+              "name": "accessPointId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "horizonView.Task[]",
-          "noAuthentication": false,
-          "description": "Add a new network "
+          "responseType": "horizonView.Task[]"
         }
       ],
-      "description": "List the horizonView.CustomerNetworkPool objects"
+      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork"
     },
     {
-      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}",
+      "description": "You can reach from your virtual desktops, your customer network ",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this Customer Network",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Access point ID",
+              "fullType": "long",
               "name": "accessPointId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Access point ID"
+              "required": true
             },
             {
-              "name": "customerNetworkId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Customer network ID",
               "fullType": "long",
-              "required": true,
-              "description": "Customer network ID"
+              "name": "customerNetworkId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "horizonView.Task[]",
-          "noAuthentication": false,
-          "description": "Delete this Customer Network"
+          "responseType": "horizonView.Task[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "accessPointId",
-              "dataType": "long",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Access point ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Access point ID",
+              "fullType": "long",
+              "name": "accessPointId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Customer network ID",
+              "fullType": "long",
               "name": "customerNetworkId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Customer network ID"
+              "required": true
             }
           ],
-          "responseType": "horizonView.CustomerNetworkPool",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "horizonView.CustomerNetworkPool"
         }
       ],
-      "description": "You can reach from your virtual desktops, your customer network "
+      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}"
     },
     {
-      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA",
+      "description": "disableTwoFA operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Disable two factor authentication on your pool",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accessPointId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Access point ID",
               "fullType": "long",
-              "required": true,
-              "description": "Access point ID"
+              "name": "accessPointId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Disable two factor authentication on your pool"
+          "responseType": "horizonView.Task"
         }
       ],
-      "description": "disableTwoFA operations"
+      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA"
     },
     {
-      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption",
+      "description": "disableWindowsUsernameOption operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Disable windows Username option on Unified Access Gateway",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "onSingleAP",
               "dataType": "horizonView.AccessPointTypeEnum",
-              "paramType": "body",
+              "description": "Disable windows Username option on a single Unified Access Gateway (only for hybrid Pool)",
               "fullType": "horizonView.AccessPointTypeEnum",
-              "required": false,
-              "description": "Disable windows Username option on a single Unified Access Gateway (only for hybrid Pool)"
+              "name": "onSingleAP",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accessPointId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Access point ID",
               "fullType": "long",
-              "required": true,
-              "description": "Access point ID"
+              "name": "accessPointId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Disable windows Username option on Unified Access Gateway"
+          "responseType": "horizonView.Task"
         }
       ],
-      "description": "disableWindowsUsernameOption operations"
+      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption"
     },
     {
-      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA",
+      "description": "enableTwoFA operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Enable two factor authentication on your pool",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "radiusIp",
-              "dataType": "ipv4",
-              "paramType": "body",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "The server radius IP"
-            },
-            {
+              "dataType": "password",
+              "description": "The secret password for the two factor authentication",
+              "fullType": "password",
               "name": "secret",
-              "dataType": "password",
               "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "The secret password for the two factor authentication"
+              "required": true
             },
             {
-              "name": "onSingleAP",
               "dataType": "horizonView.AccessPointTypeEnum",
-              "paramType": "body",
+              "description": "Enable the 2FA on a single Access Point (only for hybrid Pool)",
               "fullType": "horizonView.AccessPointTypeEnum",
-              "required": false,
-              "description": "Enable the 2FA on a single Access Point (only for hybrid Pool)"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "accessPointId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Access point ID"
-            }
-          ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Enable two factor authentication on your pool"
-        }
-      ],
-      "description": "enableTwoFA operations"
-    },
-    {
-      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
               "name": "onSingleAP",
-              "dataType": "horizonView.AccessPointTypeEnum",
               "paramType": "body",
-              "fullType": "horizonView.AccessPointTypeEnum",
-              "required": false,
-              "description": "Enable windows Username option on a single Unified Access Gateway (only for hybrid Pool)"
+              "required": false
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "accessPointId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Access point ID"
-            }
-          ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Enable windows Username option on Unified Access Gateway"
-        }
-      ],
-      "description": "enableWindowsUsernameOption operations"
-    },
-    {
-      "path": "/horizonView/{serviceName}/confirmTermination",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "futureUse",
-              "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
-              "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
-            },
-            {
-              "name": "reason",
-              "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
-              "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
-            },
-            {
-              "name": "commentary",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
-            },
-            {
-              "name": "token",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
-        }
-      ],
-      "description": "Confirm termination of your service"
-    },
-    {
-      "path": "/horizonView/{serviceName}/customerNetwork",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "You can reach from the Desktops your private network"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name your network"
-            },
-            {
-              "name": "network",
-              "dataType": "ipBlock",
-              "paramType": "body",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "The private network you want to reach."
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "horizonView.Task[]",
-          "noAuthentication": false,
-          "description": "Add a new network "
-        }
-      ],
-      "description": "List the horizonView.CustomerNetwork objects"
-    },
-    {
-      "path": "/horizonView/{serviceName}/customerNetwork/{customerNetworkId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "customerNetworkId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Customer network ID"
-            }
-          ],
-          "responseType": "horizonView.Task[]",
-          "noAuthentication": false,
-          "description": "Delete this Customer Network"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "customerNetworkId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Customer network ID"
-            }
-          ],
-          "responseType": "horizonView.CustomerNetwork",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "You can reach from your virtual desktops, your customer network "
-    },
-    {
-      "path": "/horizonView/{serviceName}/dedicatedHorizon",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "horizonView.DedicatedHorizon",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Horizon View as a Service"
-    },
-    {
-      "path": "/horizonView/{serviceName}/dedicatedHorizon/customerUser",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Account to access to your pool"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "username",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Username for your new user in Active Directory."
-            },
-            {
-              "name": "password",
-              "dataType": "password",
-              "paramType": "body",
-              "fullType": "password",
-              "required": false,
-              "description": "New password for this Horizon View user. It must fits your HaaS password policy. If this field is empty, a random password will be generated and sent to your  email."
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Email for your new user in Active diRectory."
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "horizonView.Task[]",
-          "noAuthentication": false,
-          "description": "Create a new customer user "
-        }
-      ],
-      "description": "List the horizonView.CustomerUser objects"
-    },
-    {
-      "path": "/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "username",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Username"
-            }
-          ],
-          "responseType": "horizonView.Task[]",
-          "noAuthentication": false,
-          "description": "Delete this Customer User"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "username",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Username"
-            }
-          ],
-          "responseType": "horizonView.CustomerUser",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Horizon As A Service Customer  User"
-    },
-    {
-      "path": "/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "password",
-              "dataType": "password",
-              "paramType": "body",
-              "fullType": "password",
-              "required": false,
-              "description": "New password for this Horizon View user. It must fits your HaaS password policy. If this field is empty, a random password will be generated and sent to you by email."
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "username",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Username"
-            }
-          ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Change Horizon View Customer  user password"
-        }
-      ],
-      "description": "changePassword operations"
-    },
-    {
-      "path": "/horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Disable the View Storage Accelerator option on VCenter"
-        }
-      ],
-      "description": "disableStorageAccelerator operations"
-    },
-    {
-      "path": "/horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Enable the View Storage Accelerator option on VCenter"
-        }
-      ],
-      "description": "enableStorageAccelerator operations"
-    },
-    {
-      "path": "/horizonView/{serviceName}/dedicatedHorizon/task",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "state",
-              "dataType": "horizonView.TaskStateEnum",
-              "paramType": "query",
-              "fullType": "horizonView.TaskStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks associated with this Dedicated Horizon"
-        }
-      ],
-      "description": "List the horizonView.Task objects"
-    },
-    {
-      "path": "/horizonView/{serviceName}/dedicatedHorizon/task/{taskId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "taskId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Task ID"
-            }
-          ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Operation on a Horizon View component"
-    },
-    {
-      "path": "/horizonView/{serviceName}/dedicatedHorizon/user",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "horizonView.User",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Horizon As A Service User"
-    },
-    {
-      "path": "/horizonView/{serviceName}/dedicatedHorizon/user/changePassword",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "password",
-              "dataType": "password",
-              "paramType": "body",
-              "fullType": "password",
-              "required": false,
-              "description": "New password for this Horizon View user. It must fits your HaaS password policy. If this field is empty, a random password will be generated and sent to you by email."
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Change Horizon View user password"
-        }
-      ],
-      "description": "changePassword operations"
-    },
-    {
-      "path": "/horizonView/{serviceName}/dedicatedHorizon/user/changeProperties",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Change email of your admin user"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Change horizon view user properties"
-        }
-      ],
-      "description": "changeProperties operations"
-    },
-    {
-      "path": "/horizonView/{serviceName}/domainTrust",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List all Active Directories linked to your CDI Active Directory"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain of your active directory (for example domain.local)"
-            },
-            {
-              "name": "dns1",
-              "dataType": "ip",
-              "paramType": "body",
-              "fullType": "ip",
-              "required": false,
-              "description": "IP of your first DNS"
-            },
-            {
-              "name": "dns2",
-              "dataType": "ip",
-              "paramType": "body",
-              "fullType": "ip",
-              "required": false,
-              "description": "IP of your second DNS"
-            },
-            {
-              "name": "activeDirectoryIP",
-              "dataType": "ip",
-              "paramType": "body",
-              "fullType": "ip",
-              "required": true,
-              "description": "IP of your Active Directory"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "horizonView.Task[]",
-          "noAuthentication": false,
-          "description": "Link your Active Directory to your CDI Active Directory"
-        }
-      ],
-      "description": "List the horizonView.DomainTrust objects"
-    },
-    {
-      "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "domainTrustId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Domain trust ID"
-            }
-          ],
-          "responseType": "horizonView.DomainTrust",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "List all Active Directories linked to your CDI Active Directory"
-    },
-    {
-      "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "passphrase",
-              "dataType": "password",
-              "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "Shared passphrase to create the Active Directory trust"
-            },
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of your private domain"
-            },
-            {
-              "name": "activeDirectoryIP",
               "dataType": "ipv4",
-              "paramType": "body",
+              "description": "The server radius IP",
               "fullType": "ipv4",
-              "required": true,
-              "description": "IP of your Active Directory"
-            },
-            {
-              "name": "serviceAccountPassword",
-              "dataType": "password",
+              "name": "radiusIp",
               "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "Password of the horizonUI service account"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "domainTrustId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Access point ID",
               "fullType": "long",
-              "required": true,
-              "description": "Domain trust ID"
+              "name": "accessPointId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Add a child domain for this domain."
+          "responseType": "horizonView.Task"
         }
       ],
-      "description": "addChildDomain operations"
+      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA"
     },
     {
-      "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController",
+      "description": "enableWindowsUsernameOption operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Enable windows Username option on Unified Access Gateway",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domainControllerIp",
-              "dataType": "ip",
+              "dataType": "horizonView.AccessPointTypeEnum",
+              "description": "Enable windows Username option on a single Unified Access Gateway (only for hybrid Pool)",
+              "fullType": "horizonView.AccessPointTypeEnum",
+              "name": "onSingleAP",
               "paramType": "body",
-              "fullType": "ip",
-              "required": true,
-              "description": "IP of your Domain Controller"
+              "required": false
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Name of your Domain Controller (example : domain.local)"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "domainTrustId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Access point ID",
               "fullType": "long",
-              "required": true,
-              "description": "Domain trust ID"
+              "name": "accessPointId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Add a Domain Controller for this domain."
+          "responseType": "horizonView.Task"
         }
       ],
-      "description": "addDomainController operations"
+      "path": "/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption"
     },
     {
-      "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "username",
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "Commentary about your termination request",
               "fullType": "string",
-              "required": true,
-              "description": "Name of the User who is going to add the Desktop in your Active Directory"
-            },
-            {
-              "name": "password",
-              "dataType": "password",
+              "name": "commentary",
               "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "Password of the user"
+              "required": false
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The termination token sent by mail to the admin contact",
               "fullType": "string",
-              "required": true,
-              "description": "Name of your Domain (example : domain.local)"
+              "name": "token",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "domainTrustId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Domain trust ID"
-            },
-            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Add a domain user to add your desktop in your Active Directory"
+          "responseType": "string"
         }
       ],
-      "description": "addDomainUserOnComposer operations"
+      "path": "/horizonView/{serviceName}/confirmTermination"
     },
     {
-      "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust",
+      "description": "List the horizonView.CustomerNetwork objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "passphrase",
-              "dataType": "password",
-              "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "Shared passphrase to create the Active Directory trust"
-            },
-            {
-              "name": "serviceAccountPassword",
-              "dataType": "password",
-              "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "Password of the horizonUI service account"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "domainTrustId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Domain trust ID"
-            }
-          ],
-          "responseType": "horizonView.Task",
-          "noAuthentication": false,
-          "description": "Change Horizon View user password"
-        }
-      ],
-      "description": "createTrust operations"
-    },
-    {
-      "path": "/horizonView/{serviceName}/serviceInfos",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "You can reach from the Desktops your private network",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a new network ",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "The private network you want to reach.",
+              "fullType": "ipBlock",
+              "name": "network",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name your network",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task[]"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/customerNetwork"
+    },
+    {
+      "description": "You can reach from your virtual desktops, your customer network ",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete this Customer Network",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Customer network ID",
+              "fullType": "long",
+              "name": "customerNetworkId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Customer network ID",
+              "fullType": "long",
+              "name": "customerNetworkId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.CustomerNetwork"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/customerNetwork/{customerNetworkId}"
+    },
+    {
+      "description": "Horizon View as a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.DedicatedHorizon"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/dedicatedHorizon"
+    },
+    {
+      "description": "List the horizonView.CustomerUser objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Account to access to your pool",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new customer user ",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "New password for this Horizon View user. It must fits your HaaS password policy. If this field is empty, a random password will be generated and sent to your  email.",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Email for your new user in Active diRectory.",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Username for your new user in Active Directory.",
+              "fullType": "string",
+              "name": "username",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task[]"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/dedicatedHorizon/customerUser"
+    },
+    {
+      "description": "Horizon As A Service Customer  User",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete this Customer User",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Username",
+              "fullType": "string",
+              "name": "username",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Username",
+              "fullType": "string",
+              "name": "username",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.CustomerUser"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}"
+    },
+    {
+      "description": "changePassword operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change Horizon View Customer  user password",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "New password for this Horizon View user. It must fits your HaaS password policy. If this field is empty, a random password will be generated and sent to you by email.",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Username",
+              "fullType": "string",
+              "name": "username",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword"
+    },
+    {
+      "description": "disableStorageAccelerator operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Disable the View Storage Accelerator option on VCenter",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator"
+    },
+    {
+      "description": "enableStorageAccelerator operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Enable the View Storage Accelerator option on VCenter",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator"
+    },
+    {
+      "description": "List the horizonView.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Tasks associated with this Dedicated Horizon",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "horizonView.TaskStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "horizonView.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/dedicatedHorizon/task"
+    },
+    {
+      "description": "Operation on a Horizon View component",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Task ID",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/dedicatedHorizon/task/{taskId}"
+    },
+    {
+      "description": "Horizon As A Service User",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.User"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/dedicatedHorizon/user"
+    },
+    {
+      "description": "changePassword operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change Horizon View user password",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "New password for this Horizon View user. It must fits your HaaS password policy. If this field is empty, a random password will be generated and sent to you by email.",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/dedicatedHorizon/user/changePassword"
+    },
+    {
+      "description": "changeProperties operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change horizon view user properties",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Change email of your admin user",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/dedicatedHorizon/user/changeProperties"
+    },
+    {
+      "description": "List the horizonView.DomainTrust objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List all Active Directories linked to your CDI Active Directory",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Link your Active Directory to your CDI Active Directory",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of your active directory (for example domain.local)",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip",
+              "description": "IP of your first DNS",
+              "fullType": "ip",
+              "name": "dns1",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ip",
+              "description": "IP of your Active Directory",
+              "fullType": "ip",
+              "name": "activeDirectoryIP",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip",
+              "description": "IP of your second DNS",
+              "fullType": "ip",
+              "name": "dns2",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task[]"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/domainTrust"
+    },
+    {
+      "description": "List all Active Directories linked to your CDI Active Directory",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Domain trust ID",
+              "fullType": "long",
+              "name": "domainTrustId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.DomainTrust"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}"
+    },
+    {
+      "description": "addChildDomain operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a child domain for this domain.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "IP of your Active Directory",
+              "fullType": "ipv4",
+              "name": "activeDirectoryIP",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "Password of the horizonUI service account",
+              "fullType": "password",
+              "name": "serviceAccountPassword",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of your private domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "Shared passphrase to create the Active Directory trust",
+              "fullType": "password",
+              "name": "passphrase",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Domain trust ID",
+              "fullType": "long",
+              "name": "domainTrustId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain"
+    },
+    {
+      "description": "addDomainController operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a Domain Controller for this domain.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of your Domain Controller (example : domain.local)",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip",
+              "description": "IP of your Domain Controller",
+              "fullType": "ip",
+              "name": "domainControllerIp",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Domain trust ID",
+              "fullType": "long",
+              "name": "domainTrustId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController"
+    },
+    {
+      "description": "addDomainUserOnComposer operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a domain user to add your desktop in your Active Directory",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of the User who is going to add the Desktop in your Active Directory",
+              "fullType": "string",
+              "name": "username",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of your Domain (example : domain.local)",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "Password of the user",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Domain trust ID",
+              "fullType": "long",
+              "name": "domainTrustId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer"
+    },
+    {
+      "description": "createTrust operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change Horizon View user password",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "Shared passphrase to create the Active Directory trust",
+              "fullType": "password",
+              "name": "passphrase",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "Password of the horizonUI service account",
+              "fullType": "password",
+              "name": "serviceAccountPassword",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Domain trust ID",
+              "fullType": "long",
+              "name": "domainTrustId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "horizonView.Task"
+        }
+      ],
+      "path": "/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/horizonView/{serviceName}/serviceInfos"
     },
     {
-      "path": "/horizonView/{serviceName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/horizonView/{serviceName}/terminate"
     }
   ],
-  "resourcePath": "/horizonView",
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "horizonView.AccessPointTypeEnum": {
-      "id": "AccessPointTypeEnum",
-      "namespace": "horizonView",
       "description": "Access Point type the customer can deploy",
       "enum": [
         "privateAccessPoint",
         "publicAccessPoint"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AccessPointTypeEnum",
+      "namespace": "horizonView"
     },
     "horizonView.CustomerNetwork": {
+      "description": "You can reach from your virtual desktops, your customer network ",
       "id": "CustomerNetwork",
       "namespace": "horizonView",
-      "description": "You can reach from your virtual desktops, your customer network ",
       "properties": {
         "customerNetworkId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer Network id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of your network",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "network": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer network",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "horizonView.CustomerNetworkPool": {
+      "description": "You can reach from your virtual desktops, your customer network ",
       "id": "CustomerNetworkPool",
       "namespace": "horizonView",
-      "description": "You can reach from your virtual desktops, your customer network ",
       "properties": {
         "customerNetworkId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer Network id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of your network",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "network": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer network",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "horizonView.CustomerUser": {
+      "description": "Horizon As A Service Customer  User",
       "id": "CustomerUser",
       "namespace": "horizonView",
-      "description": "Horizon As A Service Customer  User",
       "properties": {
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Email of your HaaS User",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer username of your HaaS User",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "horizonView.Datacenter": {
+      "description": "Cloud Desktop Infrastructure Datacenter",
       "id": "Datacenter",
       "namespace": "horizonView",
-      "description": "Cloud Desktop Infrastructure Datacenter",
       "properties": {
         "activeDirectoryIP": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP of the VDI Active Directory",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "adminDomain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain of the admin infrastructure",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "adminNetworkNextHop": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Next hop to contact the private admin network",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "adminPrivateNetwork": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Private network of the admin infrastructure",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         },
         "customerIntercoIP": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer interco IP allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "customerIntercoMask": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer interco netmask allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "customerIntercoVlanId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Customer interco vlan allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "datacenterId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Datacenter ids",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the datacenter",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain of your Horizon",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "horizonView.DedicatedHorizon": {
+      "description": "Horizon View as a Service",
       "id": "DedicatedHorizon",
       "namespace": "horizonView",
-      "description": "Horizon View as a Service",
       "properties": {
         "masterZone": {
-          "type": "horizonView.Zone",
-          "fullType": "horizonView.Zone",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The location of your administration servers in our datacenter",
-          "required": true
+          "fullType": "horizonView.Zone",
+          "readOnly": true,
+          "required": true,
+          "type": "horizonView.Zone"
         },
         "privateCloudName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Your Horizon Private Cloud ",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "privateCloudZone": {
-          "type": "horizonView.Zone",
-          "fullType": "horizonView.Zone",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The location of your datacenter",
-          "required": true
+          "fullType": "horizonView.Zone",
+          "readOnly": true,
+          "required": true,
+          "type": "horizonView.Zone"
         },
         "publicUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Url of your Dedicated Horizon",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "horizonView.StateEnum",
-          "fullType": "horizonView.StateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current state of your Dedicated Horizon",
-          "required": true
+          "fullType": "horizonView.StateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "horizonView.StateEnum"
         },
         "storageAccelerator": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "View Storage Accelerator for Vcenter",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "version": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Version of your Dedicated Horizon",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "horizonView.DomainTrust": {
+      "description": "List all Active Directories linked to your CDI Active Directory",
       "id": "DomainTrust",
       "namespace": "horizonView",
-      "description": "List all Active Directories linked to your CDI Active Directory",
       "properties": {
         "activeDirectoryIP": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP of your Active Directory",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "dns1": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "IP of your first DNS",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "dns2": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "IP of your second DNS",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of your private domain",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "domainTrustId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain trust id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "horizonView.Pool": {
+      "description": "All informations about access point",
       "id": "Pool",
       "namespace": "horizonView",
-      "description": "All informations about access point",
       "properties": {
         "accessPointId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pool id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "dhcpNetmask": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "DHCP netmask in this port group",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "dhcpNetwork": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "DHCP network in this port group",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "externalUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "External url of your access point",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "intercoNextHop": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Next hop IP to reach virtual desktops network for public Access Point",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "intercoPrivateNextHop": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Next hop IP to reach virtual desktops network for private Access Point",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "portGroupId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Port group id",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "horizonView.StateEnum",
-          "fullType": "horizonView.StateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network state",
-          "required": true
+          "fullType": "horizonView.StateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "horizonView.StateEnum"
         },
         "twoFA": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Two factor authentication",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "type": {
-          "type": "horizonView.PoolType",
-          "fullType": "horizonView.PoolType",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pool type",
-          "required": true
+          "fullType": "horizonView.PoolType",
+          "readOnly": true,
+          "required": true,
+          "type": "horizonView.PoolType"
         }
       }
     },
     "horizonView.PoolType": {
-      "id": "PoolType",
-      "namespace": "horizonView",
       "description": "Pool type the customer can deploy",
       "enum": [
         "hybridPool",
         "privatePool",
         "publicPool"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PoolType",
+      "namespace": "horizonView"
     },
     "horizonView.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "horizonView",
       "description": "All states a dedicated horizon  can be in",
       "enum": [
         "available",
@@ -1985,66 +1984,66 @@ export const schema: Schema = {
         "error",
         "reserved"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "horizonView"
     },
     "horizonView.Task": {
+      "description": "Operation on a Horizon View component",
       "id": "Task",
       "namespace": "horizonView",
-      "description": "Operation on a Horizon View component",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current progress description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "lastModificationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Task last modification date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "progress": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current progress",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "horizonView.TaskStateEnum",
-          "fullType": "horizonView.TaskStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current Task state",
-          "required": true
+          "fullType": "horizonView.TaskStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "horizonView.TaskStateEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "horizonView.TaskStateEnum": {
-      "id": "TaskStateEnum",
-      "namespace": "horizonView",
       "description": "All states a Horizon View  Task can be in",
       "enum": [
         "canceled",
@@ -2059,84 +2058,84 @@ export const schema: Schema = {
         "waitingForChilds",
         "waitingTodo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "horizonView"
     },
     "horizonView.User": {
+      "description": "Horizon As A Service User",
       "id": "User",
       "namespace": "horizonView",
-      "description": "Horizon As A Service User",
       "properties": {
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Username of your HaaS User",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "horizonView.Zone": {
-      "id": "Zone",
-      "namespace": "horizonView",
       "description": "All zones a Cloud Desktop Infrastructure can be in",
       "enum": [
         "Beauharnois",
         "Roubaix",
         "Strasbourg"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Zone",
+      "namespace": "horizonView"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -2147,11 +2146,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -2159,11 +2158,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -2172,11 +2171,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -2194,108 +2193,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/horizonView"
 }

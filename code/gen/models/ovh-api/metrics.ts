@@ -1,815 +1,814 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/metrics.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/metrics",
+      "description": "Operations about the METRICS service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "operationId": "listMetricsServices",
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "operationId": "listMetricsServices",
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the METRICS service"
+      "path": "/metrics"
     },
     {
-      "path": "/metrics/{serviceName}",
+      "description": "Operations about the METRICS service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "operationId": "getMetricsService",
+          "description": "Get service",
           "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "getMetricsService",
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "metrics.api.Service",
-          "noAuthentication": false,
-          "description": "Get service"
+          "responseType": "metrics.api.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "operationId": "editMetricsService",
+          "description": "Modify service",
           "httpMethod": "PUT",
+          "noAuthentication": false,
+          "operationId": "editMetricsService",
           "parameters": [
             {
               "dataType": "metrics.Update",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "metrics.Update",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "metrics.api.Service",
-          "noAuthentication": false,
-          "description": "Modify service"
+          "responseType": "metrics.api.Service"
         }
       ],
-      "description": "Operations about the METRICS service"
+      "path": "/metrics/{serviceName}"
     },
     {
-      "path": "/metrics/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactTech",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The contact to set as billing contact",
               "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
-            },
-            {
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The contact to set as tech contact",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "contactTech",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/metrics/{serviceName}/changeContact"
     },
     {
-      "path": "/metrics/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/metrics/{serviceName}/confirmTermination"
     },
     {
-      "path": "/metrics/{serviceName}/consumption",
+      "description": "Metrics service consumption",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "operationId": "getMetricsServiceConsumption",
+          "description": "Get consumption for your service",
           "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "getMetricsServiceConsumption",
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "duration",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Last 'm' minutes. Default is 60min",
               "fullType": "long",
-              "required": false,
-              "description": "Last 'm' minutes. Default is 60min"
+              "name": "duration",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "metrics.api.Consumption",
-          "noAuthentication": false,
-          "description": "Get consumption for your service"
+          "responseType": "metrics.api.Consumption"
         }
       ],
-      "description": "Metrics service consumption"
+      "path": "/metrics/{serviceName}/consumption"
     },
     {
-      "path": "/metrics/{serviceName}/lookup/token",
+      "description": "Look for service/token",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "operationId": "lookupMetricsToken",
+          "description": "Find TokenID for a specific token",
           "httpMethod": "POST",
+          "noAuthentication": false,
+          "operationId": "lookupMetricsToken",
           "parameters": [
             {
               "dataType": "metrics.LookupTokenCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "metrics.LookupTokenCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Find TokenID for a specific token"
+          "responseType": "string[]"
         }
       ],
-      "description": "Look for service/token"
+      "path": "/metrics/{serviceName}/lookup/token"
     },
     {
-      "path": "/metrics/{serviceName}/quota",
+      "description": "Metrics service quota management",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "operationId": "setMetricsServiceQuota",
+          "description": "Set overquota",
           "httpMethod": "PUT",
+          "noAuthentication": false,
+          "operationId": "setMetricsServiceQuota",
           "parameters": [
             {
               "dataType": "metrics.QuotaUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "metrics.QuotaUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Set overquota"
+          "responseType": "string"
         }
       ],
-      "description": "Metrics service quota management"
+      "path": "/metrics/{serviceName}/quota"
     },
     {
-      "path": "/metrics/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/metrics/{serviceName}/serviceInfos"
     },
     {
-      "path": "/metrics/{serviceName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/metrics/{serviceName}/terminate"
     },
     {
-      "path": "/metrics/{serviceName}/token",
+      "description": "Metrics service token operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "operationId": "listMetricsTokens",
+          "description": "Get list of tokens",
           "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "listMetricsTokens",
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get list of tokens"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "operationId": "createMetricsToken",
+          "description": "Create a token",
           "httpMethod": "POST",
+          "noAuthentication": false,
+          "operationId": "createMetricsToken",
           "parameters": [
             {
               "dataType": "metrics.TokenCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "metrics.TokenCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "metrics.api.Token",
-          "noAuthentication": false,
-          "description": "Create a token"
+          "responseType": "metrics.api.Token"
         }
       ],
-      "description": "Metrics service token operations"
+      "path": "/metrics/{serviceName}/token"
     },
     {
-      "path": "/metrics/{serviceName}/token/{tokenId}",
+      "description": "Metrics service token operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "operationId": "deleteMetricsToken",
+          "description": "Revoke a token",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "operationId": "deleteMetricsToken",
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "tokenId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Token ID",
               "fullType": "string",
-              "required": true,
-              "description": "Token ID"
+              "name": "tokenId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Revoke a token"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "operationId": "getMetricsToken",
+          "description": "Get a specific token",
           "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "getMetricsToken",
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "tokenId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Token ID",
               "fullType": "string",
-              "required": true,
-              "description": "Token ID"
+              "name": "tokenId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "metrics.api.Token",
-          "noAuthentication": false,
-          "description": "Get a specific token"
+          "responseType": "metrics.api.Token"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "operationId": "editMetricsToken",
+          "description": "Modify a token",
           "httpMethod": "PUT",
+          "noAuthentication": false,
+          "operationId": "editMetricsToken",
           "parameters": [
             {
               "dataType": "metrics.TokenUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "metrics.TokenUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "tokenId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Token ID",
               "fullType": "string",
-              "required": true,
-              "description": "Token ID"
+              "name": "tokenId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "metrics.api.Token",
-          "noAuthentication": false,
-          "description": "Modify a token"
+          "responseType": "metrics.api.Token"
         }
       ],
-      "description": "Metrics service token operations"
+      "path": "/metrics/{serviceName}/token/{tokenId}"
     }
   ],
-  "resourcePath": "/metrics",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "metrics.LookupTokenCreation": {
+      "description": "Missing description",
       "id": "LookupTokenCreation",
       "namespace": "metrics",
-      "description": "Missing description",
       "properties": {
         "accessToken": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "access token",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "metrics.QuotaUpdate": {
+      "description": "Missing description",
       "id": "QuotaUpdate",
       "namespace": "metrics",
-      "description": "Missing description",
       "properties": {
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "New value for overquota",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "metrics.TokenCreation": {
+      "description": "Missing description",
       "id": "TokenCreation",
       "namespace": "metrics",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Description for the new token",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "labels": {
-          "type": "metrics.api.Label[]",
-          "fullType": "metrics.api.Label[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Labels for the new token",
-          "required": false
+          "fullType": "metrics.api.Label[]",
+          "readOnly": false,
+          "required": false,
+          "type": "metrics.api.Label[]"
         },
         "permission": {
-          "type": "metrics.api.PermissionEnum",
-          "fullType": "metrics.api.PermissionEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of the new token. Read or Write",
-          "required": true
+          "fullType": "metrics.api.PermissionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "metrics.api.PermissionEnum"
         }
       }
     },
     "metrics.TokenUpdate": {
+      "description": "Missing description",
       "id": "TokenUpdate",
       "namespace": "metrics",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "New description for your token",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "metrics.Update": {
+      "description": "Missing description",
       "id": "Update",
       "namespace": "metrics",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "New description for your service",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "metrics.api.Consumption": {
+      "description": "Structure holding the consumption",
       "id": "Consumption",
       "namespace": "metrics.api",
-      "description": "Structure holding the consumption",
       "properties": {
         "ddp": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current Daily data points",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "mads": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current monthly active data streams",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "metrics.api.Label": {
+      "description": "Structure holding the elements about a label",
       "id": "Label",
       "namespace": "metrics.api",
-      "description": "Structure holding the elements about a label",
       "properties": {
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Label key",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Label value",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "metrics.api.OfferTypeEnum": {
-      "id": "OfferTypeEnum",
-      "namespace": "metrics.api",
       "description": "Type of the service",
       "enum": [
         "cloud",
         "live"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OfferTypeEnum",
+      "namespace": "metrics.api"
     },
     "metrics.api.Option": {
+      "description": "Structure holding the options for a service",
       "id": "Option",
       "namespace": "metrics.api",
-      "description": "Structure holding the options for a service",
       "properties": {
         "ddp": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Daily data points",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "lastModification": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Time of last modification",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "mads": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Monthly active device streams",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "metrics.api.PermissionEnum": {
-      "id": "PermissionEnum",
-      "namespace": "metrics.api",
       "description": "Metrics service token permissions",
       "enum": [
         "read",
         "write"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PermissionEnum",
+      "namespace": "metrics.api"
     },
     "metrics.api.Region": {
+      "description": "Structure holding the elements about a region",
       "id": "Region",
       "namespace": "metrics.api",
-      "description": "Structure holding the elements about a region",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Description of a region",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of a region",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "metrics.api.Service": {
+      "description": "Structure holding the elements about a service",
       "id": "Service",
       "namespace": "metrics.api",
-      "description": "Structure holding the elements about a service",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Description of a service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of a service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "offer": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Offer used for the service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "quota": {
-          "type": "metrics.api.Option",
-          "fullType": "metrics.api.Option",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Quota used for the service",
-          "required": false
+          "fullType": "metrics.api.Option",
+          "readOnly": true,
+          "required": false,
+          "type": "metrics.api.Option"
         },
         "region": {
-          "type": "metrics.api.Region",
-          "fullType": "metrics.api.Region",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region holding the service",
-          "required": false
+          "fullType": "metrics.api.Region",
+          "readOnly": true,
+          "required": false,
+          "type": "metrics.api.Region"
         },
         "shouldUpgrade": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicator if the service should be upgraded based on current quota and offer",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "status": {
-          "type": "metrics.api.ServiceStatusEnum",
-          "fullType": "metrics.api.ServiceStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of a service",
-          "required": false
+          "fullType": "metrics.api.ServiceStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "metrics.api.ServiceStatusEnum"
         },
         "type": {
-          "type": "metrics.api.OfferTypeEnum",
-          "fullType": "metrics.api.OfferTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of the service: cloud or live",
-          "required": false
+          "fullType": "metrics.api.OfferTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "metrics.api.OfferTypeEnum"
         }
       }
     },
     "metrics.api.ServiceStatusEnum": {
-      "id": "ServiceStatusEnum",
-      "namespace": "metrics.api",
       "description": "Status of of the service",
       "enum": [
         "new",
@@ -817,129 +816,129 @@ export const schema: Schema = {
         "disabled",
         "dead"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceStatusEnum",
+      "namespace": "metrics.api"
     },
     "metrics.api.Token": {
+      "description": "Structure holding the elements about a token",
       "id": "Token",
       "namespace": "metrics.api",
-      "description": "Structure holding the elements about a token",
       "properties": {
         "access": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The actual access token",
-          "required": false
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Token creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Description of the token",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "expiryAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Token expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the token",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "isRevoked": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Is your token revoked?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "labels": {
-          "type": "metrics.api.Label[]",
-          "fullType": "metrics.api.Label[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Labels for the token if set",
-          "required": false
+          "fullType": "metrics.api.Label[]",
+          "readOnly": true,
+          "required": false,
+          "type": "metrics.api.Label[]"
         },
         "permission": {
-          "type": "metrics.api.PermissionEnum",
-          "fullType": "metrics.api.PermissionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Token permission: read or write",
-          "required": false
+          "fullType": "metrics.api.PermissionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "metrics.api.PermissionEnum"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -950,11 +949,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -962,11 +961,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -975,11 +974,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -997,108 +996,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/metrics"
 }

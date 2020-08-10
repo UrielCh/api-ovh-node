@@ -1,3987 +1,3986 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://api.us.ovhcloud.com:443/1.0/ipLoadbalancing.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/ipLoadbalancing",
+      "description": "Operations about the IPLB service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the IPLB service"
+      "path": "/ipLoadbalancing"
     },
     {
-      "path": "/ipLoadbalancing/availableZones",
+      "description": "List of zone available for an IP load balancing",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2018-06-11T00:00:00+01:00",
-            "deprecatedDate": "2018-05-10T00:00:00+01:00"
+            "deprecatedDate": "2018-05-10T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
+          "description": "List of zone available for an IP load balancing",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List of zone available for an IP load balancing"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "List of zone available for an IP load balancing"
+      "path": "/ipLoadbalancing/availableZones"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}",
+      "description": "Your IP load balancing",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Ip",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.Ip"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.Ip",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.Ip",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Your IP load balancing"
+      "path": "/ipLoadbalancing/{serviceName}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/availableFarmProbes",
+      "description": "availableFarmProbes operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Available farm probes for health checks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.FarmAvailableProbe[]",
-          "noAuthentication": false,
-          "description": "Available farm probes for health checks"
+          "responseType": "ipLoadbalancing.FarmAvailableProbe[]"
         }
       ],
-      "description": "availableFarmProbes operations"
+      "path": "/ipLoadbalancing/{serviceName}/availableFarmProbes"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/availableFarmType",
+      "description": "availableFarmType operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Available farm types",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Available farm types"
+          "responseType": "string[]"
         }
       ],
-      "description": "availableFarmType operations"
+      "path": "/ipLoadbalancing/{serviceName}/availableFarmType"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/availableFrontendType",
+      "description": "availableFrontendType operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Available frontend type",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Available frontend type"
+          "responseType": "string[]"
         }
       ],
-      "description": "availableFrontendType operations"
+      "path": "/ipLoadbalancing/{serviceName}/availableFrontendType"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/availableRouteActions",
+      "description": "availableRouteActions operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Available route actions",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteAvailableAction[]",
-          "noAuthentication": false,
-          "description": "Available route actions"
+          "responseType": "ipLoadbalancing.RouteAvailableAction[]"
         }
       ],
-      "description": "availableRouteActions operations"
+      "path": "/ipLoadbalancing/{serviceName}/availableRouteActions"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/availableRouteRules",
+      "description": "availableRouteRules operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Available route match rules",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteAvailableRule[]",
-          "noAuthentication": false,
-          "description": "Available route match rules"
+          "responseType": "ipLoadbalancing.RouteAvailableRule[]"
         }
       ],
-      "description": "availableRouteRules operations"
+      "path": "/ipLoadbalancing/{serviceName}/availableRouteRules"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/ipLoadbalancing/{serviceName}/confirmTermination"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/definedFarms",
+      "description": "definedFarms operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List of defined farms, and whether they are HTTP, TCP or UDP",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "vrackNetworkId",
               "dataType": "long",
-              "paramType": "query",
+              "description": "The vrack network id you want to filter on",
               "fullType": "long",
-              "required": false,
-              "description": "The vrack network id you want to filter on"
+              "name": "vrackNetworkId",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "ipLoadbalancing.DefinedFarm[]",
-          "noAuthentication": false,
-          "description": "List of defined farms, and whether they are HTTP, TCP or UDP"
+          "responseType": "ipLoadbalancing.DefinedFarm[]"
         }
       ],
-      "description": "definedFarms operations"
+      "path": "/ipLoadbalancing/{serviceName}/definedFarms"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/definedFrontends",
+      "description": "definedFrontends operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List of defined frontends, and whether they are HTTP, TCP or UDP",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.DefinedFrontend[]",
-          "noAuthentication": false,
-          "description": "List of defined frontends, and whether they are HTTP, TCP or UDP"
+          "responseType": "ipLoadbalancing.DefinedFrontend[]"
         }
       ],
-      "description": "definedFrontends operations"
+      "path": "/ipLoadbalancing/{serviceName}/definedFrontends"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/definedRoutes",
+      "description": "definedRoutes operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List of defined routes, and whether they are HTTP or TCP",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.DefinedRoute[]",
-          "noAuthentication": false,
-          "description": "List of defined routes, and whether they are HTTP or TCP"
+          "responseType": "ipLoadbalancing.DefinedRoute[]"
         }
       ],
-      "description": "definedRoutes operations"
+      "path": "/ipLoadbalancing/{serviceName}/definedRoutes"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/failover",
+      "description": "failover operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List all failover ip routed to this IPLB",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "List all failover ip routed to this IPLB"
+          "responseType": "ipBlock[]"
         }
       ],
-      "description": "failover operations"
+      "path": "/ipLoadbalancing/{serviceName}/failover"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/freeCertificate",
+      "description": "freeCertificate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Order a free certificate. We order and deliver it for you",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "fqdn",
               "dataType": "string[]",
-              "paramType": "body",
+              "description": "The FQDN for which you want a free certificate. A DCV (Domain Control Validation) http request will be made to http://your_domain.abc, make sure this domain exists and resolves to your iplb ip before ordering",
               "fullType": "string[]",
-              "required": true,
-              "description": "The FQDN for which you want a free certificate. A DCV (Domain Control Validation) http request will be made to http://your_domain.abc, make sure this domain exists and resolves to your iplb ip before ordering"
+              "name": "fqdn",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Task.Task",
-          "noAuthentication": false,
-          "description": "Order a free certificate. We order and deliver it for you"
+          "responseType": "ipLoadbalancing.Task.Task"
         }
       ],
-      "description": "freeCertificate operations"
+      "path": "/ipLoadbalancing/{serviceName}/freeCertificate"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/http/farm",
+      "description": "List the ipLoadbalancing.backendHttp.BackendHttp objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "HTTP Farm for this iplb",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "vrackNetworkId",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Filter the value of vrackNetworkId property (=)",
               "fullType": "long",
-              "required": false,
-              "description": "Filter the value of vrackNetworkId property (=)"
+              "name": "vrackNetworkId",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "zone",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of zone property (=)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of zone property (=)"
+              "name": "zone",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "HTTP Farm for this iplb"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a new HTTP Farm on your IP Load Balancing",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null",
+              "fullType": "long",
               "name": "port",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Zone of your farm",
+              "fullType": "string",
               "name": "zone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone of your farm"
+              "required": true
             },
             {
-              "name": "stickiness",
               "dataType": "ipLoadbalancing.StickinessHTTPEnum",
-              "paramType": "body",
+              "description": "Stickiness type. No stickiness if null",
               "fullType": "ipLoadbalancing.StickinessHTTPEnum",
-              "required": false,
-              "description": "Stickiness type. No stickiness if null"
+              "name": "stickiness",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "probe",
               "dataType": "ipLoadbalancing.BackendProbe",
-              "paramType": "body",
+              "description": "Probe used to determine if a backend is alive and can handle requests",
               "fullType": "ipLoadbalancing.BackendProbe",
-              "required": false,
-              "description": "Probe used to determine if a backend is alive and can handle requests"
+              "name": "probe",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "balance",
               "dataType": "ipLoadbalancing.BalanceHTTPEnum",
-              "paramType": "body",
+              "description": "Load balancing algorithm. 'roundrobin' if null",
               "fullType": "ipLoadbalancing.BalanceHTTPEnum",
-              "required": false,
-              "description": "Load balancing algorithm. 'roundrobin' if null"
+              "name": "balance",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Human readable name for your backend, this field is for you",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your backend, this field is for you"
+              "required": false
             },
             {
-              "name": "vrackNetworkId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack",
               "fullType": "long",
-              "required": false,
-              "description": "Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack"
+              "name": "vrackNetworkId",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendHttp.BackendHttp",
-          "noAuthentication": false,
-          "description": "Add a new HTTP Farm on your IP Load Balancing"
+          "responseType": "ipLoadbalancing.backendHttp.BackendHttp"
         }
       ],
-      "description": "List the ipLoadbalancing.backendHttp.BackendHttp objects"
+      "path": "/ipLoadbalancing/{serviceName}/http/farm"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/http/farm/{farmId}",
+      "description": "HTTP Farm",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete an HTTP Farm",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "farmId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Farm ID",
               "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete an HTTP Farm"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "farmId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Farm ID",
               "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendHttp.BackendHttp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.backendHttp.BackendHttp"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.backendHttp.BackendHttp",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.backendHttp.BackendHttp",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "farmId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Farm ID",
               "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "HTTP Farm"
+      "path": "/ipLoadbalancing/{serviceName}/http/farm/{farmId}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server",
+      "description": "List the ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "HTTP Farm's Servers",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "farmId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Farm ID",
               "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "cookie",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of cookie property (like)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of cookie property (like)"
+              "name": "cookie",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "status",
               "dataType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "address",
               "dataType": "ipv4",
-              "paramType": "query",
+              "description": "Filter the value of address property (=)",
               "fullType": "ipv4",
-              "required": false,
-              "description": "Filter the value of address property (=)"
+              "name": "address",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "HTTP Farm's Servers"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a server to an HTTP Farm",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Set weight on that server [1..256]. 0 if not used in load balancing. 1 if left null. Servers with higher weight get more requests.",
+              "fullType": "long",
               "name": "weight",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Set weight on that server [1..256]. 0 if not used in load balancing. 1 if left null. Servers with higher weight get more requests."
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "SSL ciphering. Probes will also be sent ciphered. Default: 'false'",
+              "fullType": "boolean",
               "name": "ssl",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "SSL ciphering. Probes will also be sent ciphered. Default: 'false'"
+              "required": false
             },
             {
-              "name": "proxyProtocolVersion",
               "dataType": "ipLoadbalancing.ProxyProtocolVersionEnum",
-              "paramType": "body",
+              "description": "Disabled if null. Send PROXY protocol header. Requires a compatible server.",
               "fullType": "ipLoadbalancing.ProxyProtocolVersionEnum",
-              "required": false,
-              "description": "Disabled if null. Send PROXY protocol header. Requires a compatible server."
+              "name": "proxyProtocolVersion",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "status",
               "dataType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "paramType": "body",
+              "description": "Enable or disable your server",
               "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "required": true,
-              "description": "Enable or disable your server"
+              "name": "status",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Set the cookie value used when 'cookie' stickiness is set in the farm. Auto generate the cookie if none provided and required.",
+              "fullType": "string",
               "name": "cookie",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Set the cookie value used when 'cookie' stickiness is set in the farm. Auto generate the cookie if none provided and required."
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "Enable/disable probe. Default: 'false'",
+              "fullType": "boolean",
               "name": "probe",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Enable/disable probe. Default: 'false'"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Human readable name for your server, this field is for you",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your server, this field is for you"
+              "required": false
             },
             {
-              "name": "backup",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Set server as backup. Default: 'false'",
               "fullType": "boolean",
-              "required": false,
-              "description": "Set server as backup. Default: 'false'"
+              "name": "backup",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Port attached to your server ([1..49151]). Inherited from farm if null",
+              "fullType": "long",
               "name": "port",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Port attached to your server ([1..49151]). Inherited from farm if null"
+              "required": false
             },
             {
-              "name": "address",
               "dataType": "ipv4",
-              "paramType": "body",
+              "description": "Address of your server",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Address of your server"
-            },
-            {
-              "name": "chain",
-              "dataType": "text",
+              "name": "address",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "text",
+              "description": "Certificate chain. Allow server certificate verification (Avoid man-in-the-middle attacks)",
               "fullType": "text",
-              "required": false,
-              "description": "Certificate chain. Allow server certificate verification (Avoid man-in-the-middle attacks)"
+              "name": "chain",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "farmId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Farm ID",
               "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer",
-          "noAuthentication": false,
-          "description": "Add a server to an HTTP Farm"
+          "responseType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer"
         }
       ],
-      "description": "List the ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer objects"
+      "path": "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}",
+      "description": "HTTP Farm's Server",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete a server from an HTTP Farm",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Farm ID",
+              "fullType": "long",
               "name": "farmId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "required": true
             },
             {
-              "name": "serverId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Server ID",
               "fullType": "long",
-              "required": true,
-              "description": "Server ID"
+              "name": "serverId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a server from an HTTP Farm"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Farm ID",
+              "fullType": "long",
               "name": "farmId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Server ID",
+              "fullType": "long",
               "name": "serverId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Server ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Farm ID",
+              "fullType": "long",
               "name": "farmId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Server ID",
+              "fullType": "long",
               "name": "serverId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Server ID"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "HTTP Farm's Server"
+      "path": "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/http/frontend",
+      "description": "List the ipLoadbalancing.frontendHttp.FrontendHttp objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "HTTP frontends for this iplb",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of zone property (=)",
+              "fullType": "string",
               "name": "zone",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of zone property (=)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of port property (like)",
+              "fullType": "string",
               "name": "port",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of port property (like)"
+              "required": false
             },
             {
-              "name": "defaultFarmId",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Filter the value of defaultFarmId property (=)",
               "fullType": "long",
-              "required": false,
-              "description": "Filter the value of defaultFarmId property (=)"
+              "name": "defaultFarmId",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "HTTP frontends for this iplb"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a new http frontend on your IP Load Balancing",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "HTTP redirection (Ex : http://www.ovh.com)",
+              "fullType": "string",
               "name": "redirectLocation",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "HTTP redirection (Ex : http://www.ovh.com)"
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "HTTP Strict Transport Security. Default: 'false'",
+              "fullType": "boolean",
               "name": "hsts",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "HTTP Strict Transport Security. Default: 'false'"
+              "required": false
             },
             {
+              "dataType": "ipBlock[]",
+              "description": "Restrict IP Load Balancing access to these ip block. No restriction if null",
+              "fullType": "ipBlock[]",
               "name": "allowedSource",
-              "dataType": "ipBlock[]",
               "paramType": "body",
-              "fullType": "ipBlock[]",
-              "required": false,
-              "description": "Restrict IP Load Balancing access to these ip block. No restriction if null"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Zone of your frontend. Use \"all\" for all owned zone.",
+              "fullType": "string",
               "name": "zone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone of your frontend. Use \"all\" for all owned zone."
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.",
+              "fullType": "string",
               "name": "port",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range."
+              "required": true
             },
             {
-              "name": "dedicatedIpfo",
               "dataType": "ipBlock[]",
-              "paramType": "body",
+              "description": "Only attach frontend on these ip. No restriction if null",
               "fullType": "ipBlock[]",
-              "required": false,
-              "description": "Only attach frontend on these ip. No restriction if null"
+              "name": "dedicatedIpfo",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Default HTTP Farm of your frontend",
+              "fullType": "long",
               "name": "defaultFarmId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Default HTTP Farm of your frontend"
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "SSL deciphering. Default: 'false'",
+              "fullType": "boolean",
               "name": "ssl",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "SSL deciphering. Default: 'false'"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Human readable name for your frontend, this field is for you",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your frontend, this field is for you"
+              "required": false
             },
             {
-              "name": "httpHeader",
               "dataType": "string[]",
-              "paramType": "body",
+              "description": "Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port",
               "fullType": "string[]",
-              "required": false,
-              "description": "Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port"
+              "name": "httpHeader",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "defaultSslId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Default ssl served to your customer",
               "fullType": "long",
-              "required": false,
-              "description": "Default ssl served to your customer"
-            },
-            {
-              "name": "disabled",
-              "dataType": "boolean",
+              "name": "defaultSslId",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Disable your frontend. Default: 'false'"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "boolean",
+              "description": "Disable your frontend. Default: 'false'",
+              "fullType": "boolean",
+              "name": "disabled",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.frontendHttp.FrontendHttp",
-          "noAuthentication": false,
-          "description": "Add a new http frontend on your IP Load Balancing"
+          "responseType": "ipLoadbalancing.frontendHttp.FrontendHttp"
         }
       ],
-      "description": "List the ipLoadbalancing.frontendHttp.FrontendHttp objects"
+      "path": "/ipLoadbalancing/{serviceName}/http/frontend"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}",
+      "description": "Frontend HTTP",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete an HTTP frontend",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "frontendId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Frontend ID",
               "fullType": "long",
-              "required": true,
-              "description": "Frontend ID"
+              "name": "frontendId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete an HTTP frontend"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "frontendId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Frontend ID",
               "fullType": "long",
-              "required": true,
-              "description": "Frontend ID"
+              "name": "frontendId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.frontendHttp.FrontendHttp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.frontendHttp.FrontendHttp"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.frontendHttp.FrontendHttp",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.frontendHttp.FrontendHttp",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "frontendId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Frontend ID",
               "fullType": "long",
-              "required": true,
-              "description": "Frontend ID"
+              "name": "frontendId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Frontend HTTP"
+      "path": "/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/http/route",
+      "description": "List the ipLoadbalancing.RouteHttp.RouteHttp objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "HTTP routes for this iplb",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "frontendId",
               "dataType": "long",
+              "description": "Filter the value of frontendId property (=)",
+              "fullType": "long",
+              "name": "frontendId",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of frontendId property (=)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "HTTP routes for this iplb"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a new HTTP route to your frontend",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "action",
               "dataType": "ipLoadbalancing.RouteHttpAction",
-              "paramType": "body",
+              "description": "Action triggered when all rules match",
               "fullType": "ipLoadbalancing.RouteHttpAction",
-              "required": true,
-              "description": "Action triggered when all rules match"
+              "name": "action",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Human readable name for your route, this field is for you",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your route, this field is for you"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action",
+              "fullType": "long",
               "name": "weight",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Route traffic for this frontend",
+              "fullType": "long",
               "name": "frontendId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Route traffic for this frontend"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteHttp.RouteHttp",
-          "noAuthentication": false,
-          "description": "Add a new HTTP route to your frontend"
+          "responseType": "ipLoadbalancing.RouteHttp.RouteHttp"
         }
       ],
-      "description": "List the ipLoadbalancing.RouteHttp.RouteHttp objects"
+      "path": "/ipLoadbalancing/{serviceName}/http/route"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/http/route/{routeId}",
+      "description": "HTTP Route",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete this HTTP route",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "routeId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Route ID",
               "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "name": "routeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this HTTP route"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "routeId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Route ID",
               "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "name": "routeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteHttp.RouteHttp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.RouteHttp.RouteHttp"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.RouteHttp.RouteHttp",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.RouteHttp.RouteHttp",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "routeId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Route ID",
               "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "name": "routeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "HTTP Route"
+      "path": "/ipLoadbalancing/{serviceName}/http/route/{routeId}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule",
+      "description": "List the ipLoadbalancing.RouteRule.RouteRule objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "HTTP routes for this iplb",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "routeId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Route ID",
               "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "name": "routeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "HTTP routes for this iplb"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a new rule to your route",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "negate",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Invert the matching operator effect",
               "fullType": "boolean",
-              "required": false,
-              "description": "Invert the matching operator effect"
+              "name": "negate",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Name of the field to match like \"protocol\" or \"host\". See \"/ipLoadbalancing/{serviceName}/availableRouteRules\" for a list of available rules",
+              "fullType": "string",
               "name": "field",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of the field to match like \"protocol\" or \"host\". See \"/ipLoadbalancing/{serviceName}/availableRouteRules\" for a list of available rules"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name of sub-field, if applicable. This may be a Cookie or Header name for instance",
+              "fullType": "string",
               "name": "subField",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Name of sub-field, if applicable. This may be a Cookie or Header name for instance"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Value to match against this match. Interpretation if this field depends on the match and field",
+              "fullType": "string",
               "name": "pattern",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Value to match against this match. Interpretation if this field depends on the match and field"
+              "required": false
             },
             {
-              "name": "match",
               "dataType": "ipLoadbalancing.RouteRuleMatchesEnum",
-              "paramType": "body",
+              "description": "Matching operator. Not all operators are available for all fields. See \"/ipLoadbalancing/{serviceName}/availableRouteRules\"",
               "fullType": "ipLoadbalancing.RouteRuleMatchesEnum",
-              "required": true,
-              "description": "Matching operator. Not all operators are available for all fields. See \"/ipLoadbalancing/{serviceName}/availableRouteRules\""
-            },
-            {
-              "name": "displayName",
-              "dataType": "string",
+              "name": "match",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your rule"
+              "required": true
             },
             {
-              "name": "routeId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Route ID"
-            },
-            {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Human readable name for your rule",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Route ID",
+              "fullType": "long",
+              "name": "routeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteRule.RouteRule",
-          "noAuthentication": false,
-          "description": "Add a new rule to your route"
+          "responseType": "ipLoadbalancing.RouteRule.RouteRule"
         }
       ],
-      "description": "List the ipLoadbalancing.RouteRule.RouteRule objects"
+      "path": "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}",
+      "description": "Rule of a route",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete this rule from the route",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Route ID",
+              "fullType": "long",
               "name": "routeId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "required": true
             },
             {
-              "name": "ruleId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Rule ID",
               "fullType": "long",
-              "required": true,
-              "description": "Rule ID"
+              "name": "ruleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this rule from the route"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Route ID",
+              "fullType": "long",
               "name": "routeId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "required": true
             },
             {
-              "name": "ruleId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Rule ID",
               "fullType": "long",
-              "required": true,
-              "description": "Rule ID"
+              "name": "ruleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteRule.RouteRule",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.RouteRule.RouteRule"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.RouteRule.RouteRule",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.RouteRule.RouteRule",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Route ID",
+              "fullType": "long",
               "name": "routeId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Rule ID",
+              "fullType": "long",
               "name": "ruleId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Rule ID"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Rule of a route"
+      "path": "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/instancesState",
+      "description": "instancesState operations",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2018-10-17T00:00:00+01:00",
-            "deprecatedDate": "2018-09-17T00:00:00+01:00"
+            "deprecatedDate": "2018-09-17T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
+          "description": "Get the effective state of your IPLB instances on IPLB servers",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.InstancesState[]",
-          "noAuthentication": false,
-          "description": "Get the effective state of your IPLB instances on IPLB servers"
+          "responseType": "ipLoadbalancing.InstancesState[]"
         }
       ],
-      "description": "instancesState operations"
+      "path": "/ipLoadbalancing/{serviceName}/instancesState"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/natIp",
+      "description": "natIp operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Ip subnet used by OVH to nat requests on your IPLB to your backends. You must ensure that your backends are not part of a network that overlap with this one",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.NatIps[]",
-          "noAuthentication": false,
-          "description": "Ip subnet used by OVH to nat requests on your IPLB to your backends. You must ensure that your backends are not part of a network that overlap with this one"
+          "responseType": "ipLoadbalancing.NatIps[]"
         }
       ],
-      "description": "natIp operations"
+      "path": "/ipLoadbalancing/{serviceName}/natIp"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/pendingChanges",
+      "description": "pendingChanges operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List the pending changes on your Load Balancer configuration, per zone",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.PendingChanges[]",
-          "noAuthentication": false,
-          "description": "List the pending changes on your Load Balancer configuration, per zone"
+          "responseType": "ipLoadbalancing.PendingChanges[]"
         }
       ],
-      "description": "pendingChanges operations"
+      "path": "/ipLoadbalancing/{serviceName}/pendingChanges"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/quota",
+      "description": "List the ipLoadbalancing.Quota.Quota objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Available quota informations for current billing period per zone",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Available quota informations for current billing period per zone"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the ipLoadbalancing.Quota.Quota objects"
+      "path": "/ipLoadbalancing/{serviceName}/quota"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/quota/{zone}",
+      "description": "Quota informations for current billing period for this zone",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "zone",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Zone",
               "fullType": "string",
-              "required": true,
-              "description": "Zone"
+              "name": "zone",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Quota.Quota",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.Quota.Quota"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.Quota.Quota",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.Quota.Quota",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "zone",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Quota informations for current billing period for this zone"
-    },
-    {
-      "path": "/ipLoadbalancing/{serviceName}/quotaHistory",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "historizedDate.to",
-              "dataType": "date",
-              "paramType": "query",
-              "fullType": "date",
-              "required": false,
-              "description": "Filter the value of historizedDate property (<=)"
-            },
-            {
-              "name": "zone",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of zone property (=)"
-            },
-            {
-              "name": "historizedDate.from",
-              "dataType": "date",
-              "paramType": "query",
-              "fullType": "date",
-              "required": false,
-              "description": "Filter the value of historizedDate property (>=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Quota history informations, per month"
-        }
-      ],
-      "description": "List the ipLoadbalancing.QuotaHistory.QuotaHistory objects"
-    },
-    {
-      "path": "/ipLoadbalancing/{serviceName}/quotaHistory/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "ipLoadbalancing.QuotaHistory.QuotaHistory",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "QuotaHistory"
-    },
-    {
-      "path": "/ipLoadbalancing/{serviceName}/refresh",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "zone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The zone(s) of your iplb"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Zone",
+              "fullType": "string",
+              "name": "zone",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Task.Task",
-          "noAuthentication": false,
-          "description": "Apply the configuration to your iplb"
+          "responseType": "void"
         }
       ],
-      "description": "refresh operations"
+      "path": "/ipLoadbalancing/{serviceName}/quota/{zone}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/serviceInfos",
+      "description": "List the ipLoadbalancing.QuotaHistory.QuotaHistory objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Quota history informations, per month",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "date",
+              "description": "Filter the value of historizedDate property (<=)",
+              "fullType": "date",
+              "name": "historizedDate.to",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of zone property (=)",
+              "fullType": "string",
+              "name": "zone",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "date",
+              "description": "Filter the value of historizedDate property (>=)",
+              "fullType": "date",
+              "name": "historizedDate.from",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "services.Service",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/ipLoadbalancing/{serviceName}/quotaHistory"
+    },
+    {
+      "description": "QuotaHistory",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipLoadbalancing.QuotaHistory.QuotaHistory"
+        }
+      ],
+      "path": "/ipLoadbalancing/{serviceName}/quotaHistory/{id}"
+    },
+    {
+      "description": "refresh operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply the configuration to your iplb",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The zone(s) of your iplb",
+              "fullType": "string",
+              "name": "zone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipLoadbalancing.Task.Task"
+        }
+      ],
+      "path": "/ipLoadbalancing/{serviceName}/refresh"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/ipLoadbalancing/{serviceName}/serviceInfos"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/ssl",
+      "description": "List the ipLoadbalancing.Ssl.Ssl objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Ssl for this iplb",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of serial property (like)",
+              "fullType": "string",
               "name": "serial",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of serial property (like)"
+              "required": false
             },
             {
-              "name": "type",
               "dataType": "ipLoadbalancing.SslTypeEnum",
-              "paramType": "query",
+              "description": "Filter the value of type property (=)",
               "fullType": "ipLoadbalancing.SslTypeEnum",
-              "required": false,
-              "description": "Filter the value of type property (=)"
+              "name": "type",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "fingerprint",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of fingerprint property (like)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of fingerprint property (like)"
+              "name": "fingerprint",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Ssl for this iplb"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a new custom SSL certificate on your IP Load Balancing",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "text",
+              "description": "Certificate",
+              "fullType": "text",
               "name": "certificate",
-              "dataType": "text",
               "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "Certificate"
+              "required": true
             },
             {
+              "dataType": "text",
+              "description": "Certificate chain",
+              "fullType": "text",
               "name": "chain",
-              "dataType": "text",
               "paramType": "body",
-              "fullType": "text",
-              "required": false,
-              "description": "Certificate chain"
+              "required": false
             },
             {
+              "dataType": "text",
+              "description": "Certificate key",
+              "fullType": "text",
               "name": "key",
-              "dataType": "text",
               "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "Certificate key"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Human readable name for your ssl certificate, this field is for you",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your ssl certificate, this field is for you"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Ssl.Ssl",
-          "noAuthentication": false,
-          "description": "Add a new custom SSL certificate on your IP Load Balancing"
+          "responseType": "ipLoadbalancing.Ssl.Ssl"
         }
       ],
-      "description": "List the ipLoadbalancing.Ssl.Ssl objects"
+      "path": "/ipLoadbalancing/{serviceName}/ssl"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/ssl/{id}",
+      "description": "Ssl",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete a custom SSL certificate",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a custom SSL certificate"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Ssl.Ssl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.Ssl.Ssl"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.Ssl.Ssl",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.Ssl.Ssl",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Ssl"
+      "path": "/ipLoadbalancing/{serviceName}/ssl/{id}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/status",
+      "description": "status operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get the global status of your IPLB",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Status",
-          "noAuthentication": false,
-          "description": "Get the global status of your IPLB"
+          "responseType": "ipLoadbalancing.Status"
         }
       ],
-      "description": "status operations"
+      "path": "/ipLoadbalancing/{serviceName}/status"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/task",
+      "description": "List the ipLoadbalancing.Task.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Task for this iplb",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "action",
               "dataType": "ipLoadbalancing.TaskActionEnum",
-              "paramType": "query",
+              "description": "Filter the value of action property (=)",
               "fullType": "ipLoadbalancing.TaskActionEnum",
-              "required": false,
-              "description": "Filter the value of action property (=)"
+              "name": "action",
+              "paramType": "query",
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDate property (<=)",
+              "fullType": "datetime",
               "name": "creationDate.to",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDate property (<=)"
+              "required": false
             },
             {
-              "name": "status",
               "dataType": "ipLoadbalancing.TaskStatusEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "ipLoadbalancing.TaskStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of doneDate property (<=)",
+              "fullType": "datetime",
               "name": "doneDate.to",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of doneDate property (<=)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDate property (>=)",
+              "fullType": "datetime",
               "name": "creationDate.from",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDate property (>=)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of doneDate property (>=)",
+              "fullType": "datetime",
               "name": "doneDate.from",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of doneDate property (>=)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Task for this iplb"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the ipLoadbalancing.Task.Task objects"
+      "path": "/ipLoadbalancing/{serviceName}/task"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/task/{id}",
+      "description": "IP Load Balancing Operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
               "name": "id",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.Task.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.Task.Task"
         }
       ],
-      "description": "IP Load Balancing Operations"
+      "path": "/ipLoadbalancing/{serviceName}/task/{id}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/tcp/farm",
+      "description": "List the ipLoadbalancing.backendTcp.BackendTcp objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "TCP Farm for this iplb",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "zone",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of zone property (=)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of zone property (=)"
+              "name": "zone",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "vrackNetworkId",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Filter the value of vrackNetworkId property (=)",
               "fullType": "long",
-              "required": false,
-              "description": "Filter the value of vrackNetworkId property (=)"
+              "name": "vrackNetworkId",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "TCP Farm for this iplb"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a new TCP Farm on your IP Load Balancing",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack",
+              "fullType": "long",
               "name": "vrackNetworkId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Human readable name for your backend, this field is for you",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your backend, this field is for you"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Zone of your farm",
+              "fullType": "string",
               "name": "zone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone of your farm"
+              "required": true
             },
             {
-              "name": "port",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null",
               "fullType": "long",
-              "required": false,
-              "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null"
+              "name": "port",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "balance",
               "dataType": "ipLoadbalancing.BalanceTCPEnum",
-              "paramType": "body",
+              "description": "Load balancing algorithm. 'roundrobin' if null",
               "fullType": "ipLoadbalancing.BalanceTCPEnum",
-              "required": false,
-              "description": "Load balancing algorithm. 'roundrobin' if null"
+              "name": "balance",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "probe",
               "dataType": "ipLoadbalancing.BackendProbe",
-              "paramType": "body",
+              "description": "Probe used to determine if a backend is alive and can handle requests",
               "fullType": "ipLoadbalancing.BackendProbe",
-              "required": false,
-              "description": "Probe used to determine if a backend is alive and can handle requests"
-            },
-            {
-              "name": "stickiness",
-              "dataType": "ipLoadbalancing.StickinessTCPEnum",
+              "name": "probe",
               "paramType": "body",
-              "fullType": "ipLoadbalancing.StickinessTCPEnum",
-              "required": false,
-              "description": "Stickiness type. No stickiness if null"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "ipLoadbalancing.StickinessTCPEnum",
+              "description": "Stickiness type. No stickiness if null",
+              "fullType": "ipLoadbalancing.StickinessTCPEnum",
+              "name": "stickiness",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendTcp.BackendTcp",
-          "noAuthentication": false,
-          "description": "Add a new TCP Farm on your IP Load Balancing"
+          "responseType": "ipLoadbalancing.backendTcp.BackendTcp"
         }
       ],
-      "description": "List the ipLoadbalancing.backendTcp.BackendTcp objects"
+      "path": "/ipLoadbalancing/{serviceName}/tcp/farm"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}",
+      "description": "TCP Farm",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete a TCP Farm",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "farmId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Farm ID",
               "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a TCP Farm"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "farmId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Farm ID",
               "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendTcp.BackendTcp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.backendTcp.BackendTcp"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.backendTcp.BackendTcp",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.backendTcp.BackendTcp",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "farmId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Farm ID",
               "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "TCP Farm"
+      "path": "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server",
+      "description": "List the ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "TCP Farm's Servers",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "farmId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Farm ID",
               "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
+              "name": "farmId",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "address",
               "dataType": "ipv4",
-              "paramType": "query",
+              "description": "Filter the value of address property (=)",
               "fullType": "ipv4",
-              "required": false,
-              "description": "Filter the value of address property (=)"
+              "name": "address",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "status",
               "dataType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "TCP Farm's Servers"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a server to a TCP Farm",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Human readable name for your server, this field is for you",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your server, this field is for you"
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "SSL ciphering. Probes will also be sent ciphered. Default: 'false'",
+              "fullType": "boolean",
               "name": "ssl",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "SSL ciphering. Probes will also be sent ciphered. Default: 'false'"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Set weight on that server [1..256]. 0 if not used in load balancing. 1 if left null. Servers with higher weight get more requests.",
+              "fullType": "long",
               "name": "weight",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Set weight on that server [1..256]. 0 if not used in load balancing. 1 if left null. Servers with higher weight get more requests."
+              "required": false
             },
             {
-              "name": "proxyProtocolVersion",
               "dataType": "ipLoadbalancing.ProxyProtocolVersionEnum",
-              "paramType": "body",
+              "description": "Disabled if null. Send PROXY protocol header. Requires a compatible server.",
               "fullType": "ipLoadbalancing.ProxyProtocolVersionEnum",
-              "required": false,
-              "description": "Disabled if null. Send PROXY protocol header. Requires a compatible server."
+              "name": "proxyProtocolVersion",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "Enable/disable probe. Default: 'false'",
+              "fullType": "boolean",
               "name": "probe",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Enable/disable probe. Default: 'false'"
+              "required": false
             },
             {
-              "name": "address",
               "dataType": "ipv4",
-              "paramType": "body",
+              "description": "Address of your server",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Address of your server"
+              "name": "address",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "status",
               "dataType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "paramType": "body",
+              "description": "Enable or disable your server",
               "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "required": true,
-              "description": "Enable or disable your server"
+              "name": "status",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "chain",
               "dataType": "text",
-              "paramType": "body",
+              "description": "Certificate chain. Allow server certificate verification (Avoid man-in-the-middle attacks)",
               "fullType": "text",
-              "required": false,
-              "description": "Certificate chain. Allow server certificate verification (Avoid man-in-the-middle attacks)"
+              "name": "chain",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "backup",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Set server as backup. Default: 'false'",
               "fullType": "boolean",
-              "required": false,
-              "description": "Set server as backup. Default: 'false'"
-            },
-            {
-              "name": "port",
-              "dataType": "long",
+              "name": "backup",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Port attached to your server ([1..49151]). Inherited from farm if null"
+              "required": false
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "farmId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Port attached to your server ([1..49151]). Inherited from farm if null",
               "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "name": "port",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Farm ID",
+              "fullType": "long",
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer",
-          "noAuthentication": false,
-          "description": "Add a server to a TCP Farm"
+          "responseType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer"
         }
       ],
-      "description": "List the ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer objects"
+      "path": "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}",
+      "description": "TCP Farm's Server",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete a server from a TCP Farm",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Farm ID",
+              "fullType": "long",
               "name": "farmId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "required": true
             },
             {
-              "name": "serverId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Server ID",
               "fullType": "long",
-              "required": true,
-              "description": "Server ID"
+              "name": "serverId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a server from a TCP Farm"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Farm ID",
+              "fullType": "long",
               "name": "farmId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "required": true
             },
             {
-              "name": "serverId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Server ID",
               "fullType": "long",
-              "required": true,
-              "description": "Server ID"
+              "name": "serverId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Farm ID",
+              "fullType": "long",
               "name": "farmId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Farm ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Server ID",
+              "fullType": "long",
               "name": "serverId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Server ID"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "TCP Farm's Server"
+      "path": "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/tcp/frontend",
+      "description": "List the ipLoadbalancing.frontendTcp.FrontendTcp objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "TCP frontends for this iplb",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of zone property (=)",
+              "fullType": "string",
               "name": "zone",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of zone property (=)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of port property (like)",
+              "fullType": "string",
               "name": "port",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of port property (like)"
+              "required": false
             },
             {
-              "name": "defaultFarmId",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Filter the value of defaultFarmId property (=)",
               "fullType": "long",
-              "required": false,
-              "description": "Filter the value of defaultFarmId property (=)"
+              "name": "defaultFarmId",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "TCP frontends for this iplb"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a new TCP frontend on your IP Load Balancing",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "boolean",
+              "description": "SSL deciphering. Default: 'false'",
+              "fullType": "boolean",
               "name": "ssl",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "SSL deciphering. Default: 'false'"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Human readable name for your frontend, this field is for you",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your frontend, this field is for you"
+              "required": false
             },
             {
-              "name": "disabled",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Disable your frontend. Default: 'false'",
               "fullType": "boolean",
-              "required": false,
-              "description": "Disable your frontend. Default: 'false'"
+              "name": "disabled",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Default TCP Farm of your frontend",
+              "fullType": "long",
               "name": "defaultFarmId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Default TCP Farm of your frontend"
+              "required": false
             },
             {
+              "dataType": "ipBlock[]",
+              "description": "Only attach frontend on these ip. No restriction if null",
+              "fullType": "ipBlock[]",
               "name": "dedicatedIpfo",
-              "dataType": "ipBlock[]",
               "paramType": "body",
-              "fullType": "ipBlock[]",
-              "required": false,
-              "description": "Only attach frontend on these ip. No restriction if null"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Zone of your frontend. Use \"all\" for all owned zone.",
+              "fullType": "string",
               "name": "zone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Zone of your frontend. Use \"all\" for all owned zone."
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.",
+              "fullType": "string",
               "name": "port",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range."
+              "required": true
             },
             {
-              "name": "allowedSource",
               "dataType": "ipBlock[]",
-              "paramType": "body",
+              "description": "Restrict IP Load Balancing access to these ip block. No restriction if null",
               "fullType": "ipBlock[]",
-              "required": false,
-              "description": "Restrict IP Load Balancing access to these ip block. No restriction if null"
-            },
-            {
-              "name": "defaultSslId",
-              "dataType": "long",
+              "name": "allowedSource",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Default ssl served to your customer"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Default ssl served to your customer",
+              "fullType": "long",
+              "name": "defaultSslId",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.frontendTcp.FrontendTcp",
-          "noAuthentication": false,
-          "description": "Add a new TCP frontend on your IP Load Balancing"
+          "responseType": "ipLoadbalancing.frontendTcp.FrontendTcp"
         }
       ],
-      "description": "List the ipLoadbalancing.frontendTcp.FrontendTcp objects"
+      "path": "/ipLoadbalancing/{serviceName}/tcp/frontend"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}",
+      "description": "Frontend TCP",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete an TCP frontend",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "frontendId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Frontend ID",
               "fullType": "long",
-              "required": true,
-              "description": "Frontend ID"
+              "name": "frontendId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete an TCP frontend"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "frontendId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Frontend ID",
               "fullType": "long",
-              "required": true,
-              "description": "Frontend ID"
+              "name": "frontendId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.frontendTcp.FrontendTcp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.frontendTcp.FrontendTcp"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.frontendTcp.FrontendTcp",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.frontendTcp.FrontendTcp",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "frontendId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Frontend ID",
               "fullType": "long",
-              "required": true,
-              "description": "Frontend ID"
+              "name": "frontendId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Frontend TCP"
+      "path": "/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/tcp/route",
+      "description": "List the ipLoadbalancing.RouteTcp.RouteTcp objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "TCP routes for this iplb",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "frontendId",
               "dataType": "long",
+              "description": "Filter the value of frontendId property (=)",
+              "fullType": "long",
+              "name": "frontendId",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of frontendId property (=)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "TCP routes for this iplb"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a new TCP route to your frontend",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action",
+              "fullType": "long",
               "name": "weight",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Human readable name for your route, this field is for you",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your route, this field is for you"
+              "required": false
             },
             {
-              "name": "frontendId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Route traffic for this frontend",
               "fullType": "long",
-              "required": false,
-              "description": "Route traffic for this frontend"
-            },
-            {
-              "name": "action",
-              "dataType": "ipLoadbalancing.RouteTcpAction",
+              "name": "frontendId",
               "paramType": "body",
-              "fullType": "ipLoadbalancing.RouteTcpAction",
-              "required": true,
-              "description": "Action triggered when all rules match"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "ipLoadbalancing.RouteTcpAction",
+              "description": "Action triggered when all rules match",
+              "fullType": "ipLoadbalancing.RouteTcpAction",
+              "name": "action",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteTcp.RouteTcp",
-          "noAuthentication": false,
-          "description": "Add a new TCP route to your frontend"
+          "responseType": "ipLoadbalancing.RouteTcp.RouteTcp"
         }
       ],
-      "description": "List the ipLoadbalancing.RouteTcp.RouteTcp objects"
+      "path": "/ipLoadbalancing/{serviceName}/tcp/route"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}",
+      "description": "TCP Route",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete this TCP route",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "routeId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Route ID",
               "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "name": "routeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this TCP route"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "routeId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Route ID",
               "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "name": "routeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteTcp.RouteTcp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.RouteTcp.RouteTcp"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.RouteTcp.RouteTcp",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.RouteTcp.RouteTcp",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "routeId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Route ID",
               "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "name": "routeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "TCP Route"
+      "path": "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule",
+      "description": "List the ipLoadbalancing.RouteRule.RouteRule objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "HTTP routes for this iplb",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "routeId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Route ID",
               "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "name": "routeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "HTTP routes for this iplb"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a new rule to your route",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Name of the field to match like \"protocol\" or \"host\". See \"/ipLoadbalancing/{serviceName}/availableRouteRules\" for a list of available rules",
+              "fullType": "string",
               "name": "field",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of the field to match like \"protocol\" or \"host\". See \"/ipLoadbalancing/{serviceName}/availableRouteRules\" for a list of available rules"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name of sub-field, if applicable. This may be a Cookie or Header name for instance",
+              "fullType": "string",
               "name": "subField",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Name of sub-field, if applicable. This may be a Cookie or Header name for instance"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Value to match against this match. Interpretation if this field depends on the match and field",
+              "fullType": "string",
               "name": "pattern",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Value to match against this match. Interpretation if this field depends on the match and field"
+              "required": false
             },
             {
-              "name": "match",
               "dataType": "ipLoadbalancing.RouteRuleMatchesEnum",
-              "paramType": "body",
+              "description": "Matching operator. Not all operators are available for all fields. See \"/ipLoadbalancing/{serviceName}/availableRouteRules\"",
               "fullType": "ipLoadbalancing.RouteRuleMatchesEnum",
-              "required": true,
-              "description": "Matching operator. Not all operators are available for all fields. See \"/ipLoadbalancing/{serviceName}/availableRouteRules\""
+              "name": "match",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Human readable name for your rule",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your rule"
+              "required": false
             },
             {
-              "name": "negate",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Invert the matching operator effect",
               "fullType": "boolean",
-              "required": false,
-              "description": "Invert the matching operator effect"
+              "name": "negate",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "routeId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Route ID",
               "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "name": "routeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteRule.RouteRule",
-          "noAuthentication": false,
-          "description": "Add a new rule to your route"
+          "responseType": "ipLoadbalancing.RouteRule.RouteRule"
         }
       ],
-      "description": "List the ipLoadbalancing.RouteRule.RouteRule objects"
+      "path": "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}",
+      "description": "Rule of a route",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete this rule from the route",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Route ID",
+              "fullType": "long",
               "name": "routeId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Rule ID",
+              "fullType": "long",
               "name": "ruleId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Rule ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this rule from the route"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Route ID",
+              "fullType": "long",
               "name": "routeId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "required": true
             },
             {
-              "name": "ruleId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Rule ID",
               "fullType": "long",
-              "required": true,
-              "description": "Rule ID"
+              "name": "ruleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.RouteRule.RouteRule",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.RouteRule.RouteRule"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.RouteRule.RouteRule",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.RouteRule.RouteRule",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Route ID",
+              "fullType": "long",
               "name": "routeId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Route ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Rule ID",
+              "fullType": "long",
               "name": "ruleId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Rule ID"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Rule of a route"
+      "path": "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/ipLoadbalancing/{serviceName}/terminate"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/vrack/network",
+      "description": "List the ipLoadbalancing.VrackNetwork.VrackNetwork objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Descriptions of private networks in the vRack attached to this Load Balancer",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "subnet",
               "dataType": "ipBlock",
-              "paramType": "query",
+              "description": "Filter the value of subnet property (=)",
               "fullType": "ipBlock",
-              "required": false,
-              "description": "Filter the value of subnet property (=)"
+              "name": "subnet",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "vlan",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Filter the value of vlan property (=)",
               "fullType": "long",
-              "required": false,
-              "description": "Filter the value of vlan property (=)"
+              "name": "vlan",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Descriptions of private networks in the vRack attached to this Load Balancer"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Add a description of a private network in the attached vRack",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "ipBlock",
+              "description": "An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The block must be in the private network and reserved for the Load Balancer",
+              "fullType": "ipBlock",
               "name": "natIp",
-              "dataType": "ipBlock",
               "paramType": "body",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The block must be in the private network and reserved for the Load Balancer"
+              "required": true
             },
             {
-              "name": "farmId",
               "dataType": "long[]",
-              "paramType": "body",
+              "description": "Farm Id you want to attach to that vrack network",
               "fullType": "long[]",
-              "required": false,
-              "description": "Farm Id you want to attach to that vrack network"
+              "name": "farmId",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "subnet",
               "dataType": "ipBlock",
-              "paramType": "body",
+              "description": "IP Block of the private network in the vRack",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "IP Block of the private network in the vRack"
+              "name": "subnet",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Human readable name for your vrack network",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Human readable name for your vrack network"
+              "required": false
             },
             {
-              "name": "vlan",
               "dataType": "long",
-              "paramType": "body",
+              "description": "VLAN of the private network in the vRack. 0 if the private network is not in a VLAN",
               "fullType": "long",
-              "required": false,
-              "description": "VLAN of the private network in the vRack. 0 if the private network is not in a VLAN"
+              "name": "vlan",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork",
-          "noAuthentication": false,
-          "description": "Add a description of a private network in the attached vRack"
+          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork"
         }
       ],
-      "description": "List the ipLoadbalancing.VrackNetwork.VrackNetwork objects"
+      "path": "/ipLoadbalancing/{serviceName}/vrack/network"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}",
+      "description": "Represents a private network in the vRack",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete this description of a private network in the vRack. It must not be used by any farm server",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "vrackNetworkId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Vrack network ID",
               "fullType": "long",
-              "required": true,
-              "description": "Vrack network ID"
+              "name": "vrackNetworkId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this description of a private network in the vRack. It must not be used by any farm server"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "vrackNetworkId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Vrack network ID",
               "fullType": "long",
-              "required": true,
-              "description": "Vrack network ID"
+              "name": "vrackNetworkId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipLoadbalancing.VrackNetwork.VrackNetwork",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ipLoadbalancing.VrackNetwork.VrackNetwork",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "vrackNetworkId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Vrack network ID"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Represents a private network in the vRack"
-    },
-    {
-      "path": "/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}/updateFarmId",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "farmId",
-              "dataType": "long[]",
               "paramType": "body",
-              "fullType": "long[]",
-              "required": true,
-              "description": "Farm Id you want to attach to that vrack network"
+              "required": true
             },
             {
-              "name": "vrackNetworkId",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Vrack network ID",
               "fullType": "long",
-              "required": true,
-              "description": "Vrack network ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
+              "name": "vrackNetworkId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork",
-          "noAuthentication": false,
-          "description": "Update farm attached to that vrack network id"
+          "responseType": "void"
         }
       ],
-      "description": "updateFarmId operations"
+      "path": "/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/vrack/networkCreationRules",
+      "description": "updateFarmId operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "ipLoadbalancing.VrackNetworkCreationRules",
-          "noAuthentication": false,
-          "description": "Rules to create a network attached to a vrack"
-        }
-      ],
-      "description": "networkCreationRules operations"
-    },
-    {
-      "path": "/ipLoadbalancing/{serviceName}/vrack/status",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "ipLoadbalancing.VrackInformation",
-          "noAuthentication": false,
-          "description": "Information about vRack for your Load Balancer"
-        }
-      ],
-      "description": "status operations"
-    },
-    {
-      "path": "/ipLoadbalancing/{serviceName}/zone",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Zone for this iplb"
-        }
-      ],
-      "description": "List the ipLoadbalancing.Zone.Zone objects"
-    },
-    {
-      "path": "/ipLoadbalancing/{serviceName}/zone/{name}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            }
-          ],
-          "responseType": "ipLoadbalancing.Zone.Zone",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "IP Load Balancing Zone"
-    },
-    {
-      "path": "/ipLoadbalancing/{serviceName}/zone/{name}/cancelTermination",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
+          "description": "Update farm attached to that vrack network id",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "long[]",
+              "description": "Farm Id you want to attach to that vrack network",
+              "fullType": "long[]",
+              "name": "farmId",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "name",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Vrack network ID",
+              "fullType": "long",
+              "name": "vrackNetworkId",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Cancel the termination request of your service zone option"
+          "responseType": "ipLoadbalancing.VrackNetwork.VrackNetwork"
         }
       ],
-      "description": "cancelTermination operations"
+      "path": "/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}/updateFarmId"
     },
     {
-      "path": "/ipLoadbalancing/{serviceName}/zone/{name}/terminate",
+      "description": "networkCreationRules operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "POST",
+          "description": "Rules to create a network attached to a vrack",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Terminate your service zone option"
+          "responseType": "ipLoadbalancing.VrackNetworkCreationRules"
         }
       ],
-      "description": "terminate operations"
+      "path": "/ipLoadbalancing/{serviceName}/vrack/networkCreationRules"
+    },
+    {
+      "description": "status operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Information about vRack for your Load Balancer",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipLoadbalancing.VrackInformation"
+        }
+      ],
+      "path": "/ipLoadbalancing/{serviceName}/vrack/status"
+    },
+    {
+      "description": "List the ipLoadbalancing.Zone.Zone objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Zone for this iplb",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/ipLoadbalancing/{serviceName}/zone"
+    },
+    {
+      "description": "IP Load Balancing Zone",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipLoadbalancing.Zone.Zone"
+        }
+      ],
+      "path": "/ipLoadbalancing/{serviceName}/zone/{name}"
+    },
+    {
+      "description": "cancelTermination operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Cancel the termination request of your service zone option",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/ipLoadbalancing/{serviceName}/zone/{name}/cancelTermination"
+    },
+    {
+      "description": "terminate operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Terminate your service zone option",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/ipLoadbalancing/{serviceName}/zone/{name}/terminate"
     }
   ],
-  "resourcePath": "/ipLoadbalancing",
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "ipLoadbalancing.BackendCustomerServerStatusEnum": {
-      "id": "BackendCustomerServerStatusEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible values for server status",
       "enum": [
         "active",
         "inactive"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BackendCustomerServerStatusEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.BackendProbe": {
+      "description": "Probe used to determine if a backend is alive and can handle requests",
       "id": "BackendProbe",
       "namespace": "ipLoadbalancing",
-      "description": "Probe used to determine if a backend is alive and can handle requests",
       "properties": {
         "forceSsl": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Force probe to run over a SSL layer. Defaults to false",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "interval": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Seconds between each probe check. Must be > 30sec. Defaults to 30",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "match": {
-          "type": "ipLoadbalancing.ProbeExpectMatchEnum",
-          "fullType": "ipLoadbalancing.ProbeExpectMatchEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Matcher to use to valide \"expect\". \"default\" uses HAProxy's default behavior for this type of check. \"status\" is only supported for HTTP probes",
-          "required": false
+          "fullType": "ipLoadbalancing.ProbeExpectMatchEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.ProbeExpectMatchEnum"
         },
         "method": {
-          "type": "ipLoadbalancing.ProbeMethodEnum",
-          "fullType": "ipLoadbalancing.ProbeMethodEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "HTTP method to use with \"http\" probe. Consider using HEAD to save bandwidth when possible. Defaults to \"GET\"",
-          "required": false
+          "fullType": "ipLoadbalancing.ProbeMethodEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.ProbeMethodEnum"
         },
         "negate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Invert the matching operator effect",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "pattern": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Server response expected when UP. Empty for \"default\", comma delimited list of statuses for \"status\", string for \"contains\", regex for \"matches\"",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Port used to probe your backend. Equal to farm port if null. Ignored for oco probe type",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "type": {
-          "type": "ipLoadbalancing.ProbeTypeEnum",
-          "fullType": "ipLoadbalancing.ProbeTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Probe type. \"tcp\" if null",
-          "required": false
+          "fullType": "ipLoadbalancing.ProbeTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.ProbeTypeEnum"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "URL to use for HTTP probes of the form [www.example.com]/path/to/check. Protocol will be ignored. Defaults to \"/\"",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.BalanceHTTPEnum": {
-      "id": "BalanceHTTPEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible values for load balancing balance algorithm",
       "enum": [
         "first",
@@ -3990,11 +3989,11 @@ export const schema: Schema = {
         "source",
         "uri"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BalanceHTTPEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.BalanceTCPEnum": {
-      "id": "BalanceTCPEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible values for load balancing balance algorithm",
       "enum": [
         "first",
@@ -4002,289 +4001,289 @@ export const schema: Schema = {
         "roundrobin",
         "source"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BalanceTCPEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.DefinedFarm": {
+      "description": "a list of { type => [ Farm ids ] }",
       "id": "DefinedFarm",
       "namespace": "ipLoadbalancing",
-      "description": "a list of { type => [ Farm ids ] }",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.DefinedFrontend": {
+      "description": "a list of {type=>[Frontend ids]}",
       "id": "DefinedFrontend",
       "namespace": "ipLoadbalancing",
-      "description": "a list of {type=>[Frontend ids]}",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.DefinedRoute": {
+      "description": "Defined routes name, type and id. Typically used to generate autocomplete lists.",
       "id": "DefinedRoute",
       "namespace": "ipLoadbalancing",
-      "description": "Defined routes name, type and id. Typically used to generate autocomplete lists.",
       "properties": {
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your route",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "routeId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Id of your route",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Protocol supported by this route",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.FarmAvailableProbe": {
+      "description": "Available farm probes options",
       "id": "FarmAvailableProbe",
       "namespace": "ipLoadbalancing",
-      "description": "Available farm probes options",
       "properties": {
         "matches": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of possible probe result checkers for this type of probe",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "method": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "List of available HTTP method, if available",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "negatableMatches": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of matches operators that accept the negate option for this type of probe",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "port": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "True is this probe type supports a custom port",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Probe protocol name. See probe \"type\" field in the farm probe",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "url": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "True is this probe type supports a URL",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "ipLoadbalancing.InstancesState": {
+      "description": "A structure describing the current state of an IPLB instances",
       "id": "InstancesState",
       "namespace": "ipLoadbalancing",
-      "description": "A structure describing the current state of an IPLB instances",
       "properties": {
         "internalId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Internal ID of this IPLB instance",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lastUpdateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Last update date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "state": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Current state of this IPLB instance",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "zone of this IPLB instance",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.Ip": {
+      "description": "Your IP load balancing",
       "id": "Ip",
       "namespace": "ipLoadbalancing",
-      "description": "Your IP load balancing",
       "properties": {
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Set the name displayed in ManagerV6 for your iplb (max 50 chars)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ipLoadbalancing": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Your IP load balancing",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "ipv4": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The IPV4 associated to your IP load balancing",
-          "required": false
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
         },
         "ipv6": {
-          "type": "ipv6",
-          "fullType": "ipv6",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The IPV6 associated to your IP load balancing",
-          "required": false
+          "fullType": "ipv6",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6"
         },
         "metricsToken": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The metrics token associated with your IP load balancing",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "offer": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The offer of your IP load balancing",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "orderableZone": {
-          "type": "ipLoadbalancing.OrderableZone[]",
-          "fullType": "ipLoadbalancing.OrderableZone[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Available additional zone for your Load Balancer",
-          "required": true
+          "fullType": "ipLoadbalancing.OrderableZone[]",
+          "readOnly": true,
+          "required": true,
+          "type": "ipLoadbalancing.OrderableZone[]"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The internal name of your IP load balancing",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "sslConfiguration": {
-          "type": "ipLoadbalancing.SslConfigurationEnum",
-          "fullType": "ipLoadbalancing.SslConfigurationEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null.",
-          "required": false
+          "fullType": "ipLoadbalancing.SslConfigurationEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.SslConfigurationEnum"
         },
         "state": {
-          "type": "ipLoadbalancing.IpStateEnum",
-          "fullType": "ipLoadbalancing.IpStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current state of your IP",
-          "required": true
+          "fullType": "ipLoadbalancing.IpStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ipLoadbalancing.IpStateEnum"
         },
         "vrackEligibility": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Vrack eligibility",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "vrackName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "zone": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Location where your service is",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         }
       }
     },
     "ipLoadbalancing.IpStateEnum": {
-      "id": "IpStateEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible values for load balancing IP state",
       "enum": [
         "blacklisted",
@@ -4294,78 +4293,78 @@ export const schema: Schema = {
         "quarantined",
         "suspended"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpStateEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.NatIps": {
+      "description": "a list of {zone, nat Ip}",
       "id": "NatIps",
       "namespace": "ipLoadbalancing",
-      "description": "a list of {zone, nat Ip}",
       "properties": {
         "ip": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": false,
+          "fullType": "ipBlock[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "ipBlock[]"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.OrderableZone": {
+      "description": "Available additional zone to order for a Load Balancer",
       "id": "OrderableZone",
       "namespace": "ipLoadbalancing",
-      "description": "Available additional zone to order for a Load Balancer",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The zone three letter code",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The billing planCode for this zone",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.PendingChanges": {
+      "description": "The pending changes for a Load Balancer zone",
       "id": "PendingChanges",
       "namespace": "ipLoadbalancing",
-      "description": "The pending changes for a Load Balancer zone",
       "properties": {
         "number": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The number of changes waiting to be applied",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The Load Balancer zone with pending changes",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.ProbeExpectMatchEnum": {
-      "id": "ProbeExpectMatchEnum",
-      "namespace": "ipLoadbalancing",
       "description": "List of possible probe result matches. \"status\" is only supported for HTTP probes",
       "enum": [
         "contains",
@@ -4374,11 +4373,11 @@ export const schema: Schema = {
         "matches",
         "status"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProbeExpectMatchEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.ProbeMethodEnum": {
-      "id": "ProbeMethodEnum",
-      "namespace": "ipLoadbalancing",
       "description": "List of possible method for HTTP probes. Consider using HEAD to save bandwidth when possible.",
       "enum": [
         "GET",
@@ -4386,11 +4385,11 @@ export const schema: Schema = {
         "OPTIONS",
         "internal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProbeMethodEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.ProbeTypeEnum": {
-      "id": "ProbeTypeEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible values for farm probe",
       "enum": [
         "http",
@@ -4401,11 +4400,11 @@ export const schema: Schema = {
         "smtp",
         "tcp"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProbeTypeEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.ProxyProtocolVersionEnum": {
-      "id": "ProxyProtocolVersionEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible values for proxy type",
       "enum": [
         "v1",
@@ -4413,427 +4412,427 @@ export const schema: Schema = {
         "v2-ssl",
         "v2-ssl-cn"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProxyProtocolVersionEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.Quota.Quota": {
+      "description": "Quota informations for current billing period for this zone",
       "id": "Quota",
       "namespace": "ipLoadbalancing.Quota",
-      "description": "Quota informations for current billing period for this zone",
       "properties": {
         "alert": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Quota alert value in bytes. When reached, we will send you an alert. Default : included quota with your offer",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "included": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Included quota value with your offer, in bytes",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "lastUpdateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The last time your quota was updated from your Load Balancer instance",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "resetDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The last time your quota was resetted (billed)",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "total": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Total used quota value in bytes",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Zone of your quota",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.QuotaHistory.QuotaHistory": {
+      "description": "QuotaHistory",
       "id": "QuotaHistory",
       "namespace": "ipLoadbalancing.QuotaHistory",
-      "description": "QuotaHistory",
       "properties": {
         "historizedDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Historized date for this quota entry",
-          "required": true
+          "fullType": "date",
+          "readOnly": true,
+          "required": true,
+          "type": "date"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your quota",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "lastUpdateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The last time your quota was updated from your Load Balancer instance",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "resetDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The last time your quota was resetted (billed)",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "total": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Total used quota value in bytes",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Zone of your quota",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.RouteAvailableAction": {
+      "description": "Available route actions options",
       "id": "RouteAvailableAction",
       "namespace": "ipLoadbalancing",
-      "description": "Available route actions options",
       "properties": {
         "destination": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Type of the destination for this action",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Action name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "List of available HTTP status code if applicable",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": false,
+          "type": "long[]"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Protocol supported by this action",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.RouteAvailableRule": {
+      "description": "Match rule to combine to build routes",
       "id": "RouteAvailableRule",
       "namespace": "ipLoadbalancing",
-      "description": "Match rule to combine to build routes",
       "properties": {
         "enum": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "If pattern is \"enum\", list of available options",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "hasSubField": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If true, this rule needs a subfield. Typically a cookie or header name",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "matches": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of match operators compatible with this rule",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Rule name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "pattern": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Expected type for the pattern. Like \"enum\", \"backend\", \"cidr\", ...",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Protocol supported by this action",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.RouteHttp.RouteHttp": {
+      "description": "HTTP Route",
       "id": "RouteHttp",
       "namespace": "ipLoadbalancing.RouteHttp",
-      "description": "HTTP Route",
       "properties": {
         "action": {
-          "type": "ipLoadbalancing.RouteHttpAction",
-          "fullType": "ipLoadbalancing.RouteHttpAction",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Action triggered when all rules match",
-          "required": true
+          "fullType": "ipLoadbalancing.RouteHttpAction",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.RouteHttpAction"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your route, this field is for you",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "frontendId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Route traffic for this frontend",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "routeId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your route",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "rules": {
-          "type": "ipLoadbalancing.RouteRule[]",
-          "fullType": "ipLoadbalancing.RouteRule[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of rules to match to trigger action",
-          "required": true
+          "fullType": "ipLoadbalancing.RouteRule[]",
+          "readOnly": true,
+          "required": true,
+          "type": "ipLoadbalancing.RouteRule[]"
         },
         "status": {
-          "type": "ipLoadbalancing.RouteStatusEnum",
-          "fullType": "ipLoadbalancing.RouteStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Route status. Routes in \"ok\" state are ready to operate",
-          "required": true
+          "fullType": "ipLoadbalancing.RouteStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ipLoadbalancing.RouteStatusEnum"
         },
         "weight": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ipLoadbalancing.RouteHttpAction": {
+      "description": "Action triggered when all rules from route match",
       "id": "RouteHttpAction",
       "namespace": "ipLoadbalancing",
-      "description": "Action triggered when all rules from route match",
       "properties": {
         "status": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "HTTP status code for \"redirect\" and \"reject\" actions",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "target": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Farm ID for \"farm\" action type or URL template for \"redirect\" action. You may use ${uri}, ${protocol}, ${host}, ${port} and ${path} variables in redirect target",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Action to trigger if all the rules of this route matches",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.RouteRule": {
+      "description": "Match rule to combine to build routes",
       "id": "RouteRule",
       "namespace": "ipLoadbalancing",
-      "description": "Match rule to combine to build routes",
       "properties": {
         "field": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the field to match like \"protocol\" or \"host\". See \"/ipLoadbalancing/{serviceName}/route/availableRules\" for a list of available rules",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "match": {
-          "type": "ipLoadbalancing.RouteRuleMatchesEnum",
-          "fullType": "ipLoadbalancing.RouteRuleMatchesEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Matching operator. Not all operators are available for all fields. See \"/availableRules\"",
-          "required": true
+          "fullType": "ipLoadbalancing.RouteRuleMatchesEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.RouteRuleMatchesEnum"
         },
         "negate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Invert the matching operator effect",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "pattern": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Value to match against this match. Interpretation if this field depends on the match and field",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ruleId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Id of your rule",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "subField": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of sub-field, if applicable. This may be a Cookie or Header name for instance",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.RouteRule.RouteRule": {
+      "description": "Rule of a route",
       "id": "RouteRule",
       "namespace": "ipLoadbalancing.RouteRule",
-      "description": "Rule of a route",
       "properties": {
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your rule",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "field": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the field to match like \"protocol\" or \"host\". See \"/ipLoadbalancing/{serviceName}/availableRouteRules\" for a list of available rules",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "match": {
-          "type": "ipLoadbalancing.RouteRuleMatchesEnum",
-          "fullType": "ipLoadbalancing.RouteRuleMatchesEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Matching operator. Not all operators are available for all fields. See \"/ipLoadbalancing/{serviceName}/availableRouteRules\"",
-          "required": true
+          "fullType": "ipLoadbalancing.RouteRuleMatchesEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.RouteRuleMatchesEnum"
         },
         "negate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Invert the matching operator effect",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "pattern": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Value to match against this match. Interpretation if this field depends on the match and field",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ruleId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your rule",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "subField": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of sub-field, if applicable. This may be a Cookie or Header name for instance",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.RouteRuleMatchesEnum": {
-      "id": "RouteRuleMatchesEnum",
-      "namespace": "ipLoadbalancing",
       "description": "List of possible route rule matches",
       "enum": [
         "contains",
@@ -4845,11 +4844,11 @@ export const schema: Schema = {
         "matches",
         "startswith"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RouteRuleMatchesEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.RouteStatusEnum": {
-      "id": "RouteStatusEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Route configuration status",
       "enum": [
         "creating",
@@ -4858,365 +4857,365 @@ export const schema: Schema = {
         "ok",
         "updating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RouteStatusEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.RouteTcp.RouteTcp": {
+      "description": "TCP Route",
       "id": "RouteTcp",
       "namespace": "ipLoadbalancing.RouteTcp",
-      "description": "TCP Route",
       "properties": {
         "action": {
-          "type": "ipLoadbalancing.RouteTcpAction",
-          "fullType": "ipLoadbalancing.RouteTcpAction",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Action triggered when all rules match",
-          "required": true
+          "fullType": "ipLoadbalancing.RouteTcpAction",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.RouteTcpAction"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your route, this field is for you",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "frontendId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Route traffic for this frontend",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "routeId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your route",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "rules": {
-          "type": "ipLoadbalancing.RouteRule[]",
-          "fullType": "ipLoadbalancing.RouteRule[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of rules to match to trigger action",
-          "required": true
+          "fullType": "ipLoadbalancing.RouteRule[]",
+          "readOnly": true,
+          "required": true,
+          "type": "ipLoadbalancing.RouteRule[]"
         },
         "status": {
-          "type": "ipLoadbalancing.RouteStatusEnum",
-          "fullType": "ipLoadbalancing.RouteStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Route status. Routes in \"ok\" state are ready to operate",
-          "required": true
+          "fullType": "ipLoadbalancing.RouteStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ipLoadbalancing.RouteStatusEnum"
         },
         "weight": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ipLoadbalancing.RouteTcpAction": {
+      "description": "Action triggered when all rules from route match",
       "id": "RouteTcpAction",
       "namespace": "ipLoadbalancing",
-      "description": "Action triggered when all rules from route match",
       "properties": {
         "target": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Farm ID for \"farm\" action type, empty for others",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Action to trigger if all the rules of this route matches",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.ServerState": {
+      "description": "Available servers states",
       "id": "ServerState",
       "namespace": "ipLoadbalancing",
-      "description": "Available servers states",
       "properties": {
         "checkCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Layer5-7 code, if available",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "checkStatus": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Status of last health check",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "checkTime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Time of last health check",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "instanceId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Id of your instance",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lastCheckContent": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Last health check contents or textual error",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Status",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.Ssl.Ssl": {
+      "description": "Ssl",
       "id": "Ssl",
       "namespace": "ipLoadbalancing.Ssl",
-      "description": "Ssl",
       "properties": {
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your ssl certificate, this field is for you",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "expireDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Expire date of your SSL certificate",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "fingerprint": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Fingerprint of your SSL certificate",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your SSL certificate",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "san": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Subject Alternative Name of your SSL certificate",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "serial": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Serial of your SSL certificate (Deprecated, use fingerprint instead !)",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "subject": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Subject of your SSL certificate",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "ipLoadbalancing.SslTypeEnum",
-          "fullType": "ipLoadbalancing.SslTypeEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Type of your SSL certificate.\n'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.",
-          "required": false
+          "fullType": "ipLoadbalancing.SslTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ipLoadbalancing.SslTypeEnum"
         }
       }
     },
     "ipLoadbalancing.SslConfigurationEnum": {
-      "id": "SslConfigurationEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible values for ssl ciphers",
       "enum": [
         "intermediate",
         "modern"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SslConfigurationEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.SslTypeEnum": {
-      "id": "SslTypeEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible values for ssl type",
       "enum": [
         "built",
         "built_not_routed",
         "custom"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SslTypeEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.Status": {
+      "description": "The global status of a Load Balancer",
       "id": "Status",
       "namespace": "ipLoadbalancing",
-      "description": "The global status of a Load Balancer",
       "properties": {
         "farms": {
-          "type": "ipLoadbalancing.status.Component",
-          "fullType": "ipLoadbalancing.status.Component",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The Load Balancer farms status informations",
-          "required": true
+          "fullType": "ipLoadbalancing.status.Component",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.status.Component"
         },
         "frontends": {
-          "type": "ipLoadbalancing.status.Component",
-          "fullType": "ipLoadbalancing.status.Component",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The Load Balancer frontends status informations",
-          "required": true
+          "fullType": "ipLoadbalancing.status.Component",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.status.Component"
         },
         "servers": {
-          "type": "ipLoadbalancing.status.Component",
-          "fullType": "ipLoadbalancing.status.Component",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The Load Balancer servers status informations",
-          "required": true
+          "fullType": "ipLoadbalancing.status.Component",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.status.Component"
         },
         "service": {
-          "type": "ipLoadbalancing.status.Service",
-          "fullType": "ipLoadbalancing.status.Service",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The Load Balancer service status informations",
-          "required": true
+          "fullType": "ipLoadbalancing.status.Service",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.status.Service"
         }
       }
     },
     "ipLoadbalancing.StickinessHTTPEnum": {
-      "id": "StickinessHTTPEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible values for HTTP backend stickiness",
       "enum": [
         "cookie",
         "sourceIp"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StickinessHTTPEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.StickinessTCPEnum": {
-      "id": "StickinessTCPEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible values for TCP backend stickiness",
       "enum": [
         "sourceIp"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StickinessTCPEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.Task.Task": {
+      "description": "IP Load Balancing Operations",
       "id": "Task",
       "namespace": "ipLoadbalancing.Task",
-      "description": "IP Load Balancing Operations",
       "properties": {
         "action": {
-          "type": "ipLoadbalancing.TaskActionEnum",
-          "fullType": "ipLoadbalancing.TaskActionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operation type",
-          "required": true
+          "fullType": "ipLoadbalancing.TaskActionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ipLoadbalancing.TaskActionEnum"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of your operation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Done date of your operation",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the operation",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "progress": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operation progress percentage",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "ipLoadbalancing.TaskStatusEnum",
-          "fullType": "ipLoadbalancing.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current status of your operation",
-          "required": true
+          "fullType": "ipLoadbalancing.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "ipLoadbalancing.TaskStatusEnum"
         },
         "zones": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Zone of your Load Balancer which are updated by current Task",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         }
       }
     },
     "ipLoadbalancing.TaskActionEnum": {
-      "id": "TaskActionEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible task action",
       "enum": [
         "deleteIplb",
@@ -5237,11 +5236,11 @@ export const schema: Schema = {
         "vrackAttach",
         "vrackDetach"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskActionEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible task status",
       "enum": [
         "blocked",
@@ -5251,128 +5250,128 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.VrackInformation": {
+      "description": "Information about vRack for your Load Balancer",
       "id": "VrackInformation",
       "namespace": "ipLoadbalancing",
-      "description": "Information about vRack for your Load Balancer",
       "properties": {
         "state": {
-          "type": "ipLoadbalancing.VrackStateEnum",
-          "fullType": "ipLoadbalancing.VrackStateEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "State of the vRack link to your Load Balancer",
-          "required": true
+          "fullType": "ipLoadbalancing.VrackStateEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.VrackStateEnum"
         },
         "task": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ongoing task related to vRack installation or uninstallation on your Load Balancer",
-          "required": true
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": true,
+          "type": "long[]"
         },
         "vrackName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.VrackNetwork.VrackNetwork": {
+      "description": "Represents a private network in the vRack",
       "id": "VrackNetwork",
       "namespace": "ipLoadbalancing.VrackNetwork",
-      "description": "Represents a private network in the vRack",
       "properties": {
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your vrack network",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "farmId": {
-          "type": "ipLoadbalancing.DefinedFarm[]",
-          "fullType": "ipLoadbalancing.DefinedFarm[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Farm Id your vrack network is attached to and their type",
-          "required": true
+          "fullType": "ipLoadbalancing.DefinedFarm[]",
+          "readOnly": true,
+          "required": true,
+          "type": "ipLoadbalancing.DefinedFarm[]"
         },
         "natIp": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": false,
           "description": "An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The block must be in the private network and reserved for the Load Balancer",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": true,
+          "type": "ipBlock"
         },
         "subnet": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP block of the private network in the vRack",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         },
         "vlan": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "VLAN of the private network in the vRack. 0 if the private network is not in a VLAN",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "vrackNetworkId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Internal Load Balancer identifier of the vRack private network description",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ipLoadbalancing.VrackNetworkCreationRules": {
+      "description": "Rules to create a new description of a private network in the vRack",
       "id": "VrackNetworkCreationRules",
       "namespace": "ipLoadbalancing",
-      "description": "Rules to create a new description of a private network in the vRack",
       "properties": {
         "minNatIps": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum number of IPs needed to forward requests to your servers using NAT in your private network behind the current Load Balancer. Ip Block given on Load Balancer vRack network must contain at least this number of IP.",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "remainingNetworks": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of remaining private network descriptions available for creation for this Load Balancer",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "vrackName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.VrackStateEnum": {
-      "id": "VrackStateEnum",
-      "namespace": "ipLoadbalancing",
       "description": "Possible values for load balancing vRack state",
       "enum": [
         "activating",
@@ -5380,666 +5379,666 @@ export const schema: Schema = {
         "deactivating",
         "inactive"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VrackStateEnum",
+      "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.Zone.Zone": {
+      "description": "IP Load Balancing Zone",
       "id": "Zone",
       "namespace": "ipLoadbalancing.Zone",
-      "description": "IP Load Balancing Zone",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of your zone",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "State of your zone",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.backendHttp.BackendHttp": {
+      "description": "HTTP Farm",
       "id": "BackendHttp",
       "namespace": "ipLoadbalancing.backendHttp",
-      "description": "HTTP Farm",
       "properties": {
         "balance": {
-          "type": "ipLoadbalancing.BalanceHTTPEnum",
-          "fullType": "ipLoadbalancing.BalanceHTTPEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Load balancing algorithm. 'roundrobin' if null",
-          "required": false
+          "fullType": "ipLoadbalancing.BalanceHTTPEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.BalanceHTTPEnum"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your backend, this field is for you",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "farmId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your farm",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Port attached to your farm. Inherited from frontend if null",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "probe": {
-          "type": "ipLoadbalancing.BackendProbe",
-          "fullType": "ipLoadbalancing.BackendProbe",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Probe used to determine if a backend is alive and can handle requests. Defaults to tcp on the same port as the farm",
-          "required": false
+          "fullType": "ipLoadbalancing.BackendProbe",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.BackendProbe"
         },
         "stickiness": {
-          "type": "ipLoadbalancing.StickinessHTTPEnum",
-          "fullType": "ipLoadbalancing.StickinessHTTPEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Stickiness type. No stickiness if null",
-          "required": false
+          "fullType": "ipLoadbalancing.StickinessHTTPEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.StickinessHTTPEnum"
         },
         "vrackNetworkId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Internal Load Balancer identifier of the vRack private network attached to your farm, mandatory when your Load Balancer is attached to a vRack",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Zone of you farm",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer": {
+      "description": "HTTP Farm's Server",
       "id": "BackendHTTPServer",
       "namespace": "ipLoadbalancing.backendHttpCustomerServer",
-      "description": "HTTP Farm's Server",
       "properties": {
         "address": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Address of your server",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "backendId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "farm id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "backup": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Backup state. Default: 'false'",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "chain": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Certificate chain. Allow server certificate verification (Avoid man-in-the-middle attacks)",
-          "required": false
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
         },
         "cookie": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Server cookie value configured for cookie stickiness",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your server, this field is for you",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Port attached to your server. Inherited from farm if null",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "probe": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Probe state. Default: 'false'",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "proxyProtocolVersion": {
-          "type": "ipLoadbalancing.ProxyProtocolVersionEnum",
-          "fullType": "ipLoadbalancing.ProxyProtocolVersionEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Disabled if null. Send PROXY protocol header. Requires a compatible server.",
-          "required": false
+          "fullType": "ipLoadbalancing.ProxyProtocolVersionEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.ProxyProtocolVersionEnum"
         },
         "serverId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your server",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "serverState": {
-          "type": "ipLoadbalancing.ServerState[]",
-          "fullType": "ipLoadbalancing.ServerState[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Server state",
-          "required": true
+          "fullType": "ipLoadbalancing.ServerState[]",
+          "readOnly": true,
+          "required": true,
+          "type": "ipLoadbalancing.ServerState[]"
         },
         "ssl": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SSL ciphering. Probes will also be sent ciphered. Default: 'false'",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "status": {
-          "type": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-          "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status attached to your server",
-          "required": true
+          "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.BackendCustomerServerStatusEnum"
         },
         "weight": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Weight value. Defaults to 1. 0 if not used in load balancing. Servers with higher weight get more requests.",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "ipLoadbalancing.backendTcp.BackendTcp": {
+      "description": "TCP Farm",
       "id": "BackendTcp",
       "namespace": "ipLoadbalancing.backendTcp",
-      "description": "TCP Farm",
       "properties": {
         "balance": {
-          "type": "ipLoadbalancing.BalanceTCPEnum",
-          "fullType": "ipLoadbalancing.BalanceTCPEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Load balancing algorithm. 'roundrobin' if null",
-          "required": false
+          "fullType": "ipLoadbalancing.BalanceTCPEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.BalanceTCPEnum"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your backend, this field is for you",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "farmId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your farm",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Port attached to your farm. Inherited from frontend if null",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "probe": {
-          "type": "ipLoadbalancing.BackendProbe",
-          "fullType": "ipLoadbalancing.BackendProbe",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Probe used to determine if a backend is alive and can handle requests. Defaults to tcp on the same port as the farm",
-          "required": false
+          "fullType": "ipLoadbalancing.BackendProbe",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.BackendProbe"
         },
         "stickiness": {
-          "type": "ipLoadbalancing.StickinessTCPEnum",
-          "fullType": "ipLoadbalancing.StickinessTCPEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Stickiness type. No stickiness if null",
-          "required": false
+          "fullType": "ipLoadbalancing.StickinessTCPEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.StickinessTCPEnum"
         },
         "vrackNetworkId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Internal Load Balancer identifier of the vRack private network attached to your farm, mandatory when your Load Balancer is attached to a vRack",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Zone of you farm",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer": {
+      "description": "TCP Farm's Server",
       "id": "BackendTCPServer",
       "namespace": "ipLoadbalancing.backendTcpCustomerServer",
-      "description": "TCP Farm's Server",
       "properties": {
         "address": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Address of your server",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "backendId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Farm id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "backup": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Backup state. Default: 'false'",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "chain": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Certificate chain. Allow server certificate verification (Avoid man-in-the-middle attacks)",
-          "required": false
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your server, this field is for you",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Port attached to your server. Inherited from farm if null",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "probe": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Probe state. Default: 'false'",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "proxyProtocolVersion": {
-          "type": "ipLoadbalancing.ProxyProtocolVersionEnum",
-          "fullType": "ipLoadbalancing.ProxyProtocolVersionEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Disabled if null. Send PROXY protocol header. Requires a compatible server.",
-          "required": false
+          "fullType": "ipLoadbalancing.ProxyProtocolVersionEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "ipLoadbalancing.ProxyProtocolVersionEnum"
         },
         "serverId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your server",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "serverState": {
-          "type": "ipLoadbalancing.ServerState[]",
-          "fullType": "ipLoadbalancing.ServerState[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Server state",
-          "required": true
+          "fullType": "ipLoadbalancing.ServerState[]",
+          "readOnly": true,
+          "required": true,
+          "type": "ipLoadbalancing.ServerState[]"
         },
         "ssl": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SSL ciphering. Probes will also be sent ciphered",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "status": {
-          "type": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-          "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status attached to your server",
-          "required": true
+          "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.BackendCustomerServerStatusEnum"
         },
         "weight": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Weight value. Defaults to 1. 0 if not used in load balancing. Servers with higher weight get more requests.",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "ipLoadbalancing.frontendHttp.FrontendHttp": {
+      "description": "Frontend HTTP",
       "id": "FrontendHttp",
       "namespace": "ipLoadbalancing.frontendHttp",
-      "description": "Frontend HTTP",
       "properties": {
         "allowedSource": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Restrict IP Load Balancing access to these ip block. No restriction if null",
-          "required": false
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
         },
         "dedicatedIpfo": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Only attach frontend on these ip. No restriction if null",
-          "required": false
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
         },
         "defaultFarmId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Default HTTP Farm of your frontend",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "defaultSslId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Default ssl served to your customer",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "disabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Disable frontend. Default: 'false'",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your frontend, this field is for you",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "frontendId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your frontend",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "hsts": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "HTTP Strict Transport Security. Default: 'false'",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "httpHeader": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "port": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Listening port(s) on the server",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "redirectLocation": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "HTTP redirection (Ex : http://www.ovh.com)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ssl": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SSL deciphering. Default: 'false'",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Zone of you frontend",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.frontendTcp.FrontendTcp": {
+      "description": "Frontend TCP",
       "id": "FrontendTcp",
       "namespace": "ipLoadbalancing.frontendTcp",
-      "description": "Frontend TCP",
       "properties": {
         "allowedSource": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Restrict IP Load Balancing access to these ip block. No restriction if null",
-          "required": false
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
         },
         "dedicatedIpfo": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Only attach frontend on these ip. No restriction if null",
-          "required": false
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
         },
         "defaultFarmId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Default TCP Farm of your frontend",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "defaultSslId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Default ssl served to your customer",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "disabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Disable frontend. Default: 'false'",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Human readable name for your frontend, this field is for you",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "frontendId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of your frontend",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "port": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Listening port(s) on the server",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ssl": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SSL deciphering. Default: 'false'",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Zone of you frontend",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ipLoadbalancing.status.Component": {
+      "description": "The global status of a Load Balancer component",
       "id": "Component",
       "namespace": "ipLoadbalancing.status",
-      "description": "The global status of a Load Balancer component",
       "properties": {
         "status": {
-          "type": "ipLoadbalancing.status.ComponentStatus",
-          "fullType": "ipLoadbalancing.status.ComponentStatus",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The global status of your Load Balancer component",
-          "required": true
+          "fullType": "ipLoadbalancing.status.ComponentStatus",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.status.ComponentStatus"
         },
         "total": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The Load Balancer total component count",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ipLoadbalancing.status.ComponentStatus": {
+      "description": "The statuses of a Load Balancer component",
       "id": "ComponentStatus",
       "namespace": "ipLoadbalancing.status",
-      "description": "The statuses of a Load Balancer component",
       "properties": {
         "error": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The number of component with status error",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "ok": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The number of component with status ok",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "unknown": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The number of component with status unknown",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "warn": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The number of component with status warn",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "ipLoadbalancing.status.Enum": {
-      "id": "Enum",
-      "namespace": "ipLoadbalancing.status",
       "description": "Possible values for a Load Balancer status",
       "enum": [
         "error",
@@ -6047,73 +6046,73 @@ export const schema: Schema = {
         "unknown",
         "warn"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Enum",
+      "namespace": "ipLoadbalancing.status"
     },
     "ipLoadbalancing.status.Service": {
+      "description": "The status of a Load Balancer service",
       "id": "Service",
       "namespace": "ipLoadbalancing.status",
-      "description": "The status of a Load Balancer service",
       "properties": {
         "status": {
-          "type": "ipLoadbalancing.status.Enum",
-          "fullType": "ipLoadbalancing.status.Enum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The status of your Load Balancer billing domain",
-          "required": true
+          "fullType": "ipLoadbalancing.status.Enum",
+          "readOnly": false,
+          "required": true,
+          "type": "ipLoadbalancing.status.Enum"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -6124,11 +6123,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -6136,11 +6135,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -6149,11 +6148,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -6171,108 +6170,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/ipLoadbalancing"
 }

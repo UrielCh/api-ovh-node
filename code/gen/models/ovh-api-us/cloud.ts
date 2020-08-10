@@ -1,4350 +1,4349 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://api.us.ovhcloud.com:443/1.0/cloud.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/cloud/order",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get all cloud pending orders",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Order plan code",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Order plan code"
+              "required": false
             }
           ],
-          "responseType": "cloud.order.Order[]",
-          "noAuthentication": false,
-          "description": "Get all cloud pending orders"
+          "responseType": "cloud.order.Order[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/order"
     },
     {
-      "path": "/cloud/project",
+      "description": "Operations about the PUBLICCLOUD service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the PUBLICCLOUD service"
+      "path": "/cloud/project"
     },
     {
-      "path": "/cloud/project/{serviceName}",
+      "description": "Operations about the PUBLICCLOUD service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.Project",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cloud.Project"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.Project",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.Project",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Operations about the PUBLICCLOUD service"
+      "path": "/cloud/project/{serviceName}"
     },
     {
-      "path": "/cloud/project/{serviceName}/activateMonthlyBilling",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Activate monthly billing on multiple instances",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectActivateMonthlyBillingCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectActivateMonthlyBillingCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail[]",
-          "noAuthentication": false,
-          "description": "Activate monthly billing on multiple instances"
+          "responseType": "cloud.instance.InstanceDetail[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/activateMonthlyBilling"
     },
     {
-      "path": "/cloud/project/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/cloud/project/{serviceName}/confirmTermination"
     },
     {
-      "path": "/cloud/project/{serviceName}/flavor",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get flavors",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Flavor region",
+              "fullType": "string",
               "name": "region",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Flavor region"
+              "required": false
             }
           ],
-          "responseType": "cloud.flavor.Flavor[]",
-          "noAuthentication": false,
-          "description": "Get flavors"
+          "responseType": "cloud.flavor.Flavor[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/flavor"
     },
     {
-      "path": "/cloud/project/{serviceName}/flavor/{flavorId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get flavor",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Flavor ID",
+              "fullType": "string",
               "name": "flavorId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Flavor ID"
+              "required": true
             }
           ],
-          "responseType": "cloud.flavor.Flavor",
-          "noAuthentication": false,
-          "description": "Get flavor"
+          "responseType": "cloud.flavor.Flavor"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/flavor/{flavorId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/image",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get images",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Get compatible images with flavor type",
+              "fullType": "string",
               "name": "flavorType",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Get compatible images with flavor type"
+              "required": false
             },
             {
-              "name": "osType",
               "dataType": "cloud.image.OSTypeEnum",
-              "paramType": "query",
+              "description": "Image OS",
               "fullType": "cloud.image.OSTypeEnum",
-              "required": false,
-              "description": "Image OS"
+              "name": "osType",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "region",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Image region",
               "fullType": "string",
-              "required": false,
-              "description": "Image region"
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "cloud.image.Image[]",
-          "noAuthentication": false,
-          "description": "Get images"
+          "responseType": "cloud.image.Image[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/image"
     },
     {
-      "path": "/cloud/project/{serviceName}/image/{imageId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get image",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Image ID",
+              "fullType": "string",
               "name": "imageId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Image ID"
+              "required": true
             }
           ],
-          "responseType": "cloud.image.Image",
-          "noAuthentication": false,
-          "description": "Get image"
+          "responseType": "cloud.image.Image"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/image/{imageId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get instance",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "region",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Instance region",
               "fullType": "string",
-              "required": false,
-              "description": "Instance region"
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "cloud.instance.Instance[]",
-          "noAuthentication": false,
-          "description": "Get instance"
+          "responseType": "cloud.instance.Instance[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectInstanceCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectInstanceCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail",
-          "noAuthentication": false,
-          "description": "Create a new instance"
+          "responseType": "cloud.instance.InstanceDetail"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/bulk",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create multiple instances",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectInstanceBulkCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectInstanceBulkCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instance.Instance[]",
-          "noAuthentication": false,
-          "description": "Create multiple instances"
+          "responseType": "cloud.instance.Instance[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/bulk"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/group",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the detail of a group",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "region",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Instance region",
               "fullType": "string",
-              "required": false,
-              "description": "Instance region"
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "cloud.instancegroup.InstanceGroup[]",
-          "noAuthentication": false,
-          "description": "Get the detail of a group"
+          "responseType": "cloud.instancegroup.InstanceGroup[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a group",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectInstanceGroupCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectInstanceGroupCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instancegroup.InstanceGroup",
-          "noAuthentication": false,
-          "description": "Create a group"
+          "responseType": "cloud.instancegroup.InstanceGroup"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/group"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/group/{groupId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a group",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "groupId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Group ID",
               "fullType": "string",
-              "required": true,
-              "description": "Group ID"
+              "name": "groupId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a group"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get all groups",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Group ID",
+              "fullType": "string",
               "name": "groupId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Group ID"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Instance region",
+              "fullType": "string",
               "name": "region",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Instance region"
+              "required": false
             }
           ],
-          "responseType": "cloud.instancegroup.InstanceGroup",
-          "noAuthentication": false,
-          "description": "Get all groups"
+          "responseType": "cloud.instancegroup.InstanceGroup"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/group/{groupId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete an instance",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "instanceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete an instance"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get instance",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "instanceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail",
-          "noAuthentication": false,
-          "description": "Get instance"
+          "responseType": "cloud.instance.InstanceDetail"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter an instance",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectInstanceUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectInstanceUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "instanceId",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter an instance"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Activate monthly billing on instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "instanceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail",
-          "noAuthentication": false,
-          "description": "Activate monthly billing on instance"
+          "responseType": "cloud.instance.InstanceDetail"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/applicationAccess",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return initial credentials of applications installed from public image",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "instanceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instance.ApplicationAccess",
-          "noAuthentication": false,
-          "description": "Return initial credentials of applications installed from public image"
+          "responseType": "cloud.instance.ApplicationAccess"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/applicationAccess"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/interface",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get interfaces",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "instanceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instanceInterface.Interface[]",
-          "noAuthentication": false,
-          "description": "Get interfaces"
+          "responseType": "cloud.instanceInterface.Interface[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create interface on an instance and attached it to a network",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectInstanceInterfaceCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectInstanceInterfaceCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "instanceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instanceInterface.Interface",
-          "noAuthentication": false,
-          "description": "Create interface on an instance and attached it to a network"
+          "responseType": "cloud.instanceInterface.Interface"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/interface"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete an interface",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Instance ID",
+              "fullType": "string",
               "name": "instanceId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "required": true
             },
             {
-              "name": "interfaceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Interface ID",
               "fullType": "string",
-              "required": true,
-              "description": "Interface ID"
+              "name": "interfaceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete an interface"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get interface",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Instance ID",
+              "fullType": "string",
               "name": "instanceId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Interface ID",
+              "fullType": "string",
               "name": "interfaceId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Interface ID"
+              "required": true
             }
           ],
-          "responseType": "cloud.instanceInterface.Interface",
-          "noAuthentication": false,
-          "description": "Get interface"
+          "responseType": "cloud.instanceInterface.Interface"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/monitoring",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return many statistics about the virtual machine for a given period",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Instance ID",
+              "fullType": "string",
               "name": "instanceId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "required": true
             },
             {
-              "name": "period",
               "dataType": "cloud.instance.MetricsPeriodEnum",
-              "paramType": "query",
+              "description": "The period the statistics are fetched for",
               "fullType": "cloud.instance.MetricsPeriodEnum",
-              "required": true,
-              "description": "The period the statistics are fetched for"
+              "name": "period",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "type",
               "dataType": "cloud.instance.MetricsTypeEnum",
-              "paramType": "query",
+              "description": "The type of statistic to be fetched",
               "fullType": "cloud.instance.MetricsTypeEnum",
-              "required": true,
-              "description": "The type of statistic to be fetched"
+              "name": "type",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceMetrics",
-          "noAuthentication": false,
-          "description": "Return many statistics about the virtual machine for a given period"
+          "responseType": "cloud.instance.InstanceMetrics"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/monitoring"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/reboot",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Reboot an instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectInstanceRebootCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectInstanceRebootCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Instance ID",
+              "fullType": "string",
               "name": "instanceId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Reboot an instance"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/reboot"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/reinstall",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Reinstall an instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectInstanceReinstallCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectInstanceReinstallCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "instanceId",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail",
-          "noAuthentication": false,
-          "description": "Reinstall an instance"
+          "responseType": "cloud.instance.InstanceDetail"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/reinstall"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/rescueMode",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Enable or disable rescue mode",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectInstanceRescueModeCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectInstanceRescueModeCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "instanceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instance.RescueAdminPassword",
-          "noAuthentication": false,
-          "description": "Enable or disable rescue mode"
+          "responseType": "cloud.instance.RescueAdminPassword"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/rescueMode"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/resize",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Migrate your instance to another flavor",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectInstanceResizeCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectInstanceResizeCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "instanceId",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceDetail",
-          "noAuthentication": false,
-          "description": "Migrate your instance to another flavor"
+          "responseType": "cloud.instance.InstanceDetail"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/resize"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/resume",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Resume a suspended instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "instanceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Resume a suspended instance"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/resume"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/snapshot",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Snapshot an instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectInstanceSnapshotCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectInstanceSnapshotCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "instanceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Snapshot an instance"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/snapshot"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/start",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Start an instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "instanceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Start an instance"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/start"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/stop",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Stop an instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "instanceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Instance ID",
               "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Stop an instance"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/stop"
     },
     {
-      "path": "/cloud/project/{serviceName}/instance/{instanceId}/vnc",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get VNC access to your instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Instance ID",
+              "fullType": "string",
               "name": "instanceId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Instance ID"
+              "required": true
             }
           ],
-          "responseType": "cloud.instance.InstanceVnc",
-          "noAuthentication": false,
-          "description": "Get VNC access to your instance"
+          "responseType": "cloud.instance.InstanceVnc"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/vnc"
     },
     {
-      "path": "/cloud/project/{serviceName}/ip",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get ips",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.ip.CloudIp[]",
-          "noAuthentication": false,
-          "description": "Get ips"
+          "responseType": "cloud.ip.CloudIp[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/ip"
     },
     {
-      "path": "/cloud/project/{serviceName}/ip/failover",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get failover ips",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.ip.FailoverIp[]",
-          "noAuthentication": false,
-          "description": "Get failover ips"
+          "responseType": "cloud.ip.FailoverIp[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/ip/failover"
     },
     {
-      "path": "/cloud/project/{serviceName}/ip/failover/{id}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get failover ip",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Id",
+              "fullType": "string",
               "name": "id",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "cloud.ip.FailoverIp",
-          "noAuthentication": false,
-          "description": "Get failover ip"
+          "responseType": "cloud.ip.FailoverIp"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/ip/failover/{id}"
     },
     {
-      "path": "/cloud/project/{serviceName}/ip/failover/{id}/attach",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Attach failover ip to an instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectIpFailoverAttachCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectIpFailoverAttachCreation",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "cloud.ip.FailoverIp",
-          "noAuthentication": false,
-          "description": "Attach failover ip to an instance"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/cloud/project/{serviceName}/lab",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "cloud.Lab[]",
-          "noAuthentication": false,
-          "description": "List available public cloud labs"
-        }
-      ],
-      "description": "Manage labs on your Cloud Project"
-    },
-    {
-      "path": "/cloud/project/{serviceName}/lab/{labId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "labId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Lab ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "cloud.Lab",
-          "noAuthentication": false,
-          "description": "Get details of a public cloud lab"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "labId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Lab ID"
-            }
-          ],
-          "responseType": "cloud.Operation",
-          "noAuthentication": false,
-          "description": "Activate a lab on your Cloud Project"
-        }
-      ],
-      "description": "Manage labs on your Cloud Project"
-    },
-    {
-      "path": "/cloud/project/{serviceName}/lab/{labId}/agreement",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "labId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Lab ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "cloud.LabAgreements",
-          "noAuthentication": false,
-          "description": "List required agreements to active this lab"
-        }
-      ],
-      "description": "Manage lab agreements"
-    },
-    {
-      "path": "/cloud/project/{serviceName}/migration",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "cloud.migration.Migration[]",
-          "noAuthentication": false,
-          "description": "Get planned migrations"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/cloud/project/{serviceName}/migration/{migrationId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "migrationId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Migration ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "cloud.migration.Migration",
-          "noAuthentication": false,
-          "description": "Get planned migration"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "PUT",
-          "parameters": [
-            {
-              "name": "date",
-              "dataType": "datetime",
               "paramType": "body",
-              "fullType": "datetime",
-              "required": true,
-              "description": "Migration date (RFC3339)"
+              "required": true
             },
             {
-              "name": "migrationId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Migration ID"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Id",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.migration.Migration",
-          "noAuthentication": false,
-          "description": "Update planned migration"
+          "responseType": "cloud.ip.FailoverIp"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/ip/failover/{id}/attach"
     },
     {
-      "path": "/cloud/project/{serviceName}/network/private",
+      "description": "Manage labs on your Cloud Project",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available public cloud labs",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Lab[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/lab"
+    },
+    {
+      "description": "Manage labs on your Cloud Project",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details of a public cloud lab",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Lab ID",
+              "fullType": "string",
+              "name": "labId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Lab"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Activate a lab on your Cloud Project",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Lab ID",
+              "fullType": "string",
+              "name": "labId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Operation"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/lab/{labId}"
+    },
+    {
+      "description": "Manage lab agreements",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List required agreements to active this lab",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Lab ID",
+              "fullType": "string",
+              "name": "labId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.LabAgreements"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/lab/{labId}/agreement"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get planned migrations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.migration.Migration[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/migration"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get planned migration",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Migration ID",
+              "fullType": "string",
+              "name": "migrationId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.migration.Migration"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update planned migration",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "datetime",
+              "description": "Migration date (RFC3339)",
+              "fullType": "datetime",
+              "name": "date",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Migration ID",
+              "fullType": "string",
+              "name": "migrationId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.migration.Migration"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/migration/{migrationId}"
+    },
+    {
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get private networks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.network.Network[]",
-          "noAuthentication": false,
-          "description": "Get private networks"
+          "responseType": "cloud.network.Network[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new network",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectNetworkPrivateCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectNetworkPrivateCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.network.Network",
-          "noAuthentication": false,
-          "description": "Create a new network"
+          "responseType": "cloud.network.Network"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/network/private"
     },
     {
-      "path": "/cloud/project/{serviceName}/network/private/{networkId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete private network",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "networkId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Network ID",
               "fullType": "string",
-              "required": true,
-              "description": "Network ID"
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete private network"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get private network",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "networkId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Network ID",
               "fullType": "string",
-              "required": true,
-              "description": "Network ID"
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.network.Network",
-          "noAuthentication": false,
-          "description": "Get private network"
+          "responseType": "cloud.network.Network"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Rename private network",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectNetworkPrivateUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectNetworkPrivateUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Network ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "networkId",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Network ID"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Rename private network"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/network/private/{networkId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/network/private/{networkId}/region",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Activate private network in a new region",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectNetworkPrivateRegionCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectNetworkPrivateRegionCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "networkId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Network ID",
               "fullType": "string",
-              "required": true,
-              "description": "Network ID"
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.network.Network",
-          "noAuthentication": false,
-          "description": "Activate private network in a new region"
+          "responseType": "cloud.network.Network"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/network/private/{networkId}/region"
     },
     {
-      "path": "/cloud/project/{serviceName}/network/private/{networkId}/subnet",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get network subnets",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "networkId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Network ID"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Network ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.network.Subnet[]",
-          "noAuthentication": false,
-          "description": "Get network subnets"
+          "responseType": "cloud.network.Subnet[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new network subnet",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectNetworkPrivateSubnetCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectNetworkPrivateSubnetCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "networkId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Network ID"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Network ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.network.Subnet",
-          "noAuthentication": false,
-          "description": "Create a new network subnet"
+          "responseType": "cloud.network.Subnet"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/network/private/{networkId}/subnet"
     },
     {
-      "path": "/cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a network subnet",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "subnetId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Network ID",
               "fullType": "string",
-              "required": true,
-              "description": "Subnet ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "networkId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Network ID"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a network subnet"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/cloud/project/{serviceName}/network/public",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "cloud.network.Network[]",
-          "noAuthentication": false,
-          "description": "Get public networks"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/cloud/project/{serviceName}/openstackClient",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "cloud.openstackClient.Session",
-          "noAuthentication": false,
-          "description": "Get OVH playground session to use the openstack terminal"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/cloud/project/{serviceName}/operation",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "cloud.Operation[]",
-          "noAuthentication": false,
-          "description": "List your operations"
-        }
-      ],
-      "description": "Manage the operations on your Cloud Project"
-    },
-    {
-      "path": "/cloud/project/{serviceName}/operation/{operationId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Subnet ID",
+              "fullType": "string",
+              "name": "subnetId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get public networks",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.network.Network[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/network/public"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get OVH playground session to use the openstack terminal",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.openstackClient.Session"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/openstackClient"
+    },
+    {
+      "description": "Manage the operations on your Cloud Project",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List your operations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.Operation[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/operation"
+    },
+    {
+      "description": "Manage the operations on your Cloud Project",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get information about one operation",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Operation ID",
+              "fullType": "string",
               "name": "operationId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Operation ID"
+              "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "noAuthentication": false,
-          "description": "Get information about one operation"
+          "responseType": "cloud.Operation"
         }
       ],
-      "description": "Manage the operations on your Cloud Project"
+      "path": "/cloud/project/{serviceName}/operation/{operationId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/quota",
+      "description": "List your quota",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List quotas",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.quota.Quotas[]",
-          "noAuthentication": false,
-          "description": "List quotas"
+          "responseType": "cloud.quota.Quotas[]"
         }
       ],
-      "description": "List your quota"
+      "path": "/cloud/project/{serviceName}/quota"
     },
     {
-      "path": "/cloud/project/{serviceName}/region",
+      "description": "Manage your regions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List your regions",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List your regions"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Request access to a region",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectRegionCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectRegionCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.Region",
-          "noAuthentication": false,
-          "description": "Request access to a region"
+          "responseType": "cloud.Region"
         }
       ],
-      "description": "Manage your regions"
+      "path": "/cloud/project/{serviceName}/region"
     },
     {
-      "path": "/cloud/project/{serviceName}/region/{regionName}",
+      "description": "Manage your regions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get information about your region",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Region name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "regionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Region name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.Region",
-          "noAuthentication": false,
-          "description": "Get information about your region"
+          "responseType": "cloud.Region"
         }
       ],
-      "description": "Manage your regions"
+      "path": "/cloud/project/{serviceName}/region/{regionName}"
     },
     {
-      "path": "/cloud/project/{serviceName}/region/{regionName}/quota",
+      "description": "Consult quotas",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List quotas",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "regionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Region name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Region name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.quota.Quotas",
-          "noAuthentication": false,
-          "description": "List quotas"
+          "responseType": "cloud.quota.Quotas"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Change project quotas on region",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectRegionQuotaCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectRegionQuotaCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "regionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Region name",
               "fullType": "string",
-              "required": true,
-              "description": "Region name"
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "noAuthentication": false,
-          "description": "Change project quotas on region"
+          "responseType": "cloud.Operation"
         }
       ],
-      "description": "Consult quotas"
+      "path": "/cloud/project/{serviceName}/region/{regionName}/quota"
     },
     {
-      "path": "/cloud/project/{serviceName}/region/{regionName}/quota/allowed",
+      "description": "Get allowed quotas",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get allowed quotas on region",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "regionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Region name",
               "fullType": "string",
-              "required": true,
-              "description": "Region name"
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.quota.AllowedQuota[]",
-          "noAuthentication": false,
-          "description": "Get allowed quotas on region"
+          "responseType": "cloud.quota.AllowedQuota[]"
         }
       ],
-      "description": "Get allowed quotas"
+      "path": "/cloud/project/{serviceName}/region/{regionName}/quota/allowed"
     },
     {
-      "path": "/cloud/project/{serviceName}/region/{regionName}/workflow/backup",
+      "description": "Manage your automated backups",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List your automated backups",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Region name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "regionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Region name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.Backup[]",
-          "noAuthentication": false,
-          "description": "List your automated backups"
+          "responseType": "cloud.Backup[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a new automated backup",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectRegionWorkflowBackupCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectRegionWorkflowBackupCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Region name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "regionName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Region name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.Backup",
-          "noAuthentication": false,
-          "description": "Create a new automated backup"
+          "responseType": "cloud.Backup"
         }
       ],
-      "description": "Manage your automated backups"
+      "path": "/cloud/project/{serviceName}/region/{regionName}/workflow/backup"
     },
     {
-      "path": "/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}",
+      "description": "Manage your automated backups",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete a backup workflow process",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Region name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "regionName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Region name"
+              "required": true
             },
             {
-              "name": "backupWorkflowId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Backup workflow ID"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Backup workflow ID",
+              "fullType": "string",
+              "name": "backupWorkflowId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a backup workflow process"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get details about a backup workflow process",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Backup workflow ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "regionName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Region name"
-            },
-            {
               "name": "backupWorkflowId",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
               "fullType": "string",
-              "required": true,
-              "description": "Backup workflow ID"
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.Backup",
-          "noAuthentication": false,
-          "description": "Get details about a backup workflow process"
+          "responseType": "cloud.Backup"
         }
       ],
-      "description": "Manage your automated backups"
+      "path": "/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/regionAvailable",
+      "description": "Manage the regions you can add on your project",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List the regions on which you can ask an access to",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.AvailableRegion[]",
-          "noAuthentication": false,
-          "description": "List the regions on which you can ask an access to"
+          "responseType": "cloud.AvailableRegion[]"
         }
       ],
-      "description": "Manage the regions you can add on your project"
+      "path": "/cloud/project/{serviceName}/regionAvailable"
     },
     {
-      "path": "/cloud/project/{serviceName}/role",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get all Roles",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.role.Roles",
-          "noAuthentication": false,
-          "description": "Get all Roles"
+          "responseType": "cloud.role.Roles"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/role"
     },
     {
-      "path": "/cloud/project/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/cloud/project/{serviceName}/serviceInfos"
     },
     {
-      "path": "/cloud/project/{serviceName}/snapshot",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get snapshots",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Get compatible snapshots with flavor type",
+              "fullType": "string",
               "name": "flavorType",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Get compatible snapshots with flavor type"
+              "required": false
             },
             {
-              "name": "region",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Region",
               "fullType": "string",
-              "required": false,
-              "description": "Region"
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "cloud.image.Image[]",
-          "noAuthentication": false,
-          "description": "Get snapshots"
+          "responseType": "cloud.image.Image[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/snapshot"
     },
     {
-      "path": "/cloud/project/{serviceName}/snapshot/{imageId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a snapshot",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "imageId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Image ID",
               "fullType": "string",
-              "required": true,
-              "description": "Image ID"
+              "name": "imageId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.image.Image",
-          "noAuthentication": false,
-          "description": "Delete a snapshot"
+          "responseType": "cloud.image.Image"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get snapshot details",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "imageId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Image ID",
               "fullType": "string",
-              "required": true,
-              "description": "Image ID"
+              "name": "imageId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.image.Image",
-          "noAuthentication": false,
-          "description": "Get snapshot details"
+          "responseType": "cloud.image.Image"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/snapshot/{imageId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/sshkey",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get SSH keys",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "region",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Region",
               "fullType": "string",
-              "required": false,
-              "description": "Region"
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "cloud.sshkey.SshKey[]",
-          "noAuthentication": false,
-          "description": "Get SSH keys"
+          "responseType": "cloud.sshkey.SshKey[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create SSH key",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectSshkeyCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectSshkeyCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.sshkey.SshKeyDetail",
-          "noAuthentication": false,
-          "description": "Create SSH key"
+          "responseType": "cloud.sshkey.SshKeyDetail"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/sshkey"
     },
     {
-      "path": "/cloud/project/{serviceName}/sshkey/{keyId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete SSH key",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "keyId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Key ID",
               "fullType": "string",
-              "required": true,
-              "description": "Key ID"
+              "name": "keyId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete SSH key"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get SSH key",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Key ID",
+              "fullType": "string",
               "name": "keyId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Key ID"
+              "required": true
             }
           ],
-          "responseType": "cloud.sshkey.SshKeyDetail",
-          "noAuthentication": false,
-          "description": "Get SSH key"
+          "responseType": "cloud.sshkey.SshKeyDetail"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/sshkey/{keyId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/stack",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get stacks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.stack.Stack[]",
-          "noAuthentication": false,
-          "description": "Get stacks"
+          "responseType": "cloud.stack.Stack[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/stack"
     },
     {
-      "path": "/cloud/project/{serviceName}/stack/{stackId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get stack",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "stackId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Stack ID",
               "fullType": "string",
-              "required": true,
-              "description": "Stack ID"
+              "name": "stackId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.stack.Stack",
-          "noAuthentication": false,
-          "description": "Get stack"
+          "responseType": "cloud.stack.Stack"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/stack/{stackId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/stack/{stackId}/client",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get OVH playground session with a stack installed to use the openstack terminal",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "stackId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Stack ID",
               "fullType": "string",
-              "required": true,
-              "description": "Stack ID"
+              "name": "stackId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.openstackClient.Session",
-          "noAuthentication": false,
-          "description": "Get OVH playground session with a stack installed to use the openstack terminal"
+          "responseType": "cloud.openstackClient.Session"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/stack/{stackId}/client"
     },
     {
-      "path": "/cloud/project/{serviceName}/storage",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get storage containers",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.storage.Container[]",
-          "noAuthentication": false,
-          "description": "Get storage containers"
+          "responseType": "cloud.storage.Container[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create container",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectStorageCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectStorageCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.storage.Container",
-          "noAuthentication": false,
-          "description": "Create container"
+          "responseType": "cloud.storage.Container"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/storage"
     },
     {
-      "path": "/cloud/project/{serviceName}/storage/access",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2016-11-25T10:00:00+01:00",
             "deprecatedDate": "2016-08-25T10:00:00+01:00",
-            "replacement": "/cloud/project/{serviceName}/storage/access"
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/storage/access",
+            "value": "DEPRECATED"
           },
+          "description": "Access to storage API",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.storage.ContainerAccess",
-          "noAuthentication": false,
-          "description": "Access to storage API"
+          "responseType": "cloud.storage.ContainerAccess"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Access to storage API",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.storage.ContainerAccess",
-          "noAuthentication": false,
-          "description": "Access to storage API"
+          "responseType": "cloud.storage.ContainerAccess"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/storage/access"
     },
     {
-      "path": "/cloud/project/{serviceName}/storage/{containerId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete container",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "containerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Container ID"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Container ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "containerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete container"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get storage container",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Container ID",
+              "fullType": "string",
               "name": "containerId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Container ID"
+              "required": true
             },
             {
-              "name": "noObjects",
               "dataType": "boolean",
-              "paramType": "query",
+              "description": "Do not return container objects",
               "fullType": "boolean",
-              "required": false,
-              "description": "Do not return container objects"
+              "name": "noObjects",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "cloud.storage.ContainerDetail",
-          "noAuthentication": false,
-          "description": "Get storage container"
+          "responseType": "cloud.storage.ContainerDetail"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update your storage container",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectStorageUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectStorageUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "containerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Container ID",
               "fullType": "string",
-              "required": true,
-              "description": "Container ID"
+              "name": "containerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Update your storage container"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/storage/{containerId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/storage/{containerId}/cors",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete CORS support on your container",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Container ID",
+              "fullType": "string",
               "name": "containerId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Container ID"
+              "required": true
             },
             {
-              "name": "origin",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Delete this origin",
               "fullType": "string",
-              "required": true,
-              "description": "Delete this origin"
+              "name": "origin",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete CORS support on your container"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add CORS support on your container",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectStorageCorsCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectStorageCorsCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "containerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Container ID",
               "fullType": "string",
-              "required": true,
-              "description": "Container ID"
+              "name": "containerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Add CORS support on your container"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/storage/{containerId}/cors"
     },
     {
-      "path": "/cloud/project/{serviceName}/storage/{containerId}/publicUrl",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get a public temporary URL to access to one of your object",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectStoragePublicUrlCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectStoragePublicUrlCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "containerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Container ID",
               "fullType": "string",
-              "required": true,
-              "description": "Container ID"
+              "name": "containerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.storage.ContainerObjectTempURL",
-          "noAuthentication": false,
-          "description": "Get a public temporary URL to access to one of your object"
+          "responseType": "cloud.storage.ContainerObjectTempURL"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/storage/{containerId}/publicUrl"
     },
     {
-      "path": "/cloud/project/{serviceName}/storage/{containerId}/static",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Deploy your container files as a static web site",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "containerId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Container ID",
               "fullType": "string",
-              "required": true,
-              "description": "Container ID"
+              "name": "containerId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Deploy your container files as a static web site"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/storage/{containerId}/static"
     },
     {
-      "path": "/cloud/project/{serviceName}/storage/{containerId}/user",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create openstack user with only access to this container",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectStorageUserCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectStorageUserCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Container ID",
+              "fullType": "string",
               "name": "containerId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Container ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail",
-          "noAuthentication": false,
-          "description": "Create openstack user with only access to this container"
+          "responseType": "cloud.user.UserDetail"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/storage/{containerId}/user"
     },
     {
-      "path": "/cloud/project/{serviceName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/cloud/project/{serviceName}/terminate"
     },
     {
-      "path": "/cloud/project/{serviceName}/user",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get all users",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.user.User[]",
-          "noAuthentication": false,
-          "description": "Get all users"
+          "responseType": "cloud.user.User[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create user",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectUserCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectUserCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail",
-          "noAuthentication": false,
-          "description": "Create user"
+          "responseType": "cloud.user.UserDetail"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/user"
     },
     {
-      "path": "/cloud/project/{serviceName}/user/{userId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete user",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "userId",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "User ID"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete user"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get user details",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "userId",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "User ID"
+              "required": true
             }
           ],
-          "responseType": "cloud.user.User",
-          "noAuthentication": false,
-          "description": "Get user details"
+          "responseType": "cloud.user.User"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/user/{userId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/user/{userId}/openrc",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get RC file of OpenStack",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "userId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "User ID"
-            },
-            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "region",
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "query",
+              "description": "Region",
               "fullType": "string",
-              "required": true,
-              "description": "Region"
+              "name": "region",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "version",
               "dataType": "cloud.user.OpenrcVersionEnum",
-              "paramType": "query",
+              "description": "Identity API version",
               "fullType": "cloud.user.OpenrcVersionEnum",
-              "required": false,
-              "description": "Identity API version"
-            }
-          ],
-          "responseType": "cloud.user.Openrc",
-          "noAuthentication": false,
-          "description": "Get RC file of OpenStack"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/cloud/project/{serviceName}/user/{userId}/rclone",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "User ID"
-            },
-            {
-              "name": "region",
-              "dataType": "string",
+              "name": "version",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Region"
+              "required": false
             }
           ],
-          "responseType": "cloud.user.Rclone",
-          "noAuthentication": false,
-          "description": "Get rclone configuration file"
+          "responseType": "cloud.user.Openrc"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/user/{userId}/openrc"
     },
     {
-      "path": "/cloud/project/{serviceName}/user/{userId}/regeneratePassword",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "User ID"
-            }
-          ],
-          "responseType": "cloud.user.UserDetail",
-          "noAuthentication": false,
-          "description": "Regenerate user password"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/cloud/project/{serviceName}/user/{userId}/role",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Get rclone configuration file",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "userId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "User ID",
               "fullType": "long",
-              "required": true,
-              "description": "User ID"
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "cloud.role.Role[]",
+          "responseType": "cloud.user.Rclone"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/user/{userId}/rclone"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Regenerate user password",
+          "httpMethod": "POST",
           "noAuthentication": false,
-          "description": "Get user roles"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.user.UserDetail"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/user/{userId}/regeneratePassword"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get user roles",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.role.Role[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a role to a user",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectUserRoleCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectUserRoleCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "User ID",
               "fullType": "long",
-              "required": true,
-              "description": "User ID"
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail",
-          "noAuthentication": false,
-          "description": "Add a role to a user"
+          "responseType": "cloud.user.UserDetail"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update roles of a user",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectUserRoleUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectUserRoleUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "userId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "User ID",
               "fullType": "long",
-              "required": true,
-              "description": "User ID"
+              "name": "userId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.user.UserDetail",
-          "noAuthentication": false,
-          "description": "Update roles of a user"
+          "responseType": "cloud.user.UserDetail"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/user/{userId}/role"
     },
     {
-      "path": "/cloud/project/{serviceName}/user/{userId}/role/{roleId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove role for a user",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "roleId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Role ID"
-            },
-            {
-              "name": "userId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "User ID",
               "fullType": "long",
-              "required": true,
-              "description": "User ID"
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Role ID",
+              "fullType": "string",
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove role for a user"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get role detail",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "userId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "User ID"
-            },
-            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "roleId",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Role ID",
               "fullType": "string",
-              "required": true,
-              "description": "Role ID"
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.role.Role",
-          "noAuthentication": false,
-          "description": "Get role detail"
+          "responseType": "cloud.role.Role"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/user/{userId}/role/{roleId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/user/{userId}/token",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get token for user",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectUserTokenCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectUserTokenCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "userId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "User ID",
               "fullType": "long",
-              "required": true,
-              "description": "User ID"
+              "name": "userId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.authentication.Token",
-          "noAuthentication": false,
-          "description": "Get token for user"
+          "responseType": "cloud.authentication.Token"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/user/{userId}/token"
     },
     {
-      "path": "/cloud/project/{serviceName}/volume",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get volumes",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "region",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Volume region",
               "fullType": "string",
-              "required": false,
-              "description": "Volume region"
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "cloud.volume.Volume[]",
-          "noAuthentication": false,
-          "description": "Get volumes"
+          "responseType": "cloud.volume.Volume[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a volume",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectVolumeCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectVolumeCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "noAuthentication": false,
-          "description": "Create a volume"
+          "responseType": "cloud.volume.Volume"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/volume"
     },
     {
-      "path": "/cloud/project/{serviceName}/volume/snapshot",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get volume snapshots",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Snapshots region",
+              "fullType": "string",
               "name": "region",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Snapshots region"
+              "required": false
             }
           ],
-          "responseType": "cloud.volume.Snapshot[]",
-          "noAuthentication": false,
-          "description": "Get volume snapshots"
+          "responseType": "cloud.volume.Snapshot[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/volume/snapshot"
     },
     {
-      "path": "/cloud/project/{serviceName}/volume/snapshot/{snapshotId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a volume snapshot",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "snapshotId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Snapshot ID",
               "fullType": "string",
-              "required": true,
-              "description": "Snapshot ID"
+              "name": "snapshotId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a volume snapshot"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get volume snapshot details",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "snapshotId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Snapshot ID",
               "fullType": "string",
-              "required": true,
-              "description": "Snapshot ID"
+              "name": "snapshotId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.volume.Snapshot",
-          "noAuthentication": false,
-          "description": "Get volume snapshot details"
+          "responseType": "cloud.volume.Snapshot"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/volume/snapshot/{snapshotId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/volume/{volumeId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a volume",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "volumeId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Volume ID",
               "fullType": "string",
-              "required": true,
-              "description": "Volume ID"
+              "name": "volumeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a volume"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get volume details",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "volumeId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Volume ID",
               "fullType": "string",
-              "required": true,
-              "description": "Volume ID"
+              "name": "volumeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "noAuthentication": false,
-          "description": "Get volume details"
+          "responseType": "cloud.volume.Volume"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update a volume",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectVolumeUpdate",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectVolumeUpdate",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "volumeId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Volume ID",
               "fullType": "string",
-              "required": true,
-              "description": "Volume ID"
+              "name": "volumeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "noAuthentication": false,
-          "description": "Update a volume"
+          "responseType": "cloud.volume.Volume"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/volume/{volumeId}"
     },
     {
-      "path": "/cloud/project/{serviceName}/volume/{volumeId}/attach",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Attach a volume on an instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectVolumeAttachCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectVolumeAttachCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Volume ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "volumeId",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Volume ID"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "noAuthentication": false,
-          "description": "Attach a volume on an instance"
+          "responseType": "cloud.volume.Volume"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/volume/{volumeId}/attach"
     },
     {
-      "path": "/cloud/project/{serviceName}/volume/{volumeId}/detach",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Detach a volume from an instance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectVolumeDetachCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectVolumeDetachCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "volumeId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Volume ID",
               "fullType": "string",
-              "required": true,
-              "description": "Volume ID"
+              "name": "volumeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "noAuthentication": false,
-          "description": "Detach a volume from an instance"
+          "responseType": "cloud.volume.Volume"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/volume/{volumeId}/detach"
     },
     {
-      "path": "/cloud/project/{serviceName}/volume/{volumeId}/snapshot",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Snapshot a volume",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectVolumeSnapshotCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectVolumeSnapshotCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "volumeId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Volume ID",
               "fullType": "string",
-              "required": true,
-              "description": "Volume ID"
+              "name": "volumeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.volume.Snapshot",
-          "noAuthentication": false,
-          "description": "Snapshot a volume"
+          "responseType": "cloud.volume.Snapshot"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/volume/{volumeId}/snapshot"
     },
     {
-      "path": "/cloud/project/{serviceName}/volume/{volumeId}/upsize",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Extend a volume",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cloud.ProjectVolumeUpsizeCreation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cloud.ProjectVolumeUpsizeCreation",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "volumeId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Volume ID",
               "fullType": "string",
-              "required": true,
-              "description": "Volume ID"
+              "name": "volumeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.volume.Volume",
-          "noAuthentication": false,
-          "description": "Extend a volume"
+          "responseType": "cloud.volume.Volume"
         }
       ],
-      "description": "Missing description"
+      "path": "/cloud/project/{serviceName}/volume/{volumeId}/upsize"
     },
     {
-      "path": "/cloud/project/{serviceName}/vrack",
+      "description": "Manage the vRack on your Cloud Project",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the linked vRack on your project",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.Vrack",
-          "noAuthentication": false,
-          "description": "Get the linked vRack on your project"
+          "responseType": "cloud.Vrack"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Order and attach a new vRack on your project",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cloud.Operation",
-          "noAuthentication": false,
-          "description": "Order and attach a new vRack on your project"
+          "responseType": "cloud.Operation"
         }
       ],
-      "description": "Manage the vRack on your Cloud Project"
+      "path": "/cloud/project/{serviceName}/vrack"
     }
   ],
-  "resourcePath": "/cloud",
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "cloud.AccessTypeEnum": {
-      "id": "AccessTypeEnum",
-      "namespace": "cloud",
       "description": "Possible values for project access type",
       "enum": [
         "full",
         "restricted"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AccessTypeEnum",
+      "namespace": "cloud"
     },
     "cloud.AvailableRegion": {
+      "description": "Details about an available region that can be activated on your project",
       "id": "AvailableRegion",
       "namespace": "cloud",
-      "description": "Details about an available region that can be activated on your project",
       "properties": {
         "continentCode": {
-          "type": "cloud.RegionContinentEnum",
-          "fullType": "cloud.RegionContinentEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region continent code",
-          "required": false
+          "fullType": "cloud.RegionContinentEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.RegionContinentEnum"
         },
         "datacenterLocation": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Location of the datacenter where the region is",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.Backup": {
+      "description": "List your automated backups",
       "id": "Backup",
       "namespace": "cloud",
-      "description": "List your automated backups",
       "properties": {
         "backupName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Backup name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of the workflow",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "cron": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Workflow cron pattern",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "executions": {
-          "type": "cloud.Execution[]",
-          "fullType": "cloud.Execution[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Executions logs",
-          "required": false
+          "fullType": "cloud.Execution[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.Execution[]"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Workflow id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "instanceId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Workflow name identifier",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.Component": {
+      "description": "Information about the different components available in the region",
       "id": "Component",
       "namespace": "cloud",
-      "description": "Information about the different components available in the region",
       "properties": {
         "endpoint": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Endpoint URL",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "cloud.ServiceStatusEnum",
-          "fullType": "cloud.ServiceStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service status",
-          "required": false
+          "fullType": "cloud.ServiceStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.ServiceStatusEnum"
         }
       }
     },
     "cloud.Execution": {
+      "description": "An execution of the backup workflow",
       "id": "Execution",
       "namespace": "cloud",
-      "description": "An execution of the backup workflow",
       "properties": {
         "executedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last date of cron trigger execution",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "state": {
-          "type": "cloud.ExecutionStateEnum",
-          "fullType": "cloud.ExecutionStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Execution state",
-          "required": false
+          "fullType": "cloud.ExecutionStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.ExecutionStateEnum"
         },
         "stateInfo": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Information about state",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.ExecutionStateEnum": {
-      "id": "ExecutionStateEnum",
-      "namespace": "cloud",
       "description": "Enum values for State",
       "enum": [
         "IDLE",
@@ -4353,11 +4352,11 @@ export const schema: Schema = {
         "ERROR",
         "PAUSED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ExecutionStateEnum",
+      "namespace": "cloud"
     },
     "cloud.IpCountryEnum": {
-      "id": "IpCountryEnum",
-      "namespace": "cloud",
       "description": "Enum values for IpCountry",
       "enum": [
         "au",
@@ -4378,65 +4377,65 @@ export const schema: Schema = {
         "uk",
         "us"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpCountryEnum",
+      "namespace": "cloud"
     },
     "cloud.Lab": {
+      "description": "A public cloud lab permits to activate a feature in beta",
       "id": "Lab",
       "namespace": "cloud",
-      "description": "A public cloud lab permits to activate a feature in beta",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Lab ID",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Lab name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "cloud.LabStatusEnum",
-          "fullType": "cloud.LabStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Lab status",
-          "required": false
+          "fullType": "cloud.LabStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.LabStatusEnum"
         }
       }
     },
     "cloud.LabAgreements": {
+      "description": "List of required agreements to activate the lab",
       "id": "LabAgreements",
       "namespace": "cloud",
-      "description": "List of required agreements to activate the lab",
       "properties": {
         "accepted": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of agreements already accepted to activate the lab",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "toAccept": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of agreements to accept before activate the lab",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         }
       }
     },
     "cloud.LabStatusEnum": {
-      "id": "LabStatusEnum",
-      "namespace": "cloud",
       "description": "Enum values for Status",
       "enum": [
         "open",
@@ -4444,82 +4443,82 @@ export const schema: Schema = {
         "activated",
         "closed"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LabStatusEnum",
+      "namespace": "cloud"
     },
     "cloud.Operation": {
+      "description": "An operation is an async process on your Project",
       "id": "Operation",
       "namespace": "cloud",
-      "description": "An operation is an async process on your Project",
       "properties": {
         "action": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The action of the operation",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "completedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The completed date of the operation",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The creation date of the operation",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Unique ID to describe the operation",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "progress": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The progression in percentage of the operation",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "regions": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Affected regions of the operation",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "startedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The started date of the operation",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "status": {
-          "type": "cloud.OperationStatusEnum",
-          "fullType": "cloud.OperationStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operation status",
-          "required": false
+          "fullType": "cloud.OperationStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.OperationStatusEnum"
         }
       }
     },
     "cloud.OperationStatusEnum": {
-      "id": "OperationStatusEnum",
-      "namespace": "cloud",
       "description": "Enum values for Status",
       "enum": [
         "created",
@@ -4528,1102 +4527,1102 @@ export const schema: Schema = {
         "in-error",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationStatusEnum",
+      "namespace": "cloud"
     },
     "cloud.Project": {
+      "description": "Project",
       "id": "Project",
       "namespace": "cloud",
-      "description": "Project",
       "properties": {
         "access": {
-          "type": "cloud.AccessTypeEnum",
-          "fullType": "cloud.AccessTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Project access",
-          "required": false
+          "fullType": "cloud.AccessTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.AccessTypeEnum"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Project creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Description of your project",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "expiration": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Expiration date of your project. After this date, your project will be deleted",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "manualQuota": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Manual quota prevent automatic quota upgrade",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Project order id",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Order plan code",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "projectName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Project name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "project_id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Project id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "cloud.project.ProjectStatusEnum",
-          "fullType": "cloud.project.ProjectStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current status",
-          "required": false
+          "fullType": "cloud.project.ProjectStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ProjectStatusEnum"
         },
         "unleash": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Project unleashed",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
     "cloud.ProjectActivateMonthlyBillingCreation": {
+      "description": "Missing description",
       "id": "ProjectActivateMonthlyBillingCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "instances": {
-          "type": "cloud.instance.MonthlyInstanceBulkParams[]",
-          "fullType": "cloud.instance.MonthlyInstanceBulkParams[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance ids and regions",
-          "required": true
+          "fullType": "cloud.instance.MonthlyInstanceBulkParams[]",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.instance.MonthlyInstanceBulkParams[]"
         }
       }
     },
     "cloud.ProjectInstanceBulkCreation": {
+      "description": "Missing description",
       "id": "ProjectInstanceBulkCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "autobackup": {
-          "type": "cloud.instance.AutoBackup",
-          "fullType": "cloud.instance.AutoBackup",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Create an autobackup workflow after instance start up",
-          "required": false
+          "fullType": "cloud.instance.AutoBackup",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.AutoBackup"
         },
         "flavorId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance flavor id",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "groupId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Start instance in group",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "imageId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Instance image id",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "monthlyBilling": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Active monthly billing",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "networks": {
-          "type": "cloud.instance.NetworkBulkParams[]",
-          "fullType": "cloud.instance.NetworkBulkParams[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Create network interfaces",
-          "required": false
+          "fullType": "cloud.instance.NetworkBulkParams[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.NetworkBulkParams[]"
         },
         "number": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of instances you want to create",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance region",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "sshKeyId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "SSH keypair id",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "userData": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Configuration information or scripts to use upon launch",
-          "required": false
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
         },
         "volumeId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Specify a volume id to boot from it",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectInstanceCreation": {
+      "description": "Missing description",
       "id": "ProjectInstanceCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "autobackup": {
-          "type": "cloud.instance.AutoBackup",
-          "fullType": "cloud.instance.AutoBackup",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Create an autobackup workflow after instance start up",
-          "required": false
+          "fullType": "cloud.instance.AutoBackup",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.AutoBackup"
         },
         "flavorId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance flavor id",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "groupId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Start instance in group",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "imageId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Instance image id",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "monthlyBilling": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Active monthly billing",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "networks": {
-          "type": "cloud.instance.NetworkParams[]",
-          "fullType": "cloud.instance.NetworkParams[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Create network interfaces",
-          "required": false
+          "fullType": "cloud.instance.NetworkParams[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.instance.NetworkParams[]"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance region",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "sshKeyId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "SSH keypair id",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "userData": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Configuration information or scripts to use upon launch",
-          "required": false
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
         },
         "volumeId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Specify a volume id to boot from it",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectInstanceGroupCreation": {
+      "description": "Missing description",
       "id": "ProjectInstanceGroupCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "instance group name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance region",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "cloud.instancegroup.InstanceGroupTypeEnum",
-          "fullType": "cloud.instancegroup.InstanceGroupTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance group type",
-          "required": true
+          "fullType": "cloud.instancegroup.InstanceGroupTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.instancegroup.InstanceGroupTypeEnum"
         }
       }
     },
     "cloud.ProjectInstanceInterfaceCreation": {
+      "description": "Missing description",
       "id": "ProjectInstanceInterfaceCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Static ip (Can only be defined for private networks)",
-          "required": false
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
         },
         "networkId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Network id",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectInstanceRebootCreation": {
+      "description": "Missing description",
       "id": "ProjectInstanceRebootCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "type": {
-          "type": "cloud.instance.RebootTypeEnum",
-          "fullType": "cloud.instance.RebootTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Reboot type (default soft)",
-          "required": true
+          "fullType": "cloud.instance.RebootTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.instance.RebootTypeEnum"
         }
       }
     },
     "cloud.ProjectInstanceReinstallCreation": {
+      "description": "Missing description",
       "id": "ProjectInstanceReinstallCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "imageId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Image to reinstall",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectInstanceRescueModeCreation": {
+      "description": "Missing description",
       "id": "ProjectInstanceRescueModeCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "imageId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Image to boot on",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "rescue": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Enable rescue mode",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "cloud.ProjectInstanceResizeCreation": {
+      "description": "Missing description",
       "id": "ProjectInstanceResizeCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "flavorId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Flavor id",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectInstanceSnapshotCreation": {
+      "description": "Missing description",
       "id": "ProjectInstanceSnapshotCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "snapshotName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Snapshot name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectInstanceUpdate": {
+      "description": "Missing description",
       "id": "ProjectInstanceUpdate",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "instanceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance new name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectIpFailoverAttachCreation": {
+      "description": "Missing description",
       "id": "ProjectIpFailoverAttachCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "instanceId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Attach failover ip to instance",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectNetworkPrivateCreation": {
+      "description": "Missing description",
       "id": "ProjectNetworkPrivateCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Network name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "regions": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Region where to activate private network. No parameters means all region",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "vlanId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Vland id, between 0 and 4000. 0 value means no vlan.",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.ProjectNetworkPrivateRegionCreation": {
+      "description": "Missing description",
       "id": "ProjectNetworkPrivateRegionCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Region to active on your network",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectNetworkPrivateSubnetCreation": {
+      "description": "Missing description",
       "id": "ProjectNetworkPrivateSubnetCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "dhcp": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Enable DHCP",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "end": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Last IP for this region (eg: 192.168.1.24)",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "network": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Global network with cidr (eg: 192.168.1.0/24)",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": false,
+          "required": true,
+          "type": "ipBlock"
         },
         "noGateway": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Set to true if you don't want to set a default gateway IP",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Region where this subnet will be created",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "start": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "First IP for this region (eg: 192.168.1.12)",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         }
       }
     },
     "cloud.ProjectNetworkPrivateUpdate": {
+      "description": "Missing description",
       "id": "ProjectNetworkPrivateUpdate",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectRegionCreation": {
+      "description": "Missing description",
       "id": "ProjectRegionCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Region to add on your project",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectRegionQuotaCreation": {
+      "description": "Missing description",
       "id": "ProjectRegionQuotaCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the new quota",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectRegionWorkflowBackupCreation": {
+      "description": "Missing description",
       "id": "ProjectRegionWorkflowBackupCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "cron": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Unix Cron pattern (eg: '* * * * *')",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "instanceId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance ID to backup",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "maxExecutionCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number of execution to process before ending the job. Null value means that the job will never end.",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of your backup job",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "rotation": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of backup to keep",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "cloud.ProjectSshkeyCreation": {
+      "description": "Missing description",
       "id": "ProjectSshkeyCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SSH key name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "publicKey": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SSH public key",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Region to create SSH key",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectStorageCorsCreation": {
+      "description": "Missing description",
       "id": "ProjectStorageCorsCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "origin": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Allow this origin",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectStorageCreation": {
+      "description": "Missing description",
       "id": "ProjectStorageCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "archive": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Archive container flag",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "containerName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Container name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Region",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectStoragePublicUrlCreation": {
+      "description": "Missing description",
       "id": "ProjectStoragePublicUrlCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Temporary URL expiration",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "objectName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Object name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectStorageUpdate": {
+      "description": "Missing description",
       "id": "ProjectStorageUpdate",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "containerType": {
-          "type": "cloud.storage.TypeEnum",
-          "fullType": "cloud.storage.TypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Container type",
-          "required": false
+          "fullType": "cloud.storage.TypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.storage.TypeEnum"
         }
       }
     },
     "cloud.ProjectStorageUserCreation": {
+      "description": "Missing description",
       "id": "ProjectStorageUserCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "User description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "right": {
-          "type": "cloud.storage.RightEnum",
-          "fullType": "cloud.storage.RightEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "User right (all, read, write)",
-          "required": true
+          "fullType": "cloud.storage.RightEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.storage.RightEnum"
         }
       }
     },
     "cloud.ProjectUserCreation": {
+      "description": "Missing description",
       "id": "ProjectUserCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "User description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "role": {
-          "type": "cloud.user.RoleEnum",
-          "fullType": "cloud.user.RoleEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Openstack keystone role name",
-          "required": false
+          "fullType": "cloud.user.RoleEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.user.RoleEnum"
         },
         "roles": {
-          "type": "cloud.user.RoleEnum[]",
-          "fullType": "cloud.user.RoleEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Openstack keystone roles names",
-          "required": false
+          "fullType": "cloud.user.RoleEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.user.RoleEnum[]"
         }
       }
     },
     "cloud.ProjectUserRoleCreation": {
+      "description": "Missing description",
       "id": "ProjectUserRoleCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "roleId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Role id",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectUserRoleUpdate": {
+      "description": "Missing description",
       "id": "ProjectUserRoleUpdate",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "rolesIds": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Roles ids",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         }
       }
     },
     "cloud.ProjectUserTokenCreation": {
+      "description": "Missing description",
       "id": "ProjectUserTokenCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "password": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": false,
           "description": "User password",
-          "required": true
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
         }
       }
     },
     "cloud.ProjectVolumeAttachCreation": {
+      "description": "Missing description",
       "id": "ProjectVolumeAttachCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "instanceId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance id",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectVolumeCreation": {
+      "description": "Missing description",
       "id": "ProjectVolumeCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Volume description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "imageId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Id of image to create a bootable volume",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Volume name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Volume region",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Volume size (in GiB)",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "snapshotId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Source snapshot id",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "cloud.volume.VolumeTypeEnum",
-          "fullType": "cloud.volume.VolumeTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Volume type",
-          "required": true
+          "fullType": "cloud.volume.VolumeTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.volume.VolumeTypeEnum"
         }
       }
     },
     "cloud.ProjectVolumeDetachCreation": {
+      "description": "Missing description",
       "id": "ProjectVolumeDetachCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "instanceId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance id",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectVolumeSnapshotCreation": {
+      "description": "Missing description",
       "id": "ProjectVolumeSnapshotCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Snapshot description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Snapshot name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectVolumeUpdate": {
+      "description": "Missing description",
       "id": "ProjectVolumeUpdate",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Volume description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Volume name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.ProjectVolumeUpsizeCreation": {
+      "description": "Missing description",
       "id": "ProjectVolumeUpsizeCreation",
       "namespace": "cloud",
-      "description": "Missing description",
       "properties": {
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "New volume size (in GiB) (must be greater than current one)",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "cloud.Region": {
+      "description": "Details about your region",
       "id": "Region",
       "namespace": "cloud",
-      "description": "Details about your region",
       "properties": {
         "continentCode": {
-          "type": "cloud.RegionContinentEnum",
-          "fullType": "cloud.RegionContinentEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region continent code",
-          "required": false
+          "fullType": "cloud.RegionContinentEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.RegionContinentEnum"
         },
         "datacenterLocation": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Location of the datacenter where the region is",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "ipCountries": {
-          "type": "cloud.IpCountryEnum[]",
-          "fullType": "cloud.IpCountryEnum[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Allowed countries for failover ip",
-          "required": false
+          "fullType": "cloud.IpCountryEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.IpCountryEnum[]"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "services": {
-          "type": "cloud.Component[]",
-          "fullType": "cloud.Component[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Details about components status",
-          "required": false
+          "fullType": "cloud.Component[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.Component[]"
         },
         "status": {
-          "type": "cloud.RegionStatusEnum",
-          "fullType": "cloud.RegionStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Openstack region status",
-          "required": false
+          "fullType": "cloud.RegionStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.RegionStatusEnum"
         }
       }
     },
     "cloud.RegionContinentEnum": {
-      "id": "RegionContinentEnum",
-      "namespace": "cloud",
       "description": "Enum values for ContinentCode",
       "enum": [
         "EU",
@@ -5631,331 +5630,331 @@ export const schema: Schema = {
         "US",
         "ASIA"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RegionContinentEnum",
+      "namespace": "cloud"
     },
     "cloud.RegionStatusEnum": {
-      "id": "RegionStatusEnum",
-      "namespace": "cloud",
       "description": "Enum values for Status",
       "enum": [
         "UP",
         "DOWN",
         "MAINTENANCE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RegionStatusEnum",
+      "namespace": "cloud"
     },
     "cloud.ServiceStatusEnum": {
-      "id": "ServiceStatusEnum",
-      "namespace": "cloud",
       "description": "Enum values for Status",
       "enum": [
         "UP",
         "DOWN"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceStatusEnum",
+      "namespace": "cloud"
     },
     "cloud.Vrack": {
+      "description": "A vRack allows to connect your OVH infrastructures accross products and datacenters",
       "id": "Vrack",
       "namespace": "cloud",
-      "description": "A vRack allows to connect your OVH infrastructures accross products and datacenters",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Description of your vRack",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Vrack ID",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of your vRack",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.authentication.Catalog": {
+      "description": "Catalog",
       "id": "Catalog",
       "namespace": "cloud.authentication",
-      "description": "Catalog",
       "properties": {
         "endpoints": {
-          "type": "cloud.authentication.Endpoint[]",
-          "fullType": "cloud.authentication.Endpoint[]",
           "canBeNull": false,
+          "fullType": "cloud.authentication.Endpoint[]",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "cloud.authentication.Endpoint[]"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.authentication.Domain": {
+      "description": "Domain",
       "id": "Domain",
       "namespace": "cloud.authentication",
-      "description": "Domain",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.authentication.Endpoint": {
+      "description": "Endpoint",
       "id": "Endpoint",
       "namespace": "cloud.authentication",
-      "description": "Endpoint",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "interface": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "legacy_endpoint_id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "region_id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "service_id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.authentication.OpenstackToken": {
+      "description": "OpenstackToken",
       "id": "OpenstackToken",
       "namespace": "cloud.authentication",
-      "description": "OpenstackToken",
       "properties": {
         "catalog": {
-          "type": "cloud.authentication.Catalog[]",
-          "fullType": "cloud.authentication.Catalog[]",
           "canBeNull": false,
+          "fullType": "cloud.authentication.Catalog[]",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "cloud.authentication.Catalog[]"
         },
         "expires_at": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "issued_at": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "methods": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
+          "fullType": "string[]",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string[]"
         },
         "project": {
-          "type": "cloud.authentication.TokenProject",
-          "fullType": "cloud.authentication.TokenProject",
           "canBeNull": false,
+          "fullType": "cloud.authentication.TokenProject",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "cloud.authentication.TokenProject"
         },
         "roles": {
-          "type": "cloud.authentication.Role[]",
-          "fullType": "cloud.authentication.Role[]",
           "canBeNull": false,
+          "fullType": "cloud.authentication.Role[]",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "cloud.authentication.Role[]"
         },
         "user": {
-          "type": "cloud.authentication.UserToken",
-          "fullType": "cloud.authentication.UserToken",
           "canBeNull": false,
+          "fullType": "cloud.authentication.UserToken",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "cloud.authentication.UserToken"
         }
       }
     },
     "cloud.authentication.Role": {
+      "description": "Role",
       "id": "Role",
       "namespace": "cloud.authentication",
-      "description": "Role",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.authentication.Token": {
+      "description": "Token",
       "id": "Token",
       "namespace": "cloud.authentication",
-      "description": "Token",
       "properties": {
         "X-Auth-Token": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "token": {
-          "type": "cloud.authentication.OpenstackToken",
-          "fullType": "cloud.authentication.OpenstackToken",
           "canBeNull": false,
+          "fullType": "cloud.authentication.OpenstackToken",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "cloud.authentication.OpenstackToken"
         }
       }
     },
     "cloud.authentication.TokenProject": {
+      "description": "TokenProject",
       "id": "TokenProject",
       "namespace": "cloud.authentication",
-      "description": "TokenProject",
       "properties": {
         "domain": {
-          "type": "cloud.authentication.Domain",
-          "fullType": "cloud.authentication.Domain",
           "canBeNull": false,
+          "fullType": "cloud.authentication.Domain",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "cloud.authentication.Domain"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.authentication.UserToken": {
+      "description": "UserToken",
       "id": "UserToken",
       "namespace": "cloud.authentication",
-      "description": "UserToken",
       "properties": {
         "domain": {
-          "type": "cloud.authentication.Domain",
-          "fullType": "cloud.authentication.Domain",
           "canBeNull": false,
+          "fullType": "cloud.authentication.Domain",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "cloud.authentication.Domain"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.flavor.Capability": {
+      "description": "Flavor capability",
       "id": "Capability",
       "namespace": "cloud.flavor",
-      "description": "Flavor capability",
       "properties": {
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Is the capability enabled",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "name": {
-          "type": "cloud.flavor.CapabilityNameEnum",
-          "fullType": "cloud.flavor.CapabilityNameEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the capability",
-          "required": false
+          "fullType": "cloud.flavor.CapabilityNameEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.flavor.CapabilityNameEnum"
         }
       }
     },
     "cloud.flavor.CapabilityNameEnum": {
-      "id": "CapabilityNameEnum",
-      "namespace": "cloud.flavor",
       "description": "Enum values for flavor capabilities names",
       "enum": [
         "resize",
@@ -5963,626 +5962,626 @@ export const schema: Schema = {
         "volume",
         "failoverip"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CapabilityNameEnum",
+      "namespace": "cloud.flavor"
     },
     "cloud.flavor.Flavor": {
+      "description": "Flavor",
       "id": "Flavor",
       "namespace": "cloud.flavor",
-      "description": "Flavor",
       "properties": {
         "available": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Available in stock",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "capabilities": {
-          "type": "cloud.flavor.Capability[]",
-          "fullType": "cloud.flavor.Capability[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Capabilities of the flavor",
-          "required": false
+          "fullType": "cloud.flavor.Capability[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.flavor.Capability[]"
         },
         "disk": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Number of disks",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Flavor id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "inboundBandwidth": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Max capacity of inbound traffic in Mbit/s",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Flavor name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "osType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OS to install on",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "outboundBandwidth": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Max capacity of outbound traffic in Mbit/s",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "planCodes": {
-          "type": "cloud.flavor.FlavorPlanCodes",
-          "fullType": "cloud.flavor.FlavorPlanCodes",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Plan codes to order instances",
-          "required": false
+          "fullType": "cloud.flavor.FlavorPlanCodes",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.flavor.FlavorPlanCodes"
         },
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Number instance you can spawn with your actual quota",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "ram": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ram quantity (Gio)",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Flavor region",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Flavor type",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "vcpus": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Number of VCPUs",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.flavor.FlavorPlanCodes": {
+      "description": "FlavorPlanCodes",
       "id": "FlavorPlanCodes",
       "namespace": "cloud.flavor",
-      "description": "FlavorPlanCodes",
       "properties": {
         "hourly": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Plan code to order hourly instance",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "monthly": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Plan code to order monthly instance",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.image.Image": {
+      "description": "Image",
       "id": "Image",
       "namespace": "cloud.image",
-      "description": "Image",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Image creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "flavorType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Image usable only for this type of flavor if not null",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Image id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "minDisk": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Minimum disks required to use image",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "minRam": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Minimum RAM required to use image",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Image name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Order plan code",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Image region",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "size": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Image size (in GiB)",
-          "required": false
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
         },
         "status": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Image status",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "tags": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Tags about the image",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Image type",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "user": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User to connect with",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "visibility": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Image visibility",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.image.OSTypeEnum": {
-      "id": "OSTypeEnum",
-      "namespace": "cloud.image",
       "description": "OSTypeEnum",
       "enum": [
         "linux",
         "bsd",
         "windows"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OSTypeEnum",
+      "namespace": "cloud.image"
     },
     "cloud.instance.Access": {
+      "description": "Access",
       "id": "Access",
       "namespace": "cloud.instance",
-      "description": "Access",
       "properties": {
         "login": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Login",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "password": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Password",
-          "required": false
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Application access type",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Url",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.instance.ApplicationAccess": {
+      "description": "ApplicationAccess",
       "id": "ApplicationAccess",
       "namespace": "cloud.instance",
-      "description": "ApplicationAccess",
       "properties": {
         "accesses": {
-          "type": "cloud.instance.Access[]",
-          "fullType": "cloud.instance.Access[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of credentials",
-          "required": false
+          "fullType": "cloud.instance.Access[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.instance.Access[]"
         },
         "status": {
-          "type": "cloud.instance.ApplicationAccessStateEnum",
-          "fullType": "cloud.instance.ApplicationAccessStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Application status",
-          "required": false
+          "fullType": "cloud.instance.ApplicationAccessStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.instance.ApplicationAccessStateEnum"
         }
       }
     },
     "cloud.instance.ApplicationAccessStateEnum": {
-      "id": "ApplicationAccessStateEnum",
-      "namespace": "cloud.instance",
       "description": "ApplicationAccessStateEnum",
       "enum": [
         "installing",
         "ok"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ApplicationAccessStateEnum",
+      "namespace": "cloud.instance"
     },
     "cloud.instance.AutoBackup": {
+      "description": "Autobackup params at instance creation",
       "id": "AutoBackup",
       "namespace": "cloud.instance",
-      "description": "Autobackup params at instance creation",
       "properties": {
         "cron": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Unix Cron pattern (eg: '0 0 * * *')",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "rotation": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of backup to keep",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.instance.Instance": {
+      "description": "Instance",
       "id": "Instance",
       "namespace": "cloud.instance",
-      "description": "Instance",
       "properties": {
         "created": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "flavorId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance flavor id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "imageId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance image id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "ipAddresses": {
-          "type": "cloud.instance.IpAddress[]",
-          "fullType": "cloud.instance.IpAddress[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance IP addresses",
-          "required": false
+          "fullType": "cloud.instance.IpAddress[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.instance.IpAddress[]"
         },
         "monthlyBilling": {
-          "type": "cloud.instance.MonthlyBilling",
-          "fullType": "cloud.instance.MonthlyBilling",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Instance monthly billing status",
-          "required": false
+          "fullType": "cloud.instance.MonthlyBilling",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.instance.MonthlyBilling"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "operationIds": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ids of pending public cloud operations",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Order plan code",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "sshKeyId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Instance ssh key id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "cloud.instance.InstanceStatusEnum",
-          "fullType": "cloud.instance.InstanceStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance status",
-          "required": false
+          "fullType": "cloud.instance.InstanceStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.instance.InstanceStatusEnum"
         }
       }
     },
     "cloud.instance.InstanceDetail": {
+      "description": "InstanceDetail",
       "id": "InstanceDetail",
       "namespace": "cloud.instance",
-      "description": "InstanceDetail",
       "properties": {
         "created": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "flavor": {
-          "type": "cloud.flavor.Flavor",
-          "fullType": "cloud.flavor.Flavor",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance flavor",
-          "required": false
+          "fullType": "cloud.flavor.Flavor",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.flavor.Flavor"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "image": {
-          "type": "cloud.image.Image",
-          "fullType": "cloud.image.Image",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance image",
-          "required": false
+          "fullType": "cloud.image.Image",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.image.Image"
         },
         "ipAddresses": {
-          "type": "cloud.instance.IpAddress[]",
-          "fullType": "cloud.instance.IpAddress[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance IP addresses",
-          "required": false
+          "fullType": "cloud.instance.IpAddress[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.instance.IpAddress[]"
         },
         "monthlyBilling": {
-          "type": "cloud.instance.MonthlyBilling",
-          "fullType": "cloud.instance.MonthlyBilling",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Instance monthly billing status",
-          "required": false
+          "fullType": "cloud.instance.MonthlyBilling",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.instance.MonthlyBilling"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "operationIds": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ids of pending public cloud operations",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Order plan code",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "sshKey": {
-          "type": "cloud.sshkey.SshKeyDetail",
-          "fullType": "cloud.sshkey.SshKeyDetail",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Instance SSH key",
-          "required": false
+          "fullType": "cloud.sshkey.SshKeyDetail",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.sshkey.SshKeyDetail"
         },
         "status": {
-          "type": "cloud.instance.InstanceStatusEnum",
-          "fullType": "cloud.instance.InstanceStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance status",
-          "required": false
+          "fullType": "cloud.instance.InstanceStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.instance.InstanceStatusEnum"
         }
       }
     },
     "cloud.instance.InstanceMetrics": {
+      "description": "InstanceMetrics",
       "id": "InstanceMetrics",
       "namespace": "cloud.instance",
-      "description": "InstanceMetrics",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "values": {
-          "type": "cloud.instance.InstanceMetricsValue[]",
-          "fullType": "cloud.instance.InstanceMetricsValue[]",
           "canBeNull": false,
+          "fullType": "cloud.instance.InstanceMetricsValue[]",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "cloud.instance.InstanceMetricsValue[]"
         }
       }
     },
     "cloud.instance.InstanceMetricsValue": {
+      "description": "InstanceMetricsValue",
       "id": "InstanceMetricsValue",
       "namespace": "cloud.instance",
-      "description": "InstanceMetricsValue",
       "properties": {
         "timestamp": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "double"
         }
       }
     },
     "cloud.instance.InstanceStatusEnum": {
-      "id": "InstanceStatusEnum",
-      "namespace": "cloud.instance",
       "description": "InstanceStatusEnum",
       "enum": [
         "ACTIVE",
@@ -6615,81 +6614,81 @@ export const schema: Schema = {
         "SNAPSHOTTING",
         "RESUMING"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "InstanceStatusEnum",
+      "namespace": "cloud.instance"
     },
     "cloud.instance.InstanceVnc": {
+      "description": "InstanceVnc",
       "id": "InstanceVnc",
       "namespace": "cloud.instance",
-      "description": "InstanceVnc",
       "properties": {
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "VNC type",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "VNC url",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.instance.IpAddress": {
+      "description": "IpAddress",
       "id": "IpAddress",
       "namespace": "cloud.instance",
-      "description": "IpAddress",
       "properties": {
         "gatewayIp": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Gateway IP",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "ip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance IP address",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "networkId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network ID",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance IP address type",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "version": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP version",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.instance.MetricsPeriodEnum": {
-      "id": "MetricsPeriodEnum",
-      "namespace": "cloud.instance",
       "description": "MetricsPeriod",
       "enum": [
         "lastday",
@@ -6698,11 +6697,11 @@ export const schema: Schema = {
         "lastyear",
         "today"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MetricsPeriodEnum",
+      "namespace": "cloud.instance"
     },
     "cloud.instance.MetricsTypeEnum": {
-      "id": "MetricsTypeEnum",
-      "namespace": "cloud.instance",
       "description": "MetricsType",
       "enum": [
         "mem:used",
@@ -6712,746 +6711,746 @@ export const schema: Schema = {
         "net:tx",
         "net:rx"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MetricsTypeEnum",
+      "namespace": "cloud.instance"
     },
     "cloud.instance.MonthlyBilling": {
+      "description": "MonthlyBilling",
       "id": "MonthlyBilling",
       "namespace": "cloud.instance",
-      "description": "MonthlyBilling",
       "properties": {
         "since": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Monthly billing activated since",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "status": {
-          "type": "cloud.instance.MonthlyBillingStatusEnum",
-          "fullType": "cloud.instance.MonthlyBillingStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Monthly billing status",
-          "required": false
+          "fullType": "cloud.instance.MonthlyBillingStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.instance.MonthlyBillingStatusEnum"
         }
       }
     },
     "cloud.instance.MonthlyBillingStatusEnum": {
-      "id": "MonthlyBillingStatusEnum",
-      "namespace": "cloud.instance",
       "description": "MonthlyBillingStatusEnum",
       "enum": [
         "activationPending",
         "ok"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MonthlyBillingStatusEnum",
+      "namespace": "cloud.instance"
     },
     "cloud.instance.MonthlyInstanceBulkParams": {
+      "description": "Instance with region to set as monthly billing",
       "id": "MonthlyInstanceBulkParams",
       "namespace": "cloud.instance",
-      "description": "Instance with region to set as monthly billing",
       "properties": {
         "instanceId": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Instance id",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Region name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.instance.NetworkBulkParams": {
+      "description": "NetworkBulkParams",
       "id": "NetworkBulkParams",
       "namespace": "cloud.instance",
-      "description": "NetworkBulkParams",
       "properties": {
         "networkId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Private or public network Id",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.instance.NetworkParams": {
+      "description": "NetworkParams",
       "id": "NetworkParams",
       "namespace": "cloud.instance",
-      "description": "NetworkParams",
       "properties": {
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Static ip (Can only be defined for private networks)",
-          "required": false
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
         },
         "networkId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Private or public network Id",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.instance.RebootTypeEnum": {
-      "id": "RebootTypeEnum",
-      "namespace": "cloud.instance",
       "description": "RebootTypeEnum",
       "enum": [
         "soft",
         "hard"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RebootTypeEnum",
+      "namespace": "cloud.instance"
     },
     "cloud.instance.RescueAdminPassword": {
+      "description": "RescueAdminPassword",
       "id": "RescueAdminPassword",
       "namespace": "cloud.instance",
-      "description": "RescueAdminPassword",
       "properties": {
         "adminPassword": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Admin password to connect to your rescue server with",
-          "required": false
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
         }
       }
     },
     "cloud.instanceInterface.FixedIp": {
+      "description": "FixedIp",
       "id": "FixedIp",
       "namespace": "cloud.instanceInterface",
-      "description": "FixedIp",
       "properties": {
         "ip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ip",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "subnetId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Subnetwork Id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.instanceInterface.Interface": {
+      "description": "Interface",
       "id": "Interface",
       "namespace": "cloud.instanceInterface",
-      "description": "Interface",
       "properties": {
         "fixedIps": {
-          "type": "cloud.instanceInterface.FixedIp[]",
-          "fullType": "cloud.instanceInterface.FixedIp[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of ips of the interface",
-          "required": false
+          "fullType": "cloud.instanceInterface.FixedIp[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.instanceInterface.FixedIp[]"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Interface unique identifier",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "macAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Mac address",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "networkId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "state": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Openstack state",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network type",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.instancegroup.InstanceGroup": {
+      "description": "InstanceGroup",
       "id": "InstanceGroup",
       "namespace": "cloud.instancegroup",
-      "description": "InstanceGroup",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance group id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "instance_ids": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instances ids",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance group name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "region",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "cloud.instancegroup.InstanceGroupTypeEnum",
-          "fullType": "cloud.instancegroup.InstanceGroupTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance group type",
-          "required": false
+          "fullType": "cloud.instancegroup.InstanceGroupTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.instancegroup.InstanceGroupTypeEnum"
         }
       }
     },
     "cloud.instancegroup.InstanceGroupTypeEnum": {
-      "id": "InstanceGroupTypeEnum",
-      "namespace": "cloud.instancegroup",
       "description": "InstanceGroupTypeEnum",
       "enum": [
         "affinity",
         "anti-affinity"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "InstanceGroupTypeEnum",
+      "namespace": "cloud.instancegroup"
     },
     "cloud.ip.CloudIp": {
+      "description": "CloudIp",
       "id": "CloudIp",
       "namespace": "cloud.ip",
-      "description": "CloudIp",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ip id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "ip": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Ip",
-          "required": false
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock"
         },
         "status": {
-          "type": "cloud.ip.IpStatusEnum",
-          "fullType": "cloud.ip.IpStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ip status",
-          "required": false
+          "fullType": "cloud.ip.IpStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.ip.IpStatusEnum"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ip type",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.ip.FailoverIp": {
+      "description": "FailoverIp",
       "id": "FailoverIp",
       "namespace": "cloud.ip",
-      "description": "FailoverIp",
       "properties": {
         "block": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "IP block",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "continentCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Ip continent",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "geoloc": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Ip location",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ip id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Ip",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "progress": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current operation progress in percent",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "routedTo": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instance where ip is routed to",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "cloud.ip.IpStatusEnum",
-          "fullType": "cloud.ip.IpStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ip status",
-          "required": false
+          "fullType": "cloud.ip.IpStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.ip.IpStatusEnum"
         },
         "subType": {
-          "type": "cloud.ip.IpSubTypeEnum",
-          "fullType": "cloud.ip.IpSubTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP sub type",
-          "required": false
+          "fullType": "cloud.ip.IpSubTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.ip.IpSubTypeEnum"
         }
       }
     },
     "cloud.ip.IpStatusEnum": {
-      "id": "IpStatusEnum",
-      "namespace": "cloud.ip",
       "description": "IpStatusEnum",
       "enum": [
         "ok",
         "operationPending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpStatusEnum",
+      "namespace": "cloud.ip"
     },
     "cloud.ip.IpSubTypeEnum": {
-      "id": "IpSubTypeEnum",
-      "namespace": "cloud.ip",
       "description": "IpSubTypeEnum",
       "enum": [
         "cloud",
         "ovh"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpSubTypeEnum",
+      "namespace": "cloud.ip"
     },
     "cloud.migration.Migration": {
+      "description": "Migration",
       "id": "Migration",
       "namespace": "cloud.migration",
-      "description": "Migration",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The planned date of the migration",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "migrationId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Migration Id",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "resourceId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The id of the resource to migrate",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "resourceType": {
-          "type": "cloud.migration.ResourceTypeEnum",
-          "fullType": "cloud.migration.ResourceTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The type of the resource to migrate",
-          "required": true
+          "fullType": "cloud.migration.ResourceTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "cloud.migration.ResourceTypeEnum"
         }
       }
     },
     "cloud.migration.ResourceTypeEnum": {
-      "id": "ResourceTypeEnum",
-      "namespace": "cloud.migration",
       "description": "ResourceTypeEnum",
       "enum": [
         "instance"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ResourceTypeEnum",
+      "namespace": "cloud.migration"
     },
     "cloud.network.IPPool": {
+      "description": "IPPool",
       "id": "IPPool",
       "namespace": "cloud.network",
-      "description": "IPPool",
       "properties": {
         "dhcp": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Enable DHCP",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "end": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last IP for this region (eg: 192.168.1.24)",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "network": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Global network with cidr (eg: 192.168.1.0/24)",
-          "required": false
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region where this subnet will be created",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "start": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "First IP for this region (eg: 192.168.1.12)",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         }
       }
     },
     "cloud.network.Network": {
+      "description": "Network",
       "id": "Network",
       "namespace": "cloud.network",
-      "description": "Network",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "regions": {
-          "type": "cloud.network.NetworkRegion[]",
-          "fullType": "cloud.network.NetworkRegion[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Details about private network in region",
-          "required": false
+          "fullType": "cloud.network.NetworkRegion[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.network.NetworkRegion[]"
         },
         "status": {
-          "type": "cloud.network.NetworkStatusEnum",
-          "fullType": "cloud.network.NetworkStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network status",
-          "required": false
+          "fullType": "cloud.network.NetworkStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.network.NetworkStatusEnum"
         },
         "type": {
-          "type": "cloud.network.NetworkTypeEnum",
-          "fullType": "cloud.network.NetworkTypeEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Network type",
-          "required": false
+          "fullType": "cloud.network.NetworkTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.network.NetworkTypeEnum"
         },
         "vlanId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network VLAN id",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.network.NetworkRegion": {
+      "description": "NetworkRegion",
       "id": "NetworkRegion",
       "namespace": "cloud.network",
-      "description": "NetworkRegion",
       "properties": {
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network region",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "cloud.network.NetworkRegionStatusEnum",
-          "fullType": "cloud.network.NetworkRegionStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network region status",
-          "required": false
+          "fullType": "cloud.network.NetworkRegionStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.network.NetworkRegionStatusEnum"
         }
       }
     },
     "cloud.network.NetworkRegionStatusEnum": {
-      "id": "NetworkRegionStatusEnum",
-      "namespace": "cloud.network",
       "description": "NetworkRegionStatusEnum",
       "enum": [
         "ACTIVE",
         "BUILDING"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "NetworkRegionStatusEnum",
+      "namespace": "cloud.network"
     },
     "cloud.network.NetworkStatusEnum": {
-      "id": "NetworkStatusEnum",
-      "namespace": "cloud.network",
       "description": "NetworkStatusEnum",
       "enum": [
         "BUILDING",
         "ACTIVE",
         "DELETING"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "NetworkStatusEnum",
+      "namespace": "cloud.network"
     },
     "cloud.network.NetworkTypeEnum": {
-      "id": "NetworkTypeEnum",
-      "namespace": "cloud.network",
       "description": "NetworkTypeEnum",
       "enum": [
         "public",
         "private"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "NetworkTypeEnum",
+      "namespace": "cloud.network"
     },
     "cloud.network.Subnet": {
+      "description": "Subnet",
       "id": "Subnet",
       "namespace": "cloud.network",
-      "description": "Subnet",
       "properties": {
         "cidr": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Subnet CIDR",
-          "required": false
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock"
         },
         "gatewayIp": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Gateway IP in the subnet",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Subnet id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "ipPools": {
-          "type": "cloud.network.IPPool[]",
-          "fullType": "cloud.network.IPPool[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of ip pools allocated in subnet",
-          "required": false
+          "fullType": "cloud.network.IPPool[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.network.IPPool[]"
         }
       }
     },
     "cloud.openstackClient.Profile": {
+      "description": "Profile",
       "id": "Profile",
       "namespace": "cloud.openstackClient",
-      "description": "Profile",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Profile name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.openstackClient.Session": {
+      "description": "Session",
       "id": "Session",
       "namespace": "cloud.openstackClient",
-      "description": "Session",
       "properties": {
         "expires": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Session Id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "profile": {
-          "type": "cloud.openstackClient.Profile",
-          "fullType": "cloud.openstackClient.Profile",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Profile of the session",
-          "required": false
+          "fullType": "cloud.openstackClient.Profile",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.openstackClient.Profile"
         },
         "websocket": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Websocket url to use the terminal",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.order.Order": {
+      "description": "Order",
       "id": "Order",
       "namespace": "cloud.order",
-      "description": "Order",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Order creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Order id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Order plan code",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Service created",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "cloud.order.StatusEnum",
-          "fullType": "cloud.order.StatusEnum",
           "canBeNull": false,
+          "fullType": "cloud.order.StatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cloud.order.StatusEnum"
         }
       }
     },
     "cloud.order.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "cloud.order",
       "description": "StatusEnum",
       "enum": [
         "unpaid",
@@ -7459,11 +7458,11 @@ export const schema: Schema = {
         "delivered",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.order"
     },
     "cloud.project.ProjectStatusEnum": {
-      "id": "ProjectStatusEnum",
-      "namespace": "cloud.project",
       "description": "Possible values for project status",
       "enum": [
         "creating",
@@ -7472,985 +7471,985 @@ export const schema: Schema = {
         "ok",
         "suspended"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProjectStatusEnum",
+      "namespace": "cloud.project"
     },
     "cloud.quota.AllowedQuota": {
+      "description": "Quotas",
       "id": "AllowedQuota",
       "namespace": "cloud.quota",
-      "description": "Quotas",
       "properties": {
         "compute": {
-          "type": "cloud.quota.ComputeQuota",
-          "fullType": "cloud.quota.ComputeQuota",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Quotas for compute",
-          "required": false
+          "fullType": "cloud.quota.ComputeQuota",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.quota.ComputeQuota"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "network": {
-          "type": "cloud.quota.NetworkQuota",
-          "fullType": "cloud.quota.NetworkQuota",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Quotas for network",
-          "required": false
+          "fullType": "cloud.quota.NetworkQuota",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.quota.NetworkQuota"
         },
         "volume": {
-          "type": "cloud.quota.VolumeQuota",
-          "fullType": "cloud.quota.VolumeQuota",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Quotas for volume",
-          "required": false
+          "fullType": "cloud.quota.VolumeQuota",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.quota.VolumeQuota"
         }
       }
     },
     "cloud.quota.ComputeQuota": {
+      "description": "Quotas for compute",
       "id": "ComputeQuota",
       "namespace": "cloud.quota",
-      "description": "Quotas for compute",
       "properties": {
         "cores": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum total cores allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "instances": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of instances allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "ram": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum total ram allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.quota.InstanceUsageQuotas": {
+      "description": "Quotas on instances",
       "id": "InstanceUsageQuotas",
       "namespace": "cloud.quota",
-      "description": "Quotas on instances",
       "properties": {
         "maxCores": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum total cores allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "maxInstances": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum total cores allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "maxRam": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "usedCores": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current used cores number",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "usedInstances": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current used instances",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "usedRAM": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current used ram",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.quota.KeypairQuotas": {
+      "description": "Quotas on keypairs",
       "id": "KeypairQuotas",
       "namespace": "cloud.quota",
-      "description": "Quotas on keypairs",
       "properties": {
         "maxCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum keypairs count allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.quota.NetworkQuota": {
+      "description": "Quotas for network",
       "id": "NetworkQuota",
       "namespace": "cloud.quota",
-      "description": "Quotas for network",
       "properties": {
         "networks": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of networks allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "ports": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of ports allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "subnets": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of subnets allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.quota.Quotas": {
+      "description": "Quotas",
       "id": "Quotas",
       "namespace": "cloud.quota",
-      "description": "Quotas",
       "properties": {
         "instance": {
-          "type": "cloud.quota.InstanceUsageQuotas",
-          "fullType": "cloud.quota.InstanceUsageQuotas",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Quotas on instances",
-          "required": false
+          "fullType": "cloud.quota.InstanceUsageQuotas",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.quota.InstanceUsageQuotas"
         },
         "keypair": {
-          "type": "cloud.quota.KeypairQuotas",
-          "fullType": "cloud.quota.KeypairQuotas",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Quotas on keypairs",
-          "required": false
+          "fullType": "cloud.quota.KeypairQuotas",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.quota.KeypairQuotas"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "volume": {
-          "type": "cloud.quota.VolumeUsageQuotas",
-          "fullType": "cloud.quota.VolumeUsageQuotas",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Quotas on volumes",
-          "required": false
+          "fullType": "cloud.quota.VolumeUsageQuotas",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.quota.VolumeUsageQuotas"
         }
       }
     },
     "cloud.quota.VolumeQuota": {
+      "description": "Quotas for volume",
       "id": "VolumeQuota",
       "namespace": "cloud.quota",
-      "description": "Quotas for volume",
       "properties": {
         "gigabytes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum total volume capacity allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "snapshots": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of snapshots allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "volumes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum number of volumes allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.quota.VolumeUsageQuotas": {
+      "description": "Quotas on volumes",
       "id": "VolumeUsageQuotas",
       "namespace": "cloud.quota",
-      "description": "Quotas on volumes",
       "properties": {
         "maxGigabytes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Maximum total volume capacity allowed in your project",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "usedGigabytes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current used volume gigabytes",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "volumeCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current volumes count",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.role.Permission": {
+      "description": "Role permissions",
       "id": "Permission",
       "namespace": "cloud.role",
-      "description": "Role permissions",
       "properties": {
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Permission label",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "roles": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Roles having this permission",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
     "cloud.role.Role": {
+      "description": "Role",
       "id": "Role",
       "namespace": "cloud.role",
-      "description": "Role",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Role Description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Role id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Role Name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "permissions": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Permissions granted by this role",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
     "cloud.role.Roles": {
+      "description": "OpenStack role",
       "id": "Roles",
       "namespace": "cloud.role",
-      "description": "OpenStack role",
       "properties": {
         "roles": {
-          "type": "cloud.role.Role[]",
-          "fullType": "cloud.role.Role[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OpenStack roles",
-          "required": false
+          "fullType": "cloud.role.Role[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.role.Role[]"
         },
         "services": {
-          "type": "cloud.role.Service[]",
-          "fullType": "cloud.role.Service[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OpenStack services",
-          "required": false
+          "fullType": "cloud.role.Service[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.role.Service[]"
         }
       }
     },
     "cloud.role.Service": {
+      "description": "OpenStack service",
       "id": "Service",
       "namespace": "cloud.role",
-      "description": "OpenStack service",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "permissions": {
-          "type": "cloud.role.Permission[]",
-          "fullType": "cloud.role.Permission[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of permissions",
-          "required": false
+          "fullType": "cloud.role.Permission[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.role.Permission[]"
         }
       }
     },
     "cloud.sshkey.SshKey": {
+      "description": "SshKey",
       "id": "SshKey",
       "namespace": "cloud.sshkey",
-      "description": "SshKey",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "SSH key id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "SSH key name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "publicKey": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "SSH public key",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "regions": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "SSH key regions",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
     "cloud.sshkey.SshKeyDetail": {
+      "description": "SshKeyDetail",
       "id": "SshKeyDetail",
       "namespace": "cloud.sshkey",
-      "description": "SshKeyDetail",
       "properties": {
         "fingerPrint": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "SSH key fingerprint",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "SSH key id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "SSH key name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "publicKey": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "SSH public key",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "regions": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "SSH key regions",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
     "cloud.stack.Content": {
+      "description": "Content",
       "id": "Content",
       "namespace": "cloud.stack",
-      "description": "Content",
       "properties": {
         "content": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Content",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of the content",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.stack.InstructionGuide": {
+      "description": "InstructionGuide",
       "id": "InstructionGuide",
       "namespace": "cloud.stack",
-      "description": "InstructionGuide",
       "properties": {
         "content": {
-          "type": "cloud.stack.Content[]",
-          "fullType": "cloud.stack.Content[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Guide introduction content",
-          "required": false
+          "fullType": "cloud.stack.Content[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.stack.Content[]"
         },
         "language": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Guide language",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "sections": {
-          "type": "cloud.stack.Section[]",
-          "fullType": "cloud.stack.Section[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sections of the guide",
-          "required": false
+          "fullType": "cloud.stack.Section[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.stack.Section[]"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Guide title",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.stack.Section": {
+      "description": "Section",
       "id": "Section",
       "namespace": "cloud.stack",
-      "description": "Section",
       "properties": {
         "content": {
-          "type": "cloud.stack.Content[]",
-          "fullType": "cloud.stack.Content[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Content of the guide section",
-          "required": false
+          "fullType": "cloud.stack.Content[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.stack.Content[]"
         },
         "steps": {
-          "type": "cloud.stack.Step[]",
-          "fullType": "cloud.stack.Step[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Steps to follow",
-          "required": false
+          "fullType": "cloud.stack.Step[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.stack.Step[]"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Title of the guide section",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.stack.Stack": {
+      "description": "Stack",
       "id": "Stack",
       "namespace": "cloud.stack",
-      "description": "Stack",
       "properties": {
         "commit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Stack last commit",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Stack description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "gitRepository": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "GIT repository",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "instructions": {
-          "type": "cloud.stack.InstructionGuide[]",
-          "fullType": "cloud.stack.InstructionGuide[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Instructions to start the stack",
-          "required": false
+          "fullType": "cloud.stack.InstructionGuide[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.stack.InstructionGuide[]"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Stack name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "release": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Stack release tag",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "uuid": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Stack uuid",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.stack.Step": {
+      "description": "Step",
       "id": "Step",
       "namespace": "cloud.stack",
-      "description": "Step",
       "properties": {
         "content": {
-          "type": "cloud.stack.Content[]",
-          "fullType": "cloud.stack.Content[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Content of the step",
-          "required": false
+          "fullType": "cloud.stack.Content[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.stack.Content[]"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Title of the step",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.storage.Container": {
+      "description": "Container",
       "id": "Container",
       "namespace": "cloud.storage",
-      "description": "Container",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Storage id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Storage name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "storedBytes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Total bytes stored",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "storedObjects": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Total objects stored",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.storage.ContainerAccess": {
+      "description": "ContainerAccess",
       "id": "ContainerAccess",
       "namespace": "cloud.storage",
-      "description": "ContainerAccess",
       "properties": {
         "endpoints": {
-          "type": "cloud.storage.Endpoint[]",
-          "fullType": "cloud.storage.Endpoint[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Storage access endpoints",
-          "required": false
+          "fullType": "cloud.storage.Endpoint[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.storage.Endpoint[]"
         },
         "token": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Storage access token",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.storage.ContainerDetail": {
+      "description": "ContainerDetail",
       "id": "ContainerDetail",
       "namespace": "cloud.storage",
-      "description": "ContainerDetail",
       "properties": {
         "archive": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Whether this is an archive container or not",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "containerType": {
-          "type": "cloud.storage.TypeEnum",
-          "fullType": "cloud.storage.TypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Container type",
-          "required": false
+          "fullType": "cloud.storage.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.storage.TypeEnum"
         },
         "cors": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Origins allowed to make Cross Origin Requests",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Container name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "objects": {
-          "type": "cloud.storage.ContainerObject[]",
-          "fullType": "cloud.storage.ContainerObject[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Objects stored in container",
-          "required": false
+          "fullType": "cloud.storage.ContainerObject[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.storage.ContainerObject[]"
         },
         "public": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Public container (DEPRECATED: see containerType)",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Container region",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "staticUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Container static URL",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "storedBytes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Total bytes stored",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "storedObjects": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Total objects stored",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.storage.ContainerObject": {
+      "description": "ContainerObject",
       "id": "ContainerObject",
       "namespace": "cloud.storage",
-      "description": "ContainerObject",
       "properties": {
         "contentType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Object content type",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "lastModified": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last modification date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Object name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "retrievalDelay": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Object retrieval delay (when unsealing)",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "retrievalState": {
-          "type": "cloud.storage.RetrievalStateEnum",
-          "fullType": "cloud.storage.RetrievalStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Object retrieval state",
-          "required": false
+          "fullType": "cloud.storage.RetrievalStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.storage.RetrievalStateEnum"
         },
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Object size",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cloud.storage.ContainerObjectTempURL": {
+      "description": "ContainerObjectTempURL",
       "id": "ContainerObjectTempURL",
       "namespace": "cloud.storage",
-      "description": "ContainerObjectTempURL",
       "properties": {
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Temporary URL expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "getURL": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Temporary URL to get object",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.storage.Endpoint": {
+      "description": "Endpoint",
       "id": "Endpoint",
       "namespace": "cloud.storage",
-      "description": "Endpoint",
       "properties": {
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Endpoint region",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Endpoint URL",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.storage.RetrievalStateEnum": {
-      "id": "RetrievalStateEnum",
-      "namespace": "cloud.storage",
       "description": "RetrievalStateEnum",
       "enum": [
         "sealed",
         "unsealing",
         "unsealed"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RetrievalStateEnum",
+      "namespace": "cloud.storage"
     },
     "cloud.storage.RightEnum": {
-      "id": "RightEnum",
-      "namespace": "cloud.storage",
       "description": "RightEnum",
       "enum": [
         "all",
         "read",
         "write"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RightEnum",
+      "namespace": "cloud.storage"
     },
     "cloud.storage.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "cloud.storage",
       "description": "TypeEnum",
       "enum": [
         "static",
         "public",
         "private"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.storage"
     },
     "cloud.user.Openrc": {
+      "description": "Openrc",
       "id": "Openrc",
       "namespace": "cloud.user",
-      "description": "Openrc",
       "properties": {
         "content": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "openrc file",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.user.OpenrcVersionEnum": {
-      "id": "OpenrcVersionEnum",
-      "namespace": "cloud.user",
       "description": "OpenrcVersionEnum",
       "enum": [
         "v2.0",
         "v3"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OpenrcVersionEnum",
+      "namespace": "cloud.user"
     },
     "cloud.user.Rclone": {
+      "description": "Rclone",
       "id": "Rclone",
       "namespace": "cloud.user",
-      "description": "Rclone",
       "properties": {
         "content": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "rclone configuration file",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.user.RoleEnum": {
-      "id": "RoleEnum",
-      "namespace": "cloud.user",
       "description": "RoleEnum",
       "enum": [
         "admin",
@@ -8466,129 +8465,129 @@ export const schema: Schema = {
         "objectstore_operator",
         "ai_training_operator"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RoleEnum",
+      "namespace": "cloud.user"
     },
     "cloud.user.User": {
+      "description": "User",
       "id": "User",
       "namespace": "cloud.user",
-      "description": "User",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User id",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "roles": {
-          "type": "cloud.role.Role[]",
-          "fullType": "cloud.role.Role[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User roles",
-          "required": false
+          "fullType": "cloud.role.Role[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.role.Role[]"
         },
         "status": {
-          "type": "cloud.user.UserStatusEnum",
-          "fullType": "cloud.user.UserStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User status",
-          "required": false
+          "fullType": "cloud.user.UserStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.user.UserStatusEnum"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Username",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.user.UserDetail": {
+      "description": "UserDetail",
       "id": "UserDetail",
       "namespace": "cloud.user",
-      "description": "UserDetail",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User id",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "password": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User password",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "roles": {
-          "type": "cloud.role.Role[]",
-          "fullType": "cloud.role.Role[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User roles",
-          "required": false
+          "fullType": "cloud.role.Role[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.role.Role[]"
         },
         "status": {
-          "type": "cloud.user.UserStatusEnum",
-          "fullType": "cloud.user.UserStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User status",
-          "required": false
+          "fullType": "cloud.user.UserStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.user.UserStatusEnum"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Username",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.user.UserStatusEnum": {
-      "id": "UserStatusEnum",
-      "namespace": "cloud.user",
       "description": "UserStatusEnum",
       "enum": [
         "creating",
@@ -8596,90 +8595,90 @@ export const schema: Schema = {
         "deleting",
         "deleted"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "UserStatusEnum",
+      "namespace": "cloud.user"
     },
     "cloud.volume.Snapshot": {
+      "description": "Snapshot",
       "id": "Snapshot",
       "namespace": "cloud.volume",
-      "description": "Snapshot",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Snapshot creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Snapshot description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Snapshot id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Snapshot name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Order plan code",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Snapshot region",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Snapshot size",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "status": {
-          "type": "cloud.volume.SnapshotStatusEnum",
-          "fullType": "cloud.volume.SnapshotStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Snapshot status",
-          "required": false
+          "fullType": "cloud.volume.SnapshotStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.volume.SnapshotStatusEnum"
         },
         "volumeId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Volume source id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "cloud.volume.SnapshotStatusEnum": {
-      "id": "SnapshotStatusEnum",
-      "namespace": "cloud.volume",
       "description": "SnapshotStatusEnum",
       "enum": [
         "creating",
@@ -8688,163 +8687,163 @@ export const schema: Schema = {
         "error",
         "error_deleting"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SnapshotStatusEnum",
+      "namespace": "cloud.volume"
     },
     "cloud.volume.Volume": {
+      "description": "Volume",
       "id": "Volume",
       "namespace": "cloud.volume",
-      "description": "Volume",
       "properties": {
         "attachedTo": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Volume attached to instances id",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "bootable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Volume bootable",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Volume creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Volume description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Volume id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Volume name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Order plan code",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Volume region",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Volume size (in GB)",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "status": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Volume status",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "cloud.volume.VolumeTypeEnum",
-          "fullType": "cloud.volume.VolumeTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Volume type",
-          "required": false
+          "fullType": "cloud.volume.VolumeTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.volume.VolumeTypeEnum"
         }
       }
     },
     "cloud.volume.VolumeTypeEnum": {
-      "id": "VolumeTypeEnum",
-      "namespace": "cloud.volume",
       "description": "VolumeTypeEnum",
       "enum": [
         "classic",
         "high-speed"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VolumeTypeEnum",
+      "namespace": "cloud.volume"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -8855,11 +8854,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -8867,11 +8866,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -8880,11 +8879,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -8902,108 +8901,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/cloud"
 }

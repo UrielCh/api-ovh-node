@@ -1,5757 +1,5756 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://api.us.ovhcloud.com:443/1.0/dedicated/server.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/dedicated/server",
+      "description": "Operations about the DEDICATED service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DEDICATED service"
+      "path": "/dedicated/server"
     },
     {
-      "path": "/dedicated/server/availabilities",
+      "description": "List the availability of dedicated server",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List the availability of dedicated server",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "country",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "The subsidiary company where the availability is requested",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "The subsidiary company where the availability is requested"
+              "name": "country",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "hardware",
               "dataType": "string",
-              "paramType": "query",
+              "description": "The kind of hardware which is requested",
               "fullType": "string",
-              "required": false,
-              "description": "The kind of hardware which is requested"
+              "name": "hardware",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "dedicated.Availabilities[]",
-          "noAuthentication": true,
-          "description": "List the availability of dedicated server"
+          "responseType": "dedicated.Availabilities[]"
         }
       ],
-      "description": "List the availability of dedicated server"
+      "path": "/dedicated/server/availabilities"
     },
     {
-      "path": "/dedicated/server/availabilities/raw",
+      "description": "List the availability of dedicated server (RAW)",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List the availability of dedicated server",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "dedicated.AvailabilitiesRaw[]",
           "noAuthentication": true,
-          "description": "List the availability of dedicated server"
+          "parameters": [],
+          "responseType": "dedicated.AvailabilitiesRaw[]"
         }
       ],
-      "description": "List the availability of dedicated server (RAW)"
+      "path": "/dedicated/server/availabilities/raw"
     },
     {
-      "path": "/dedicated/server/datacenter/availabilities",
+      "description": "List the availability of dedicated server",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List the availability of dedicated server",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The plan code in which the hardware is involved",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "The plan code in which the hardware is involved"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The name of the base hardware",
+              "fullType": "string",
               "name": "server",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "The name of the base hardware"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The name of the memory hardware part",
+              "fullType": "string",
               "name": "memory",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "The name of the memory hardware part"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The name of the storage hardware part",
+              "fullType": "string",
               "name": "storage",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "The name of the storage hardware part"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The names of datacenters separated by commas",
+              "fullType": "string",
               "name": "datacenters",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "The names of datacenters separated by commas"
+              "required": false
             },
             {
-              "name": "excludeDatacenters",
               "dataType": "boolean",
-              "paramType": "query",
+              "description": "If true, all datacenters are returned except those listed in datacenters parameter",
               "fullType": "boolean",
-              "required": false,
-              "description": "If true, all datacenters are returned except those listed in datacenters parameter"
-            }
-          ],
-          "responseType": "dedicated.DatacenterAvailability[]",
-          "noAuthentication": true,
-          "description": "List the availability of dedicated server"
-        }
-      ],
-      "description": "List the availability of dedicated server"
-    },
-    {
-      "path": "/dedicated/server/osAvailabilities",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "hardware",
-              "dataType": "string",
+              "name": "excludeDatacenters",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Hardware reference requested"
+              "required": false
             }
           ],
-          "responseType": "dedicated.OsAvailabilitiesEnum[]",
+          "responseType": "dedicated.DatacenterAvailability[]"
+        }
+      ],
+      "path": "/dedicated/server/datacenter/availabilities"
+    },
+    {
+      "description": "List the operating systems available for a specified hardware reference",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List the os available for a specified hardware reference",
+          "httpMethod": "GET",
           "noAuthentication": true,
-          "description": "List the os available for a specified hardware reference"
-        }
-      ],
-      "description": "List the operating systems available for a specified hardware reference"
-    },
-    {
-      "path": "/dedicated/server/virtualNetworkInterface/{uuid}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
           "parameters": [
             {
-              "name": "uuid",
-              "dataType": "uuid",
-              "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Uuid"
-            }
-          ],
-          "responseType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface",
-          "noAuthentication": false,
-          "description": "Get VirtualNetworkInterface details"
-        }
-      ],
-      "description": "Get a VirtualNetworkInterface details"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Hardware reference requested",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "hardware",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Dedicated",
+          "responseType": "dedicated.OsAvailabilitiesEnum[]"
+        }
+      ],
+      "path": "/dedicated/server/osAvailabilities"
+    },
+    {
+      "description": "Get a VirtualNetworkInterface details",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get VirtualNetworkInterface details",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Uuid",
+              "fullType": "uuid",
+              "name": "uuid",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface"
+        }
+      ],
+      "path": "/dedicated/server/virtualNetworkInterface/{uuid}"
+    },
+    {
+      "description": "Server informations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Dedicated"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.server.Dedicated",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.server.Dedicated",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Server informations"
+      "path": "/dedicated/server/{serviceName}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/authenticationSecret",
+      "description": "authenticationSecret operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve secret to connect to the server / application",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Access[]",
-          "noAuthentication": false,
-          "description": "Retrieve secret to connect to the server / application"
+          "responseType": "dedicated.server.Access[]"
         }
       ],
-      "description": "authenticationSecret operations"
+      "path": "/dedicated/server/{serviceName}/authenticationSecret"
     },
     {
-      "path": "/dedicated/server/{serviceName}/backupCloudOfferDetails",
+      "description": "backupCloudOfferDetails operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get details on offered backup cloud if available for the current server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.backup.BackupOffer",
-          "noAuthentication": false,
-          "description": "Get details on offered backup cloud if available for the current server"
+          "responseType": "dedicated.server.backup.BackupOffer"
         }
       ],
-      "description": "backupCloudOfferDetails operations"
+      "path": "/dedicated/server/{serviceName}/backupCloudOfferDetails"
     },
     {
-      "path": "/dedicated/server/{serviceName}/biosSettings",
+      "description": "Your BiosSettings",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.biosSettings.BiosSettings",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.biosSettings.BiosSettings"
         }
       ],
-      "description": "Your BiosSettings"
+      "path": "/dedicated/server/{serviceName}/biosSettings"
     },
     {
-      "path": "/dedicated/server/{serviceName}/biosSettings/sgx",
+      "description": "Your BiosSettings for SGX feature",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.biosSettingsSgx.BiosSettingsSgx",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.biosSettingsSgx.BiosSettingsSgx"
         }
       ],
-      "description": "Your BiosSettings for SGX feature"
+      "path": "/dedicated/server/{serviceName}/biosSettings/sgx"
     },
     {
-      "path": "/dedicated/server/{serviceName}/biosSettings/sgx/configure",
+      "description": "configure operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Configure SGX feature",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "prmrr",
               "dataType": "dedicated.server.BiosSettingsSgxPrmrrEnum",
-              "paramType": "body",
+              "description": "Size of the Processor Reserved Memory",
               "fullType": "dedicated.server.BiosSettingsSgxPrmrrEnum",
-              "required": false,
-              "description": "Size of the Processor Reserved Memory"
+              "name": "prmrr",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "status",
               "dataType": "dedicated.server.BiosSettingsSgxStatusEnum",
-              "paramType": "body",
+              "description": "Desired SGX status",
               "fullType": "dedicated.server.BiosSettingsSgxStatusEnum",
-              "required": false,
-              "description": "Desired SGX status"
+              "name": "status",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Configure SGX feature"
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "configure operations"
+      "path": "/dedicated/server/{serviceName}/biosSettings/sgx/configure"
     },
     {
-      "path": "/dedicated/server/{serviceName}/boot",
+      "description": "List the dedicated.server.Netboot objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Server compatibles netboots",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "bootType",
               "dataType": "dedicated.server.BootTypeEnum",
-              "paramType": "query",
+              "description": "Filter the value of bootType property (=)",
               "fullType": "dedicated.server.BootTypeEnum",
-              "required": false,
-              "description": "Filter the value of bootType property (=)"
+              "name": "bootType",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Server compatibles netboots"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the dedicated.server.Netboot objects"
+      "path": "/dedicated/server/{serviceName}/boot"
     },
     {
-      "path": "/dedicated/server/{serviceName}/boot/{bootId}",
+      "description": "Available boots",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "bootId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Boot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Boot ID"
+              "name": "bootId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Netboot",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.Netboot"
         }
       ],
-      "description": "Available boots"
+      "path": "/dedicated/server/{serviceName}/boot/{bootId}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/boot/{bootId}/option",
+      "description": "List the dedicated.server.netbootOption objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Option used on this netboot",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "bootId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Boot ID",
               "fullType": "long",
-              "required": true,
-              "description": "Boot ID"
+              "name": "bootId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.BootOptionEnum[]",
-          "noAuthentication": false,
-          "description": "Option used on this netboot"
+          "responseType": "dedicated.server.BootOptionEnum[]"
         }
       ],
-      "description": "List the dedicated.server.netbootOption objects"
+      "path": "/dedicated/server/{serviceName}/boot/{bootId}/option"
     },
     {
-      "path": "/dedicated/server/{serviceName}/boot/{bootId}/option/{option}",
+      "description": "Available boot options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "bootId",
-              "dataType": "long",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Boot ID"
+              "required": true
             },
             {
-              "name": "option",
+              "dataType": "long",
+              "description": "Boot ID",
+              "fullType": "long",
+              "name": "bootId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "dedicated.server.BootOptionEnum",
-              "paramType": "path",
+              "description": "Option",
               "fullType": "dedicated.server.BootOptionEnum",
-              "required": true,
-              "description": "Option"
+              "name": "option",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.netbootOption",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.netbootOption"
         }
       ],
-      "description": "Available boot options"
+      "path": "/dedicated/server/{serviceName}/boot/{bootId}/option/{option}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/bringYourOwnImage",
+      "description": "Bring you own Image on your server",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete your current image installation",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete your current image installation"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.ByoiStatus",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.ByoiStatus"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Start an install with your own image",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "description",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Image description"
-            },
-            {
-              "name": "URL",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Image URL"
-            },
-            {
-              "name": "diskGroupId",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Disk group id to process install on (only available for some templates)"
-            },
-            {
-              "name": "type",
-              "dataType": "dedicated.ImageTypesEnum",
-              "paramType": "body",
-              "fullType": "dedicated.ImageTypesEnum",
-              "required": true,
-              "description": "Image type"
-            },
-            {
-              "name": "checkSum",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Image checksum"
-            },
-            {
-              "name": "sshKey",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "SshKey"
-            },
-            {
-              "name": "httpHeader",
-              "dataType": "complexType.SafeKeyValue<password>[]",
-              "paramType": "body",
-              "fullType": "complexType.SafeKeyValue<password>[]",
-              "required": false,
-              "description": "HTTP Headers"
-            },
-            {
-              "name": "hostname",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Hostname"
-            },
-            {
-              "name": "checkSumType",
               "dataType": "dedicated.CheckSumTypesEnum",
-              "paramType": "body",
+              "description": "Checksum type",
               "fullType": "dedicated.CheckSumTypesEnum",
-              "required": true,
-              "description": "Checksum type"
-            },
-            {
-              "name": "userMetadatas",
-              "dataType": "complexType.SafeKeyValue<string>[]",
+              "name": "checkSumType",
               "paramType": "body",
-              "fullType": "complexType.SafeKeyValue<string>[]",
-              "required": false,
-              "description": "Metadas"
+              "required": true
             },
             {
-              "name": "userData",
-              "dataType": "text",
-              "paramType": "body",
-              "fullType": "text",
-              "required": false,
-              "description": "Configuration script"
-            },
-            {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "SshKey",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "sshKey",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Image description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Hostname",
+              "fullType": "string",
+              "name": "hostname",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Disk group id to process install on (only available for some templates)",
+              "fullType": "long",
+              "name": "diskGroupId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Image URL",
+              "fullType": "string",
+              "name": "URL",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.ImageTypesEnum",
+              "description": "Image type",
+              "fullType": "dedicated.ImageTypesEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "complexType.SafeKeyValue<string>[]",
+              "description": "Metadas",
+              "fullType": "complexType.SafeKeyValue<string>[]",
+              "name": "userMetadatas",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Image checksum",
+              "fullType": "string",
+              "name": "checkSum",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "text",
+              "description": "Configuration script",
+              "fullType": "text",
+              "name": "userData",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "complexType.SafeKeyValue<password>[]",
+              "description": "HTTP Headers",
+              "fullType": "complexType.SafeKeyValue<password>[]",
+              "name": "httpHeader",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Start an install with your own image"
+          "responseType": "void"
         }
       ],
-      "description": "Bring you own Image on your server"
+      "path": "/dedicated/server/{serviceName}/bringYourOwnImage"
     },
     {
-      "path": "/dedicated/server/{serviceName}/burst",
+      "description": "Server bandwidth burst details",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.ServerBurst",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.ServerBurst"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.server.ServerBurst",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.server.ServerBurst",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Server bandwidth burst details"
+      "path": "/dedicated/server/{serviceName}/burst"
     },
     {
-      "path": "/dedicated/server/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/dedicated/server/{serviceName}/confirmTermination"
     },
     {
-      "path": "/dedicated/server/{serviceName}/features/backupCloud",
+      "description": "Backup Cloud assigned to this server",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Deactivate the cloud backup associated to the server. This does not delete container data.",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Deactivate the cloud backup associated to the server. This does not delete container data."
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupCloud",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.BackupCloud"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a new storage backup space associated to server",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Project description of the project to be created (ignored when an existing project is already specified)",
+              "fullType": "string",
               "name": "projectDescription",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Project description of the project to be created (ignored when an existing project is already specified)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "cloud project id",
+              "fullType": "string",
               "name": "cloudProjectId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "cloud project id"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupCloud",
-          "noAuthentication": false,
-          "description": "Create a new storage backup space associated to server"
+          "responseType": "dedicated.server.BackupCloud"
         }
       ],
-      "description": "Backup Cloud assigned to this server"
+      "path": "/dedicated/server/{serviceName}/features/backupCloud"
     },
     {
-      "path": "/dedicated/server/{serviceName}/features/backupCloud/password",
+      "description": "password operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Change your cloud account password",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.backup.BackupPassword",
-          "noAuthentication": false,
-          "description": "Change your cloud account password"
+          "responseType": "dedicated.server.backup.BackupPassword"
         }
       ],
-      "description": "password operations"
+      "path": "/dedicated/server/{serviceName}/features/backupCloud/password"
     },
     {
-      "path": "/dedicated/server/{serviceName}/features/backupFTP",
+      "description": "Backup Ftp assigned to this server",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED"
+          "responseType": "dedicated.server.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupFtp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.BackupFtp"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new Backup FTP space",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Create a new Backup FTP space"
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "Backup Ftp assigned to this server"
+      "path": "/dedicated/server/{serviceName}/features/backupFTP"
     },
     {
-      "path": "/dedicated/server/{serviceName}/features/backupFTP/access",
+      "description": "List the dedicated.server.BackupFtpAcl objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP"
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new Backup FTP ACL",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "cifs",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Wether to allow the NFS protocol for this ACL",
               "fullType": "boolean",
-              "required": true,
-              "description": "Wether to allow the CIFS (SMB) protocol for this ACL"
-            },
-            {
               "name": "nfs",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Wether to allow the NFS protocol for this ACL"
+              "required": true
             },
             {
-              "name": "ftp",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Wether to allow the CIFS (SMB) protocol for this ACL",
               "fullType": "boolean",
-              "required": false,
-              "description": "Wether to allow the FTP protocol for this ACL"
+              "name": "cifs",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "ipBlock",
               "dataType": "ipBlock",
-              "paramType": "body",
+              "description": "The IP Block specific to this ACL. It musts belong to your server.",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "The IP Block specific to this ACL. It musts belong to your server."
+              "name": "ipBlock",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "boolean",
+              "description": "Wether to allow the FTP protocol for this ACL",
+              "fullType": "boolean",
+              "name": "ftp",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Create a new Backup FTP ACL"
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "List the dedicated.server.BackupFtpAcl objects"
+      "path": "/dedicated/server/{serviceName}/features/backupFTP/access"
     },
     {
-      "path": "/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}",
+      "description": "Backup Ftp ACL for this server and Backup Ftp",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Revoke this ACL",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipBlock",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip block",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip block"
+              "name": "ipBlock",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Revoke this ACL"
+          "responseType": "dedicated.server.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipBlock",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip block",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip block"
+              "name": "ipBlock",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupFtpAcl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.BackupFtpAcl"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.server.BackupFtpAcl",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.server.BackupFtpAcl",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipBlock",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip block",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip block"
+              "name": "ipBlock",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Backup Ftp ACL for this server and Backup Ftp"
+      "path": "/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks",
+      "description": "authorizableBlocks operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get all IP blocks that can be used in the ACL",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "Get all IP blocks that can be used in the ACL"
+          "responseType": "ipBlock[]"
         }
       ],
-      "description": "authorizableBlocks operations"
+      "path": "/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks"
     },
     {
-      "path": "/dedicated/server/{serviceName}/features/backupFTP/password",
+      "description": "password operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change your Backup FTP password",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Change your Backup FTP password"
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "password operations"
+      "path": "/dedicated/server/{serviceName}/features/backupFTP/password"
     },
     {
-      "path": "/dedicated/server/{serviceName}/features/firewall",
+      "description": "Firewall attached to this server",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Firewall",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.Firewall"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.server.Firewall",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.server.Firewall",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Firewall attached to this server"
+      "path": "/dedicated/server/{serviceName}/features/firewall"
     },
     {
-      "path": "/dedicated/server/{serviceName}/features/ipmi",
+      "description": "Server IPMI interface",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Ipmi",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.Ipmi"
         }
       ],
-      "description": "Server IPMI interface"
+      "path": "/dedicated/server/{serviceName}/features/ipmi"
     },
     {
-      "path": "/dedicated/server/{serviceName}/features/ipmi/access",
+      "description": "access operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "IPMI access method",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "type",
               "dataType": "dedicated.server.IpmiAccessTypeEnum",
-              "paramType": "query",
+              "description": "IPMI console access",
               "fullType": "dedicated.server.IpmiAccessTypeEnum",
-              "required": true,
-              "description": "IPMI console access"
+              "name": "type",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.IpmiAccessValue",
-          "noAuthentication": false,
-          "description": "IPMI access method"
+          "responseType": "dedicated.server.IpmiAccessValue"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Request an acces on KVM IPMI interface",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "type",
-              "dataType": "dedicated.server.IpmiAccessTypeEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.IpmiAccessTypeEnum",
-              "required": true,
-              "description": "IPMI console access"
-            },
-            {
-              "name": "ipToAllow",
-              "dataType": "ipv4",
-              "paramType": "body",
-              "fullType": "ipv4",
-              "required": false,
-              "description": "IP to allow connection from for this IPMI session"
-            },
-            {
-              "name": "ttl",
               "dataType": "dedicated.server.CacheTTLEnum",
-              "paramType": "body",
+              "description": "Session access time to live in minutes",
               "fullType": "dedicated.server.CacheTTLEnum",
-              "required": true,
-              "description": "Session access time to live in minutes"
+              "name": "ttl",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "SSH key name to allow access on KVM/IP interface with (name from /me/sshKey)",
+              "fullType": "string",
               "name": "sshKey",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "SSH key name to allow access on KVM/IP interface with (name from /me/sshKey)"
+              "required": false
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Request an acces on KVM IPMI interface"
-        }
-      ],
-      "description": "access operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/features/ipmi/resetInterface",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Reset KVM IPMI interface"
-        }
-      ],
-      "description": "resetInterface operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/features/ipmi/resetSessions",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Reset KVM IPMI sessions"
-        }
-      ],
-      "description": "resetSessions operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/features/ipmi/test",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
+              "dataType": "dedicated.server.IpmiAccessTypeEnum",
+              "description": "IPMI console access",
+              "fullType": "dedicated.server.IpmiAccessTypeEnum",
               "name": "type",
-              "dataType": "dedicated.server.IpmiTestTypeEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.IpmiTestTypeEnum",
-              "required": true,
-              "description": "Test type result on KVM IPMI interface"
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "IP to allow connection from for this IPMI session",
+              "fullType": "ipv4",
+              "name": "ipToAllow",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.IpmiTestResult",
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/features/ipmi/access"
+    },
+    {
+      "description": "resetInterface operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reset KVM IPMI interface",
+          "httpMethod": "POST",
           "noAuthentication": false,
-          "description": "Result of http, ping and identification tests on IPMI interface"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/features/ipmi/resetInterface"
+    },
+    {
+      "description": "resetSessions operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reset KVM IPMI sessions",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/features/ipmi/resetSessions"
+    },
+    {
+      "description": "test operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Result of http, ping and identification tests on IPMI interface",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.IpmiTestTypeEnum",
+              "description": "Test type result on KVM IPMI interface",
+              "fullType": "dedicated.server.IpmiTestTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.IpmiTestResult"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch test on KVM IPMI interface",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ttl",
-              "dataType": "dedicated.server.CacheTTLEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.CacheTTLEnum",
-              "required": true,
-              "description": "Result time to live in minutes"
-            },
-            {
-              "name": "type",
               "dataType": "dedicated.server.IpmiTestTypeEnum",
-              "paramType": "body",
+              "description": "Test to make on KVM IPMI interface",
               "fullType": "dedicated.server.IpmiTestTypeEnum",
-              "required": true,
-              "description": "Test to make on KVM IPMI interface"
+              "name": "type",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "dedicated.server.CacheTTLEnum",
+              "description": "Result time to live in minutes",
+              "fullType": "dedicated.server.CacheTTLEnum",
+              "name": "ttl",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Launch test on KVM IPMI interface"
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "test operations"
+      "path": "/dedicated/server/{serviceName}/features/ipmi/test"
     },
     {
-      "path": "/dedicated/server/{serviceName}/features/kvm",
+      "description": "Physical KVM",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.kvm",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.kvm"
         }
       ],
-      "description": "Physical KVM"
+      "path": "/dedicated/server/{serviceName}/features/kvm"
     },
     {
-      "path": "/dedicated/server/{serviceName}/firewall/binary/compatible",
+      "description": "compatible operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get name binary for asa",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.BinaryFirewall",
-          "noAuthentication": false,
-          "description": "Get name binary for asa"
+          "responseType": "dedicated.BinaryFirewall"
         }
       ],
-      "description": "compatible operations"
+      "path": "/dedicated/server/{serviceName}/firewall/binary/compatible"
     },
     {
-      "path": "/dedicated/server/{serviceName}/firewall/binary/link",
+      "description": "link operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get url of binary to update firewall asa",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Binary name",
+              "fullType": "string",
               "name": "binaryName",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Binary name"
+              "required": true
             }
           ],
-          "responseType": "dedicated.BinaryFirewallLink",
-          "noAuthentication": false,
-          "description": "Get url of binary to update firewall asa"
+          "responseType": "dedicated.BinaryFirewallLink"
         }
       ],
-      "description": "link operations"
+      "path": "/dedicated/server/{serviceName}/firewall/binary/link"
     },
     {
-      "path": "/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes",
+      "description": "compatibleTemplatePartitionSchemes operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve compatible  install template partitions scheme",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": ""
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Retrieve compatible  install template partitions scheme"
+          "responseType": "string[]"
         }
       ],
-      "description": "compatibleTemplatePartitionSchemes operations"
+      "path": "/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes"
     },
     {
-      "path": "/dedicated/server/{serviceName}/install/compatibleTemplates",
+      "description": "compatibleTemplates operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve compatible  install templates names",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.InstallTemplate",
-          "noAuthentication": false,
-          "description": "Retrieve compatible  install templates names"
+          "responseType": "dedicated.server.InstallTemplate"
         }
       ],
-      "description": "compatibleTemplates operations"
+      "path": "/dedicated/server/{serviceName}/install/compatibleTemplates"
     },
     {
-      "path": "/dedicated/server/{serviceName}/install/hardwareRaidProfile",
+      "description": "hardwareRaidProfile operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve hardware RAID profile",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.HardwareRaidProfile",
-          "noAuthentication": false,
-          "description": "Retrieve hardware RAID profile"
+          "responseType": "dedicated.server.HardwareRaidProfile"
         }
       ],
-      "description": "hardwareRaidProfile operations"
+      "path": "/dedicated/server/{serviceName}/install/hardwareRaidProfile"
     },
     {
-      "path": "/dedicated/server/{serviceName}/install/hardwareRaidSize",
+      "description": "hardwareRaidSize operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get hardware RAID size for a given configuration",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Partition scheme name",
+              "fullType": "string",
               "name": "partitionSchemeName",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Partition scheme name"
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.HardwareRaidSize",
-          "noAuthentication": false,
-          "description": "Get hardware RAID size for a given configuration"
+          "responseType": "dedicated.server.HardwareRaidSize"
         }
       ],
-      "description": "hardwareRaidSize operations"
+      "path": "/dedicated/server/{serviceName}/install/hardwareRaidSize"
     },
     {
-      "path": "/dedicated/server/{serviceName}/install/start",
+      "description": "start operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Start an install",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "partitionSchemeName",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Partition scheme name",
               "fullType": "string",
-              "required": false,
-              "description": "Partition scheme name"
+              "name": "partitionSchemeName",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "details",
               "dataType": "dedicated.server.InstallCustom",
-              "paramType": "body",
+              "description": "parameters for default install",
               "fullType": "dedicated.server.InstallCustom",
-              "required": false,
-              "description": "parameters for default install"
-            },
-            {
-              "name": "templateName",
-              "dataType": "string",
+              "name": "details",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Template name"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Template name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Start an install"
-        }
-      ],
-      "description": "start operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/install/status",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.InstallationProgressStatus",
-          "noAuthentication": false,
-          "description": "Get installation status"
-        }
-      ],
-      "description": "status operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/install/templateCapabilities",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "templateName",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": ""
-            }
-          ],
-          "responseType": "dedicated.server.TemplateCaps",
-          "noAuthentication": false,
-          "description": "Gives some capabilities regarding the template for the current dedicated server."
-        }
-      ],
-      "description": "templateCapabilities operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/intervention",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "technical intervention history"
-        }
-      ],
-      "description": "List the dedicated.server.Intervention objects"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/intervention/{interventionId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "interventionId",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/install/start"
+    },
+    {
+      "description": "status operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get installation status",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.InstallationProgressStatus"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/install/status"
+    },
+    {
+      "description": "templateCapabilities operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Gives some capabilities regarding the template for the current dedicated server.",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.TemplateCaps"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/install/templateCapabilities"
+    },
+    {
+      "description": "List the dedicated.server.Intervention objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "technical intervention history",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/intervention"
+    },
+    {
+      "description": "Intervention made on this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Intervention ID",
               "fullType": "long",
-              "required": true,
-              "description": "Intervention ID"
+              "name": "interventionId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Intervention",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.Intervention"
         }
       ],
-      "description": "Intervention made on this server"
+      "path": "/dedicated/server/{serviceName}/intervention/{interventionId}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/ipBlockMerge",
+      "description": "ipBlockMerge operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Merge a splitted block and route it to the choosen server. You cannot undo this operation",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "ipBlock",
+              "description": "The splitted block you want to merge",
+              "fullType": "ipBlock",
               "name": "block",
-              "dataType": "ipBlock",
               "paramType": "body",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "The splitted block you want to merge"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Merge a splitted block and route it to the choosen server. You cannot undo this operation"
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "ipBlockMerge operations"
+      "path": "/dedicated/server/{serviceName}/ipBlockMerge"
     },
     {
-      "path": "/dedicated/server/{serviceName}/ipCanBeMovedTo",
+      "description": "ipCanBeMovedTo operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Check if given IP can be moved to this server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ip",
               "dataType": "ipBlock",
+              "description": "The ip to move to this server",
+              "fullType": "ipBlock",
+              "name": "ip",
               "paramType": "query",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "The ip to move to this server"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Check if given IP can be moved to this server"
+          "responseType": "void"
         }
       ],
-      "description": "ipCanBeMovedTo operations"
+      "path": "/dedicated/server/{serviceName}/ipCanBeMovedTo"
     },
     {
-      "path": "/dedicated/server/{serviceName}/ipCountryAvailable",
+      "description": "ipCountryAvailable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve available country for IP order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.IpCountryEnum[]",
-          "noAuthentication": false,
-          "description": "Retrieve available country for IP order"
+          "responseType": "dedicated.server.IpCountryEnum[]"
         }
       ],
-      "description": "ipCountryAvailable operations"
+      "path": "/dedicated/server/{serviceName}/ipCountryAvailable"
     },
     {
-      "path": "/dedicated/server/{serviceName}/ipMove",
+      "description": "ipMove operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Move an Ip failover to this server",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "body",
+              "description": "The ip to move to this server",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "The ip to move to this server"
+              "name": "ip",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Move an Ip failover to this server"
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "ipMove operations"
+      "path": "/dedicated/server/{serviceName}/ipMove"
     },
     {
-      "path": "/dedicated/server/{serviceName}/ips",
+      "description": "ips operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List all ip from server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "List all ip from server"
+          "responseType": "ipBlock[]"
         }
       ],
-      "description": "ips operations"
+      "path": "/dedicated/server/{serviceName}/ips"
     },
     {
-      "path": "/dedicated/server/{serviceName}/license/compliantWindows",
+      "description": "compliantWindows operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the windows license compliant with your server.",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "license.WindowsOsVersionEnum[]",
-          "noAuthentication": false,
-          "description": "Get the windows license compliant with your server."
+          "responseType": "license.WindowsOsVersionEnum[]"
         }
       ],
-      "description": "compliantWindows operations"
+      "path": "/dedicated/server/{serviceName}/license/compliantWindows"
     },
     {
-      "path": "/dedicated/server/{serviceName}/license/compliantWindowsSqlServer",
+      "description": "compliantWindowsSqlServer operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the windows SQL server license compliant with your server.",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "license.WindowsSqlVersionEnum[]",
-          "noAuthentication": false,
-          "description": "Get the windows SQL server license compliant with your server."
+          "responseType": "license.WindowsSqlVersionEnum[]"
         }
       ],
-      "description": "compliantWindowsSqlServer operations"
+      "path": "/dedicated/server/{serviceName}/license/compliantWindowsSqlServer"
     },
     {
-      "path": "/dedicated/server/{serviceName}/license/windows",
+      "description": "windows operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
-              "dataType": "license.WindowsOsVersionEnum",
-              "paramType": "body",
-              "fullType": "license.WindowsOsVersionEnum",
-              "required": true,
-              "description": "Your license version"
-            },
-            {
+              "dataType": "string",
+              "description": "Your license serial number",
+              "fullType": "string",
               "name": "licenseId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Your license serial number"
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "Your license version",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows."
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "windows operations"
+      "path": "/dedicated/server/{serviceName}/license/windows"
     },
     {
-      "path": "/dedicated/server/{serviceName}/mrtg",
+      "description": "mrtg operations",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2018-04-23T00:00:00+01:00",
             "deprecatedDate": "2017-10-23T00:00:00+01:00",
-            "replacement": "/dedicated/server/{serviceName}/networkInterfaceController"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicated/server/{serviceName}/networkInterfaceController",
+            "value": "DEPRECATED"
           },
+          "description": "Retrieve traffic graph values",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "period",
-              "dataType": "dedicated.server.MrtgPeriodEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.MrtgPeriodEnum",
-              "required": true,
-              "description": "mrtg period"
-            },
-            {
-              "name": "type",
               "dataType": "dedicated.server.MrtgTypeEnum",
-              "paramType": "query",
+              "description": "mrtg type",
               "fullType": "dedicated.server.MrtgTypeEnum",
-              "required": true,
-              "description": "mrtg type"
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.MrtgPeriodEnum",
+              "description": "mrtg period",
+              "fullType": "dedicated.server.MrtgPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.MrtgTimestampValue[]",
-          "noAuthentication": false,
-          "description": "Retrieve traffic graph values"
+          "responseType": "dedicated.server.MrtgTimestampValue[]"
         }
       ],
-      "description": "mrtg operations"
+      "path": "/dedicated/server/{serviceName}/mrtg"
     },
     {
-      "path": "/dedicated/server/{serviceName}/networkInterfaceController",
+      "description": "List the dedicated.networkInterfaceController.NetworkInterfaceController objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List server networkInterfaceController",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "linkType",
               "dataType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
-              "paramType": "query",
+              "description": "Filter the value of linkType property (=)",
               "fullType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
-              "required": false,
-              "description": "Filter the value of linkType property (=)"
-            }
-          ],
-          "responseType": "macAddress[]",
-          "noAuthentication": false,
-          "description": "List server networkInterfaceController"
-        }
-      ],
-      "description": "List the dedicated.networkInterfaceController.NetworkInterfaceController objects"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/networkInterfaceController/{mac}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "mac",
-              "dataType": "macAddress",
-              "paramType": "path",
-              "fullType": "macAddress",
-              "required": true,
-              "description": "Mac"
-            }
-          ],
-          "responseType": "dedicated.networkInterfaceController.NetworkInterfaceController",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Your networkInterfaceController"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "mac",
-              "dataType": "macAddress",
-              "paramType": "path",
-              "fullType": "macAddress",
-              "required": true,
-              "description": "Mac"
-            },
-            {
-              "name": "period",
-              "dataType": "dedicated.server.MrtgPeriodEnum",
+              "name": "linkType",
               "paramType": "query",
-              "fullType": "dedicated.server.MrtgPeriodEnum",
-              "required": true,
-              "description": "mrtg period"
+              "required": false
+            }
+          ],
+          "responseType": "macAddress[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/networkInterfaceController"
+    },
+    {
+      "description": "Your networkInterfaceController",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "type",
+              "dataType": "macAddress",
+              "description": "Mac",
+              "fullType": "macAddress",
+              "name": "mac",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.networkInterfaceController.NetworkInterfaceController"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/networkInterfaceController/{mac}"
+    },
+    {
+      "description": "mrtg operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve traffic graph values",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "macAddress",
+              "description": "Mac",
+              "fullType": "macAddress",
+              "name": "mac",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "dedicated.server.MrtgTypeEnum",
-              "paramType": "query",
+              "description": "mrtg type",
               "fullType": "dedicated.server.MrtgTypeEnum",
-              "required": true,
-              "description": "mrtg type"
-            }
-          ],
-          "responseType": "dedicated.server.MrtgTimestampValue[]",
-          "noAuthentication": false,
-          "description": "Retrieve traffic graph values"
-        }
-      ],
-      "description": "mrtg operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/ola/group",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Resulting VirtualNetworkInterface name"
-            },
-            {
-              "name": "virtualNetworkInterfaces",
-              "dataType": "uuid[]",
-              "paramType": "body",
-              "fullType": "uuid[]",
-              "required": true,
-              "description": "Interfaces to aggregate"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "OLA : Group interfaces into an aggregation"
-        }
-      ],
-      "description": "group operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/ola/ungroup",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "virtualNetworkInterface",
-              "dataType": "uuid",
-              "paramType": "body",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Interface to ungroup"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.Task[]",
-          "noAuthentication": false,
-          "description": "OLA : Ungroup interfaces"
-        }
-      ],
-      "description": "ungroup operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/option",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.OptionEnum[]",
-          "noAuthentication": false,
-          "description": "List of dedicated server options"
-        }
-      ],
-      "description": "List the dedicated.server.Option objects"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/option/{option}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "option",
-              "dataType": "dedicated.server.OptionEnum",
-              "paramType": "path",
-              "fullType": "dedicated.server.OptionEnum",
-              "required": true,
-              "description": "Option"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Release a given option"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "option",
-              "dataType": "dedicated.server.OptionEnum",
-              "paramType": "path",
-              "fullType": "dedicated.server.OptionEnum",
-              "required": true,
-              "description": "Option"
-            }
-          ],
-          "responseType": "dedicated.server.Option",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Information about the options of a dedicated server"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/orderable/backupStorage",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.BackupStorageOrderable",
-          "noAuthentication": false,
-          "description": "Get the backup storage orderable with your server."
-        }
-      ],
-      "description": "backupStorage operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/orderable/bandwidth",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.BandwidthOrderable",
-          "noAuthentication": false,
-          "description": "Get bandwidth orderable with your server."
-        }
-      ],
-      "description": "bandwidth operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/orderable/bandwidthvRack",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.BandwidthvRackOrderable",
-          "noAuthentication": false,
-          "description": "Get vRack bandwidth orderable with your server."
-        }
-      ],
-      "description": "bandwidthvRack operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/orderable/feature",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "feature",
-              "dataType": "dedicated.server.OrderableSysFeatureEnum",
+              "name": "type",
               "paramType": "query",
-              "fullType": "dedicated.server.OrderableSysFeatureEnum",
-              "required": true,
-              "description": "the feature"
-            }
-          ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Is this feature orderable with your server"
-        }
-      ],
-      "description": "feature operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/orderable/ip",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.IpOrderable",
-          "noAuthentication": false,
-          "description": "Get IP orderable with your server."
-        }
-      ],
-      "description": "ip operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/orderable/kvm",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Is a KVM orderable with your server"
-        }
-      ],
-      "description": "kvm operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/orderable/kvmExpress",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Is a KVM express orderable with your server"
-        }
-      ],
-      "description": "kvmExpress operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/orderable/professionalUse",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Is professional use orderable with your server"
-        }
-      ],
-      "description": "professionalUse operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/orderable/traffic",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.TrafficOrderable",
-          "noAuthentication": false,
-          "description": "Get orderable traffic with your server."
-        }
-      ],
-      "description": "traffic operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/orderable/usbKey",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.UsbKeyOrderableDetails",
-          "noAuthentication": false,
-          "description": "Get USB keys orderable with your server"
-        }
-      ],
-      "description": "usbKey operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/reboot",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Hard reboot this server"
-        }
-      ],
-      "description": "reboot operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of secondary dns domain name"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "ipv4",
-              "paramType": "body",
-              "fullType": "ipv4",
-              "required": false,
-              "description": ""
+              "required": true
             },
             {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The domain to add"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "dedicated.server.MrtgPeriodEnum",
+              "description": "mrtg period",
+              "fullType": "dedicated.server.MrtgPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "add a domain on secondary dns"
+          "responseType": "dedicated.server.MrtgTimestampValue[]"
         }
       ],
-      "description": "List the secondaryDns.SecondaryDNS objects"
+      "path": "/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg"
     },
     {
-      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}",
+      "description": "group operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "OLA : Group interfaces into an aggregation",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid[]",
+              "description": "Interfaces to aggregate",
+              "fullType": "uuid[]",
+              "name": "virtualNetworkInterfaces",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Resulting VirtualNetworkInterface name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/ola/group"
+    },
+    {
+      "description": "ungroup operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "OLA : Ungroup interfaces",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Interface to ungroup",
+              "fullType": "uuid",
+              "name": "virtualNetworkInterface",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/ola/ungroup"
+    },
+    {
+      "description": "List the dedicated.server.Option objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of dedicated server options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.OptionEnum[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/option"
+    },
+    {
+      "description": "Information about the options of a dedicated server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Release a given option",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
-              "dataType": "string",
+              "dataType": "dedicated.server.OptionEnum",
+              "description": "Option",
+              "fullType": "dedicated.server.OptionEnum",
+              "name": "option",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "remove this domain"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
-              "dataType": "string",
+              "dataType": "dedicated.server.OptionEnum",
+              "description": "Option",
+              "fullType": "dedicated.server.OptionEnum",
+              "name": "option",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNS",
+          "responseType": "dedicated.server.Option"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/option/{option}"
+    },
+    {
+      "description": "backupStorage operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the backup storage orderable with your server.",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.BackupStorageOrderable"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/backupStorage"
+    },
+    {
+      "description": "bandwidth operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get bandwidth orderable with your server.",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.BandwidthOrderable"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/bandwidth"
+    },
+    {
+      "description": "bandwidthvRack operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get vRack bandwidth orderable with your server.",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.BandwidthvRackOrderable"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/bandwidthvRack"
+    },
+    {
+      "description": "feature operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Is this feature orderable with your server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.OrderableSysFeatureEnum",
+              "description": "the feature",
+              "fullType": "dedicated.server.OrderableSysFeatureEnum",
+              "name": "feature",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/feature"
+    },
+    {
+      "description": "ip operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get IP orderable with your server.",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.IpOrderable"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/ip"
+    },
+    {
+      "description": "kvm operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Is a KVM orderable with your server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/kvm"
+    },
+    {
+      "description": "kvmExpress operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Is a KVM express orderable with your server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/kvmExpress"
+    },
+    {
+      "description": "professionalUse operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Is professional use orderable with your server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/professionalUse"
+    },
+    {
+      "description": "traffic operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get orderable traffic with your server.",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.TrafficOrderable"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/traffic"
+    },
+    {
+      "description": "usbKey operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get USB keys orderable with your server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.UsbKeyOrderableDetails"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/usbKey"
+    },
+    {
+      "description": "reboot operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Hard reboot this server",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/reboot"
+    },
+    {
+      "description": "List the secondaryDns.SecondaryDNS objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of secondary dns domain name",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "add a domain on secondary dns",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The domain to add",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains"
+    },
+    {
+      "description": "Secondary dns infos",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "remove this domain",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "secondaryDns.SecondaryDNS"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "secondaryDns.SecondaryDNS",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "secondaryDns.SecondaryDNS",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Secondary dns infos"
+      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer",
+      "description": "dnsServer operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "domain name server informations",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNSNameServer",
-          "noAuthentication": false,
-          "description": "domain name server informations"
+          "responseType": "secondaryDns.SecondaryDNSNameServer"
         }
       ],
-      "description": "dnsServer operations"
+      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer"
     },
     {
-      "path": "/dedicated/server/{serviceName}/secondaryDnsNameDomainToken",
+      "description": "secondaryDnsNameDomainToken operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "DNS field to temporarily add to your zone so that we can verify you are the owner of this domain",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
+              "description": "The domain to check",
+              "fullType": "string",
+              "name": "domain",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "The domain to check"
+              "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNSCheckField",
-          "noAuthentication": false,
-          "description": "DNS field to temporarily add to your zone so that we can verify you are the owner of this domain"
+          "responseType": "secondaryDns.SecondaryDNSCheckField"
         }
       ],
-      "description": "secondaryDnsNameDomainToken operations"
+      "path": "/dedicated/server/{serviceName}/secondaryDnsNameDomainToken"
     },
     {
-      "path": "/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable",
+      "description": "secondaryDnsNameServerAvailable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Secondary nameServer available for your Server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNSNameServer",
-          "noAuthentication": false,
-          "description": "Secondary nameServer available for your Server"
+          "responseType": "secondaryDns.SecondaryDNSNameServer"
         }
       ],
-      "description": "secondaryDnsNameServerAvailable operations"
+      "path": "/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable"
     },
     {
-      "path": "/dedicated/server/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/dedicated/server/{serviceName}/serviceInfos"
     },
     {
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring",
+      "description": "List the dedicated.server.serviceMonitoring objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Service monitoring details",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Service monitoring details"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a new service monitoring",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "enabled",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Is this service monitoring is enabled",
               "fullType": "boolean",
-              "required": true,
-              "description": "Is this service monitoring is enabled"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "enabled",
               "paramType": "body",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "The IP to monitor"
+              "required": true
             },
             {
-              "name": "url",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The expected return",
               "fullType": "string",
-              "required": false,
-              "description": "The URL to test"
-            },
-            {
-              "name": "interval",
-              "dataType": "dedicated.server.MonitoringIntervalEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.MonitoringIntervalEnum",
-              "required": true,
-              "description": "The test interval"
-            },
-            {
-              "name": "port",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "The service port to monitor"
-            },
-            {
-              "name": "protocol",
-              "dataType": "dedicated.server.MonitoringProtocolEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.MonitoringProtocolEnum",
-              "required": true,
-              "description": "The protocol to use"
-            },
-            {
               "name": "challengeText",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The expected return"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "dedicated.server.MonitoringProtocolEnum",
+              "description": "The protocol to use",
+              "fullType": "dedicated.server.MonitoringProtocolEnum",
+              "name": "protocol",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The service port to monitor",
+              "fullType": "long",
+              "name": "port",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.MonitoringIntervalEnum",
+              "description": "The test interval",
+              "fullType": "dedicated.server.MonitoringIntervalEnum",
+              "name": "interval",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "The IP to monitor",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "The URL to test",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "url",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.serviceMonitoring",
-          "noAuthentication": false,
-          "description": "Add a new service monitoring"
+          "responseType": "dedicated.server.serviceMonitoring"
         }
       ],
-      "description": "List the dedicated.server.serviceMonitoring objects"
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring"
     },
     {
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}",
+      "description": "Service monitoring details",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this service monitoring",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Monitoring ID",
+              "fullType": "long",
+              "name": "monitoringId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "monitoringId",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove this service monitoring"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "monitoringId",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Monitoring ID",
+              "fullType": "long",
+              "name": "monitoringId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.serviceMonitoring",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.serviceMonitoring"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.server.serviceMonitoring",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.server.serviceMonitoring",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "monitoringId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Monitoring ID",
               "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Service monitoring details"
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email",
+      "description": "List the dedicated.server.emailAlert objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Service monitoring alert by email",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "monitoringId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Monitoring ID",
               "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Service monitoring alert by email"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a new email alert",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "language",
               "dataType": "dedicated.server.AlertLanguageEnum",
-              "paramType": "body",
+              "description": "Alert language",
               "fullType": "dedicated.server.AlertLanguageEnum",
-              "required": true,
-              "description": "Alert language"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
+              "name": "language",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Alert destination"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Alert destination",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "email",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "monitoringId",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Monitoring ID",
               "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.emailAlert",
-          "noAuthentication": false,
-          "description": "Add a new email alert"
+          "responseType": "dedicated.server.emailAlert"
         }
       ],
-      "description": "List the dedicated.server.emailAlert objects"
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email"
     },
     {
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}",
+      "description": "Service monitoring Email alert",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this Email alert monitoring",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
+              "dataType": "long",
+              "description": "Monitoring ID",
+              "fullType": "long",
               "name": "monitoringId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "required": true
             },
             {
-              "name": "alertId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Alert ID",
               "fullType": "long",
-              "required": true,
-              "description": "Alert ID"
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove this Email alert monitoring"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Monitoring ID",
+              "fullType": "long",
               "name": "monitoringId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "required": true
             },
             {
-              "name": "alertId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Alert ID",
               "fullType": "long",
-              "required": true,
-              "description": "Alert ID"
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.emailAlert",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.emailAlert"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.server.emailAlert",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.server.emailAlert",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "alertId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Alert ID"
-            },
-            {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "monitoringId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Monitoring ID",
               "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Alert ID",
+              "fullType": "long",
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Service monitoring Email alert"
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms",
+      "description": "List the dedicated.server.smsAlert objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Service monitoring alert by SMS",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "monitoringId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Monitoring ID",
               "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Service monitoring alert by SMS"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a SMS alert",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "language",
-              "dataType": "dedicated.server.AlertLanguageEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.AlertLanguageEnum",
-              "required": true,
-              "description": "Alert language"
-            },
-            {
-              "name": "smsAccount",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Your SMS account"
-            },
-            {
-              "name": "phoneNumberTo",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Alert destination"
-            },
-            {
-              "name": "toHour",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Daily hour start time for SMS notification",
               "fullType": "long",
-              "required": false,
-              "description": "Daily hour end time for SMS notification"
-            },
-            {
               "name": "fromHour",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Daily hour start time for SMS notification"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Your SMS account",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "smsAccount",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "monitoringId",
+              "dataType": "dedicated.server.AlertLanguageEnum",
+              "description": "Alert language",
+              "fullType": "dedicated.server.AlertLanguageEnum",
+              "name": "language",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Daily hour end time for SMS notification",
               "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "name": "toHour",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Alert destination",
+              "fullType": "string",
+              "name": "phoneNumberTo",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Monitoring ID",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.smsAlert",
-          "noAuthentication": false,
-          "description": "Create a SMS alert"
+          "responseType": "dedicated.server.smsAlert"
         }
       ],
-      "description": "List the dedicated.server.smsAlert objects"
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms"
     },
     {
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}",
+      "description": "Monitoring SMS alert details, This service is currently not supported for servers at BHS ",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this SMS alert",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "monitoringId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Alert ID",
               "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
-            },
-            {
               "name": "alertId",
-              "dataType": "long",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Monitoring ID",
               "fullType": "long",
-              "required": true,
-              "description": "Alert ID"
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove this SMS alert"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
+              "dataType": "long",
+              "description": "Monitoring ID",
+              "fullType": "long",
               "name": "monitoringId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "required": true
             },
             {
-              "name": "alertId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Alert ID",
               "fullType": "long",
-              "required": true,
-              "description": "Alert ID"
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.smsAlert",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.smsAlert"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.server.smsAlert",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.server.smsAlert",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Monitoring ID",
+              "fullType": "long",
               "name": "monitoringId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Monitoring ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Alert ID",
+              "fullType": "long",
               "name": "alertId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Alert ID"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Monitoring SMS alert details, This service is currently not supported for servers at BHS "
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/specifications/hardware",
+      "description": "hardware operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve hardware informations about this dedicated server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.HardwareSpecifications",
-          "noAuthentication": false,
-          "description": "Retrieve hardware informations about this dedicated server"
+          "responseType": "dedicated.server.HardwareSpecifications"
         }
       ],
-      "description": "hardware operations"
+      "path": "/dedicated/server/{serviceName}/specifications/hardware"
     },
     {
-      "path": "/dedicated/server/{serviceName}/specifications/ip",
+      "description": "ip operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve IP capabilities about this dedicated server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.IpOrderable",
-          "noAuthentication": false,
-          "description": "Retrieve IP capabilities about this dedicated server"
+          "responseType": "dedicated.server.IpOrderable"
         }
       ],
-      "description": "ip operations"
+      "path": "/dedicated/server/{serviceName}/specifications/ip"
     },
     {
-      "path": "/dedicated/server/{serviceName}/specifications/network",
+      "description": "network operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve network informations about this dedicated server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.NetworkSpecifications",
-          "noAuthentication": false,
-          "description": "Retrieve network informations about this dedicated server"
+          "responseType": "dedicated.server.NetworkSpecifications"
         }
       ],
-      "description": "network operations"
+      "path": "/dedicated/server/{serviceName}/specifications/network"
     },
     {
-      "path": "/dedicated/server/{serviceName}/spla",
+      "description": "List the dedicated.server.spla objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Your own SPLA licenses attached to this dedicated server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "status",
               "dataType": "dedicated.server.SplaStatusEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "dedicated.server.SplaStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "type",
               "dataType": "dedicated.server.SplaTypeEnum",
-              "paramType": "query",
+              "description": "Filter the value of type property (=)",
               "fullType": "dedicated.server.SplaTypeEnum",
-              "required": false,
-              "description": "Filter the value of type property (=)"
+              "name": "type",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Your own SPLA licenses attached to this dedicated server"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a new SPLA license",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "type",
-              "dataType": "dedicated.server.SplaTypeEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.SplaTypeEnum",
-              "required": true,
-              "description": "License type"
-            },
-            {
+              "dataType": "string",
+              "description": "License serial number",
+              "fullType": "string",
               "name": "serialNumber",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "License serial number"
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "dedicated.server.SplaTypeEnum",
+              "description": "License type",
+              "fullType": "dedicated.server.SplaTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long",
-          "noAuthentication": false,
-          "description": "Add a new SPLA license"
+          "responseType": "long"
         }
       ],
-      "description": "List the dedicated.server.spla objects"
+      "path": "/dedicated/server/{serviceName}/spla"
     },
     {
-      "path": "/dedicated/server/{serviceName}/spla/{id}",
+      "description": "SPLA licenses management",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.spla",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.spla"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.server.spla",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.server.spla",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "SPLA licenses management"
+      "path": "/dedicated/server/{serviceName}/spla/{id}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/spla/{id}/revoke",
+      "description": "revoke operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Revoke an SPLA license",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Revoke an SPLA license"
+          "responseType": "void"
         }
       ],
-      "description": "revoke operations"
+      "path": "/dedicated/server/{serviceName}/spla/{id}/revoke"
     },
     {
-      "path": "/dedicated/server/{serviceName}/statistics",
+      "description": "Servers statistics sent by RTM (Real Time Monitoring)",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Rtm",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.Rtm"
         }
       ],
-      "description": "Servers statistics sent by RTM (Real Time Monitoring)"
+      "path": "/dedicated/server/{serviceName}/statistics"
     },
     {
-      "path": "/dedicated/server/{serviceName}/statistics/chart",
+      "description": "chart operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve RTM graph values",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "period",
-              "dataType": "dedicated.server.RtmChartPeriodEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.RtmChartPeriodEnum",
-              "required": true,
-              "description": "chart period"
-            },
-            {
-              "name": "type",
               "dataType": "dedicated.server.RtmChartTypeEnum",
-              "paramType": "query",
+              "description": "RTM chart type",
               "fullType": "dedicated.server.RtmChartTypeEnum",
-              "required": true,
-              "description": "RTM chart type"
-            }
-          ],
-          "responseType": "complexType.ChartReturn",
-          "noAuthentication": false,
-          "description": "Retrieve RTM graph values"
-        }
-      ],
-      "description": "chart operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/connection",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.RtmConnection[]",
-          "noAuthentication": false,
-          "description": "Get server opened connections"
-        }
-      ],
-      "description": "connection operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/cpu",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.RtmCpu",
-          "noAuthentication": false,
-          "description": "Get server cpu informations"
-        }
-      ],
-      "description": "cpu operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/disk",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Server disks"
-        }
-      ],
-      "description": "List the dedicated.server.RtmDisk objects"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/disk/{disk}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "disk",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Disk"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.RtmDisk",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Server disks informations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/disk/{disk}/smart",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "disk",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Disk"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.RtmDiskSmart",
-          "noAuthentication": false,
-          "description": "Get disk smart informations"
-        }
-      ],
-      "description": "smart operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/load",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.RtmLoad",
-          "noAuthentication": false,
-          "description": "Get server load"
-        }
-      ],
-      "description": "load operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/memory",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.RtmMemory[]",
-          "noAuthentication": false,
-          "description": "Get server memory informations"
-        }
-      ],
-      "description": "memory operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/motherboard",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.RtmMotherboardHw",
-          "noAuthentication": false,
-          "description": "Get server motherboard hardware informations"
-        }
-      ],
-      "description": "motherboard operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/os",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.RtmOs",
-          "noAuthentication": false,
-          "description": "Get server os informations"
-        }
-      ],
-      "description": "os operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/partition",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Server partitions"
-        }
-      ],
-      "description": "List the dedicated.server.RtmPartition objects"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "partition",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Partition"
-            }
-          ],
-          "responseType": "dedicated.server.RtmPartition",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Server partitions informations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}/chart",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "partition",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Partition"
-            },
-            {
-              "name": "period",
-              "dataType": "dedicated.server.RtmChartPeriodEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.RtmChartPeriodEnum",
-              "required": true,
-              "description": "chart period"
-            }
-          ],
-          "responseType": "complexType.ChartReturn",
-          "noAuthentication": false,
-          "description": "Retrieve partition charts"
-        }
-      ],
-      "description": "chart operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/pci",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.RtmPci[]",
-          "noAuthentication": false,
-          "description": "Get server PCI devices informations"
-        }
-      ],
-      "description": "pci operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/process",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.RtmCommandSize[]",
-          "noAuthentication": false,
-          "description": "Get server process"
-        }
-      ],
-      "description": "process operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/raid",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Server raid informations"
-        }
-      ],
-      "description": "List the dedicated.server.RtmRaid objects"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "unit",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Unit"
-            }
-          ],
-          "responseType": "dedicated.server.RtmRaid",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Server raid informations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "unit",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Unit"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Raid unit volumes"
-        }
-      ],
-      "description": "List the dedicated.server.RtmRaidVolume objects"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "unit",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Unit"
-            },
-            {
-              "name": "volume",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Volume"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.server.RtmRaidVolume",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Server raid volume information"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "unit",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Unit"
-            },
-            {
-              "name": "volume",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Volume"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Raid unit volume ports"
-        }
-      ],
-      "description": "List the dedicated.server.RtmRaidVolumePort objects"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "port",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Port"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "unit",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Unit"
-            },
-            {
-              "name": "volume",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Volume"
-            }
-          ],
-          "responseType": "dedicated.server.RtmRaidVolumePort",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Server raid volume port informations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/support/replace/cooling",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "comment",
-              "dataType": "text",
-              "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "User comment"
-            },
-            {
-              "name": "details",
-              "dataType": "text",
-              "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "Technical details or logs"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "support.NewMessageInfo",
-          "noAuthentication": false,
-          "description": "Ask for a cooling module replacement"
-        }
-      ],
-      "description": "cooling operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/support/replace/hardDiskDrive",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "inverse",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "If set to 'true', replace only NON LISTED DISKS"
-            },
-            {
-              "name": "disks",
-              "dataType": "dedicated.server.SupportReplaceHddInfo[]",
-              "paramType": "body",
-              "fullType": "dedicated.server.SupportReplaceHddInfo[]",
-              "required": true,
-              "description": "If 'inverse' is set as 'false', the list of HDD TO REPLACE. If 'inverse' is set as 'true', the list of HDD TO NOT REPLACE."
-            },
-            {
-              "name": "comment",
-              "dataType": "text",
-              "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "User comment"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "support.NewMessageInfo",
-          "noAuthentication": false,
-          "description": "Ask for a broken HDD replacement"
-        }
-      ],
-      "description": "hardDiskDrive operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/support/replace/memory",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "slots",
-              "dataType": "string[]",
-              "paramType": "body",
-              "fullType": "string[]",
-              "required": false,
-              "description": "The list of faulty RAM slots (if you have the information)"
-            },
-            {
-              "name": "details",
-              "dataType": "text",
-              "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "Technical details or logs"
-            },
-            {
-              "name": "comment",
-              "dataType": "text",
-              "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "User comment"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "support.NewMessageInfo",
-          "noAuthentication": false,
-          "description": "Ask for a faulty RAM module replacement"
-        }
-      ],
-      "description": "memory operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/task",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "status",
-              "dataType": "dedicated.TaskStatusEnum",
-              "paramType": "query",
-              "fullType": "dedicated.TaskStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "name": "function",
-              "dataType": "dedicated.TaskFunctionEnum",
-              "paramType": "query",
-              "fullType": "dedicated.TaskFunctionEnum",
-              "required": false,
-              "description": "Filter the value of function property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Dedicated server todos"
-        }
-      ],
-      "description": "List the dedicated.server.Task objects"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/task/{taskId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "taskId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Task ID"
-            }
-          ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Server tasks"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/task/{taskId}/cancel",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "taskId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Task ID"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "this action stop the task progression if it's possible"
-        }
-      ],
-      "description": "cancel operations"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/terminate",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
-        }
-      ],
-      "description": "Terminate your service"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/virtualMac",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Virtual MAC addresses of the server"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "virtualMachineName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Friendly name of your Virtual Machine behind this IP/MAC"
-            },
-            {
-              "name": "ipAddress",
-              "dataType": "ipv4",
-              "paramType": "body",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip address to link with this virtualMac"
-            },
-            {
               "name": "type",
-              "dataType": "dedicated.server.VmacTypeEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.VmacTypeEnum",
-              "required": true,
-              "description": "vmac address type"
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "dedicated.server.RtmChartPeriodEnum",
+              "description": "chart period",
+              "fullType": "dedicated.server.RtmChartPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Add a virtual mac to an IP address"
+          "responseType": "complexType.ChartReturn"
         }
       ],
-      "description": "List the dedicated.server.VirtualMac objects"
+      "path": "/dedicated/server/{serviceName}/statistics/chart"
     },
     {
-      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}",
+      "description": "connection operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get server opened connections",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "macAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mac address"
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.VirtualMac",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.RtmConnection[]"
         }
       ],
-      "description": "A virtual MAC address associated to one or more IPs"
+      "path": "/dedicated/server/{serviceName}/statistics/connection"
     },
     {
-      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress",
+      "description": "cpu operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get server cpu informations",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "macAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mac address"
+              "required": true
             }
           ],
-          "responseType": "ipv4[]",
-          "noAuthentication": false,
-          "description": "List of IPs associated to this Virtual MAC"
-        },
+          "responseType": "dedicated.server.RtmCpu"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/cpu"
+    },
+    {
+      "description": "List the dedicated.server.RtmDisk objects",
+      "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Server disks",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/disk"
+    },
+    {
+      "description": "Server disks informations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Disk",
+              "fullType": "string",
+              "name": "disk",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmDisk"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/disk/{disk}"
+    },
+    {
+      "description": "smart operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get disk smart informations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Disk",
+              "fullType": "string",
+              "name": "disk",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmDiskSmart"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/disk/{disk}/smart"
+    },
+    {
+      "description": "load operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get server load",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmLoad"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/load"
+    },
+    {
+      "description": "memory operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get server memory informations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmMemory[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/memory"
+    },
+    {
+      "description": "motherboard operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get server motherboard hardware informations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmMotherboardHw"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/motherboard"
+    },
+    {
+      "description": "os operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get server os informations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmOs"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/os"
+    },
+    {
+      "description": "List the dedicated.server.RtmPartition objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Server partitions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/partition"
+    },
+    {
+      "description": "Server partitions informations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Partition",
+              "fullType": "string",
+              "name": "partition",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmPartition"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}"
+    },
+    {
+      "description": "chart operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve partition charts",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Partition",
+              "fullType": "string",
+              "name": "partition",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.RtmChartPeriodEnum",
+              "description": "chart period",
+              "fullType": "dedicated.server.RtmChartPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "complexType.ChartReturn"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}/chart"
+    },
+    {
+      "description": "pci operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get server PCI devices informations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmPci[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/pci"
+    },
+    {
+      "description": "process operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get server process",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmCommandSize[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/process"
+    },
+    {
+      "description": "List the dedicated.server.RtmRaid objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Server raid informations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/raid"
+    },
+    {
+      "description": "Server raid informations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Unit",
+              "fullType": "string",
+              "name": "unit",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmRaid"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}"
+    },
+    {
+      "description": "List the dedicated.server.RtmRaidVolume objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Raid unit volumes",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Unit",
+              "fullType": "string",
+              "name": "unit",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume"
+    },
+    {
+      "description": "Server raid volume information",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Unit",
+              "fullType": "string",
+              "name": "unit",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Volume",
+              "fullType": "string",
+              "name": "volume",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmRaidVolume"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}"
+    },
+    {
+      "description": "List the dedicated.server.RtmRaidVolumePort objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Raid unit volume ports",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Volume",
+              "fullType": "string",
+              "name": "volume",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Unit",
+              "fullType": "string",
+              "name": "unit",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port"
+    },
+    {
+      "description": "Server raid volume port informations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Unit",
+              "fullType": "string",
+              "name": "unit",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Volume",
+              "fullType": "string",
+              "name": "volume",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Port",
+              "fullType": "string",
+              "name": "port",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.RtmRaidVolumePort"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}"
+    },
+    {
+      "description": "cooling operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Ask for a cooling module replacement",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "virtualMachineName",
+              "dataType": "text",
+              "description": "User comment",
+              "fullType": "text",
+              "name": "comment",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "text",
+              "description": "Technical details or logs",
+              "fullType": "text",
+              "name": "details",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Friendly name of your Virtual Machine behind this IP/MAC"
-            },
-            {
-              "name": "ipAddress",
-              "dataType": "ipv4",
-              "paramType": "body",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "IP address to link to this virtual MAC"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "macAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mac address"
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Add an IP to this Virtual MAC"
+          "responseType": "support.NewMessageInfo"
         }
       ],
-      "description": "List the dedicated.server.VirtualMacManagement objects"
+      "path": "/dedicated/server/{serviceName}/support/replace/cooling"
     },
     {
-      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "macAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mac address"
-            },
-            {
-              "name": "ipAddress",
-              "dataType": "ipv4",
-              "paramType": "path",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip address"
-            }
-          ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "macAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mac address"
-            },
-            {
-              "name": "ipAddress",
-              "dataType": "ipv4",
-              "paramType": "path",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip address"
-            }
-          ],
-          "responseType": "dedicated.server.VirtualMacManagement",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": " ip address linked with this virtual mac address"
-    },
-    {
-      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface",
+      "description": "hardDiskDrive operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "GET",
+          "description": "Ask for a broken HDD replacement",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "dedicated.server.SupportReplaceHddInfo[]",
+              "description": "If 'inverse' is set as 'false', the list of HDD TO REPLACE. If 'inverse' is set as 'true', the list of HDD TO NOT REPLACE.",
+              "fullType": "dedicated.server.SupportReplaceHddInfo[]",
+              "name": "disks",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "enabled",
               "dataType": "boolean",
-              "paramType": "query",
+              "description": "If set to 'true', replace only NON LISTED DISKS",
               "fullType": "boolean",
-              "required": false,
-              "description": "Filter the value of enabled property (=)"
+              "name": "inverse",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "name",
+              "dataType": "text",
+              "description": "User comment",
+              "fullType": "text",
+              "name": "comment",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "query",
+              "description": "Service name",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of name property (=)"
-            },
-            {
-              "name": "vrack",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of vrack property (=)"
-            },
-            {
-              "name": "mode",
-              "dataType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
-              "paramType": "query",
-              "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
-              "required": false,
-              "description": "Filter the value of mode property (=)"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "uuid[]",
-          "noAuthentication": false,
-          "description": "List server VirtualNetworkInterfaces"
+          "responseType": "support.NewMessageInfo"
         }
       ],
-      "description": "List the dedicated.virtualNetworkInterface.VirtualNetworkInterface objects"
+      "path": "/dedicated/server/{serviceName}/support/replace/hardDiskDrive"
     },
     {
-      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}",
+      "description": "memory operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "GET",
+          "description": "Ask for a faulty RAM module replacement",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "text",
+              "description": "Technical details or logs",
+              "fullType": "text",
+              "name": "details",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "uuid",
-              "dataType": "uuid",
+              "dataType": "text",
+              "description": "User comment",
+              "fullType": "text",
+              "name": "comment",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string[]",
+              "description": "The list of faulty RAM slots (if you have the information)",
+              "fullType": "string[]",
+              "name": "slots",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Uuid"
+              "required": true
             }
           ],
-          "responseType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface",
+          "responseType": "support.NewMessageInfo"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/support/replace/memory"
+    },
+    {
+      "description": "List the dedicated.server.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Dedicated server todos",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "dedicated.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.TaskFunctionEnum",
+              "description": "Filter the value of function property (=)",
+              "fullType": "dedicated.TaskFunctionEnum",
+              "name": "function",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/task"
+    },
+    {
+      "description": "Server tasks",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Task ID",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/task/{taskId}"
+    },
+    {
+      "description": "cancel operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "this action stop the task progression if it's possible",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Task ID",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/task/{taskId}/cancel"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/terminate"
+    },
+    {
+      "description": "List the dedicated.server.VirtualMac objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Virtual MAC addresses of the server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a virtual mac to an IP address",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip address to link with this virtualMac",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.VmacTypeEnum",
+              "description": "vmac address type",
+              "fullType": "dedicated.server.VmacTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Friendly name of your Virtual Machine behind this IP/MAC",
+              "fullType": "string",
+              "name": "virtualMachineName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/virtualMac"
+    },
+    {
+      "description": "A virtual MAC address associated to one or more IPs",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mac address",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.VirtualMac"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}"
+    },
+    {
+      "description": "List the dedicated.server.VirtualMacManagement objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of IPs associated to this Virtual MAC",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mac address",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipv4[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add an IP to this Virtual MAC",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "IP address to link to this virtual MAC",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Friendly name of your Virtual Machine behind this IP/MAC",
+              "fullType": "string",
+              "name": "virtualMachineName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mac address",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress"
+    },
+    {
+      "description": " ip address linked with this virtual mac address",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip address",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mac address",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mac address",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip address",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.VirtualMacManagement"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}"
+    },
+    {
+      "description": "List the dedicated.virtualNetworkInterface.VirtualNetworkInterface objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List server VirtualNetworkInterfaces",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of name property (=)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
+              "description": "Filter the value of mode property (=)",
+              "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
+              "name": "mode",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of vrack property (=)",
+              "fullType": "string",
+              "name": "vrack",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Filter the value of enabled property (=)",
+              "fullType": "boolean",
+              "name": "enabled",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "uuid[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface"
+    },
+    {
+      "description": "Your VirtualNetworkInterface",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Uuid",
+              "fullType": "uuid",
+              "name": "uuid",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "uuid",
-              "dataType": "uuid",
-              "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Uuid"
-            },
-            {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Uuid",
+              "fullType": "uuid",
+              "name": "uuid",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Your VirtualNetworkInterface"
+      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/disable",
+      "description": "disable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Disable this VirtualNetworkInterface",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "uuid",
-              "dataType": "uuid",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Uuid"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "uuid",
+              "description": "Uuid",
+              "fullType": "uuid",
+              "name": "uuid",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Disable this VirtualNetworkInterface"
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "disable operations"
+      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/disable"
     },
     {
-      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/enable",
+      "description": "enable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Enable this VirtualNetworkInterface",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "uuid",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Uuid",
               "fullType": "uuid",
-              "required": true,
-              "description": "Uuid"
+              "name": "uuid",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Enable this VirtualNetworkInterface"
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "enable operations"
+      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/enable"
     },
     {
-      "path": "/dedicated/server/{serviceName}/vrack",
+      "description": "List the vrack.dedicatedServer objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Server Vracks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Server Vracks"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the vrack.dedicatedServer objects"
+      "path": "/dedicated/server/{serviceName}/vrack"
     },
     {
-      "path": "/dedicated/server/{serviceName}/vrack/{vrack}",
+      "description": "vrack dedicated server interfaces",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "remove this server from this vrack",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "vrack",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Vrack",
               "fullType": "string",
-              "required": true,
-              "description": "Vrack"
+              "name": "vrack",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vrack.Task",
-          "noAuthentication": false,
-          "description": "remove this server from this vrack"
+          "responseType": "vrack.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "vrack",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Vrack",
               "fullType": "string",
-              "required": true,
-              "description": "Vrack"
+              "name": "vrack",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vrack.dedicatedServer",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vrack.dedicatedServer"
         }
       ],
-      "description": "vrack dedicated server interfaces"
+      "path": "/dedicated/server/{serviceName}/vrack/{vrack}"
     },
     {
-      "path": "/dedicated/server/{serviceName}/vrack/{vrack}/mrtg",
+      "description": "mrtg operations",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2018-04-23T00:00:00+01:00",
             "deprecatedDate": "2017-10-23T00:00:00+01:00",
-            "replacement": "/dedicated/server/{serviceName}/networkInterfaceController"
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicated/server/{serviceName}/networkInterfaceController",
+            "value": "DEPRECATED"
           },
+          "description": "Retrieve vrack traffic graph values",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Vrack",
+              "fullType": "string",
               "name": "vrack",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Vrack"
+              "required": true
             },
             {
-              "name": "period",
-              "dataType": "dedicated.server.MrtgPeriodEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.MrtgPeriodEnum",
-              "required": true,
-              "description": "mrtg period"
-            },
-            {
-              "name": "type",
               "dataType": "dedicated.server.MrtgTypeEnum",
-              "paramType": "query",
+              "description": "mrtg type",
               "fullType": "dedicated.server.MrtgTypeEnum",
-              "required": true,
-              "description": "mrtg type"
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.MrtgPeriodEnum",
+              "description": "mrtg period",
+              "fullType": "dedicated.server.MrtgPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.MrtgTimestampValue[]",
-          "noAuthentication": false,
-          "description": "Retrieve vrack traffic graph values"
+          "responseType": "dedicated.server.MrtgTimestampValue[]"
         }
       ],
-      "description": "mrtg operations"
+      "path": "/dedicated/server/{serviceName}/vrack/{vrack}/mrtg"
     }
   ],
-  "resourcePath": "/dedicated/server",
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "complexType.ChartReturn": {
+      "description": "Chart",
       "id": "ChartReturn",
       "namespace": "complexType",
-      "description": "Chart",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "values": {
-          "type": "complexType.ChartTimestampValue[]",
-          "fullType": "complexType.ChartTimestampValue[]",
           "canBeNull": true,
+          "fullType": "complexType.ChartTimestampValue[]",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "complexType.ChartTimestampValue[]"
         }
       }
     },
     "complexType.ChartTimestampValue": {
+      "description": "A timestamp associated to a value",
       "id": "ChartTimestampValue",
       "namespace": "complexType",
-      "description": "A timestamp associated to a value",
       "properties": {
         "timestamp": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
+          "fullType": "double",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "double"
         }
       }
     },
     "complexType.SafeKeyValue<T>": {
-      "id": "SafeKeyValue",
-      "namespace": "complexType",
       "description": "Key and value, with proper key strings",
       "generics": [
         "T"
       ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
       "properties": {
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "complexType.UnitAndValue<T>": {
-      "id": "UnitAndValue",
-      "namespace": "complexType",
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "dedicated.Availabilities": {
+      "description": "A structure describing the availabilities of dedicated server",
       "id": "Availabilities",
       "namespace": "dedicated",
-      "description": "A structure describing the availabilities of dedicated server",
       "properties": {
         "datacenters": {
-          "type": "dedicated.AvailabilityDatacenter[]",
-          "fullType": "dedicated.AvailabilityDatacenter[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The hardware availability for each datacenter which composed a region",
-          "required": true
+          "fullType": "dedicated.AvailabilityDatacenter[]",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.AvailabilityDatacenter[]"
         },
         "hardware": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the hardware",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "region": {
-          "type": "dedicated.AvailabilityRegionEnum",
-          "fullType": "dedicated.AvailabilityRegionEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Region where is located the hardware",
-          "required": false
+          "fullType": "dedicated.AvailabilityRegionEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.AvailabilityRegionEnum"
         }
       }
     },
     "dedicated.AvailabilitiesRaw": {
+      "description": "A structure describing the availabilities of dedicated server",
       "id": "AvailabilitiesRaw",
       "namespace": "dedicated",
-      "description": "A structure describing the availabilities of dedicated server",
       "properties": {
         "availability": {
-          "type": "dedicated.AvailabilityEnum",
-          "fullType": "dedicated.AvailabilityEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The availability",
-          "required": true
+          "fullType": "dedicated.AvailabilityEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.AvailabilityEnum"
         },
         "available": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Real stock in database",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "incomingDatacenter": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Stock in datacenter",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lastRule": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Last availability rule applied",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ordered": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ordered count",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "orderedCheck": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Validating order count",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "parentAvailable": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Blockbuster stock count",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "reference": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Product reference",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "trueAvailable": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Real stock (considering order in validating)",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "trueAvailable24H": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "24H count",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "trueAvailable4H": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "4H count",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "zone": {
-          "type": "dedicated.AvailabilityRegionEnum",
-          "fullType": "dedicated.AvailabilityRegionEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Region where is located the product",
-          "required": true
+          "fullType": "dedicated.AvailabilityRegionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.AvailabilityRegionEnum"
         }
       }
     },
     "dedicated.AvailabilityDatacenter": {
+      "description": "A structure describing the hardware availability for each datacenter",
       "id": "AvailabilityDatacenter",
       "namespace": "dedicated",
-      "description": "A structure describing the hardware availability for each datacenter",
       "properties": {
         "availability": {
-          "type": "dedicated.AvailabilityEnum",
-          "fullType": "dedicated.AvailabilityEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Availability status",
-          "required": true
+          "fullType": "dedicated.AvailabilityEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.AvailabilityEnum"
         },
         "datacenter": {
-          "type": "dedicated.AvailabilityDatacenterEnum",
-          "fullType": "dedicated.AvailabilityDatacenterEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Datacenter code",
-          "required": true
+          "fullType": "dedicated.AvailabilityDatacenterEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.AvailabilityDatacenterEnum"
         }
       }
     },
     "dedicated.AvailabilityDatacenterEnum": {
-      "id": "AvailabilityDatacenterEnum",
-      "namespace": "dedicated",
       "description": "The datacenter",
       "enum": [
         "bhs",
@@ -5768,11 +5767,11 @@ export const schema: Schema = {
         "vin",
         "waw"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AvailabilityDatacenterEnum",
+      "namespace": "dedicated"
     },
     "dedicated.AvailabilityEnum": {
-      "id": "AvailabilityEnum",
-      "namespace": "dedicated",
       "description": "The availability",
       "enum": [
         "1H-high",
@@ -5783,66 +5782,66 @@ export const schema: Schema = {
         "unavailable",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AvailabilityEnum",
+      "namespace": "dedicated"
     },
     "dedicated.AvailabilityRegionEnum": {
-      "id": "AvailabilityRegionEnum",
-      "namespace": "dedicated",
       "description": "The region",
       "enum": [
         "europe",
         "northAmerica"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AvailabilityRegionEnum",
+      "namespace": "dedicated"
     },
     "dedicated.BinaryFirewall": {
+      "description": "Get list of compatible firewall binaries",
       "id": "BinaryFirewall",
       "namespace": "dedicated",
-      "description": "Get list of compatible firewall binaries",
       "properties": {
         "asa": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of compatible asa binaries names",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "asdm": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of compatible asdm binaries names",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "type": {
-          "type": "dedicated.ProfileFirewallEnum",
-          "fullType": "dedicated.ProfileFirewallEnum",
           "canBeNull": false,
+          "fullType": "dedicated.ProfileFirewallEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "dedicated.ProfileFirewallEnum"
         }
       }
     },
     "dedicated.BinaryFirewallLink": {
+      "description": "Get temporary URL link to download binary",
       "id": "BinaryFirewallLink",
       "namespace": "dedicated",
-      "description": "Get temporary URL link to download binary",
       "properties": {
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Temporary URL to download binary",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.CheckSumTypesEnum": {
-      "id": "CheckSumTypesEnum",
-      "namespace": "dedicated",
       "description": "CheckSum type",
       "enum": [
         "md5",
@@ -5850,66 +5849,66 @@ export const schema: Schema = {
         "sha256",
         "sha512"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CheckSumTypesEnum",
+      "namespace": "dedicated"
     },
     "dedicated.DatacenterAvailability": {
+      "description": "A structure describing the availabilities of dedicated server",
       "id": "DatacenterAvailability",
       "namespace": "dedicated",
-      "description": "A structure describing the availabilities of dedicated server",
       "properties": {
         "datacenters": {
-          "type": "dedicated.AvailabilityDatacenter[]",
-          "fullType": "dedicated.AvailabilityDatacenter[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The hardware availability for each datacenter",
-          "required": true
+          "fullType": "dedicated.AvailabilityDatacenter[]",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.AvailabilityDatacenter[]"
         },
         "fqn": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Fully qualified and unique name of the hardware",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "memory": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the memory hardware part",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Plan code in which the hardware is involved",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "server": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the base hardware",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "storage": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the storage hardware part",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.DatacenterEnum": {
-      "id": "DatacenterEnum",
-      "namespace": "dedicated",
       "description": "ovh datacenter",
       "enum": [
         "bhs1",
@@ -5945,21 +5944,21 @@ export const schema: Schema = {
         "vin1",
         "waw1"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DatacenterEnum",
+      "namespace": "dedicated"
     },
     "dedicated.ImageTypesEnum": {
-      "id": "ImageTypesEnum",
-      "namespace": "dedicated",
       "description": "Type of your image",
       "enum": [
         "qcow2",
         "raw"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ImageTypesEnum",
+      "namespace": "dedicated"
     },
     "dedicated.OsAvailabilitiesEnum": {
-      "id": "OsAvailabilitiesEnum",
-      "namespace": "dedicated",
       "description": "Operating system name",
       "enum": [
         "archlinux-installer_64",
@@ -6058,22 +6057,22 @@ export const schema: Schema = {
         "win81-pro-sysprep_64",
         "xenserver6_64"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OsAvailabilitiesEnum",
+      "namespace": "dedicated"
     },
     "dedicated.ProfileFirewallEnum": {
-      "id": "ProfileFirewallEnum",
-      "namespace": "dedicated",
       "description": "profile firewall asa",
       "enum": [
         "cisco.asa5505",
         "cisco.asa5510",
         "cisco.asa5520"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProfileFirewallEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TaskFunctionEnum": {
-      "id": "TaskFunctionEnum",
-      "namespace": "dedicated",
       "description": "different task operation",
       "enum": [
         "INFRA_002_VirtualNetworkInterface",
@@ -6112,11 +6111,11 @@ export const schema: Schema = {
         "virtualMacAdd",
         "virtualMacDelete"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskFunctionEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "dedicated",
       "description": "different task status",
       "enum": [
         "cancelled",
@@ -6127,80 +6126,80 @@ export const schema: Schema = {
         "ovhError",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "dedicated"
     },
     "dedicated.biosSettings.BiosSettings": {
+      "description": "Your BiosSettings",
       "id": "BiosSettings",
       "namespace": "dedicated.biosSettings",
-      "description": "Your BiosSettings",
       "properties": {
         "supportedSettings": {
-          "type": "dedicated.server.BiosSettingsSupport",
-          "fullType": "dedicated.server.BiosSettingsSupport",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List supported setting",
-          "required": true
+          "fullType": "dedicated.server.BiosSettingsSupport",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.BiosSettingsSupport"
         }
       }
     },
     "dedicated.biosSettingsSgx.BiosSettingsSgx": {
+      "description": "Your BiosSettings for SGX feature",
       "id": "BiosSettingsSgx",
       "namespace": "dedicated.biosSettingsSgx",
-      "description": "Your BiosSettings for SGX feature",
       "properties": {
         "prmrr": {
-          "type": "dedicated.server.BiosSettingsSgxPrmrrEnum",
-          "fullType": "dedicated.server.BiosSettingsSgxPrmrrEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Settings sections",
-          "required": true
+          "fullType": "dedicated.server.BiosSettingsSgxPrmrrEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.BiosSettingsSgxPrmrrEnum"
         },
         "status": {
-          "type": "dedicated.server.BiosSettingsSgxStatusEnum",
-          "fullType": "dedicated.server.BiosSettingsSgxStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Settings sections",
-          "required": true
+          "fullType": "dedicated.server.BiosSettingsSgxStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.BiosSettingsSgxStatusEnum"
         }
       }
     },
     "dedicated.networkInterfaceController.NetworkInterfaceController": {
+      "description": "Your networkInterfaceController",
       "id": "NetworkInterfaceController",
       "namespace": "dedicated.networkInterfaceController",
-      "description": "Your networkInterfaceController",
       "properties": {
         "linkType": {
-          "type": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
-          "fullType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "NetworkInterfaceController linkType",
-          "required": true
+          "fullType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum"
         },
         "mac": {
-          "type": "macAddress",
-          "fullType": "macAddress",
           "canBeNull": false,
-          "readOnly": true,
           "description": "NetworkInterfaceController mac",
-          "required": true
+          "fullType": "macAddress",
+          "readOnly": true,
+          "required": true,
+          "type": "macAddress"
         },
         "virtualNetworkInterface": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": true,
-          "readOnly": true,
           "description": "VirtualNetworkInterface bound to this NetworkInterfaceController",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         }
       }
     },
     "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum": {
-      "id": "NetworkInterfaceControllerLinkTypeEnum",
-      "namespace": "dedicated.networkInterfaceController",
       "description": "List NetworkInterfaceController linktype",
       "enum": [
         "isolated",
@@ -6209,50 +6208,50 @@ export const schema: Schema = {
         "provisioning",
         "public"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "NetworkInterfaceControllerLinkTypeEnum",
+      "namespace": "dedicated.networkInterfaceController"
     },
     "dedicated.server.Access": {
+      "description": "A structure describing the server's access",
       "id": "Access",
       "namespace": "dedicated.server",
-      "description": "A structure describing the server's access",
       "properties": {
         "password": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Password",
-          "required": true
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
         },
         "type": {
-          "type": "dedicated.server.AccessTypeEnum",
-          "fullType": "dedicated.server.AccessTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Application access type",
-          "required": true
+          "fullType": "dedicated.server.AccessTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.AccessTypeEnum"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Url",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "user": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Login",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.AccessTypeEnum": {
-      "id": "AccessTypeEnum",
-      "namespace": "dedicated.server",
       "description": "Application access type",
       "enum": [
         "DIRECTADMIN_PANEL",
@@ -6263,11 +6262,11 @@ export const schema: Schema = {
         "SSH",
         "WEB_PANEL"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AccessTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.AlertLanguageEnum": {
-      "id": "AlertLanguageEnum",
-      "namespace": "dedicated.server",
       "description": "Monitoring alert language",
       "enum": [
         "cz",
@@ -6282,152 +6281,152 @@ export const schema: Schema = {
         "pl",
         "pt"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AlertLanguageEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BackupCloud": {
+      "description": "Backup Cloud assigned to this server",
       "id": "BackupCloud",
       "namespace": "dedicated.server",
-      "description": "Backup Cloud assigned to this server",
       "properties": {
         "agreements": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Agreement ids waiting for validation",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "archive": {
-          "type": "dedicated.server.backup.BackupContainer",
-          "fullType": "dedicated.server.backup.BackupContainer",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Archive space info.",
-          "required": false
+          "fullType": "dedicated.server.backup.BackupContainer",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.backup.BackupContainer"
         },
         "status": {
-          "type": "dedicated.server.backup.BackupStatus",
-          "fullType": "dedicated.server.backup.BackupStatus",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the container.",
-          "required": true
+          "fullType": "dedicated.server.backup.BackupStatus",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.backup.BackupStatus"
         },
         "storage": {
-          "type": "dedicated.server.backup.BackupContainer",
-          "fullType": "dedicated.server.backup.BackupContainer",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Storage space info.",
-          "required": false
+          "fullType": "dedicated.server.backup.BackupContainer",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.backup.BackupContainer"
         }
       }
     },
     "dedicated.server.BackupFtp": {
+      "description": "Backup Ftp assigned to this server",
       "id": "BackupFtp",
       "namespace": "dedicated.server",
-      "description": "Backup Ftp assigned to this server",
       "properties": {
         "ftpBackupName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The backup FTP server name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "quota": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The disk space available in gigabytes",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "readOnlyDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "If not-null, gives the date since when your account was set in read-only mode because the quota was exceeded",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "type": {
-          "type": "dedicated.server.BackupStorageTypeEnum",
-          "fullType": "dedicated.server.BackupStorageTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The backup FTP type",
-          "required": true
+          "fullType": "dedicated.server.BackupStorageTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.BackupStorageTypeEnum"
         },
         "usage": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The disk space currently used on your backup FTP in percent",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         }
       }
     },
     "dedicated.server.BackupFtpAcl": {
+      "description": "Backup Ftp ACL for this server and Backup Ftp",
       "id": "BackupFtpAcl",
       "namespace": "dedicated.server",
-      "description": "Backup Ftp ACL for this server and Backup Ftp",
       "properties": {
         "cifs": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Wether to allow the CIFS (SMB) protocol for this ACL",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "ftp": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Wether to allow the FTP protocol for this ACL",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "ipBlock": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The IP Block specific to this ACL",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         },
         "isApplied": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Whether the rule has been applied on the Backup Ftp",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the last object modification",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "nfs": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Wether to allow the NFS protocol for this ACL",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "dedicated.server.BackupStorageCapacityEnum": {
-      "id": "BackupStorageCapacityEnum",
-      "namespace": "dedicated.server",
       "description": "Different backup storage capacity in gigabytes",
       "enum": [
         "1000",
@@ -6435,133 +6434,133 @@ export const schema: Schema = {
         "500",
         "5000"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "BackupStorageCapacityEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BackupStorageOrderable": {
+      "description": "A structure describing informations storage backup orderable for this dedicated server",
       "id": "BackupStorageOrderable",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations storage backup orderable for this dedicated server",
       "properties": {
         "capacities": {
-          "type": "dedicated.server.BackupStorageCapacityEnum[]",
-          "fullType": "dedicated.server.BackupStorageCapacityEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Backup storage orderable capacities in gigabytes",
-          "required": false
+          "fullType": "dedicated.server.BackupStorageCapacityEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.BackupStorageCapacityEnum[]"
         },
         "orderable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is a backup storage is orderable for this server",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "dedicated.server.BackupStorageTypeEnum": {
-      "id": "BackupStorageTypeEnum",
-      "namespace": "dedicated.server",
       "description": "Different backup storage type",
       "enum": [
         "included",
         "storage"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BackupStorageTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BandwidthDetails": {
+      "description": "A structure describing bandwidth informations about this dedicated server",
       "id": "BandwidthDetails",
       "namespace": "dedicated.server",
-      "description": "A structure describing bandwidth informations about this dedicated server",
       "properties": {
         "InternetToOvh": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "bandwidth limitation Internet to OVH",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "OvhToInternet": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "bandwidth limitation OVH to Internet",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "OvhToOvh": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "bandwidth limitation OVH to OVH",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "type": {
-          "type": "dedicated.server.BandwidthTypeEnum",
-          "fullType": "dedicated.server.BandwidthTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "bandwidth offer type",
-          "required": false
+          "fullType": "dedicated.server.BandwidthTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.BandwidthTypeEnum"
         }
       }
     },
     "dedicated.server.BandwidthOrderEnum": {
-      "id": "BandwidthOrderEnum",
-      "namespace": "dedicated.server",
       "description": " Different Bandwidth orderable in Mbps",
       "enum": [
         "1000",
         "2000",
         "3000"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "BandwidthOrderEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BandwidthOrderable": {
+      "description": "A structure describing informations bandwidth orderable for this dedicated server",
       "id": "BandwidthOrderable",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations bandwidth orderable for this dedicated server",
       "properties": {
         "orderable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is bandwidth orderable for this server",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "platinum": {
-          "type": "dedicated.server.BandwidthOrderEnum[]",
-          "fullType": "dedicated.server.BandwidthOrderEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Bandwidth \"platinum\" orderable in mbps",
-          "required": false
+          "fullType": "dedicated.server.BandwidthOrderEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.BandwidthOrderEnum[]"
         },
         "premium": {
-          "type": "dedicated.server.BandwidthOrderEnum[]",
-          "fullType": "dedicated.server.BandwidthOrderEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Bandwidth \"premium\" orderable in mbps",
-          "required": false
+          "fullType": "dedicated.server.BandwidthOrderEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.BandwidthOrderEnum[]"
         },
         "ultimate": {
-          "type": "dedicated.server.BandwidthOrderEnum[]",
-          "fullType": "dedicated.server.BandwidthOrderEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Bandwidth \"ultimate\" orderable in mbps",
-          "required": false
+          "fullType": "dedicated.server.BandwidthOrderEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.BandwidthOrderEnum[]"
         }
       }
     },
     "dedicated.server.BandwidthTypeEnum": {
-      "id": "BandwidthTypeEnum",
-      "namespace": "dedicated.server",
       "description": " Different Bandwidth type",
       "enum": [
         "included",
@@ -6570,77 +6569,77 @@ export const schema: Schema = {
         "standard",
         "ultimate"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BandwidthTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BandwidthvRackDetails": {
+      "description": "A structure describing vRack bandwidth informations about this dedicated server",
       "id": "BandwidthvRackDetails",
       "namespace": "dedicated.server",
-      "description": "A structure describing vRack bandwidth informations about this dedicated server",
       "properties": {
         "bandwidth": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "vrack bandwidth limitation",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "type": {
-          "type": "dedicated.server.BandwidthvRackTypeEnum",
-          "fullType": "dedicated.server.BandwidthvRackTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "bandwidth offer type",
-          "required": false
+          "fullType": "dedicated.server.BandwidthvRackTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.BandwidthvRackTypeEnum"
         }
       }
     },
     "dedicated.server.BandwidthvRackOrderEnum": {
-      "id": "BandwidthvRackOrderEnum",
-      "namespace": "dedicated.server",
       "description": " Different vRack Bandwidth orderable in Mbps",
       "enum": [
         "1000",
         "3000"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "BandwidthvRackOrderEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BandwidthvRackOrderable": {
+      "description": "A structure describing informations bandwidth orderable for this dedicated server",
       "id": "BandwidthvRackOrderable",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations bandwidth orderable for this dedicated server",
       "properties": {
         "orderable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is bandwidth orderable for this server",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "vrack": {
-          "type": "dedicated.server.BandwidthvRackOrderEnum[]",
-          "fullType": "dedicated.server.BandwidthvRackOrderEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "vRack Bandwidth orderable in mbps",
-          "required": false
+          "fullType": "dedicated.server.BandwidthvRackOrderEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.BandwidthvRackOrderEnum[]"
         }
       }
     },
     "dedicated.server.BandwidthvRackTypeEnum": {
-      "id": "BandwidthvRackTypeEnum",
-      "namespace": "dedicated.server",
       "description": " Different Bandwidth type",
       "enum": [
         "included",
         "standard"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BandwidthvRackTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BiosSettingsSgxPrmrrEnum": {
-      "id": "BiosSettingsSgxPrmrrEnum",
-      "namespace": "dedicated.server",
       "description": "SGX PRMRR value enum",
       "enum": [
         "128",
@@ -6648,79 +6647,79 @@ export const schema: Schema = {
         "32",
         "64"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BiosSettingsSgxPrmrrEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BiosSettingsSgxStatusEnum": {
-      "id": "BiosSettingsSgxStatusEnum",
-      "namespace": "dedicated.server",
       "description": "SGX Status enum",
       "enum": [
         "disabled",
         "enabled",
         "software controlled"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BiosSettingsSgxStatusEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BiosSettingsSupport": {
+      "description": "A structure describing supported bios settings",
       "id": "BiosSettingsSupport",
       "namespace": "dedicated.server",
-      "description": "A structure describing supported bios settings",
       "properties": {
         "sgx": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SGX feature support",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "sgxOptions": {
-          "type": "dedicated.server.BiosSettingsSupportSgxOptions",
-          "fullType": "dedicated.server.BiosSettingsSupportSgxOptions",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Supported SGX options",
-          "required": true
+          "fullType": "dedicated.server.BiosSettingsSupportSgxOptions",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.BiosSettingsSupportSgxOptions"
         }
       }
     },
     "dedicated.server.BiosSettingsSupportSgxOptions": {
+      "description": "A structure describing supported SGX options values",
       "id": "BiosSettingsSupportSgxOptions",
       "namespace": "dedicated.server",
-      "description": "A structure describing supported SGX options values",
       "properties": {
         "prmrr": {
-          "type": "dedicated.server.BiosSettingsSgxPrmrrEnum[]",
-          "fullType": "dedicated.server.BiosSettingsSgxPrmrrEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Supported SGX prmrr values",
-          "required": true
+          "fullType": "dedicated.server.BiosSettingsSgxPrmrrEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.BiosSettingsSgxPrmrrEnum[]"
         },
         "status": {
-          "type": "dedicated.server.BiosSettingsSgxStatusEnum[]",
-          "fullType": "dedicated.server.BiosSettingsSgxStatusEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Supported SGX statuses",
-          "required": true
+          "fullType": "dedicated.server.BiosSettingsSgxStatusEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.BiosSettingsSgxStatusEnum[]"
         }
       }
     },
     "dedicated.server.BootModeEnum": {
-      "id": "BootModeEnum",
-      "namespace": "dedicated.server",
       "description": "Server boot mode",
       "enum": [
         "legacy",
         "uefi",
         "uefi-legacy"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BootModeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BootOptionEnum": {
-      "id": "BootOptionEnum",
-      "namespace": "dedicated.server",
       "description": "Different option activated on netboot ",
       "enum": [
         "cpufamily",
@@ -6728,11 +6727,11 @@ export const schema: Schema = {
         "ipv6",
         "smp"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BootOptionEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BootTypeEnum": {
-      "id": "BootTypeEnum",
-      "namespace": "dedicated.server",
       "description": " Different netboot boot",
       "enum": [
         "harddisk",
@@ -6741,72 +6740,72 @@ export const schema: Schema = {
         "network",
         "rescue"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BootTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.BurstStatusEnum": {
-      "id": "BurstStatusEnum",
-      "namespace": "dedicated.server",
       "description": "Dedicated server bandwidth burst",
       "enum": [
         "active",
         "inactive",
         "inactiveLocked"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BurstStatusEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.ByoiStatus": {
+      "description": "Bring you own Image on your server",
       "id": "ByoiStatus",
       "namespace": "dedicated.server",
-      "description": "Bring you own Image on your server",
       "properties": {
         "checksum": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last checksum",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last message",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "servername": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Server name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "dedicated.server.ByoiStatusEnum",
-          "fullType": "dedicated.server.ByoiStatusEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Status",
-          "required": false
+          "fullType": "dedicated.server.ByoiStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.ByoiStatusEnum"
         }
       }
     },
     "dedicated.server.ByoiStatusEnum": {
-      "id": "ByoiStatusEnum",
-      "namespace": "dedicated.server",
       "description": "All states a status can be in",
       "enum": [
         "doing",
         "done",
         "error"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ByoiStatusEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.CacheTTLEnum": {
-      "id": "CacheTTLEnum",
-      "namespace": "dedicated.server",
       "description": "Time to live in minutes for cache",
       "enum": [
         "1",
@@ -6815,11 +6814,11 @@ export const schema: Schema = {
         "3",
         "5"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "CacheTTLEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.CpuFamilyEnum": {
-      "id": "CpuFamilyEnum",
-      "namespace": "dedicated.server",
       "description": "cpu family ",
       "enum": [
         "arm64",
@@ -6829,140 +6828,140 @@ export const schema: Schema = {
         "x86-ht",
         "x86_64"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CpuFamilyEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.Dedicated": {
+      "description": "Server informations",
       "id": "Dedicated",
       "namespace": "dedicated.server",
-      "description": "Server informations",
       "properties": {
         "bootId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "commercialRange": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "dedicater server commercial range",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "datacenter": {
-          "type": "dedicated.DatacenterEnum",
-          "fullType": "dedicated.DatacenterEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "dedicated datacenter localisation",
-          "required": true
+          "fullType": "dedicated.DatacenterEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.DatacenterEnum"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "dedicated server ip",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "linkSpeed": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "monitoring": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Icmp monitoring state",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "dedicated server name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "os": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operating system",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "professionalUse": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Does this server have professional use option",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "rack": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "rescueMail": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "reverse": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "dedicated server reverse",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "rootDevice": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "serverId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "your server id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "dedicated.server.StateEnum",
-          "fullType": "dedicated.server.StateEnum",
           "canBeNull": false,
+          "fullType": "dedicated.server.StateEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "dedicated.server.StateEnum"
         },
         "supportLevel": {
-          "type": "dedicated.server.SupportLevelEnum",
-          "fullType": "dedicated.server.SupportLevelEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dedicated server support level",
-          "required": true
+          "fullType": "dedicated.server.SupportLevelEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.SupportLevelEnum"
         }
       }
     },
     "dedicated.server.DiskTypeEnum": {
-      "id": "DiskTypeEnum",
-      "namespace": "dedicated.server",
       "description": "Disk interface type enum",
       "enum": [
         "NVMe",
@@ -6971,77 +6970,77 @@ export const schema: Schema = {
         "SSD",
         "Unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DiskTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.Firewall": {
+      "description": "Firewall attached to this server",
       "id": "Firewall",
       "namespace": "dedicated.server",
-      "description": "Firewall attached to this server",
       "properties": {
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "firewall": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Firewall management IP",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "mode": {
-          "type": "dedicated.server.FirewallModeEnum",
-          "fullType": "dedicated.server.FirewallModeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "transparent mode : device is invisible on the network; routed mode : the security appliance is considered to be a router hop in the network",
-          "required": true
+          "fullType": "dedicated.server.FirewallModeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.FirewallModeEnum"
         },
         "model": {
-          "type": "dedicated.server.FirewallModelEnum",
-          "fullType": "dedicated.server.FirewallModelEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Firewall model",
-          "required": false
+          "fullType": "dedicated.server.FirewallModelEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.FirewallModelEnum"
         }
       }
     },
     "dedicated.server.FirewallModeEnum": {
-      "id": "FirewallModeEnum",
-      "namespace": "dedicated.server",
       "description": "Dedicated server firewall mode",
       "enum": [
         "routed",
         "transparent"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FirewallModeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.FirewallModelEnum": {
-      "id": "FirewallModelEnum",
-      "namespace": "dedicated.server",
       "description": "Firewall model name",
       "enum": [
         "asa5505",
         "asa5510",
         "asa5520"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FirewallModelEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.FormFactorEnum": {
-      "id": "FormFactorEnum",
-      "namespace": "dedicated.server",
       "description": "Server form factor",
       "enum": [
         "0.25u",
@@ -7051,405 +7050,405 @@ export const schema: Schema = {
         "3u",
         "4u"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FormFactorEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.HardwareRaidConfiguration": {
+      "description": "Simulated result of how the hardware RAID template will be configured on this server",
       "id": "HardwareRaidConfiguration",
       "namespace": "dedicated.server",
-      "description": "Simulated result of how the hardware RAID template will be configured on this server",
       "properties": {
         "capacity": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "RAID total capacity",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "diskCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Disk count",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "diskSize": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Disk capacity",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "diskSpanSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Size of disk spans on RAID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "mode": {
-          "type": "dedicated.server.HardwareSpecificationsRaidHardEnum",
-          "fullType": "dedicated.server.HardwareSpecificationsRaidHardEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "RAID mode",
-          "required": true
+          "fullType": "dedicated.server.HardwareSpecificationsRaidHardEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.HardwareSpecificationsRaidHardEnum"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "RAID configuration name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "RAID controller type",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.server.HardwareRaidController": {
+      "description": "RAID controller configuration",
       "id": "HardwareRaidController",
       "namespace": "dedicated.server",
-      "description": "RAID controller configuration",
       "properties": {
         "disks": {
-          "type": "dedicated.server.HardwareRaidDiskGroup[]",
-          "fullType": "dedicated.server.HardwareRaidDiskGroup[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Connected disk type",
-          "required": true
+          "fullType": "dedicated.server.HardwareRaidDiskGroup[]",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.HardwareRaidDiskGroup[]"
         },
         "model": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Raid controler model",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Raid controler type",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.server.HardwareRaidDiskGroup": {
+      "description": "Disk attached to a RAID controller",
       "id": "HardwareRaidDiskGroup",
       "namespace": "dedicated.server",
-      "description": "Disk attached to a RAID controller",
       "properties": {
         "capacity": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Disk capacity",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "names": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Disk names",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "speed": {
-          "type": "complexType.UnitAndValue<string>",
-          "fullType": "complexType.UnitAndValue<string>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Disk insterface speed",
-          "required": true
+          "fullType": "complexType.UnitAndValue<string>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<string>"
         },
         "type": {
-          "type": "dedicated.server.DiskTypeEnum",
-          "fullType": "dedicated.server.DiskTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Disk type",
-          "required": true
+          "fullType": "dedicated.server.DiskTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.DiskTypeEnum"
         }
       }
     },
     "dedicated.server.HardwareRaidProfile": {
+      "description": "A structure describing the server's hardware RAID configuration",
       "id": "HardwareRaidProfile",
       "namespace": "dedicated.server",
-      "description": "A structure describing the server's hardware RAID configuration",
       "properties": {
         "controllers": {
-          "type": "dedicated.server.HardwareRaidController[]",
-          "fullType": "dedicated.server.HardwareRaidController[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hardware RAID controller list",
-          "required": true
+          "fullType": "dedicated.server.HardwareRaidController[]",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.HardwareRaidController[]"
         }
       }
     },
     "dedicated.server.HardwareRaidSize": {
+      "description": "A structure describing the server's resulting layout after RAID configuration",
       "id": "HardwareRaidSize",
       "namespace": "dedicated.server",
-      "description": "A structure describing the server's resulting layout after RAID configuration",
       "properties": {
         "configurations": {
-          "type": "dedicated.server.HardwareRaidConfiguration[]",
-          "fullType": "dedicated.server.HardwareRaidConfiguration[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hardware RAID configuration list",
-          "required": true
+          "fullType": "dedicated.server.HardwareRaidConfiguration[]",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.HardwareRaidConfiguration[]"
         }
       }
     },
     "dedicated.server.HardwareSpecifications": {
+      "description": "A structure describing informations about this dedicated server",
       "id": "HardwareSpecifications",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about this dedicated server",
       "properties": {
         "bootMode": {
-          "type": "dedicated.server.BootModeEnum",
-          "fullType": "dedicated.server.BootModeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Server boot mode",
-          "required": true
+          "fullType": "dedicated.server.BootModeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.BootModeEnum"
         },
         "coresPerProcessor": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "number of cores per processor",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "defaultHardwareRaidSize": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Default hardware raid size for this server",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "defaultHardwareRaidType": {
-          "type": "dedicated.server.HardwareSpecificationsRaidHardEnum",
-          "fullType": "dedicated.server.HardwareSpecificationsRaidHardEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Default hardware raid type configured on this server",
-          "required": false
+          "fullType": "dedicated.server.HardwareSpecificationsRaidHardEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.HardwareSpecificationsRaidHardEnum"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "commercial name of this server",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "diskGroups": {
-          "type": "dedicated.server.HardwareSpecificationsDisk[]",
-          "fullType": "dedicated.server.HardwareSpecificationsDisk[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "details about the groups of disks in the server",
-          "required": false
+          "fullType": "dedicated.server.HardwareSpecificationsDisk[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.HardwareSpecificationsDisk[]"
         },
         "expansionCards": {
-          "type": "dedicated.server.HardwareSpecificationsExpansionCard[]",
-          "fullType": "dedicated.server.HardwareSpecificationsExpansionCard[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "details about the server's expansion cards",
-          "required": false
+          "fullType": "dedicated.server.HardwareSpecificationsExpansionCard[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.HardwareSpecificationsExpansionCard[]"
         },
         "formFactor": {
-          "type": "dedicated.server.FormFactorEnum",
-          "fullType": "dedicated.server.FormFactorEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Server form factor",
-          "required": false
+          "fullType": "dedicated.server.FormFactorEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.FormFactorEnum"
         },
         "memorySize": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "ram capacity",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "motherboard": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "server motherboard",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "numberOfProcessors": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "number of processors in this dedicated server",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "processorArchitecture": {
-          "type": "dedicated.server.CpuFamilyEnum",
-          "fullType": "dedicated.server.CpuFamilyEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "processor architecture bit",
-          "required": false
+          "fullType": "dedicated.server.CpuFamilyEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.CpuFamilyEnum"
         },
         "processorName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "processor name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "threadsPerProcessor": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "number of threads per processor",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "usbKeys": {
-          "type": "complexType.UnitAndValue<long>[]",
-          "fullType": "complexType.UnitAndValue<long>[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Capacity of the USB keys installed on your server, if any",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>[]",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>[]"
         }
       }
     },
     "dedicated.server.HardwareSpecificationsDisk": {
+      "description": "A structure describing informations about server disks",
       "id": "HardwareSpecificationsDisk",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about server disks",
       "properties": {
         "defaultHardwareRaidSize": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "default hardware raid size for this disk group",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "defaultHardwareRaidType": {
-          "type": "dedicated.server.HardwareSpecificationsRaidHardEnum",
-          "fullType": "dedicated.server.HardwareSpecificationsRaidHardEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "default hardware raid type for this disk group",
-          "required": false
+          "fullType": "dedicated.server.HardwareSpecificationsRaidHardEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.HardwareSpecificationsRaidHardEnum"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "human readable description of this disk group",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "diskGroupId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "identifier of this disk group",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "diskSize": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "disk capacity",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "diskType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "type of the disk (SSD, SATA, SAS, ...)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "numberOfDisks": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "number of disks in this group",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "raidController": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "raid controller, if any, managing this group of disks",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.HardwareSpecificationsExpansionCard": {
+      "description": "A structure describing informations about server expansion cards",
       "id": "HardwareSpecificationsExpansionCard",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about server expansion cards",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "expansion card description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "dedicated.server.HardwareSpecificationsExpansionCardTypeEnum",
-          "fullType": "dedicated.server.HardwareSpecificationsExpansionCardTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "expansion card type",
-          "required": true
+          "fullType": "dedicated.server.HardwareSpecificationsExpansionCardTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.HardwareSpecificationsExpansionCardTypeEnum"
         }
       }
     },
     "dedicated.server.HardwareSpecificationsExpansionCardTypeEnum": {
-      "id": "HardwareSpecificationsExpansionCardTypeEnum",
-      "namespace": "dedicated.server",
       "description": "Expansion card type enum",
       "enum": [
         "fpga",
         "gpu"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "HardwareSpecificationsExpansionCardTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.HardwareSpecificationsRaidHardEnum": {
-      "id": "HardwareSpecificationsRaidHardEnum",
-      "namespace": "dedicated.server",
       "description": "Raid hard configuration",
       "enum": [
         "raid0",
@@ -7461,168 +7460,168 @@ export const schema: Schema = {
         "raid6",
         "raid60"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "HardwareSpecificationsRaidHardEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.InstallCustom": {
+      "description": "A structure describing informations about installation custom",
       "id": "InstallCustom",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about installation custom",
       "properties": {
         "customHostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Personnal hostname to use in server reinstallation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "diskGroupId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Disk group id to process install on (only available for some templates)",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "installRTM": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "true if you want to install RTM",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "installSqlServer": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "true if you want to install windows with sql feature",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "language": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "install language for ovh install choice",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "noRaid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "true if you want to install only on the first disk",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "postInstallationScriptLink": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "the url to your custom install script",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "postInstallationScriptReturn": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": " the return of your script if everythings ok. Advice: your script should return a unique validation string in case of succes. A good example is \"loh1Xee7eo OK OK OK UGh8Ang1Gu",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "resetHwRaid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Specify if we should attempt to reset hw raid on install.",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "softRaidDevices": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number of devices to use for system's software RAID",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "sshKeyName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The name of ssh key to install",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "useDistribKernel": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "true if you want to install with distrib kernel",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "useSpla": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "true if you want to install windows with your spla license",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
     "dedicated.server.InstallTemplate": {
+      "description": "A structure describing informations about an Installation templates",
       "id": "InstallTemplate",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about an Installation templates",
       "properties": {
         "ovh": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Names list of ovh installationtemplates compatibles with this server",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "personal": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Names list of yours installation templates compatibles with this server",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
     "dedicated.server.InstallationProgressStatus": {
+      "description": "A structure describing informations about this dedicated server installation status",
       "id": "InstallationProgressStatus",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about this dedicated server installation status",
       "properties": {
         "elapsedTime": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Elapsed time in seconds since installation beggining",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "progress": {
-          "type": "dedicated.server.InstallationProgressSteps[]",
-          "fullType": "dedicated.server.InstallationProgressSteps[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Installation steps",
-          "required": false
+          "fullType": "dedicated.server.InstallationProgressSteps[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.InstallationProgressSteps[]"
         }
       }
     },
     "dedicated.server.InstallationProgressStatusEnum": {
-      "id": "InstallationProgressStatusEnum",
-      "namespace": "dedicated.server",
       "description": "Distinct Installation status",
       "enum": [
         "doing",
@@ -7634,73 +7633,73 @@ export const schema: Schema = {
         "stopping",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "InstallationProgressStatusEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.InstallationProgressSteps": {
+      "description": "A structure describing informations about this dedicated server installation steps",
       "id": "InstallationProgressSteps",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about this dedicated server installation steps",
       "properties": {
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Informations about this installation step",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "error": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Error details if state is error",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "dedicated.server.InstallationProgressStatusEnum",
-          "fullType": "dedicated.server.InstallationProgressStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of this installation step",
-          "required": true
+          "fullType": "dedicated.server.InstallationProgressStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.InstallationProgressStatusEnum"
         }
       }
     },
     "dedicated.server.Intervention": {
+      "description": "Intervention made on this server",
       "id": "Intervention",
       "namespace": "dedicated.server",
-      "description": "Intervention made on this server",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "the intervention start date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "interventionId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The intervention id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "the intervention type",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.IpBlockSizeEnum": {
-      "id": "IpBlockSizeEnum",
-      "namespace": "dedicated.server",
       "description": "IP block size",
       "enum": [
         "1",
@@ -7712,11 +7711,11 @@ export const schema: Schema = {
         "64",
         "8"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "IpBlockSizeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.IpCountryEnum": {
-      "id": "IpCountryEnum",
-      "namespace": "dedicated.server",
       "description": "Available localization for this static IP",
       "enum": [
         "au",
@@ -7737,123 +7736,123 @@ export const schema: Schema = {
         "uk",
         "us"
       ],
-      "enumType": "coreTypes.CountryEnum"
+      "enumType": "coreTypes.CountryEnum",
+      "id": "IpCountryEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.IpOrderable": {
+      "description": "A structure describing informations about orderable IP address",
       "id": "IpOrderable",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about orderable IP address",
       "properties": {
         "ipv4": {
-          "type": "dedicated.server.IpOrderableDetails[]",
-          "fullType": "dedicated.server.IpOrderableDetails[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Orderable IP v4 details",
-          "required": false
+          "fullType": "dedicated.server.IpOrderableDetails[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.IpOrderableDetails[]"
         },
         "ipv6": {
-          "type": "dedicated.server.IpOrderableDetails[]",
-          "fullType": "dedicated.server.IpOrderableDetails[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Orderable IP v6 details",
-          "required": false
+          "fullType": "dedicated.server.IpOrderableDetails[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.IpOrderableDetails[]"
         }
       }
     },
     "dedicated.server.IpOrderableDetails": {
+      "description": "A structure describing informations about orderable IP address",
       "id": "IpOrderableDetails",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about orderable IP address",
       "properties": {
         "blockSizes": {
-          "type": "dedicated.server.IpBlockSizeEnum[]",
-          "fullType": "dedicated.server.IpBlockSizeEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Orderable IP blocks sizes",
-          "required": true
+          "fullType": "dedicated.server.IpBlockSizeEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.IpBlockSizeEnum[]"
         },
         "included": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Are those IP included with your offer",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "ipNumber": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Total number of IP that can be routed to this server",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "number": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Total number of prefixes that can be routed to this server",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "optionRequired": {
-          "type": "dedicated.server.OptionRequiredEnum",
-          "fullType": "dedicated.server.OptionRequiredEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Which option is required to order this type of IP",
-          "required": false
+          "fullType": "dedicated.server.OptionRequiredEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.OptionRequiredEnum"
         },
         "type": {
-          "type": "dedicated.server.IpTypeOrderableEnum",
-          "fullType": "dedicated.server.IpTypeOrderableEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "this IP type",
-          "required": true
+          "fullType": "dedicated.server.IpTypeOrderableEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.IpTypeOrderableEnum"
         }
       }
     },
     "dedicated.server.IpTypeOrderableEnum": {
-      "id": "IpTypeOrderableEnum",
-      "namespace": "dedicated.server",
       "description": "Orderable IP type",
       "enum": [
         "failover",
         "static",
         "unshielded"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpTypeOrderableEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.Ipmi": {
+      "description": "Server IPMI interface",
       "id": "Ipmi",
       "namespace": "dedicated.server",
-      "description": "Server IPMI interface",
       "properties": {
         "activated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "true, if IPMI is available on this server",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "supportedFeatures": {
-          "type": "dedicated.server.IpmiSupportedFeatures",
-          "fullType": "dedicated.server.IpmiSupportedFeatures",
           "canBeNull": false,
-          "readOnly": true,
           "description": "A structure describing the IPMI supported features",
-          "required": true
+          "fullType": "dedicated.server.IpmiSupportedFeatures",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.IpmiSupportedFeatures"
         }
       }
     },
     "dedicated.server.IpmiAccessTypeEnum": {
-      "id": "IpmiAccessTypeEnum",
-      "namespace": "dedicated.server",
       "description": "Distinct way to acces a KVM IPMI session",
       "enum": [
         "kvmipHtml5URL",
@@ -7861,107 +7860,107 @@ export const schema: Schema = {
         "serialOverLanSshKey",
         "serialOverLanURL"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpmiAccessTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.IpmiAccessValue": {
+      "description": "A structure describing ipmi access value",
       "id": "IpmiAccessValue",
       "namespace": "dedicated.server",
-      "description": "A structure describing ipmi access value",
       "properties": {
         "expiration": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Session expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "value",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.IpmiSupportedFeatures": {
+      "description": "A structure describing the IPMI supported features",
       "id": "IpmiSupportedFeatures",
       "namespace": "dedicated.server",
-      "description": "A structure describing the IPMI supported features",
       "properties": {
         "kvmipHtml5URL": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Access to the KVM through an HTML web interface",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "kvmipJnlp": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Access to the KVM through a Java web launch application",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "serialOverLanSshKey": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Access to the virtual serial port of your server through an SSH client",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "serialOverLanURL": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Access to the virtual serial port of your server through an HTML command line interface",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "dedicated.server.IpmiTestResult": {
+      "description": "A structure describing IPMI test result",
       "id": "IpmiTestResult",
       "namespace": "dedicated.server",
-      "description": "A structure describing IPMI test result",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Test running date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "status": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Test result",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.IpmiTestTypeEnum": {
-      "id": "IpmiTestTypeEnum",
-      "namespace": "dedicated.server",
       "description": "Different test can be made on IPMI interface",
       "enum": [
         "http",
         "password",
         "ping"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpmiTestTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.MonitoringIntervalEnum": {
-      "id": "MonitoringIntervalEnum",
-      "namespace": "dedicated.server",
       "description": "Monitoring interval in seconds",
       "enum": [
         "1800",
@@ -7969,11 +7968,11 @@ export const schema: Schema = {
         "300",
         "3600"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MonitoringIntervalEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.MonitoringProtocolEnum": {
-      "id": "MonitoringProtocolEnum",
-      "namespace": "dedicated.server",
       "description": "Monitoring protocol",
       "enum": [
         "DNS",
@@ -7985,11 +7984,11 @@ export const schema: Schema = {
         "SSH",
         "openTCP"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MonitoringProtocolEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.MrtgPeriodEnum": {
-      "id": "MrtgPeriodEnum",
-      "namespace": "dedicated.server",
       "description": "distincts MRTG period",
       "enum": [
         "daily",
@@ -7998,32 +7997,32 @@ export const schema: Schema = {
         "weekly",
         "yearly"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MrtgPeriodEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.MrtgTimestampValue": {
+      "description": "A timestamp associated to a value",
       "id": "MrtgTimestampValue",
       "namespace": "dedicated.server",
-      "description": "A timestamp associated to a value",
       "properties": {
         "timestamp": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "value": {
-          "type": "complexType.UnitAndValue<double>",
-          "fullType": "complexType.UnitAndValue<double>",
           "canBeNull": true,
+          "fullType": "complexType.UnitAndValue<double>",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "complexType.UnitAndValue<double>"
         }
       }
     },
     "dedicated.server.MrtgTypeEnum": {
-      "id": "MrtgTypeEnum",
-      "namespace": "dedicated.server",
       "description": "distincts MRTG type",
       "enum": [
         "errors:download",
@@ -8033,159 +8032,159 @@ export const schema: Schema = {
         "traffic:download",
         "traffic:upload"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MrtgTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.Netboot": {
+      "description": "Available boots",
       "id": "Netboot",
       "namespace": "dedicated.server",
-      "description": "Available boots",
       "properties": {
         "bootId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "boot id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "bootType": {
-          "type": "dedicated.server.BootTypeEnum",
-          "fullType": "dedicated.server.BootTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the boot system",
-          "required": true
+          "fullType": "dedicated.server.BootTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.BootTypeEnum"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the boot description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "kernel": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The boot kernel",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.server.NetworkSpecifications": {
+      "description": "A structure describing network informations about this dedicated server",
       "id": "NetworkSpecifications",
       "namespace": "dedicated.server",
-      "description": "A structure describing network informations about this dedicated server",
       "properties": {
         "bandwidth": {
-          "type": "dedicated.server.BandwidthDetails",
-          "fullType": "dedicated.server.BandwidthDetails",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Bandwidth details",
-          "required": false
+          "fullType": "dedicated.server.BandwidthDetails",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.BandwidthDetails"
         },
         "connection": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Network connection flow rate",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "ola": {
-          "type": "dedicated.server.OlaDetails",
-          "fullType": "dedicated.server.OlaDetails",
           "canBeNull": true,
-          "readOnly": false,
           "description": "OLA details",
-          "required": false
+          "fullType": "dedicated.server.OlaDetails",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.OlaDetails"
         },
         "routing": {
-          "type": "dedicated.server.RoutingDetails",
-          "fullType": "dedicated.server.RoutingDetails",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Routing details",
-          "required": false
+          "fullType": "dedicated.server.RoutingDetails",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.RoutingDetails"
         },
         "switching": {
-          "type": "dedicated.server.SwitchingDetails",
-          "fullType": "dedicated.server.SwitchingDetails",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Switching details",
-          "required": false
+          "fullType": "dedicated.server.SwitchingDetails",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.SwitchingDetails"
         },
         "traffic": {
-          "type": "dedicated.server.TrafficDetails",
-          "fullType": "dedicated.server.TrafficDetails",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Traffic details",
-          "required": false
+          "fullType": "dedicated.server.TrafficDetails",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.TrafficDetails"
         },
         "vrack": {
-          "type": "dedicated.server.BandwidthvRackDetails",
-          "fullType": "dedicated.server.BandwidthvRackDetails",
           "canBeNull": true,
-          "readOnly": false,
           "description": "vRack details",
-          "required": false
+          "fullType": "dedicated.server.BandwidthvRackDetails",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.BandwidthvRackDetails"
         }
       }
     },
     "dedicated.server.OlaDetails": {
+      "description": "A structure describing OVH Link Aggregation available modes for this dedicated server",
       "id": "OlaDetails",
       "namespace": "dedicated.server",
-      "description": "A structure describing OVH Link Aggregation available modes for this dedicated server",
       "properties": {
         "available": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is the OLA feature available",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "supportedModes": {
-          "type": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum[]",
-          "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "What modes are supported",
-          "required": false
+          "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum[]"
         }
       }
     },
     "dedicated.server.Option": {
+      "description": "Information about the options of a dedicated server",
       "id": "Option",
       "namespace": "dedicated.server",
-      "description": "Information about the options of a dedicated server",
       "properties": {
         "option": {
-          "type": "dedicated.server.OptionEnum",
-          "fullType": "dedicated.server.OptionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The option name",
-          "required": true
+          "fullType": "dedicated.server.OptionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.OptionEnum"
         },
         "state": {
-          "type": "dedicated.server.OptionStateEnum",
-          "fullType": "dedicated.server.OptionStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The state of the option",
-          "required": true
+          "fullType": "dedicated.server.OptionStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.OptionStateEnum"
         }
       }
     },
     "dedicated.server.OptionEnum": {
-      "id": "OptionEnum",
-      "namespace": "dedicated.server",
       "description": "All options a dedicated server can have and release",
       "enum": [
         "BACKUPPROTOCOL",
@@ -8200,156 +8199,156 @@ export const schema: Schema = {
         "TUNING_KVM",
         "USB_KVM_IP"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.OptionRequiredEnum": {
-      "id": "OptionRequiredEnum",
-      "namespace": "dedicated.server",
       "description": "Required option",
       "enum": [
         "professionalUse"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OptionRequiredEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.OptionStateEnum": {
-      "id": "OptionStateEnum",
-      "namespace": "dedicated.server",
       "description": "All states a dedicated server option can be in",
       "enum": [
         "released",
         "subscribed"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OptionStateEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.OrderableSysFeatureEnum": {
-      "id": "OrderableSysFeatureEnum",
-      "namespace": "dedicated.server",
       "description": "Dedicated server orderable features",
       "enum": [
         "backupProtocol",
         "monitoring"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderableSysFeatureEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.RoutingDetails": {
+      "description": "A structure describing routing informations about this dedicated server",
       "id": "RoutingDetails",
       "namespace": "dedicated.server",
-      "description": "A structure describing routing informations about this dedicated server",
       "properties": {
         "ipv4": {
-          "type": "dedicated.server.RoutingDetailsIpv4",
-          "fullType": "dedicated.server.RoutingDetailsIpv4",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Ipv4 routing details",
-          "required": false
+          "fullType": "dedicated.server.RoutingDetailsIpv4",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.RoutingDetailsIpv4"
         },
         "ipv6": {
-          "type": "dedicated.server.RoutingDetailsIpv6",
-          "fullType": "dedicated.server.RoutingDetailsIpv6",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Ipv6 routing details",
-          "required": false
+          "fullType": "dedicated.server.RoutingDetailsIpv6",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.RoutingDetailsIpv6"
         }
       }
     },
     "dedicated.server.RoutingDetailsIpv4": {
+      "description": "A structure describing IPv4 routing informations about this dedicated server",
       "id": "RoutingDetailsIpv4",
       "namespace": "dedicated.server",
-      "description": "A structure describing IPv4 routing informations about this dedicated server",
       "properties": {
         "gateway": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Server gateway",
-          "required": false
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Server main IP",
-          "required": false
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4"
         },
         "network": {
-          "type": "ipv4Block",
-          "fullType": "ipv4Block",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Server network",
-          "required": false
+          "fullType": "ipv4Block",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4Block"
         }
       }
     },
     "dedicated.server.RoutingDetailsIpv6": {
+      "description": "A structure describing IPv6 routing informations about this dedicated server",
       "id": "RoutingDetailsIpv6",
       "namespace": "dedicated.server",
-      "description": "A structure describing IPv6 routing informations about this dedicated server",
       "properties": {
         "gateway": {
-          "type": "ipv6",
-          "fullType": "ipv6",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Server gateway",
-          "required": false
+          "fullType": "ipv6",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv6"
         },
         "ip": {
-          "type": "ipv6Block",
-          "fullType": "ipv6Block",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Server main IP",
-          "required": false
+          "fullType": "ipv6Block",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv6Block"
         },
         "network": {
-          "type": "ipv6Block",
-          "fullType": "ipv6Block",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Server network",
-          "required": false
+          "fullType": "ipv6Block",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv6Block"
         }
       }
     },
     "dedicated.server.Rtm": {
+      "description": "Servers statistics sent by RTM (Real Time Monitoring)",
       "id": "Rtm",
       "namespace": "dedicated.server",
-      "description": "Servers statistics sent by RTM (Real Time Monitoring)",
       "properties": {
         "currentVersion": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "RTM current version",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "installedVersion": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "RTM currently installed version",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "needsUpdate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "You need to update RTM script on your server",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "dedicated.server.RtmChartPeriodEnum": {
-      "id": "RtmChartPeriodEnum",
-      "namespace": "dedicated.server",
       "description": "distincts RTM charts period",
       "enum": [
         "daily",
@@ -8357,11 +8356,11 @@ export const schema: Schema = {
         "weekly",
         "yearly"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RtmChartPeriodEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.RtmChartTypeEnum": {
-      "id": "RtmChartTypeEnum",
-      "namespace": "dedicated.server",
       "description": "distincts probes type",
       "enum": [
         "cpu",
@@ -8373,511 +8372,511 @@ export const schema: Schema = {
         "processRunning",
         "swap"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RtmChartTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.RtmCommandSize": {
+      "description": "A structure describing informations about RTM",
       "id": "RtmCommandSize",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about RTM",
       "properties": {
         "command": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Complete command line used for starting this process",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "memory": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Memory used by this process",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         }
       }
     },
     "dedicated.server.RtmConnection": {
+      "description": "A structure describing informations about opened sockets on the server",
       "id": "RtmConnection",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about opened sockets on the server",
       "properties": {
         "cmdline": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Complete command line used for starting this process",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Domain used by the process",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "exe": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Path to the program",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The IP address connected",
-          "required": false
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
         },
         "pid": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Process ID",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Port opened",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "procname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the process",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "uid": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "System user ID",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Username used to start the process",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.RtmCpu": {
+      "description": "A structure describing informations about server cpu",
       "id": "RtmCpu",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about server cpu",
       "properties": {
         "cache": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "CPU cache size",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "core": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "CPU core number",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "freq": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "CPU frequency",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "CPU  name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.RtmDisk": {
+      "description": "Server disks informations",
       "id": "RtmDisk",
       "namespace": "dedicated.server",
-      "description": "Server disks informations",
       "properties": {
         "capacity": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Disk capacity",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "disk": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Disk",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "model": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Disk model",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "temperature": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Disk temperature",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         }
       }
     },
     "dedicated.server.RtmDiskSmart": {
+      "description": "A structure describing SMART health disk status",
       "id": "RtmDiskSmart",
       "namespace": "dedicated.server",
-      "description": "A structure describing SMART health disk status",
       "properties": {
         "current_pending_sector": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Current pending sectors",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "multizone_error_rate": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Multizone error rate",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "offline_seek_performance": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Offline seek rate",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "offline_uncorrectable": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Offline uncorrectable",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "other_errors": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Other errors",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "realocated_event_count": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Realocated event count",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "temperature_celsius": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "temperature",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "udma_crc_error": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "UDMA crc error",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "uncorrected_read_errors": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Uncorrected read errors",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "uncorrected_write_errors": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Uncorrected write errors",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "dedicated.server.RtmLoad": {
+      "description": "A structure describing informations about server load",
       "id": "RtmLoad",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about server load",
       "properties": {
         "cpu": {
-          "type": "complexType.UnitAndValue<double>",
-          "fullType": "complexType.UnitAndValue<double>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "CPU usage",
-          "required": false
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<double>"
         },
         "loadavg1": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Load average in the last 1 minute",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "loadavg15": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Load average in the last 15 minutes",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "loadavg5": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Load average in the last 5 minutes",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "memory": {
-          "type": "complexType.UnitAndValue<double>",
-          "fullType": "complexType.UnitAndValue<double>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Memory usage",
-          "required": false
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<double>"
         },
         "processCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number of processes using or waiting for CPU time",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "processRunning": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number of process running",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "swap": {
-          "type": "complexType.UnitAndValue<double>",
-          "fullType": "complexType.UnitAndValue<double>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Swap usage",
-          "required": false
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<double>"
         },
         "uptime": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Server uptime",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "dedicated.server.RtmMemory": {
+      "description": "A structure describing informations about server memory",
       "id": "RtmMemory",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about server memory",
       "properties": {
         "capacity": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Memory capacity ",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "slot": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Memory slot",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.RtmMotherboardHw": {
+      "description": "A structure describing informations about motherboard",
       "id": "RtmMotherboardHw",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about motherboard",
       "properties": {
         "manufacturer": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Motherboard manufacturer",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Motherboard name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.RtmOs": {
+      "description": "A structure describing informations about Rtm os",
       "id": "RtmOs",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about Rtm os",
       "properties": {
         "kernelRelease": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "OS kernel release",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "kernelVersion": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "OS kernel version",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "release": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "OS release",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.RtmPartition": {
+      "description": "Server partitions informations",
       "id": "RtmPartition",
       "namespace": "dedicated.server",
-      "description": "Server partitions informations",
       "properties": {
         "inodeUsage": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Partition inode",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "mountPoint": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Partition mount point",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "partition": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Partition",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "usage": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Partition usage",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         }
       }
     },
     "dedicated.server.RtmPci": {
+      "description": "A structure describing informations about server PCI devices",
       "id": "RtmPci",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about server PCI devices",
       "properties": {
         "bus": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "PCI bus device",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "device": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "PCI device information",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.RtmRaid": {
+      "description": "Server raid informations",
       "id": "RtmRaid",
       "namespace": "dedicated.server",
-      "description": "Server raid informations",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Raid unit",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.server.RtmRaidStatusEnum": {
-      "id": "RtmRaidStatusEnum",
-      "namespace": "dedicated.server",
       "description": " Different RAID status",
       "enum": [
         "KO",
@@ -8885,206 +8884,206 @@ export const schema: Schema = {
         "REBUILDING",
         "UNKNOWN"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RtmRaidStatusEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.RtmRaidVolume": {
+      "description": "Server raid volume information",
       "id": "RtmRaidVolume",
       "namespace": "dedicated.server",
-      "description": "Server raid volume information",
       "properties": {
         "capacity": {
-          "type": "complexType.UnitAndValue<double>",
-          "fullType": "complexType.UnitAndValue<double>",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid volume capacity",
-          "required": false
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<double>"
         },
         "chunks": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid volume chunks",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid volume label",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "letter": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid volume letter",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "phys": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid volume phys",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "dedicated.server.RtmRaidStatusEnum",
-          "fullType": "dedicated.server.RtmRaidStatusEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid volume status",
-          "required": false
+          "fullType": "dedicated.server.RtmRaidStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.RtmRaidStatusEnum"
         },
         "stripe": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid volume stripe",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "syncprogress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid volume synchronization progress",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid volume type",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "volume": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid volume name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.RtmRaidVolumePort": {
+      "description": "Server raid volume port informations",
       "id": "RtmRaidVolumePort",
       "namespace": "dedicated.server",
-      "description": "Server raid volume port informations",
       "properties": {
         "capacity": {
-          "type": "complexType.UnitAndValue<double>",
-          "fullType": "complexType.UnitAndValue<double>",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Port capacity",
-          "required": false
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<double>"
         },
         "disk": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Port disk",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "model": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Port model name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "port": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid volume port",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "serial": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Serial of this port",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "dedicated.server.RtmRaidStatusEnum",
-          "fullType": "dedicated.server.RtmRaidStatusEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Status of this port",
-          "required": false
+          "fullType": "dedicated.server.RtmRaidStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.RtmRaidStatusEnum"
         },
         "syncprogress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Raid port synchronization progress",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.ServerBurst": {
+      "description": "Server bandwidth burst details",
       "id": "ServerBurst",
       "namespace": "dedicated.server",
-      "description": "Server bandwidth burst details",
       "properties": {
         "capacity": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Bandwidth busrt capacity",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "status": {
-          "type": "dedicated.server.BurstStatusEnum",
-          "fullType": "dedicated.server.BurstStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "indicates wether burstable bandwidth is currently active, allowing it to temporarily exceed the normally included bandwidth.OvhToInternet amount, within the limits indicated by the burst.capacity item. It can also be inactiveLocked when temporarily disabled due to overuse, capping it to the included non-burstable bandwidth capacity of bandwidth.OvhToInternet",
-          "required": true
+          "fullType": "dedicated.server.BurstStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.BurstStatusEnum"
         }
       }
     },
     "dedicated.server.SplaStatusEnum": {
-      "id": "SplaStatusEnum",
-      "namespace": "dedicated.server",
       "description": "SPLA license status",
       "enum": [
         "terminated",
         "used",
         "waitingToCheck"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SplaStatusEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.SplaTypeEnum": {
-      "id": "SplaTypeEnum",
-      "namespace": "dedicated.server",
       "description": "SPLA license type",
       "enum": [
         "os",
         "sqlstd",
         "sqlweb"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SplaTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "dedicated.server",
       "description": "All states a Dedicated can in",
       "enum": [
         "error",
@@ -9092,11 +9091,11 @@ export const schema: Schema = {
         "hackedBlocked",
         "ok"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.SupportLevelEnum": {
-      "id": "SupportLevelEnum",
-      "namespace": "dedicated.server",
       "description": "distincts support level",
       "enum": [
         "critical",
@@ -9104,216 +9103,216 @@ export const schema: Schema = {
         "gs",
         "pro"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SupportLevelEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.SupportReplaceHddInfo": {
+      "description": "Hdd replace support request details. ",
       "id": "SupportReplaceHddInfo",
       "namespace": "dedicated.server",
-      "description": "Hdd replace support request details. ",
       "properties": {
         "disk_serial": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Disk serial number",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "slot_id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Disk slotId (if any)",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "dedicated.server.SwitchingDetails": {
+      "description": "A structure describing switching informations about this dedicated server",
       "id": "SwitchingDetails",
       "namespace": "dedicated.server",
-      "description": "A structure describing switching informations about this dedicated server",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Switch name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.Task": {
+      "description": "Server tasks",
       "id": "Task",
       "namespace": "dedicated.server",
-      "description": "Server tasks",
       "properties": {
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Details of this task",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "dedicated.TaskFunctionEnum",
-          "fullType": "dedicated.TaskFunctionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Function name",
-          "required": true
+          "fullType": "dedicated.TaskFunctionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TaskFunctionEnum"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "dedicated.TaskStatusEnum",
-          "fullType": "dedicated.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "dedicated.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TaskStatusEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the id of the task",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dedicated.server.TemplateCaps": {
+      "description": "Miscellaneous template capabilities regarding the server.",
       "id": "TemplateCaps",
       "namespace": "dedicated.server",
-      "description": "Miscellaneous template capabilities regarding the server.",
       "properties": {
         "hybridSupport": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "This boolean tells if the template supports hybrid install for the considered server.",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "dedicated.server.TrafficDetails": {
+      "description": "A structure describing traffic informations about this dedicated server",
       "id": "TrafficDetails",
       "namespace": "dedicated.server",
-      "description": "A structure describing traffic informations about this dedicated server",
       "properties": {
         "inputQuotaSize": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Monthly input traffic quota allowed",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "inputQuotaUsed": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Monthly input traffic consumed this month",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "isThrottled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Is bandwidth throttleted for being over quota",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "outputQuotaSize": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Monthly output traffic quota allowed",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "outputQuotaUsed": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Monthly output traffic consumed this month",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "resetQuotaDate": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Next reset quota date for traffic counter",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.TrafficOrderEnum": {
-      "id": "TrafficOrderEnum",
-      "namespace": "dedicated.server",
       "description": " traffic orderable ",
       "enum": [
         "100Mbps-Unlimited",
         "250Mbps-Unlimited",
         "500Mbps-Unlimited"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TrafficOrderEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.TrafficOrderable": {
+      "description": "A structure describing informations bandwidth orderable for this dedicated server",
       "id": "TrafficOrderable",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations bandwidth orderable for this dedicated server",
       "properties": {
         "orderable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is traffic orderable for this server",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "traffic": {
-          "type": "dedicated.server.TrafficOrderEnum[]",
-          "fullType": "dedicated.server.TrafficOrderEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "traffic orderable",
-          "required": false
+          "fullType": "dedicated.server.TrafficOrderEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.TrafficOrderEnum[]"
         }
       }
     },
     "dedicated.server.UsbKeyCapacityEnum": {
-      "id": "UsbKeyCapacityEnum",
-      "namespace": "dedicated.server",
       "description": " Different USB key capacity in gigabytes",
       "enum": [
         "128",
@@ -9322,363 +9321,363 @@ export const schema: Schema = {
         "32",
         "64"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "UsbKeyCapacityEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.UsbKeyOrderableDetails": {
+      "description": "A structure describing informations about orderable USB keys",
       "id": "UsbKeyOrderableDetails",
       "namespace": "dedicated.server",
-      "description": "A structure describing informations about orderable USB keys",
       "properties": {
         "capacity": {
-          "type": "dedicated.server.UsbKeyCapacityEnum[]",
-          "fullType": "dedicated.server.UsbKeyCapacityEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Orderable USB keys capacity in gigabytes",
-          "required": true
+          "fullType": "dedicated.server.UsbKeyCapacityEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.UsbKeyCapacityEnum[]"
         },
         "number": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of USB keys that can be ordered for this server",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "optionRequired": {
-          "type": "dedicated.server.OptionRequiredEnum",
-          "fullType": "dedicated.server.OptionRequiredEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Which option is required to order an USB key",
-          "required": false
+          "fullType": "dedicated.server.OptionRequiredEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.OptionRequiredEnum"
         },
         "orderable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is USB keys orderable for this server",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "dedicated.server.VirtualMac": {
+      "description": "A virtual MAC address associated to one or more IPs",
       "id": "VirtualMac",
       "namespace": "dedicated.server",
-      "description": "A virtual MAC address associated to one or more IPs",
       "properties": {
         "macAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Virtual MAC address in 00:00:00:00:00:00 format",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "dedicated.server.VmacTypeEnum",
-          "fullType": "dedicated.server.VmacTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Virtual MAC address type",
-          "required": true
+          "fullType": "dedicated.server.VmacTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.VmacTypeEnum"
         }
       }
     },
     "dedicated.server.VirtualMacManagement": {
+      "description": " ip address linked with this virtual mac address",
       "id": "VirtualMacManagement",
       "namespace": "dedicated.server",
-      "description": " ip address linked with this virtual mac address",
       "properties": {
         "ipAddress": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP address",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "virtualMachineName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Friendly name of your Virtual Machine behind this IP/MAC",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.server.VmacTypeEnum": {
-      "id": "VmacTypeEnum",
-      "namespace": "dedicated.server",
       "description": "Distinct type of virtual mac",
       "enum": [
         "ovh",
         "vmware"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VmacTypeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.backup.BackupContainer": {
+      "description": "A structure describing informations about the backup cloud feature",
       "id": "BackupContainer",
       "namespace": "dedicated.server.backup",
-      "description": "A structure describing informations about the backup cloud feature",
       "properties": {
         "cloudProject": {
-          "type": "dedicated.server.backup.BackupProject",
-          "fullType": "dedicated.server.backup.BackupProject",
           "canBeNull": true,
-          "readOnly": false,
           "description": "/cloud project which the container belongs to.",
-          "required": false
+          "fullType": "dedicated.server.backup.BackupProject",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.backup.BackupProject"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Container id (can also be used to retrieve the resource in the /cloud api).",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Container name.",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "quota": {
-          "type": "dedicated.server.backup.BackupQuota",
-          "fullType": "dedicated.server.backup.BackupQuota",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Quota on the current container",
-          "required": false
+          "fullType": "dedicated.server.backup.BackupQuota",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.backup.BackupQuota"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The cloud region which the container belongs to.",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "sftp": {
-          "type": "dedicated.server.backup.BackupSftp",
-          "fullType": "dedicated.server.backup.BackupSftp",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Sftp connection info",
-          "required": false
+          "fullType": "dedicated.server.backup.BackupSftp",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.backup.BackupSftp"
         },
         "swift": {
-          "type": "dedicated.server.backup.BackupSwift",
-          "fullType": "dedicated.server.backup.BackupSwift",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Swift related information to reach the container",
-          "required": false
+          "fullType": "dedicated.server.backup.BackupSwift",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.backup.BackupSwift"
         }
       }
     },
     "dedicated.server.backup.BackupOffer": {
+      "description": "Backup cloud offer description for a dedicated server",
       "id": "BackupOffer",
       "namespace": "dedicated.server.backup",
-      "description": "Backup cloud offer description for a dedicated server",
       "properties": {
         "maxArchive": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Archive container max size.",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "maxBandwidthArchive": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Archive volume r/w bandwidth limit: read/write volume offered per month on the container.",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "maxBandwidthStorage": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Storage volume r/w bandwidth limit: read/write volume offered per month on the container.",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "maxStorage": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Storage container max size.",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         }
       }
     },
     "dedicated.server.backup.BackupPassword": {
+      "description": "A structure describing regenerated passwords",
       "id": "BackupPassword",
       "namespace": "dedicated.server.backup",
-      "description": "A structure describing regenerated passwords",
       "properties": {
         "sftpArchive": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Password to reach the archive container through the sftp gw.",
-          "required": false
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
         },
         "sftpStorage": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Password to reach the storage container through the sftp gw.",
-          "required": false
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
         },
         "swiftArchive": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Password to reach the archive container through swift.",
-          "required": false
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
         },
         "swiftStorage": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Password to reach the storage container through swift.",
-          "required": false
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
         }
       }
     },
     "dedicated.server.backup.BackupProject": {
+      "description": "Cloud project struct.",
       "id": "BackupProject",
       "namespace": "dedicated.server.backup",
-      "description": "Cloud project struct.",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Project description.",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "projectId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Project id.",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.backup.BackupQuota": {
+      "description": "A structure describing quota associated to the current container",
       "id": "BackupQuota",
       "namespace": "dedicated.server.backup",
-      "description": "A structure describing quota associated to the current container",
       "properties": {
         "maxBandwidth": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Volume r/w bandwidth limit: read/write volume offered per month on the container.",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "maxStorage": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Container max size.",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "storageUsed": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Volume usage.",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "usagePercent": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Volume usage in percent",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         }
       }
     },
     "dedicated.server.backup.BackupSftp": {
+      "description": "A structure describing the SFTP access to a container",
       "id": "BackupSftp",
       "namespace": "dedicated.server.backup",
-      "description": "A structure describing the SFTP access to a container",
       "properties": {
         "password": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Sftp password.",
-          "required": false
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Url",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Username",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.backup.BackupStatus": {
+      "description": "A structure describing the status of your backup",
       "id": "BackupStatus",
       "namespace": "dedicated.server.backup",
-      "description": "A structure describing the status of your backup",
       "properties": {
         "code": {
-          "type": "dedicated.server.backup.BackupStatusCodeEnum",
-          "fullType": "dedicated.server.backup.BackupStatusCodeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status code",
-          "required": true
+          "fullType": "dedicated.server.backup.BackupStatusCodeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.backup.BackupStatusCodeEnum"
         },
         "reason": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Status code reason (when not ok)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.backup.BackupStatusCodeEnum": {
-      "id": "BackupStatusCodeEnum",
-      "namespace": "dedicated.server.backup",
       "description": "Possible values for backup status code",
       "enum": [
         "DELETING",
@@ -9689,390 +9688,390 @@ export const schema: Schema = {
         "UNKNOWN",
         "WAITING_AGREEMENTS_VALIDATION"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BackupStatusCodeEnum",
+      "namespace": "dedicated.server.backup"
     },
     "dedicated.server.backup.BackupSwift": {
+      "description": "A structure describing the information related to Openstack to reach the container.",
       "id": "BackupSwift",
       "namespace": "dedicated.server.backup",
-      "description": "A structure describing the information related to Openstack to reach the container.",
       "properties": {
         "authUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Auth url.",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "password": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Openstack password.",
-          "required": false
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Openstack username to use swift.",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.emailAlert": {
+      "description": "Service monitoring Email alert",
       "id": "emailAlert",
       "namespace": "dedicated.server",
-      "description": "Service monitoring Email alert",
       "properties": {
         "alertId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This monitoring id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Alert destination",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is this monitor enabled",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "language": {
-          "type": "dedicated.server.AlertLanguageEnum",
-          "fullType": "dedicated.server.AlertLanguageEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Alert language",
-          "required": true
+          "fullType": "dedicated.server.AlertLanguageEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.AlertLanguageEnum"
         }
       }
     },
     "dedicated.server.kvm": {
+      "description": "Physical KVM",
       "id": "kvm",
       "namespace": "dedicated.server",
-      "description": "Physical KVM",
       "properties": {
         "expiration": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "KVM expiration date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": true,
-          "readOnly": true,
           "description": "KVM access ip",
-          "required": false
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "KVM hostname",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.server.netbootOption": {
+      "description": "Available boot options",
       "id": "netbootOption",
       "namespace": "dedicated.server",
-      "description": "Available boot options",
       "properties": {
         "option": {
-          "type": "dedicated.server.BootOptionEnum",
-          "fullType": "dedicated.server.BootOptionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The option of this boot",
-          "required": true
+          "fullType": "dedicated.server.BootOptionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.BootOptionEnum"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the value of this option",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.server.serviceMonitoring": {
+      "description": "Service monitoring details",
       "id": "serviceMonitoring",
       "namespace": "dedicated.server",
-      "description": "Service monitoring details",
       "properties": {
         "challengeText": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The expected return",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is this service monitoring is enabled",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "interval": {
-          "type": "dedicated.server.MonitoringIntervalEnum",
-          "fullType": "dedicated.server.MonitoringIntervalEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The test interval in seconds",
-          "required": true
+          "fullType": "dedicated.server.MonitoringIntervalEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.MonitoringIntervalEnum"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The ip to monitor",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "monitoringId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This monitoring id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service port to monitor",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "protocol": {
-          "type": "dedicated.server.MonitoringProtocolEnum",
-          "fullType": "dedicated.server.MonitoringProtocolEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The protocol to use",
-          "required": true
+          "fullType": "dedicated.server.MonitoringProtocolEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.MonitoringProtocolEnum"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The URL to test",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.server.smsAlert": {
+      "description": "Monitoring SMS alert details, This service is currently not supported for servers at BHS ",
       "id": "smsAlert",
       "namespace": "dedicated.server",
-      "description": "Monitoring SMS alert details, This service is currently not supported for servers at BHS ",
       "properties": {
         "alertId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of this alert",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is this alert enabled",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "fromHour": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Daily hour end time for SMS notification",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "language": {
-          "type": "dedicated.server.AlertLanguageEnum",
-          "fullType": "dedicated.server.AlertLanguageEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Alert language",
-          "required": true
+          "fullType": "dedicated.server.AlertLanguageEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.server.AlertLanguageEnum"
         },
         "phoneNumberTo": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Alert destination",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "smsAccount": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Your SMS account",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "toHour": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Daily hour start time for SMS notification",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "dedicated.server.spla": {
+      "description": "SPLA licenses management",
       "id": "spla",
       "namespace": "dedicated.server",
-      "description": "SPLA licenses management",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "License id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last update timestamp",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "serialNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "License serial number",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "dedicated.server.SplaStatusEnum",
-          "fullType": "dedicated.server.SplaStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of license",
-          "required": true
+          "fullType": "dedicated.server.SplaStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.SplaStatusEnum"
         },
         "type": {
-          "type": "dedicated.server.SplaTypeEnum",
-          "fullType": "dedicated.server.SplaTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "License type",
-          "required": true
+          "fullType": "dedicated.server.SplaTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.server.SplaTypeEnum"
         }
       }
     },
     "dedicated.virtualNetworkInterface.VirtualNetworkInterface": {
+      "description": "Your VirtualNetworkInterface",
       "id": "VirtualNetworkInterface",
       "namespace": "dedicated.virtualNetworkInterface",
-      "description": "Your VirtualNetworkInterface",
       "properties": {
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "VirtualNetworkInterface activation state",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "mode": {
-          "type": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
-          "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "VirtualNetworkInterface mode",
-          "required": true
+          "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "User defined VirtualNetworkInterface name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "networkInterfaceController": {
-          "type": "macAddress[]",
-          "fullType": "macAddress[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "NetworkInterfaceControllers bound to this VirtualNetworkInterface",
-          "required": true
+          "fullType": "macAddress[]",
+          "readOnly": true,
+          "required": true,
+          "type": "macAddress[]"
         },
         "serverName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Server bound to this VirtualNetworkInterface",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "uuid": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "VirtualNetworkInterface unique id",
-          "required": true
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": true,
+          "type": "uuid"
         },
         "vrack": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "vRack name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum": {
-      "id": "VirtualNetworkInterfaceModeEnum",
-      "namespace": "dedicated.virtualNetworkInterface",
       "description": "Available VirtualNetworkInterface modes",
       "enum": [
         "public",
         "vrack",
         "vrack_aggregation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VirtualNetworkInterfaceModeEnum",
+      "namespace": "dedicated.virtualNetworkInterface"
     },
     "license.WindowsOsVersionEnum": {
-      "id": "WindowsOsVersionEnum",
-      "namespace": "license",
       "description": "All versions for Windows products",
       "enum": [
         "windows-server-2008-license-datacenter-edition-1-cpu",
@@ -10206,11 +10205,11 @@ export const schema: Schema = {
         "windows-server-2019-license-standard-edition-64-cores",
         "windows-server-2019-license-standard-edition-8-cores"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "WindowsOsVersionEnum",
+      "namespace": "license"
     },
     "license.WindowsSqlVersionEnum": {
-      "id": "WindowsSqlVersionEnum",
-      "namespace": "license",
       "description": "All SQL Server versions for Windows products",
       "enum": [
         "SQL_SERVER_2008_STANDARD_EDITION",
@@ -10238,11 +10237,11 @@ export const schema: Schema = {
         "SQL_SERVER_2012_WEB_EDITION_6_CORES",
         "SQL_SERVER_2012_WEB_EDITION_8_CORES"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "WindowsSqlVersionEnum",
+      "namespace": "license"
     },
     "nichandle.OvhSubsidiaryEnum": {
-      "id": "OvhSubsidiaryEnum",
-      "namespace": "nichandle",
       "description": "OVH subsidiaries",
       "enum": [
         "ASIA",
@@ -10270,156 +10269,156 @@ export const schema: Schema = {
         "WE",
         "WS"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OvhSubsidiaryEnum",
+      "namespace": "nichandle"
     },
     "secondaryDns.SecondaryDNS": {
+      "description": "Secondary dns infos",
       "id": "SecondaryDNS",
       "namespace": "secondaryDns",
-      "description": "Secondary dns infos",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "dns": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "secondary dns server",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "domain on slave server",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "ipMaster": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": false,
           "description": "master ip",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": true,
+          "type": "ipv4"
         }
       }
     },
     "secondaryDns.SecondaryDNSCheckField": {
+      "description": "A structure describing informations about secondary dns check field",
       "id": "SecondaryDNSCheckField",
       "namespace": "secondaryDns",
-      "description": "A structure describing informations about secondary dns check field",
       "properties": {
         "fieldType": {
-          "type": "zone.NamedResolutionFieldTypeEnum",
-          "fullType": "zone.NamedResolutionFieldTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The field type to add on your DNS zone for this subDomain",
-          "required": true
+          "fullType": "zone.NamedResolutionFieldTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "zone.NamedResolutionFieldTypeEnum"
         },
         "fieldValue": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The field value to add on your DNS zone for this subDomain",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "subDomain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The subdomain to add on your DNS zone for the domain",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "secondaryDns.SecondaryDNSNameServer": {
+      "description": "A structure describing informations about available nameserver for secondary dns ",
       "id": "SecondaryDNSNameServer",
       "namespace": "secondaryDns",
-      "description": "A structure describing informations about available nameserver for secondary dns ",
       "properties": {
         "hostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "the name server",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
+          "fullType": "ipv4",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "ipv4"
         },
         "ipv6": {
-          "type": "ipv6",
-          "fullType": "ipv6",
           "canBeNull": true,
+          "fullType": "ipv6",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "ipv6"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -10430,11 +10429,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -10442,11 +10441,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -10455,11 +10454,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -10477,207 +10476,207 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "support.NewMessageInfo": {
+      "description": "Newly created support identifiers",
       "id": "NewMessageInfo",
       "namespace": "support",
-      "description": "Newly created support identifiers",
       "properties": {
         "messageId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Message identifier",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "ticketId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket identifier",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "ticketNumber": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Ticket external number",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "vrack.Task": {
+      "description": "vrack tasks",
       "id": "Task",
       "namespace": "vrack",
-      "description": "vrack tasks",
       "properties": {
         "function": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "vrack.TaskStatusEnum",
-          "fullType": "vrack.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "vrack.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "vrack.TaskStatusEnum"
         },
         "targetDomain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "vrack.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "vrack",
       "description": "All states a vRack Task can be in",
       "enum": [
         "cancelled",
@@ -10686,34 +10685,34 @@ export const schema: Schema = {
         "init",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "vrack"
     },
     "vrack.dedicatedServer": {
+      "description": "vrack dedicated server interfaces",
       "id": "dedicatedServer",
       "namespace": "vrack",
-      "description": "vrack dedicated server interfaces",
       "properties": {
         "dedicatedServer": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dedicated Server",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "vrack": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "vrack name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "zone.NamedResolutionFieldTypeEnum": {
-      "id": "NamedResolutionFieldTypeEnum",
-      "namespace": "zone",
       "description": "Resource record fieldType",
       "enum": [
         "A",
@@ -10733,7 +10732,10 @@ export const schema: Schema = {
         "TLSA",
         "TXT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "NamedResolutionFieldTypeEnum",
+      "namespace": "zone"
     }
-  }
+  },
+  "resourcePath": "/dedicated/server"
 }

@@ -1,2561 +1,2560 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.ovh.com:443/1.0/email/mxplan.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/email/mxplan",
+      "description": "Operations about the MXPLAN service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the MXPLAN service"
+      "path": "/email/mxplan"
     },
     {
-      "path": "/email/mxplan/{service}",
+      "description": "MXPlan service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.mxplan.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.mxplan.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.mxplan.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.mxplan.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "MXPlan service"
+      "path": "/email/mxplan/{service}"
     },
     {
-      "path": "/email/mxplan/{service}/account",
+      "description": "List the email.mxplan.Account objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Accounts associated to this mxplan service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Filter the value of id property (like)",
               "fullType": "long",
-              "required": false,
-              "description": "Filter the value of id property (like)"
+              "name": "id",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of primaryEmailAddress property (like)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of primaryEmailAddress property (like)"
+              "name": "primaryEmailAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Accounts associated to this mxplan service"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the email.mxplan.Account objects"
+      "path": "/email/mxplan/{service}/account"
     },
     {
-      "path": "/email/mxplan/{service}/account/{email}",
+      "description": "Mailbox",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete existing mailbox in mxplan server",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Delete existing mailbox in mxplan server"
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.mxplan.Account",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.mxplan.Account"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.mxplan.Account",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.mxplan.Account",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "service",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Mailbox"
-    },
-    {
-      "path": "/email/mxplan/{service}/account/{email}/alias",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "service",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Aliases associated to this mailbox"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "alias",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Alias"
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
-            },
-            {
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Create new alias"
+          "responseType": "void"
         }
       ],
-      "description": "List the email.mxplan.AccountAlias objects"
+      "path": "/email/mxplan/{service}/account/{email}"
     },
     {
-      "path": "/email/mxplan/{service}/account/{email}/alias/{alias}",
+      "description": "List the email.mxplan.AccountAlias objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "DELETE",
+          "description": "Aliases associated to this mailbox",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            },
-            {
-              "name": "alias",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Alias"
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Delete existing alias"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "service",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            },
-            {
-              "name": "alias",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Alias"
-            }
-          ],
-          "responseType": "email.mxplan.AccountAlias",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Aliases on this mailbox"
-    },
-    {
-      "path": "/email/mxplan/{service}/account/{email}/capabilities",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "service",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "email.mxplan.accountCapabilities",
-          "noAuthentication": false,
-          "description": "Get available capabilities for this account"
-        }
-      ],
-      "description": "capabilities operations"
-    },
-    {
-      "path": "/email/mxplan/{service}/account/{email}/changePassword",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
+          "description": "Create new alias",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.Task"
+        }
+      ],
+      "path": "/email/mxplan/{service}/account/{email}/alias"
+    },
+    {
+      "description": "Aliases on this mailbox",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete existing alias",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.mxplan.AccountAlias"
+        }
+      ],
+      "path": "/email/mxplan/{service}/account/{email}/alias/{alias}"
+    },
+    {
+      "description": "capabilities operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get available capabilities for this account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.mxplan.accountCapabilities"
+        }
+      ],
+      "path": "/email/mxplan/{service}/account/{email}/capabilities"
+    },
+    {
+      "description": "changePassword operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Change mailbox password",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "password",
-              "paramType": "body",
+              "description": "new password",
               "fullType": "password",
-              "required": true,
-              "description": "new password"
-            },
-            {
-              "name": "service",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Change mailbox password"
-        }
-      ],
-      "description": "changePassword operations"
-    },
-    {
-      "path": "/email/mxplan/{service}/account/{email}/diagnostic",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "service",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "email.mxplan.AccountDiagnosis",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
               "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.Task"
+        }
+      ],
+      "path": "/email/mxplan/{service}/account/{email}/changePassword"
+    },
+    {
+      "description": "Account Diagnosis",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.mxplan.AccountDiagnosis"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create new diagnosis request",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "password",
-              "paramType": "body",
+              "description": "Account password",
               "fullType": "password",
-              "required": true,
-              "description": "Account password"
-            },
-            {
-              "name": "service",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Create new diagnosis request"
-        }
-      ],
-      "description": "Account Diagnosis"
-    },
-    {
-      "path": "/email/mxplan/{service}/account/{email}/fullAccess",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "service",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Full access granted users for this mailbox"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
+              "name": "password",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "User to give full access"
+              "required": true
             },
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
-            },
-            {
               "name": "email",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Allow full access to a user"
+          "responseType": "email.pro.Task"
         }
       ],
-      "description": "List the email.mxplan.AccountFullAccess objects"
+      "path": "/email/mxplan/{service}/account/{email}/diagnostic"
     },
     {
-      "path": "/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}",
+      "description": "List the email.mxplan.AccountFullAccess objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "DELETE",
+          "description": "Full access granted users for this mailbox",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
-            },
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
-            },
-            {
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Revoke full access"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
-            },
-            {
-              "name": "service",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "email.mxplan.AccountFullAccess",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Users having full access on this mailbox"
-    },
-    {
-      "path": "/email/mxplan/{service}/account/{email}/sendAs",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "service",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Send as granted users for this mailbox"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
+          "description": "Allow full access to a user",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "User to give full access",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.Task"
+        }
+      ],
+      "path": "/email/mxplan/{service}/account/{email}/fullAccess"
+    },
+    {
+      "description": "Users having full access on this mailbox",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Revoke full access",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.pro.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.mxplan.AccountFullAccess"
+        }
+      ],
+      "path": "/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}"
+    },
+    {
+      "description": "List the email.mxplan.AccountSendAs objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Send as granted users for this mailbox",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Allow another user to send mails from this mailbox",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Account id to allow to send mails from this mailbox",
+              "fullType": "long",
               "name": "allowAccountId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Account id to allow to send mails from this mailbox"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Allow another user to send mails from this mailbox"
+          "responseType": "email.pro.Task"
         }
       ],
-      "description": "List the email.mxplan.AccountSendAs objects"
+      "path": "/email/mxplan/{service}/account/{email}/sendAs"
     },
     {
-      "path": "/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}",
+      "description": "Users authorized to send mails from this mailbox",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete allowed user for sendAs",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Delete allowed user for sendAs"
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
-            },
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
-            },
-            {
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.mxplan.AccountSendAs",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.mxplan.AccountSendAs"
         }
       ],
-      "description": "Users authorized to send mails from this mailbox"
+      "path": "/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}"
     },
     {
-      "path": "/email/mxplan/{service}/account/{email}/sendOnBehalfTo",
+      "description": "List the email.mxplan.AccountSendOnBehalfTo objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "SendOnBehalfTo granted users for this mailbox",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "SendOnBehalfTo granted users for this mailbox"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Allow another user to Send On Behalf To mails from this mailbox",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "allowAccountId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Account id to allow to send On Behalf To mails from this mailbox",
               "fullType": "long",
-              "required": true,
-              "description": "Account id to allow to send On Behalf To mails from this mailbox"
+              "name": "allowAccountId",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Allow another user to Send On Behalf To mails from this mailbox"
+          "responseType": "email.pro.Task"
         }
       ],
-      "description": "List the email.mxplan.AccountSendOnBehalfTo objects"
+      "path": "/email/mxplan/{service}/account/{email}/sendOnBehalfTo"
     },
     {
-      "path": "/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}",
+      "description": "Get users authorized to Send On Behalf To mails from this mailbox",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete allowed user for SendOnBehalfTo",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Delete allowed user for SendOnBehalfTo"
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.mxplan.AccountSendOnBehalfTo",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.mxplan.AccountSendOnBehalfTo"
         }
       ],
-      "description": "Get users authorized to Send On Behalf To mails from this mailbox"
+      "path": "/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}"
     },
     {
-      "path": "/email/mxplan/{service}/account/{email}/task",
+      "description": "List the email.pro.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Pending task for this mailbox",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Pending task for this mailbox"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the email.pro.Task objects"
+      "path": "/email/mxplan/{service}/account/{email}/task"
     },
     {
-      "path": "/email/mxplan/{service}/account/{email}/task/{id}",
+      "description": "Organization task details",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
               "name": "id",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             },
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.pro.Task"
         }
       ],
-      "description": "Organization task details"
+      "path": "/email/mxplan/{service}/account/{email}/task/{id}"
     },
     {
-      "path": "/email/mxplan/{service}/domain",
+      "description": "List the email.mxplan.Domain objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Domains associated to this service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "state",
               "dataType": "email.pro.ObjectStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of state property (=)",
               "fullType": "email.pro.ObjectStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (=)"
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Domains associated to this service"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the email.mxplan.Domain objects"
+      "path": "/email/mxplan/{service}/domain"
     },
     {
-      "path": "/email/mxplan/{service}/domain/{domainName}",
+      "description": "Domain",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.mxplan.Domain",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.mxplan.Domain"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.mxplan.Domain",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.mxplan.Domain",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "required": true
             },
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Domain"
+      "path": "/email/mxplan/{service}/domain/{domainName}"
     },
     {
-      "path": "/email/mxplan/{service}/domain/{domainName}/disclaimer",
+      "description": "disclaimer",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete existing organization disclaimer",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Delete existing organization disclaimer"
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.disclaimer",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.pro.disclaimer"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create organization disclaimer of each email",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "outsideOnly",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Activate the disclaimer only for external emails",
               "fullType": "boolean",
-              "required": false,
-              "description": "Activate the disclaimer only for external emails"
-            },
-            {
-              "name": "content",
-              "dataType": "text",
+              "name": "outsideOnly",
               "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "text",
+              "description": "Signature, added at the bottom of your organization emails",
               "fullType": "text",
-              "required": true,
-              "description": "Signature, added at the bottom of your organization emails"
+              "name": "content",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "required": true
             },
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Create organization disclaimer of each email"
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.pro.disclaimer",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.pro.disclaimer",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
-            },
-            {
               "name": "service",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "disclaimer"
+      "path": "/email/mxplan/{service}/domain/{domainName}/disclaimer"
     },
     {
-      "path": "/email/mxplan/{service}/domain/{domainName}/disclaimerAttribute",
+      "description": "disclaimerAttribute operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get diclaimer attributes to substitute with Active Directory properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.DisclaimerAttributeEnum[]",
-          "noAuthentication": false,
-          "description": "Get diclaimer attributes to substitute with Active Directory properties"
+          "responseType": "email.pro.DisclaimerAttributeEnum[]"
         }
       ],
-      "description": "disclaimerAttribute operations"
+      "path": "/email/mxplan/{service}/domain/{domainName}/disclaimerAttribute"
     },
     {
-      "path": "/email/mxplan/{service}/externalContact",
+      "description": "List the email.mxplan.ExternalContact objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "External contacts for this service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "firstName",
               "dataType": "string",
+              "description": "Filter the value of displayName property (like)",
+              "fullType": "string",
+              "name": "displayName",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of firstName property (like)"
+              "required": false
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Filter the value of id property (like)",
               "fullType": "long",
-              "required": false,
-              "description": "Filter the value of id property (like)"
-            },
-            {
-              "name": "externalEmailAddress",
-              "dataType": "string",
+              "name": "id",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of externalEmailAddress property (like)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of lastName property (like)",
+              "fullType": "string",
               "name": "lastName",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of lastName property (like)"
+              "required": false
             },
             {
-              "name": "displayName",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of externalEmailAddress property (like)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of displayName property (like)"
+              "name": "externalEmailAddress",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of firstName property (like)",
+              "fullType": "string",
+              "name": "firstName",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "External contacts for this service"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "create new external contact",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Contact email address",
+              "fullType": "string",
               "name": "externalEmailAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "Contact first name",
               "fullType": "string",
-              "required": true,
-              "description": "Contact email address"
-            },
-            {
-              "name": "lastName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact last name"
-            },
-            {
-              "name": "hiddenFromGAL",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Hide the contact in Global Address List"
-            },
-            {
-              "name": "displayName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact display name"
-            },
-            {
-              "name": "initials",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact initials"
-            },
-            {
               "name": "firstName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact first name"
+              "required": false
             },
             {
-              "name": "service",
+              "dataType": "boolean",
+              "description": "Hide the contact in Global Address List",
+              "fullType": "boolean",
+              "name": "hiddenFromGAL",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Contact initials",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "initials",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Contact display name",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Contact last name",
+              "fullType": "string",
+              "name": "lastName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "create new external contact"
+          "responseType": "email.pro.Task"
         }
       ],
-      "description": "List the email.mxplan.ExternalContact objects"
+      "path": "/email/mxplan/{service}/externalContact"
     },
     {
-      "path": "/email/mxplan/{service}/externalContact/{externalEmailAddress}",
+      "description": "External contact for this mxplan service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "delete external contact",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "externalEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "External email address"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "External email address",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "externalEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "delete external contact"
+          "responseType": "email.pro.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "externalEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "External email address",
               "fullType": "string",
-              "required": true,
-              "description": "External email address"
+              "name": "externalEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.mxplan.ExternalContact",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.mxplan.ExternalContact"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.mxplan.ExternalContact",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.mxplan.ExternalContact",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "External email address",
+              "fullType": "string",
               "name": "externalEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "External email address"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "External contact for this mxplan service"
+      "path": "/email/mxplan/{service}/externalContact/{externalEmailAddress}"
     },
     {
-      "path": "/email/mxplan/{service}/server",
+      "description": "Server",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.mxplan.Server",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.mxplan.Server"
         }
       ],
-      "description": "Server"
+      "path": "/email/mxplan/{service}/server"
     },
     {
-      "path": "/email/mxplan/{service}/task",
+      "description": "List the email.pro.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Pending actions",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Pending actions"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the email.pro.Task objects"
+      "path": "/email/mxplan/{service}/task"
     },
     {
-      "path": "/email/mxplan/{service}/task/{id}",
+      "description": "Organization task details",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "required": true
             },
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Service",
+              "fullType": "string",
+              "name": "service",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "email.pro.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.pro.Task"
         }
       ],
-      "description": "Organization task details"
+      "path": "/email/mxplan/{service}/task/{id}"
     },
     {
-      "path": "/email/mxplan/{service}/updateFlagsOnAllAccounts",
+      "description": "updateFlagsOnAllAccounts operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Update spam and virus flags on all active accounts",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "service",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service",
               "fullType": "string",
-              "required": true,
-              "description": "Service"
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Update spam and virus flags on all active accounts"
+          "responseType": "void"
         }
       ],
-      "description": "updateFlagsOnAllAccounts operations"
+      "path": "/email/mxplan/{service}/updateFlagsOnAllAccounts"
     }
   ],
-  "resourcePath": "/email/mxplan",
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "email.mxplan.Account": {
+      "description": "Mailbox",
       "id": "Account",
       "namespace": "email.mxplan",
-      "description": "Mailbox",
       "properties": {
         "SAMAccountName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "SAM account name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "configured": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if the account is configured",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "currentUsage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Mailbox usage",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "delete at expiration",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account display name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Email domain",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "expirationOutlookDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account first name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "hiddenFromGAL": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hide account in Global Address List",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "initial": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account initials",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lastLogoffDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last logoff",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastLogonDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last logon",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account last name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lastUpdateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "login": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Account login",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "mailingFilter": {
-          "type": "email.pro.MailingFilterEnum[]",
-          "fullType": "email.pro.MailingFilterEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Enable or disable anti-virus and anti-spam",
-          "required": false
+          "fullType": "email.pro.MailingFilterEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "email.pro.MailingFilterEnum[]"
         },
         "passwordLastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Time of account's password last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "primaryEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Default email for this mailbox",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "quota": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Account maximum size",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "renewPeriod": {
-          "type": "email.pro.renewPeriodEnum",
-          "fullType": "email.pro.renewPeriodEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "change the renew period",
-          "required": false
+          "fullType": "email.pro.renewPeriodEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "email.pro.renewPeriodEnum"
         },
         "spamAndVirusConfiguration": {
-          "type": "email.pro.spamAndVirusConfiguration",
-          "fullType": "email.pro.spamAndVirusConfiguration",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Spam and Antivirus configuration",
-          "required": true
+          "fullType": "email.pro.spamAndVirusConfiguration",
+          "readOnly": false,
+          "required": true,
+          "type": "email.pro.spamAndVirusConfiguration"
         },
         "spamDetected": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account was sending spam",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "spamTicketNumber": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Ticket number of spam detection",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "state": {
-          "type": "email.pro.ObjectStateEnum",
-          "fullType": "email.pro.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account state",
-          "required": true
+          "fullType": "email.pro.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.pro.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Pending tasks for this account",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "email.mxplan.AccountAlias": {
+      "description": "Aliases on this mailbox",
       "id": "AccountAlias",
       "namespace": "email.mxplan",
-      "description": "Aliases on this mailbox",
       "properties": {
         "alias": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Alias",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.mxplan.AccountDiagnosis": {
+      "description": "Account Diagnosis",
       "id": "AccountDiagnosis",
       "namespace": "email.mxplan",
-      "description": "Account Diagnosis",
       "properties": {
         "canReceiveEmail": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if ingoing message has been received",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "canSendEmail": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if outgoing message has been delivered",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "connectiveWebmail": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if possible to authenticate with credentials",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isLocked": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if account is locked",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isMxValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if MX record for account's domain is properly set",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isSpammer": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if account is flagged as spammer",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isSrvValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if SRV (autodiscovery) record for account's domain is properly set",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isSuspended": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if account is suspended",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "lastCheck": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last performed diagnostics date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "email.mxplan.AccountFullAccess": {
+      "description": "Users having full access on this mailbox",
       "id": "AccountFullAccess",
       "namespace": "email.mxplan",
-      "description": "Users having full access on this mailbox",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id to give full access",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.mxplan.AccountSendAs": {
+      "description": "Users authorized to send mails from this mailbox",
       "id": "AccountSendAs",
       "namespace": "email.mxplan",
-      "description": "Users authorized to send mails from this mailbox",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id to give send as",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.mxplan.AccountSendOnBehalfTo": {
+      "description": "Get users authorized to Send On Behalf To mails from this mailbox",
       "id": "AccountSendOnBehalfTo",
       "namespace": "email.mxplan",
-      "description": "Get users authorized to Send On Behalf To mails from this mailbox",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id to give send on behalf to",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.mxplan.Domain": {
+      "description": "Domain",
       "id": "Domain",
       "namespace": "email.mxplan",
-      "description": "Domain",
       "properties": {
         "cnameToCheck": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Cname that will be checked to prove the domain ownership",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "domainAliases": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of aliases for this domain",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "domainValidated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain validation status",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isAliasDomain": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicate if this domain is an alias for another domain",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "mxIsValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns mx configuration is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "mxRecord": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain MX record configured in DNS",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "mxRelay": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "If specified, emails to not existing address will be redirected to that domain",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "srvIsValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns srv record is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "srvRecord": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain SRV record configured in DNS",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "state": {
-          "type": "email.pro.ObjectStateEnum",
-          "fullType": "email.pro.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain state",
-          "required": true
+          "fullType": "email.pro.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.pro.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending taks id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "email.pro.DomainTypeEnum",
-          "fullType": "email.pro.DomainTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Domain type",
-          "required": true
+          "fullType": "email.pro.DomainTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.pro.DomainTypeEnum"
         }
       }
     },
     "email.mxplan.ExternalContact": {
+      "description": "External contact for this mxplan service",
       "id": "ExternalContact",
       "namespace": "email.mxplan",
-      "description": "External contact for this mxplan service",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contact display name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "externalEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contact email",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact first name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "hiddenFromGAL": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hide the contact in Global Address List",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "initials": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact initals",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact last name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "state": {
-          "type": "email.pro.ObjectStateEnum",
-          "fullType": "email.pro.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact state",
-          "required": true
+          "fullType": "email.pro.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.pro.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.mxplan.Server": {
+      "description": "Server",
       "id": "Server",
       "namespace": "email.mxplan",
-      "description": "Server",
       "properties": {
         "currentDiskUsage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current disk usage in MB",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "diskSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Total disk size in MB",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ipV4",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "ipV6": {
-          "type": "ipv6",
-          "fullType": "ipv6",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ipV6",
-          "required": false
+          "fullType": "ipv6",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6"
         },
         "isAValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns A record is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isAaaaValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns AAAA record is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isPtrV6Valid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns ptrV6 record is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isPtrValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns ptr record is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "state": {
-          "type": "email.pro.ServerStateEnum",
-          "fullType": "email.pro.ServerStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Server state",
-          "required": true
+          "fullType": "email.pro.ServerStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.pro.ServerStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "version": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Server version",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "email.mxplan.Service": {
+      "description": "MXPlan service",
       "id": "Service",
       "namespace": "email.mxplan",
-      "description": "MXPlan service",
       "properties": {
         "complexityEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "enable policy for strong and secure passwords",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "service displayName",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain name of your service",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "hostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Hostname of your service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "lastUpdateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Update date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lockoutDuration": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "number of minutes account will remain locked if it occurs",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lockoutObservationWindow": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "number of minutes that must elapse after a failed logon to reset lockout trigger",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lockoutThreshold": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "number of attempts before account to be locked",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "maxPasswordAge": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "maximum number of days that account's password is valid before expiration",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "maxReceiveSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum message size that You can receive in MB",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "maxSendSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum message size that You can send in MB",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "minPasswordAge": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "minimum number of days before able to change account's password",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "minPasswordLength": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "minimum number of characters password must contain",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "offer": {
-          "type": "email.mxplan.ServiceOfferEnum",
-          "fullType": "email.mxplan.ServiceOfferEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of your offer",
-          "required": true
+          "fullType": "email.mxplan.ServiceOfferEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.mxplan.ServiceOfferEnum"
         },
         "spamAndVirusConfiguration": {
-          "type": "email.pro.spamAndVirusConfiguration",
-          "fullType": "email.pro.spamAndVirusConfiguration",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Spam and Antivirus configuration",
-          "required": true
+          "fullType": "email.pro.spamAndVirusConfiguration",
+          "readOnly": false,
+          "required": true,
+          "type": "email.pro.spamAndVirusConfiguration"
         },
         "state": {
-          "type": "email.pro.ServiceStateEnum",
-          "fullType": "email.pro.ServiceStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "State of your service",
-          "required": true
+          "fullType": "email.pro.ServiceStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.pro.ServiceStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "webUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "URL for web interface",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "email.mxplan.ServiceOfferEnum": {
-      "id": "ServiceOfferEnum",
-      "namespace": "email.mxplan",
       "description": "Service Offer name",
       "enum": [
         "MXPLAN"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceOfferEnum",
+      "namespace": "email.mxplan"
     },
     "email.mxplan.accountCapabilities": {
+      "description": "Account capabilities",
       "id": "accountCapabilities",
       "namespace": "email.mxplan",
-      "description": "Account capabilities",
       "properties": {
         "quotas": {
-          "type": "double[]",
-          "fullType": "double[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "List of allowed quotas (no constraint if null)",
-          "required": false
+          "fullType": "double[]",
+          "readOnly": false,
+          "required": false,
+          "type": "double[]"
         }
       }
     },
     "email.pro.DisclaimerAttributeEnum": {
-      "id": "DisclaimerAttributeEnum",
-      "namespace": "email.pro",
       "description": "Disclaimer attributes list",
       "enum": [
         "City",
@@ -2584,30 +2583,30 @@ export const schema: Schema = {
         "UserLogonName",
         "ZipCode"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DisclaimerAttributeEnum",
+      "namespace": "email.pro"
     },
     "email.pro.DomainTypeEnum": {
-      "id": "DomainTypeEnum",
-      "namespace": "email.pro",
       "description": "Domain type",
       "enum": [
         "authoritative",
         "nonAuthoritative"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainTypeEnum",
+      "namespace": "email.pro"
     },
     "email.pro.MailingFilterEnum": {
-      "id": "MailingFilterEnum",
-      "namespace": "email.pro",
       "description": "Mailing filter options availlable",
       "enum": [
         "vaderetro"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MailingFilterEnum",
+      "namespace": "email.pro"
     },
     "email.pro.ObjectStateEnum": {
-      "id": "ObjectStateEnum",
-      "namespace": "email.pro",
       "description": "Current object state",
       "enum": [
         "creating",
@@ -2618,22 +2617,22 @@ export const schema: Schema = {
         "suspending",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ObjectStateEnum",
+      "namespace": "email.pro"
     },
     "email.pro.ServerStateEnum": {
-      "id": "ServerStateEnum",
-      "namespace": "email.pro",
       "description": "Server State",
       "enum": [
         "configurationPending",
         "notConfigured",
         "ok"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServerStateEnum",
+      "namespace": "email.pro"
     },
     "email.pro.ServiceStateEnum": {
-      "id": "ServiceStateEnum",
-      "namespace": "email.pro",
       "description": "Service State",
       "enum": [
         "creating",
@@ -2644,58 +2643,58 @@ export const schema: Schema = {
         "suspended",
         "suspending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceStateEnum",
+      "namespace": "email.pro"
     },
     "email.pro.Task": {
+      "description": "Organization task details",
       "id": "Task",
       "namespace": "email.pro",
-      "description": "Organization task details",
       "properties": {
         "finishDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "email.pro.TaskFunctionEnum",
-          "fullType": "email.pro.TaskFunctionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Function name",
-          "required": true
+          "fullType": "email.pro.TaskFunctionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.pro.TaskFunctionEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "email.pro.TaskStatusEnum",
-          "fullType": "email.pro.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "email.pro.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.pro.TaskStatusEnum"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "email.pro.TaskFunctionEnum": {
-      "id": "TaskFunctionEnum",
-      "namespace": "email.pro",
       "description": "function enumeration for task",
       "enum": [
         "addAccount",
@@ -2744,11 +2743,11 @@ export const schema: Schema = {
         "unsuspendAccount",
         "unsuspendService"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskFunctionEnum",
+      "namespace": "email.pro"
     },
     "email.pro.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "email.pro",
       "description": "Task status",
       "enum": [
         "cancelled",
@@ -2757,127 +2756,130 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "email.pro"
     },
     "email.pro.disclaimer": {
+      "description": "disclaimer",
       "id": "disclaimer",
       "namespace": "email.pro",
-      "description": "disclaimer",
       "properties": {
         "content": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Signature, added at the bottom of your organization emails",
-          "required": true
+          "fullType": "text",
+          "readOnly": false,
+          "required": true,
+          "type": "text"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Disclaimer name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "outsideOnly": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Activate the disclaimer only for external emails",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.pro.renewPeriodEnum": {
-      "id": "renewPeriodEnum",
-      "namespace": "email.pro",
       "description": "Renew period",
       "enum": [
         "monthly",
         "yearly"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "renewPeriodEnum",
+      "namespace": "email.pro"
     },
     "email.pro.spamAndVirusConfiguration": {
+      "description": "Spam and Antyvirus configuration",
       "id": "spamAndVirusConfiguration",
       "namespace": "email.pro",
-      "description": "Spam and Antyvirus configuration",
       "properties": {
         "checkDKIM": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Check DKIM of message",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "checkSPF": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Check SPF of message",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteSpam": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a spam delete it",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteVirus": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a virus delete it",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "putInJunk": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a spam or virus put in junk. Overridden by deleteSpam or deleteVirus",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "tagSpam": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a spam change its subject",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "tagVirus": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a virus change its subject",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/email/mxplan"
 }

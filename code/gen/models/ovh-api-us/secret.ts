@@ -1,60 +1,62 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://api.us.ovhcloud.com:443/1.0/secret.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/secret/retrieve",
+      "description": "Retrieve a secret sent by email",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve a secret sent by email",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "id",
               "dataType": "password",
-              "paramType": "body",
+              "description": "The secret ID",
               "fullType": "password",
-              "required": true,
-              "description": "The secret ID"
+              "name": "id",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "secret.Secret",
-          "noAuthentication": true,
-          "description": "Retrieve a secret sent by email"
+          "responseType": "secret.Secret"
         }
       ],
-      "description": "Retrieve a secret sent by email"
+      "path": "/secret/retrieve"
     }
   ],
-  "resourcePath": "/secret",
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "secret.Secret": {
+      "description": "A secret",
       "id": "Secret",
       "namespace": "secret",
-      "description": "A secret",
       "properties": {
         "expiration": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Expiration time of the secret",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "secret": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The secret",
-          "required": true
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/secret"
 }

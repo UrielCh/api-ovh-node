@@ -1,2720 +1,2719 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.ovh.com:443/1.0/vps.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/vps",
+      "description": "Operations about the VPS service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the VPS service"
+      "path": "/vps"
     },
     {
-      "path": "/vps/datacenter",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List all the datacenters for a specific country",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "country",
               "dataType": "nichandle.CountryEnum",
-              "paramType": "query",
+              "description": "Country targeted",
               "fullType": "nichandle.CountryEnum",
-              "required": true,
-              "description": "Country targeted"
+              "name": "country",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": true,
-          "description": "List all the datacenters for a specific country"
+          "responseType": "string[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/vps/datacenter"
     },
     {
-      "path": "/vps/order/rule/datacenter",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List datacenters with priority and stock status",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary to sort datacenters",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary to sort datacenters"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "VPS plan code from order api",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "VPS plan code from order api"
+              "required": true
             },
             {
-              "name": "os",
               "dataType": "string",
-              "paramType": "query",
+              "description": "VPS OS selection in order api",
               "fullType": "string",
-              "required": false,
-              "description": "VPS OS selection in order api"
+              "name": "os",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "vps.order.rule.Datacenters",
-          "noAuthentication": true,
-          "description": "List datacenters with priority and stock status"
+          "responseType": "vps.order.rule.Datacenters"
         }
       ],
-      "description": ""
+      "path": "/vps/order/rule/datacenter"
     },
     {
-      "path": "/vps/{serviceName}",
+      "description": "VPS Virtual Machine",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.VPS",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.VPS"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "vps.VPS",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "vps.VPS",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "VPS Virtual Machine"
+      "path": "/vps/{serviceName}"
     },
     {
-      "path": "/vps/{serviceName}/activeOptions",
+      "description": "activeOptions operations",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2013-11-23T10:00:00+01:00",
             "deprecatedDate": "2013-10-23T10:00:00+01:00",
-            "replacement": "/vps/{serviceName}/option"
+            "description": "Deprecated, will be removed",
+            "replacement": "/vps/{serviceName}/option",
+            "value": "DEPRECATED"
           },
+          "description": "Return all active options for the virtual server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.VpsOptionEnum[]",
-          "noAuthentication": false,
-          "description": "Return all active options for the virtual server"
+          "responseType": "vps.VpsOptionEnum[]"
         }
       ],
-      "description": "activeOptions operations"
+      "path": "/vps/{serviceName}/activeOptions"
     },
     {
-      "path": "/vps/{serviceName}/automatedBackup",
+      "description": "Backup your VPS",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.AutomatedBackup",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.AutomatedBackup"
         }
       ],
-      "description": "Backup your VPS"
+      "path": "/vps/{serviceName}/automatedBackup"
     },
     {
-      "path": "/vps/{serviceName}/automatedBackup/attachedBackup",
+      "description": "attachedBackup operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Backup attached to your VPS",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.automatedBackup.Attached[]",
-          "noAuthentication": false,
-          "description": "Backup attached to your VPS"
+          "responseType": "vps.automatedBackup.Attached[]"
         }
       ],
-      "description": "attachedBackup operations"
+      "path": "/vps/{serviceName}/automatedBackup/attachedBackup"
     },
     {
-      "path": "/vps/{serviceName}/automatedBackup/detachBackup",
+      "description": "detachBackup operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a VPS.Task that will umount a restored backup on your VPS",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "restorePoint",
               "dataType": "datetime",
-              "paramType": "body",
+              "description": "restorePoint fetched in /vps/{serviceName}/automatedBackup/attachedBackup",
               "fullType": "datetime",
-              "required": true,
-              "description": "restorePoint fetched in /vps/{serviceName}/automatedBackup/attachedBackup"
+              "name": "restorePoint",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Create a VPS.Task that will umount a restored backup on your VPS"
+          "responseType": "vps.Task"
         }
       ],
-      "description": "detachBackup operations"
+      "path": "/vps/{serviceName}/automatedBackup/detachBackup"
     },
     {
-      "path": "/vps/{serviceName}/automatedBackup/restore",
+      "description": "restore operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Creates a VPS.Task that will restore the given restorePoint",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "boolean",
+              "description": "Only with restore full on VPS Cloud 2014",
+              "fullType": "boolean",
               "name": "changePassword",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Only with restore full on VPS Cloud 2014"
+              "required": false
             },
             {
-              "name": "restorePoint",
-              "dataType": "datetime",
-              "paramType": "body",
-              "fullType": "datetime",
-              "required": true,
-              "description": "Restore Point fetched in /automatedBackup/restorePoints"
-            },
-            {
-              "name": "type",
               "dataType": "vps.RestoreTypeEnum",
-              "paramType": "body",
+              "description": "file: Attach/export restored disk to your current VPS - full: Replace your current VPS by the given restorePoint",
               "fullType": "vps.RestoreTypeEnum",
-              "required": true,
-              "description": "file: Attach/export restored disk to your current VPS - full: Replace your current VPS by the given restorePoint"
+              "name": "type",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "datetime",
+              "description": "Restore Point fetched in /automatedBackup/restorePoints",
+              "fullType": "datetime",
+              "name": "restorePoint",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Creates a VPS.Task that will restore the given restorePoint"
+          "responseType": "vps.Task"
         }
       ],
-      "description": "restore operations"
+      "path": "/vps/{serviceName}/automatedBackup/restore"
     },
     {
-      "path": "/vps/{serviceName}/automatedBackup/restorePoints",
+      "description": "restorePoints operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get available Restore Points",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "state",
               "dataType": "vps.RestoreStateEnum",
-              "paramType": "query",
+              "description": "The state of the restore point",
               "fullType": "vps.RestoreStateEnum",
-              "required": true,
-              "description": "The state of the restore point"
+              "name": "state",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "datetime[]",
-          "noAuthentication": false,
-          "description": "Get available Restore Points"
+          "responseType": "datetime[]"
         }
       ],
-      "description": "restorePoints operations"
+      "path": "/vps/{serviceName}/automatedBackup/restorePoints"
     },
     {
-      "path": "/vps/{serviceName}/availableUpgrade",
+      "description": "availableUpgrade operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return all models the virtual server can be upgraded to",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Model[]",
-          "noAuthentication": false,
-          "description": "Return all models the virtual server can be upgraded to"
+          "responseType": "vps.Model[]"
         }
       ],
-      "description": "availableUpgrade operations"
+      "path": "/vps/{serviceName}/availableUpgrade"
     },
     {
-      "path": "/vps/{serviceName}/backupftp",
+      "description": "Backup Ftp assigned to this VPS",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.BackupFtp",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.BackupFtp"
         }
       ],
-      "description": "Backup Ftp assigned to this VPS"
+      "path": "/vps/{serviceName}/backupftp"
     },
     {
-      "path": "/vps/{serviceName}/backupftp/access",
+      "description": "List the dedicated.server.BackupFtpAcl objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP"
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new Backup FTP ACL",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "nfs",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Wether to allow the CIFS (SMB) protocol for this ACL",
               "fullType": "boolean",
-              "required": true,
-              "description": "Wether to allow the NFS protocol for this ACL"
-            },
-            {
               "name": "cifs",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Wether to allow the NFS protocol for this ACL",
               "fullType": "boolean",
-              "required": true,
-              "description": "Wether to allow the CIFS (SMB) protocol for this ACL"
-            },
-            {
-              "name": "ipBlock",
-              "dataType": "ipBlock",
+              "name": "nfs",
               "paramType": "body",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "The IP Block specific to this ACL. It musts belong to your server."
+              "required": true
             },
             {
+              "dataType": "boolean",
+              "description": "Wether to allow the FTP protocol for this ACL",
+              "fullType": "boolean",
               "name": "ftp",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Wether to allow the FTP protocol for this ACL"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "ipBlock",
+              "description": "The IP Block specific to this ACL. It musts belong to your server.",
+              "fullType": "ipBlock",
+              "name": "ipBlock",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Create a new Backup FTP ACL"
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "List the dedicated.server.BackupFtpAcl objects"
+      "path": "/vps/{serviceName}/backupftp/access"
     },
     {
-      "path": "/vps/{serviceName}/backupftp/access/{ipBlock}",
+      "description": "Backup Ftp ACL for this server and Backup Ftp",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Revoke this ACL",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipBlock",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip block",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip block"
+              "name": "ipBlock",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Revoke this ACL"
+          "responseType": "dedicated.server.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipBlock",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip block",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip block"
+              "name": "ipBlock",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.BackupFtpAcl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.server.BackupFtpAcl"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.server.BackupFtpAcl",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.server.BackupFtpAcl",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipBlock",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip block",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip block"
+              "name": "ipBlock",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Backup Ftp ACL for this server and Backup Ftp"
+      "path": "/vps/{serviceName}/backupftp/access/{ipBlock}"
     },
     {
-      "path": "/vps/{serviceName}/backupftp/authorizableBlocks",
+      "description": "authorizableBlocks operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get all IP blocks that can be used in the ACL",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "Get all IP blocks that can be used in the ACL"
+          "responseType": "ipBlock[]"
         }
       ],
-      "description": "authorizableBlocks operations"
+      "path": "/vps/{serviceName}/backupftp/authorizableBlocks"
     },
     {
-      "path": "/vps/{serviceName}/backupftp/password",
+      "description": "password operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change your Backup FTP password",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.server.Task",
-          "noAuthentication": false,
-          "description": "Change your Backup FTP password"
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "description": "password operations"
+      "path": "/vps/{serviceName}/backupftp/password"
     },
     {
-      "path": "/vps/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/vps/{serviceName}/changeContact"
     },
     {
-      "path": "/vps/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/vps/{serviceName}/confirmTermination"
     },
     {
-      "path": "/vps/{serviceName}/createSnapshot",
+      "description": "createSnapshot operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a snapshot of the Virtual Server if the snapshot option is enabled and if there is no existing snapshot",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "A textual description for your snapshot",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "A textual description for your snapshot"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Create a snapshot of the Virtual Server if the snapshot option is enabled and if there is no existing snapshot"
+          "responseType": "vps.Task"
         }
       ],
-      "description": "createSnapshot operations"
+      "path": "/vps/{serviceName}/createSnapshot"
     },
     {
-      "path": "/vps/{serviceName}/datacenter",
+      "description": "Information about a datacenter of a VPS Virtual Machine",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Datacenter",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.Datacenter"
         }
       ],
-      "description": "Information about a datacenter of a VPS Virtual Machine"
+      "path": "/vps/{serviceName}/datacenter"
     },
     {
-      "path": "/vps/{serviceName}/disks",
+      "description": "List the vps.Disk objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Disks associated to this virtual server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Disks associated to this virtual server"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the vps.Disk objects"
+      "path": "/vps/{serviceName}/disks"
     },
     {
-      "path": "/vps/{serviceName}/disks/{id}",
+      "description": "Information about a disk of a VPS Virtual Machine",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Disk",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.Disk"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "vps.Disk",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "vps.Disk",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Information about a disk of a VPS Virtual Machine"
+      "path": "/vps/{serviceName}/disks/{id}"
     },
     {
-      "path": "/vps/{serviceName}/disks/{id}/monitoring",
+      "description": "monitoring operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return many statistics about the disk for a given period",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             },
             {
-              "name": "period",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "vps.disk.StatisticTypeEnum",
+              "description": "The type of statistic to be fetched",
+              "fullType": "vps.disk.StatisticTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "vps.VpsMonitoringPeriodEnum",
-              "paramType": "query",
+              "description": "The period the statistics are fetched for",
               "fullType": "vps.VpsMonitoringPeriodEnum",
-              "required": true,
-              "description": "The period the statistics are fetched for"
-            },
-            {
-              "name": "type",
-              "dataType": "vps.disk.StatisticTypeEnum",
+              "name": "period",
               "paramType": "query",
-              "fullType": "vps.disk.StatisticTypeEnum",
-              "required": true,
-              "description": "The type of statistic to be fetched"
+              "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<vps.VpsTimestampValue>",
-          "noAuthentication": false,
-          "description": "Return many statistics about the disk for a given period"
+          "responseType": "complexType.UnitAndValues<vps.VpsTimestampValue>"
         }
       ],
-      "description": "monitoring operations"
+      "path": "/vps/{serviceName}/disks/{id}/monitoring"
     },
     {
-      "path": "/vps/{serviceName}/disks/{id}/use",
+      "description": "use operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return many statistics about the disk at that time",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "type",
               "dataType": "vps.disk.StatisticTypeEnum",
-              "paramType": "query",
+              "description": "The type of statistic to be fetched",
               "fullType": "vps.disk.StatisticTypeEnum",
-              "required": true,
-              "description": "The type of statistic to be fetched"
+              "name": "type",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValue<double>",
-          "noAuthentication": false,
-          "description": "Return many statistics about the disk at that time"
+          "responseType": "complexType.UnitAndValue<double>"
         }
       ],
-      "description": "use operations"
+      "path": "/vps/{serviceName}/disks/{id}/use"
     },
     {
-      "path": "/vps/{serviceName}/distribution",
+      "description": "Installation template for a VPS Virtual Machine",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Template",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.Template"
         }
       ],
-      "description": "Installation template for a VPS Virtual Machine"
+      "path": "/vps/{serviceName}/distribution"
     },
     {
-      "path": "/vps/{serviceName}/distribution/software",
+      "description": "List the vps.Software objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available softwares for this template Id",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List available softwares for this template Id"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the vps.Software objects"
+      "path": "/vps/{serviceName}/distribution/software"
     },
     {
-      "path": "/vps/{serviceName}/distribution/software/{softwareId}",
+      "description": "Available softwares on a Template",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Software ID",
+              "fullType": "long",
               "name": "softwareId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Software ID"
+              "required": true
             }
           ],
-          "responseType": "vps.Software",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.Software"
         }
       ],
-      "description": "Available softwares on a Template"
+      "path": "/vps/{serviceName}/distribution/software/{softwareId}"
     },
     {
-      "path": "/vps/{serviceName}/getConsoleUrl",
+      "description": "getConsoleUrl operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return the VPS console URL",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Return the VPS console URL"
+          "responseType": "string"
         }
       ],
-      "description": "getConsoleUrl operations"
+      "path": "/vps/{serviceName}/getConsoleUrl"
     },
     {
-      "path": "/vps/{serviceName}/images/available",
+      "description": "List the vps.Image objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Images available for this virtual server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Images available for this virtual server"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the vps.Image objects"
+      "path": "/vps/{serviceName}/images/available"
     },
     {
-      "path": "/vps/{serviceName}/images/available/{id}",
+      "description": "Installation image for a VPS",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "id",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Id"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Image",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.Image"
         }
       ],
-      "description": "Installation image for a VPS"
+      "path": "/vps/{serviceName}/images/available/{id}"
     },
     {
-      "path": "/vps/{serviceName}/images/current",
+      "description": "Installation image for a VPS",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Image",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.Image"
         }
       ],
-      "description": "Installation image for a VPS"
+      "path": "/vps/{serviceName}/images/current"
     },
     {
-      "path": "/vps/{serviceName}/ipCountryAvailable",
+      "description": "ipCountryAvailable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the countries you can select for your IPs geolocation",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.ip.GeolocationEnum[]",
-          "noAuthentication": false,
-          "description": "Get the countries you can select for your IPs geolocation"
+          "responseType": "vps.ip.GeolocationEnum[]"
         }
       ],
-      "description": "ipCountryAvailable operations"
+      "path": "/vps/{serviceName}/ipCountryAvailable"
     },
     {
-      "path": "/vps/{serviceName}/ips",
+      "description": "List the vps.Ip objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Ips associated to this virtual server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip[]",
-          "noAuthentication": false,
-          "description": "Ips associated to this virtual server"
+          "responseType": "ip[]"
         }
       ],
-      "description": "List the vps.Ip objects"
+      "path": "/vps/{serviceName}/ips"
     },
     {
-      "path": "/vps/{serviceName}/ips/{ipAddress}",
+      "description": "Information about an IP address for a VPS Virtual Machine",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Release a given Ip (Additional Ip)",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipAddress",
               "dataType": "ip",
-              "paramType": "path",
+              "description": "Ip address",
               "fullType": "ip",
-              "required": true,
-              "description": "Ip address"
+              "name": "ipAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Release a given Ip (Additional Ip)"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ipAddress",
-              "dataType": "ip",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "ip",
-              "required": true,
-              "description": "Ip address"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "ip",
+              "description": "Ip address",
+              "fullType": "ip",
+              "name": "ipAddress",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "vps.Ip",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.Ip"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "vps.Ip",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "vps.Ip",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "ipAddress",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "ip",
-              "paramType": "path",
+              "description": "Ip address",
               "fullType": "ip",
-              "required": true,
-              "description": "Ip address"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
+              "name": "ipAddress",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Information about an IP address for a VPS Virtual Machine"
+      "path": "/vps/{serviceName}/ips/{ipAddress}"
     },
     {
-      "path": "/vps/{serviceName}/migration2014",
+      "description": "migration2014 operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get information on a possible migration of a VPS Cloud 2014 to VPS Cloud 2020",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.migration.Cloud2014to2020",
-          "noAuthentication": false,
-          "description": "Get information on a possible migration of a VPS Cloud 2014 to VPS Cloud 2020"
+          "responseType": "vps.migration.Cloud2014to2020"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Schedule the migration of a VPS Cloud 2014 to VPS Cloud 2020",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "date",
               "dataType": "datetime",
-              "paramType": "body",
+              "description": "When the migration should start",
               "fullType": "datetime",
-              "required": true,
-              "description": "When the migration should start"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Schedule the migration of a VPS Cloud 2014 to VPS Cloud 2020"
-        }
-      ],
-      "description": "migration2014 operations"
-    },
-    {
-      "path": "/vps/{serviceName}/models",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "vps.Model[]",
-          "noAuthentication": false,
-          "description": "Return all models for the range of the virtual server"
-        }
-      ],
-      "description": "models operations"
-    },
-    {
-      "path": "/vps/{serviceName}/monitoring",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "type",
-              "dataType": "vps.VpsStatisticTypeEnum",
-              "paramType": "query",
-              "fullType": "vps.VpsStatisticTypeEnum",
-              "required": true,
-              "description": "The type of statistic to be fetched"
-            },
-            {
-              "name": "period",
-              "dataType": "vps.VpsMonitoringPeriodEnum",
-              "paramType": "query",
-              "fullType": "vps.VpsMonitoringPeriodEnum",
-              "required": true,
-              "description": "The period the statistics are fetched for"
-            }
-          ],
-          "responseType": "complexType.UnitAndValues<vps.VpsTimestampValue>",
-          "noAuthentication": false,
-          "description": "Return many statistics about the virtual machine for a given period"
-        }
-      ],
-      "description": "monitoring operations"
-    },
-    {
-      "path": "/vps/{serviceName}/openConsoleAccess",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "protocol",
-              "dataType": "vps.VncProtocolEnum",
+              "name": "date",
               "paramType": "body",
-              "fullType": "vps.VncProtocolEnum",
-              "required": false,
-              "description": "The console protocol you want"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Vnc",
-          "noAuthentication": false,
-          "description": "Return the necessary informations to open a VNC connection to your VPS"
+          "responseType": "vps.Task"
         }
       ],
-      "description": "openConsoleAccess operations"
+      "path": "/vps/{serviceName}/migration2014"
     },
     {
-      "path": "/vps/{serviceName}/option",
+      "description": "models operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return all models for the range of the virtual server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.VpsOptionEnum[]",
-          "noAuthentication": false,
-          "description": "List of VPS options"
+          "responseType": "vps.Model[]"
         }
       ],
-      "description": "List the vps.Option objects"
+      "path": "/vps/{serviceName}/models"
     },
     {
-      "path": "/vps/{serviceName}/option/{option}",
+      "description": "monitoring operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
+          "description": "Return many statistics about the virtual machine for a given period",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "option",
-              "dataType": "vps.VpsOptionEnum",
-              "paramType": "path",
-              "fullType": "vps.VpsOptionEnum",
-              "required": true,
-              "description": "Option"
-            },
-            {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "deleteNow",
-              "dataType": "boolean",
+              "dataType": "vps.VpsMonitoringPeriodEnum",
+              "description": "The period the statistics are fetched for",
+              "fullType": "vps.VpsMonitoringPeriodEnum",
+              "name": "period",
               "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Delete option now, don't wait for expiration"
+              "required": true
+            },
+            {
+              "dataType": "vps.VpsStatisticTypeEnum",
+              "description": "The type of statistic to be fetched",
+              "fullType": "vps.VpsStatisticTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "void",
+          "responseType": "complexType.UnitAndValues<vps.VpsTimestampValue>"
+        }
+      ],
+      "path": "/vps/{serviceName}/monitoring"
+    },
+    {
+      "description": "openConsoleAccess operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return the necessary informations to open a VNC connection to your VPS",
+          "httpMethod": "POST",
           "noAuthentication": false,
-          "description": "Release a given option"
+          "parameters": [
+            {
+              "dataType": "vps.VncProtocolEnum",
+              "description": "The console protocol you want",
+              "fullType": "vps.VncProtocolEnum",
+              "name": "protocol",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.Vnc"
+        }
+      ],
+      "path": "/vps/{serviceName}/openConsoleAccess"
+    },
+    {
+      "description": "List the vps.Option objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of VPS options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.VpsOptionEnum[]"
+        }
+      ],
+      "path": "/vps/{serviceName}/option"
+    },
+    {
+      "description": "Information about the options of a VPS Virtual Machine",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Release a given option",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "vps.VpsOptionEnum",
+              "description": "Option",
+              "fullType": "vps.VpsOptionEnum",
+              "name": "option",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Delete option now, don't wait for expiration",
+              "fullType": "boolean",
+              "name": "deleteNow",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "option",
               "dataType": "vps.VpsOptionEnum",
-              "paramType": "path",
+              "description": "Option",
               "fullType": "vps.VpsOptionEnum",
-              "required": true,
-              "description": "Option"
+              "name": "option",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Option",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.Option"
         }
       ],
-      "description": "Information about the options of a VPS Virtual Machine"
+      "path": "/vps/{serviceName}/option/{option}"
     },
     {
-      "path": "/vps/{serviceName}/reboot",
+      "description": "reboot operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Request a reboot of the machine",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Request a reboot of the machine"
+          "responseType": "vps.Task"
         }
       ],
-      "description": "reboot operations"
+      "path": "/vps/{serviceName}/reboot"
     },
     {
-      "path": "/vps/{serviceName}/rebuild",
+      "description": "rebuild operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Reinstall the virtual server",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "doNotSendPassword",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "If asked, the installation password will NOT be sent (only if sshKey defined)"
-            },
-            {
-              "name": "sshKey",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Id of the vps.Image fetched in /images list",
               "fullType": "string",
-              "required": false,
-              "description": "SSH key name to pre-install on your VPS (name from /me/sshKey)"
-            },
-            {
               "name": "imageId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Id of the vps.Image fetched in /images list"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "SSH key name to pre-install on your VPS (name from /me/sshKey)",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Reinstall the virtual server"
-        }
-      ],
-      "description": "rebuild operations"
-    },
-    {
-      "path": "/vps/{serviceName}/reinstall",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "doNotSendPassword",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "If asked, the installation password will NOT be sent (only if sshKey defined)"
-            },
-            {
               "name": "sshKey",
-              "dataType": "string[]",
               "paramType": "body",
-              "fullType": "string[]",
-              "required": false,
-              "description": "SSH key names to pre-install on your VPS (name from /me/sshKey)"
+              "required": false
             },
             {
-              "name": "language",
+              "dataType": "boolean",
+              "description": "If asked, the installation password will NOT be sent (only if sshKey defined)",
+              "fullType": "boolean",
+              "name": "doNotSendPassword",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "Service name",
               "fullType": "string",
-              "required": false,
-              "description": "Distribution language. default : en"
-            },
-            {
-              "name": "softwareId",
-              "dataType": "long[]",
-              "paramType": "body",
-              "fullType": "long[]",
-              "required": false,
-              "description": "Id of the vps.Software type fetched in /template/{id}/software"
-            },
-            {
-              "name": "templateId",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Id of the vps.Template fetched in /templates list"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Reinstall the virtual server"
+          "responseType": "vps.Task"
         }
       ],
-      "description": "reinstall operations"
+      "path": "/vps/{serviceName}/rebuild"
     },
     {
-      "path": "/vps/{serviceName}/secondaryDnsDomains",
+      "description": "reinstall operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of secondary dns domain name"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Reinstall the virtual server",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
+              "dataType": "boolean",
+              "description": "If asked, the installation password will NOT be sent (only if sshKey defined)",
+              "fullType": "boolean",
+              "name": "doNotSendPassword",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the vps.Template fetched in /templates list",
+              "fullType": "long",
+              "name": "templateId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long[]",
+              "description": "Id of the vps.Software type fetched in /template/{id}/software",
+              "fullType": "long[]",
+              "name": "softwareId",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "Distribution language. default : en",
               "fullType": "string",
-              "required": true,
-              "description": "The domain to add"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "language",
               "paramType": "body",
-              "fullType": "ipv4",
-              "required": false,
-              "description": ""
+              "required": false
             },
             {
+              "dataType": "string[]",
+              "description": "SSH key names to pre-install on your VPS (name from /me/sshKey)",
+              "fullType": "string[]",
+              "name": "sshKey",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "add a domain on secondary dns"
+          "responseType": "vps.Task"
         }
       ],
-      "description": "List the secondaryDns.SecondaryDNS objects"
+      "path": "/vps/{serviceName}/reinstall"
     },
     {
-      "path": "/vps/{serviceName}/secondaryDnsDomains/{domain}",
+      "description": "List the secondaryDns.SecondaryDNS objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "remove this domain"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "List of secondary dns domain name",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNS",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "add a domain on secondary dns",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The domain to add",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/vps/{serviceName}/secondaryDnsDomains"
+    },
+    {
+      "description": "Secondary dns infos",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "remove this domain",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "secondaryDns.SecondaryDNS"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "secondaryDns.SecondaryDNS",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "secondaryDns.SecondaryDNS",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Secondary dns infos"
+      "path": "/vps/{serviceName}/secondaryDnsDomains/{domain}"
     },
     {
-      "path": "/vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer",
+      "description": "dnsServer operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "domain name server informations",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNSNameServer",
-          "noAuthentication": false,
-          "description": "domain name server informations"
+          "responseType": "secondaryDns.SecondaryDNSNameServer"
         }
       ],
-      "description": "dnsServer operations"
+      "path": "/vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer"
     },
     {
-      "path": "/vps/{serviceName}/secondaryDnsNameServerAvailable",
+      "description": "secondaryDnsNameServerAvailable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Secondary nameServer available for your Server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "secondaryDns.SecondaryDNSNameServer",
-          "noAuthentication": false,
-          "description": "Secondary nameServer available for your Server"
+          "responseType": "secondaryDns.SecondaryDNSNameServer"
         }
       ],
-      "description": "secondaryDnsNameServerAvailable operations"
+      "path": "/vps/{serviceName}/secondaryDnsNameServerAvailable"
     },
     {
-      "path": "/vps/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/vps/{serviceName}/serviceInfos"
     },
     {
-      "path": "/vps/{serviceName}/setPassword",
+      "description": "setPassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Start the process in order to set the root password of the virtual machine. Be careful, in case of Cloud model, a reboot is mandatory.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Start the process in order to set the root password of the virtual machine. Be careful, in case of Cloud model, a reboot is mandatory."
+          "responseType": "vps.Task"
         }
       ],
-      "description": "setPassword operations"
+      "path": "/vps/{serviceName}/setPassword"
     },
     {
-      "path": "/vps/{serviceName}/snapshot",
+      "description": "Information about the snapshot of a VPS Virtual Machine",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Creates a vps.Task that will delete the Snapshot",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Creates a vps.Task that will delete the Snapshot"
+          "responseType": "vps.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Snapshot",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.Snapshot"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "vps.Snapshot",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "vps.Snapshot",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Information about the snapshot of a VPS Virtual Machine"
+      "path": "/vps/{serviceName}/snapshot"
     },
     {
-      "path": "/vps/{serviceName}/snapshot/revert",
+      "description": "revert operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Revert the Virtual Server to this snapshot",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Revert the Virtual Server to this snapshot"
+          "responseType": "vps.Task"
         }
       ],
-      "description": "revert operations"
+      "path": "/vps/{serviceName}/snapshot/revert"
     },
     {
-      "path": "/vps/{serviceName}/start",
+      "description": "start operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Request the machine to start",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Request the machine to start"
+          "responseType": "vps.Task"
         }
       ],
-      "description": "start operations"
+      "path": "/vps/{serviceName}/start"
     },
     {
-      "path": "/vps/{serviceName}/status",
+      "description": "status operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Give the status of the services of the main IP",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.ip.ServiceStatus",
-          "noAuthentication": false,
-          "description": "Give the status of the services of the main IP"
+          "responseType": "vps.ip.ServiceStatus"
         }
       ],
-      "description": "status operations"
+      "path": "/vps/{serviceName}/status"
     },
     {
-      "path": "/vps/{serviceName}/stop",
+      "description": "stop operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Request the machine to stop",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Request the machine to stop"
+          "responseType": "vps.Task"
         }
       ],
-      "description": "stop operations"
+      "path": "/vps/{serviceName}/stop"
     },
     {
-      "path": "/vps/{serviceName}/tasks",
+      "description": "List the vps.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Tasks associated to this virtual server",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "type",
-              "dataType": "vps.TaskTypeEnum",
-              "paramType": "query",
-              "fullType": "vps.TaskTypeEnum",
-              "required": false,
-              "description": "Filter the value of type property (=)"
-            },
-            {
-              "name": "state",
               "dataType": "vps.TaskStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of state property (=)",
               "fullType": "vps.TaskStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks associated to this virtual server"
-        }
-      ],
-      "description": "List the vps.Task objects"
-    },
-    {
-      "path": "/vps/{serviceName}/tasks/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "state",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Operation on a VPS Virtual Machine"
-    },
-    {
-      "path": "/vps/{serviceName}/templates",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Templates available for this virtual server"
-        }
-      ],
-      "description": "List the vps.Template objects"
-    },
-    {
-      "path": "/vps/{serviceName}/templates/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "vps.Template",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Installation template for a VPS Virtual Machine"
-    },
-    {
-      "path": "/vps/{serviceName}/templates/{id}/software",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List available softwares for this template Id"
-        }
-      ],
-      "description": "List the vps.Software objects"
-    },
-    {
-      "path": "/vps/{serviceName}/templates/{id}/software/{softwareId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            },
-            {
-              "name": "softwareId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Software ID"
-            }
-          ],
-          "responseType": "vps.Software",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Available softwares on a Template"
-    },
-    {
-      "path": "/vps/{serviceName}/terminate",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
-        }
-      ],
-      "description": "Terminate your service"
-    },
-    {
-      "path": "/vps/{serviceName}/use",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
+              "dataType": "vps.TaskTypeEnum",
+              "description": "Filter the value of type property (=)",
+              "fullType": "vps.TaskTypeEnum",
               "name": "type",
-              "dataType": "vps.VpsStatisticTypeEnum",
               "paramType": "query",
-              "fullType": "vps.VpsStatisticTypeEnum",
-              "required": true,
-              "description": "The type of statistic to be fetched"
+              "required": false
             }
           ],
-          "responseType": "complexType.UnitAndValue<double>",
-          "noAuthentication": false,
-          "description": "Return many statistics about the virtual machine at that time"
+          "responseType": "long[]"
         }
       ],
-      "description": "use operations"
+      "path": "/vps/{serviceName}/tasks"
     },
     {
-      "path": "/vps/{serviceName}/veeam",
+      "description": "Operation on a VPS Virtual Machine",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "vps.Veeam",
           "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Informations about a VPS Veeam backups"
-    },
-    {
-      "path": "/vps/{serviceName}/veeam/restorePoints",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "creationTime",
-              "dataType": "datetime",
-              "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationTime property (like)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Veeam restore points for the VPS"
-        }
-      ],
-      "description": "List the vps.veeam.RestorePoint objects"
-    },
-    {
-      "path": "/vps/{serviceName}/veeam/restorePoints/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.veeam.RestorePoint",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.Task"
         }
       ],
-      "description": "Informations about a VPS Veeam restore points"
+      "path": "/vps/{serviceName}/tasks/{id}"
     },
     {
-      "path": "/vps/{serviceName}/veeam/restorePoints/{id}/restore",
+      "description": "List the vps.Template objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Templates available for this virtual server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/vps/{serviceName}/templates"
+    },
+    {
+      "description": "Installation template for a VPS Virtual Machine",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.Template"
+        }
+      ],
+      "path": "/vps/{serviceName}/templates/{id}"
+    },
+    {
+      "description": "List the vps.Software objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available softwares for this template Id",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/vps/{serviceName}/templates/{id}/software"
+    },
+    {
+      "description": "Available softwares on a Template",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Software ID",
+              "fullType": "long",
+              "name": "softwareId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.Software"
+        }
+      ],
+      "path": "/vps/{serviceName}/templates/{id}/software/{softwareId}"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "export",
-              "dataType": "vps.veeam.ExportTypeEnum",
-              "paramType": "body",
-              "fullType": "vps.veeam.ExportTypeEnum",
-              "required": false,
-              "description": "(Except full) The export method for your restore - defaults to both"
-            },
-            {
-              "name": "changePassword",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "(Full only) Change the restored VPS root password when done"
-            },
-            {
-              "name": "full",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Replace your current VPS by the restorePoint"
-            },
-            {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
-          "noAuthentication": false,
-          "description": "Creates a VPS.Task that will restore the given restorePoint"
+          "responseType": "string"
         }
       ],
-      "description": "restore operations"
+      "path": "/vps/{serviceName}/terminate"
     },
     {
-      "path": "/vps/{serviceName}/veeam/restoredBackup",
+      "description": "use operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
+          "description": "Return many statistics about the virtual machine at that time",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "vps.VpsStatisticTypeEnum",
+              "description": "The type of statistic to be fetched",
+              "fullType": "vps.VpsStatisticTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "vps.Task",
+          "responseType": "complexType.UnitAndValue<double>"
+        }
+      ],
+      "path": "/vps/{serviceName}/use"
+    },
+    {
+      "description": "Informations about a VPS Veeam backups",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Creates a VPS.Task that will unmount the backup"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.Veeam"
+        }
+      ],
+      "path": "/vps/{serviceName}/veeam"
+    },
+    {
+      "description": "List the vps.veeam.RestorePoint objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Veeam restore points for the VPS",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationTime property (like)",
+              "fullType": "datetime",
+              "name": "creationTime",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/vps/{serviceName}/veeam/restorePoints"
+    },
+    {
+      "description": "Informations about a VPS Veeam restore points",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.veeam.RestorePoint"
+        }
+      ],
+      "path": "/vps/{serviceName}/veeam/restorePoints/{id}"
+    },
+    {
+      "description": "restore operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Creates a VPS.Task that will restore the given restorePoint",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "vps.veeam.ExportTypeEnum",
+              "description": "(Except full) The export method for your restore - defaults to both",
+              "fullType": "vps.veeam.ExportTypeEnum",
+              "name": "export",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "(Full only) Change the restored VPS root password when done",
+              "fullType": "boolean",
+              "name": "changePassword",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Replace your current VPS by the restorePoint",
+              "fullType": "boolean",
+              "name": "full",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.Task"
+        }
+      ],
+      "path": "/vps/{serviceName}/veeam/restorePoints/{id}/restore"
+    },
+    {
+      "description": "Currently restored backup",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Creates a VPS.Task that will unmount the backup",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "vps.veeam.RestoredBackup",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "vps.veeam.RestoredBackup"
         }
       ],
-      "description": "Currently restored backup"
+      "path": "/vps/{serviceName}/veeam/restoredBackup"
     }
   ],
-  "resourcePath": "/vps",
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "complexType.UnitAndValue<T>": {
-      "id": "UnitAndValue",
-      "namespace": "complexType",
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "complexType.UnitAndValues<T>": {
-      "id": "UnitAndValues",
-      "namespace": "complexType",
       "description": "A value set tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValues",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "values": {
-          "type": "T[]",
-          "fullType": "T[]",
           "canBeNull": false,
+          "fullType": "T[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T[]"
         }
       }
     },
     "coreTypes.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "coreTypes",
       "description": "ISO country codes",
       "enum": [
         "ac",
@@ -2978,21 +2977,21 @@ export const schema: Schema = {
         "zm",
         "zw"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "coreTypes"
     },
     "coreTypes.IpVersionEnum": {
-      "id": "IpVersionEnum",
-      "namespace": "coreTypes",
       "description": "Ip versions",
       "enum": [
         "v4",
         "v6"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpVersionEnum",
+      "namespace": "coreTypes"
     },
     "dedicated.TaskFunctionEnum": {
-      "id": "TaskFunctionEnum",
-      "namespace": "dedicated",
       "description": "different task operation",
       "enum": [
         "INFRA_002_VirtualNetworkInterface",
@@ -3031,11 +3030,11 @@ export const schema: Schema = {
         "virtualMacAdd",
         "virtualMacDelete"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskFunctionEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "dedicated",
       "description": "different task status",
       "enum": [
         "cancelled",
@@ -3046,129 +3045,129 @@ export const schema: Schema = {
         "ovhError",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "dedicated"
     },
     "dedicated.server.BackupFtpAcl": {
+      "description": "Backup Ftp ACL for this server and Backup Ftp",
       "id": "BackupFtpAcl",
       "namespace": "dedicated.server",
-      "description": "Backup Ftp ACL for this server and Backup Ftp",
       "properties": {
         "cifs": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Wether to allow the CIFS (SMB) protocol for this ACL",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "ftp": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Wether to allow the FTP protocol for this ACL",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "ipBlock": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The IP Block specific to this ACL",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         },
         "isApplied": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Whether the rule has been applied on the Backup Ftp",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the last object modification",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "nfs": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Wether to allow the NFS protocol for this ACL",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "dedicated.server.Task": {
+      "description": "Server tasks",
       "id": "Task",
       "namespace": "dedicated.server",
-      "description": "Server tasks",
       "properties": {
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Details of this task",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "dedicated.TaskFunctionEnum",
-          "fullType": "dedicated.TaskFunctionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Function name",
-          "required": true
+          "fullType": "dedicated.TaskFunctionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TaskFunctionEnum"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "dedicated.TaskStatusEnum",
-          "fullType": "dedicated.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "dedicated.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TaskStatusEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the id of the task",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "nichandle.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "nichandle",
       "description": "Countries a nichandle can choose",
       "enum": [
         "AC",
@@ -3426,11 +3425,11 @@ export const schema: Schema = {
         "ZM",
         "ZW"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "nichandle"
     },
     "nichandle.OvhSubsidiaryEnum": {
-      "id": "OvhSubsidiaryEnum",
-      "namespace": "nichandle",
       "description": "OVH subsidiaries",
       "enum": [
         "ASIA",
@@ -3441,125 +3440,125 @@ export const schema: Schema = {
         "WE",
         "WS"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OvhSubsidiaryEnum",
+      "namespace": "nichandle"
     },
     "secondaryDns.SecondaryDNS": {
+      "description": "Secondary dns infos",
       "id": "SecondaryDNS",
       "namespace": "secondaryDns",
-      "description": "Secondary dns infos",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "dns": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "secondary dns server",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "domain on slave server",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "ipMaster": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": false,
           "description": "master ip",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": true,
+          "type": "ipv4"
         }
       }
     },
     "secondaryDns.SecondaryDNSNameServer": {
+      "description": "A structure describing informations about available nameserver for secondary dns ",
       "id": "SecondaryDNSNameServer",
       "namespace": "secondaryDns",
-      "description": "A structure describing informations about available nameserver for secondary dns ",
       "properties": {
         "hostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "the name server",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
+          "fullType": "ipv4",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "ipv4"
         },
         "ipv6": {
-          "type": "ipv6",
-          "fullType": "ipv6",
           "canBeNull": true,
+          "fullType": "ipv6",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "ipv6"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -3570,11 +3569,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -3582,11 +3581,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -3595,11 +3594,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -3617,593 +3616,593 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "vps.AutomatedBackup": {
+      "description": "Backup your VPS",
       "id": "AutomatedBackup",
       "namespace": "vps",
-      "description": "Backup your VPS",
       "properties": {
         "schedule": {
-          "type": "time",
-          "fullType": "time",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Scheduled time of your daily backup",
-          "required": false
+          "fullType": "time",
+          "readOnly": true,
+          "required": false,
+          "type": "time"
         },
         "state": {
-          "type": "vps.BackupStateEnum",
-          "fullType": "vps.BackupStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Backup state",
-          "required": true
+          "fullType": "vps.BackupStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "vps.BackupStateEnum"
         }
       }
     },
     "vps.BackupFtp": {
+      "description": "Backup Ftp assigned to this VPS",
       "id": "BackupFtp",
       "namespace": "vps",
-      "description": "Backup Ftp assigned to this VPS",
       "properties": {
         "ftpBackupName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The backup FTP server name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "quota": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The disk space available on your backup FTP",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         },
         "readOnlyDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "If not-null, gives the date since when your account was set in read-only mode because the quota was exceeded",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The backup FTP type",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "usage": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The disk space currently used on your backup FTP",
-          "required": false
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
         }
       }
     },
     "vps.BackupStateEnum": {
-      "id": "BackupStateEnum",
-      "namespace": "vps",
       "description": "Available AutomatedBackup states",
       "enum": [
         "disabled",
         "enabled"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BackupStateEnum",
+      "namespace": "vps"
     },
     "vps.Datacenter": {
+      "description": "Information about a datacenter of a VPS Virtual Machine",
       "id": "Datacenter",
       "namespace": "vps",
-      "description": "Information about a datacenter of a VPS Virtual Machine",
       "properties": {
         "country": {
-          "type": "coreTypes.CountryEnum",
-          "fullType": "coreTypes.CountryEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Datacenter ISO country code",
-          "required": true
+          "fullType": "coreTypes.CountryEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "coreTypes.CountryEnum"
         },
         "longName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Datacenter display name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Datacenter name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "vps.Disk": {
+      "description": "Information about a disk of a VPS Virtual Machine",
       "id": "Disk",
       "namespace": "vps",
-      "description": "Information about a disk of a VPS Virtual Machine",
       "properties": {
         "bandwidthLimit": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "lowFreeSpaceThreshold": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The low disk free space threshold in MiB",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "monitoring": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The monitoring state of this disk",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "vps.disk.StateEnum",
-          "fullType": "vps.disk.StateEnum",
           "canBeNull": false,
+          "fullType": "vps.disk.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.disk.StateEnum"
         },
         "type": {
-          "type": "vps.disk.TypeEnum",
-          "fullType": "vps.disk.TypeEnum",
           "canBeNull": false,
+          "fullType": "vps.disk.TypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.disk.TypeEnum"
         }
       }
     },
     "vps.Image": {
+      "description": "Installation image for a VPS",
       "id": "Image",
       "namespace": "vps",
-      "description": "Installation image for a VPS",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "vps.Ip": {
+      "description": "Information about an IP address for a VPS Virtual Machine",
       "id": "Ip",
       "namespace": "vps",
-      "description": "Information about an IP address for a VPS Virtual Machine",
       "properties": {
         "gateway": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
+          "fullType": "ip",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "ip"
         },
         "geolocation": {
-          "type": "vps.ip.GeolocationEnum",
-          "fullType": "vps.ip.GeolocationEnum",
           "canBeNull": false,
+          "fullType": "vps.ip.GeolocationEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.ip.GeolocationEnum"
         },
         "ipAddress": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The effective ip address of the Ip object",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "macAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "reverse": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "vps.ip.TypeEnum",
-          "fullType": "vps.ip.TypeEnum",
           "canBeNull": false,
+          "fullType": "vps.ip.TypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.ip.TypeEnum"
         },
         "version": {
-          "type": "coreTypes.IpVersionEnum",
-          "fullType": "coreTypes.IpVersionEnum",
           "canBeNull": false,
+          "fullType": "coreTypes.IpVersionEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.IpVersionEnum"
         }
       }
     },
     "vps.Model": {
+      "description": "A structure describing characteristics of a VPS model",
       "id": "Model",
       "namespace": "vps",
-      "description": "A structure describing characteristics of a VPS model",
       "properties": {
         "availableOptions": {
-          "type": "vps.VpsOptionEnum[]",
-          "fullType": "vps.VpsOptionEnum[]",
           "canBeNull": false,
+          "fullType": "vps.VpsOptionEnum[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "vps.VpsOptionEnum[]"
         },
         "datacenter": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
+          "fullType": "string[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string[]"
         },
         "disk": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "maximumAdditionnalIp": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "memory": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "offer": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "vcore": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "version": {
-          "type": "vps.VpsVersionEnum",
-          "fullType": "vps.VpsVersionEnum",
           "canBeNull": false,
+          "fullType": "vps.VpsVersionEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "vps.VpsVersionEnum"
         }
       }
     },
     "vps.Option": {
+      "description": "Information about the options of a VPS Virtual Machine",
       "id": "Option",
       "namespace": "vps",
-      "description": "Information about the options of a VPS Virtual Machine",
       "properties": {
         "option": {
-          "type": "vps.VpsOptionEnum",
-          "fullType": "vps.VpsOptionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The option name",
-          "required": true
+          "fullType": "vps.VpsOptionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "vps.VpsOptionEnum"
         },
         "state": {
-          "type": "vps.VpsOptionStateEnum",
-          "fullType": "vps.VpsOptionStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The state of the option",
-          "required": true
+          "fullType": "vps.VpsOptionStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "vps.VpsOptionStateEnum"
         }
       }
     },
     "vps.RestoreStateEnum": {
-      "id": "RestoreStateEnum",
-      "namespace": "vps",
       "description": "Available restore state",
       "enum": [
         "available",
         "restored",
         "restoring"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RestoreStateEnum",
+      "namespace": "vps"
     },
     "vps.RestoreTypeEnum": {
-      "id": "RestoreTypeEnum",
-      "namespace": "vps",
       "description": "Available restore types",
       "enum": [
         "file",
         "full"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RestoreTypeEnum",
+      "namespace": "vps"
     },
     "vps.Snapshot": {
+      "description": "Information about the snapshot of a VPS Virtual Machine",
       "id": "Snapshot",
       "namespace": "vps",
-      "description": "Information about the snapshot of a VPS Virtual Machine",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "vps.Software": {
+      "description": "Available softwares on a Template",
       "id": "Software",
       "namespace": "vps",
-      "description": "Available softwares on a Template",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "vps.SoftwareStatusEnum",
-          "fullType": "vps.SoftwareStatusEnum",
           "canBeNull": false,
+          "fullType": "vps.SoftwareStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.SoftwareStatusEnum"
         },
         "type": {
-          "type": "vps.SoftwareTypeEnum",
-          "fullType": "vps.SoftwareTypeEnum",
           "canBeNull": false,
+          "fullType": "vps.SoftwareTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.SoftwareTypeEnum"
         }
       }
     },
     "vps.SoftwareStatusEnum": {
-      "id": "SoftwareStatusEnum",
-      "namespace": "vps",
       "description": "Available Status for a vps Software",
       "enum": [
         "deprecated",
         "stable",
         "testing"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SoftwareStatusEnum",
+      "namespace": "vps"
     },
     "vps.SoftwareTypeEnum": {
-      "id": "SoftwareTypeEnum",
-      "namespace": "vps",
       "description": "Available Type for a vps Software",
       "enum": [
         "database",
         "environment",
         "webserver"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SoftwareTypeEnum",
+      "namespace": "vps"
     },
     "vps.Task": {
+      "description": "Operation on a VPS Virtual Machine",
       "id": "Task",
       "namespace": "vps",
-      "description": "Operation on a VPS Virtual Machine",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "progress": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "vps.TaskStateEnum",
-          "fullType": "vps.TaskStateEnum",
           "canBeNull": false,
+          "fullType": "vps.TaskStateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.TaskStateEnum"
         },
         "type": {
-          "type": "vps.TaskTypeEnum",
-          "fullType": "vps.TaskTypeEnum",
           "canBeNull": false,
+          "fullType": "vps.TaskTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.TaskTypeEnum"
         }
       }
     },
     "vps.TaskStateEnum": {
-      "id": "TaskStateEnum",
-      "namespace": "vps",
       "description": "All states a VPS task can be in",
       "enum": [
         "blocked",
@@ -4215,11 +4214,11 @@ export const schema: Schema = {
         "todo",
         "waitingAck"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "vps"
     },
     "vps.TaskTypeEnum": {
-      "id": "TaskTypeEnum",
-      "namespace": "vps",
       "description": "All type a VPS task can be",
       "enum": [
         "addVeeamBackupJob",
@@ -4246,235 +4245,235 @@ export const schema: Schema = {
         "stopVm",
         "upgradeVm"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskTypeEnum",
+      "namespace": "vps"
     },
     "vps.Template": {
+      "description": "Installation template for a VPS Virtual Machine",
       "id": "Template",
       "namespace": "vps",
-      "description": "Installation template for a VPS Virtual Machine",
       "properties": {
         "availableLanguage": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
+          "fullType": "string[]",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string[]"
         },
         "bitFormat": {
-          "type": "vps.TemplateBitFormatEnum",
-          "fullType": "vps.TemplateBitFormatEnum",
           "canBeNull": false,
+          "fullType": "vps.TemplateBitFormatEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.TemplateBitFormatEnum"
         },
         "distribution": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "locale": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "vps.TemplateBitFormatEnum": {
-      "id": "TemplateBitFormatEnum",
-      "namespace": "vps",
       "description": "Bitness of a VPS template",
       "enum": [
         "32",
         "64"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "TemplateBitFormatEnum",
+      "namespace": "vps"
     },
     "vps.VPS": {
+      "description": "VPS Virtual Machine",
       "id": "VPS",
       "namespace": "vps",
-      "description": "VPS Virtual Machine",
       "properties": {
         "cluster": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Set the name displayed in ManagerV6 for your VPS (max 50 chars)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "keymap": {
-          "type": "vps.VpsKeymapEnum",
-          "fullType": "vps.VpsKeymapEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Set KVM keyboard layout on VPS Cloud. Reboot your VPS after change",
-          "required": false
+          "fullType": "vps.VpsKeymapEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.VpsKeymapEnum"
         },
         "memoryLimit": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "model": {
-          "type": "vps.Model",
-          "fullType": "vps.Model",
           "canBeNull": false,
+          "fullType": "vps.Model",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.Model"
         },
         "monitoringIpBlocks": {
-          "type": "ipBlock[]",
-          "fullType": "ipBlock[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ip blocks for OVH monitoring servers",
-          "required": true
+          "fullType": "ipBlock[]",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock[]"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "netbootMode": {
-          "type": "vps.VpsNetbootEnum",
-          "fullType": "vps.VpsNetbootEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Reboot your VPS 'Cloud' after change, VPS 'Classic/LowLat' will reboot automatically. Credentials for rescue mode will be sent by mail",
-          "required": true
+          "fullType": "vps.VpsNetbootEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "vps.VpsNetbootEnum"
         },
         "offerType": {
-          "type": "vps.VpsOfferEnum",
-          "fullType": "vps.VpsOfferEnum",
           "canBeNull": false,
+          "fullType": "vps.VpsOfferEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.VpsOfferEnum"
         },
         "slaMonitoring": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "boolean"
         },
         "state": {
-          "type": "vps.VpsStateEnum",
-          "fullType": "vps.VpsStateEnum",
           "canBeNull": false,
+          "fullType": "vps.VpsStateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "vps.VpsStateEnum"
         },
         "vcore": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "vps.Veeam": {
+      "description": "Informations about a VPS Veeam backups",
       "id": "Veeam",
       "namespace": "vps",
-      "description": "Informations about a VPS Veeam backups",
       "properties": {
         "backup": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Backup state",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "vps.Vnc": {
+      "description": "A VNC connection informations",
       "id": "Vnc",
       "namespace": "vps",
-      "description": "A VNC connection informations",
       "properties": {
         "host": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "password": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
+          "fullType": "password",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "password"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "vps.VncProtocolEnum": {
-      "id": "VncProtocolEnum",
-      "namespace": "vps",
       "description": "All supported VNC protocols by VPS",
       "enum": [
         "VNC",
         "VNCOverWebSocket"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VncProtocolEnum",
+      "namespace": "vps"
     },
     "vps.VpsKeymapEnum": {
-      "id": "VpsKeymapEnum",
-      "namespace": "vps",
       "description": "All values keymap can be in",
       "enum": [
         "fr",
         "us"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VpsKeymapEnum",
+      "namespace": "vps"
     },
     "vps.VpsMonitoringPeriodEnum": {
-      "id": "VpsMonitoringPeriodEnum",
-      "namespace": "vps",
       "description": "Available periods for the VPS monitoring",
       "enum": [
         "lastday",
@@ -4483,21 +4482,21 @@ export const schema: Schema = {
         "lastyear",
         "today"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VpsMonitoringPeriodEnum",
+      "namespace": "vps"
     },
     "vps.VpsNetbootEnum": {
-      "id": "VpsNetbootEnum",
-      "namespace": "vps",
       "description": "All values a VPS netboot mode can be in",
       "enum": [
         "local",
         "rescue"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VpsNetbootEnum",
+      "namespace": "vps"
     },
     "vps.VpsOfferEnum": {
-      "id": "VpsOfferEnum",
-      "namespace": "vps",
       "description": "All offers a VPS can have",
       "enum": [
         "beta-classic",
@@ -4508,11 +4507,11 @@ export const schema: Schema = {
         "lowlat",
         "ssd"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VpsOfferEnum",
+      "namespace": "vps"
     },
     "vps.VpsOptionEnum": {
-      "id": "VpsOptionEnum",
-      "namespace": "vps",
       "description": "All options a VPS can have",
       "enum": [
         "additionalDisk",
@@ -4524,21 +4523,21 @@ export const schema: Schema = {
         "veeam",
         "windows"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VpsOptionEnum",
+      "namespace": "vps"
     },
     "vps.VpsOptionStateEnum": {
-      "id": "VpsOptionStateEnum",
-      "namespace": "vps",
       "description": "All states a VPS Option can be in",
       "enum": [
         "released",
         "subscribed"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VpsOptionStateEnum",
+      "namespace": "vps"
     },
     "vps.VpsStateEnum": {
-      "id": "VpsStateEnum",
-      "namespace": "vps",
       "description": "All states a VPS can be in",
       "enum": [
         "installing",
@@ -4549,11 +4548,11 @@ export const schema: Schema = {
         "stopping",
         "upgrading"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VpsStateEnum",
+      "namespace": "vps"
     },
     "vps.VpsStatisticTypeEnum": {
-      "id": "VpsStatisticTypeEnum",
-      "namespace": "vps",
       "description": "Available types for the VPS monitoring and use",
       "enum": [
         "cpu:iowait",
@@ -4567,32 +4566,32 @@ export const schema: Schema = {
         "net:rx",
         "net:tx"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VpsStatisticTypeEnum",
+      "namespace": "vps"
     },
     "vps.VpsTimestampValue": {
+      "description": "A timestamp associated to a value",
       "id": "VpsTimestampValue",
       "namespace": "vps",
-      "description": "A timestamp associated to a value",
       "properties": {
         "timestamp": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
+          "fullType": "double",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "double"
         }
       }
     },
     "vps.VpsVersionEnum": {
-      "id": "VpsVersionEnum",
-      "namespace": "vps",
       "description": "All versions that VPS can have",
       "enum": [
         "2013v1",
@@ -4605,94 +4604,94 @@ export const schema: Schema = {
         "2018v2",
         "2019v1"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "VpsVersionEnum",
+      "namespace": "vps"
     },
     "vps.automatedBackup.Attached": {
+      "description": "A backup attached to your VPS",
       "id": "Attached",
       "namespace": "vps.automatedBackup",
-      "description": "A backup attached to your VPS",
       "properties": {
         "access": {
-          "type": "vps.automatedBackup.attached.Infos",
-          "fullType": "vps.automatedBackup.attached.Infos",
           "canBeNull": false,
+          "fullType": "vps.automatedBackup.attached.Infos",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "vps.automatedBackup.attached.Infos"
         },
         "restorePoint": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "vps.automatedBackup.attached.Infos": {
+      "description": "A structure describing a backup's access informations",
       "id": "Infos",
       "namespace": "vps.automatedBackup.attached",
-      "description": "A structure describing a backup's access informations",
       "properties": {
         "additionalDisk": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Additional Disk details",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "nfs": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "NFS URL of the backup",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "smb": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "SMB URL of the backup",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "vps.disk.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "vps.disk",
       "description": "Possible states the disk can be in",
       "enum": [
         "connected",
         "disconnected",
         "pending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "vps.disk"
     },
     "vps.disk.StatisticTypeEnum": {
-      "id": "StatisticTypeEnum",
-      "namespace": "vps.disk",
       "description": "Available types for the Disk monitoring and use",
       "enum": [
         "max",
         "used"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatisticTypeEnum",
+      "namespace": "vps.disk"
     },
     "vps.disk.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "vps.disk",
       "description": "Possible type a disk can be in",
       "enum": [
         "additional",
         "primary"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "vps.disk"
     },
     "vps.ip.GeolocationEnum": {
-      "id": "GeolocationEnum",
-      "namespace": "vps.ip",
       "description": "Geolocation of the IP Address",
       "enum": [
         "au",
@@ -4714,329 +4713,329 @@ export const schema: Schema = {
         "uk",
         "us"
       ],
-      "enumType": "coreTypes.CountryEnum"
+      "enumType": "coreTypes.CountryEnum",
+      "id": "GeolocationEnum",
+      "namespace": "vps.ip"
     },
     "vps.ip.ServiceStatus": {
+      "description": "Service states for an Ip",
       "id": "ServiceStatus",
       "namespace": "vps.ip",
-      "description": "Service states for an Ip",
       "properties": {
         "dns": {
-          "type": "vps.ip.ServiceStatusService",
-          "fullType": "vps.ip.ServiceStatusService",
           "canBeNull": false,
+          "fullType": "vps.ip.ServiceStatusService",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "vps.ip.ServiceStatusService"
         },
         "http": {
-          "type": "vps.ip.ServiceStatusService",
-          "fullType": "vps.ip.ServiceStatusService",
           "canBeNull": false,
+          "fullType": "vps.ip.ServiceStatusService",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "vps.ip.ServiceStatusService"
         },
         "https": {
-          "type": "vps.ip.ServiceStatusService",
-          "fullType": "vps.ip.ServiceStatusService",
           "canBeNull": false,
+          "fullType": "vps.ip.ServiceStatusService",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "vps.ip.ServiceStatusService"
         },
         "ping": {
-          "type": "vps.ip.ServiceStatusStateEnum",
-          "fullType": "vps.ip.ServiceStatusStateEnum",
           "canBeNull": false,
+          "fullType": "vps.ip.ServiceStatusStateEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "vps.ip.ServiceStatusStateEnum"
         },
         "smtp": {
-          "type": "vps.ip.ServiceStatusService",
-          "fullType": "vps.ip.ServiceStatusService",
           "canBeNull": false,
+          "fullType": "vps.ip.ServiceStatusService",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "vps.ip.ServiceStatusService"
         },
         "ssh": {
-          "type": "vps.ip.ServiceStatusService",
-          "fullType": "vps.ip.ServiceStatusService",
           "canBeNull": false,
+          "fullType": "vps.ip.ServiceStatusService",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "vps.ip.ServiceStatusService"
         },
         "tools": {
-          "type": "vps.ip.ServiceStatusStateEnum",
-          "fullType": "vps.ip.ServiceStatusStateEnum",
           "canBeNull": true,
+          "fullType": "vps.ip.ServiceStatusStateEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "vps.ip.ServiceStatusStateEnum"
         }
       }
     },
     "vps.ip.ServiceStatusService": {
+      "description": "Port and state of a service on an IP",
       "id": "ServiceStatusService",
       "namespace": "vps.ip",
-      "description": "Port and state of a service on an IP",
       "properties": {
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "vps.ip.ServiceStatusStateEnum",
-          "fullType": "vps.ip.ServiceStatusStateEnum",
           "canBeNull": false,
+          "fullType": "vps.ip.ServiceStatusStateEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "vps.ip.ServiceStatusStateEnum"
         }
       }
     },
     "vps.ip.ServiceStatusStateEnum": {
-      "id": "ServiceStatusStateEnum",
-      "namespace": "vps.ip",
       "description": "Possible states of a service (ping, port)",
       "enum": [
         "down",
         "up"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceStatusStateEnum",
+      "namespace": "vps.ip"
     },
     "vps.ip.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "vps.ip",
       "description": "Ip types on a VPS",
       "enum": [
         "additional",
         "primary"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "vps.ip"
     },
     "vps.migration.Cloud2014to2020": {
+      "description": "A structure describing a migration from VPS Cloud 2014 to VPS 2020",
       "id": "Cloud2014to2020",
       "namespace": "vps.migration",
-      "description": "A structure describing a migration from VPS Cloud 2014 to VPS 2020",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Scheduled migration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "model": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "VPS 2020 model name and version",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "notAfter": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Latest migration date possible",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "notBefore": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Earliest migration date possible",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "options": {
-          "type": "vps.migration.OptionMapping[]",
-          "fullType": "vps.migration.OptionMapping[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Mapping of VPS options from VPS 2014 to VPS 2020",
-          "required": true
+          "fullType": "vps.migration.OptionMapping[]",
+          "readOnly": false,
+          "required": true,
+          "type": "vps.migration.OptionMapping[]"
         },
         "status": {
-          "type": "vps.migration.StatusEnum",
-          "fullType": "vps.migration.StatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of the migration task",
-          "required": true
+          "fullType": "vps.migration.StatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "vps.migration.StatusEnum"
         }
       }
     },
     "vps.migration.OptionMapping": {
+      "description": "Mapping between a VPS 2014 option code and a VPS 2020 option code",
       "id": "OptionMapping",
       "namespace": "vps.migration",
-      "description": "Mapping between a VPS 2014 option code and a VPS 2020 option code",
       "properties": {
         "vps2014code": {
-          "type": "vps.VpsOptionEnum",
-          "fullType": "vps.VpsOptionEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "VPS 2014 option code",
-          "required": true
+          "fullType": "vps.VpsOptionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "vps.VpsOptionEnum"
         },
         "vps2020code": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "VPS 2020 option code",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "vps.migration.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "vps.migration",
       "description": "All status a migration task can be in",
       "enum": [
         "notAvailable",
         "planned",
         "toPlan"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "vps.migration"
     },
     "vps.order.rule.Datacenter": {
+      "description": "Datacenter rules",
       "id": "Datacenter",
       "namespace": "vps.order.rule",
-      "description": "Datacenter rules",
       "properties": {
         "datacenter": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "vps.order.rule.DatacenterStatusEnum",
-          "fullType": "vps.order.rule.DatacenterStatusEnum",
           "canBeNull": false,
+          "fullType": "vps.order.rule.DatacenterStatusEnum",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "vps.order.rule.DatacenterStatusEnum"
         }
       }
     },
     "vps.order.rule.DatacenterStatusEnum": {
-      "id": "DatacenterStatusEnum",
-      "namespace": "vps.order.rule",
       "description": "Possible values for datacenter status",
       "enum": [
         "available",
         "out-of-stock"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DatacenterStatusEnum",
+      "namespace": "vps.order.rule"
     },
     "vps.order.rule.Datacenters": {
+      "description": "Datacenters rules",
       "id": "Datacenters",
       "namespace": "vps.order.rule",
-      "description": "Datacenters rules",
       "properties": {
         "datacenters": {
-          "type": "vps.order.rule.Datacenter[]",
-          "fullType": "vps.order.rule.Datacenter[]",
           "canBeNull": false,
+          "fullType": "vps.order.rule.Datacenter[]",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "vps.order.rule.Datacenter[]"
         }
       }
     },
     "vps.veeam.ExportTypeEnum": {
-      "id": "ExportTypeEnum",
-      "namespace": "vps.veeam",
       "description": "A structure describing a Veeam backup's export options",
       "enum": [
         "nfs",
         "smb"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ExportTypeEnum",
+      "namespace": "vps.veeam"
     },
     "vps.veeam.Infos": {
+      "description": "A structure describing a Veeam backup's access informations",
       "id": "Infos",
       "namespace": "vps.veeam",
-      "description": "A structure describing a Veeam backup's access informations",
       "properties": {
         "nfs": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "NFS URL of the backup",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "smb": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SMB URL of the backup",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "vps.veeam.RestorePoint": {
+      "description": "Informations about a VPS Veeam restore points",
       "id": "RestorePoint",
       "namespace": "vps.veeam",
-      "description": "Informations about a VPS Veeam restore points",
       "properties": {
         "creationTime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The restore point's creation time",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The restore point's id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "vps.veeam.RestoredBackup": {
+      "description": "Currently restored backup",
       "id": "RestoredBackup",
       "namespace": "vps.veeam",
-      "description": "Currently restored backup",
       "properties": {
         "accessInfos": {
-          "type": "vps.veeam.Infos",
-          "fullType": "vps.veeam.Infos",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Backup access informations",
-          "required": true
+          "fullType": "vps.veeam.Infos",
+          "readOnly": true,
+          "required": true,
+          "type": "vps.veeam.Infos"
         },
         "restorePointId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The restore point id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "vps.veeam.StateEnum",
-          "fullType": "vps.veeam.StateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The restored backup state",
-          "required": true
+          "fullType": "vps.veeam.StateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "vps.veeam.StateEnum"
         }
       }
     },
     "vps.veeam.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "vps.veeam",
       "description": "A structure describing a Veeam restored backup's state",
       "enum": [
         "mounted",
@@ -5044,7 +5043,10 @@ export const schema: Schema = {
         "unmounted",
         "unmounting"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "vps.veeam"
     }
-  }
+  },
+  "resourcePath": "/vps"
 }

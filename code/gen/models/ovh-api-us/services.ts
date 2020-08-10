@@ -1,354 +1,356 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://api.us.ovhcloud.com:443/1.0/services.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/services",
+      "description": "Get list of your service details",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get list of your service details",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "services.expanded.Service[]",
-          "noAuthentication": false,
-          "description": "Get list of your service details"
+          "responseType": "services.expanded.Service[]"
         }
       ],
-      "description": "Get list of your service details"
+      "path": "/services"
     },
     {
-      "path": "/services/{serviceId}",
+      "description": "Get details about a service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get details about a service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Service ID",
               "fullType": "long",
-              "required": true,
-              "description": "Service ID"
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.expanded.Service",
-          "noAuthentication": false,
-          "description": "Get details about a service"
+          "responseType": "services.expanded.Service"
         }
       ],
-      "description": "Get details about a service"
+      "path": "/services/{serviceId}"
     },
     {
-      "path": "/services/{serviceId}/billing/engagement",
+      "description": "Engagement for a given service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get engagement details",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Service ID",
               "fullType": "long",
-              "required": true,
-              "description": "Service ID"
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.billing.engagement.Engagement",
-          "noAuthentication": false,
-          "description": "Get engagement details"
+          "responseType": "services.billing.engagement.Engagement"
         }
       ],
-      "description": "Engagement for a given service"
+      "path": "/services/{serviceId}/billing/engagement"
     },
     {
-      "path": "/services/{serviceId}/options",
+      "description": "Get details about a service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get options of a service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Service ID",
               "fullType": "long",
-              "required": true,
-              "description": "Service ID"
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.expanded.Service[]",
-          "noAuthentication": false,
-          "description": "Get options of a service"
+          "responseType": "services.expanded.Service[]"
         }
       ],
-      "description": "Get details about a service"
+      "path": "/services/{serviceId}/options"
     }
   ],
-  "resourcePath": "/services",
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "complexType.SafeKeyValue<T>": {
-      "id": "SafeKeyValue",
-      "namespace": "complexType",
       "description": "Key and value, with proper key strings",
       "generics": [
         "T"
       ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
       "properties": {
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "services.billing.engagement.Engagement": {
+      "description": "Description of an Engagement",
       "id": "Engagement",
       "namespace": "services.billing.engagement",
-      "description": "Description of an Engagement",
       "properties": {
         "currentPeriod": {
-          "type": "services.billing.engagement.EngagementPeriod",
-          "fullType": "services.billing.engagement.EngagementPeriod",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current engagement period",
-          "required": true
+          "fullType": "services.billing.engagement.EngagementPeriod",
+          "readOnly": true,
+          "required": true,
+          "type": "services.billing.engagement.EngagementPeriod"
         }
       }
     },
     "services.billing.engagement.EngagementPeriod": {
+      "description": "Period of Engagement",
       "id": "EngagementPeriod",
       "namespace": "services.billing.engagement",
-      "description": "Period of Engagement",
       "properties": {
         "endDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
-          "readOnly": true,
           "description": "End of the period",
-          "required": false
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
         },
         "startDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Beginning of the period",
-          "required": true
+          "fullType": "date",
+          "readOnly": true,
+          "required": true,
+          "type": "date"
         }
       }
     },
     "services.expanded.Billing": {
+      "description": "Billing informations of the service",
       "id": "Billing",
       "namespace": "services.expanded",
-      "description": "Billing informations of the service",
       "properties": {
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "nextBillingDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Next billing date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "plan": {
-          "type": "services.expanded.Plan",
-          "fullType": "services.expanded.Plan",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Service Plan",
-          "required": false
+          "fullType": "services.expanded.Plan",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Plan"
         }
       }
     },
     "services.expanded.Plan": {
+      "description": "Plan of the service",
       "id": "Plan",
       "namespace": "services.expanded",
-      "description": "Plan of the service",
       "properties": {
         "code": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Plan code",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "invoiceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Invoice Name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "services.expanded.Product": {
+      "description": "Product of the service",
       "id": "Product",
       "namespace": "services.expanded",
-      "description": "Product of the service",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Product description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Product name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "services.expanded.Resource": {
+      "description": "Resource of the service",
       "id": "Resource",
       "namespace": "services.expanded",
-      "description": "Resource of the service",
       "properties": {
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Display name of the resource",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the resource",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "product": {
-          "type": "services.expanded.Product",
-          "fullType": "services.expanded.Product",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Product",
-          "required": false
+          "fullType": "services.expanded.Product",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Product"
         }
       }
     },
     "services.expanded.Route": {
+      "description": "Route of the service",
       "id": "Route",
       "namespace": "services.expanded",
-      "description": "Route of the service",
       "properties": {
         "path": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Path to use in API",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Path with variables applied",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "vars": {
-          "type": "complexType.SafeKeyValue<string>[]",
-          "fullType": "complexType.SafeKeyValue<string>[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Variables to use in the path",
-          "required": true
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.SafeKeyValue<string>[]"
         }
       }
     },
     "services.expanded.Service": {
+      "description": "Description of a service",
       "id": "Service",
       "namespace": "services.expanded",
-      "description": "Description of a service",
       "properties": {
         "billing": {
-          "type": "services.expanded.Billing",
-          "fullType": "services.expanded.Billing",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Billing information",
-          "required": true
+          "fullType": "services.expanded.Billing",
+          "readOnly": true,
+          "required": true,
+          "type": "services.expanded.Billing"
         },
         "parentServiceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Parent service ID",
-          "required": false
+          "fullType": "coreTypes.ServiceId:long",
+          "readOnly": true,
+          "required": false,
+          "type": "coreTypes.ServiceId:long"
         },
         "resource": {
-          "type": "services.expanded.Resource",
-          "fullType": "services.expanded.Resource",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Resource",
-          "required": true
+          "fullType": "services.expanded.Resource",
+          "readOnly": true,
+          "required": true,
+          "type": "services.expanded.Resource"
         },
         "route": {
-          "type": "services.expanded.Route",
-          "fullType": "services.expanded.Route",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Route",
-          "required": false
+          "fullType": "services.expanded.Route",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Route"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service ID",
-          "required": true
+          "fullType": "coreTypes.ServiceId:long",
+          "readOnly": true,
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/services"
 }

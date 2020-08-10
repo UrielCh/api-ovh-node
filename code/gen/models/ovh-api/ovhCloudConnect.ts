@@ -1,1625 +1,1624 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/ovhCloudConnect.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/ovhCloudConnect",
+      "description": "Operations about the OVHcloud Connect service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "uuid[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "uuid[]"
         }
       ],
-      "description": "Operations about the OVHcloud Connect service"
+      "path": "/ovhCloudConnect"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}",
+      "description": "Operations about the OVHcloud Connect service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Service",
-          "noAuthentication": false,
-          "description": "Get service"
+          "responseType": "ovhcloudconnect.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Modify service",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ovhcloudconnect.Update",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ovhcloudconnect.Update",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Modify service"
+          "responseType": "void"
         }
       ],
-      "description": "Operations about the OVHcloud Connect service"
+      "path": "/ovhCloudConnect/{serviceName}"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactTech",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The contact to set as admin contact",
               "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
-            },
-            {
-              "name": "contactBilling",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
-            },
-            {
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The contact to set as tech contact",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "contactTech",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
+              "name": "contactBilling",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/ovhCloudConnect/{serviceName}/changeContact"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/config/pop",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get Pop Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get Pop Configuration linked to of a OVHcloud Connect Service"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a Pop Configuration",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ovhcloudconnect.PopConfig",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ovhcloudconnect.PopConfig",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task",
-          "noAuthentication": false,
-          "description": "Create a Pop Configuration"
+          "responseType": "ovhcloudconnect.Task"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/config/pop"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete a Pop Configuration",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "popId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Pop ID",
               "fullType": "long",
-              "required": true,
-              "description": "Pop ID"
+              "name": "popId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task",
-          "noAuthentication": false,
-          "description": "Delete a Pop Configuration"
+          "responseType": "ovhcloudconnect.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get Pop Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "popId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Pop ID",
               "fullType": "long",
-              "required": true,
-              "description": "Pop ID"
+              "name": "popId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.PopConfig",
-          "noAuthentication": false,
-          "description": "Get Pop Configuration of a OVHcloud Connect Service"
+          "responseType": "ovhcloudconnect.PopConfig"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter",
+      "description": "Datacenter Configuration",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get Datacenter Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "popId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Pop ID",
               "fullType": "long",
-              "required": true,
-              "description": "Pop ID"
+              "name": "popId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get Datacenter Configuration linked to of a OVHcloud Connect Service"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a Datacenter Configuration",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ovhcloudconnect.DatacenterConfig",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ovhcloudconnect.DatacenterConfig",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "popId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Pop ID",
               "fullType": "long",
-              "required": true,
-              "description": "Pop ID"
+              "name": "popId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task",
-          "noAuthentication": false,
-          "description": "Create a Datacenter Configuration"
+          "responseType": "ovhcloudconnect.Task"
         }
       ],
-      "description": "Datacenter Configuration"
+      "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}",
+      "description": "Datacenter Configuration",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete a Datacenter Configuration",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Pop ID",
+              "fullType": "long",
               "name": "popId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Pop ID"
+              "required": true
             },
             {
-              "name": "datacenterId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Datacenter ID",
               "fullType": "long",
-              "required": true,
-              "description": "Datacenter ID"
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task",
-          "noAuthentication": false,
-          "description": "Delete a Datacenter Configuration"
+          "responseType": "ovhcloudconnect.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get Datacenter Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Pop ID",
+              "fullType": "long",
               "name": "popId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Pop ID"
+              "required": true
             },
             {
-              "name": "datacenterId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Datacenter ID",
               "fullType": "long",
-              "required": true,
-              "description": "Datacenter ID"
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.DatacenterConfig",
-          "noAuthentication": false,
-          "description": "Get Datacenter Configuration of a OVHcloud Connect Service"
+          "responseType": "ovhcloudconnect.DatacenterConfig"
         }
       ],
-      "description": "Datacenter Configuration"
+      "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get Datacenter Extra Configuration linked to of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "popId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Pop ID"
-            },
-            {
-              "name": "datacenterId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Datacenter ID"
-            },
-            {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Pop ID",
+              "fullType": "long",
+              "name": "popId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Datacenter ID",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get Datacenter Extra Configuration linked to of a OVHcloud Connect Service"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a Datacenter Extra Configuration",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ovhcloudconnect.DatacenterExtraConfig",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ovhcloudconnect.DatacenterExtraConfig",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Pop ID",
+              "fullType": "long",
               "name": "popId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Pop ID"
+              "required": true
             },
             {
-              "name": "datacenterId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Datacenter ID",
               "fullType": "long",
-              "required": true,
-              "description": "Datacenter ID"
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task",
-          "noAuthentication": false,
-          "description": "Create a Datacenter Extra Configuration"
+          "responseType": "ovhcloudconnect.Task"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra/{extraId}",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete a Datacenter Extra Configuration",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "uuid",
-              "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "popId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Datacenter ID",
               "fullType": "long",
-              "required": true,
-              "description": "Pop ID"
-            },
-            {
               "name": "datacenterId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Datacenter ID"
+              "required": true
             },
             {
-              "name": "extraId",
-              "dataType": "long",
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Pop ID",
               "fullType": "long",
-              "required": true,
-              "description": "Extra ID"
+              "name": "popId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Extra ID",
+              "fullType": "long",
+              "name": "extraId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task",
-          "noAuthentication": false,
-          "description": "Delete a Datacenter Extra Configuration"
+          "responseType": "ovhcloudconnect.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get Datacenter Extra Configuration of a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "popId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Datacenter ID",
               "fullType": "long",
-              "required": true,
-              "description": "Pop ID"
-            },
-            {
               "name": "datacenterId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Datacenter ID"
+              "required": true
             },
             {
-              "name": "extraId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Extra ID"
-            },
-            {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Pop ID",
+              "fullType": "long",
+              "name": "popId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Extra ID",
+              "fullType": "long",
+              "name": "extraId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.DatacenterExtraConfig",
-          "noAuthentication": false,
-          "description": "Get Datacenter Extra Configuration of a OVHcloud Connect Service"
+          "responseType": "ovhcloudconnect.DatacenterExtraConfig"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra/{extraId}"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/ovhCloudConnect/{serviceName}/confirmTermination"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/datacenter",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available Datacenter",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List available Datacenter"
+          "responseType": "long[]"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/datacenter"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/datacenter/{id}",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get Datacenter",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "uuid",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "id",
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ovhcloudconnect.Datacenter"
+        }
+      ],
+      "path": "/ovhCloudConnect/{serviceName}/datacenter/{id}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List interfaces linked to the Service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/ovhCloudConnect/{serviceName}/interface"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the Interface information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "ovhcloudconnect.Datacenter",
-          "noAuthentication": false,
-          "description": "Get Datacenter"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "path": "/ovhCloudConnect/{serviceName}/interface",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "uuid",
+              "name": "id",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List interfaces linked to the Service"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "path": "/ovhCloudConnect/{serviceName}/interface/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "uuid",
-              "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Interface",
-          "noAuthentication": false,
-          "description": "Get the Interface information"
+          "responseType": "ovhcloudconnect.Interface"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/interface/{id}"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/interface/{id}/lock",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Lock the port",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "uuid",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task",
-          "noAuthentication": false,
-          "description": "Lock the port"
+          "responseType": "ovhcloudconnect.Task"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/interface/{id}/lock"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/interface/{id}/unlock",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Unlock the port",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "uuid",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task",
-          "noAuthentication": false,
-          "description": "Unlock the port"
+          "responseType": "ovhcloudconnect.Task"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/interface/{id}/unlock"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/loa",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Generate a loa for a service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Generate a loa for a service"
+          "responseType": "string"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/loa"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/ovhCloudConnect/{serviceName}/serviceInfos"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/serviceKey",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get Keys linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get Keys linked to a OVHcloud Connect Service"
+          "responseType": "long[]"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/serviceKey"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get Key linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceKeyId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Service key ID",
               "fullType": "long",
-              "required": true,
-              "description": "Service key ID"
+              "name": "serviceKeyId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Key",
-          "noAuthentication": false,
-          "description": "Get Key linked to a OVHcloud Connect Service"
+          "responseType": "ovhcloudconnect.Key"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}/regenerate",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Regenerate Service Key linked to a OVHcloud Connect Service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceKeyId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Service key ID",
               "fullType": "long",
-              "required": true,
-              "description": "Service key ID"
+              "name": "serviceKeyId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Key",
-          "noAuthentication": false,
-          "description": "Regenerate Service Key linked to a OVHcloud Connect Service"
+          "responseType": "ovhcloudconnect.Key"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}/regenerate"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}/send",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Send key value to customer",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ovhcloudconnect.To",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "ovhcloudconnect.To",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Service key ID",
+              "fullType": "long",
               "name": "serviceKeyId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Service key ID"
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.SendKeyAnswer",
-          "noAuthentication": false,
-          "description": "Send key value to customer"
+          "responseType": "ovhcloudconnect.SendKeyAnswer"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}/send"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/task",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get Task linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get Task linked to a OVHcloud Connect Service"
+          "responseType": "long[]"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/task"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/task/{id}",
+      "description": "",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get Tasks linked to a OVHcloud Connect Service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "uuid",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "uuid",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ovhcloudconnect.Task",
-          "noAuthentication": false,
-          "description": "Get Tasks linked to a OVHcloud Connect Service"
+          "responseType": "ovhcloudconnect.Task"
         }
       ],
-      "description": ""
+      "path": "/ovhCloudConnect/{serviceName}/task/{id}"
     },
     {
-      "path": "/ovhCloudConnect/{serviceName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/ovhCloudConnect/{serviceName}/terminate"
     }
   ],
-  "resourcePath": "/ovhCloudConnect",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "ovhcloudconnect.Datacenter": {
+      "description": "OVHcloud Connect Datacenter",
       "id": "Datacenter",
       "namespace": "ovhcloudconnect",
-      "description": "OVHcloud Connect Datacenter",
       "properties": {
         "available": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Get availability to add new configuration on it",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ID of the datacenter",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "name of the datacenter",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "ovhcloudconnect.DatacenterConfig": {
+      "description": "OVHcloud Connect Service Datacenter Configuration",
       "id": "DatacenterConfig",
       "namespace": "ovhcloudconnect",
-      "description": "OVHcloud Connect Service Datacenter Configuration",
       "properties": {
         "datacenterId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ID of the datacenter linked",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ID of the Datacenter configuration",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "ovhBgpArea": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "OVH Private AS",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "status": {
-          "type": "ovhcloudconnect.popConfig.StatusEnum",
-          "fullType": "ovhcloudconnect.popConfig.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the pop configuration",
-          "required": false
+          "fullType": "ovhcloudconnect.popConfig.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.popConfig.StatusEnum"
         },
         "subnet": {
-          "type": "ipv4Block",
-          "fullType": "ipv4Block",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Subnet should be a /28 min",
-          "required": false
+          "fullType": "ipv4Block",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4Block"
         }
       }
     },
     "ovhcloudconnect.DatacenterExtraConfig": {
+      "description": "OVHcloud Connect Service Datacenter Extra Configuration",
       "id": "DatacenterExtraConfig",
       "namespace": "ovhcloudconnect",
-      "description": "OVHcloud Connect Service Datacenter Extra Configuration",
       "properties": {
         "bgpNeighborArea": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "BGP AS number",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "bgpNeighborIp": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Router IP for BGP",
-          "required": false
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ID of the extra configuration ",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "nextHop": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Static route next hop",
-          "required": false
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4"
         },
         "status": {
-          "type": "ovhcloudconnect.popConfig.StatusEnum",
-          "fullType": "ovhcloudconnect.popConfig.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the pop configuration",
-          "required": false
+          "fullType": "ovhcloudconnect.popConfig.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.popConfig.StatusEnum"
         },
         "subnet": {
-          "type": "ipv4Block",
-          "fullType": "ipv4Block",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Static route ip",
-          "required": false
+          "fullType": "ipv4Block",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4Block"
         },
         "type": {
-          "type": "ovhcloudconnect.datacenterExtraConfig.TypeEnum",
-          "fullType": "ovhcloudconnect.datacenterExtraConfig.TypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of the configuration",
-          "required": true
+          "fullType": "ovhcloudconnect.datacenterExtraConfig.TypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "ovhcloudconnect.datacenterExtraConfig.TypeEnum"
         }
       }
     },
     "ovhcloudconnect.Interface": {
+      "description": "OVHcloud Connect Interface",
       "id": "Interface",
       "namespace": "ovhcloudconnect",
-      "description": "OVHcloud Connect Interface",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Interface reference",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "incomingLightStatus": {
-          "type": "ovhcloudconnect.interface.LightStatusEnum",
-          "fullType": "ovhcloudconnect.interface.LightStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the light received on the port (checked every 5 min)",
-          "required": false
+          "fullType": "ovhcloudconnect.interface.LightStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.interface.LightStatusEnum"
         },
         "lightLastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the last light change detected",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "outgoingLightStatus": {
-          "type": "ovhcloudconnect.interface.LightStatusEnum",
-          "fullType": "ovhcloudconnect.interface.LightStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the light emitted on the port (checked every 5 min)",
-          "required": false
+          "fullType": "ovhcloudconnect.interface.LightStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.interface.LightStatusEnum"
         },
         "status": {
-          "type": "ovhcloudconnect.interface.StatusEnum",
-          "fullType": "ovhcloudconnect.interface.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the port",
-          "required": false
+          "fullType": "ovhcloudconnect.interface.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.interface.StatusEnum"
         }
       }
     },
     "ovhcloudconnect.Key": {
+      "description": "OVHcloud Connect Service Key",
       "id": "Key",
       "namespace": "ovhcloudconnect",
-      "description": "OVHcloud Connect Service Key",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service Key id",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Reference of the service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "provider": {
-          "type": "ovhcloudconnect.key.ProviderEnum",
-          "fullType": "ovhcloudconnect.key.ProviderEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service Key provider",
-          "required": false
+          "fullType": "ovhcloudconnect.key.ProviderEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.key.ProviderEnum"
         },
         "status": {
-          "type": "ovhcloudconnect.key.StatusEnum",
-          "fullType": "ovhcloudconnect.key.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service Key status",
-          "required": false
+          "fullType": "ovhcloudconnect.key.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.key.StatusEnum"
         }
       }
     },
     "ovhcloudconnect.PopConfig": {
+      "description": "OVHcloud Connect Service Pop Configuration",
       "id": "PopConfig",
       "namespace": "ovhcloudconnect",
-      "description": "OVHcloud Connect Service Pop Configuration",
       "properties": {
         "customerBgpArea": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Customer Private AS",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ID of the Pop Configuration",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "interfaceId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ID of the interface",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "ovhBgpArea": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "OVH Private AS",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "status": {
-          "type": "ovhcloudconnect.popConfig.StatusEnum",
-          "fullType": "ovhcloudconnect.popConfig.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status of the pop configuration",
-          "required": false
+          "fullType": "ovhcloudconnect.popConfig.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.popConfig.StatusEnum"
         },
         "subnet": {
-          "type": "ipv4Block",
-          "fullType": "ipv4Block",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Subnet should be a /30, first IP for OVH, second IP for customer",
-          "required": false
+          "fullType": "ipv4Block",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4Block"
         },
         "type": {
-          "type": "ovhcloudconnect.popConfig.TypeEnum",
-          "fullType": "ovhcloudconnect.popConfig.TypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of the pop configuration",
-          "required": true
+          "fullType": "ovhcloudconnect.popConfig.TypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "ovhcloudconnect.popConfig.TypeEnum"
         }
       }
     },
     "ovhcloudconnect.SendKeyAnswer": {
+      "description": "OVHcloud Connect send key answer",
       "id": "SendKeyAnswer",
       "namespace": "ovhcloudconnect",
-      "description": "OVHcloud Connect send key answer",
       "properties": {
         "messageCode": {
-          "type": "ovhcloudconnect.messageCode.Enum",
-          "fullType": "ovhcloudconnect.messageCode.Enum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "message code for UX to display appropriate text",
-          "required": false
+          "fullType": "ovhcloudconnect.messageCode.Enum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.messageCode.Enum"
         }
       }
     },
     "ovhcloudconnect.Service": {
+      "description": "OVHcloud Connect Service",
       "id": "Service",
       "namespace": "ovhcloudconnect",
-      "description": "OVHcloud Connect Service",
       "properties": {
         "bandwidth": {
-          "type": "ovhcloudconnect.service.BandwidthEnum",
-          "fullType": "ovhcloudconnect.service.BandwidthEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service bandwidth",
-          "required": false
+          "fullType": "ovhcloudconnect.service.BandwidthEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.service.BandwidthEnum"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "interfaceList": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of interfaces linked to a service",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "pop": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pop reference where the service is delivered",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "portQuantity": {
-          "type": "ovhcloudconnect.service.PortEnum",
-          "fullType": "ovhcloudconnect.service.PortEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Port quantity",
-          "required": false
+          "fullType": "ovhcloudconnect.service.PortEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.service.PortEnum"
         },
         "product": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Product name of the service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "provider": {
-          "type": "ovhcloudconnect.service.ProviderEnum",
-          "fullType": "ovhcloudconnect.service.ProviderEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service provider",
-          "required": false
+          "fullType": "ovhcloudconnect.service.ProviderEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.service.ProviderEnum"
         },
         "status": {
-          "type": "ovhcloudconnect.service.StatusEnum",
-          "fullType": "ovhcloudconnect.service.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service status",
-          "required": false
+          "fullType": "ovhcloudconnect.service.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.service.StatusEnum"
         },
         "uuid": {
-          "type": "uuid",
-          "fullType": "uuid",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service UUID",
-          "required": false
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
         },
         "vrack": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "vrack linked to the service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "ovhcloudconnect.Task": {
+      "description": "OVHcloud Connect Task",
       "id": "Task",
       "namespace": "ovhcloudconnect",
-      "description": "OVHcloud Connect Task",
       "properties": {
         "function": {
-          "type": "ovhcloudconnect.task.FunctionEnum",
-          "fullType": "ovhcloudconnect.task.FunctionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task function",
-          "required": false
+          "fullType": "ovhcloudconnect.task.FunctionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.task.FunctionEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task id",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "resourceId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Reference of the created resource",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "status": {
-          "type": "ovhcloudconnect.task.StatusEnum",
-          "fullType": "ovhcloudconnect.task.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": false
+          "fullType": "ovhcloudconnect.task.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.task.StatusEnum"
         }
       }
     },
     "ovhcloudconnect.To": {
+      "description": "OVHcloud Connect email",
       "id": "To",
       "namespace": "ovhcloudconnect",
-      "description": "OVHcloud Connect email",
       "properties": {
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Email address to send the key",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "ovhcloudconnect.Update": {
+      "description": "Missing description",
       "id": "Update",
       "namespace": "ovhcloudconnect",
-      "description": "Missing description",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "New description for your service",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "ovhcloudconnect.datacenterExtraConfig.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "ovhcloudconnect.datacenterExtraConfig",
       "description": "Enum values for Datacenter Extra Configuration Type",
       "enum": [
         "bgp",
         "network"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "ovhcloudconnect.datacenterExtraConfig"
     },
     "ovhcloudconnect.interface.LightStatusEnum": {
-      "id": "LightStatusEnum",
-      "namespace": "ovhcloudconnect.interface",
       "description": "Enum values for the light status",
       "enum": [
         "up",
         "down",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LightStatusEnum",
+      "namespace": "ovhcloudconnect.interface"
     },
     "ovhcloudconnect.interface.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "ovhcloudconnect.interface",
       "description": "Enum values for interface status",
       "enum": [
         "enabled",
         "disabled"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "ovhcloudconnect.interface"
     },
     "ovhcloudconnect.key.ProviderEnum": {
-      "id": "ProviderEnum",
-      "namespace": "ovhcloudconnect.key",
       "description": "Enum values for service key provider",
       "enum": [
         "megaport",
         "equinix",
         "internal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProviderEnum",
+      "namespace": "ovhcloudconnect.key"
     },
     "ovhcloudconnect.key.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "ovhcloudconnect.key",
       "description": "Enum values for service key status",
       "enum": [
         "doing",
@@ -1628,41 +1627,41 @@ export const schema: Schema = {
         "terminated",
         "toCheck"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "ovhcloudconnect.key"
     },
     "ovhcloudconnect.messageCode.Enum": {
-      "id": "Enum",
-      "namespace": "ovhcloudconnect.messageCode",
       "description": "Enum values for messageCode",
       "enum": [
         "mailSent"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Enum",
+      "namespace": "ovhcloudconnect.messageCode"
     },
     "ovhcloudconnect.popConfig.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "ovhcloudconnect.popConfig",
       "description": "Enum values for Pop Configuration Status",
       "enum": [
         "init",
         "active",
         "toDelete"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "ovhcloudconnect.popConfig"
     },
     "ovhcloudconnect.popConfig.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "ovhcloudconnect.popConfig",
       "description": "Enum values for Pop Configuration Type",
       "enum": [
         "l2",
         "l3"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "ovhcloudconnect.popConfig"
     },
     "ovhcloudconnect.service.BandwidthEnum": {
-      "id": "BandwidthEnum",
-      "namespace": "ovhcloudconnect.service",
       "description": "Enum values for bandwidth",
       "enum": [
         "200m",
@@ -1672,21 +1671,21 @@ export const schema: Schema = {
         "5g",
         "10g"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BandwidthEnum",
+      "namespace": "ovhcloudconnect.service"
     },
     "ovhcloudconnect.service.PortEnum": {
-      "id": "PortEnum",
-      "namespace": "ovhcloudconnect.service",
       "description": "Enum values for port quantity",
       "enum": [
         "1",
         "2"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PortEnum",
+      "namespace": "ovhcloudconnect.service"
     },
     "ovhcloudconnect.service.ProviderEnum": {
-      "id": "ProviderEnum",
-      "namespace": "ovhcloudconnect.service",
       "description": "Enum values for service provider",
       "enum": [
         "megaport",
@@ -1694,21 +1693,21 @@ export const schema: Schema = {
         "internal",
         "OVHcloud"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProviderEnum",
+      "namespace": "ovhcloudconnect.service"
     },
     "ovhcloudconnect.service.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "ovhcloudconnect.service",
       "description": "Enum values for the Service",
       "enum": [
         "active",
         "closed"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "ovhcloudconnect.service"
     },
     "ovhcloudconnect.task.FunctionEnum": {
-      "id": "FunctionEnum",
-      "namespace": "ovhcloudconnect.task",
       "description": "Enum values for Task function",
       "enum": [
         "lockInterface",
@@ -1720,11 +1719,11 @@ export const schema: Schema = {
         "addDatacenterExtraConfiguration",
         "delDatacenterExtraConfiguration"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FunctionEnum",
+      "namespace": "ovhcloudconnect.task"
     },
     "ovhcloudconnect.task.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "ovhcloudconnect.task",
       "description": "Enum values for Task status",
       "enum": [
         "todo",
@@ -1732,58 +1731,58 @@ export const schema: Schema = {
         "done",
         "error"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "ovhcloudconnect.task"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1794,11 +1793,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1806,11 +1805,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -1819,11 +1818,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -1841,108 +1840,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/ovhCloudConnect"
 }

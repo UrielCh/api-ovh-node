@@ -1,2238 +1,2237 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.ovh.com:443/1.0/msServices.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/msServices",
+      "description": "Operations about the MSSERVICES service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the MSSERVICES service"
+      "path": "/msServices"
     },
     {
-      "path": "/msServices/sharepoint",
+      "description": "Operations about the SHAREPOINT service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the SHAREPOINT service"
+      "path": "/msServices/sharepoint"
     },
     {
-      "path": "/msServices/sharepoint/{domain}",
+      "description": "Sharepoint service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.SharepointServiceInfo",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "msServices.SharepointServiceInfo"
         }
       ],
-      "description": "Sharepoint service"
+      "path": "/msServices/sharepoint/{domain}"
     },
     {
-      "path": "/msServices/sharepoint/{domain}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/msServices/sharepoint/{domain}/serviceInfos"
     },
     {
-      "path": "/msServices/{serviceName}",
+      "description": "Active Directory organizational unit",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.ActiveDirectoryOrganizationalUnit",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "msServices.ActiveDirectoryOrganizationalUnit"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "msServices.ActiveDirectoryOrganizationalUnit",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "msServices.ActiveDirectoryOrganizationalUnit",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Active Directory organizational unit"
+      "path": "/msServices/{serviceName}"
     },
     {
-      "path": "/msServices/{serviceName}/account",
+      "description": "List the msServices.Account objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Accounts associated to this Active Directory service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "userPrincipalName",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of userPrincipalName property (like)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of userPrincipalName property (like)"
+              "name": "userPrincipalName",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Filter the value of id property (like)",
               "fullType": "long",
-              "required": false,
-              "description": "Filter the value of id property (like)"
+              "name": "id",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Accounts associated to this Active Directory service"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the msServices.Account objects"
+      "path": "/msServices/{serviceName}/account"
     },
     {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}",
+      "description": "Active Directory Account",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "userPrincipalName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User principal name",
               "fullType": "string",
-              "required": true,
-              "description": "User principal name"
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.Account",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "msServices.Account"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "msServices.Account",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "msServices.Account",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Active Directory Account"
-    },
-    {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/changePassword",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "password",
-              "dataType": "password",
               "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "new password"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "userPrincipalName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User principal name",
               "fullType": "string",
-              "required": true,
-              "description": "User principal name"
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Change account password"
+          "responseType": "void"
         }
       ],
-      "description": "changePassword operations"
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}"
     },
     {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/exchange",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "GET",
+          "description": "Change account password",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "password",
+              "description": "new password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "userPrincipalName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "User principal name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.ExchangeInformation",
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/changePassword"
+    },
+    {
+      "description": "Exchange mailbox information",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.ExchangeInformation"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "msServices.ExchangeInformation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "msServices.ExchangeInformation",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Exchange mailbox information"
-    },
-    {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/exchange/configure",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "msServices.exchangeTask",
-          "noAuthentication": false,
-          "description": "Configure mailbox to be operational"
-        }
-      ],
-      "description": "configure operations"
-    },
-    {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            }
-          ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Delete Multi Factor Authentication feature for this account"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            }
-          ],
-          "responseType": "msServices.MfaInformation",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            }
-          ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Create Multi Factor Authentication for this account"
-        }
-      ],
-      "description": "Multi Factor Authentication informations"
-    },
-    {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "period",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Multi Factor Authentication disable period in hours"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User principal name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "userPrincipalName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "User principal name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Disable Multi Factor Authentication for a period of time"
+          "responseType": "void"
         }
       ],
-      "description": "disable operations"
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/exchange"
     },
     {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa/enable",
+      "description": "configure operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Configure mailbox to be operational",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User principal name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "userPrincipalName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "User principal name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Enable Mfa (enabled by default when created)"
+          "responseType": "msServices.exchangeTask"
         }
       ],
-      "description": "enable operations"
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/exchange/configure"
     },
     {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa/reset",
+      "description": "Multi Factor Authentication informations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "POST",
+          "description": "Delete Multi Factor Authentication feature for this account",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "userPrincipalName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User principal name",
               "fullType": "string",
-              "required": true,
-              "description": "User principal name"
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Reset Multi Factor Authentication status for this account"
-        }
-      ],
-      "description": "reset operations"
-    },
-    {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/sharepoint",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            }
-          ],
-          "responseType": "msServices.SharepointInformation",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "msServices.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.MfaInformation"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create Multi Factor Authentication for this account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa"
+    },
+    {
+      "description": "disable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Disable Multi Factor Authentication for a period of time",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Multi Factor Authentication disable period in hours",
+              "fullType": "long",
+              "name": "period",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable"
+    },
+    {
+      "description": "enable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Enable Mfa (enabled by default when created)",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa/enable"
+    },
+    {
+      "description": "reset operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Reset Multi Factor Authentication status for this account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/mfa/reset"
+    },
+    {
+      "description": "Sharepoint account information",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.SharepointInformation"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "msServices.SharepointInformation",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "msServices.SharepointInformation",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Sharepoint account information"
-    },
-    {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            }
-          ],
-          "responseType": "msServices.sharepointTask",
-          "noAuthentication": false,
-          "description": "On-demand MySite clearance"
-        }
-      ],
-      "description": "clearSpace operations"
-    },
-    {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            }
-          ],
-          "responseType": "msServices.sharepointTask",
-          "noAuthentication": false,
-          "description": "Configure sharepoint account to be operational"
-        }
-      ],
-      "description": "configure operations"
-    },
-    {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/sync",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            }
-          ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Delete sync account"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userPrincipalName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            }
-          ],
-          "responseType": "msServices.SyncInformation",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "license",
-              "dataType": "msServices.SyncLicenseEnum",
               "paramType": "body",
-              "fullType": "msServices.SyncLicenseEnum",
-              "required": true,
-              "description": "Sync account license"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
               "name": "userPrincipalName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Create new sync account"
+          "responseType": "void"
         }
       ],
-      "description": "Sync account information"
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/sharepoint"
     },
     {
-      "path": "/msServices/{serviceName}/account/{userPrincipalName}/sync/configure",
+      "description": "clearSpace operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "On-demand MySite clearance",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
               "name": "userPrincipalName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User principal name"
+              "required": true
             }
           ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Configure sync account to be operational"
+          "responseType": "msServices.sharepointTask"
         }
       ],
-      "description": "configure operations"
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace"
     },
     {
-      "path": "/msServices/{serviceName}/createMfaOnAllUsers",
+      "description": "configure operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Configure sharepoint account to be operational",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Create Mfa on all accounts."
+          "responseType": "msServices.sharepointTask"
         }
       ],
-      "description": "createMfaOnAllUsers operations"
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure"
     },
     {
-      "path": "/msServices/{serviceName}/exchange",
+      "description": "Sync account information",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "GET",
+          "description": "Delete sync account",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.ExchangeService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "msServices.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.SyncInformation"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create new sync account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "msServices.SyncLicenseEnum",
+              "description": "Sync account license",
+              "fullType": "msServices.SyncLicenseEnum",
+              "name": "license",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/sync"
+    },
+    {
+      "description": "configure operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Configure sync account to be operational",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User principal name",
+              "fullType": "string",
+              "name": "userPrincipalName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/account/{userPrincipalName}/sync/configure"
+    },
+    {
+      "description": "createMfaOnAllUsers operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create Mfa on all accounts.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/createMfaOnAllUsers"
+    },
+    {
+      "description": "Exchange service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.ExchangeService"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "msServices.ExchangeService",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "msServices.ExchangeService",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Exchange service"
+      "path": "/msServices/{serviceName}/exchange"
     },
     {
-      "path": "/msServices/{serviceName}/exchange/billingMigrated",
+      "description": "billingMigrated operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Detects billing transition status for the service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Detects billing transition status for the service"
+          "responseType": "boolean"
         }
       ],
-      "description": "billingMigrated operations"
+      "path": "/msServices/{serviceName}/exchange/billingMigrated"
     },
     {
-      "path": "/msServices/{serviceName}/exchange/task",
+      "description": "List the msServices.exchangeTask objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Pending actions",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Pending actions"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the msServices.exchangeTask objects"
+      "path": "/msServices/{serviceName}/exchange/task"
     },
     {
-      "path": "/msServices/{serviceName}/exchange/task/{id}",
+      "description": "Exchange task details",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.exchangeTask",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "msServices.exchangeTask"
         }
       ],
-      "description": "Exchange task details"
+      "path": "/msServices/{serviceName}/exchange/task/{id}"
     },
     {
-      "path": "/msServices/{serviceName}/removeMfaOnAllUsers",
+      "description": "removeMfaOnAllUsers operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Remove Mfa on all accounts.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Remove Mfa on all accounts."
+          "responseType": "msServices.Task"
         }
       ],
-      "description": "removeMfaOnAllUsers operations"
+      "path": "/msServices/{serviceName}/removeMfaOnAllUsers"
     },
     {
-      "path": "/msServices/{serviceName}/sharepoint",
+      "description": "Sharepoint service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "msServices.SharepointService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "msServices.SharepointService"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "msServices.SharepointService",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "msServices.SharepointService",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Sharepoint service"
+      "path": "/msServices/{serviceName}/sharepoint"
     },
     {
-      "path": "/msServices/{serviceName}/sharepoint/billingMigrated",
+      "description": "billingMigrated operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Detects billing transition status for the service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Detects billing transition status for the service"
+          "responseType": "boolean"
         }
       ],
-      "description": "billingMigrated operations"
+      "path": "/msServices/{serviceName}/sharepoint/billingMigrated"
     },
     {
-      "path": "/msServices/{serviceName}/sharepoint/license",
+      "description": "license operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get active licenses for specific period of time",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "license",
               "dataType": "msServices.SharepointLicenseEnum",
-              "paramType": "query",
+              "description": "License type",
               "fullType": "msServices.SharepointLicenseEnum",
-              "required": false,
-              "description": "License type"
-            },
-            {
-              "name": "period",
-              "dataType": "msServices.LicensePeriodEnum",
-              "paramType": "query",
-              "fullType": "msServices.LicensePeriodEnum",
-              "required": true,
-              "description": "Period of time used to determine sharepoint account license statistics"
-            }
-          ],
-          "responseType": "msServices.SharepointDailyLicense[]",
-          "noAuthentication": false,
-          "description": "Get active licenses for specific period of time"
-        }
-      ],
-      "description": "license operations"
-    },
-    {
-      "path": "/msServices/{serviceName}/sharepoint/restoreAdminRights",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "msServices.sharepointTask",
-          "noAuthentication": false,
-          "description": "Restore administrator rights"
-        }
-      ],
-      "description": "restoreAdminRights operations"
-    },
-    {
-      "path": "/msServices/{serviceName}/sharepoint/task",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "function",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of function property (like)"
-            },
-            {
-              "name": "status",
-              "dataType": "msServices.TaskStatusEnum",
-              "paramType": "query",
-              "fullType": "msServices.TaskStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Pending actions"
-        }
-      ],
-      "description": "List the msServices.sharepointTask objects"
-    },
-    {
-      "path": "/msServices/{serviceName}/sharepoint/task/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "msServices.sharepointTask",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Sharepoint task details"
-    },
-    {
-      "path": "/msServices/{serviceName}/sync",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Delete sync service"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "msServices.SyncService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Sync service"
-    },
-    {
-      "path": "/msServices/{serviceName}/sync/changePassword",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "password",
-              "dataType": "password",
-              "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "new password"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Change account password"
-        }
-      ],
-      "description": "changePassword operations"
-    },
-    {
-      "path": "/msServices/{serviceName}/sync/clientSoftwareURL",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "msServices.ActiveDirectorySyncClientUrl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Generate temporary link to ADSync software executable"
-        }
-      ],
-      "description": "Temporary link to ADSync software executable"
-    },
-    {
-      "path": "/msServices/{serviceName}/sync/license",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "period",
-              "dataType": "msServices.LicensePeriodEnum",
-              "paramType": "query",
-              "fullType": "msServices.LicensePeriodEnum",
-              "required": true,
-              "description": "Period of time used to determine sync account license statistics"
-            },
-            {
               "name": "license",
-              "dataType": "msServices.SyncLicenseEnum",
               "paramType": "query",
-              "fullType": "msServices.SyncLicenseEnum",
-              "required": false,
-              "description": "License type"
+              "required": false
+            },
+            {
+              "dataType": "msServices.LicensePeriodEnum",
+              "description": "Period of time used to determine sharepoint account license statistics",
+              "fullType": "msServices.LicensePeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "msServices.SyncDailyLicense[]",
-          "noAuthentication": false,
-          "description": "Get active licenses for specific period of time"
+          "responseType": "msServices.SharepointDailyLicense[]"
         }
       ],
-      "description": "license operations"
+      "path": "/msServices/{serviceName}/sharepoint/license"
     },
     {
-      "path": "/msServices/{serviceName}/task",
+      "description": "restoreAdminRights operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "status",
-              "dataType": "msServices.TaskStatusEnum",
-              "paramType": "query",
-              "fullType": "msServices.TaskStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "name": "function",
-              "dataType": "msServices.TaskFunctionEnum",
-              "paramType": "query",
-              "fullType": "msServices.TaskFunctionEnum",
-              "required": false,
-              "description": "Filter the value of function property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Pending actions"
-        }
-      ],
-      "description": "List the msServices.Task objects"
-    },
-    {
-      "path": "/msServices/{serviceName}/task/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Active Directory task details"
-    },
-    {
-      "path": "/msServices/{serviceName}/upnSuffix",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "active directory UPN suffix"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
+          "description": "Restore administrator rights",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "suffix",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "UPN suffix to create"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "msServices.Task",
-          "noAuthentication": false,
-          "description": "Create new UPN suffix"
+          "responseType": "msServices.sharepointTask"
         }
       ],
-      "description": "List the msServices.upnSuffix objects"
+      "path": "/msServices/{serviceName}/sharepoint/restoreAdminRights"
     },
     {
-      "path": "/msServices/{serviceName}/upnSuffix/{suffix}",
+      "description": "List the msServices.sharepointTask objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "httpMethod": "DELETE",
+          "description": "Pending actions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "suffix",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Filter the value of function property (like)",
               "fullType": "string",
-              "required": true,
-              "description": "Suffix"
+              "name": "function",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "msServices.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "msServices.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "msServices.Task",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/msServices/{serviceName}/sharepoint/task"
+    },
+    {
+      "description": "Sharepoint task details",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Delete existing UPN suffix"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.sharepointTask"
+        }
+      ],
+      "path": "/msServices/{serviceName}/sharepoint/task/{id}"
+    },
+    {
+      "description": "Sync service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete sync service",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "suffix",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Suffix"
+              "required": true
             }
           ],
-          "responseType": "msServices.upnSuffix",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "msServices.SyncService"
         }
       ],
-      "description": "Active Directory UPN Suffix"
+      "path": "/msServices/{serviceName}/sync"
+    },
+    {
+      "description": "changePassword operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Change account password",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "new password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/sync/changePassword"
+    },
+    {
+      "description": "Temporary link to ADSync software executable",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.ActiveDirectorySyncClientUrl"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Generate temporary link to ADSync software executable",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/sync/clientSoftwareURL"
+    },
+    {
+      "description": "license operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get active licenses for specific period of time",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "msServices.LicensePeriodEnum",
+              "description": "Period of time used to determine sync account license statistics",
+              "fullType": "msServices.LicensePeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "msServices.SyncLicenseEnum",
+              "description": "License type",
+              "fullType": "msServices.SyncLicenseEnum",
+              "name": "license",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "msServices.SyncDailyLicense[]"
+        }
+      ],
+      "path": "/msServices/{serviceName}/sync/license"
+    },
+    {
+      "description": "List the msServices.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Pending actions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "msServices.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "msServices.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "msServices.TaskFunctionEnum",
+              "description": "Filter the value of function property (=)",
+              "fullType": "msServices.TaskFunctionEnum",
+              "name": "function",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/msServices/{serviceName}/task"
+    },
+    {
+      "description": "Active Directory task details",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/task/{id}"
+    },
+    {
+      "description": "List the msServices.upnSuffix objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "active directory UPN suffix",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create new UPN suffix",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "UPN suffix to create",
+              "fullType": "string",
+              "name": "suffix",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        }
+      ],
+      "path": "/msServices/{serviceName}/upnSuffix"
+    },
+    {
+      "description": "Active Directory UPN Suffix",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete existing UPN suffix",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Suffix",
+              "fullType": "string",
+              "name": "suffix",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Suffix",
+              "fullType": "string",
+              "name": "suffix",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.upnSuffix"
+        }
+      ],
+      "path": "/msServices/{serviceName}/upnSuffix/{suffix}"
     }
   ],
-  "resourcePath": "/msServices",
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "msServices.Account": {
+      "description": "Active Directory Account",
       "id": "Account",
       "namespace": "msServices",
-      "description": "Active Directory Account",
       "properties": {
         "SAMAccountName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "SAM account name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account display name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account first name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "guid": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "GUID for user in active directory",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "initials": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account initials",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lastLogoffDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last logoff",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastLogonDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last logon",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account last name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lastUpdateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "passwordLastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Time of account's password last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "state": {
-          "type": "msServices.ObjectStateEnum",
-          "fullType": "msServices.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account state",
-          "required": true
+          "fullType": "msServices.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task for this account",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "userPrincipalName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "User Principal Name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "msServices.ActiveDirectoryOrganizationalUnit": {
+      "description": "Active Directory organizational unit",
       "id": "ActiveDirectoryOrganizationalUnit",
       "namespace": "msServices",
-      "description": "Active Directory organizational unit",
       "properties": {
         "complexityEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Flag indicating if passwords should be forced to follow Microsoft's password guidelines",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "lockoutDuration": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Account lock time (in minutes) when too much passwords have been tried",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lockoutObservationWindow": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Time (in minutes) before the password attempts counter is reset",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lockoutThreshold": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Maximum number of password tries before account locking",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "maxPasswordAge": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Maximum lifespan of passwords, in days",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "minPasswordAge": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Minimum lifespan of passwords, in days (0 = unlimited)",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "minPasswordLength": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Minimum number of characters passwords must contain",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the Active Directory organizational unit",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "officeTenantServiceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Service name of the office tenant (/licence/office/{serviceName}) linked to this AD service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "state": {
-          "type": "msServices.ServiceStateEnum",
-          "fullType": "msServices.ServiceStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current state of the Active Directory organizational unit",
-          "required": true
+          "fullType": "msServices.ServiceStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.ServiceStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "msServices.ActiveDirectorySyncClientUrl": {
+      "description": "Temporary link to ADSync software executable",
       "id": "ActiveDirectorySyncClientUrl",
       "namespace": "msServices",
-      "description": "Temporary link to ADSync software executable",
       "properties": {
         "expiration": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Link expiration date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ADSync software executable link",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "msServices.ExchangeInformation": {
+      "description": "Exchange mailbox information",
       "id": "ExchangeInformation",
       "namespace": "msServices",
-      "description": "Exchange mailbox information",
       "properties": {
         "accountLicense": {
-          "type": "msServices.ExchangeLicenceEnum",
-          "fullType": "msServices.ExchangeLicenceEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Exchange account license",
-          "required": true
+          "fullType": "msServices.ExchangeLicenceEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "msServices.ExchangeLicenceEnum"
         },
         "configured": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if the account is configured",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "currentUsage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Mailbox usage in KB",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Delete mailbox at expiration date",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "deleteOutlookAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Delete Outlook license at expiration date",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "exchangeGuid": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Property needed for mailbox manual configuration (GUID)",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "expirationOutlookDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Expiration date of Outlook license",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "hiddenFromGAL": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Visibility in Global Address List",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "litigation": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Litigation hold feature enabled on this mailbox",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "litigationPeriod": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Litigation hold period in days (0 means unlimited). This setting covers all items in the mailbox.",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "mailingFilter": {
-          "type": "msServices.MailingFilterEnum[]",
-          "fullType": "msServices.MailingFilterEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Enable or disable anti-virus and anti-spam",
-          "required": false
+          "fullType": "msServices.MailingFilterEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "msServices.MailingFilterEnum[]"
         },
         "numberOfAliases": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Count the number of related aliases attached to this account",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "outlookLicense": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Outlook licence attached",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "owaLimited": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OWA policy restriction is applied",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "primaryEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Primary address of the mailbox",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum mailbox usage in GB (overall size)",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "renewOutlookPeriod": {
-          "type": "msServices.RenewPeriodEnum",
-          "fullType": "msServices.RenewPeriodEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Frequency of Outlook license renewals",
-          "required": false
+          "fullType": "msServices.RenewPeriodEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "msServices.RenewPeriodEnum"
         },
         "renewPeriod": {
-          "type": "msServices.RenewPeriodEnum",
-          "fullType": "msServices.RenewPeriodEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Frequency of mailbox license renewals",
-          "required": false
+          "fullType": "msServices.RenewPeriodEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "msServices.RenewPeriodEnum"
         },
         "spamAndVirusConfiguration": {
-          "type": "msServices.SpamAndVirusConfiguration",
-          "fullType": "msServices.SpamAndVirusConfiguration",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Spam and Antivirus configuration",
-          "required": true
+          "fullType": "msServices.SpamAndVirusConfiguration",
+          "readOnly": false,
+          "required": true,
+          "type": "msServices.SpamAndVirusConfiguration"
         },
         "spamDetected": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Spam activity detected on this mailbox",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "spamTicketNumber": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Ticket number of spam detection",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "state": {
-          "type": "msServices.ObjectStateEnum",
-          "fullType": "msServices.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Mailbox state",
-          "required": true
+          "fullType": "msServices.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id for this account",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "msServices.ExchangeLicenceEnum": {
-      "id": "ExchangeLicenceEnum",
-      "namespace": "msServices",
       "description": "Exchange account licence",
       "enum": [
         "basic",
         "enterprise",
         "standard"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ExchangeLicenceEnum",
+      "namespace": "msServices"
     },
     "msServices.ExchangeService": {
+      "description": "Exchange service",
       "id": "ExchangeService",
       "namespace": "msServices",
-      "description": "Exchange service",
       "properties": {
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Service family name displayed",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Exchange service name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "hostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Exchange service URL",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "maxReceiveSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum allowable size for received messages in MB",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "maxSendSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum allowable size of sent messages in MB",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "offer": {
-          "type": "msServices.ServiceOfferEnum",
-          "fullType": "msServices.ServiceOfferEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Exchange service offer",
-          "required": true
+          "fullType": "msServices.ServiceOfferEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.ServiceOfferEnum"
         },
         "spamAndVirusConfiguration": {
-          "type": "msServices.SpamAndVirusConfiguration",
-          "fullType": "msServices.SpamAndVirusConfiguration",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Spam and Antivirus configuration",
-          "required": true
+          "fullType": "msServices.SpamAndVirusConfiguration",
+          "readOnly": false,
+          "required": true,
+          "type": "msServices.SpamAndVirusConfiguration"
         },
         "sslExpirationDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Expiration date of SSL certificate",
-          "required": false
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
         },
         "state": {
-          "type": "msServices.ServiceStateEnum",
-          "fullType": "msServices.ServiceStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Exchange service state",
-          "required": true
+          "fullType": "msServices.ServiceStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.ServiceStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "msServices.LicensePeriodEnum": {
-      "id": "LicensePeriodEnum",
-      "namespace": "msServices",
       "description": "Period of time used to determine license statistics",
       "enum": [
         "lastMonth",
@@ -2240,51 +2239,51 @@ export const schema: Schema = {
         "lastWeek",
         "lastYear"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LicensePeriodEnum",
+      "namespace": "msServices"
     },
     "msServices.MailingFilterEnum": {
-      "id": "MailingFilterEnum",
-      "namespace": "msServices",
       "description": "Mailing filter options availlable",
       "enum": [
         "vaderetro"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MailingFilterEnum",
+      "namespace": "msServices"
     },
     "msServices.MfaInformation": {
+      "description": "Multi Factor Authentication informations",
       "id": "MfaInformation",
       "namespace": "msServices",
-      "description": "Multi Factor Authentication informations",
       "properties": {
         "activated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if Multi Factor Authentication is activated on this account",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "state": {
-          "type": "msServices.ObjectStateEnum",
-          "fullType": "msServices.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current status of Multi Factor Authentication feature",
-          "required": true
+          "fullType": "msServices.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task for Multi Factor Authentication",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "msServices.ObjectStateEnum": {
-      "id": "ObjectStateEnum",
-      "namespace": "msServices",
       "description": "Current object state",
       "enum": [
         "creating",
@@ -2295,21 +2294,21 @@ export const schema: Schema = {
         "suspended",
         "suspending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ObjectStateEnum",
+      "namespace": "msServices"
     },
     "msServices.RenewPeriodEnum": {
-      "id": "RenewPeriodEnum",
-      "namespace": "msServices",
       "description": "Renew period",
       "enum": [
         "monthly",
         "yearly"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewPeriodEnum",
+      "namespace": "msServices"
     },
     "msServices.ServiceOfferEnum": {
-      "id": "ServiceOfferEnum",
-      "namespace": "msServices",
       "description": "Service Offer name",
       "enum": [
         "dedicated",
@@ -2317,11 +2316,11 @@ export const schema: Schema = {
         "hosted",
         "provider"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceOfferEnum",
+      "namespace": "msServices"
     },
     "msServices.ServiceStateEnum": {
-      "id": "ServiceStateEnum",
-      "namespace": "msServices",
       "description": "Service State",
       "enum": [
         "creating",
@@ -2332,500 +2331,500 @@ export const schema: Schema = {
         "suspended",
         "suspending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceStateEnum",
+      "namespace": "msServices"
     },
     "msServices.SharepointAccountAccessRightsEnum": {
-      "id": "SharepointAccountAccessRightsEnum",
-      "namespace": "msServices",
       "description": "Account access rights to the service",
       "enum": [
         "administrator",
         "user"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SharepointAccountAccessRightsEnum",
+      "namespace": "msServices"
     },
     "msServices.SharepointAccountLicense": {
+      "description": "Sharepoint account license",
       "id": "SharepointAccountLicense",
       "namespace": "msServices",
-      "description": "Sharepoint account license",
       "properties": {
         "license": {
-          "type": "msServices.SharepointLicenseEnum",
-          "fullType": "msServices.SharepointLicenseEnum",
           "canBeNull": false,
+          "fullType": "msServices.SharepointLicenseEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "msServices.SharepointLicenseEnum"
         },
         "licenseQuantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "msServices.SharepointDailyLicense": {
+      "description": "Sharepoint account license per day",
       "id": "SharepointDailyLicense",
       "namespace": "msServices",
-      "description": "Sharepoint account license per day",
       "properties": {
         "accountLicense": {
-          "type": "msServices.SharepointAccountLicense[]",
-          "fullType": "msServices.SharepointAccountLicense[]",
           "canBeNull": false,
+          "fullType": "msServices.SharepointAccountLicense[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "msServices.SharepointAccountLicense[]"
         },
         "date": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "date"
         }
       }
     },
     "msServices.SharepointInformation": {
+      "description": "Sharepoint account information",
       "id": "SharepointInformation",
       "namespace": "msServices",
-      "description": "Sharepoint account information",
       "properties": {
         "accessRights": {
-          "type": "msServices.SharepointAccountAccessRightsEnum",
-          "fullType": "msServices.SharepointAccountAccessRightsEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The rights assigned to the sharepoint account",
-          "required": true
+          "fullType": "msServices.SharepointAccountAccessRightsEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "msServices.SharepointAccountAccessRightsEnum"
         },
         "activeDirectoryAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Active Directory Account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "configured": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if the account is configured",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "currentUsage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "OneDrive usage in byte",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "delete at expiration",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sharepoint account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "license": {
-          "type": "msServices.SharepointLicenseEnum",
-          "fullType": "msServices.SharepointLicenseEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sharepoint account license",
-          "required": true
+          "fullType": "msServices.SharepointLicenseEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.SharepointLicenseEnum"
         },
         "officeLicense": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "office license is available",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OneDrive maximum size in byte",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "msServices.ObjectStateEnum",
-          "fullType": "msServices.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sharepoint account state",
-          "required": true
+          "fullType": "msServices.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task for this sharepoint account",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "msServices.SharepointLicenseEnum": {
-      "id": "SharepointLicenseEnum",
-      "namespace": "msServices",
       "description": "Sharepoint account license",
       "enum": [
         "foundation",
         "standard"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SharepointLicenseEnum",
+      "namespace": "msServices"
     },
     "msServices.SharepointService": {
+      "description": "Sharepoint service",
       "id": "SharepointService",
       "namespace": "msServices",
-      "description": "Sharepoint service",
       "properties": {
         "currentUsage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Shared space usage in byte",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Service family name displayed",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Internal service name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "farmUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sharepoint farm url",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "offer": {
-          "type": "msServices.SharepointServiceOfferEnum",
-          "fullType": "msServices.SharepointServiceOfferEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sharepoint offer",
-          "required": true
+          "fullType": "msServices.SharepointServiceOfferEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.SharepointServiceOfferEnum"
         },
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Shared space maximum size in byte",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "msServices.ServiceStateEnum",
-          "fullType": "msServices.ServiceStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sharepoint service state",
-          "required": true
+          "fullType": "msServices.ServiceStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.ServiceStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Sharepoint url",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "msServices.SharepointServiceInfo": {
+      "description": "Sharepoint service",
       "id": "SharepointServiceInfo",
       "namespace": "msServices",
-      "description": "Sharepoint service",
       "properties": {
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Internal service name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "msServices.SharepointServiceOfferEnum": {
-      "id": "SharepointServiceOfferEnum",
-      "namespace": "msServices",
       "description": "Sharepoint service offer name",
       "enum": [
         "hosted",
         "provider"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SharepointServiceOfferEnum",
+      "namespace": "msServices"
     },
     "msServices.SpamAndVirusConfiguration": {
+      "description": "Spam and Antivirus configuration",
       "id": "SpamAndVirusConfiguration",
       "namespace": "msServices",
-      "description": "Spam and Antivirus configuration",
       "properties": {
         "checkDKIM": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Check DKIM of message",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "checkSPF": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Check SPF of message",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteSpam": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a spam delete it",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteVirus": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a virus delete it",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "putInJunk": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a spam or virus put in junk. Overridden by deleteSpam or deleteVirus",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "tagSpam": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a spam change its subject",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "tagVirus": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a virus change its subject",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "msServices.SyncAccountLicense": {
+      "description": "Sync account license",
       "id": "SyncAccountLicense",
       "namespace": "msServices",
-      "description": "Sync account license",
       "properties": {
         "license": {
-          "type": "msServices.SyncLicenseEnum",
-          "fullType": "msServices.SyncLicenseEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "the kind of license under which sync account is contracted",
-          "required": true
+          "fullType": "msServices.SyncLicenseEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "msServices.SyncLicenseEnum"
         },
         "licenseQuantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "number of license instances",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "msServices.SyncDailyLicense": {
+      "description": "Sync account license per day",
       "id": "SyncDailyLicense",
       "namespace": "msServices",
-      "description": "Sync account license per day",
       "properties": {
         "accountLicense": {
-          "type": "msServices.SyncAccountLicense[]",
-          "fullType": "msServices.SyncAccountLicense[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "sync account license usage",
-          "required": true
+          "fullType": "msServices.SyncAccountLicense[]",
+          "readOnly": false,
+          "required": true,
+          "type": "msServices.SyncAccountLicense[]"
         },
         "date": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
-          "readOnly": false,
           "description": "the date used to determine sync account license usage",
-          "required": true
+          "fullType": "date",
+          "readOnly": false,
+          "required": true,
+          "type": "date"
         }
       }
     },
     "msServices.SyncInformation": {
+      "description": "Sync account information",
       "id": "SyncInformation",
       "namespace": "msServices",
-      "description": "Sync account information",
       "properties": {
         "configured": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if the account is configured",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "license": {
-          "type": "msServices.SyncLicenseEnum",
-          "fullType": "msServices.SyncLicenseEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sync account license",
-          "required": true
+          "fullType": "msServices.SyncLicenseEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.SyncLicenseEnum"
         },
         "state": {
-          "type": "msServices.ObjectStateEnum",
-          "fullType": "msServices.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Sync account state",
-          "required": true
+          "fullType": "msServices.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task for this sync account",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "msServices.SyncLicenseEnum": {
-      "id": "SyncLicenseEnum",
-      "namespace": "msServices",
       "description": "Sync account license",
       "enum": [
         "standard",
         "standardFree"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SyncLicenseEnum",
+      "namespace": "msServices"
     },
     "msServices.SyncService": {
+      "description": "Sync service",
       "id": "SyncService",
       "namespace": "msServices",
-      "description": "Sync service",
       "properties": {
         "state": {
-          "type": "msServices.ServiceStateEnum",
-          "fullType": "msServices.ServiceStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Exchange service state",
-          "required": true
+          "fullType": "msServices.ServiceStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.ServiceStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "msServices.Task": {
+      "description": "Active Directory task details",
       "id": "Task",
       "namespace": "msServices",
-      "description": "Active Directory task details",
       "properties": {
         "finishDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "msServices.TaskFunctionEnum",
-          "fullType": "msServices.TaskFunctionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Function name",
-          "required": true
+          "fullType": "msServices.TaskFunctionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.TaskFunctionEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "msServices.TaskStatusEnum",
-          "fullType": "msServices.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "msServices.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.TaskStatusEnum"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "msServices.TaskFunctionEnum": {
-      "id": "TaskFunctionEnum",
-      "namespace": "msServices",
       "description": "function enumeration for Active Directory task",
       "enum": [
         "activateADSync",
@@ -2851,11 +2850,11 @@ export const schema: Schema = {
         "setADAccount",
         "setPasswordPolicy"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskFunctionEnum",
+      "namespace": "msServices"
     },
     "msServices.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "msServices",
       "description": "ActiveDirectory task status",
       "enum": [
         "cancelled",
@@ -2864,210 +2863,210 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "msServices"
     },
     "msServices.UPNStateEnum": {
-      "id": "UPNStateEnum",
-      "namespace": "msServices",
       "description": "Active Directory UPN Suffix State",
       "enum": [
         "creating",
         "deleting",
         "ok"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "UPNStateEnum",
+      "namespace": "msServices"
     },
     "msServices.exchangeTask": {
+      "description": "Exchange task details",
       "id": "exchangeTask",
       "namespace": "msServices",
-      "description": "Exchange task details",
       "properties": {
         "finishDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Function name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "msServices.TaskStatusEnum",
-          "fullType": "msServices.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "msServices.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.TaskStatusEnum"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "msServices.sharepointTask": {
+      "description": "Sharepoint task details",
       "id": "sharepointTask",
       "namespace": "msServices",
-      "description": "Sharepoint task details",
       "properties": {
         "finishDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Function name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "msServices.TaskStatusEnum",
-          "fullType": "msServices.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "msServices.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.TaskStatusEnum"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "msServices.upnSuffix": {
+      "description": "Active Directory UPN Suffix",
       "id": "upnSuffix",
       "namespace": "msServices",
-      "description": "Active Directory UPN Suffix",
       "properties": {
         "cnameToCheck": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Cname record used for UPN suffix verification",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "ownershipValidated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Ownership for upn suffix confirmed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "state": {
-          "type": "msServices.UPNStateEnum",
-          "fullType": "msServices.UPNStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "UPN suffix state",
-          "required": true
+          "fullType": "msServices.UPNStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "msServices.UPNStateEnum"
         },
         "suffix": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "UPN suffix",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task for this upnSuffix",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -3078,11 +3077,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -3090,108 +3089,111 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/msServices"
 }

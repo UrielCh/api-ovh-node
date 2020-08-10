@@ -1,7335 +1,7334 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.ovh.com:443/1.0/email/exchange.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/email/exchange",
+      "description": "Operations about the MSSERVICES service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the MSSERVICES service"
+      "path": "/email/exchange"
     },
     {
-      "path": "/email/exchange/{organizationName}/service",
+      "description": "Operations about the EXCHANGE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the EXCHANGE service"
+      "path": "/email/exchange/{organizationName}/service"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}",
+      "description": "Exchange service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.ExchangeService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.ExchangeService"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.ExchangeService",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.ExchangeService",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Exchange service"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account",
+      "description": "List the email.exchange.Account objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Accounts associated to this exchange service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of primaryEmailAddress property (like)"
-            },
-            {
-              "name": "accountLicense",
-              "dataType": "email.exchange.OvhLicenceEnum",
-              "paramType": "query",
-              "fullType": "email.exchange.OvhLicenceEnum",
-              "required": false,
-              "description": "Filter the value of accountLicense property (=)"
-            },
-            {
+              "dataType": "long",
+              "description": "Filter the value of id property (like)",
+              "fullType": "long",
               "name": "id",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Filter the value of id property (like)"
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of primaryEmailAddress property (like)",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "email.exchange.OvhLicenceEnum",
+              "description": "Filter the value of accountLicense property (=)",
+              "fullType": "email.exchange.OvhLicenceEnum",
+              "name": "accountLicense",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Accounts associated to this exchange service"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new mailbox in exchange server",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "lastName",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Company name",
               "fullType": "string",
-              "required": false,
-              "description": "Account last name"
-            },
-            {
-              "name": "litigationPeriod",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Litigation length in days, 0 means unlimited"
-            },
-            {
-              "name": "mailingFilter",
-              "dataType": "email.exchange.MailingFilterEnum[]",
-              "paramType": "body",
-              "fullType": "email.exchange.MailingFilterEnum[]",
-              "required": false,
-              "description": "Enable mailing filtrering"
-            },
-            {
-              "name": "license",
-              "dataType": "email.exchange.OvhLicenceEnum",
-              "paramType": "body",
-              "fullType": "email.exchange.OvhLicenceEnum",
-              "required": true,
-              "description": "Exchange license"
-            },
-            {
-              "name": "litigation",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Litigation status"
-            },
-            {
               "name": "company",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "Account login",
               "fullType": "string",
-              "required": false,
-              "description": "Company name"
-            },
-            {
-              "name": "password",
-              "dataType": "password",
-              "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "Account password"
-            },
-            {
-              "name": "spamAndVirusConfiguration",
-              "dataType": "email.exchange.spamAndVirusConfiguration",
-              "paramType": "body",
-              "fullType": "email.exchange.spamAndVirusConfiguration",
-              "required": false,
-              "description": "Antispam and Antivirus configuration"
-            },
-            {
-              "name": "hiddenFromGAL",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Hide the account in Global Address List"
-            },
-            {
-              "name": "outlookLicense",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Buy outlook license"
-            },
-            {
-              "name": "firstName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Account first name"
-            },
-            {
-              "name": "initials",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Account initials"
-            },
-            {
               "name": "login",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Account login"
+              "required": true
             },
             {
-              "name": "SAMAccountName",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Email domain",
               "fullType": "string",
-              "required": false,
-              "description": "SAM account name (exchange 2010 login)"
-            },
-            {
               "name": "domain",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Email domain"
+              "required": true
             },
             {
+              "dataType": "boolean",
+              "description": "Buy outlook license",
+              "fullType": "boolean",
+              "name": "outlookLicense",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "password",
+              "description": "Account password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Litigation status",
+              "fullType": "boolean",
+              "name": "litigation",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "SAM account name (exchange 2010 login)",
+              "fullType": "string",
+              "name": "SAMAccountName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Hide the account in Global Address List",
+              "fullType": "boolean",
+              "name": "hiddenFromGAL",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Account initials",
+              "fullType": "string",
+              "name": "initials",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "email.exchange.spamAndVirusConfiguration",
+              "description": "Antispam and Antivirus configuration",
+              "fullType": "email.exchange.spamAndVirusConfiguration",
+              "name": "spamAndVirusConfiguration",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Account first name",
+              "fullType": "string",
+              "name": "firstName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Litigation length in days, 0 means unlimited",
+              "fullType": "long",
+              "name": "litigationPeriod",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Account last name",
+              "fullType": "string",
+              "name": "lastName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Account display name",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Account display name"
+              "required": false
             },
             {
-              "name": "exchangeService",
+              "dataType": "email.exchange.MailingFilterEnum[]",
+              "description": "Enable mailing filtrering",
+              "fullType": "email.exchange.MailingFilterEnum[]",
+              "name": "mailingFilter",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "email.exchange.OvhLicenceEnum",
+              "description": "Exchange license",
+              "fullType": "email.exchange.OvhLicenceEnum",
+              "name": "license",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Create new mailbox in exchange server"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.Account objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}",
+      "description": "Exchange mailbox",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete existing mailbox in exchange server",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete existing mailbox in exchange server"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "primaryEmailAddress",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Account",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.Account"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.Account",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.Account",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Exchange mailbox"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Aliases associated to this mailbox"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "alias",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Alias"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Create new alias"
+          "responseType": "void"
         }
       ],
-      "description": "List the email.exchange.exchangeAccountAlias objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}",
+      "description": "List the email.exchange.exchangeAccountAlias objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
-              "name": "alias",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Alias"
-            }
-          ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete existing alias"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Aliases associated to this mailbox",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
-              "name": "alias",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Alias"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeAccountAlias",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Aliases on this mailbox"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete existing archive mailbox"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "email.exchange.exchangeAccountArchive",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Create new alias",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "quota",
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias"
+    },
+    {
+      "description": "Aliases on this mailbox",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete existing alias",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.exchangeAccountAlias"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}"
+    },
+    {
+      "description": "Exchange Account Archive",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete existing archive mailbox",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.exchangeAccountArchive"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create new archive mailbox",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "long",
-              "paramType": "body",
+              "description": "Archive mailbox quota (if not provided mailbox quota will be taken)",
               "fullType": "long",
-              "required": false,
-              "description": "Archive mailbox quota (if not provided mailbox quota will be taken)"
+              "name": "quota",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "primaryEmailAddress",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Create new archive mailbox"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.exchangeAccountArchive",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.exchangeAccountArchive",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Exchange Account Archive"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change mailbox password",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "new password",
               "fullType": "password",
-              "required": true,
-              "description": "new password"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Change mailbox password"
-        }
-      ],
-      "description": "changePassword operations"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "email.exchange.exchangeAccountDiagnosis",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
               "name": "password",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Account password"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Create new diagnosis request"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "Exchange Account Diagnosis"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export",
+      "description": "Exchange Account Diagnosis",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Remove request of PST file"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Export",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeAccountDiagnosis"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new diagnosis request",
           "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            }
-          ],
-          "responseType": "email.exchange.Task",
           "noAuthentication": false,
-          "description": "Request PST file for the account"
-        }
-      ],
-      "description": "Export PST file request"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
           "parameters": [
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account password",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            }
-          ],
-          "responseType": "email.exchange.ExportUrl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Generate temporary url to PST file"
-        }
-      ],
-      "description": "Export PST file url"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Full access granted users for this mailbox"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
+              "name": "password",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "User to give full access"
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Allow full access to a user"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangeAccountFullAccess objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}",
+      "description": "Export PST file request",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove request of PST file",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
               "name": "primaryEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Revoke full access"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
               "name": "primaryEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeAccountFullAccess",
+          "responseType": "email.exchange.Export"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Request PST file for the account",
+          "httpMethod": "POST",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "Users having full access on this mailbox"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL",
+      "description": "Export PST file url",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.OutlookUrl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.ExportUrl"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Generate temporary url to PST file",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL"
+    },
+    {
+      "description": "List the email.exchange.exchangeAccountFullAccess objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Full access granted users for this mailbox",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Allow full access to a user",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "User to give full access",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess"
+    },
+    {
+      "description": "Users having full access on this mailbox",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Revoke full access",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.exchangeAccountFullAccess"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}"
+    },
+    {
+      "description": "Outlook url",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.OutlookUrl"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Generate outlook url",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "email.exchange.OutlookVersionEnum",
-              "paramType": "body",
+              "description": "Version of outlook",
               "fullType": "email.exchange.OutlookVersionEnum",
-              "required": true,
-              "description": "Version of outlook"
-            },
-            {
-              "name": "language",
-              "dataType": "email.exchange.LanguageEnum",
+              "name": "version",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "email.exchange.LanguageEnum",
+              "description": "Language of outlook",
               "fullType": "email.exchange.LanguageEnum",
-              "required": true,
-              "description": "Language of outlook"
+              "name": "language",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Generate outlook url"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "Outlook url"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol",
+      "description": "Get protocol status on that mailbox",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeAccountProtocol",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeAccountProtocol"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.exchangeAccountProtocol",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.exchangeAccountProtocol",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Get protocol status on that mailbox"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Send as granted users for this mailbox"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "allowAccountId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Account id to allow to send mails from this mailbox"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Allow another user to send mails from this mailbox"
+          "responseType": "void"
         }
       ],
-      "description": "List the email.exchange.exchangeAccountSendAs objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}",
+      "description": "List the email.exchange.exchangeAccountSendAs objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
+          "description": "Send as granted users for this mailbox",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
               "name": "primaryEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete allowed user for sendAs"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            },
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
-            }
-          ],
-          "responseType": "email.exchange.exchangeAccountSendAs",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Users authorized to send mails from this mailbox"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "primaryEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "SendOnBehalfTo granted users for this mailbox"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Allow another user to send mails from this mailbox",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "allowAccountId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Account id to allow to send mails from this mailbox",
               "fullType": "long",
-              "required": true,
-              "description": "Account id to allow to send On Behalf To mails from this mailbox"
+              "name": "allowAccountId",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "primaryEmailAddress",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Allow another user to Send On Behalf To mails from this mailbox"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangeAccountSendOnBehalfTo objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}",
+      "description": "Users authorized to send mails from this mailbox",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete allowed user for sendAs",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
-            },
-            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete allowed user for SendOnBehalfTo"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
               "name": "primaryEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeAccountSendOnBehalfTo",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeAccountSendAs"
         }
       ],
-      "description": "Get users authorized to Send On Behalf To mails from this mailbox"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks",
+      "description": "List the email.exchange.exchangeAccountSendOnBehalfTo objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "SendOnBehalfTo granted users for this mailbox",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Allow another user to Send On Behalf To mails from this mailbox",
+          "httpMethod": "POST",
           "noAuthentication": false,
-          "description": "Pending task for this mailbox"
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Account id to allow to send On Behalf To mails from this mailbox",
+              "fullType": "long",
+              "name": "allowAccountId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.Task objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks/{id}",
+      "description": "Get users authorized to Send On Behalf To mails from this mailbox",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
+          "description": "Delete allowed user for SendOnBehalfTo",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "primaryEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.exchangeAccountSendOnBehalfTo"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}"
+    },
+    {
+      "description": "List the email.exchange.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Pending task for this mailbox",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks"
+    },
+    {
+      "description": "Exchange task details",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Primary email address",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
               "name": "id",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "Exchange task details"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks/{id}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/terminate",
+      "description": "terminate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Terminate account at expiration date",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Primary email address",
               "fullType": "string",
-              "required": true,
-              "description": "Primary email address"
+              "name": "primaryEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate account at expiration date"
+          "responseType": "string"
         }
       ],
-      "description": "terminate operations"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/terminate"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint",
+      "description": "activateSharepoint operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Activate Sharepoint infra connected to this exchange service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "primaryEmailAddress",
               "dataType": "string",
-              "paramType": "body",
+              "description": "primary email address of a user that will be admin of sharepoint (You will not be able to change it!)",
               "fullType": "string",
-              "required": true,
-              "description": "primary email address of a user that will be admin of sharepoint (You will not be able to change it!)"
+              "name": "primaryEmailAddress",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "sub domain that will be used for Your sharepoint infra (You will not be able to change it!)",
+              "fullType": "string",
               "name": "subDomain",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "sub domain that will be used for Your sharepoint infra (You will not be able to change it!)"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Activate Sharepoint infra connected to this exchange service"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "activateSharepoint operations"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/changeHostname",
+      "description": "changeHostname operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Setting SSL hostname for Exchange private offer",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "dcvEmail",
               "dataType": "string",
-              "paramType": "body",
+              "description": "FQDN of SSL hostname",
               "fullType": "string",
-              "required": true,
-              "description": "Email address used for Domain Control Validation, needed for ownership validation"
-            },
-            {
-              "name": "useDnsAssist",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Set required Exchange DNS fields automatically if the hostname domain is managed by OVH"
-            },
-            {
               "name": "hostname",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "FQDN of SSL hostname"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Email address used for Domain Control Validation, needed for ownership validation",
+              "fullType": "string",
+              "name": "dcvEmail",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Set required Exchange DNS fields automatically if the hostname domain is managed by OVH",
+              "fullType": "boolean",
+              "name": "useDnsAssist",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Setting SSL hostname for Exchange private offer"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "changeHostname operations"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/changeHostname"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/dcvEmails",
+      "description": "dcvEmails operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get DCV emails if your ssl will expire in next 30 days",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get DCV emails if your ssl will expire in next 30 days"
+          "responseType": "string[]"
         }
       ],
-      "description": "dcvEmails operations"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/dcvEmails"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/device",
+      "description": "List the email.exchange.exchangeServiceDevice objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of your ActiveSync devices registered on this Exchange service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of IMEI property (like)",
+              "fullType": "string",
               "name": "IMEI",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of identity property (like)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of IMEI property (like)"
-            },
-            {
-              "name": "deviceState",
-              "dataType": "email.exchange.DeviceActiveSyncStateEnum",
-              "paramType": "query",
-              "fullType": "email.exchange.DeviceActiveSyncStateEnum",
-              "required": false,
-              "description": "Filter the value of deviceState property (=)"
-            },
-            {
               "name": "identity",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of identity property (like)"
+              "required": false
+            },
+            {
+              "dataType": "email.exchange.DeviceActiveSyncStateEnum",
+              "description": "Filter the value of deviceState property (=)",
+              "fullType": "email.exchange.DeviceActiveSyncStateEnum",
+              "name": "deviceState",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of your ActiveSync devices registered on this Exchange service"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the email.exchange.exchangeServiceDevice objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/device"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}",
+      "description": "Get the list of your ActiveSync devices registered on this Exchange service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "identity",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identity",
               "fullType": "string",
-              "required": true,
-              "description": "Identity"
+              "name": "identity",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeServiceDevice",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeServiceDevice"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.exchangeServiceDevice",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.exchangeServiceDevice",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "identity",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identity",
               "fullType": "string",
-              "required": true,
-              "description": "Identity"
+              "name": "identity",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Get the list of your ActiveSync devices registered on this Exchange service"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice",
+      "description": "clearDevice operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Executes a factory reset on the device. THIS OPERATION CANNOT BE REVERSED, ALL DATA ON THE DEVICE WILL BE LOST.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "identity",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identity",
               "fullType": "string",
-              "required": true,
-              "description": "Identity"
+              "name": "identity",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Executes a factory reset on the device. THIS OPERATION CANNOT BE REVERSED, ALL DATA ON THE DEVICE WILL BE LOST."
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "clearDevice operations"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain",
+      "description": "List the email.exchange.Domain objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Domains associated to this service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "main",
-              "dataType": "boolean",
-              "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Filter the value of main property (like)"
-            },
-            {
-              "name": "state",
               "dataType": "email.exchange.ObjectStateEnum",
-              "paramType": "query",
+              "description": "Filter the value of state property (=)",
               "fullType": "email.exchange.ObjectStateEnum",
-              "required": false,
-              "description": "Filter the value of state property (=)"
+              "name": "state",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Filter the value of main property (like)",
+              "fullType": "boolean",
+              "name": "main",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Domains associated to this service"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new domain in exchange services",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "main",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "If you host domain in OVH we can configure autodiscover record automatically",
               "fullType": "boolean",
-              "required": false,
-              "description": "This newly created domain will be an organization (Exchange 2010 only)"
-            },
-            {
-              "name": "configureMx",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "If you host domain in OVH we can configure mx record automatically"
-            },
-            {
-              "name": "organization2010",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "If specified, indicates which organization this newly created domain will be part of (Exchange 2010 only)"
-            },
-            {
-              "name": "mxRelay",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "If specified, emails to not existing address will be redirected to that domain"
-            },
-            {
               "name": "configureAutodiscover",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "This newly created domain will be an organization (Exchange 2010 only)",
               "fullType": "boolean",
-              "required": false,
-              "description": "If you host domain in OVH we can configure autodiscover record automatically"
+              "name": "main",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "type",
+              "dataType": "string",
+              "description": "If specified, indicates which organization this newly created domain will be part of (Exchange 2010 only)",
+              "fullType": "string",
+              "name": "organization2010",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "If specified, emails to not existing address will be redirected to that domain",
+              "fullType": "string",
+              "name": "mxRelay",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "email.exchange.DomainTypeEnum",
-              "paramType": "body",
+              "description": "Type of domain that You want to install",
               "fullType": "email.exchange.DomainTypeEnum",
-              "required": true,
-              "description": "Type of domain that You want to install"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
+              "name": "type",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain to install on server"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain to install on server",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "If you host domain in OVH we can configure mx record automatically",
+              "fullType": "boolean",
+              "name": "configureMx",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Create new domain in exchange services"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.Domain objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}",
+      "description": "Exchange domain",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete existing domain in exchange services",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete existing domain in exchange services"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "domainName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain name"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Domain",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.Domain"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.Domain",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.Domain",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Exchange domain"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer",
+      "description": "Exchange organization disclaimer",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete existing organization disclaimer",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete existing organization disclaimer"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "domainName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.disclaimer",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.disclaimer"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create organization disclaimer of each email",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "content",
               "dataType": "text",
-              "paramType": "body",
+              "description": "Signature, added at the bottom of your organization emails",
               "fullType": "text",
-              "required": true,
-              "description": "Signature, added at the bottom of your organization emails"
-            },
-            {
-              "name": "outsideOnly",
-              "dataType": "boolean",
+              "name": "content",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Activate the disclaimer only for external emails",
               "fullType": "boolean",
-              "required": false,
-              "description": "Activate the disclaimer only for external emails"
+              "name": "outsideOnly",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Create organization disclaimer of each email"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.disclaimer",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.disclaimer",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "domainName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain name"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Exchange organization disclaimer"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimerAttribute",
+      "description": "disclaimerAttribute operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get diclaimer attributes to substitute with Active Directory properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "domainName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.DisclaimerAttributeEnum[]",
-          "noAuthentication": false,
-          "description": "Get diclaimer attributes to substitute with Active Directory properties"
+          "responseType": "email.exchange.DisclaimerAttributeEnum[]"
         }
       ],
-      "description": "disclaimerAttribute operations"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimerAttribute"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/externalContact",
+      "description": "List the email.exchange.exchangeExternalContact objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "External contacts for this service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "id",
+              "dataType": "string",
+              "description": "Filter the value of externalEmailAddress property (like)",
+              "fullType": "string",
+              "name": "externalEmailAddress",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of firstName property (like)",
+              "fullType": "string",
+              "name": "firstName",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "long",
-              "paramType": "query",
+              "description": "Filter the value of id property (like)",
               "fullType": "long",
-              "required": false,
-              "description": "Filter the value of id property (like)"
+              "name": "id",
+              "paramType": "query",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of displayName property (like)",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of displayName property (like)"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of lastName property (like)",
+              "fullType": "string",
               "name": "lastName",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of lastName property (like)"
-            },
-            {
-              "name": "firstName",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of firstName property (like)"
-            },
-            {
-              "name": "externalEmailAddress",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of externalEmailAddress property (like)"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "External contacts for this service"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "create new external contact",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Contact display name",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact display name"
+              "required": false
             },
             {
-              "name": "hiddenFromGAL",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Hide the contact in Global Address List",
               "fullType": "boolean",
-              "required": false,
-              "description": "Hide the contact in Global Address List"
-            },
-            {
-              "name": "initials",
-              "dataType": "string",
+              "name": "hiddenFromGAL",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact initials"
+              "required": false
             },
             {
-              "name": "organization2010",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Contact last name",
               "fullType": "string",
-              "required": false,
-              "description": "Indicates to which organization this newly created external contact will belongs (Exchange 2010 only)"
-            },
-            {
-              "name": "firstName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact first name"
-            },
-            {
-              "name": "externalEmailAddress",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Contact email address"
-            },
-            {
               "name": "lastName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Contact last name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Contact initials",
+              "fullType": "string",
+              "name": "initials",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Contact first name",
+              "fullType": "string",
+              "name": "firstName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Contact email address",
+              "fullType": "string",
+              "name": "externalEmailAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Indicates to which organization this newly created external contact will belongs (Exchange 2010 only)",
+              "fullType": "string",
+              "name": "organization2010",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "create new external contact"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangeExternalContact objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/externalContact"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}",
+      "description": "External contact for this exchange service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "delete external contact",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "externalEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "External email address"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "External email address",
+              "fullType": "string",
+              "name": "externalEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "delete external contact"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "externalEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "External email address",
               "fullType": "string",
-              "required": true,
-              "description": "External email address"
+              "name": "externalEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeExternalContact",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeExternalContact"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.exchangeExternalContact",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.exchangeExternalContact",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "External email address",
+              "fullType": "string",
               "name": "externalEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "External email address"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "External contact for this exchange service"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/license",
+      "description": "license operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get active licenses for specific period of time",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "toDate",
               "dataType": "date",
-              "paramType": "query",
+              "description": "Get active licenses since date ",
               "fullType": "date",
-              "required": false,
-              "description": "Get active licenses until date"
-            },
-            {
               "name": "fromDate",
-              "dataType": "date",
               "paramType": "query",
-              "fullType": "date",
-              "required": false,
-              "description": "Get active licenses since date "
+              "required": false
             },
             {
-              "name": "license",
               "dataType": "email.exchange.OvhLicenceEnum",
-              "paramType": "query",
+              "description": "License type",
               "fullType": "email.exchange.OvhLicenceEnum",
-              "required": false,
-              "description": "License type"
-            }
-          ],
-          "responseType": "email.exchange.DailyLicense[]",
-          "noAuthentication": false,
-          "description": "Get active licenses for specific period of time"
-        }
-      ],
-      "description": "license operations"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "mailingListAddress",
-              "dataType": "string",
+              "name": "license",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of mailingListAddress property (like)"
+              "required": false
+            },
+            {
+              "dataType": "date",
+              "description": "Get active licenses until date",
+              "fullType": "date",
+              "name": "toDate",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Mailing list for this service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "displayName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Name displayed in Global Access List"
-            },
-            {
-              "name": "maxSendSize",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Maximum send email size in MB"
-            },
-            {
-              "name": "senderAuthentification",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "If true sender has to authenticate"
-            },
-            {
-              "name": "departRestriction",
-              "dataType": "email.exchange.MailingListDepartRestrictionEnum",
-              "paramType": "body",
-              "fullType": "email.exchange.MailingListDepartRestrictionEnum",
-              "required": true,
-              "description": "Depart restriction policy"
-            },
-            {
-              "name": "joinRestriction",
-              "dataType": "email.exchange.MailingListJoinRestrictionEnum",
-              "paramType": "body",
-              "fullType": "email.exchange.MailingListJoinRestrictionEnum",
-              "required": true,
-              "description": "Join restriction policy"
-            },
-            {
-              "name": "maxReceiveSize",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Maximum receive email size in MB"
-            },
-            {
-              "name": "mailingListAddress",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The mailing list address"
-            },
-            {
-              "name": "hiddenFromGAL",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "If true mailing list is hiddend in Global Address List"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            }
-          ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Add mailing list"
+          "responseType": "email.exchange.DailyLicense[]"
         }
       ],
-      "description": "List the email.exchange.mailingList objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/license"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}",
+      "description": "List the email.exchange.mailingList objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "mailingListAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
-            }
-          ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete mailing list"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Mailing list for this service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of mailingListAddress property (like)",
+              "fullType": "string",
+              "name": "mailingListAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "email.exchange.mailingList",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add mailing list",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "If true sender has to authenticate",
+              "fullType": "boolean",
+              "name": "senderAuthentification",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "email.exchange.MailingListDepartRestrictionEnum",
+              "description": "Depart restriction policy",
+              "fullType": "email.exchange.MailingListDepartRestrictionEnum",
+              "name": "departRestriction",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "email.exchange.MailingListJoinRestrictionEnum",
+              "description": "Join restriction policy",
+              "fullType": "email.exchange.MailingListJoinRestrictionEnum",
+              "name": "joinRestriction",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The mailing list address",
+              "fullType": "string",
+              "name": "mailingListAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "If true mailing list is hiddend in Global Address List",
+              "fullType": "boolean",
+              "name": "hiddenFromGAL",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Maximum receive email size in MB",
+              "fullType": "long",
+              "name": "maxReceiveSize",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Maximum send email size in MB",
+              "fullType": "long",
+              "name": "maxSendSize",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name displayed in Global Access List",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList"
+    },
+    {
+      "description": "Mailing list",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete mailing list",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.mailingList"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.mailingList",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.mailingList",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Mailing list"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias",
+      "description": "List the email.exchange.exchangeMailingListAlias objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Aliases associated to this mailingList",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Aliases associated to this mailingList"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new alias",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
               "name": "alias",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Alias"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Create new alias"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangeMailingListAlias objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}",
+      "description": "Get aliases on this mailingList",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete existing alias",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "mailingListAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
               "name": "alias",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Alias"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete existing alias"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
               "name": "mailingListAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
               "name": "alias",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Alias"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeMailingListAlias",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeMailingListAlias"
         }
       ],
-      "description": "Get aliases on this mailingList"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account",
+      "description": "List the email.exchange.exchangeDistributionGroupManager objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Mailing list account manager",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "mailingListAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Mailing list account manager"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add new mailing list manager",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Manager account id",
+              "fullType": "long",
               "name": "managerAccountId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Manager account id"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Add new mailing list manager"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangeDistributionGroupManager objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}",
+      "description": "Mailing list managers",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete mailing list manager",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
               "name": "mailingListAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Manager account ID",
+              "fullType": "long",
               "name": "managerAccountId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Manager account ID"
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete mailing list manager"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "mailingListAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
-            },
-            {
+              "dataType": "long",
+              "description": "Manager account ID",
+              "fullType": "long",
               "name": "managerAccountId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Manager account ID"
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeDistributionGroupManager",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeDistributionGroupManager"
         }
       ],
-      "description": "Mailing list managers"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account",
+      "description": "List the email.exchange.exchangeDistributionGroupMember objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Mailing list account member",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Mailing list account member"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add new mailing list member",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Member contact id",
+              "fullType": "long",
               "name": "memberContactId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Member contact id"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Member account id",
+              "fullType": "long",
               "name": "memberAccountId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Member account id"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
               "name": "mailingListAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "required": true
             },
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Add new mailing list member"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangeDistributionGroupMember objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}",
+      "description": "Mailing list members",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete mailing list member",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "mailingListAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
-            },
-            {
-              "name": "memberAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Member account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Member account ID"
+              "name": "memberAccountId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete mailing list member"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "memberAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Member account ID"
-            },
-            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Member account ID",
+              "fullType": "long",
+              "name": "memberAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeDistributionGroupMember",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeDistributionGroupMember"
         }
       ],
-      "description": "Mailing list members"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact",
+      "description": "List the email.exchange.exchangeDistributionGroupMember objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Mailing list contact member",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Mailing list contact member"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add new mailing list member",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Member contact id",
+              "fullType": "long",
               "name": "memberContactId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Member contact id"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Member account id",
+              "fullType": "long",
               "name": "memberAccountId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Member account id"
+              "required": false
             },
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "mailingListAddress",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Add new mailing list member"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangeDistributionGroupMember objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}",
+      "description": "Mailing list members",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete mailing list member",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
               "name": "mailingListAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "required": true
             },
             {
-              "name": "memberContactId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Member contact ID",
               "fullType": "long",
-              "required": true,
-              "description": "Member contact ID"
+              "name": "memberContactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete mailing list member"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
-            },
-            {
-              "name": "memberContactId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Member contact ID"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Member contact ID",
+              "fullType": "long",
+              "name": "memberContactId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeDistributionGroupMember",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeDistributionGroupMember"
         }
       ],
-      "description": "Mailing list members"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs",
+      "description": "List the email.exchange.exchangeDistributionGroupSendAs objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "sendAs",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "sendAs"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Allow another user to Send aso mails from this mailing list",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Account id to allow to send as mails from this mailing list",
+              "fullType": "long",
               "name": "allowAccountId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Account id to allow to send as mails from this mailing list"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Allow another user to Send aso mails from this mailing list"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangeDistributionGroupSendAs objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}",
+      "description": "Get users authorized to Send On Behalf To mails from this mailbox",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete allowed user for SendAs",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "mailingListAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete allowed user for SendAs"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
-            },
-            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeDistributionGroupSendAs",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeDistributionGroupSendAs"
         }
       ],
-      "description": "Get users authorized to Send On Behalf To mails from this mailbox"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo",
+      "description": "List the email.exchange.exchangeDistributionGroupSendOnBehalfTo objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "sendOnBehalfTo",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "sendOnBehalfTo"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Allow another user to Send aso mails from this mailing list",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "allowAccountId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Account id to allow to send as mails from this mailing list",
               "fullType": "long",
-              "required": true,
-              "description": "Account id to allow to send as mails from this mailing list"
+              "name": "allowAccountId",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "mailingListAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Allow another user to Send aso mails from this mailing list"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangeDistributionGroupSendOnBehalfTo objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}",
+      "description": "Get users authorized to Send On Behalf To mails from this mailing list",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete allowed user for SendOnBehalfTo",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Mailing list address",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "mailingListAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete allowed user for SendOnBehalfTo"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Mailing list address",
+              "fullType": "string",
               "name": "mailingListAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list address"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeDistributionGroupSendOnBehalfTo",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeDistributionGroupSendOnBehalfTo"
         }
       ],
-      "description": "Get users authorized to Send On Behalf To mails from this mailing list"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability",
+      "description": "outlookAvailability operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Show available outlooks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "outlookLanguage",
               "dataType": "email.exchange.LanguageEnum",
-              "paramType": "query",
+              "description": "Language version of outlook",
               "fullType": "email.exchange.LanguageEnum",
-              "required": false,
-              "description": "Language version of outlook"
+              "name": "outlookLanguage",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "outlookVersion",
               "dataType": "email.exchange.OutlookVersionEnum",
-              "paramType": "query",
+              "description": "OS version of outlook",
               "fullType": "email.exchange.OutlookVersionEnum",
-              "required": false,
-              "description": "OS version of outlook"
+              "name": "outlookVersion",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "email.exchange.OutlookVersions[]",
-          "noAuthentication": false,
-          "description": "Show available outlooks"
+          "responseType": "email.exchange.OutlookVersions[]"
         }
       ],
-      "description": "outlookAvailability operations"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/protocol",
+      "description": "Protocol access policy for this Exchange service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeServiceProtocol",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeServiceProtocol"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.exchangeServiceProtocol",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.exchangeServiceProtocol",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Protocol access policy for this Exchange service"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Exchange account id subscribed to ActiveSync quarantine notifications"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "notifiedAccountId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Exchange Account Id"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Subscribe new address to ActiveSync quarantine notifications"
+          "responseType": "void"
         }
       ],
-      "description": "List the email.exchange.exchangeServiceActiveSyncNotification objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/protocol"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}",
+      "description": "List the email.exchange.exchangeServiceActiveSyncNotification objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
+          "description": "Exchange account id subscribed to ActiveSync quarantine notifications",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "notifiedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Notified account ID"
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Unubscribe address from ActiveSync quarantine notifications"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
+          "description": "Subscribe new address to ActiveSync quarantine notifications",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "notifiedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Exchange Account Id",
               "fullType": "long",
-              "required": true,
-              "description": "Notified account ID"
+              "name": "notifiedAccountId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeServiceActiveSyncNotification",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "Get email addresses subscribed to ActiveSync quarantine notifications"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder",
+      "description": "Get email addresses subscribed to ActiveSync quarantine notifications",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
+          "description": "Unubscribe address from ActiveSync quarantine notifications",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "path",
+              "dataType": "long",
+              "description": "Notified account ID",
+              "fullType": "long",
+              "name": "notifiedAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Notified account ID",
+              "fullType": "long",
+              "name": "notifiedAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.exchangeServiceActiveSyncNotification"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}"
+    },
+    {
+      "description": "List the email.exchange.publicFolder objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Public folders associated to this service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of path property (like)",
+              "fullType": "string",
+              "name": "path",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of path property (like)"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Public folders associated to this service"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create organization public folder",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "quota",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quota for public folder in MB"
-            },
-            {
-              "name": "defaultPermission",
-              "dataType": "email.exchange.PublicFolderRightTypeEnum",
-              "paramType": "body",
-              "fullType": "email.exchange.PublicFolderRightTypeEnum",
-              "required": false,
-              "description": "Default access right"
-            },
-            {
-              "name": "type",
               "dataType": "email.exchange.PublicFolderTypeEnum",
-              "paramType": "body",
+              "description": "Type for public folder",
               "fullType": "email.exchange.PublicFolderTypeEnum",
-              "required": true,
-              "description": "Type for public folder"
+              "name": "type",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Quota for public folder in MB",
+              "fullType": "long",
+              "name": "quota",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Path for public folder",
+              "fullType": "string",
               "name": "path",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Path for public folder"
+              "required": true
             },
             {
-              "name": "anonymousPermission",
               "dataType": "email.exchange.PublicFolderRightTypeEnum",
-              "paramType": "body",
+              "description": "Access right for the guest users",
               "fullType": "email.exchange.PublicFolderRightTypeEnum",
-              "required": false,
-              "description": "Access right for the guest users"
+              "name": "anonymousPermission",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "email.exchange.PublicFolderRightTypeEnum",
+              "description": "Default access right",
+              "fullType": "email.exchange.PublicFolderRightTypeEnum",
+              "name": "defaultPermission",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Create organization public folder"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.publicFolder objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}",
+      "description": "Exchange organization public folder",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete existing organization public folder",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Path",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "path",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Path"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete existing organization public folder"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "path",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Path",
               "fullType": "string",
-              "required": true,
-              "description": "Path"
+              "name": "path",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.publicFolder",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.publicFolder"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.publicFolder",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.publicFolder",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "path",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Path",
               "fullType": "string",
-              "required": true,
-              "description": "Path"
+              "name": "path",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Exchange organization public folder"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission",
+      "description": "List the email.exchange.exchangePublicFolderPermission objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Public folder permission",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "path",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Path",
               "fullType": "string",
-              "required": true,
-              "description": "Path"
+              "name": "path",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Public folder permission"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create public folder permission",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Account id to have access to public folder"
-            },
-            {
-              "name": "accessRights",
               "dataType": "email.exchange.PublicFolderRightTypeEnum",
-              "paramType": "body",
+              "description": "Access rights to be set for the account",
               "fullType": "email.exchange.PublicFolderRightTypeEnum",
-              "required": true,
-              "description": "Access rights to be set for the account"
+              "name": "accessRights",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to have access to public folder",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Path",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "path",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Path"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Create public folder permission"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangePublicFolderPermission objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}",
+      "description": "Exchange organization public folder permission",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete existing permission from public folder",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Path",
+              "fullType": "string",
               "name": "path",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Path"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete existing permission from public folder"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "path",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Path"
-            },
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Path",
+              "fullType": "string",
+              "name": "path",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangePublicFolderPermission",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangePublicFolderPermission"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.exchangePublicFolderPermission",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.exchangePublicFolderPermission",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Path",
+              "fullType": "string",
               "name": "path",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Path"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
               "name": "allowedAccountId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Exchange organization public folder permission"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolderQuota",
+      "description": "publicFolderQuota operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get public folder quota usage in total available space",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.PublicFolderQuota",
-          "noAuthentication": false,
-          "description": "Get public folder quota usage in total available space"
+          "responseType": "email.exchange.PublicFolderQuota"
         }
       ],
-      "description": "publicFolderQuota operations"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/publicFolderQuota"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/renewSSL",
+      "description": "renewSSL operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Renew SSL if it will expire in next 30 days",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "DCV email require for order ssl varification process",
+              "fullType": "string",
               "name": "dcv",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "DCV email require for order ssl varification process"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Renew SSL if it will expire in next 30 days"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "renewSSL operations"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/renewSSL"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount",
+      "description": "List the email.exchange.resourceAccount objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Resource account associated to this service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "resourceEmailAddress",
               "dataType": "string",
+              "description": "Filter the value of resourceEmailAddress property (like)",
+              "fullType": "string",
+              "name": "resourceEmailAddress",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of resourceEmailAddress property (like)"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Resource account associated to this service"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "create new resource account in exchange server",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "allowConflict",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "resource can be scheduled by more than one person during the same time period"
-            },
-            {
-              "name": "bookingWindow",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "maximum number of days in advance that the resource can be reserved"
-            },
-            {
-              "name": "capacity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "number of the same equipment or capacity of a room"
-            },
-            {
-              "name": "displayName",
               "dataType": "string",
-              "paramType": "body",
+              "description": "resource address",
               "fullType": "string",
-              "required": false,
-              "description": "resource account display name"
-            },
-            {
-              "name": "addOrganizerToSubject",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "meeting organizer's name is used as the subject of the meeting request"
-            },
-            {
-              "name": "deleteSubject",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "remove email subject of incoming meeting requests on resourceAccount"
-            },
-            {
-              "name": "maximumDuration",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "maximum duration in minutes for meeting requests"
-            },
-            {
-              "name": "showMeetingDetails",
-              "dataType": "email.exchange.ShowMeetingDetailsEnum",
-              "paramType": "body",
-              "fullType": "email.exchange.ShowMeetingDetailsEnum",
-              "required": false,
-              "description": "granted right on a calendar of that resourceAccount"
-            },
-            {
-              "name": "location",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "resource location"
-            },
-            {
-              "name": "deleteComments",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "remove any text in the message body of incoming meeting requests on resourceAccount"
-            },
-            {
               "name": "resourceEmailAddress",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "resource address"
+              "required": true
             },
             {
-              "name": "type",
               "dataType": "email.exchange.ResourceTypeEnum",
-              "paramType": "body",
+              "description": "type of your reservation",
               "fullType": "email.exchange.ResourceTypeEnum",
-              "required": true,
-              "description": "type of your reservation"
+              "name": "type",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "boolean",
+              "description": "resource can be scheduled by more than one person during the same time period",
+              "fullType": "boolean",
+              "name": "allowConflict",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "meeting organizer's name is used as the subject of the meeting request",
+              "fullType": "boolean",
+              "name": "addOrganizerToSubject",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "maximum number of days in advance that the resource can be reserved",
+              "fullType": "long",
+              "name": "bookingWindow",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "remove email subject of incoming meeting requests on resourceAccount",
+              "fullType": "boolean",
+              "name": "deleteSubject",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "number of the same equipment or capacity of a room",
+              "fullType": "long",
+              "name": "capacity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "remove any text in the message body of incoming meeting requests on resourceAccount",
+              "fullType": "boolean",
+              "name": "deleteComments",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "resource location",
+              "fullType": "string",
+              "name": "location",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "resource account display name",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "email.exchange.ShowMeetingDetailsEnum",
+              "description": "granted right on a calendar of that resourceAccount",
+              "fullType": "email.exchange.ShowMeetingDetailsEnum",
+              "name": "showMeetingDetails",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "maximum duration in minutes for meeting requests",
+              "fullType": "long",
+              "name": "maximumDuration",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "create new resource account in exchange server"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.resourceAccount objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}",
+      "description": "Exchange resource account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "delete existing resource account in exchange server",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "resourceEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Resource email address",
               "fullType": "string",
-              "required": true,
-              "description": "Resource email address"
+              "name": "resourceEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "delete existing resource account in exchange server"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "resourceEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Resource email address",
               "fullType": "string",
-              "required": true,
-              "description": "Resource email address"
+              "name": "resourceEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.resourceAccount",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.resourceAccount"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.resourceAccount",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.resourceAccount",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "resourceEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Resource email address"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Exchange resource account"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "resourceEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Resource email address"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Resource account manager"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "delegate's account id"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "resourceEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Resource email address",
               "fullType": "string",
-              "required": true,
-              "description": "Resource email address"
+              "name": "resourceEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "add new resource account delegate in exchange server"
+          "responseType": "void"
         }
       ],
-      "description": "List the email.exchange.exchangeResourceAccountDelegate objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}",
+      "description": "List the email.exchange.exchangeResourceAccountDelegate objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Resource account manager",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Resource email address",
+              "fullType": "string",
+              "name": "resourceEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "add new resource account delegate in exchange server",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "delegate's account id",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Resource email address",
+              "fullType": "string",
+              "name": "resourceEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate"
+    },
+    {
+      "description": "Resource accounts delegates",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "delete existing resource account delegate in exchange server",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "resourceEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Resource email address"
-            },
-            {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Resource email address",
+              "fullType": "string",
+              "name": "resourceEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "delete existing resource account delegate in exchange server"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Resource email address",
+              "fullType": "string",
               "name": "resourceEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Resource email address"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeResourceAccountDelegate",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeResourceAccountDelegate"
         }
       ],
-      "description": "Resource accounts delegates"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/server",
+      "description": "Exchange server",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Server",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.Server"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.Server",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.Server",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Exchange server"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/server"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount",
+      "description": "List the email.exchange.sharedAccount objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Shared accounts associated to this exchange service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "sharedEmailAddress",
               "dataType": "string",
+              "description": "Filter the value of sharedEmailAddress property (like)",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of sharedEmailAddress property (like)"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Shared accounts associated to this exchange service"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new shared mailbox in exchange server",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "mailingFilter",
-              "dataType": "email.exchange.MailingFilterEnum[]",
-              "paramType": "body",
-              "fullType": "email.exchange.MailingFilterEnum[]",
-              "required": false,
-              "description": "Enable mailing filtrering"
-            },
-            {
-              "name": "firstName",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Shared account initials",
               "fullType": "string",
-              "required": false,
-              "description": "Shared account first name"
-            },
-            {
-              "name": "sharedEmailAddress",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Shared account email address"
-            },
-            {
               "name": "initials",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Shared account initials"
+              "required": false
             },
             {
-              "name": "lastName",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Shared account first name",
               "fullType": "string",
-              "required": false,
-              "description": "Shared account last name"
+              "name": "firstName",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "displayName",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Shared account email address",
               "fullType": "string",
-              "required": false,
-              "description": "Shared account display name"
+              "name": "sharedEmailAddress",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "hiddenFromGAL",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Hide the shared account in Global Address List",
               "fullType": "boolean",
-              "required": false,
-              "description": "Hide the shared account in Global Address List"
-            },
-            {
-              "name": "quota",
-              "dataType": "long",
+              "name": "hiddenFromGAL",
               "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "email.exchange.MailingFilterEnum[]",
+              "description": "Enable mailing filtrering",
+              "fullType": "email.exchange.MailingFilterEnum[]",
+              "name": "mailingFilter",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Shared account maximum size",
               "fullType": "long",
-              "required": true,
-              "description": "Shared account maximum size"
+              "name": "quota",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Shared account display name",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Shared account last name",
+              "fullType": "string",
+              "name": "lastName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Create new shared mailbox in exchange server"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.sharedAccount objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}",
+      "description": "Exchange shared mailbox",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete existing shared mailbox in exchange server",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "sharedEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Shared email address",
               "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete existing shared mailbox in exchange server"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "sharedEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Shared email address",
               "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.sharedAccount",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.sharedAccount"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.exchange.sharedAccount",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.exchange.sharedAccount",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "sharedEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Exchange shared mailbox"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "sharedEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Full access granted users for this shared mailbox"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "User to give full access"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Shared email address",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "sharedEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
+              "required": true
             },
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Allow full access to a user"
+          "responseType": "void"
         }
       ],
-      "description": "List the email.exchange.exchangeSharedAccountFullAccess objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}",
+      "description": "List the email.exchange.exchangeSharedAccountFullAccess objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
+          "description": "Full access granted users for this shared mailbox",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
-            },
-            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "sharedEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Shared email address",
               "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Revoke full access"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "sharedEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
-            },
-            {
-              "name": "allowedAccountId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
-            }
-          ],
-          "responseType": "email.exchange.exchangeSharedAccountFullAccess",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Users having full access on this shared mailbox"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
-              "name": "sharedEmailAddress",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
-            },
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Send as granted users for this shared mailbox"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Allow full access to a user",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "User to give full access",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Shared email address",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess"
+    },
+    {
+      "description": "Users having full access on this shared mailbox",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Revoke full access",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Shared email address",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Shared email address",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.exchangeSharedAccountFullAccess"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}"
+    },
+    {
+      "description": "List the email.exchange.exchangeSharedAccountSendAs objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Send as granted users for this shared mailbox",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Shared email address",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Allow another user to send mails from this shared mailbox",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Account id to allow to send mails from this shared mailbox",
+              "fullType": "long",
               "name": "allowAccountId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Account id to allow to send mails from this shared mailbox"
+              "required": true
             },
             {
-              "name": "sharedEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Shared email address",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Allow another user to send mails from this shared mailbox"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangeSharedAccountSendAs objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}",
+      "description": "Users authorized to send mails from this shared mailbox",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete allowed user for sendAs",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Shared email address",
+              "fullType": "string",
               "name": "sharedEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete allowed user for sendAs"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Shared email address",
+              "fullType": "string",
               "name": "sharedEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeSharedAccountSendAs",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeSharedAccountSendAs"
         }
       ],
-      "description": "Users authorized to send mails from this shared mailbox"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo",
+      "description": "List the email.exchange.exchangeSharedAccountSendOnBehalfTo objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "SendOnBehalfTo granted users for this shared mailbox",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "sharedEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
-            },
-            {
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Shared email address",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "SendOnBehalfTo granted users for this shared mailbox"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Allow another user to Send On Behalf To mails from this shared mailbox",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Account id to allow to send On Behalf To mails from this shared mailbox",
+              "fullType": "long",
               "name": "allowAccountId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Account id to allow to send On Behalf To mails from this shared mailbox"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
-              "name": "sharedEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Shared email address",
               "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
+              "name": "sharedEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Allow another user to Send On Behalf To mails from this shared mailbox"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "List the email.exchange.exchangeSharedAccountSendOnBehalfTo objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}",
+      "description": "Get users authorized to Send On Behalf To mails from this shared mailbox",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete allowed user for SendOnBehalfTo",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Shared email address",
+              "fullType": "string",
               "name": "sharedEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
+              "required": true
             },
             {
-              "name": "allowedAccountId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Allowed account ID",
               "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "name": "allowedAccountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Delete allowed user for SendOnBehalfTo"
+          "responseType": "email.exchange.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Shared email address",
+              "fullType": "string",
               "name": "sharedEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Allowed account ID",
+              "fullType": "long",
               "name": "allowedAccountId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Allowed account ID"
+              "required": true
             }
           ],
-          "responseType": "email.exchange.exchangeSharedAccountSendOnBehalfTo",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.exchangeSharedAccountSendOnBehalfTo"
         }
       ],
-      "description": "Get users authorized to Send On Behalf To mails from this shared mailbox"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks",
+      "description": "List the email.exchange.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Pending task for this mailbox",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Shared email address",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "sharedEmailAddress",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Pending task for this mailbox"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the email.exchange.Task objects"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks/{id}",
+      "description": "Exchange task details",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
               "name": "organizationName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
               "name": "exchangeService",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Shared email address",
+              "fullType": "string",
               "name": "sharedEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Shared email address"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Exchange task details"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccountQuota",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            }
-          ],
-          "responseType": "email.exchange.SharedAccountQuota",
-          "noAuthentication": false,
-          "description": "Get shared account quota usage in total available space"
-        }
-      ],
-      "description": "sharedAccountQuota operations"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/task",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Pending actions"
-        }
-      ],
-      "description": "List the email.exchange.Task objects"
-    },
-    {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/task/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "organizationName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Organization name"
-            },
-            {
-              "name": "exchangeService",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
-            },
-            {
               "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.Task"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks/{id}"
+    },
+    {
+      "description": "sharedAccountQuota operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get shared account quota usage in total available space",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.exchange.SharedAccountQuota"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/sharedAccountQuota"
+    },
+    {
+      "description": "List the email.exchange.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Pending actions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/task"
+    },
+    {
+      "description": "Exchange task details",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Organization name",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "Exchange task details"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/task/{id}"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/updateDeviceList",
+      "description": "updateDeviceList operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update device list",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.exchange.Task",
-          "noAuthentication": false,
-          "description": "Update device list"
+          "responseType": "email.exchange.Task"
         }
       ],
-      "description": "updateDeviceList operations"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/updateDeviceList"
     },
     {
-      "path": "/email/exchange/{organizationName}/service/{exchangeService}/updateFlagsOnAllAccounts",
+      "description": "updateFlagsOnAllAccounts operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update spam and virus flags on all active accounts",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "organizationName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Exchange service",
               "fullType": "string",
-              "required": true,
-              "description": "Organization name"
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "exchangeService",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Organization name",
               "fullType": "string",
-              "required": true,
-              "description": "Exchange service"
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Update spam and virus flags on all active accounts"
+          "responseType": "void"
         }
       ],
-      "description": "updateFlagsOnAllAccounts operations"
+      "path": "/email/exchange/{organizationName}/service/{exchangeService}/updateFlagsOnAllAccounts"
     }
   ],
-  "resourcePath": "/email/exchange",
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "email.exchange.Account": {
+      "description": "Exchange mailbox",
       "id": "Account",
       "namespace": "email.exchange",
-      "description": "Exchange mailbox",
       "properties": {
         "SAMAccountName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "SAM account name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "accountLicense": {
-          "type": "email.exchange.OvhLicenceEnum",
-          "fullType": "email.exchange.OvhLicenceEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Exchange account type",
-          "required": true
+          "fullType": "email.exchange.OvhLicenceEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.OvhLicenceEnum"
         },
         "company": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Company name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "configured": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if the account is configured",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "currentUsage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Mailbox usage",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "delete at expiration",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "deleteOutlookAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "delete outlook at expiration",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account display name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Email domain",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "exchangeGuid": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "exchangeGuid for manual configuration",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "expirationOutlookDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "expiration date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account first name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "guid": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "GUID for user in active directory",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "hiddenFromGAL": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hide account in Global Address List",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "initial": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account initials",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lastLogoffDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last logoff",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastLogonDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last logon",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account last name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lastUpdateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "litigation": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Litigation hold feature enabled on this mailbox",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "litigationPeriod": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Litigation hold period in days (0 means unlimited). This setting covers all items in the mailbox.",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "login": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Account login",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "mailingFilter": {
-          "type": "email.exchange.MailingFilterEnum[]",
-          "fullType": "email.exchange.MailingFilterEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Enable or disable anti-virus and anti-spam",
-          "required": false
+          "fullType": "email.exchange.MailingFilterEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "email.exchange.MailingFilterEnum[]"
         },
         "numberOfAliases": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Count the number of related aliases attached to this account",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "outlookLicense": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Outlook licence",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "owaLimited": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OWA policy restriction is applied",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "passwordLastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Time of account's password last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "primaryEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Default email for this mailbox",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Account maximum size",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "renewOutlookPeriod": {
-          "type": "email.exchange.renewPeriodEnum",
-          "fullType": "email.exchange.renewPeriodEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "change the renew period for outlook",
-          "required": false
+          "fullType": "email.exchange.renewPeriodEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "email.exchange.renewPeriodEnum"
         },
         "renewPeriod": {
-          "type": "email.exchange.renewPeriodEnum",
-          "fullType": "email.exchange.renewPeriodEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "change the renew period",
-          "required": false
+          "fullType": "email.exchange.renewPeriodEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "email.exchange.renewPeriodEnum"
         },
         "spamAndVirusConfiguration": {
-          "type": "email.exchange.spamAndVirusConfiguration",
-          "fullType": "email.exchange.spamAndVirusConfiguration",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Spam and Antivirus configuration",
-          "required": true
+          "fullType": "email.exchange.spamAndVirusConfiguration",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.spamAndVirusConfiguration"
         },
         "spamDetected": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account was sending spam",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "spamTicketNumber": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Ticket number of spam detection",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "state": {
-          "type": "email.exchange.ObjectStateEnum",
-          "fullType": "email.exchange.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account state",
-          "required": true
+          "fullType": "email.exchange.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Pending task for this account",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "email.exchange.AccountLicense": {
+      "description": "Exchange account license",
       "id": "AccountLicense",
       "namespace": "email.exchange",
-      "description": "Exchange account license",
       "properties": {
         "license": {
-          "type": "email.exchange.OvhLicenceEnum",
-          "fullType": "email.exchange.OvhLicenceEnum",
           "canBeNull": false,
+          "fullType": "email.exchange.OvhLicenceEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "email.exchange.OvhLicenceEnum"
         },
         "licenseQuantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.ActiveSyncPolicyEnum": {
-      "id": "ActiveSyncPolicyEnum",
-      "namespace": "email.exchange",
       "description": "Activesync action",
       "enum": [
         "allow",
         "block",
         "quarantine"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ActiveSyncPolicyEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.DailyLicense": {
+      "description": "Exchange account license per day",
       "id": "DailyLicense",
       "namespace": "email.exchange",
-      "description": "Exchange account license per day",
       "properties": {
         "accountLicense": {
-          "type": "email.exchange.AccountLicense[]",
-          "fullType": "email.exchange.AccountLicense[]",
           "canBeNull": false,
+          "fullType": "email.exchange.AccountLicense[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "email.exchange.AccountLicense[]"
         },
         "date": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "outlookQuantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.DeviceActiveSyncStateEnum": {
-      "id": "DeviceActiveSyncStateEnum",
-      "namespace": "email.exchange",
       "description": "Device ActiveSync state",
       "enum": [
         "allowed",
@@ -7337,11 +7336,11 @@ export const schema: Schema = {
         "deviceDiscovery",
         "quarantined"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DeviceActiveSyncStateEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.DisclaimerAttributeEnum": {
-      "id": "DisclaimerAttributeEnum",
-      "namespace": "email.exchange",
       "description": "Disclaimer attributes list",
       "enum": [
         "City",
@@ -7370,364 +7369,364 @@ export const schema: Schema = {
         "UserLogonName",
         "ZipCode"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DisclaimerAttributeEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.Domain": {
+      "description": "Exchange domain",
       "id": "Domain",
       "namespace": "email.exchange",
-      "description": "Exchange domain",
       "properties": {
         "cnameToCheck": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Cname that will be checked to prove the domain ownership",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "domainAliases": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of aliases for this domain",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "domainValidated": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain validation status",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isAliasDomain": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicate if this domain is an alias for another domain",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "main": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "If true this is an organization (Exchange 2010 only)",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "mxIsValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns mx configuration is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "mxRecord": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Domain MX record configured in DNS",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "mxRelay": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "If specified, emails to not existing address will be redirected to that domain",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "organization2010": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "If specified, indicates to which organization this domain belongs (Exchange 2010 only)",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "srvIsValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns srv record is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "srvRecord": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Domain SRV record configured in DNS",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "state": {
-          "type": "email.exchange.ObjectStateEnum",
-          "fullType": "email.exchange.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain state",
-          "required": true
+          "fullType": "email.exchange.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending taks id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "email.exchange.DomainTypeEnum",
-          "fullType": "email.exchange.DomainTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Domain type",
-          "required": true
+          "fullType": "email.exchange.DomainTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.DomainTypeEnum"
         }
       }
     },
     "email.exchange.DomainTypeEnum": {
-      "id": "DomainTypeEnum",
-      "namespace": "email.exchange",
       "description": "Domain type",
       "enum": [
         "authoritative",
         "nonAuthoritative"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainTypeEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.ExchangeService": {
+      "description": "Exchange service",
       "id": "ExchangeService",
       "namespace": "email.exchange",
-      "description": "Exchange service",
       "properties": {
         "complexityEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "enable policy for strong and secure passwords",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "service displayName",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "hostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "lastUpdateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Update date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lockoutDuration": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "number of minutes account will remain locked if it occurs",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lockoutObservationWindow": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "number of minutes that must elapse after a failed logon to reset lockout trigger",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lockoutThreshold": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "number of attempts before account to be locked",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "maxPasswordAge": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "maximum number of days that account's password is valid before expiration",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "maxReceiveSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum message size that You can receive in MB",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "maxSendSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum message size that You can send in MB",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "minPasswordAge": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "minimum number of days before able to change account's password",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "minPasswordLength": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "minimum number of characters password must contain",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "offer": {
-          "type": "email.exchange.ServiceOfferEnum",
-          "fullType": "email.exchange.ServiceOfferEnum",
           "canBeNull": false,
+          "fullType": "email.exchange.ServiceOfferEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "email.exchange.ServiceOfferEnum"
         },
         "passwordHistoryCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "number of historical password that cannot be reused",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "spamAndVirusConfiguration": {
-          "type": "email.exchange.spamAndVirusConfiguration",
-          "fullType": "email.exchange.spamAndVirusConfiguration",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Spam and Antivirus configuration",
-          "required": true
+          "fullType": "email.exchange.spamAndVirusConfiguration",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.spamAndVirusConfiguration"
         },
         "sslExpirationDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "state": {
-          "type": "email.exchange.ServiceStateEnum",
-          "fullType": "email.exchange.ServiceStateEnum",
           "canBeNull": false,
+          "fullType": "email.exchange.ServiceStateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "email.exchange.ServiceStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "webUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "URL for web interface",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "email.exchange.Export": {
+      "description": "Export PST file request",
       "id": "Export",
       "namespace": "email.exchange",
-      "description": "Export PST file request",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "percentComplete": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Percentage of export PST request completion",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.ExportUrl": {
+      "description": "Export PST file url",
       "id": "ExportUrl",
       "namespace": "email.exchange",
-      "description": "Export PST file url",
       "properties": {
         "expiration": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Url expiration date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Export url",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "email.exchange.LanguageEnum": {
-      "id": "LanguageEnum",
-      "namespace": "email.exchange",
       "description": "Outlook language",
       "enum": [
         "ar",
@@ -7771,41 +7770,41 @@ export const schema: Schema = {
         "vi",
         "zh-CN"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LanguageEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.MailingFilterEnum": {
-      "id": "MailingFilterEnum",
-      "namespace": "email.exchange",
       "description": "Mailing filter options availlable",
       "enum": [
         "vaderetro"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MailingFilterEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.MailingListDepartRestrictionEnum": {
-      "id": "MailingListDepartRestrictionEnum",
-      "namespace": "email.exchange",
       "description": "Depart distribution group restriction status",
       "enum": [
         "closed",
         "open"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MailingListDepartRestrictionEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.MailingListJoinRestrictionEnum": {
-      "id": "MailingListJoinRestrictionEnum",
-      "namespace": "email.exchange",
       "description": "Join distribution group restriction status",
       "enum": [
         "approvalRequired",
         "closed",
         "open"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MailingListJoinRestrictionEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.ObjectStateEnum": {
-      "id": "ObjectStateEnum",
-      "namespace": "email.exchange",
       "description": "Current object state",
       "enum": [
         "creating",
@@ -7816,42 +7815,42 @@ export const schema: Schema = {
         "suspended",
         "suspending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ObjectStateEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.OutlookUrl": {
+      "description": "Outlook url",
       "id": "OutlookUrl",
       "namespace": "email.exchange",
-      "description": "Outlook url",
       "properties": {
         "expiration": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Url expiration date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "serial": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Serial number",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Outlook url",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "email.exchange.OutlookVersionEnum": {
-      "id": "OutlookVersionEnum",
-      "namespace": "email.exchange",
       "description": "Outlook version",
       "enum": [
         "mac_x86_2011",
@@ -7861,92 +7860,92 @@ export const schema: Schema = {
         "windows_x86_2013",
         "windows_x86_2016"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OutlookVersionEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.OutlookVersions": {
+      "description": "Availability of outlook version",
       "id": "OutlookVersions",
       "namespace": "email.exchange",
-      "description": "Availability of outlook version",
       "properties": {
         "outlookLanguage": {
-          "type": "email.exchange.LanguageEnum",
-          "fullType": "email.exchange.LanguageEnum",
           "canBeNull": false,
+          "fullType": "email.exchange.LanguageEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "email.exchange.LanguageEnum"
         },
         "outlookVersion": {
-          "type": "email.exchange.OutlookVersionEnum",
-          "fullType": "email.exchange.OutlookVersionEnum",
           "canBeNull": false,
+          "fullType": "email.exchange.OutlookVersionEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "email.exchange.OutlookVersionEnum"
         },
         "status": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "email.exchange.OvhLicenceEnum": {
-      "id": "OvhLicenceEnum",
-      "namespace": "email.exchange",
       "description": "OVH licence account",
       "enum": [
         "basic",
         "enterprise",
         "standard"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OvhLicenceEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.PublicFolderQuota": {
+      "description": "Get public folder quota usage in total available space",
       "id": "PublicFolderQuota",
       "namespace": "email.exchange",
-      "description": "Get public folder quota usage in total available space",
       "properties": {
         "quotaLimit": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "total amount of space in MB for public folders within organization",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "quotaReserved": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "space in MB already reserved from the quota limit",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "quotaUsed": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "currently used space in MB within all public folders",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.PublicFolderRightTypeEnum": {
-      "id": "PublicFolderRightTypeEnum",
-      "namespace": "email.exchange",
       "description": "Public folder right type",
       "enum": [
         "editor",
         "none",
         "reviewer"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PublicFolderRightTypeEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.PublicFolderTypeEnum": {
-      "id": "PublicFolderTypeEnum",
-      "namespace": "email.exchange",
       "description": "Public folder type",
       "enum": [
         "calendar",
@@ -7954,140 +7953,140 @@ export const schema: Schema = {
         "plain",
         "tasks"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PublicFolderTypeEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.ResourceTypeEnum": {
-      "id": "ResourceTypeEnum",
-      "namespace": "email.exchange",
       "description": "Resource Type",
       "enum": [
         "equipment",
         "room"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ResourceTypeEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.Server": {
+      "description": "Exchange server",
       "id": "Server",
       "namespace": "email.exchange",
-      "description": "Exchange server",
       "properties": {
         "commercialVersion": {
-          "type": "email.exchange.exchangeCommercialVersionEnum",
-          "fullType": "email.exchange.exchangeCommercialVersionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Exchange commercial version",
-          "required": true
+          "fullType": "email.exchange.exchangeCommercialVersionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.exchangeCommercialVersionEnum"
         },
         "currentDiskUsage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Current disk usage in MB",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "diskSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Total disk size in MB",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "individual2010": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true server is 2010 individual offer",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "ip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ipV4",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "ipV6": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ipV6",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "isAValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns A record is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isAaaaValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns AAAA record is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isPtrV6Valid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns ptrV6 record is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isPtrValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your dns ptr record is valid",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "owaMfa": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Indicates if Multi Factor Authentication is activated on Outlook Web Access interface",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "state": {
-          "type": "email.exchange.ServerStateEnum",
-          "fullType": "email.exchange.ServerStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Server state",
-          "required": true
+          "fullType": "email.exchange.ServerStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.ServerStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "version": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ExchangeServer version",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "email.exchange.ServerStateEnum": {
-      "id": "ServerStateEnum",
-      "namespace": "email.exchange",
       "description": "Server State",
       "enum": [
         "configurationError",
@@ -8095,11 +8094,11 @@ export const schema: Schema = {
         "notConfigured",
         "ok"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServerStateEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.ServiceOfferEnum": {
-      "id": "ServiceOfferEnum",
-      "namespace": "email.exchange",
       "description": "Service Offer name",
       "enum": [
         "dedicated",
@@ -8107,111 +8106,111 @@ export const schema: Schema = {
         "hosted",
         "provider"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceOfferEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.ServiceStateEnum": {
-      "id": "ServiceStateEnum",
-      "namespace": "email.exchange",
       "description": "Exchange Service State",
       "enum": [
         "inMaintenance",
         "ok",
         "suspended"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceStateEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.SharedAccountQuota": {
+      "description": "Get shared account quota usage in total available space",
       "id": "SharedAccountQuota",
       "namespace": "email.exchange",
-      "description": "Get shared account quota usage in total available space",
       "properties": {
         "quotaLimit": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "total amount of space in MB for shared accounts within organization",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "quotaReserved": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "space in MB already reserved from the quota limit",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "quotaUsed": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "currently used space in KB within all shared accounts",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.ShowMeetingDetailsEnum": {
-      "id": "ShowMeetingDetailsEnum",
-      "namespace": "email.exchange",
       "description": "Level of access to calendar of Resource Mailbox",
       "enum": [
         "availabilityOnly",
         "limitedDetails",
         "reviewer"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ShowMeetingDetailsEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.Task": {
+      "description": "Exchange task details",
       "id": "Task",
       "namespace": "email.exchange",
-      "description": "Exchange task details",
       "properties": {
         "finishDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "email.exchange.TaskFunctionEnum",
-          "fullType": "email.exchange.TaskFunctionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Function name",
-          "required": true
+          "fullType": "email.exchange.TaskFunctionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.TaskFunctionEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "email.exchange.TaskStatusEnum",
-          "fullType": "email.exchange.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "email.exchange.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.TaskStatusEnum"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "email.exchange.TaskFunctionEnum": {
-      "id": "TaskFunctionEnum",
-      "namespace": "email.exchange",
       "description": "function enumeration for exchange task",
       "enum": [
         "activateSharepoint",
@@ -8320,11 +8319,11 @@ export const schema: Schema = {
         "updateExchangeServiceDevice",
         "upgrade2016"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskFunctionEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "email.exchange",
       "description": "Exchange task status",
       "enum": [
         "cancelled",
@@ -8333,390 +8332,390 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.activeSyncNotificationStateEnum": {
-      "id": "activeSyncNotificationStateEnum",
-      "namespace": "email.exchange",
       "description": "Subscription state",
       "enum": [
         "creating",
         "deleting",
         "ok"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "activeSyncNotificationStateEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.disclaimer": {
+      "description": "Exchange organization disclaimer",
       "id": "disclaimer",
       "namespace": "email.exchange",
-      "description": "Exchange organization disclaimer",
       "properties": {
         "content": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Signature, added at the bottom of your organization emails",
-          "required": true
+          "fullType": "text",
+          "readOnly": false,
+          "required": true,
+          "type": "text"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Disclaimer name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "outsideOnly": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Activate the disclaimer only for external emails",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeAccountAlias": {
+      "description": "Aliases on this mailbox",
       "id": "exchangeAccountAlias",
       "namespace": "email.exchange",
-      "description": "Aliases on this mailbox",
       "properties": {
         "alias": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Alias",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeAccountArchive": {
+      "description": "Exchange Account Archive",
       "id": "exchangeAccountArchive",
       "namespace": "email.exchange",
-      "description": "Exchange Account Archive",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "currentUsage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Archive mailbox usage",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "guid": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "GUID of archive mailbox",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Archive mailbox maximum size in GB",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "email.exchange.ObjectStateEnum",
-          "fullType": "email.exchange.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Archive mailbox state",
-          "required": true
+          "fullType": "email.exchange.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Pending task for this archive mailbox",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeAccountDiagnosis": {
+      "description": "Exchange Account Diagnosis",
       "id": "exchangeAccountDiagnosis",
       "namespace": "email.exchange",
-      "description": "Exchange Account Diagnosis",
       "properties": {
         "canReceiveEmail": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if ingoing message has been received",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "canSendEmail": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if outgoing message has been delivered",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "connectiveOWA": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if possible to authenticate with credentials",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isLocked": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if account is locked",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isMxValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if MX record for account's domain is properly set",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isSpammer": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if account is flagged as spammer",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isSrvValid": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if SRV (autodiscovery) record for account's domain is properly set",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isSuspended": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Determines if account is suspended",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "lastCheck": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last performed diagnostics date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "email.exchange.exchangeAccountFullAccess": {
+      "description": "Users having full access on this mailbox",
       "id": "exchangeAccountFullAccess",
       "namespace": "email.exchange",
-      "description": "Users having full access on this mailbox",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id to give full access",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeAccountProtocol": {
+      "description": "Get protocol status on that mailbox",
       "id": "exchangeAccountProtocol",
       "namespace": "email.exchange",
-      "description": "Get protocol status on that mailbox",
       "properties": {
         "IMAP": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "IMAP protocol enabled on that mailbox",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "POP": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "POP protocol enabled on that mailbox",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "activeSync": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Mobile access enabled on that mailbox",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last update date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "webMail": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Web mail enabled on that mailbox",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "email.exchange.exchangeAccountSendAs": {
+      "description": "Users authorized to send mails from this mailbox",
       "id": "exchangeAccountSendAs",
       "namespace": "email.exchange",
-      "description": "Users authorized to send mails from this mailbox",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id to give send as",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeAccountSendOnBehalfTo": {
+      "description": "Get users authorized to Send On Behalf To mails from this mailbox",
       "id": "exchangeAccountSendOnBehalfTo",
       "namespace": "email.exchange",
-      "description": "Get users authorized to Send On Behalf To mails from this mailbox",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id to give send on behalf to",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeCommercialVersionEnum": {
-      "id": "exchangeCommercialVersionEnum",
-      "namespace": "email.exchange",
       "description": "Exchange commercial version",
       "enum": [
         "2010",
@@ -8724,1287 +8723,1287 @@ export const schema: Schema = {
         "2016",
         "2019"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "exchangeCommercialVersionEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.exchangeDistributionGroupManager": {
+      "description": "Mailing list managers",
       "id": "exchangeDistributionGroupManager",
       "namespace": "email.exchange",
-      "description": "Mailing list managers",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "managerAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Manager account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "managerEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Member account primaryEmailAddress",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeDistributionGroupMember": {
+      "description": "Mailing list members",
       "id": "exchangeDistributionGroupMember",
       "namespace": "email.exchange",
-      "description": "Mailing list members",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "memberAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Member account id",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "memberContactId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Member account id",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "memberEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Member account primaryEmailAddress",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeDistributionGroupSendAs": {
+      "description": "Get users authorized to Send On Behalf To mails from this mailbox",
       "id": "exchangeDistributionGroupSendAs",
       "namespace": "email.exchange",
-      "description": "Get users authorized to Send On Behalf To mails from this mailbox",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id to give send on behalf to",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeDistributionGroupSendOnBehalfTo": {
+      "description": "Get users authorized to Send On Behalf To mails from this mailing list",
       "id": "exchangeDistributionGroupSendOnBehalfTo",
       "namespace": "email.exchange",
-      "description": "Get users authorized to Send On Behalf To mails from this mailing list",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id to give send on behalf to",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeExternalContact": {
+      "description": "External contact for this exchange service",
       "id": "exchangeExternalContact",
       "namespace": "email.exchange",
-      "description": "External contact for this exchange service",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contact display name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "externalEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contact email",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact first name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "hiddenFromGAL": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hide the contact in Global Address List",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "initials": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact initals",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact last name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organization2010": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "If specified, indicates to which organization this external contact belongs (Exchange 2010 only)",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "state": {
-          "type": "email.exchange.ObjectStateEnum",
-          "fullType": "email.exchange.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Contact state",
-          "required": true
+          "fullType": "email.exchange.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeMailingListAlias": {
+      "description": "Get aliases on this mailingList",
       "id": "exchangeMailingListAlias",
       "namespace": "email.exchange",
-      "description": "Get aliases on this mailingList",
       "properties": {
         "alias": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Alias",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangePublicFolderPermission": {
+      "description": "Exchange organization public folder permission",
       "id": "exchangePublicFolderPermission",
       "namespace": "email.exchange",
-      "description": "Exchange organization public folder permission",
       "properties": {
         "accessRights": {
-          "type": "email.exchange.PublicFolderRightTypeEnum",
-          "fullType": "email.exchange.PublicFolderRightTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Access right set for the account",
-          "required": true
+          "fullType": "email.exchange.PublicFolderRightTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.PublicFolderRightTypeEnum"
         },
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "state": {
-          "type": "email.exchange.ObjectStateEnum",
-          "fullType": "email.exchange.ObjectStateEnum",
           "canBeNull": false,
+          "fullType": "email.exchange.ObjectStateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "email.exchange.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeResourceAccountDelegate": {
+      "description": "Resource accounts delegates",
       "id": "exchangeResourceAccountDelegate",
       "namespace": "email.exchange",
-      "description": "Resource accounts delegates",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "delegate's account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "delegateEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Delegate account primaryEmailAddress",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeServiceActiveSyncNotification": {
+      "description": "Get email addresses subscribed to ActiveSync quarantine notifications",
       "id": "exchangeServiceActiveSyncNotification",
       "namespace": "email.exchange",
-      "description": "Get email addresses subscribed to ActiveSync quarantine notifications",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "notifiedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Notified Account Id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "primaryEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Primary email address for notified account",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "email.exchange.activeSyncNotificationStateEnum",
-          "fullType": "email.exchange.activeSyncNotificationStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Email state",
-          "required": true
+          "fullType": "email.exchange.activeSyncNotificationStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.activeSyncNotificationStateEnum"
         }
       }
     },
     "email.exchange.exchangeServiceDevice": {
+      "description": "Get the list of your ActiveSync devices registered on this Exchange service",
       "id": "exchangeServiceDevice",
       "namespace": "email.exchange",
-      "description": "Get the list of your ActiveSync devices registered on this Exchange service",
       "properties": {
         "IMEI": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "International Mobile Equipment Identity",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "deviceId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Device Id",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "deviceModel": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Model device",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "deviceState": {
-          "type": "email.exchange.DeviceActiveSyncStateEnum",
-          "fullType": "email.exchange.DeviceActiveSyncStateEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Device State",
-          "required": true
+          "fullType": "email.exchange.DeviceActiveSyncStateEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.DeviceActiveSyncStateEnum"
         },
         "guid": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "user guid",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "identity": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Exchange identity",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last update date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeServiceProtocol": {
+      "description": "Protocol access policy for this Exchange service",
       "id": "exchangeServiceProtocol",
       "namespace": "email.exchange",
-      "description": "Protocol access policy for this Exchange service",
       "properties": {
         "IMAP": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "IMAP protocol enabled on this Exchange service",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "POP": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "POP protocol enabled on this Exchange service",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "activeSync": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ActiveSync protocol enabled on this Exchange service",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "activeSyncPolicy": {
-          "type": "email.exchange.ActiveSyncPolicyEnum",
-          "fullType": "email.exchange.ActiveSyncPolicyEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ActiveSync policy to apply at device's first connection",
-          "required": true
+          "fullType": "email.exchange.ActiveSyncPolicyEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.ActiveSyncPolicyEnum"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last update date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "webMail": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Web mail protocol enabled on this Exchange service",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "email.exchange.exchangeSharedAccountFullAccess": {
+      "description": "Users having full access on this shared mailbox",
       "id": "exchangeSharedAccountFullAccess",
       "namespace": "email.exchange",
-      "description": "Users having full access on this shared mailbox",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id to give full access",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeSharedAccountSendAs": {
+      "description": "Users authorized to send mails from this shared mailbox",
       "id": "exchangeSharedAccountSendAs",
       "namespace": "email.exchange",
-      "description": "Users authorized to send mails from this shared mailbox",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id to give send as",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.exchangeSharedAccountSendOnBehalfTo": {
+      "description": "Get users authorized to Send On Behalf To mails from this shared mailbox",
       "id": "exchangeSharedAccountSendOnBehalfTo",
       "namespace": "email.exchange",
-      "description": "Get users authorized to Send On Behalf To mails from this shared mailbox",
       "properties": {
         "allowedAccountId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id to give send on behalf to",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.mailingList": {
+      "description": "Mailing list",
       "id": "mailingList",
       "namespace": "email.exchange",
-      "description": "Mailing list",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "departRestriction": {
-          "type": "email.exchange.MailingListDepartRestrictionEnum",
-          "fullType": "email.exchange.MailingListDepartRestrictionEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Depart restriction policy",
-          "required": true
+          "fullType": "email.exchange.MailingListDepartRestrictionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.MailingListDepartRestrictionEnum"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name displayed in Global Access List",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "hiddenFromGAL": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If true mailing list is hiddend in Global Address List",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "joinRestriction": {
-          "type": "email.exchange.MailingListJoinRestrictionEnum",
-          "fullType": "email.exchange.MailingListJoinRestrictionEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Join restriction policy",
-          "required": true
+          "fullType": "email.exchange.MailingListJoinRestrictionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.MailingListJoinRestrictionEnum"
         },
         "lastUpdateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Update date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "mailingListAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The mailing list address",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "maxReceiveSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Maximum receive email size in MB",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "maxSendSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Maximum send email size in MB",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "senderAuthentification": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If true sender has to authenticate",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "spamDetected": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account was sending spam",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "spamTicketNumber": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Ticket number of spam detection",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "state": {
-          "type": "email.exchange.ObjectStateEnum",
-          "fullType": "email.exchange.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Mailing list state",
-          "required": true
+          "fullType": "email.exchange.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.publicFolder": {
+      "description": "Exchange organization public folder",
       "id": "publicFolder",
       "namespace": "email.exchange",
-      "description": "Exchange organization public folder",
       "properties": {
         "anonymousPermission": {
-          "type": "email.exchange.PublicFolderRightTypeEnum",
-          "fullType": "email.exchange.PublicFolderRightTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Access right for the guest users",
-          "required": true
+          "fullType": "email.exchange.PublicFolderRightTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.PublicFolderRightTypeEnum"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "defaultPermission": {
-          "type": "email.exchange.PublicFolderRightTypeEnum",
-          "fullType": "email.exchange.PublicFolderRightTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Default access right",
-          "required": true
+          "fullType": "email.exchange.PublicFolderRightTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.PublicFolderRightTypeEnum"
         },
         "hasSubFolders": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "If true, this public folder has subfolders",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "itemCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Number of items in public folder",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "lastAccessTime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Time for which public folder was accessed for the last time",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastModificationTime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Time for which public folder was modified for the last time ",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastUserAccessTime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Time for which public folder was accessed for the last time by the user",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastUserModificationTime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Time for which public folder was modified for the last time by the user",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "path": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Path for public folder",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Quota for public folder in MB",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "email.exchange.ObjectStateEnum",
-          "fullType": "email.exchange.ObjectStateEnum",
           "canBeNull": false,
+          "fullType": "email.exchange.ObjectStateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "email.exchange.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "totalItemSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Sum of all items in public folder in MB",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "type": {
-          "type": "email.exchange.PublicFolderTypeEnum",
-          "fullType": "email.exchange.PublicFolderTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type for public folder",
-          "required": true
+          "fullType": "email.exchange.PublicFolderTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.PublicFolderTypeEnum"
         }
       }
     },
     "email.exchange.renewPeriodEnum": {
-      "id": "renewPeriodEnum",
-      "namespace": "email.exchange",
       "description": "Renew period",
       "enum": [
         "monthly",
         "yearly"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "renewPeriodEnum",
+      "namespace": "email.exchange"
     },
     "email.exchange.resourceAccount": {
+      "description": "Exchange resource account",
       "id": "resourceAccount",
       "namespace": "email.exchange",
-      "description": "Exchange resource account",
       "properties": {
         "addOrganizerToSubject": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "meeting organizer's name is used as the subject of the meeting request",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "allowConflict": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "resource can be scheduled by more than one person during the same time period",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "bookingWindow": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "maximum number of days in advance that the resource can be reserved",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "capacity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "number of the same equipment or capacity of a room",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "deleteComments": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "remove any text in the message body of incoming meeting requests on resourceAccount",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteSubject": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "remove email subject of incoming meeting requests on resourceAccount",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "name of resource",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "location": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "resource location name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "maximumDuration": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "maximum duration in minutes for meeting requests",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "resourceEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "resource as email",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "showMeetingDetails": {
-          "type": "email.exchange.ShowMeetingDetailsEnum",
-          "fullType": "email.exchange.ShowMeetingDetailsEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "granted right on a calendar of that resourceAccount",
-          "required": true
+          "fullType": "email.exchange.ShowMeetingDetailsEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.exchange.ShowMeetingDetailsEnum"
         },
         "state": {
-          "type": "email.exchange.ObjectStateEnum",
-          "fullType": "email.exchange.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "account state",
-          "required": true
+          "fullType": "email.exchange.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "task pending id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "email.exchange.ResourceTypeEnum",
-          "fullType": "email.exchange.ResourceTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "resource type",
-          "required": true
+          "fullType": "email.exchange.ResourceTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.ResourceTypeEnum"
         }
       }
     },
     "email.exchange.sharedAccount": {
+      "description": "Exchange shared mailbox",
       "id": "sharedAccount",
       "namespace": "email.exchange",
-      "description": "Exchange shared mailbox",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Creation date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "currentUsage": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Shared mailbox usage",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Shared account display name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Shared account first name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "hiddenFromGAL": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hide shared account in Global Address List",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Shared account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "initials": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Shared account initials",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lastLogoffDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last logoff",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastLogonDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last logon",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Shared account last name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "mailingFilter": {
-          "type": "email.exchange.MailingFilterEnum[]",
-          "fullType": "email.exchange.MailingFilterEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Enable or disable anti-virus and anti-spam",
-          "required": false
+          "fullType": "email.exchange.MailingFilterEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "email.exchange.MailingFilterEnum[]"
         },
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Shared account maximum size",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "sharedEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Default email for this shared mailbox",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "spamDetected": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account was sending spam",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "spamTicketNumber": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Ticket number of spam detection",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "state": {
-          "type": "email.exchange.ObjectStateEnum",
-          "fullType": "email.exchange.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Shared account state",
-          "required": true
+          "fullType": "email.exchange.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.exchange.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pending task for this shared account",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.exchange.spamAndVirusConfiguration": {
+      "description": "Spam and Antyvirus configuration",
       "id": "spamAndVirusConfiguration",
       "namespace": "email.exchange",
-      "description": "Spam and Antyvirus configuration",
       "properties": {
         "checkDKIM": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Check DKIM of message",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "checkSPF": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Check SPF of message",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteSpam": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a spam delete it",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteVirus": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a virus delete it",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "putInJunk": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a spam or virus put in junk. Overridden by deleteSpam or deleteVirus",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "tagSpam": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a spam change its subject",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "tagVirus": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If message is a virus change its subject",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -10015,11 +10014,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -10027,108 +10026,111 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/email/exchange"
 }

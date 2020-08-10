@@ -1,160 +1,159 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/distribution/image.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/distribution/image/{serviceType}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List images for a service",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "serviceType",
               "dataType": "distribution.image.service",
-              "paramType": "path",
+              "description": "Service type",
               "fullType": "distribution.image.service",
-              "required": true,
-              "description": "Service type"
+              "name": "serviceType",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": true,
-          "description": "List images for a service"
+          "responseType": "string[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/distribution/image/{serviceType}"
     },
     {
-      "path": "/distribution/image/{serviceType}/{imageName}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Show image details",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "serviceType",
               "dataType": "distribution.image.service",
-              "paramType": "path",
+              "description": "Service type",
               "fullType": "distribution.image.service",
-              "required": true,
-              "description": "Service type"
+              "name": "serviceType",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "imageName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Image name",
               "fullType": "string",
-              "required": true,
-              "description": "Image name"
+              "name": "imageName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "distribution.image",
-          "noAuthentication": true,
-          "description": "Show image details"
+          "responseType": "distribution.image"
         }
       ],
-      "description": "Missing description"
+      "path": "/distribution/image/{serviceType}/{imageName}"
     }
   ],
-  "resourcePath": "/distribution/image",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "distribution.image": {
+      "description": "Information about installed package for a given image",
       "id": "image",
       "namespace": "distribution",
-      "description": "Information about installed package for a given image",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The image name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "packages": {
-          "type": "distribution.image.package[]",
-          "fullType": "distribution.image.package[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Packages informations",
-          "required": true
+          "fullType": "distribution.image.package[]",
+          "readOnly": true,
+          "required": true,
+          "type": "distribution.image.package[]"
         },
         "properties": {
-          "type": "distribution.image.properties",
-          "fullType": "distribution.image.properties",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Image properties",
-          "required": true
+          "fullType": "distribution.image.properties",
+          "readOnly": true,
+          "required": true,
+          "type": "distribution.image.properties"
         },
         "service": {
-          "type": "distribution.image.service",
-          "fullType": "distribution.image.service",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The service type name",
-          "required": true
+          "fullType": "distribution.image.service",
+          "readOnly": true,
+          "required": true,
+          "type": "distribution.image.service"
         }
       }
     },
     "distribution.image.package": {
+      "description": "An image package description",
       "id": "package",
       "namespace": "distribution.image",
-      "description": "An image package description",
       "properties": {
         "alias": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Package alias",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Package name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "version": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Package version",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "distribution.image.properties": {
+      "description": "Description not available",
       "id": "properties",
       "namespace": "distribution.image",
-      "description": "Description not available",
       "properties": {
         "category": {
-          "type": "distribution.image.properties.category",
-          "fullType": "distribution.image.properties.category",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The image category",
-          "required": true
+          "fullType": "distribution.image.properties.category",
+          "readOnly": true,
+          "required": true,
+          "type": "distribution.image.properties.category"
         }
       }
     },
     "distribution.image.properties.category": {
-      "id": "category",
-      "namespace": "distribution.image.properties",
       "description": "Description not available",
       "enum": [
         "none",
@@ -164,11 +163,11 @@ export const schema: Schema = {
         "development",
         "desktop"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "category",
+      "namespace": "distribution.image.properties"
     },
     "distribution.image.service": {
-      "id": "service",
-      "namespace": "distribution.image",
       "description": "Description not available",
       "enum": [
         "vps",
@@ -176,7 +175,10 @@ export const schema: Schema = {
         "cloud",
         "dedicatedCloud"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "service",
+      "namespace": "distribution.image"
     }
-  }
+  },
+  "resourcePath": "/distribution/image"
 }

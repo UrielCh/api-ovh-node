@@ -1,265 +1,264 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/service.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/service",
+      "description": "Operations about the services",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "long[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "long[]"
         }
       ],
-      "description": "Operations about the services"
+      "path": "/service"
     },
     {
-      "path": "/service/{serviceId}",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Service ID",
               "fullType": "long",
-              "required": true,
-              "description": "Service ID"
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "serviceList.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "serviceList.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "serviceList.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "serviceList.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Service ID",
               "fullType": "long",
-              "required": true,
-              "description": "Service ID"
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/service/{serviceId}"
     },
     {
-      "path": "/service/{serviceId}/renew",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List possible renews for this service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service ID"
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "includeOptions",
               "dataType": "boolean",
-              "paramType": "query",
+              "description": "Include service's option(s)",
               "fullType": "boolean",
-              "required": false,
-              "description": "Include service's option(s)"
+              "name": "includeOptions",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "service.renew.RenewDescription[]",
-          "noAuthentication": false,
-          "description": "List possible renews for this service"
+          "responseType": "service.renew.RenewDescription[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a renew order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "dryRun",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Indicates if renew order is generated",
               "fullType": "boolean",
-              "required": false,
-              "description": "Indicates if renew order is generated"
+              "name": "dryRun",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Renew duration",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Renew duration"
+              "required": true
             },
             {
-              "name": "services",
               "dataType": "long[]",
-              "paramType": "body",
+              "description": "List of services to renew",
               "fullType": "long[]",
-              "required": true,
-              "description": "List of services to renew"
+              "name": "services",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service ID"
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "service.renew.RenewOrder",
-          "noAuthentication": false,
-          "description": "Create a renew order"
+          "responseType": "service.renew.RenewOrder"
         }
       ],
-      "description": "Missing description"
+      "path": "/service/{serviceId}/renew"
     },
     {
-      "path": "/service/{serviceId}/reopen",
+      "description": "reopen operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Reopen a suspended service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Service ID",
               "fullType": "long",
-              "required": true,
-              "description": "Service ID"
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Reopen a suspended service"
+          "responseType": "void"
         }
       ],
-      "description": "reopen operations"
+      "path": "/service/{serviceId}/reopen"
     },
     {
-      "path": "/service/{serviceId}/suspend",
+      "description": "suspend operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Suspend the service. The service won't be accessible, but you will still be charged for it",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Service ID",
               "fullType": "long",
-              "required": true,
-              "description": "Service ID"
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Suspend the service. The service won't be accessible, but you will still be charged for it"
+          "responseType": "void"
         }
       ],
-      "description": "suspend operations"
+      "path": "/service/{serviceId}/suspend"
     },
     {
-      "path": "/service/{serviceId}/terminate",
+      "description": "terminate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Terminates a suspended service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Service ID",
               "fullType": "long",
-              "required": true,
-              "description": "Service ID"
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Terminates a suspended service"
+          "responseType": "void"
         }
       ],
-      "description": "terminate operations"
+      "path": "/service/{serviceId}/terminate"
     }
   ],
-  "resourcePath": "/service",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "complexType.SafeKeyValue<T>": {
-      "id": "SafeKeyValue",
-      "namespace": "complexType",
       "description": "Key and value, with proper key strings",
       "generics": [
         "T"
       ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
       "properties": {
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "order.CurrencyCodeEnum": {
-      "id": "CurrencyCodeEnum",
-      "namespace": "order",
       "enum": [
         "AUD",
         "CAD",
@@ -276,39 +275,39 @@ export const schema: Schema = {
         "XOF",
         "points"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
     },
     "order.Price": {
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
-      "description": "Price with it's currency and textual representation",
       "properties": {
         "currencyCode": {
-          "type": "order.CurrencyCodeEnum",
-          "fullType": "order.CurrencyCodeEnum",
           "canBeNull": false,
+          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.CurrencyCodeEnum"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         }
       }
     },
     "service.BillingStateEnum": {
-      "id": "BillingStateEnum",
-      "namespace": "service",
       "description": "Possible billing states",
       "enum": [
         "expired",
@@ -316,112 +315,112 @@ export const schema: Schema = {
         "pending",
         "unpaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BillingStateEnum",
+      "namespace": "service"
     },
     "service.Plan": {
+      "description": "Plan information",
       "id": "Plan",
       "namespace": "service",
-      "description": "Plan information",
       "properties": {
         "code": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Product code",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "product": {
-          "type": "service.plan.Product",
-          "fullType": "service.plan.Product",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Product plan information",
-          "required": true
+          "fullType": "service.plan.Product",
+          "readOnly": false,
+          "required": true,
+          "type": "service.plan.Product"
         }
       }
     },
     "service.Renew": {
+      "description": "Renew information",
       "id": "Renew",
       "namespace": "service",
-      "description": "Renew information",
       "properties": {
         "dayOfMonth": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Renew day number",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "interval": {
-          "type": "service.renew.Interval",
-          "fullType": "service.renew.Interval",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Interval between each renewal",
-          "required": false
+          "fullType": "service.renew.Interval",
+          "readOnly": false,
+          "required": false,
+          "type": "service.renew.Interval"
         },
         "mode": {
-          "type": "service.renew.Mode",
-          "fullType": "service.renew.Mode",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Renewal mode",
-          "required": true
+          "fullType": "service.renew.Mode",
+          "readOnly": false,
+          "required": true,
+          "type": "service.renew.Mode"
         },
         "possibleIntervals": {
-          "type": "service.renew.Interval[]",
-          "fullType": "service.renew.Interval[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Possible interval between each renewal",
-          "required": false
+          "fullType": "service.renew.Interval[]",
+          "readOnly": false,
+          "required": false,
+          "type": "service.renew.Interval[]"
         },
         "possibleModes": {
-          "type": "service.renew.Mode[]",
-          "fullType": "service.renew.Mode[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Possible renewal mode",
-          "required": true
+          "fullType": "service.renew.Mode[]",
+          "readOnly": false,
+          "required": true,
+          "type": "service.renew.Mode[]"
         }
       }
     },
     "service.Resource": {
+      "description": "Resource service informations",
       "id": "Resource",
       "namespace": "service",
-      "description": "Resource service informations",
       "properties": {
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Custom display name of the service",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the service",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "state": {
-          "type": "service.ResourceStateEnum",
-          "fullType": "service.ResourceStateEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Resource state",
-          "required": false
+          "fullType": "service.ResourceStateEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "service.ResourceStateEnum"
         }
       }
     },
     "service.ResourceStateEnum": {
-      "id": "ResourceStateEnum",
-      "namespace": "service",
       "description": "Possible resource states",
       "enum": [
         "deleted",
@@ -434,57 +433,57 @@ export const schema: Schema = {
         "toOpen",
         "toSuspend"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ResourceStateEnum",
+      "namespace": "service"
     },
     "service.Route": {
+      "description": "route of this service",
       "id": "Route",
       "namespace": "service",
-      "description": "route of this service",
       "properties": {
         "path": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Path to use in API",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Path with variables applyed",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "vars": {
-          "type": "complexType.SafeKeyValue<string>[]",
-          "fullType": "complexType.SafeKeyValue<string>[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Variables to use in the path",
-          "required": true
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.SafeKeyValue<string>[]"
         }
       }
     },
     "service.plan.Product": {
+      "description": "Product plan information",
       "id": "Product",
       "namespace": "service.plan",
-      "description": "Product plan information",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Product name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "service.renew.Interval": {
-      "id": "Interval",
-      "namespace": "service.renew",
       "description": "Interval enum information",
       "enum": [
         "P1M",
@@ -494,11 +493,11 @@ export const schema: Schema = {
         "P3Y",
         "P6M"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Interval",
+      "namespace": "service.renew"
     },
     "service.renew.Mode": {
-      "id": "Mode",
-      "namespace": "service.renew",
       "description": "Mode enum informations",
       "enum": [
         "automaticForcedProduct",
@@ -511,282 +510,285 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Mode",
+      "namespace": "service.renew"
     },
     "service.renew.RenewDescription": {
+      "description": "List possible renews for service",
       "id": "RenewDescription",
       "namespace": "service.renew",
-      "description": "List possible renews for service",
       "properties": {
         "renewPeriod": {
-          "type": "duration",
-          "fullType": "duration",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ISO8601 formatted renewal duration",
-          "required": true
+          "fullType": "duration",
+          "readOnly": true,
+          "required": true,
+          "type": "duration"
         },
         "strategies": {
-          "type": "service.renew.RenewStrategy[]",
-          "fullType": "service.renew.RenewStrategy[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List possible strategies",
-          "required": true
+          "fullType": "service.renew.RenewStrategy[]",
+          "readOnly": true,
+          "required": true,
+          "type": "service.renew.RenewStrategy[]"
         }
       }
     },
     "service.renew.RenewOrder": {
+      "description": "Details about a renew Order",
       "id": "RenewOrder",
       "namespace": "service.renew",
-      "description": "Details about a renew Order",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Creation date of the renew Order",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Expiration date of the renew Order",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ID of the renew Order",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "password": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Password",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "pdfUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Public pdf URL of the generated renew Order",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "priceWithTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Price of the product with tax",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "priceWithoutTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Price of the product without tax",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "retractionDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Retraction date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "tax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Value of the tax",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Public URL to display generated renew Order",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "service.renew.RenewStrategy": {
+      "description": "Representation of a product renew pricing",
       "id": "RenewStrategy",
       "namespace": "service.renew",
-      "description": "Representation of a product renew pricing",
       "properties": {
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Price of the product",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "priceInUcents": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Price of the product in micro-centims",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "services": {
-          "type": "coreTypes.ServiceId:long[]",
-          "fullType": "coreTypes.ServiceId:long[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Services renewed by strategy",
-          "required": true
+          "fullType": "coreTypes.ServiceId:long[]",
+          "readOnly": true,
+          "required": true,
+          "type": "coreTypes.ServiceId:long[]"
         },
         "servicesDetails": {
-          "type": "service.renew.Service[]",
-          "fullType": "service.renew.Service[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Details of services renewed by strategy",
-          "required": true
+          "fullType": "service.renew.Service[]",
+          "readOnly": true,
+          "required": true,
+          "type": "service.renew.Service[]"
         }
       }
     },
     "service.renew.Service": {
+      "description": "Description of a service",
       "id": "Service",
       "namespace": "service.renew",
-      "description": "Description of a service",
       "properties": {
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ID of the service",
-          "required": true
+          "fullType": "coreTypes.ServiceId:long",
+          "readOnly": true,
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the service",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "serviceType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of the service",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "serviceList.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "serviceList",
-      "description": "Details about a Service",
       "properties": {
         "creationDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "date",
+          "readOnly": true,
+          "required": true,
+          "type": "date"
         },
         "details": {
-          "type": "complexType.SafeKeyValue<string>[]",
-          "fullType": "complexType.SafeKeyValue<string>[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Resource details",
-          "required": true
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": true,
+          "required": true,
+          "type": "complexType.SafeKeyValue<string>[]"
         },
         "engagementDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Engagement date",
-          "required": false
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
         },
         "expirationDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Expiration date",
-          "required": false
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
         },
         "nextBillingDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The next billing date",
-          "required": false
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
         },
         "plan": {
-          "type": "service.Plan",
-          "fullType": "service.Plan",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Plan service description",
-          "required": true
+          "fullType": "service.Plan",
+          "readOnly": true,
+          "required": true,
+          "type": "service.Plan"
         },
         "quantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Quantity",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "renew": {
-          "type": "service.Renew",
-          "fullType": "service.Renew",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Renew service description",
-          "required": false
+          "fullType": "service.Renew",
+          "readOnly": true,
+          "required": false,
+          "type": "service.Renew"
         },
         "resource": {
-          "type": "service.Resource",
-          "fullType": "service.Resource",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Resource service description",
-          "required": true
+          "fullType": "service.Resource",
+          "readOnly": false,
+          "required": true,
+          "type": "service.Resource"
         },
         "route": {
-          "type": "service.Route",
-          "fullType": "service.Route",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Route to use in API",
-          "required": true
+          "fullType": "service.Route",
+          "readOnly": true,
+          "required": true,
+          "type": "service.Route"
         },
         "state": {
-          "type": "service.BillingStateEnum",
-          "fullType": "service.BillingStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Billing state of your service",
-          "required": true
+          "fullType": "service.BillingStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "service.BillingStateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/service"
 }

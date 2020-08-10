@@ -1,4633 +1,4632 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/xdsl.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/xdsl",
+      "description": "Operations about the XDSL service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the XDSL service"
+      "path": "/xdsl"
     },
     {
-      "path": "/xdsl/eligibility/cities",
+      "description": "Get the cities from a zipCode",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-01-15T12:00:00+01:00",
             "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/search/cities"
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/cities",
+            "value": "DEPRECATED"
           },
+          "description": "Get the cities from a zipCode",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The zipCode of the city",
+              "fullType": "string",
               "name": "zipCode",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "The zipCode of the city"
+              "required": true
             }
           ],
-          "responseType": "xdsl.eligibility.City[]",
-          "noAuthentication": false,
-          "description": "Get the cities from a zipCode"
+          "responseType": "xdsl.eligibility.City[]"
         }
       ],
-      "description": "Get the cities from a zipCode"
+      "path": "/xdsl/eligibility/cities"
     },
     {
-      "path": "/xdsl/eligibility/lines/active",
+      "description": "Get the active lines at given address",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2018-11-15T12:00:00+01:00",
             "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/search/lines"
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/lines",
+            "value": "DEPRECATED"
           },
+          "description": "Get the active lines at given address",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "streetNumber",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The contact name first three letters",
               "fullType": "string",
-              "required": false,
-              "description": "The number in the street"
-            },
-            {
               "name": "contactName",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "The number in the street",
               "fullType": "string",
-              "required": true,
-              "description": "The contact name first three letters"
-            },
-            {
-              "name": "street",
-              "dataType": "xdsl.eligibility.Street",
+              "name": "streetNumber",
               "paramType": "body",
-              "fullType": "xdsl.eligibility.Street",
-              "required": true,
-              "description": "The information about the street"
+              "required": false
             },
             {
-              "name": "city",
               "dataType": "xdsl.eligibility.City",
-              "paramType": "body",
+              "description": "The information about the city",
               "fullType": "xdsl.eligibility.City",
-              "required": true,
-              "description": "The information about the city"
+              "name": "city",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "xdsl.eligibility.Street",
+              "description": "The information about the street",
+              "fullType": "xdsl.eligibility.Street",
+              "name": "street",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>",
-          "noAuthentication": false,
-          "description": "Get the active lines at given address"
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>"
         }
       ],
-      "description": "Get the active lines at given address"
+      "path": "/xdsl/eligibility/lines/active"
     },
     {
-      "path": "/xdsl/eligibility/lines/inactive",
+      "description": "Get the inactive lines at given address",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2018-11-15T12:00:00+01:00",
             "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/search/lines"
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/lines",
+            "value": "DEPRECATED"
           },
+          "description": "Get the inactive lines at given address",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "city",
-              "dataType": "xdsl.eligibility.City",
-              "paramType": "body",
-              "fullType": "xdsl.eligibility.City",
-              "required": true,
-              "description": "The information about the city"
-            },
-            {
+              "dataType": "string",
+              "description": "The contact name first three letters",
+              "fullType": "string",
               "name": "contactName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact name first three letters"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The number in the street",
+              "fullType": "string",
               "name": "streetNumber",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The number in the street"
+              "required": false
             },
             {
-              "name": "street",
               "dataType": "xdsl.eligibility.Street",
-              "paramType": "body",
+              "description": "The information about the street",
               "fullType": "xdsl.eligibility.Street",
-              "required": true,
-              "description": "The information about the street"
+              "name": "street",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "xdsl.eligibility.City",
+              "description": "The information about the city",
+              "fullType": "xdsl.eligibility.City",
+              "name": "city",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>",
-          "noAuthentication": false,
-          "description": "Get the inactive lines at given address"
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>"
         }
       ],
-      "description": "Get the inactive lines at given address"
+      "path": "/xdsl/eligibility/lines/inactive"
     },
     {
-      "path": "/xdsl/eligibility/meetings",
+      "description": "Search for meeting time slot",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2018-11-15T12:00:00+01:00",
             "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/search/meetings"
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/meetings",
+            "value": "DEPRECATED"
           },
+          "description": "Search for meeting time slot",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The choosen offer label",
+              "fullType": "string",
               "name": "offerLabel",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "The choosen offer label"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "The eligibility test id",
+              "fullType": "string",
               "name": "eligibilityId",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "The eligibility test id"
+              "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>",
-          "noAuthentication": false,
-          "description": "Search for meeting time slot"
+          "responseType": "xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>"
         }
       ],
-      "description": "Search for meeting time slot"
+      "path": "/xdsl/eligibility/meetings"
     },
     {
-      "path": "/xdsl/eligibility/search/buildings",
+      "description": "Get all buildings for a specific address",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2018-11-15T12:00:00+01:00",
             "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/search/buildings"
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/buildings",
+            "value": "DEPRECATED"
           },
+          "description": "Get all buildings for a specific address",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "streetCode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Street number",
               "fullType": "string",
-              "required": true,
-              "description": "Unique identifier of the street (you can get it with POST /xdsl/eligibility/search/streets)"
+              "name": "streetNumber",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "streetNumber",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Unique identifier of the street (you can get it with POST /xdsl/eligibility/search/streets)",
               "fullType": "string",
-              "required": true,
-              "description": "Street number"
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Building>",
-          "noAuthentication": true,
-          "description": "Get all buildings for a specific address"
-        }
-      ],
-      "description": "Get all buildings for a specific address"
-    },
-    {
-      "path": "/xdsl/eligibility/search/cities",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/search/cities"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "zipCode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Zip code"
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.City>",
-          "noAuthentication": true,
-          "description": "Get all localities linked to a zip code"
-        }
-      ],
-      "description": "Get all localities linked to a zip code"
-    },
-    {
-      "path": "/xdsl/eligibility/search/fiberStreets",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/search/streets"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "inseeCode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "French INSEE identifier (you can get it with POST /xdsl/eligibility/search/cities)"
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.FiberStreet>",
-          "noAuthentication": true,
-          "description": "Get all street linked to a locality"
-        }
-      ],
-      "description": "Get all street linked to a locality"
-    },
-    {
-      "path": "/xdsl/eligibility/search/streetNumbers",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/search/streetNumbers"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
               "name": "streetCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Street code"
+              "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTaskArray<string>",
-          "noAuthentication": true,
-          "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)"
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Building>"
         }
       ],
-      "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)"
+      "path": "/xdsl/eligibility/search/buildings"
     },
     {
-      "path": "/xdsl/eligibility/streets",
+      "description": "Get all localities linked to a zip code",
       "operations": [
         {
           "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
             "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
+            "replacement": "/connectivity/eligibility/search/cities",
+            "value": "DEPRECATED"
+          },
+          "description": "Get all localities linked to a zip code",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Zip code",
+              "fullType": "string",
+              "name": "zipCode",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.City>"
+        }
+      ],
+      "path": "/xdsl/eligibility/search/cities"
+    },
+    {
+      "description": "Get all street linked to a locality",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/streets",
+            "value": "DEPRECATED"
+          },
+          "description": "Get all street linked to a locality",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "French INSEE identifier (you can get it with POST /xdsl/eligibility/search/cities)",
+              "fullType": "string",
+              "name": "inseeCode",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.FiberStreet>"
+        }
+      ],
+      "path": "/xdsl/eligibility/search/fiberStreets"
+    },
+    {
+      "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/streetNumbers",
+            "value": "DEPRECATED"
+          },
+          "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Street code",
+              "fullType": "string",
+              "name": "streetCode",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTaskArray<string>"
+        }
+      ],
+      "path": "/xdsl/eligibility/search/streetNumbers"
+    },
+    {
+      "description": "Get the streets from a city inseeCode and partial street name",
+      "operations": [
+        {
+          "apiStatus": {
             "deletionDate": "2019-01-15T12:00:00+01:00",
             "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/search/streets"
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/streets",
+            "value": "DEPRECATED"
           },
+          "description": "Get the streets from a city inseeCode and partial street name",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "partialName",
               "dataType": "string",
-              "paramType": "query",
+              "description": "The inseeCode of the city",
               "fullType": "string",
-              "required": true,
-              "description": "The partial name to match against the name of the street"
-            },
-            {
               "name": "inseeCode",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "The inseeCode of the city"
-            }
-          ],
-          "responseType": "xdsl.eligibility.Street[]",
-          "noAuthentication": false,
-          "description": "Get the streets from a city inseeCode and partial street name"
-        }
-      ],
-      "description": "Get the streets from a city inseeCode and partial street name"
-    },
-    {
-      "path": "/xdsl/eligibility/test",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/test"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "The eligibility id"
-            }
-          ],
-          "responseType": "xdsl.eligibility.Eligibility",
-          "noAuthentication": false,
-          "description": "Get an eligibility by its id"
-        }
-      ],
-      "description": "Get an eligibility by its id"
-    },
-    {
-      "path": "/xdsl/eligibility/test/address",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/test/address"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "address",
-              "dataType": "xdsl.eligibility.Address",
-              "paramType": "body",
-              "fullType": "xdsl.eligibility.Address",
-              "required": true,
-              "description": "The address"
-            }
-          ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>",
-          "noAuthentication": false,
-          "description": "Do an eligibility for an address, if no line exist"
-        }
-      ],
-      "description": "Do an eligibility for an address, if no line exist"
-    },
-    {
-      "path": "/xdsl/eligibility/test/fiber/building",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/test/building"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "building",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Unique identifier of the building (you can get it with POST /xdsl/eligibility/search/buildings)"
-            }
-          ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.FiberEligibility>",
-          "noAuthentication": true,
-          "description": "Perform a fiber eligibility for a building"
-        }
-      ],
-      "description": "Perform a fiber eligibility for a building"
-    },
-    {
-      "path": "/xdsl/eligibility/test/line",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "replacement": "/connectivity/eligibility/test/line"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "lineStatus",
-              "dataType": "xdsl.eligibility.LandlineStatusEnum",
-              "paramType": "body",
-              "fullType": "xdsl.eligibility.LandlineStatusEnum",
-              "required": true,
-              "description": "The line status"
+              "required": true
             },
             {
-              "name": "lineNumber",
               "dataType": "string",
+              "description": "The partial name to match against the name of the street",
+              "fullType": "string",
+              "name": "partialName",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.eligibility.Street[]"
+        }
+      ],
+      "path": "/xdsl/eligibility/streets"
+    },
+    {
+      "description": "Get an eligibility by its id",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/test",
+            "value": "DEPRECATED"
+          },
+          "description": "Get an eligibility by its id",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The eligibility id",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.eligibility.Eligibility"
+        }
+      ],
+      "path": "/xdsl/eligibility/test"
+    },
+    {
+      "description": "Do an eligibility for an address, if no line exist",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/test/address",
+            "value": "DEPRECATED"
+          },
+          "description": "Do an eligibility for an address, if no line exist",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "xdsl.eligibility.Address",
+              "description": "The address",
+              "fullType": "xdsl.eligibility.Address",
+              "name": "address",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The line number"
+              "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>",
-          "noAuthentication": false,
-          "description": "Do an eligibility for a line"
+          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>"
         }
       ],
-      "description": "Do an eligibility for a line"
+      "path": "/xdsl/eligibility/test/address"
     },
     {
-      "path": "/xdsl/email/pro",
+      "description": "Perform a fiber eligibility for a building",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/test/building",
+            "value": "DEPRECATED"
+          },
+          "description": "Perform a fiber eligibility for a building",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Unique identifier of the building (you can get it with POST /xdsl/eligibility/search/buildings)",
+              "fullType": "string",
+              "name": "building",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTask<xdsl.eligibility.FiberEligibility>"
+        }
+      ],
+      "path": "/xdsl/eligibility/test/fiber/building"
+    },
+    {
+      "description": "Do an eligibility for a line",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/test/line",
+            "value": "DEPRECATED"
+          },
+          "description": "Do an eligibility for a line",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The line number",
+              "fullType": "string",
+              "name": "lineNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "xdsl.eligibility.LandlineStatusEnum",
+              "description": "The line status",
+              "fullType": "xdsl.eligibility.LandlineStatusEnum",
+              "name": "lineStatus",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>"
+        }
+      ],
+      "path": "/xdsl/eligibility/test/line"
+    },
+    {
+      "description": "Operations about the XDSL service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the XDSL service"
+      "path": "/xdsl/email/pro"
     },
     {
-      "path": "/xdsl/email/pro/{email}",
+      "description": "XDSL Email Pro",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete the email",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the email"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.xdslEmailPro",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.xdslEmailPro"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.xdslEmailPro",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "xdsl.xdslEmailPro",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "XDSL Email Pro"
+      "path": "/xdsl/email/pro/{email}"
     },
     {
-      "path": "/xdsl/email/pro/{email}/changePassword",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the email password",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "New email password",
               "fullType": "password",
-              "required": true,
-              "description": "New email password"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "xdsl.email.pro.Task",
-          "noAuthentication": false,
-          "description": "Change the email password"
-        }
-      ],
-      "description": "changePassword operations"
-    },
-    {
-      "path": "/xdsl/incidents",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "creationDate",
-              "dataType": "datetime",
-              "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDate property (>)"
-            },
-            {
-              "name": "endDate",
-              "dataType": "datetime",
-              "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of endDate property (<)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": true,
-          "description": "List of incidents"
-        }
-      ],
-      "description": "List the xdsl.Incident objects"
-    },
-    {
-      "path": "/xdsl/incidents/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "xdsl.Incident",
-          "noAuthentication": true,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Detected incident"
-    },
-    {
-      "path": "/xdsl/spare",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the XDSL service"
-    },
-    {
-      "path": "/xdsl/spare/brands",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get all available spare brands"
-        }
-      ],
-      "description": "Get all available spare brands"
-    },
-    {
-      "path": "/xdsl/spare/{spare}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "spare",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Spare"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the spare as if it was not belonging to OVH anymore"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "spare",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Spare"
-            }
-          ],
-          "responseType": "spare.xdsl.XdslSpare",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Spare properties"
-    },
-    {
-      "path": "/xdsl/spare/{spare}/compatibleReplacement",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "spare",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Spare"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Return the list of brand compatible to be replaced"
-        }
-      ],
-      "description": "compatibleReplacement operations"
-    },
-    {
-      "path": "/xdsl/spare/{spare}/replace",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "domain",
-              "dataType": "string",
+              "name": "password",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The modem to replace by the spare"
+              "required": true
             },
             {
-              "name": "spare",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Spare"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Replace the modem by its spare"
+          "responseType": "xdsl.email.pro.Task"
         }
       ],
-      "description": "replace operations"
+      "path": "/xdsl/email/pro/{email}/changePassword"
     },
     {
-      "path": "/xdsl/spare/{spare}/returnMerchandise",
+      "description": "List the xdsl.Incident objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "spare",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Spare"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Return the broken equipment in instantRefund"
-        }
-      ],
-      "description": "returnMerchandise operations"
-    },
-    {
-      "path": "/xdsl/spare/{spare}/serviceInfos",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "List of incidents",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "spare",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Spare"
+              "dataType": "datetime",
+              "description": "Filter the value of endDate property (<)",
+              "fullType": "datetime",
+              "name": "endDate",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDate property (>)",
+              "fullType": "datetime",
+              "name": "creationDate",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "services.Service",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/xdsl/incidents"
+    },
+    {
+      "description": "Detected incident",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.Incident"
+        }
+      ],
+      "path": "/xdsl/incidents/{id}"
+    },
+    {
+      "description": "Operations about the XDSL service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get this object properties"
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/xdsl/spare"
+    },
+    {
+      "description": "Get all available spare brands",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available spare brands",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/xdsl/spare/brands"
+    },
+    {
+      "description": "Spare properties",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete the spare as if it was not belonging to OVH anymore",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "spare.xdsl.XdslSpare"
+        }
+      ],
+      "path": "/xdsl/spare/{spare}"
+    },
+    {
+      "description": "compatibleReplacement operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return the list of brand compatible to be replaced",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/xdsl/spare/{spare}/compatibleReplacement"
+    },
+    {
+      "description": "replace operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Replace the modem by its spare",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The modem to replace by the spare",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/xdsl/spare/{spare}/replace"
+    },
+    {
+      "description": "returnMerchandise operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return the broken equipment in instantRefund",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/xdsl/spare/{spare}/returnMerchandise"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Spare",
+              "fullType": "string",
               "name": "spare",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Spare"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/xdsl/spare/{spare}/serviceInfos"
     },
     {
-      "path": "/xdsl/templateModem",
+      "description": "List the xdsl.TemplateModem objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List of TemplateModem",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List of TemplateModem"
+          "parameters": [],
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create new Modem Template from existing modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The access name with the config you want to duplicate",
               "fullType": "string",
-              "required": true,
-              "description": "The access name with the config you want to duplicate"
+              "name": "serviceName",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Modem Template name (only alphanumeric characters)",
               "fullType": "string",
-              "required": true,
-              "description": "Modem Template name (only alphanumeric characters)"
+              "name": "name",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "xdsl.TemplateModem",
-          "noAuthentication": false,
-          "description": "Create new Modem Template from existing modem"
+          "responseType": "xdsl.TemplateModem"
         }
       ],
-      "description": "List the xdsl.TemplateModem objects"
+      "path": "/xdsl/templateModem"
     },
     {
-      "path": "/xdsl/templateModem/{name}",
+      "description": "Modem Template",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete this Modem Template",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this Modem Template"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.TemplateModem",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.TemplateModem"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.TemplateModem",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "xdsl.TemplateModem",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Modem Template"
+      "path": "/xdsl/templateModem/{name}"
     },
     {
-      "path": "/xdsl/{serviceName}",
+      "description": "XDSL Access",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Access",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.Access"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.Access",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "xdsl.Access",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "XDSL Access"
+      "path": "/xdsl/{serviceName}"
     },
     {
-      "path": "/xdsl/{serviceName}/addressMove/extraIpRange",
+      "description": "extraIpRange operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Informations about the extra IP range during address move",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.ExtraIpRangeMove",
-          "noAuthentication": false,
-          "description": "Informations about the extra IP range during address move"
+          "responseType": "xdsl.ExtraIpRangeMove"
         }
       ],
-      "description": "extraIpRange operations"
+      "path": "/xdsl/{serviceName}/addressMove/extraIpRange"
     },
     {
-      "path": "/xdsl/{serviceName}/addressMove/extraIpRangeMove",
+      "description": "extraIpRangeMove operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Initiate the extra IP range migration",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Initiate the extra IP range migration"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "extraIpRangeMove operations"
+      "path": "/xdsl/{serviceName}/addressMove/extraIpRangeMove"
     },
     {
-      "path": "/xdsl/{serviceName}/antiSpams",
+      "description": "List the xdsl.AntiSpam objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List antiSpams for this access",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip[]",
-          "noAuthentication": false,
-          "description": "List antiSpams for this access"
+          "responseType": "ip[]"
         }
       ],
-      "description": "List the xdsl.AntiSpam objects"
+      "path": "/xdsl/{serviceName}/antiSpams"
     },
     {
-      "path": "/xdsl/{serviceName}/antiSpams/{ip}",
+      "description": "Spams detected from xdsl access",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "ip",
+              "description": "Ip",
+              "fullType": "ip",
+              "name": "ip",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "ip",
-              "dataType": "ip",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "ip",
-              "required": true,
-              "description": "Ip"
+              "required": true
             }
           ],
-          "responseType": "xdsl.AntiSpam",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.AntiSpam"
         }
       ],
-      "description": "Spams detected from xdsl access"
+      "path": "/xdsl/{serviceName}/antiSpams/{ip}"
     },
     {
-      "path": "/xdsl/{serviceName}/antiSpams/{ip}/evidences",
+      "description": "evidences operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of evidences stored on PCS for this ip",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ip",
               "dataType": "ip",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ip",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.antiSpam.EvidencesInfo",
-          "noAuthentication": false,
-          "description": "List of evidences stored on PCS for this ip"
+          "responseType": "xdsl.antiSpam.EvidencesInfo"
         }
       ],
-      "description": "evidences operations"
+      "path": "/xdsl/{serviceName}/antiSpams/{ip}/evidences"
     },
     {
-      "path": "/xdsl/{serviceName}/applyTemplateToModem",
+      "description": "applyTemplateToModem operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Apply TemplateModem to existing Modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Modem Template Name",
+              "fullType": "string",
               "name": "templateName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Modem Template Name"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Apply TemplateModem to existing Modem"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "applyTemplateToModem operations"
+      "path": "/xdsl/{serviceName}/applyTemplateToModem"
     },
     {
-      "path": "/xdsl/{serviceName}/canCancelResiliation",
+      "description": "canCancelResiliation operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get information about the ongoing resiliation",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Get information about the ongoing resiliation"
+          "responseType": "boolean"
         }
       ],
-      "description": "canCancelResiliation operations"
+      "path": "/xdsl/{serviceName}/canCancelResiliation"
     },
     {
-      "path": "/xdsl/{serviceName}/cancelResiliation",
+      "description": "cancelResiliation operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Cancel the ongoing resiliation",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Cancel the ongoing resiliation"
+          "responseType": "void"
         }
       ],
-      "description": "cancelResiliation operations"
+      "path": "/xdsl/{serviceName}/cancelResiliation"
     },
     {
-      "path": "/xdsl/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/xdsl/{serviceName}/changeContact"
     },
     {
-      "path": "/xdsl/{serviceName}/diagnostic",
+      "description": "Diagnostic of the access",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.AccessDiagnostic",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.AccessDiagnostic"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Run diagnostic on the access",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Run diagnostic on the access"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "Diagnostic of the access"
+      "path": "/xdsl/{serviceName}/diagnostic"
     },
     {
-      "path": "/xdsl/{serviceName}/incident",
+      "description": "Detected incident",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Incident",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.Incident"
         }
       ],
-      "description": "Detected incident"
+      "path": "/xdsl/{serviceName}/incident"
     },
     {
-      "path": "/xdsl/{serviceName}/ips",
+      "description": "List the xdsl.IP objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of IPs addresses for this access",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip[]",
-          "noAuthentication": false,
-          "description": "List of IPs addresses for this access"
+          "responseType": "ip[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Order an extra /29 range of IPv4 addresses",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Order an extra /29 range of IPv4 addresses"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "List the xdsl.IP objects"
+      "path": "/xdsl/{serviceName}/ips"
     },
     {
-      "path": "/xdsl/{serviceName}/ips/{ip}",
+      "description": "Informations about an IP address",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Stop renewing this extra IPv4 option",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ip",
               "dataType": "ip",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ip",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Stop renewing this extra IPv4 option"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ip",
               "dataType": "ip",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ip",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.IP",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.IP"
         }
       ],
-      "description": "Informations about an IP address"
+      "path": "/xdsl/{serviceName}/ips/{ip}"
     },
     {
-      "path": "/xdsl/{serviceName}/ipv6",
+      "description": "ipv6 operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the status of the IPv6 for this access",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "enabled",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Should the IPv6 be enabled ?",
               "fullType": "boolean",
-              "required": true,
-              "description": "Should the IPv6 be enabled ?"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Change the status of the IPv6 for this access"
-        }
-      ],
-      "description": "ipv6 operations"
-    },
-    {
-      "path": "/xdsl/{serviceName}/lines",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "The lines of the access"
-        }
-      ],
-      "description": "List the xdsl.Line objects"
-    },
-    {
-      "path": "/xdsl/{serviceName}/lines/{number}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "number",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
-            }
-          ],
-          "responseType": "xdsl.Line",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Information about the physical copper line"
-    },
-    {
-      "path": "/xdsl/{serviceName}/lines/{number}/diagnostic/cancel",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "number",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Cancel line diagnostic if possible"
-        }
-      ],
-      "description": "cancel operations"
-    },
-    {
-      "path": "/xdsl/{serviceName}/lines/{number}/diagnostic/run",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "answers",
-              "dataType": "xdsl.lineDiagnostic.Answers",
+              "name": "enabled",
               "paramType": "body",
-              "fullType": "xdsl.lineDiagnostic.Answers",
-              "required": false,
-              "description": "Customer answers for line diagnostic"
+              "required": true
             },
             {
-              "name": "faultType",
-              "dataType": "xdsl.lineDiagnostic.FaultTypeEnum",
-              "paramType": "body",
-              "fullType": "xdsl.lineDiagnostic.FaultTypeEnum",
-              "required": true,
-              "description": "Line diagnostic type. Depends of problem"
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.Task"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/ipv6"
+    },
+    {
+      "description": "List the xdsl.Line objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "The lines of the access",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/lines"
+    },
+    {
+      "description": "Information about the physical copper line",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "actionsDone",
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.Line"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/lines/{number}"
+    },
+    {
+      "description": "cancel operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Cancel line diagnostic if possible",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/lines/{number}/diagnostic/cancel"
+    },
+    {
+      "description": "run operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update and get advanced diagnostic of the line",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "xdsl.lineDiagnostic.CustomerActionsEnum[]",
-              "paramType": "body",
+              "description": "Customer possible actions",
               "fullType": "xdsl.lineDiagnostic.CustomerActionsEnum[]",
-              "required": false,
-              "description": "Customer possible actions"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "number",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
-            }
-          ],
-          "responseType": "xdsl.lineDiagnostic.Diagnostic",
-          "noAuthentication": false,
-          "description": "Update and get advanced diagnostic of the line"
-        }
-      ],
-      "description": "run operations"
-    },
-    {
-      "path": "/xdsl/{serviceName}/lines/{number}/dslamPort",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "number",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
-            }
-          ],
-          "responseType": "xdsl.DslamPort",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Information about the port on the DSLAM"
-    },
-    {
-      "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "number",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
-            }
-          ],
-          "responseType": "xdsl.DslamLineProfile[]",
-          "noAuthentication": false,
-          "description": "List all availables profiles for this port"
-        }
-      ],
-      "description": "availableProfiles operations"
-    },
-    {
-      "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "dslamProfileId",
-              "dataType": "long",
+              "name": "actionsDone",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "The id of the xdsl.DslamLineProfile"
+              "required": false
             },
             {
+              "dataType": "xdsl.lineDiagnostic.Answers",
+              "description": "Customer answers for line diagnostic",
+              "fullType": "xdsl.lineDiagnostic.Answers",
+              "name": "answers",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "xdsl.lineDiagnostic.FaultTypeEnum",
+              "description": "Line diagnostic type. Depends of problem",
+              "fullType": "xdsl.lineDiagnostic.FaultTypeEnum",
+              "name": "faultType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Number",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Change the profile of the port"
+          "responseType": "xdsl.lineDiagnostic.Diagnostic"
         }
       ],
-      "description": "changeProfile operations"
+      "path": "/xdsl/{serviceName}/lines/{number}/diagnostic/run"
     },
     {
-      "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/logs",
+      "description": "Information about the port on the DSLAM",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
               "name": "number",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
-            },
-            {
-              "name": "limit",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": true,
-              "description": ""
+              "required": true
             }
           ],
-          "responseType": "xdsl.DslamPortLog[]",
-          "noAuthentication": false,
-          "description": "Get the logs emitted by the DSLAM for this port"
+          "responseType": "xdsl.DslamPort"
         }
       ],
-      "description": "logs operations"
+      "path": "/xdsl/{serviceName}/lines/{number}/dslamPort"
     },
     {
-      "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/reset",
+      "description": "availableProfiles operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List all availables profiles for this port",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.DslamLineProfile[]"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles"
+    },
+    {
+      "description": "changeProfile operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change the profile of the port",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "long",
+              "description": "The id of the xdsl.DslamLineProfile",
+              "fullType": "long",
+              "name": "dslamProfileId",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "number",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Reset the port on the DSLAM"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "reset operations"
+      "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile"
     },
     {
-      "path": "/xdsl/{serviceName}/lines/{number}/statistics",
+      "description": "logs operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the logs emitted by the DSLAM for this port",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
               "name": "number",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Number"
+              "required": true
             },
             {
-              "name": "period",
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "limit",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.DslamPortLog[]"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/logs"
+    },
+    {
+      "description": "reset operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reset the port on the DSLAM",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.Task"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/lines/{number}/dslamPort/reset"
+    },
+    {
+      "description": "statistics operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get various statistics about the line",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Number",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "xdsl.StatisticsPeriodEnum",
-              "paramType": "query",
+              "description": "",
               "fullType": "xdsl.StatisticsPeriodEnum",
-              "required": true,
-              "description": ""
+              "name": "period",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "type",
               "dataType": "xdsl.LineStatisticsTypeEnum",
-              "paramType": "query",
+              "description": "",
               "fullType": "xdsl.LineStatisticsTypeEnum",
-              "required": true,
-              "description": ""
+              "name": "type",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<xdsl.TimestampAndValue>",
-          "noAuthentication": false,
-          "description": "Get various statistics about the line"
+          "responseType": "complexType.UnitAndValues<xdsl.TimestampAndValue>"
         }
       ],
-      "description": "statistics operations"
+      "path": "/xdsl/{serviceName}/lines/{number}/statistics"
     },
     {
-      "path": "/xdsl/{serviceName}/modem",
+      "description": "Modem",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Modem",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.Modem"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.Modem",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "xdsl.Modem",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Modem"
+      "path": "/xdsl/{serviceName}/modem"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/availableWLANChannel",
+      "description": "availableWLANChannel operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available WLAN channel for this modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "frequency",
               "dataType": "xdsl.WLANFrequencyEnum",
-              "paramType": "query",
+              "description": "WLAN frequency you want to retrieve channels",
               "fullType": "xdsl.WLANFrequencyEnum",
-              "required": true,
-              "description": "WLAN frequency you want to retrieve channels"
+              "name": "frequency",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List available WLAN channel for this modem"
+          "responseType": "long[]"
         }
       ],
-      "description": "availableWLANChannel operations"
+      "path": "/xdsl/{serviceName}/modem/availableWLANChannel"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/blocIp",
+      "description": "blocIp operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the status of the Bloc IP on modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "noAuthentication": false,
-          "description": "Get the status of the Bloc IP on modem"
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the status of the Bloc IP on modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "xdsl.ServiceStatusEnum",
+              "description": "the new status of the bloc ip service",
+              "fullType": "xdsl.ServiceStatusEnum",
               "name": "status",
-              "dataType": "xdsl.ServiceStatusEnum",
               "paramType": "body",
-              "fullType": "xdsl.ServiceStatusEnum",
-              "required": true,
-              "description": "the new status of the bloc ip service"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Change the status of the Bloc IP on modem"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "blocIp operations"
+      "path": "/xdsl/{serviceName}/modem/blocIp"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/callWaiting",
+      "description": "callWaiting operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the status of callWaiting on modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "noAuthentication": false,
-          "description": "Get the status of callWaiting on modem"
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the status of callWaiting on modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "xdsl.ServiceStatusEnum",
+              "description": "the new status of the callWaiting service",
+              "fullType": "xdsl.ServiceStatusEnum",
               "name": "callWaiting",
-              "dataType": "xdsl.ServiceStatusEnum",
               "paramType": "body",
-              "fullType": "xdsl.ServiceStatusEnum",
-              "required": true,
-              "description": "the new status of the callWaiting service"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Change the status of callWaiting on modem"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "callWaiting operations"
+      "path": "/xdsl/{serviceName}/modem/callWaiting"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/comfortExchange",
+      "description": "comfortExchange operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get info about access modem replacement by last model.",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.ModemExchangeInfo",
-          "noAuthentication": false,
-          "description": "Get info about access modem replacement by last model."
+          "responseType": "xdsl.ModemExchangeInfo"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Replace access modem by last model, fees will be applied.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Customer identifier for shipping address. By default Internet access address will be used.",
+              "fullType": "string",
               "name": "contactShipping",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Customer identifier for shipping address. By default Internet access address will be used."
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Replace access modem by last model, fees will be applied."
+          "responseType": "order.Order"
         }
       ],
-      "description": "comfortExchange operations"
+      "path": "/xdsl/{serviceName}/modem/comfortExchange"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/connectedDevices",
+      "description": "List the xdsl.connectedDevice objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of devices connected on this modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of devices connected on this modem"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the xdsl.connectedDevice objects"
+      "path": "/xdsl/{serviceName}/modem/connectedDevices"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/connectedDevices/{macAddress}",
+      "description": "Connected Device",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Mac address",
+              "fullType": "string",
               "name": "macAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Mac address"
+              "required": true
             }
           ],
-          "responseType": "xdsl.connectedDevice",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.connectedDevice"
         }
       ],
-      "description": "Connected Device"
+      "path": "/xdsl/{serviceName}/modem/connectedDevices/{macAddress}"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/contentSharing",
+      "description": "contentSharing operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the status of contentSharing on modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "noAuthentication": false,
-          "description": "Get the status of contentSharing on modem"
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the status of contentSharing on modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contentSharing",
               "dataType": "xdsl.ServiceStatusEnum",
-              "paramType": "body",
+              "description": "the new status of the contentSharing service",
               "fullType": "xdsl.ServiceStatusEnum",
-              "required": true,
-              "description": "the new status of the contentSharing service"
+              "name": "contentSharing",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Change the status of contentSharing on modem"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "contentSharing operations"
+      "path": "/xdsl/{serviceName}/modem/contentSharing"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/duplicatePortMappingConfig",
+      "description": "duplicatePortMappingConfig operations",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-01-01T00:00:00+01:00",
             "deprecatedDate": "2018-07-01T00:00:00+01:00",
-            "replacement": "/xdsl/templateModem"
+            "description": "Deprecated, will be removed",
+            "replacement": "/xdsl/templateModem",
+            "value": "DEPRECATED"
           },
+          "description": "Remove all the current port mapping rules and set the same config as the access given in parameters",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The access name with the config you want to duplicate",
+              "fullType": "string",
               "name": "accessName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The access name with the config you want to duplicate"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove all the current port mapping rules and set the same config as the access given in parameters"
+          "responseType": "void"
         }
       ],
-      "description": "duplicatePortMappingConfig operations"
+      "path": "/xdsl/{serviceName}/modem/duplicatePortMappingConfig"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/firmware",
+      "description": "firmware operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the firmware version installed on modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Get the firmware version installed on modem"
+          "responseType": "string"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch a task to install target firmware on modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "todoDate",
-              "dataType": "datetime",
-              "paramType": "body",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Date of execution, default is now"
-            },
-            {
+              "dataType": "string",
+              "description": "The firmware version to upgrade to",
+              "fullType": "string",
               "name": "firmware",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The firmware version to upgrade to"
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "datetime",
+              "description": "Date of execution, default is now",
+              "fullType": "datetime",
+              "name": "todoDate",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Launch a task to install target firmware on modem"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "firmware operations"
+      "path": "/xdsl/{serviceName}/modem/firmware"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/firmwareAvailable",
+      "description": "firmwareAvailable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available firmware for this modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available firmware for this modem"
+          "responseType": "string[]"
         }
       ],
-      "description": "firmwareAvailable operations"
+      "path": "/xdsl/{serviceName}/modem/firmwareAvailable"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/ftp",
+      "description": "ftp operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the status of ftp service on modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "noAuthentication": false,
-          "description": "Get the status of ftp service on modem"
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the status of the ftp service on modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "xdsl.ServiceStatusEnum",
+              "description": "the new status of the ftp service",
+              "fullType": "xdsl.ServiceStatusEnum",
               "name": "ftp",
-              "dataType": "xdsl.ServiceStatusEnum",
               "paramType": "body",
-              "fullType": "xdsl.ServiceStatusEnum",
-              "required": true,
-              "description": "the new status of the ftp service"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Change the status of the ftp service on modem"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "ftp operations"
+      "path": "/xdsl/{serviceName}/modem/ftp"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/ipsecAlg",
+      "description": "ipsecAlg operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the status of ipsec alg service on modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "noAuthentication": false,
-          "description": "Get the status of ipsec alg service on modem"
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the status of the ipsec alg service on modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ipsecAlg",
               "dataType": "xdsl.ServiceStatusEnum",
-              "paramType": "body",
+              "description": "the new status of the ipsec alg service",
               "fullType": "xdsl.ServiceStatusEnum",
-              "required": true,
-              "description": "the new status of the ipsec alg service"
+              "name": "ipsecAlg",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Change the status of the ipsec alg service on modem"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "ipsecAlg operations"
+      "path": "/xdsl/{serviceName}/modem/ipsecAlg"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/lan",
+      "description": "List the xdsl.LAN objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of LANs on this modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of LANs on this modem"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the xdsl.LAN objects"
+      "path": "/xdsl/{serviceName}/modem/lan"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/lan/{lanName}",
+      "description": "LAN Configuration of the Modem",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Lan name",
+              "fullType": "string",
               "name": "lanName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Lan name"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "xdsl.LAN",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.LAN"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.LAN",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "xdsl.LAN",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "lanName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Lan name",
               "fullType": "string",
-              "required": true,
-              "description": "Lan name"
+              "name": "lanName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "LAN Configuration of the Modem"
+      "path": "/xdsl/{serviceName}/modem/lan/{lanName}"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp",
+      "description": "List the xdsl.DHCP objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of DHCP on this modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "lanName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Lan name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Lan name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "lanName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of DHCP on this modem"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the xdsl.DHCP objects"
+      "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}",
+      "description": "DHCP Configuration of the Modem",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "lanName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Lan name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Lan name",
+              "fullType": "string",
+              "name": "lanName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Dhcp name",
+              "fullType": "string",
               "name": "dhcpName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Dhcp name"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "xdsl.DHCP",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.DHCP"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.DHCP",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "xdsl.DHCP",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Lan name",
+              "fullType": "string",
               "name": "lanName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Lan name"
+              "required": true
             },
             {
-              "name": "dhcpName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Dhcp name",
               "fullType": "string",
-              "required": true,
-              "description": "Dhcp name"
+              "name": "dhcpName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "DHCP Configuration of the Modem"
+      "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses",
+      "description": "List the xdsl.DHCPStaticAddress objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of DHCP Static Address of this modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Lan name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "lanName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Lan name"
+              "required": true
             },
             {
-              "name": "dhcpName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Dhcp name",
               "fullType": "string",
-              "required": true,
-              "description": "Dhcp name"
+              "name": "dhcpName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of DHCP Static Address of this modem"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a DHCP static lease",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "MACAddress",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Name of the DHCP static lease",
               "fullType": "string",
-              "required": true,
-              "description": "The MAC address of the device"
-            },
-            {
-              "name": "IPAddress",
-              "dataType": "ip",
-              "paramType": "body",
-              "fullType": "ip",
-              "required": true,
-              "description": "The IP address of the device"
-            },
-            {
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Name of the DHCP static lease"
+              "required": false
             },
             {
+              "dataType": "ip",
+              "description": "The IP address of the device",
+              "fullType": "ip",
+              "name": "IPAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The MAC address of the device",
+              "fullType": "string",
+              "name": "MACAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Lan name",
+              "fullType": "string",
               "name": "lanName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Lan name"
+              "required": true
             },
             {
-              "name": "dhcpName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Dhcp name",
               "fullType": "string",
-              "required": true,
-              "description": "Dhcp name"
+              "name": "dhcpName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.DHCPStaticAddress",
-          "noAuthentication": false,
-          "description": "Add a DHCP static lease"
+          "responseType": "xdsl.DHCPStaticAddress"
         }
       ],
-      "description": "List the xdsl.DHCPStaticAddress objects"
+      "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}",
+      "description": "DHCP Static Address",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this port mapping",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Lan name",
+              "fullType": "string",
               "name": "lanName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Lan name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Dhcp name",
+              "fullType": "string",
               "name": "dhcpName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Dhcp name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": " macaddress",
+              "fullType": "string",
               "name": "MACAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": " macaddress"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Delete this port mapping"
+          "responseType": "xdsl.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Lan name",
+              "fullType": "string",
               "name": "lanName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Lan name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Dhcp name",
+              "fullType": "string",
               "name": "dhcpName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Dhcp name"
+              "required": true
             },
             {
-              "name": "MACAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": " macaddress",
               "fullType": "string",
-              "required": true,
-              "description": " macaddress"
+              "name": "MACAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.DHCPStaticAddress",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.DHCPStaticAddress"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.DHCPStaticAddress",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "xdsl.DHCPStaticAddress",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Lan name",
+              "fullType": "string",
               "name": "lanName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Lan name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Dhcp name",
+              "fullType": "string",
               "name": "dhcpName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Dhcp name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": " macaddress",
+              "fullType": "string",
               "name": "MACAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": " macaddress"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "DHCP Static Address"
+      "path": "/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/portMappings",
+      "description": "List the xdsl.PortMapping objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of PortMappings on this modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of PortMappings on this modem"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a port mapping",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "allowedRemoteIp",
-              "dataType": "ipv4",
-              "paramType": "body",
-              "fullType": "ipv4",
-              "required": false,
-              "description": "An ip which will access to the defined rule. Default : no restriction applied"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of the port mapping entry"
-            },
-            {
-              "name": "externalPortStart",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "External Port that the modem will listen on"
-            },
-            {
-              "name": "description",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Description of the Port Mapping"
-            },
-            {
-              "name": "externalPortEnd",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "The last port of the interval on the External Client that will get the connections"
-            },
-            {
-              "name": "internalPort",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "The port on the Internal Client that will get the connections"
-            },
-            {
-              "name": "protocol",
               "dataType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
-              "paramType": "body",
+              "description": "Protocol of the port mapping (TCP / UDP)",
               "fullType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
-              "required": true,
-              "description": "Protocol of the port mapping (TCP / UDP)"
-            },
-            {
-              "name": "internalClient",
-              "dataType": "ip",
+              "name": "protocol",
               "paramType": "body",
-              "fullType": "ip",
-              "required": true,
-              "description": "The IP address of the destination of the packets"
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "The port on the Internal Client that will get the connections",
+              "fullType": "long",
+              "name": "internalPort",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "An ip which will access to the defined rule. Default : no restriction applied",
+              "fullType": "ipv4",
+              "name": "allowedRemoteIp",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name of the port mapping entry",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Description of the Port Mapping",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "External Port that the modem will listen on",
+              "fullType": "long",
+              "name": "externalPortStart",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip",
+              "description": "The IP address of the destination of the packets",
+              "fullType": "ip",
+              "name": "internalClient",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The last port of the interval on the External Client that will get the connections",
+              "fullType": "long",
+              "name": "externalPortEnd",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.PortMapping",
-          "noAuthentication": false,
-          "description": "Add a port mapping"
+          "responseType": "xdsl.PortMapping"
         }
       ],
-      "description": "List the xdsl.PortMapping objects"
+      "path": "/xdsl/{serviceName}/modem/portMappings"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/portMappings/{name}",
+      "description": "Port Mappings",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this port mapping",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Delete this port mapping"
+          "responseType": "xdsl.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.PortMapping",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.PortMapping"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.PortMapping",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "xdsl.PortMapping",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Port Mappings"
+      "path": "/xdsl/{serviceName}/modem/portMappings/{name}"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/reboot",
+      "description": "reboot operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Reboot the modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "todoDate",
               "dataType": "datetime",
-              "paramType": "body",
+              "description": "Date when the reboot will start",
               "fullType": "datetime",
-              "required": false,
-              "description": "Date when the reboot will start"
+              "name": "todoDate",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Reboot the modem"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "reboot operations"
+      "path": "/xdsl/{serviceName}/modem/reboot"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/reconfigureVoip",
+      "description": "reconfigureVoip operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Reconfigure voip line on modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Reconfigure voip line on modem"
+          "responseType": "void"
         }
       ],
-      "description": "reconfigureVoip operations"
+      "path": "/xdsl/{serviceName}/modem/reconfigureVoip"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/refreshConnectedDevices",
+      "description": "refreshConnectedDevices operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Refresh the list of connected devices on the modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Refresh the list of connected devices on the modem"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "refreshConnectedDevices operations"
+      "path": "/xdsl/{serviceName}/modem/refreshConnectedDevices"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/reset",
+      "description": "reset operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Reset the modem to its default configuration",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "resetOvhConfig",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Reset configuration stored in OVH databases",
               "fullType": "boolean",
-              "required": false,
-              "description": "Reset configuration stored in OVH databases"
+              "name": "resetOvhConfig",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Reset the modem to its default configuration"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "reset operations"
+      "path": "/xdsl/{serviceName}/modem/reset"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/resetPortMappingConfig",
+      "description": "resetPortMappingConfig operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove all the current port mapping rules",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Remove all the current port mapping rules"
+          "responseType": "void"
         }
       ],
-      "description": "resetPortMappingConfig operations"
+      "path": "/xdsl/{serviceName}/modem/resetPortMappingConfig"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/retrieveInfo",
+      "description": "retrieveInfo operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "get general Modem information",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<xdsl.ModemInfo>",
-          "noAuthentication": false,
-          "description": "get general Modem information"
+          "responseType": "xdsl.AsyncTask<xdsl.ModemInfo>"
         }
       ],
-      "description": "retrieveInfo operations"
+      "path": "/xdsl/{serviceName}/modem/retrieveInfo"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/sipAlg",
+      "description": "sipAlg operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the status of sip alg service on modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "noAuthentication": false,
-          "description": "Get the status of sip alg service on modem"
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the status of the sip alg service on modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "xdsl.ServiceStatusEnum",
+              "description": "the new status of the sip alg service",
+              "fullType": "xdsl.ServiceStatusEnum",
               "name": "sipAlg",
-              "dataType": "xdsl.ServiceStatusEnum",
               "paramType": "body",
-              "fullType": "xdsl.ServiceStatusEnum",
-              "required": true,
-              "description": "the new status of the sip alg service"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Change the status of the sip alg service on modem"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "sipAlg operations"
+      "path": "/xdsl/{serviceName}/modem/sipAlg"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/upnp",
+      "description": "upnp operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the status of the Upnp on modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.ServiceStatusEnum",
-          "noAuthentication": false,
-          "description": "Get the status of the Upnp on modem"
+          "responseType": "xdsl.ServiceStatusEnum"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the status of the Upnp on modem",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "upnp",
               "dataType": "xdsl.ServiceStatusEnum",
-              "paramType": "body",
+              "description": "the new status of the upnp service",
               "fullType": "xdsl.ServiceStatusEnum",
-              "required": true,
-              "description": "the new status of the upnp service"
+              "name": "upnp",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Change the status of the Upnp on modem"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "upnp operations"
+      "path": "/xdsl/{serviceName}/modem/upnp"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/wifi",
+      "description": "List the xdsl.WLAN objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of WLANs on this modem",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of WLANs on this modem"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the xdsl.WLAN objects"
+      "path": "/xdsl/{serviceName}/modem/wifi"
     },
     {
-      "path": "/xdsl/{serviceName}/modem/wifi/{wifiName}",
+      "description": "WLAN Configuration of the Modem",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Wifi name",
+              "fullType": "string",
               "name": "wifiName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Wifi name"
+              "required": true
             }
           ],
-          "responseType": "xdsl.WLAN",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.WLAN"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.WLAN",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "xdsl.WLAN",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Wifi name",
+              "fullType": "string",
               "name": "wifiName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Wifi name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "WLAN Configuration of the Modem"
+      "path": "/xdsl/{serviceName}/modem/wifi/{wifiName}"
     },
     {
-      "path": "/xdsl/{serviceName}/monitoringNotifications",
+      "description": "List the xdsl.MonitoringNotification objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List the notifications for this access",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "List the notifications for this access"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a notification",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The SMS account which will be debited for each sent SMS, if the type is sms",
               "fullType": "string",
-              "required": false,
-              "description": "The e-mail address, if type is mail"
-            },
-            {
-              "name": "frequency",
-              "dataType": "xdsl.monitoringNotifications.FrequencyEnum",
-              "paramType": "body",
-              "fullType": "xdsl.monitoringNotifications.FrequencyEnum",
-              "required": true,
-              "description": ""
-            },
-            {
               "name": "smsAccount",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The SMS account which will be debited for each sent SMS, if the type is sms"
+              "required": false
             },
             {
-              "name": "type",
+              "dataType": "string",
+              "description": "The e-mail address, if type is mail",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "xdsl.monitoringNotifications.TypeEnum",
-              "paramType": "body",
+              "description": "",
               "fullType": "xdsl.monitoringNotifications.TypeEnum",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "downThreshold",
-              "dataType": "long",
+              "name": "type",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "The number of seconds the access has to be down to trigger the alert"
+              "required": true
             },
             {
-              "name": "phone",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The phone number, if type is sms"
-            },
-            {
-              "name": "allowIncident",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Whether or not to allow notifications concerning generic incidents",
               "fullType": "boolean",
-              "required": false,
-              "description": "Whether or not to allow notifications concerning generic incidents"
+              "name": "allowIncident",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The phone number, if type is sms",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "phone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "xdsl.monitoringNotifications.FrequencyEnum",
+              "description": "",
+              "fullType": "xdsl.monitoringNotifications.FrequencyEnum",
+              "name": "frequency",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The number of seconds the access has to be down to trigger the alert",
+              "fullType": "long",
+              "name": "downThreshold",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.MonitoringNotification",
-          "noAuthentication": false,
-          "description": "Add a notification"
+          "responseType": "xdsl.MonitoringNotification"
         }
       ],
-      "description": "List the xdsl.MonitoringNotification objects"
+      "path": "/xdsl/{serviceName}/monitoringNotifications"
     },
     {
-      "path": "/xdsl/{serviceName}/monitoringNotifications/{id}",
+      "description": "Defines where and how the notifications will be sent",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this notification",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete this notification"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.MonitoringNotification",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.MonitoringNotification"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "xdsl.MonitoringNotification",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "xdsl.MonitoringNotification",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Defines where and how the notifications will be sent"
-    },
-    {
-      "path": "/xdsl/{serviceName}/orderFollowup",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "xdsl.orderFollowup.Step[]",
-          "noAuthentication": false,
-          "description": "Get the status of the order"
+          "responseType": "void"
         }
       ],
-      "description": "orderFollowup operations"
+      "path": "/xdsl/{serviceName}/monitoringNotifications/{id}"
     },
     {
-      "path": "/xdsl/{serviceName}/orderMeeting",
+      "description": "orderFollowup operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
+          "description": "Get the status of the order",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "uiCode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Meeting ui code ( code linked to the meeting returned by POST /xdsl/{serviceName}/orderMeetings )"
-            },
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.orderFollowup.Step[]"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/orderFollowup"
+    },
+    {
+      "description": "orderMeeting operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Book a meeting and relaunch order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
             {
+              "dataType": "datetime",
+              "description": "Meeting start date",
+              "fullType": "datetime",
               "name": "startDate",
-              "dataType": "datetime",
               "paramType": "body",
-              "fullType": "datetime",
-              "required": true,
-              "description": "Meeting start date"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Meeting ui code ( code linked to the meeting returned by POST /xdsl/{serviceName}/orderMeetings )",
+              "fullType": "string",
+              "name": "uiCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Meeting end date",
+              "fullType": "datetime",
               "name": "endDate",
-              "dataType": "datetime",
               "paramType": "body",
-              "fullType": "datetime",
-              "required": true,
-              "description": "Meeting end date"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Book a meeting and relaunch order"
+          "responseType": "void"
         }
       ],
-      "description": "orderMeeting operations"
+      "path": "/xdsl/{serviceName}/orderMeeting"
     },
     {
-      "path": "/xdsl/{serviceName}/pendingAction",
+      "description": "Scheduled action before the next renewal of the service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.PendingAction",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "xdsl.PendingAction"
         }
       ],
-      "description": "Scheduled action before the next renewal of the service"
+      "path": "/xdsl/{serviceName}/pendingAction"
     },
     {
-      "path": "/xdsl/{serviceName}/radiusConnectionLogs",
+      "description": "radiusConnectionLogs operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List the radius connection logs",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.RadiusConnectionLog[]",
-          "noAuthentication": false,
-          "description": "List the radius connection logs"
+          "responseType": "xdsl.RadiusConnectionLog[]"
         }
       ],
-      "description": "radiusConnectionLogs operations"
+      "path": "/xdsl/{serviceName}/radiusConnectionLogs"
     },
     {
-      "path": "/xdsl/{serviceName}/requestPPPLoginMail",
+      "description": "requestPPPLoginMail operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Renew PPP password and send the PPP login informations to the e-mail of the nicAdmin",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Renew PPP password and send the PPP login informations to the e-mail of the nicAdmin"
+          "responseType": "void"
         }
       ],
-      "description": "requestPPPLoginMail operations"
+      "path": "/xdsl/{serviceName}/requestPPPLoginMail"
     },
     {
-      "path": "/xdsl/{serviceName}/requestTotalDeconsolidation",
+      "description": "requestTotalDeconsolidation operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Switch this access to total deconsolidation",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "noPortability",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Do not port the number"
-            },
-            {
+              "dataType": "string",
+              "description": "A token to prove the ownership of the line number, needed to port the number",
+              "fullType": "string",
               "name": "rio",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "A token to prove the ownership of the line number, needed to port the number"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "boolean",
+              "description": "Do not port the number",
+              "fullType": "boolean",
+              "name": "noPortability",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Switch this access to total deconsolidation"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "requestTotalDeconsolidation operations"
+      "path": "/xdsl/{serviceName}/requestTotalDeconsolidation"
     },
     {
-      "path": "/xdsl/{serviceName}/resiliate",
+      "description": "resiliate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Resiliate the access",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "resiliationDate",
               "dataType": "datetime",
-              "paramType": "body",
+              "description": "The desired resiliation date",
               "fullType": "datetime",
-              "required": false,
-              "description": "The desired resiliation date"
+              "name": "resiliationDate",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "resiliationSurvey",
               "dataType": "xdsl.ResiliationSurvey",
-              "paramType": "body",
+              "description": "Comment about resiliation reasons",
               "fullType": "xdsl.ResiliationSurvey",
-              "required": true,
-              "description": "Comment about resiliation reasons"
+              "name": "resiliationSurvey",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.ResiliationFollowUpDetail",
-          "noAuthentication": false,
-          "description": "Resiliate the access"
+          "responseType": "xdsl.ResiliationFollowUpDetail"
         }
       ],
-      "description": "resiliate operations"
+      "path": "/xdsl/{serviceName}/resiliate"
     },
     {
-      "path": "/xdsl/{serviceName}/resiliationFollowup",
+      "description": "resiliationFollowup operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get information about the ongoing resiliation",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.ResiliationFollowUpDetail",
-          "noAuthentication": false,
-          "description": "Get information about the ongoing resiliation"
+          "responseType": "xdsl.ResiliationFollowUpDetail"
         }
       ],
-      "description": "resiliationFollowup operations"
+      "path": "/xdsl/{serviceName}/resiliationFollowup"
     },
     {
-      "path": "/xdsl/{serviceName}/resiliationTerms",
+      "description": "resiliationTerms operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get resiliation terms",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "resiliationDate",
               "dataType": "datetime",
-              "paramType": "query",
+              "description": "The desired resiliation date",
               "fullType": "datetime",
-              "required": false,
-              "description": "The desired resiliation date"
+              "name": "resiliationDate",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "xdsl.ResiliationTerms",
-          "noAuthentication": false,
-          "description": "Get resiliation terms"
+          "responseType": "xdsl.ResiliationTerms"
         }
       ],
-      "description": "resiliationTerms operations"
+      "path": "/xdsl/{serviceName}/resiliationTerms"
     },
     {
-      "path": "/xdsl/{serviceName}/rma",
+      "description": "List the telephony.Rma objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return Merchandise Authorisation associated",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Return Merchandise Authorisation associated"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the telephony.Rma objects"
+      "path": "/xdsl/{serviceName}/rma"
     },
     {
-      "path": "/xdsl/{serviceName}/rma/{id}",
+      "description": "Current Return Merchandise Authorisation",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Cancel the rma",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Id"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Cancel the rma"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Id"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "telephony.Rma",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "telephony.Rma"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "telephony.Rma",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "telephony.Rma",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Id",
+              "fullType": "string",
               "name": "id",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Current Return Merchandise Authorisation"
+      "path": "/xdsl/{serviceName}/rma/{id}"
     },
     {
-      "path": "/xdsl/{serviceName}/searchOrderMeetings",
+      "description": "searchOrderMeetings operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Search for available line creation meeting time slots, for order only",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "xdsl.AsyncTask<connectivity.eligibility.Meetings>",
-          "noAuthentication": false,
-          "description": "Search for available line creation meeting time slots, for order only"
+          "responseType": "xdsl.AsyncTask<connectivity.eligibility.Meetings>"
         }
       ],
-      "description": "searchOrderMeetings operations"
+      "path": "/xdsl/{serviceName}/searchOrderMeetings"
     },
     {
-      "path": "/xdsl/{serviceName}/sendOrderToProvider",
+      "description": "sendOrderToProvider operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Unlock order in \"waitingCustomer\" status. It only concerns orders whose modem is sent before anything have been forwarded to our provider",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Unlock order in \"waitingCustomer\" status. It only concerns orders whose modem is sent before anything have been forwarded to our provider"
+          "responseType": "void"
         }
       ],
-      "description": "sendOrderToProvider operations"
+      "path": "/xdsl/{serviceName}/sendOrderToProvider"
     },
     {
-      "path": "/xdsl/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/xdsl/{serviceName}/serviceInfos"
     },
     {
-      "path": "/xdsl/{serviceName}/statistics",
+      "description": "statistics operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get various statistics about this access",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "type",
-              "dataType": "xdsl.AccessStatisticsTypeEnum",
-              "paramType": "query",
-              "fullType": "xdsl.AccessStatisticsTypeEnum",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "period",
               "dataType": "xdsl.StatisticsPeriodEnum",
-              "paramType": "query",
+              "description": "",
               "fullType": "xdsl.StatisticsPeriodEnum",
-              "required": true,
-              "description": ""
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "xdsl.AccessStatisticsTypeEnum",
+              "description": "",
+              "fullType": "xdsl.AccessStatisticsTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "complexType.UnitAndValues<xdsl.TimestampAndValue>",
-          "noAuthentication": false,
-          "description": "Get various statistics about this access"
+          "responseType": "complexType.UnitAndValues<xdsl.TimestampAndValue>"
         }
       ],
-      "description": "statistics operations"
+      "path": "/xdsl/{serviceName}/statistics"
     },
     {
-      "path": "/xdsl/{serviceName}/tasks",
+      "description": "List the xdsl.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Tasks scheduled for this access",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "status",
               "dataType": "xdsl.TaskStatusEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "xdsl.TaskStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "name": "function",
-              "dataType": "string",
+              "name": "status",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of function property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks scheduled for this access"
-        }
-      ],
-      "description": "List the xdsl.Task objects"
-    },
-    {
-      "path": "/xdsl/{serviceName}/tasks/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": false
             },
             {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "dataType": "string",
+              "description": "Filter the value of function property (=)",
+              "fullType": "string",
+              "name": "function",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "xdsl.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "long[]"
         }
       ],
-      "description": "Describes the current status of a task"
+      "path": "/xdsl/{serviceName}/tasks"
     },
     {
-      "path": "/xdsl/{serviceName}/tasks/{id}/archive",
+      "description": "Describes the current status of a task",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the task in problem from the results"
+          "responseType": "xdsl.Task"
         }
       ],
-      "description": "archive operations"
+      "path": "/xdsl/{serviceName}/tasks/{id}"
     },
     {
-      "path": "/xdsl/{serviceName}/totalDeconsolidationTerms",
+      "description": "archive operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "xdsl.DeconsolidationTerms",
-          "noAuthentication": false,
-          "description": "Give the price to requestTotalDeconsolidation on the access"
-        }
-      ],
-      "description": "totalDeconsolidationTerms operations"
-    },
-    {
-      "path": "/xdsl/{serviceName}/updateInvalidOrMissingRio",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Delete the task in problem from the results",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "relaunchWithoutPortability",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/tasks/{id}/archive"
+    },
+    {
+      "description": "totalDeconsolidationTerms operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Give the price to requestTotalDeconsolidation on the access",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.DeconsolidationTerms"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/totalDeconsolidationTerms"
+    },
+    {
+      "description": "updateInvalidOrMissingRio operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update RIO, or disable portability, for order in error because of missing or invalid RIO",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Do not set RIO, and relaunch order without portability",
               "fullType": "boolean",
-              "required": true,
-              "description": "Do not set RIO, and relaunch order without portability"
-            },
-            {
-              "name": "rio",
-              "dataType": "string",
+              "name": "relaunchWithoutPortability",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "RIO number for portability"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "RIO number for portability",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "rio",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Update RIO, or disable portability, for order in error because of missing or invalid RIO"
+          "responseType": "void"
         }
       ],
-      "description": "updateInvalidOrMissingRio operations"
+      "path": "/xdsl/{serviceName}/updateInvalidOrMissingRio"
     }
   ],
-  "resourcePath": "/xdsl",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "complexType.UnitAndValue<T>": {
-      "id": "UnitAndValue",
-      "namespace": "complexType",
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "complexType.UnitAndValues<T>": {
-      "id": "UnitAndValues",
-      "namespace": "complexType",
       "description": "A value set tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValues",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "values": {
-          "type": "T[]",
-          "fullType": "T[]",
           "canBeNull": false,
+          "fullType": "T[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T[]"
         }
       }
     },
     "connectivity.eligibility.MeetingSlot": {
+      "description": "Represents a time slot for a meeting",
       "id": "MeetingSlot",
       "namespace": "connectivity.eligibility",
-      "description": "Represents a time slot for a meeting",
       "properties": {
         "endDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "End date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Start date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "uiCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "An opaque string that represents an intervention unit",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "connectivity.eligibility.Meetings": {
+      "description": "List of available meeting time slots",
       "id": "Meetings",
       "namespace": "connectivity.eligibility",
-      "description": "List of available meeting time slots",
       "properties": {
         "canBookFakeMeeting": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not it is possible to book a fake meeting",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "meetingSlots": {
-          "type": "connectivity.eligibility.MeetingSlot[]",
-          "fullType": "connectivity.eligibility.MeetingSlot[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A time slot",
-          "required": true
+          "fullType": "connectivity.eligibility.MeetingSlot[]",
+          "readOnly": false,
+          "required": true,
+          "type": "connectivity.eligibility.MeetingSlot[]"
         }
       }
     },
     "coreTypes.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "coreTypes",
       "description": "ISO country codes",
       "enum": [
         "ac",
@@ -4891,21 +4890,21 @@ export const schema: Schema = {
         "zm",
         "zw"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "coreTypes"
     },
     "coreTypes.IpVersionEnum": {
-      "id": "IpVersionEnum",
-      "namespace": "coreTypes",
       "description": "Ip versions",
       "enum": [
         "v4",
         "v6"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpVersionEnum",
+      "namespace": "coreTypes"
     },
     "email.pro.ObjectStateEnum": {
-      "id": "ObjectStateEnum",
-      "namespace": "email.pro",
       "description": "Current object state",
       "enum": [
         "creating",
@@ -4916,39 +4915,39 @@ export const schema: Schema = {
         "suspending",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ObjectStateEnum",
+      "namespace": "email.pro"
     },
     "order.Contract": {
+      "description": "A contract",
       "id": "Contract",
       "namespace": "order",
-      "description": "A contract",
       "properties": {
         "content": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
+          "fullType": "text",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "text"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.CurrencyCodeEnum": {
-      "id": "CurrencyCodeEnum",
-      "namespace": "order",
       "enum": [
         "AUD",
         "CAD",
@@ -4965,102 +4964,102 @@ export const schema: Schema = {
         "XOF",
         "points"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
     },
     "order.Order": {
+      "description": "An order",
       "id": "Order",
       "namespace": "order",
-      "description": "An order",
       "properties": {
         "contracts": {
-          "type": "order.Contract[]",
-          "fullType": "order.Contract[]",
           "canBeNull": false,
+          "fullType": "order.Contract[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Contract[]"
         },
         "details": {
-          "type": "order.OrderDetail[]",
-          "fullType": "order.OrderDetail[]",
           "canBeNull": false,
+          "fullType": "order.OrderDetail[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.OrderDetail[]"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "prices": {
-          "type": "order.OrderPrices",
-          "fullType": "order.OrderPrices",
           "canBeNull": false,
+          "fullType": "order.OrderPrices",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.OrderPrices"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "order.OrderDetail": {
+      "description": "Detail of an order",
       "id": "OrderDetail",
       "namespace": "order",
-      "description": "Detail of an order",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "detailType": {
-          "type": "order.OrderDetailTypeEnum",
-          "fullType": "order.OrderDetailTypeEnum",
           "canBeNull": true,
+          "fullType": "order.OrderDetailTypeEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "order.OrderDetailTypeEnum"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "quantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "totalPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "unitPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "order.OrderDetailTypeEnum": {
-      "id": "OrderDetailTypeEnum",
-      "namespace": "order",
       "description": "Product type of item in order",
       "enum": [
         "ACCESSORY",
@@ -5084,114 +5083,114 @@ export const schema: Schema = {
         "TRANSFER",
         "VOUCHER"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderDetailTypeEnum",
+      "namespace": "order"
     },
     "order.OrderPrices": {
+      "description": "Prices of an order",
       "id": "OrderPrices",
       "namespace": "order",
-      "description": "Prices of an order",
       "properties": {
         "tax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "withTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "withoutTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "order.Price": {
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
-      "description": "Price with it's currency and textual representation",
       "properties": {
         "currencyCode": {
-          "type": "order.CurrencyCodeEnum",
-          "fullType": "order.CurrencyCodeEnum",
           "canBeNull": false,
+          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.CurrencyCodeEnum"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -5202,11 +5201,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -5214,412 +5213,412 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "spare.xdsl.XdslSpare": {
+      "description": "Spare properties",
       "id": "XdslSpare",
       "namespace": "spare.xdsl",
-      "description": "Spare properties",
       "properties": {
         "brand": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Modem brand model",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "macAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Mac address",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "telephony.Contact": {
+      "description": "Contact informations structure",
       "id": "Contact",
       "namespace": "telephony",
-      "description": "Contact informations structure",
       "properties": {
         "address": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact address",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact city",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "country": {
-          "type": "coreTypes.CountryEnum",
-          "fullType": "coreTypes.CountryEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact country",
-          "required": false
+          "fullType": "coreTypes.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "coreTypes.CountryEnum"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "firstname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact firstname",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisation": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact organisation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "phone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact phone",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "zip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Contact zip",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "telephony.Rma": {
+      "description": "Current Return Merchandise Authorisation",
       "id": "Rma",
       "namespace": "telephony",
-      "description": "Current Return Merchandise Authorisation",
       "properties": {
         "cancellable": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Is the RMA cancellable?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "creationDatetime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation datetime of the return merchandise authorisation ticket",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "equipmentReference": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Merchandise reference",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Return merchandise authorisation identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "newMerchandise": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "New merchandise brand in case of exchange",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "offerTypeNew": {
-          "type": "telephony.RmaOfferTypeEnum",
-          "fullType": "telephony.RmaOfferTypeEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Offer type of the new merchandise in case of exchange",
-          "required": false
+          "fullType": "telephony.RmaOfferTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "telephony.RmaOfferTypeEnum"
         },
         "offerTypeOld": {
-          "type": "telephony.RmaOfferTypeEnum",
-          "fullType": "telephony.RmaOfferTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Offer type of the return merchandise",
-          "required": true
+          "fullType": "telephony.RmaOfferTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "telephony.RmaOfferTypeEnum"
         },
         "process": {
-          "type": "telephony.RmaReplaceTypeEnum",
-          "fullType": "telephony.RmaReplaceTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Process determined for merchandise returned",
-          "required": true
+          "fullType": "telephony.RmaReplaceTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "telephony.RmaReplaceTypeEnum"
         },
         "receptionDatetime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Reception datetime of the return merchandise authorisation ticket",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "shippingContact": {
-          "type": "telephony.Contact",
-          "fullType": "telephony.Contact",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contact information related to the delivery shipping in case of exchange",
-          "required": true
+          "fullType": "telephony.Contact",
+          "readOnly": false,
+          "required": true,
+          "type": "telephony.Contact"
         },
         "status": {
-          "type": "telephony.RmaStatusEnum",
-          "fullType": "telephony.RmaStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Return merchandise authorisation step",
-          "required": true
+          "fullType": "telephony.RmaStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "telephony.RmaStatusEnum"
         },
         "steps": {
-          "type": "telephony.RmaStep[]",
-          "fullType": "telephony.RmaStep[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates the current status of the RMA with a list of steps",
-          "required": true
+          "fullType": "telephony.RmaStep[]",
+          "readOnly": true,
+          "required": true,
+          "type": "telephony.RmaStep[]"
         },
         "terminationDatetime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Termination datetime of the return merchandise authorisation ticket",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "type": {
-          "type": "telephony.RmaTypeEnum",
-          "fullType": "telephony.RmaTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Typology process of merchandise return",
-          "required": true
+          "fullType": "telephony.RmaTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "telephony.RmaTypeEnum"
         }
       }
     },
     "telephony.RmaOfferTypeEnum": {
-      "id": "RmaOfferTypeEnum",
-      "namespace": "telephony",
       "description": "Return merchandise authorisation offer type",
       "enum": [
         "deposit",
         "loan",
         "purchase"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RmaOfferTypeEnum",
+      "namespace": "telephony"
     },
     "telephony.RmaReplaceTypeEnum": {
-      "id": "RmaReplaceTypeEnum",
-      "namespace": "telephony",
       "description": "Return merchandise authorisation type",
       "enum": [
         "changePhone",
         "phoneRestitution",
         "undefined"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RmaReplaceTypeEnum",
+      "namespace": "telephony"
     },
     "telephony.RmaStatusEnum": {
-      "id": "RmaStatusEnum",
-      "namespace": "telephony",
       "description": "Return merchandise authorisation step",
       "enum": [
         "closed",
         "open",
         "received"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RmaStatusEnum",
+      "namespace": "telephony"
     },
     "telephony.RmaStep": {
+      "description": "Informations related to the current RMA step status",
       "id": "RmaStep",
       "namespace": "telephony",
-      "description": "Informations related to the current RMA step status",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A brief description of the step",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The date when this step was done",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "infos": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Additional informations about the step",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "telephony.RmaStepNameEnum",
-          "fullType": "telephony.RmaStepNameEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The name of the RMA step",
-          "required": true
+          "fullType": "telephony.RmaStepNameEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "telephony.RmaStepNameEnum"
         },
         "status": {
-          "type": "telephony.RmaStepStatusEnum",
-          "fullType": "telephony.RmaStepStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of the step",
-          "required": true
+          "fullType": "telephony.RmaStepStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "telephony.RmaStepStatusEnum"
         }
       }
     },
     "telephony.RmaStepNameEnum": {
-      "id": "RmaStepNameEnum",
-      "namespace": "telephony",
       "description": "RMA step names",
       "enum": [
         "dispatchJustification",
@@ -5630,21 +5629,21 @@ export const schema: Schema = {
         "parcelValidation",
         "validation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RmaStepNameEnum",
+      "namespace": "telephony"
     },
     "telephony.RmaStepStatusEnum": {
-      "id": "RmaStepStatusEnum",
-      "namespace": "telephony",
       "description": "Status of the RMA step",
       "enum": [
         "done",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RmaStepStatusEnum",
+      "namespace": "telephony"
     },
     "telephony.RmaTypeEnum": {
-      "id": "RmaTypeEnum",
-      "namespace": "telephony",
       "description": "Return merchandise authorisation type",
       "enum": [
         "after sale equipment service exchange",
@@ -5659,317 +5658,317 @@ export const schema: Schema = {
         "termination",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RmaTypeEnum",
+      "namespace": "telephony"
     },
     "xdsl.Access": {
+      "description": "XDSL Access",
       "id": "Access",
       "namespace": "xdsl",
-      "description": "XDSL Access",
       "properties": {
         "accessName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "accessType": {
-          "type": "xdsl.DslTypeEnum",
-          "fullType": "xdsl.DslTypeEnum",
           "canBeNull": false,
+          "fullType": "xdsl.DslTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "xdsl.DslTypeEnum"
         },
         "address": {
-          "type": "xdsl.AddressDetail",
-          "fullType": "xdsl.AddressDetail",
           "canBeNull": false,
+          "fullType": "xdsl.AddressDetail",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "xdsl.AddressDetail"
         },
         "capabilities": {
-          "type": "xdsl.AccessCapabilities",
-          "fullType": "xdsl.AccessCapabilities",
           "canBeNull": false,
+          "fullType": "xdsl.AccessCapabilities",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "xdsl.AccessCapabilities"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "ipv6Enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "lnsRateLimit": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Rate limit on the LNS in kbps - Only available if canApplyLnsRateLimit capability is set to true - Must be a multiple of 64 - Min value 64 / Max value 100032",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "monitoring": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not this access is monitored",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "nra": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "packName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Pack name, if access is in a pack",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "pairsNumber": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "role": {
-          "type": "xdsl.AccessRoleEnum",
-          "fullType": "xdsl.AccessRoleEnum",
           "canBeNull": false,
+          "fullType": "xdsl.AccessRoleEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "xdsl.AccessRoleEnum"
         },
         "status": {
-          "type": "xdsl.AccessStatusEnum",
-          "fullType": "xdsl.AccessStatusEnum",
           "canBeNull": false,
+          "fullType": "xdsl.AccessStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "xdsl.AccessStatusEnum"
         }
       }
     },
     "xdsl.AccessCapabilities": {
+      "description": "Describe the capabilities of the Access",
       "id": "AccessCapabilities",
       "namespace": "xdsl",
-      "description": "Describe the capabilities of the Access",
       "properties": {
         "canApplyLnsRateLimit": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangeDslamProfile": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangeLns": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canGetRadiusConnectionLogs": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canResetDslamPort": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "hasDslamPort": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "xdsl.AccessDiagnostic": {
+      "description": "Diagnostic of the access",
       "id": "AccessDiagnostic",
       "namespace": "xdsl",
-      "description": "Diagnostic of the access",
       "properties": {
         "capabilities": {
-          "type": "xdsl.AccessDiagnosticCapabilities",
-          "fullType": "xdsl.AccessDiagnosticCapabilities",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Available tests for this access",
-          "required": true
+          "fullType": "xdsl.AccessDiagnosticCapabilities",
+          "readOnly": true,
+          "required": true,
+          "type": "xdsl.AccessDiagnosticCapabilities"
         },
         "diagnosticTime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Datime of the diagnostic",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "incident": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Is there an ongoing genericIncident on the access ?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "isActiveOnLns": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Is the access active on its primary or secondary LNS",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "isModemConnected": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Is the modem connected ?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "lineDetails": {
-          "type": "xdsl.LineDiagnostic[]",
-          "fullType": "xdsl.LineDiagnostic[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Test details by line",
-          "required": false
+          "fullType": "xdsl.LineDiagnostic[]",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.LineDiagnostic[]"
         },
         "maintenance": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Is there an ongoing scheduled maintenance by operator on the access ?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "ping": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Does the access ping ?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "remaining": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Remaining number of diagnostic for this access",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "xdsl.AccessDiagnosticCapabilities": {
+      "description": "Describe the capabilities of the access diagnostic",
       "id": "AccessDiagnosticCapabilities",
       "namespace": "xdsl",
-      "description": "Describe the capabilities of the access diagnostic",
       "properties": {
         "incident": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "isActiveOnLns": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "isModemConnected": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "lineTest": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "ping": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "proposedProfileId": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "sync": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "xdsl.AccessRoleEnum": {
-      "id": "AccessRoleEnum",
-      "namespace": "xdsl",
       "description": "Available access roles",
       "enum": [
         "backup",
         "main"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AccessRoleEnum",
+      "namespace": "xdsl"
     },
     "xdsl.AccessStatisticsTypeEnum": {
-      "id": "AccessStatisticsTypeEnum",
-      "namespace": "xdsl",
       "description": "Various types of statisctics available for the access.",
       "enum": [
         "ping",
         "traffic:download",
         "traffic:upload"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AccessStatisticsTypeEnum",
+      "namespace": "xdsl"
     },
     "xdsl.AccessStatusEnum": {
-      "id": "AccessStatusEnum",
-      "namespace": "xdsl",
       "description": "Status of the access",
       "enum": [
         "active",
@@ -5981,363 +5980,363 @@ export const schema: Schema = {
         "slamming",
         "upgradeOffer"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AccessStatusEnum",
+      "namespace": "xdsl"
     },
     "xdsl.AddressDetail": {
+      "description": "All components of an address",
       "id": "AddressDetail",
       "namespace": "xdsl",
-      "description": "All components of an address",
       "properties": {
         "building": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "door": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "floor": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "inseeCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Identifier of the city",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "numberStreet": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "residence": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "rivoliCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Identifier of the street",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "stairs": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "street": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "zipCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.AntiSpam": {
+      "description": "Spams detected from xdsl access",
       "id": "AntiSpam",
       "namespace": "xdsl",
-      "description": "Spams detected from xdsl access",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Detection date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "IP which spam",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "lastSpamDetected": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last spam detection date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "xdsl.antiSpam.AntiSpamStatusEnum",
-          "fullType": "xdsl.antiSpam.AntiSpamStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "AntiSpam status",
-          "required": true
+          "fullType": "xdsl.antiSpam.AntiSpamStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "xdsl.antiSpam.AntiSpamStatusEnum"
         }
       }
     },
     "xdsl.AsyncTask<T>": {
-      "id": "AsyncTask",
-      "namespace": "xdsl",
       "description": "Async task",
       "generics": [
         "T"
       ],
+      "id": "AsyncTask",
+      "namespace": "xdsl",
       "properties": {
         "error": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Error",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "result": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Result of the call",
-          "required": false
+          "fullType": "T",
+          "readOnly": false,
+          "required": false,
+          "type": "T"
         },
         "status": {
-          "type": "xdsl.AsyncTaskStatusEnum",
-          "fullType": "xdsl.AsyncTaskStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of the call",
-          "required": true
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.AsyncTaskStatusEnum"
         }
       }
     },
     "xdsl.AsyncTaskArray<T>": {
-      "id": "AsyncTaskArray",
-      "namespace": "xdsl",
       "description": "Async task array",
       "generics": [
         "T"
       ],
+      "id": "AsyncTaskArray",
+      "namespace": "xdsl",
       "properties": {
         "error": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Error",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "result": {
-          "type": "T[]",
-          "fullType": "T[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Result of the call",
-          "required": false
+          "fullType": "T[]",
+          "readOnly": false,
+          "required": false,
+          "type": "T[]"
         },
         "status": {
-          "type": "xdsl.AsyncTaskStatusEnum",
-          "fullType": "xdsl.AsyncTaskStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of the call",
-          "required": true
+          "fullType": "xdsl.AsyncTaskStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.AsyncTaskStatusEnum"
         }
       }
     },
     "xdsl.AsyncTaskStatusEnum": {
-      "id": "AsyncTaskStatusEnum",
-      "namespace": "xdsl",
       "description": "AsyncTask status",
       "enum": [
         "error",
         "ok",
         "pending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AsyncTaskStatusEnum",
+      "namespace": "xdsl"
     },
     "xdsl.DHCP": {
+      "description": "DHCP Configuration of the Modem",
       "id": "DHCP",
       "namespace": "xdsl",
-      "description": "DHCP Configuration of the Modem",
       "properties": {
         "defaultGateway": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The default gateway to be given to the clients",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "dhcpName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the DHCP",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "domainName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Domain name provided to the clients",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "endAddress": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Last address of the pool assigned by the DHCP",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "leaseTime": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Lease time in seconds of client assigned address (-1 means infinite)",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "primaryDNS": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Primary DNS servers to be given to the clients",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "secondaryDNS": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Secondary DNS servers to be given to the clients",
-          "required": false
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
         },
         "serverEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "State of the DHCP server of the modem",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "startAddress": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "First address of the pool assigned by the DHCP",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "subnetMask": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The subnet mask given to the clients",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ID of the ongoing todo (NULL if none)",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "xdsl.DHCPStaticAddress": {
+      "description": "DHCP Static Address",
       "id": "DHCPStaticAddress",
       "namespace": "xdsl",
-      "description": "DHCP Static Address",
       "properties": {
         "IPAddress": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The IP address of the device",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "MACAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The MAC address of the device",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the DHCP Static lease",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ID of the ongoing todo (NULL if none)",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "xdsl.DeconsolidationEnum": {
-      "id": "DeconsolidationEnum",
-      "namespace": "xdsl",
       "description": "Deconsolidation of the line.",
       "enum": [
         "createNeighbour",
@@ -6346,129 +6345,129 @@ export const schema: Schema = {
         "partial",
         "total"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DeconsolidationEnum",
+      "namespace": "xdsl"
     },
     "xdsl.DeconsolidationTerms": {
+      "description": "Show the deconsolidation terms",
       "id": "DeconsolidationTerms",
       "namespace": "xdsl",
-      "description": "Show the deconsolidation terms",
       "properties": {
         "engagement": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Duration of month the access will be engaged",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "monthlyPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "New abo price after the deconsolidation",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price to pay",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "xdsl.DeviceModemInfo": {
+      "description": "Describe device informations of a Modem",
       "id": "DeviceModemInfo",
       "namespace": "xdsl",
-      "description": "Describe device informations of a Modem",
       "properties": {
         "brand": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Modem brand",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Modem ip address",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": true,
+          "type": "ipv4"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Time of last information refresh",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "macAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Modem mac address",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "model": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Modem type of model",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "oui": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Organizational Unique Identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "overEthernet": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Protocol used for connection",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "pppLogin": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "login used for ppp protocol",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "serial": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Modem serial key",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "softVersion": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Software Version",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.DslTypeEnum": {
-      "id": "DslTypeEnum",
-      "namespace": "xdsl",
       "description": "Possible DSL technologies",
       "enum": [
         "adsl",
@@ -6476,517 +6475,519 @@ export const schema: Schema = {
         "sdsl",
         "vdsl"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DslTypeEnum",
+      "namespace": "xdsl"
     },
     "xdsl.DslamLineProfile": {
+      "description": "Profile on the DSLAM",
       "id": "DslamLineProfile",
       "namespace": "xdsl",
-      "description": "Profile on the DSLAM",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "isCurrent": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.DslamPort": {
+      "description": "Information about the port on the DSLAM",
       "id": "DslamPort",
       "namespace": "xdsl",
-      "description": "Information about the port on the DSLAM",
       "properties": {
         "lastDesyncDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last time the port lost the synchronization",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastSyncDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last time the port synchronized",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "profile": {
-          "type": "xdsl.DslamLineProfile",
-          "fullType": "xdsl.DslamLineProfile",
           "canBeNull": true,
+          "fullType": "xdsl.DslamLineProfile",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "xdsl.DslamLineProfile"
         },
         "status": {
-          "type": "xdsl.DslamPortStatusEnum",
-          "fullType": "xdsl.DslamPortStatusEnum",
           "canBeNull": false,
+          "fullType": "xdsl.DslamPortStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "xdsl.DslamPortStatusEnum"
         }
       }
     },
     "xdsl.DslamPortLog": {
+      "description": "A message log from the DSLAM",
       "id": "DslamPortLog",
       "namespace": "xdsl",
-      "description": "A message log from the DSLAM",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "lastOccurrenceDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The last time this message occured",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "numberOfOccurrences": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The number of times this message occured between date and lastOccurrenceDate",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "xdsl.DslamPortStatusEnum": {
-      "id": "DslamPortStatusEnum",
-      "namespace": "xdsl",
       "description": "Different states of a DSLAM port",
       "enum": [
         "activated",
         "deactivated",
         "outofsync"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DslamPortStatusEnum",
+      "namespace": "xdsl"
     },
     "xdsl.ExtraIpRangeMove": {
+      "description": "Informations about the extra IP range during address move",
       "id": "ExtraIpRangeMove",
       "namespace": "xdsl",
-      "description": "Informations about the extra IP range during address move",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Date of the migration",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "ipRange": {
-          "type": "ipv4Block",
-          "fullType": "ipv4Block",
           "canBeNull": false,
-          "readOnly": false,
           "description": "IP range to migrate",
-          "required": true
+          "fullType": "ipv4Block",
+          "readOnly": false,
+          "required": true,
+          "type": "ipv4Block"
         },
         "moveTo": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Access where the IP range will be moved to",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.FaultRepairTimeEnum": {
-      "id": "FaultRepairTimeEnum",
-      "namespace": "xdsl",
       "description": "Maximum time needed to repair a landline",
       "enum": [
         "4HNO",
         "4HO",
         "NORMAL"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FaultRepairTimeEnum",
+      "namespace": "xdsl"
     },
     "xdsl.GtrEnum": {
-      "id": "GtrEnum",
-      "namespace": "xdsl",
       "description": "Gtr of the line.",
       "enum": [
         "4hno",
         "4ho",
         "none"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "GtrEnum",
+      "namespace": "xdsl"
     },
     "xdsl.IP": {
+      "description": "Informations about an IP address",
       "id": "IP",
       "namespace": "xdsl",
-      "description": "Informations about an IP address",
       "properties": {
         "dnsList": {
-          "type": "ip[]",
-          "fullType": "ip[]",
           "canBeNull": false,
+          "fullType": "ip[]",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "ip[]"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The IP address",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "range": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "xdsl.IpStatusEnum",
-          "fullType": "xdsl.IpStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "status of the IP",
-          "required": true
+          "fullType": "xdsl.IpStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "xdsl.IpStatusEnum"
         },
         "version": {
-          "type": "coreTypes.IpVersionEnum",
-          "fullType": "coreTypes.IpVersionEnum",
           "canBeNull": false,
+          "fullType": "coreTypes.IpVersionEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.IpVersionEnum"
         }
       }
     },
     "xdsl.Incident": {
+      "description": "Detected incident",
       "id": "Incident",
       "namespace": "xdsl",
-      "description": "Detected incident",
       "properties": {
         "comment": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
+          "fullType": "text",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "text"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Estimated start date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "departments": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Department list",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "endDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Estimated end date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ID of the incident",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "nra": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "NRA list",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "operators": {
-          "type": "xdsl.OperatorTypeEnum[]",
-          "fullType": "xdsl.OperatorTypeEnum[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Operator",
-          "required": true
+          "fullType": "xdsl.OperatorTypeEnum[]",
+          "readOnly": true,
+          "required": true,
+          "type": "xdsl.OperatorTypeEnum[]"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Task ID on travaux.ovh.com",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "xdsl.IpStatusEnum": {
-      "id": "IpStatusEnum",
-      "namespace": "xdsl",
       "description": "Status of an IP.",
       "enum": [
         "active",
         "close",
         "toDelete"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpStatusEnum",
+      "namespace": "xdsl"
     },
     "xdsl.LAN": {
+      "description": "LAN Configuration of the Modem",
       "id": "LAN",
       "namespace": "xdsl",
-      "description": "LAN Configuration of the Modem",
       "properties": {
         "IPAddress": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The IP address of the LAN interface of the modem",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "addressingType": {
-          "type": "xdsl.xdslModemConfig.AddressingTypeEnum",
-          "fullType": "xdsl.xdslModemConfig.AddressingTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "How the LAN interface of the modem is gettig its address",
-          "required": true
+          "fullType": "xdsl.xdslModemConfig.AddressingTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.xdslModemConfig.AddressingTypeEnum"
         },
         "lanName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the LAN",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "subnetMask": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The subnet mask of the LAN interface of the modem",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ID of the ongoing todo (NULL if none)",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "xdsl.LandlineConcentrationPoint": {
+      "description": "Infos about a Landline at the concentration point",
       "id": "LandlineConcentrationPoint",
       "namespace": "xdsl",
-      "description": "Infos about a Landline at the concentration point",
       "properties": {
         "lineHead": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Identifier of the head of the cable from the MDF",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "lineInitialSection": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Identifier of the section at the lineHead",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lineInitialSectionPair": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Identifier of the pair at the lineHead's lineInitialSection",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "xdsl.Line": {
+      "description": "Information about the physical copper line",
       "id": "Line",
       "namespace": "xdsl",
-      "description": "Information about the physical copper line",
       "properties": {
         "concentrationPoint": {
-          "type": "xdsl.LandlineConcentrationPoint",
-          "fullType": "xdsl.LandlineConcentrationPoint",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Data to identify the line at the concentration point",
-          "required": false
+          "fullType": "xdsl.LandlineConcentrationPoint",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.LandlineConcentrationPoint"
         },
         "deconsolidation": {
-          "type": "xdsl.DeconsolidationEnum",
-          "fullType": "xdsl.DeconsolidationEnum",
           "canBeNull": false,
+          "fullType": "xdsl.DeconsolidationEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "xdsl.DeconsolidationEnum"
         },
         "directDistribution": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": true,
           "description": "True if the line is directly wired on the DSLAM",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "distance": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Distance in meters from the DSLAM",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "faultRepairTime": {
-          "type": "xdsl.FaultRepairTimeEnum",
-          "fullType": "xdsl.FaultRepairTimeEnum",
           "canBeNull": false,
+          "fullType": "xdsl.FaultRepairTimeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "xdsl.FaultRepairTimeEnum"
         },
         "lineSectionsLength": {
-          "type": "xdsl.LineSectionLength[]",
-          "fullType": "xdsl.LineSectionLength[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Detailed information about the sections between the DSLAM and the telephone jack",
-          "required": true
+          "fullType": "xdsl.LineSectionLength[]",
+          "readOnly": true,
+          "required": true,
+          "type": "xdsl.LineSectionLength[]"
         },
         "mitigation": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Mitigation of the line in dB",
-          "required": true
+          "fullType": "double",
+          "readOnly": true,
+          "required": true,
+          "type": "double"
         },
         "number": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The number of the line",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "originalNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The number used to place the order. Null if the same as the current number.",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "portability": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Whether the line number has been ported to OVH, to be used with VoIP service",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "syncDown": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The download synchronisation on the DSLAM in Kbps",
-          "required": false
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
         },
         "syncUp": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The upload synchronisation on the DSLAM in Kbps",
-          "required": false
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
         }
       }
     },
     "xdsl.LineDiagnostic": {
+      "description": "Detailed line tests",
       "id": "LineDiagnostic",
       "namespace": "xdsl",
-      "description": "Detailed line tests",
       "properties": {
         "lineTest": {
-          "type": "xdsl.LineTestEnum",
-          "fullType": "xdsl.LineTestEnum",
           "canBeNull": true,
+          "fullType": "xdsl.LineTestEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "xdsl.LineTestEnum"
         },
         "lineTestTime": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "number": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "proposedProfileId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "sync": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         }
       }
     },
@@ -6995,26 +6996,24 @@ export const schema: Schema = {
       "namespace": "xdsl",
       "properties": {
         "diameter": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The diameter of this section in millimeters",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "length": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The length of this section in meters",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "xdsl.LineStatisticsTypeEnum": {
-      "id": "LineStatisticsTypeEnum",
-      "namespace": "xdsl",
       "description": "Various types of statisctics available for the line.",
       "enum": [
         "attenuation:download",
@@ -7024,11 +7023,11 @@ export const schema: Schema = {
         "synchronization:download",
         "synchronization:upload"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LineStatisticsTypeEnum",
+      "namespace": "xdsl"
     },
     "xdsl.LineTestEnum": {
-      "id": "LineTestEnum",
-      "namespace": "xdsl",
       "description": "Line tests results",
       "enum": [
         "actionPending",
@@ -7037,545 +7036,545 @@ export const schema: Schema = {
         "noProblem",
         "ovhSideProblem"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LineTestEnum",
+      "namespace": "xdsl"
     },
     "xdsl.Modem": {
+      "description": "Modem",
       "id": "Modem",
       "namespace": "xdsl",
-      "description": "Modem",
       "properties": {
         "brandName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "capabilities": {
-          "type": "xdsl.ModemCapabilities",
-          "fullType": "xdsl.ModemCapabilities",
           "canBeNull": false,
+          "fullType": "xdsl.ModemCapabilities",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "xdsl.ModemCapabilities"
         },
         "dmzIP": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": false,
           "description": "IP Address of the DMZ (To modify or delete the DMZ IP on the modem, a re-configuration of your modem has to be made, your configuration will be maintained, but you will lose your connection a few minutes)",
-          "required": false
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
         },
         "easyFirewallLevel": {
-          "type": "xdsl.xdslModemConfig.EasyFirewallLevelEnum",
-          "fullType": "xdsl.xdslModemConfig.EasyFirewallLevelEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Level of the FireWall on the modem",
-          "required": false
+          "fullType": "xdsl.xdslModemConfig.EasyFirewallLevelEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.xdslModemConfig.EasyFirewallLevelEnum"
         },
         "ipv6Support": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Whether or not the modem supports IPv6",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isBridged": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not the modem is in bridge mode. To pass from bridge mode to routed mode, a reset is necessary. If the modem is managedByOvh, the bridge state will be kept after a reset",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "lastCwmpRequestDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last time the modem made a CWMP request to the Auto Configuration Server",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "macAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "managedByOvh": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not the user can configure his modem via OVH Interface (will lock telnet and local HTTP configuration page)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "model": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "mtuSize": {
-          "type": "xdsl.xdslModemConfig.MTUSizeEnum",
-          "fullType": "xdsl.xdslModemConfig.MTUSizeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Size of the Maximum Transmission Unit on the modem's interfaces",
-          "required": false
+          "fullType": "xdsl.xdslModemConfig.MTUSizeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.xdslModemConfig.MTUSizeEnum"
         }
       }
     },
     "xdsl.ModemCapabilities": {
+      "description": "Describe the capabilities of the Modem",
       "id": "ModemCapabilities",
       "namespace": "xdsl",
-      "description": "Describe the capabilities of the Modem",
       "properties": {
         "canBeManagedByOvh": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangeBridgeMode": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangeDHCP": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangeDMZ": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangeEasyFirewallLevel": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangeFirmware": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangeLAN": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangeManagement": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangeMtu": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangePortMapping": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canChangeWLAN": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canReboot": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canReconfigureVoip": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canRefreshConnectedDevices": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "canReset": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "xdsl.ModemExchangeInfo": {
+      "description": "Information about modem exchange",
       "id": "ModemExchangeInfo",
       "namespace": "xdsl",
-      "description": "Information about modem exchange",
       "properties": {
         "canExchange": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "To know if you can exchange your modem",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "newModel": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Model of the new modem",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price without tax to pay for exchange",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "priceWithTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price with tax included to pay for exchange",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "xdsl.ModemInfo": {
+      "description": "Describe general information of a Modem",
       "id": "ModemInfo",
       "namespace": "xdsl",
-      "description": "Describe general information of a Modem",
       "properties": {
         "device": {
-          "type": "xdsl.DeviceModemInfo",
-          "fullType": "xdsl.DeviceModemInfo",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hardware information",
-          "required": true
+          "fullType": "xdsl.DeviceModemInfo",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.DeviceModemInfo"
         },
         "statistics": {
-          "type": "xdsl.StatsModemInfo",
-          "fullType": "xdsl.StatsModemInfo",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Modem Connection information",
-          "required": true
+          "fullType": "xdsl.StatsModemInfo",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.StatsModemInfo"
         }
       }
     },
     "xdsl.MonitoringNotification": {
+      "description": "Defines where and how the notifications will be sent",
       "id": "MonitoringNotification",
       "namespace": "xdsl",
-      "description": "Defines where and how the notifications will be sent",
       "properties": {
         "allowIncident": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not to allow notifications for generic incidents",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "downThreshold": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The number of seconds the access has to be down to trigger an alert",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The e-mail address, if type is mail",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "frequency": {
-          "type": "xdsl.monitoringNotifications.FrequencyEnum",
-          "fullType": "xdsl.monitoringNotifications.FrequencyEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The frenquency to send reminders when the access is still down",
-          "required": true
+          "fullType": "xdsl.monitoringNotifications.FrequencyEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.monitoringNotifications.FrequencyEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "phone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The phone number, if type is sms",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "smsAccount": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The SMS account which will be debited for each sent SMS, if the type is sms",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "xdsl.monitoringNotifications.TypeEnum",
-          "fullType": "xdsl.monitoringNotifications.TypeEnum",
           "canBeNull": false,
+          "fullType": "xdsl.monitoringNotifications.TypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "xdsl.monitoringNotifications.TypeEnum"
         }
       }
     },
     "xdsl.OperatorTypeEnum": {
-      "id": "OperatorTypeEnum",
-      "namespace": "xdsl",
       "description": "Operators",
       "enum": [
         "collect",
         "kosc",
         "ovh"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperatorTypeEnum",
+      "namespace": "xdsl"
     },
     "xdsl.PendingAction": {
+      "description": "Scheduled action before the next renewal of the service",
       "id": "PendingAction",
       "namespace": "xdsl",
-      "description": "Scheduled action before the next renewal of the service",
       "properties": {
         "action": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "dateTodo": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "xdsl.PortMapping": {
+      "description": "Port Mappings",
       "id": "PortMapping",
       "namespace": "xdsl",
-      "description": "Port Mappings",
       "properties": {
         "allowedRemoteIp": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": true,
-          "readOnly": false,
           "description": "An ip which will access to the defined rule. Default : no restriction applied",
-          "required": false
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Description of the Port Mapping",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "externalPortEnd": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The last port of the interval on the External Client that will get the connections",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "externalPortStart": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "External Port that the modem will listen on. List of externalPorts not available for now in the API : 8, 21, 68, 5060, 21800-21805, 51005",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "ID of the port mapping entry",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "internalClient": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The IP address of the destination of the packets",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "internalPort": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The port on the Internal Client that will get the connections",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the port mapping entry",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "protocol": {
-          "type": "xdsl.xdslModemConfig.ProtocolTypeEnum",
-          "fullType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Protocol of the port mapping (TCP / UDP)",
-          "required": true
+          "fullType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.xdslModemConfig.ProtocolTypeEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ID of the ongoing todo (NULL if none)",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "xdsl.RadiusConnectionLog": {
+      "description": "Log entry of an auth attempt to the radius server",
       "id": "RadiusConnectionLog",
       "namespace": "xdsl",
-      "description": "Log entry of an auth attempt to the radius server",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "login": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.ResiliationFollowUpDetail": {
+      "description": "Details about the resiliation",
       "id": "ResiliationFollowUpDetail",
       "namespace": "xdsl",
-      "description": "Details about the resiliation",
       "properties": {
         "dateTodo": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Date when the resiliation will take effect",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "needModemReturn": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If the customer needs to return his modem",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "registrationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Date when the resiliation was done",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of the resiliation",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.ResiliationReasonEnum": {
-      "id": "ResiliationReasonEnum",
-      "namespace": "xdsl",
       "description": "Reason of a resiliation",
       "enum": [
         "addressMove",
@@ -7587,91 +7586,91 @@ export const schema: Schema = {
         "other",
         "technicalProblems"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ResiliationReasonEnum",
+      "namespace": "xdsl"
     },
     "xdsl.ResiliationSurvey": {
+      "description": "Information about the reason for the resiliation",
       "id": "ResiliationSurvey",
       "namespace": "xdsl",
-      "description": "Information about the reason for the resiliation",
       "properties": {
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Comment about this resiliation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "xdsl.ResiliationReasonEnum",
-          "fullType": "xdsl.ResiliationReasonEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of reason for the resiliation",
-          "required": true
+          "fullType": "xdsl.ResiliationReasonEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.ResiliationReasonEnum"
         }
       }
     },
     "xdsl.ResiliationTerms": {
+      "description": "Show the resiliation terms",
       "id": "ResiliationTerms",
       "namespace": "xdsl",
-      "description": "Show the resiliation terms",
       "properties": {
         "due": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price due at resiliationDate",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "engageDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Date until which the customer is engaged",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "minResiliationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minumum resiliationDate",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "resiliationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Date at which the access will be resiliated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "resiliationReasons": {
-          "type": "xdsl.ResiliationReasonEnum[]",
-          "fullType": "xdsl.ResiliationReasonEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of available resiliation reasons",
-          "required": true
+          "fullType": "xdsl.ResiliationReasonEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.ResiliationReasonEnum[]"
         }
       }
     },
     "xdsl.ServiceStatusEnum": {
-      "id": "ServiceStatusEnum",
-      "namespace": "xdsl",
       "description": "Status of the service",
       "enum": [
         "disabled",
         "enabled"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceStatusEnum",
+      "namespace": "xdsl"
     },
     "xdsl.StatisticsPeriodEnum": {
-      "id": "StatisticsPeriodEnum",
-      "namespace": "xdsl",
       "description": "Periods for statistics.",
       "enum": [
         "daily",
@@ -7680,165 +7679,165 @@ export const schema: Schema = {
         "weekly",
         "yearly"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatisticsPeriodEnum",
+      "namespace": "xdsl"
     },
     "xdsl.StatsModemInfo": {
+      "description": "Describe statistics information of a Modem",
       "id": "StatsModemInfo",
       "namespace": "xdsl",
-      "description": "Describe statistics information of a Modem",
       "properties": {
         "connectionUptime": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Connection uptime",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "crcError": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Amount of CRC error detected",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "deviceUptime": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Modem uptime",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "downstreamAttenuation": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Downstream attenuation",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "downstreamMargin": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Downstream margin",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "downstreamSync": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Downstream synchronization",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Time of last refresh",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "modulation": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Line modulation used",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "quarterHourStart": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Count from last refresh in seconds",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "syncUptime": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Synchronization uptime",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "upstreamAttenuation": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Upstream attenuation",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "upstreamMargin": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Upstream margin",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "upstreamSync": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Upstream synchronization",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         }
       }
     },
     "xdsl.Task": {
+      "description": "Describes the current status of a task",
       "id": "Task",
       "namespace": "xdsl",
-      "description": "Describes the current status of a task",
       "properties": {
         "function": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "xdsl.TaskStatusEnum",
-          "fullType": "xdsl.TaskStatusEnum",
           "canBeNull": false,
+          "fullType": "xdsl.TaskStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "xdsl.TaskStatusEnum"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date when the action will start",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "updateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "xdsl.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "xdsl",
       "description": "Status of a task.",
       "enum": [
         "cancelled",
@@ -7848,232 +7847,232 @@ export const schema: Schema = {
         "problem",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "xdsl"
     },
     "xdsl.TemplateModem": {
+      "description": "Modem Template",
       "id": "TemplateModem",
       "namespace": "xdsl",
-      "description": "Modem Template",
       "properties": {
         "DHCP": {
-          "type": "xdsl.templateModem.DHCP[]",
-          "fullType": "xdsl.templateModem.DHCP[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of DHCP for this template",
-          "required": true
+          "fullType": "xdsl.templateModem.DHCP[]",
+          "readOnly": true,
+          "required": true,
+          "type": "xdsl.templateModem.DHCP[]"
         },
         "LAN": {
-          "type": "xdsl.templateModem.LAN[]",
-          "fullType": "xdsl.templateModem.LAN[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of LAN for this template",
-          "required": true
+          "fullType": "xdsl.templateModem.LAN[]",
+          "readOnly": true,
+          "required": true,
+          "type": "xdsl.templateModem.LAN[]"
         },
         "WLAN": {
-          "type": "xdsl.templateModem.WLAN[]",
-          "fullType": "xdsl.templateModem.WLAN[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of WLAN for this template",
-          "required": true
+          "fullType": "xdsl.templateModem.WLAN[]",
+          "readOnly": true,
+          "required": true,
+          "type": "xdsl.templateModem.WLAN[]"
         },
         "capabilities": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Parameters capabilities. Lists what can be applied from this template",
-          "required": true
+          "fullType": "text",
+          "readOnly": true,
+          "required": true,
+          "type": "text"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Template creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "dmzIP": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "IP Address of the DMZ",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "mtuSize": {
-          "type": "xdsl.xdslModemConfig.MTUSizeEnum",
-          "fullType": "xdsl.xdslModemConfig.MTUSizeEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Size of the Maximum Transmission Unit on the modem's interfaces",
-          "required": false
+          "fullType": "xdsl.xdslModemConfig.MTUSizeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "xdsl.xdslModemConfig.MTUSizeEnum"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the Modem Template",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "parametersToIgnore": {
-          "type": "xdsl.templateModem.ParametersToIgnore",
-          "fullType": "xdsl.templateModem.ParametersToIgnore",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Do not apply these parameters from template. You can use parametersCapabilities to know availability",
-          "required": false
+          "fullType": "xdsl.templateModem.ParametersToIgnore",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.templateModem.ParametersToIgnore"
         },
         "portMapping": {
-          "type": "xdsl.templateModem.PortMapping[]",
-          "fullType": "xdsl.templateModem.PortMapping[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of PortMapping for this template",
-          "required": true
+          "fullType": "xdsl.templateModem.PortMapping[]",
+          "readOnly": true,
+          "required": true,
+          "type": "xdsl.templateModem.PortMapping[]"
         }
       }
     },
     "xdsl.TimestampAndValue": {
+      "description": "A value associated to a timestamp",
       "id": "TimestampAndValue",
       "namespace": "xdsl",
-      "description": "A value associated to a timestamp",
       "properties": {
         "timestamp": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
+          "fullType": "double",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "double"
         }
       }
     },
     "xdsl.WLAN": {
+      "description": "WLAN Configuration of the Modem",
       "id": "WLAN",
       "namespace": "xdsl",
-      "description": "WLAN Configuration of the Modem",
       "properties": {
         "SSID": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Service Set Identifier of the WLAN interface",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "SSIDAdvertisementEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Hide or show the Wifi",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "bandSteering": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicate if frequencies 2.4GHz and 5GHz are agregated",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "channel": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Choice of a channel (When chosen, channelMode is set to Manual)",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "channelMode": {
-          "type": "xdsl.xdslModemConfig.ChannelModeEnum",
-          "fullType": "xdsl.xdslModemConfig.ChannelModeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "How the channel is chosen (Auto / Manual)",
-          "required": true
+          "fullType": "xdsl.xdslModemConfig.ChannelModeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.xdslModemConfig.ChannelModeEnum"
         },
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Wifi state",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "frequency": {
-          "type": "xdsl.xdslModemConfig.FrequencyEnum",
-          "fullType": "xdsl.xdslModemConfig.FrequencyEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Frequency (2.4GHz | 5GHz)",
-          "required": true
+          "fullType": "xdsl.xdslModemConfig.FrequencyEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "xdsl.xdslModemConfig.FrequencyEnum"
         },
         "guest": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicate if it is normal access wifi or guest wifi",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "securityKey": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "WPA or WEP key",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "securityType": {
-          "type": "xdsl.xdslModemConfig.SecurityTypeEnum",
-          "fullType": "xdsl.xdslModemConfig.SecurityTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Security (None | WEP | WPA | WPA2 | WPAandWPA2)",
-          "required": true
+          "fullType": "xdsl.xdslModemConfig.SecurityTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.xdslModemConfig.SecurityTypeEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "ID of the ongoing todo (NULL if none)",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "wifiName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the Wifi",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.WLANFrequencyEnum": {
-      "id": "WLANFrequencyEnum",
-      "namespace": "xdsl",
       "description": "Frequency of WLAN",
       "enum": [
         "2.4GHz",
         "5GHz"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "WLANFrequencyEnum",
+      "namespace": "xdsl"
     },
     "xdsl.antiSpam.AntiSpamStatusEnum": {
-      "id": "AntiSpamStatusEnum",
-      "namespace": "xdsl.antiSpam",
       "description": "AntiSpam status",
       "enum": [
         "block",
@@ -8082,913 +8081,913 @@ export const schema: Schema = {
         "unblock",
         "warn"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AntiSpamStatusEnum",
+      "namespace": "xdsl.antiSpam"
     },
     "xdsl.antiSpam.EvidencesInfo": {
+      "description": "List of evidences",
       "id": "EvidencesInfo",
       "namespace": "xdsl.antiSpam",
-      "description": "List of evidences",
       "properties": {
         "error": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "AsyncTask detailed error",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "result": {
-          "type": "xdsl.antiSpam.EvidencesInfoDetail[]",
-          "fullType": "xdsl.antiSpam.EvidencesInfoDetail[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Table with evidences stored on PCS",
-          "required": false
+          "fullType": "xdsl.antiSpam.EvidencesInfoDetail[]",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.antiSpam.EvidencesInfoDetail[]"
         },
         "status": {
-          "type": "xdsl.antiSpam.EvidencesInfoStatusEnum",
-          "fullType": "xdsl.antiSpam.EvidencesInfoStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "AsyncTask status",
-          "required": true
+          "fullType": "xdsl.antiSpam.EvidencesInfoStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.antiSpam.EvidencesInfoStatusEnum"
         }
       }
     },
     "xdsl.antiSpam.EvidencesInfoDetail": {
+      "description": "detail on evidences stored on PCS",
       "id": "EvidencesInfoDetail",
       "namespace": "xdsl.antiSpam",
-      "description": "detail on evidences stored on PCS",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "File date on the PCS",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "filename": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "File name on the PCS",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Temporary URL to access file",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.antiSpam.EvidencesInfoStatusEnum": {
-      "id": "EvidencesInfoStatusEnum",
-      "namespace": "xdsl.antiSpam",
       "description": "Evidences AsyncTask status",
       "enum": [
         "error",
         "ok",
         "pending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "EvidencesInfoStatusEnum",
+      "namespace": "xdsl.antiSpam"
     },
     "xdsl.connectedDevice": {
+      "description": "Connected Device",
       "id": "connectedDevice",
       "namespace": "xdsl",
-      "description": "Connected Device",
       "properties": {
         "active": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The state of this device on the modem",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "addressSource": {
-          "type": "xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum",
-          "fullType": "xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "How did the device got its IP address",
-          "required": true
+          "fullType": "xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum"
         },
         "hostName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Host name given by the device to the modem",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "informationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The date time of the last update of thoses informations",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "interfaceType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "On which interface is connected the device",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "ipAddress": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The IP address of the device",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "leaseTimeRemaining": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The remaining time in seconds of the DHCP lease of this device (-1 means infinite)",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "macAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "MAC address of the device",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.Address": {
+      "description": "Represents an address",
       "id": "Address",
       "namespace": "xdsl.eligibility",
-      "description": "Represents an address",
       "properties": {
         "building": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the building, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "city": {
-          "type": "xdsl.eligibility.City",
-          "fullType": "xdsl.eligibility.City",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Informations about the city",
-          "required": true
+          "fullType": "xdsl.eligibility.City",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.City"
         },
         "door": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Identifier of the door, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "floor": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Identifier of the floor, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "logo": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Identifier of the historical operator landmark, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "owner": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Owner of the line, this information can be restricted",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "residence": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the residence, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "stair": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Identifier of the stair, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "street": {
-          "type": "xdsl.eligibility.Street",
-          "fullType": "xdsl.eligibility.Street",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Informations about the street",
-          "required": false
+          "fullType": "xdsl.eligibility.Street",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.eligibility.Street"
         },
         "streetNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number on the street",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.Building": {
+      "description": "Details of a Building",
       "id": "Building",
       "namespace": "xdsl.eligibility",
-      "description": "Details of a Building",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Building name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "nro": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Building NRO (Optical main distribution frame)",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "reference": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Identifier which refer to a building uniquely",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "xdsl.eligibility.BuildingTypeEnum",
-          "fullType": "xdsl.eligibility.BuildingTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Building type",
-          "required": true
+          "fullType": "xdsl.eligibility.BuildingTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.BuildingTypeEnum"
         }
       }
     },
     "xdsl.eligibility.BuildingTypeEnum": {
-      "id": "BuildingTypeEnum",
-      "namespace": "xdsl.eligibility",
       "description": "Type of building",
       "enum": [
         "BUILDING",
         "HOUSE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BuildingTypeEnum",
+      "namespace": "xdsl.eligibility"
     },
     "xdsl.eligibility.City": {
+      "description": "Represent a city",
       "id": "City",
       "namespace": "xdsl.eligibility",
-      "description": "Represent a city",
       "properties": {
         "inseeCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "INSEE code of the city",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "locality": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Locality (subset of a city)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the city",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "zipCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Zip code of the city",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.CodeAndMessage": {
+      "description": "A message and its code",
       "id": "CodeAndMessage",
       "namespace": "xdsl.eligibility",
-      "description": "A message and its code",
       "properties": {
         "code": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A code identifying the message",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A message",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.Eligibility": {
+      "description": "Eligibility result",
       "id": "Eligibility",
       "namespace": "xdsl.eligibility",
-      "description": "Eligibility result",
       "properties": {
         "address": {
-          "type": "xdsl.eligibility.Address",
-          "fullType": "xdsl.eligibility.Address",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The line address",
-          "required": false
+          "fullType": "xdsl.eligibility.Address",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.eligibility.Address"
         },
         "characteristics": {
-          "type": "xdsl.eligibility.LineCharacteristics",
-          "fullType": "xdsl.eligibility.LineCharacteristics",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The line characteristics",
-          "required": true
+          "fullType": "xdsl.eligibility.LineCharacteristics",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.LineCharacteristics"
         },
         "endpoint": {
-          "type": "xdsl.eligibility.LineEndpointEnum",
-          "fullType": "xdsl.eligibility.LineEndpointEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The eligibility endpoint type",
-          "required": true
+          "fullType": "xdsl.eligibility.LineEndpointEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.LineEndpointEnum"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The eligibility uuid",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "infos": {
-          "type": "xdsl.eligibility.LineInfos",
-          "fullType": "xdsl.eligibility.LineInfos",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The line infos",
-          "required": true
+          "fullType": "xdsl.eligibility.LineInfos",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.LineInfos"
         },
         "offers": {
-          "type": "xdsl.eligibility.Offer[]",
-          "fullType": "xdsl.eligibility.Offer[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The eligible offers list",
-          "required": true
+          "fullType": "xdsl.eligibility.Offer[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.Offer[]"
         },
         "portability": {
-          "type": "xdsl.eligibility.Portability",
-          "fullType": "xdsl.eligibility.Portability",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Portability capabilities",
-          "required": true
+          "fullType": "xdsl.eligibility.Portability",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.Portability"
         }
       }
     },
     "xdsl.eligibility.FiberEligibility": {
+      "description": "Fiber Eligibility result",
       "id": "FiberEligibility",
       "namespace": "xdsl.eligibility",
-      "description": "Fiber Eligibility result",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Eligibility UUID",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "offers": {
-          "type": "xdsl.eligibility.FiberOffer[]",
-          "fullType": "xdsl.eligibility.FiberOffer[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of fiber offer",
-          "required": true
+          "fullType": "xdsl.eligibility.FiberOffer[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.FiberOffer[]"
         }
       }
     },
     "xdsl.eligibility.FiberOffer": {
+      "description": "A fiber offer",
       "id": "FiberOffer",
       "namespace": "xdsl.eligibility",
-      "description": "A fiber offer",
       "properties": {
         "availibilityDate": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The availibility date if the fiber is planned but not available yet",
-          "required": false
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
         },
         "downloadRate": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Estimated or guaranteed download rate in Mbit/s, if applicable",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "eligible": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Are you eligible to this offer ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "gtr": {
-          "type": "xdsl.GtrEnum[]",
-          "fullType": "xdsl.GtrEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Allowed GTR",
-          "required": true
+          "fullType": "xdsl.GtrEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.GtrEnum[]"
         },
         "guaranteed": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is the rate guaranteed ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Offer label",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "reason": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Reason of non eligibility, if applicable",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "xdsl.DslTypeEnum",
-          "fullType": "xdsl.DslTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Technology",
-          "required": true
+          "fullType": "xdsl.DslTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.DslTypeEnum"
         },
         "uploadRate": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Estimated or guaranteed upload rate in Mbit/s, if applicable",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         }
       }
     },
     "xdsl.eligibility.FiberStreet": {
+      "description": "Details of a FiberStreet",
       "id": "FiberStreet",
       "namespace": "xdsl.eligibility",
-      "description": "Details of a FiberStreet",
       "properties": {
         "streetCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Identifier which refer to a street uniquely",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "streetName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Street name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.LandlineStatusEnum": {
-      "id": "LandlineStatusEnum",
-      "namespace": "xdsl.eligibility",
       "description": "Status of a landline",
       "enum": [
         "active",
         "inactive"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LandlineStatusEnum",
+      "namespace": "xdsl.eligibility"
     },
     "xdsl.eligibility.Line": {
+      "description": "a line",
       "id": "Line",
       "namespace": "xdsl.eligibility",
-      "description": "a line",
       "properties": {
         "address": {
-          "type": "xdsl.eligibility.Address",
-          "fullType": "xdsl.eligibility.Address",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The line address",
-          "required": true
+          "fullType": "xdsl.eligibility.Address",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.Address"
         },
         "contactName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The contact name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "lineNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The line number",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "lineStatus": {
-          "type": "xdsl.eligibility.LandlineStatusEnum",
-          "fullType": "xdsl.eligibility.LandlineStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The line status",
-          "required": true
+          "fullType": "xdsl.eligibility.LandlineStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.LandlineStatusEnum"
         }
       }
     },
     "xdsl.eligibility.LineCharacteristics": {
+      "description": "The characteristics of a line",
       "id": "LineCharacteristics",
       "namespace": "xdsl.eligibility",
-      "description": "The characteristics of a line",
       "properties": {
         "calibration": {
-          "type": "xdsl.eligibility.LineSectionCalibration[]",
-          "fullType": "xdsl.eligibility.LineSectionCalibration[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Details of line calibration",
-          "required": true
+          "fullType": "xdsl.eligibility.LineSectionCalibration[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.LineSectionCalibration[]"
         },
         "desaturationFreePairs": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of free pairs proposed ondesaturation of copper lines",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "distance": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Distance to the NRA in meters",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "freePairs": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of free pairs",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "mitigation": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The estimated mitigation for ADSL and VDSL technologies",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "mitigationSdsl": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The estimated mitigation for SDSL technology",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "nra": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The NRA",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.LineEndpointEnum": {
-      "id": "LineEndpointEnum",
-      "namespace": "xdsl.eligibility",
       "description": "Type of the endpoint for the eligibility",
       "enum": [
         "address",
         "line"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LineEndpointEnum",
+      "namespace": "xdsl.eligibility"
     },
     "xdsl.eligibility.LineInfos": {
+      "description": "The line infos",
       "id": "LineInfos",
       "namespace": "xdsl.eligibility",
-      "description": "The line infos",
       "properties": {
         "createNeighbour": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Weither we are in create neighbor case or not",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "lineNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The line number, if endpoint is number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lineStatus": {
-          "type": "xdsl.eligibility.LandlineStatusEnum",
-          "fullType": "xdsl.eligibility.LandlineStatusEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The line status, if endpoint is number",
-          "required": false
+          "fullType": "xdsl.eligibility.LandlineStatusEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.eligibility.LandlineStatusEnum"
         },
         "unlistedNumber": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is the number unlisted ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "xdsl.eligibility.LineSectionCalibration": {
+      "description": "A line section calibration detail",
       "id": "LineSectionCalibration",
       "namespace": "xdsl.eligibility",
-      "description": "A line section calibration detail",
       "properties": {
         "diameter": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The section diameter in millimeters",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "length": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The section length in meters",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "xdsl.eligibility.MeetingSlot": {
+      "description": "Represents a time slot for a meeting",
       "id": "MeetingSlot",
       "namespace": "xdsl.eligibility",
-      "description": "Represents a time slot for a meeting",
       "properties": {
         "endDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The end of the time slot",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The beginning of the time slot",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "uiCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "An opaque string that represents an intervention unit",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.MeetingSlots": {
+      "description": "List of available meeting time slots",
       "id": "MeetingSlots",
       "namespace": "xdsl.eligibility",
-      "description": "List of available meeting time slots",
       "properties": {
         "canBookFakeMeeting": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not it is possible to book a fake meeting",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "meetingSlots": {
-          "type": "xdsl.eligibility.MeetingSlot[]",
-          "fullType": "xdsl.eligibility.MeetingSlot[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A time slot",
-          "required": true
+          "fullType": "xdsl.eligibility.MeetingSlot[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.MeetingSlot[]"
         }
       }
     },
     "xdsl.eligibility.Offer": {
+      "description": "An offer",
       "id": "Offer",
       "namespace": "xdsl.eligibility",
-      "description": "An offer",
       "properties": {
         "desaturation": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Is copper lines desaturation needed and available for this offer ?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "downloadRate": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Estimated or guaranteed download rate in Mbit/s, if applicable",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "gtr": {
-          "type": "xdsl.GtrEnum[]",
-          "fullType": "xdsl.GtrEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Allowed GTR (none, 4ho : 4 work hours, 4hno : 4 unworked hours)",
-          "required": true
+          "fullType": "xdsl.GtrEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.GtrEnum[]"
         },
         "guaranteed": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is the rate guaranteed ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Offer label",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "pairs": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number of pairs to use",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "provider": {
-          "type": "xdsl.eligibility.ProviderEnum",
-          "fullType": "xdsl.eligibility.ProviderEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Provider, if applicable",
-          "required": false
+          "fullType": "xdsl.eligibility.ProviderEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.eligibility.ProviderEnum"
         },
         "rate": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DEPRECATED Please use downloadRate instead /DEPRECATED - Estimated or guaranteed rate in Mbit/s, if applicable",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "type": {
-          "type": "xdsl.DslTypeEnum",
-          "fullType": "xdsl.DslTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "DSL technology",
-          "required": true
+          "fullType": "xdsl.DslTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.DslTypeEnum"
         },
         "unbundling": {
-          "type": "xdsl.DeconsolidationEnum[]",
-          "fullType": "xdsl.DeconsolidationEnum[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Allowed unbundling methods",
-          "required": false
+          "fullType": "xdsl.DeconsolidationEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.DeconsolidationEnum[]"
         },
         "uploadRate": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Estimated or guaranteed upload rate in Mbit/s, if applicable",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         }
       }
     },
     "xdsl.eligibility.Portability": {
+      "description": "Eligibility of the portability of the line number",
       "id": "Portability",
       "namespace": "xdsl.eligibility",
-      "description": "Eligibility of the portability of the line number",
       "properties": {
         "comments": {
-          "type": "xdsl.eligibility.CodeAndMessage[]",
-          "fullType": "xdsl.eligibility.CodeAndMessage[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The reason(s) of the negative portability eligibility",
-          "required": true
+          "fullType": "xdsl.eligibility.CodeAndMessage[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.CodeAndMessage[]"
         },
         "eligible": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not it is possible to port the line number. If false, commentList contains the reason(s)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "underCondition": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not the portability is possible under condition. If true, warningList contains the reason(s)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "warnings": {
-          "type": "xdsl.eligibility.CodeAndMessage[]",
-          "fullType": "xdsl.eligibility.CodeAndMessage[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The special condition(s) of the portability",
-          "required": true
+          "fullType": "xdsl.eligibility.CodeAndMessage[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.CodeAndMessage[]"
         }
       }
     },
     "xdsl.eligibility.ProviderEnum": {
-      "id": "ProviderEnum",
-      "namespace": "xdsl.eligibility",
       "description": "The providers",
       "enum": [
         "axione",
@@ -8997,73 +8996,73 @@ export const schema: Schema = {
         "ovh",
         "sfr"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProviderEnum",
+      "namespace": "xdsl.eligibility"
     },
     "xdsl.eligibility.Street": {
+      "description": "Represent a street",
       "id": "Street",
       "namespace": "xdsl.eligibility",
-      "description": "Represent a street",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the street",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "rivoliCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "RIVOLI identifier of the street",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.email.pro.Task": {
+      "description": "Task Struct",
       "id": "Task",
       "namespace": "xdsl.email.pro",
-      "description": "Task Struct",
       "properties": {
         "finishDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Finished date of the task",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Function of the task",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "xdsl.email.pro.TaskStatusEnum",
-          "fullType": "xdsl.email.pro.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of the task",
-          "required": true
+          "fullType": "xdsl.email.pro.TaskStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.email.pro.TaskStatusEnum"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Todo date of the task",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "xdsl.email.pro.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "xdsl.email.pro",
       "description": "Status of an Email Pro task.",
       "enum": [
         "cancelled",
@@ -9072,346 +9071,346 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "xdsl.email.pro"
     },
     "xdsl.lineDiagnostic.Answers": {
+      "description": "Customer answers for line diagnostic",
       "id": "Answers",
       "namespace": "xdsl.lineDiagnostic",
-      "description": "Customer answers for line diagnostic",
       "properties": {
         "bandwidthTestUnit": {
-          "type": "xdsl.lineDiagnostic.BandwidthTestUnitEnum",
-          "fullType": "xdsl.lineDiagnostic.BandwidthTestUnitEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "bandwidth unit for proof.ovh.net test values",
-          "required": false
+          "fullType": "xdsl.lineDiagnostic.BandwidthTestUnitEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.BandwidthTestUnitEnum"
         },
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "comment will contains all informations needed for intervention and about your access problem",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "conditionsAccepted": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "customer knows that he can be charged (150 euros HT) if he is responsible for the problem or if tests have not been done correctly ?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "contactPhone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "customer's phone number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "datetimeOfAppearance": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "approximative datetime of problem happening",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "downloadBandwidthTest": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "bandwidth download value on proof.ovh.net test",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "endAfternoonHours": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "afternoon closing informations or time for the site",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "endMorningHours": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "morning closing informations or time for the site",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "followBySms": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "indicate if customer wants to be informed by sms",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "hasModemKeptSynchronization": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Has modem kept his synchronization during line port reset ?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "idAppointment": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "id of appointment chosen (\"possibleValues\" contains choices list with id)",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "individualSite": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "is non-professional site ?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "modemIsSynchronized": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Is modem synchronized ? (whatever internet connection)",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "modemMac": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "modem mac address",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "modemStillSynchronized": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Modem still synchronized ? Please check once again.",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "modemType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "modem brand and reference",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ovhTicket": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Ovh ticket name or ticket ID, only if a ticket is already opened for this problem",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "problemType": {
-          "type": "xdsl.lineDiagnostic.ProblemTypeEnum",
-          "fullType": "xdsl.lineDiagnostic.ProblemTypeEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Problem Type on DSL connection",
-          "required": false
+          "fullType": "xdsl.lineDiagnostic.ProblemTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.ProblemTypeEnum"
         },
         "resolvedAfterTests": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "is access problem solved ?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "secureSite": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "is secure site ?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "severalInternetConnections": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Has customer several internal connections ? (on the same place)",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "siteClosedDays": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "days or period where site access is not possible",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "siteDigicode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "digicode for site entrance",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "siteOpening": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "site opening hours or informations",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "startAfternoonHours": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "afternoon opening informations or time for the site",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "startMorningHours": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "morning opening informations or time for the site",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "uploadBandwidthTest": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "bandwidth upload value on proof.ovh.net test",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "xdsl.lineDiagnostic.BandwidthTestUnitEnum": {
-      "id": "BandwidthTestUnitEnum",
-      "namespace": "xdsl.lineDiagnostic",
       "description": "bandwidth unit for proof.ovh.net test values",
       "enum": [
         "Kbps",
         "Mbps"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BandwidthTestUnitEnum",
+      "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.lineDiagnostic.ConnectionInformations": {
+      "description": "Informations directly get on DSLAM or Modem",
       "id": "ConnectionInformations",
       "namespace": "xdsl.lineDiagnostic",
-      "description": "Informations directly get on DSLAM or Modem",
       "properties": {
         "crcError": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Amount of CRC error detected",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "downstreamAttenuation": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Downstream attenuation",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "downstreamMargin": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Downstream margin",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "downstreamSync": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Downstream synchronization",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "ifName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Modem interface name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "profile": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Profile on the DSLAM",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "upstreamAttenuation": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Upstream attenuation",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "upstreamMargin": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Upstream margin",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "upstreamSync": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Upstream synchronization",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         }
       }
     },
     "xdsl.lineDiagnostic.CustomerActionToDo": {
+      "description": "Customer action to do",
       "id": "CustomerActionToDo",
       "namespace": "xdsl.lineDiagnostic",
-      "description": "Customer action to do",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "action's description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "xdsl.lineDiagnostic.CustomerActionsEnum",
-          "fullType": "xdsl.lineDiagnostic.CustomerActionsEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "action's name",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.CustomerActionsEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.CustomerActionsEnum"
         }
       }
     },
     "xdsl.lineDiagnostic.CustomerActionsEnum": {
-      "id": "CustomerActionsEnum",
-      "namespace": "xdsl.lineDiagnostic",
       "description": "Customer possible actions",
       "enum": [
         "bePreparedToCheckModemSynchronization",
@@ -9428,161 +9427,161 @@ export const schema: Schema = {
         "unplugEveryModems",
         "unplugModem"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CustomerActionsEnum",
+      "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.lineDiagnostic.Diagnostic": {
+      "description": "Diagnostic status and informations",
       "id": "Diagnostic",
       "namespace": "xdsl.lineDiagnostic",
-      "description": "Diagnostic status and informations",
       "properties": {
         "data": {
-          "type": "xdsl.lineDiagnostic.DiagnosticData",
-          "fullType": "xdsl.lineDiagnostic.DiagnosticData",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contains informations about diagnostic (questions, previous answers, actions to do, line details, selt result...)",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.DiagnosticData",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.DiagnosticData"
         },
         "faultType": {
-          "type": "xdsl.lineDiagnostic.FaultTypeEnum",
-          "fullType": "xdsl.lineDiagnostic.FaultTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Detected fault type",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.FaultTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.FaultTypeEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Diagnostic id",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "xdsl.lineDiagnostic.DiagnosticStatusEnum",
-          "fullType": "xdsl.lineDiagnostic.DiagnosticStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Diagnostic status",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.DiagnosticStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.DiagnosticStatusEnum"
         }
       }
     },
     "xdsl.lineDiagnostic.DiagnosticData": {
+      "description": "Diagnostic data and informations",
       "id": "DiagnosticData",
       "namespace": "xdsl.lineDiagnostic",
-      "description": "Diagnostic data and informations",
       "properties": {
         "actionsDone": {
-          "type": "xdsl.lineDiagnostic.CustomerActionsEnum[]",
-          "fullType": "xdsl.lineDiagnostic.CustomerActionsEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of actions already done by customer",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.CustomerActionsEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.CustomerActionsEnum[]"
         },
         "actionsToDo": {
-          "type": "xdsl.lineDiagnostic.CustomerActionToDo[]",
-          "fullType": "xdsl.lineDiagnostic.CustomerActionToDo[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of actions that must be done by customer",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.CustomerActionToDo[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.CustomerActionToDo[]"
         },
         "answers": {
-          "type": "xdsl.lineDiagnostic.Answers",
-          "fullType": "xdsl.lineDiagnostic.Answers",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Previous customer answers",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.Answers",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.Answers"
         },
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Diagnostic comment. Can be update during any diagnostic step",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Diagnostic creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "diagnosticDoneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "End of diagnostic date. Will be null until problem totally identified",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "error": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Error message",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Last diagnostic update date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "lineDetails": {
-          "type": "xdsl.lineDiagnostic.LineDetails",
-          "fullType": "xdsl.lineDiagnostic.LineDetails",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Informations about line",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.LineDetails",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.LineDetails"
         },
         "robotAction": {
-          "type": "xdsl.lineDiagnostic.RobotActionsEnum",
-          "fullType": "xdsl.lineDiagnostic.RobotActionsEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Current or last robot action",
-          "required": false
+          "fullType": "xdsl.lineDiagnostic.RobotActionsEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.RobotActionsEnum"
         },
         "seltTest": {
-          "type": "xdsl.lineDiagnostic.SeltResult",
-          "fullType": "xdsl.lineDiagnostic.SeltResult",
           "canBeNull": false,
-          "readOnly": false,
           "description": "SELT test result",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.SeltResult",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.SeltResult"
         },
         "timeout": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Diagnostic timeout in minutes. Any action restart timeout",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "toAnswer": {
-          "type": "xdsl.lineDiagnostic.Question[]",
-          "fullType": "xdsl.lineDiagnostic.Question[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of questions that must be answered by customer",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.Question[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.Question[]"
         }
       }
     },
     "xdsl.lineDiagnostic.DiagnosticStatusEnum": {
-      "id": "DiagnosticStatusEnum",
-      "namespace": "xdsl.lineDiagnostic",
       "description": "Diagnostic status possible values",
       "enum": [
         "cancelled",
@@ -9602,11 +9601,11 @@ export const schema: Schema = {
         "waitingRobot",
         "waitingValidation"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DiagnosticStatusEnum",
+      "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.lineDiagnostic.FaultTypeEnum": {
-      "id": "FaultTypeEnum",
-      "namespace": "xdsl.lineDiagnostic",
       "description": "Line diagnostic fault type",
       "enum": [
         "alignment",
@@ -9614,218 +9613,218 @@ export const schema: Schema = {
         "syncLossOrLowBandwidth",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FaultTypeEnum",
+      "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.lineDiagnostic.LineCapabilities": {
+      "description": "Theoretical line capabilities",
       "id": "LineCapabilities",
       "namespace": "xdsl.lineDiagnostic",
-      "description": "Theoretical line capabilities",
       "properties": {
         "down": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Theoretical Downstream synchronization ",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "mitigation": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Theoretical line mitigation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "ping": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Theoretical ping",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         },
         "up": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Theoretical Upstream synchronization ",
-          "required": false
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
         }
       }
     },
     "xdsl.lineDiagnostic.LineDetails": {
+      "description": "Line informations",
       "id": "LineDetails",
       "namespace": "xdsl.lineDiagnostic",
-      "description": "Line informations",
       "properties": {
         "accessName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "access name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "accessPing": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Access IP ping or not",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "address": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "address of the access",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "connectionInfo": {
-          "type": "xdsl.lineDiagnostic.ConnectionInformations",
-          "fullType": "xdsl.lineDiagnostic.ConnectionInformations",
           "canBeNull": true,
-          "readOnly": false,
           "description": "informations directly get on DSLAM or Modem",
-          "required": false
+          "fullType": "xdsl.lineDiagnostic.ConnectionInformations",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.ConnectionInformations"
         },
         "contactPhone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "customer phone number for contact",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "custom access description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "dslamIsSynchronized": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "DSLAM is synchronized or not",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "gtr": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "is GTR access or not",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "length": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Line length in meters",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lineCapabilities": {
-          "type": "xdsl.lineDiagnostic.LineCapabilities",
-          "fullType": "xdsl.lineDiagnostic.LineCapabilities",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Theoretical line capabilities",
-          "required": false
+          "fullType": "xdsl.lineDiagnostic.LineCapabilities",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.LineCapabilities"
         },
         "lineType": {
-          "type": "xdsl.DslTypeEnum",
-          "fullType": "xdsl.DslTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "dsl connexion type for the line",
-          "required": true
+          "fullType": "xdsl.DslTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.DslTypeEnum"
         },
         "nra": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "NRA name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "number": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "line number",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "operator": {
-          "type": "xdsl.lineDiagnostic.ProviderEnum",
-          "fullType": "xdsl.lineDiagnostic.ProviderEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "provider for internet connexion",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.ProviderEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.ProviderEnum"
         },
         "sections": {
-          "type": "xdsl.lineDiagnostic.Section[]",
-          "fullType": "xdsl.lineDiagnostic.Section[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "cables sections details",
-          "required": false
+          "fullType": "xdsl.lineDiagnostic.Section[]",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.Section[]"
         }
       }
     },
     "xdsl.lineDiagnostic.PossibleValue": {
+      "description": "possible value for specific answer",
       "id": "PossibleValue",
       "namespace": "xdsl.lineDiagnostic",
-      "description": "possible value for specific answer",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "answer id",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "answer choice string",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "answer choice value",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "xdsl.lineDiagnostic.ProblemTypeEnum": {
-      "id": "ProblemTypeEnum",
-      "namespace": "xdsl.lineDiagnostic",
       "description": "Possible customer questions",
       "enum": [
         "lowBandwidth",
         "syncLoss"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProblemTypeEnum",
+      "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.lineDiagnostic.ProviderEnum": {
-      "id": "ProviderEnum",
-      "namespace": "xdsl.lineDiagnostic",
       "description": "The providers for xdsl access",
       "enum": [
         "axione",
@@ -9836,74 +9835,74 @@ export const schema: Schema = {
         "ovh",
         "sfr"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProviderEnum",
+      "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.lineDiagnostic.Question": {
+      "description": "Question to customer",
       "id": "Question",
       "namespace": "xdsl.lineDiagnostic",
-      "description": "Question to customer",
       "properties": {
         "defaultValue": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "question description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "question description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "enumValues": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "available values for enum",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "name": {
-          "type": "xdsl.lineDiagnostic.QuestionsEnum",
-          "fullType": "xdsl.lineDiagnostic.QuestionsEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "question name",
-          "required": true
+          "fullType": "xdsl.lineDiagnostic.QuestionsEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.lineDiagnostic.QuestionsEnum"
         },
         "possibleValues": {
-          "type": "xdsl.lineDiagnostic.PossibleValue[]",
-          "fullType": "xdsl.lineDiagnostic.PossibleValue[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "list of possible values",
-          "required": false
+          "fullType": "xdsl.lineDiagnostic.PossibleValue[]",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.PossibleValue[]"
         },
         "required": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "is a required question",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "answer type",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.lineDiagnostic.QuestionsEnum": {
-      "id": "QuestionsEnum",
-      "namespace": "xdsl.lineDiagnostic",
       "description": "Possible customer questions",
       "enum": [
         "bandwidthTestUnit",
@@ -9934,11 +9933,11 @@ export const schema: Schema = {
         "startMorningHours",
         "uploadBandwidthTest"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "QuestionsEnum",
+      "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.lineDiagnostic.RobotActionsEnum": {
-      "id": "RobotActionsEnum",
-      "namespace": "xdsl.lineDiagnostic",
       "description": "Diagnostic robot possible actions",
       "enum": [
         "alignmentLockTest",
@@ -9965,34 +9964,34 @@ export const schema: Schema = {
         "requestOvhIntervention",
         "seltTest"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RobotActionsEnum",
+      "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.lineDiagnostic.Section": {
+      "description": "Cables section details",
       "id": "Section",
       "namespace": "xdsl.lineDiagnostic",
-      "description": "Cables section details",
       "properties": {
         "length": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "cables length in meters",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "section": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "cables section in millimeters",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "xdsl.lineDiagnostic.SeltPrelocEnum": {
-      "id": "SeltPrelocEnum",
-      "namespace": "xdsl.lineDiagnostic",
       "description": "Possible SELT test prelocalizations",
       "enum": [
         "CUST",
@@ -10000,58 +9999,58 @@ export const schema: Schema = {
         "LINE",
         "RE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SeltPrelocEnum",
+      "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.lineDiagnostic.SeltResult": {
+      "description": "Customer answers for line diagnostic",
       "id": "SeltResult",
       "namespace": "xdsl.lineDiagnostic",
-      "description": "Customer answers for line diagnostic",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "SELT test running date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "distance": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Distance of the problem identified on the line (by SELT test), from NRA to customer",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "preloc": {
-          "type": "xdsl.lineDiagnostic.SeltPrelocEnum",
-          "fullType": "xdsl.lineDiagnostic.SeltPrelocEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Prelocalization of the problem",
-          "required": false
+          "fullType": "xdsl.lineDiagnostic.SeltPrelocEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.SeltPrelocEnum"
         },
         "state": {
-          "type": "xdsl.lineDiagnostic.SeltStateEnum",
-          "fullType": "xdsl.lineDiagnostic.SeltStateEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Problem type identified by SELT test",
-          "required": false
+          "fullType": "xdsl.lineDiagnostic.SeltStateEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.SeltStateEnum"
         },
         "status": {
-          "type": "xdsl.lineDiagnostic.SeltStatusEnum",
-          "fullType": "xdsl.lineDiagnostic.SeltStatusEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "SELT test status",
-          "required": false
+          "fullType": "xdsl.lineDiagnostic.SeltStatusEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.lineDiagnostic.SeltStatusEnum"
         }
       }
     },
     "xdsl.lineDiagnostic.SeltStateEnum": {
-      "id": "SeltStateEnum",
-      "namespace": "xdsl.lineDiagnostic",
       "description": "Possible SELT test states",
       "enum": [
         "open",
@@ -10059,22 +10058,22 @@ export const schema: Schema = {
         "synced",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SeltStateEnum",
+      "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.lineDiagnostic.SeltStatusEnum": {
-      "id": "SeltStatusEnum",
-      "namespace": "xdsl.lineDiagnostic",
       "description": "Possible SELT test status",
       "enum": [
         "failed",
         "notAvailable",
         "ok"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SeltStatusEnum",
+      "namespace": "xdsl.lineDiagnostic"
     },
     "xdsl.monitoringNotifications.FrequencyEnum": {
-      "id": "FrequencyEnum",
-      "namespace": "xdsl.monitoringNotifications",
       "description": "Frequency between notifications.",
       "enum": [
         "1h",
@@ -10082,81 +10081,81 @@ export const schema: Schema = {
         "6h",
         "once"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FrequencyEnum",
+      "namespace": "xdsl.monitoringNotifications"
     },
     "xdsl.monitoringNotifications.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "xdsl.monitoringNotifications",
       "description": "Type of notification.",
       "enum": [
         "mail",
         "sms"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "xdsl.monitoringNotifications"
     },
     "xdsl.orderFollowup.DurationUnitEnum": {
-      "id": "DurationUnitEnum",
-      "namespace": "xdsl.orderFollowup",
       "description": "The duration units",
       "enum": [
         "day",
         "hour",
         "minute"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DurationUnitEnum",
+      "namespace": "xdsl.orderFollowup"
     },
     "xdsl.orderFollowup.Step": {
+      "description": "A step of the order process",
       "id": "Step",
       "namespace": "xdsl.orderFollowup",
-      "description": "A step of the order process",
       "properties": {
         "comments": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
+          "fullType": "string[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string[]"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "durationUnit": {
-          "type": "xdsl.orderFollowup.DurationUnitEnum",
-          "fullType": "xdsl.orderFollowup.DurationUnitEnum",
           "canBeNull": false,
+          "fullType": "xdsl.orderFollowup.DurationUnitEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "xdsl.orderFollowup.DurationUnitEnum"
         },
         "expectedDuration": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "xdsl.orderFollowup.StepNameEnum",
-          "fullType": "xdsl.orderFollowup.StepNameEnum",
           "canBeNull": false,
+          "fullType": "xdsl.orderFollowup.StepNameEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "xdsl.orderFollowup.StepNameEnum"
         },
         "status": {
-          "type": "xdsl.orderFollowup.StepStatusEnum",
-          "fullType": "xdsl.orderFollowup.StepStatusEnum",
           "canBeNull": false,
+          "fullType": "xdsl.orderFollowup.StepStatusEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "xdsl.orderFollowup.StepStatusEnum"
         }
       }
     },
     "xdsl.orderFollowup.StepNameEnum": {
-      "id": "StepNameEnum",
-      "namespace": "xdsl.orderFollowup",
       "description": "The status of an order step",
       "enum": [
         "accessIsOperational",
@@ -10171,11 +10170,11 @@ export const schema: Schema = {
         "waitingForProviderInstallReport",
         "waitingForWithdrawalPeriodToBeOver"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StepNameEnum",
+      "namespace": "xdsl.orderFollowup"
     },
     "xdsl.orderFollowup.StepStatusEnum": {
-      "id": "StepStatusEnum",
-      "namespace": "xdsl.orderFollowup",
       "description": "The status of an order step",
       "enum": [
         "doing",
@@ -10184,255 +10183,255 @@ export const schema: Schema = {
         "todo",
         "waitingCustomer"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StepStatusEnum",
+      "namespace": "xdsl.orderFollowup"
     },
     "xdsl.templateModem.DHCP": {
+      "description": "DHCP Configuration for Modem Template",
       "id": "DHCP",
       "namespace": "xdsl.templateModem",
-      "description": "DHCP Configuration for Modem Template",
       "properties": {
         "defaultGateway": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The default gateway to be given to the clients",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "dhcpName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the DHCP",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "domainName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Domain name provided to the clients",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "endAddress": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Last address of the pool assigned by the DHCP",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "leaseTime": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Lease time in seconds of client assigned address (-1 means infinite)",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "primaryDNS": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Primary DNS servers to be given to the clients",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "secondaryDNS": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Secondary DNS servers to be given to the clients",
-          "required": false
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
         },
         "serverEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "State of the DHCP server of the modem",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "startAddress": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "First address of the pool assigned by the DHCP",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "subnetMask": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The subnet mask given to the clients",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         }
       }
     },
     "xdsl.templateModem.LAN": {
+      "description": "LAN Configuration for Modem Template",
       "id": "LAN",
       "namespace": "xdsl.templateModem",
-      "description": "LAN Configuration for Modem Template",
       "properties": {
         "IPAddress": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The IP address of the LAN interface of the modem",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "addressingType": {
-          "type": "xdsl.xdslModemConfig.AddressingTypeEnum",
-          "fullType": "xdsl.xdslModemConfig.AddressingTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "How the LAN interface of the modem is getting its address",
-          "required": true
+          "fullType": "xdsl.xdslModemConfig.AddressingTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.xdslModemConfig.AddressingTypeEnum"
         },
         "lanName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the LAN",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "subnetMask": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The subnet mask of the LAN interface of the modem",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         }
       }
     },
     "xdsl.templateModem.ParametersToIgnore": {
+      "description": "Parameters and values to ignore when apply modem template configuration",
       "id": "ParametersToIgnore",
       "namespace": "xdsl.templateModem",
-      "description": "Parameters and values to ignore when apply modem template configuration",
       "properties": {
         "LANandDHCP": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Ignore LAN and DHCP configurations",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "WLANList": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "WLAN names list to ignore. Ignore only listed WLAN",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "dmzIP": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Ignore DMZ configuration",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "mtuSize": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Ignore MTU Size value",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "portMappingList": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "PortMapping names list to ignore. Ignore only listed portMapping",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
     "xdsl.templateModem.PortMapping": {
+      "description": "PortMapping Configuration for Modem Template",
       "id": "PortMapping",
       "namespace": "xdsl.templateModem",
-      "description": "PortMapping Configuration for Modem Template",
       "properties": {
         "allowedRemoteIp": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": true,
-          "readOnly": false,
           "description": "An ip which will access to the defined rule. Default : no restriction applied",
-          "required": false
+          "fullType": "ipv4",
+          "readOnly": false,
+          "required": false,
+          "type": "ipv4"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Description of the Port Mapping",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "externalPortEnd": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The last port of the interval on the External Client that will get the connections",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "externalPortStart": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "External Port that the modem will listen on. List of externalPorts not available for now in the API : 8, 21, 68, 5060, 21800-21805, 51005",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "internalClient": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The IP address of the destination of the packets",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "internalPort": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The port on the Internal Client that will get the connections",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the port mapping entry",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "protocol": {
-          "type": "xdsl.xdslModemConfig.ProtocolTypeEnum",
-          "fullType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Protocol of the port mapping (TCP / UDP)",
-          "required": true
+          "fullType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.xdslModemConfig.ProtocolTypeEnum"
         }
       }
     },
     "xdsl.templateModem.SecurityTypeEnum": {
-      "id": "SecurityTypeEnum",
-      "namespace": "xdsl.templateModem",
       "description": "Type of WLAN security protection",
       "enum": [
         "None",
@@ -10440,306 +10439,306 @@ export const schema: Schema = {
         "WPA2",
         "WPAandWPA2"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SecurityTypeEnum",
+      "namespace": "xdsl.templateModem"
     },
     "xdsl.templateModem.WLAN": {
+      "description": "WLAN Configuration for Modem Template",
       "id": "WLAN",
       "namespace": "xdsl.templateModem",
-      "description": "WLAN Configuration for Modem Template",
       "properties": {
         "SSID": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Service Set Identifier of the WLAN interface",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "SSIDAdvertisementEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Control if Wifi is discoverable or hidden",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "bandSteering": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Indicate if frequencies 2.4GHz and 5GHz are agregated",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "channel": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Channel number (Useless if channelMode is set to Auto)",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "channelMode": {
-          "type": "xdsl.xdslModemConfig.ChannelModeEnum",
-          "fullType": "xdsl.xdslModemConfig.ChannelModeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "How the channel is chosen (Auto / Manual)",
-          "required": true
+          "fullType": "xdsl.xdslModemConfig.ChannelModeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.xdslModemConfig.ChannelModeEnum"
         },
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Wifi state",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "frequency": {
-          "type": "xdsl.xdslModemConfig.FrequencyEnum",
-          "fullType": "xdsl.xdslModemConfig.FrequencyEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Frequency (2.4GHz | 5GHz)",
-          "required": true
+          "fullType": "xdsl.xdslModemConfig.FrequencyEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.xdslModemConfig.FrequencyEnum"
         },
         "guest": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Indicate if it is normal access wifi or guest wifi",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "securityKey": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Encrypted WLAN passphrase",
-          "required": true
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
         },
         "securityType": {
-          "type": "xdsl.templateModem.SecurityTypeEnum",
-          "fullType": "xdsl.templateModem.SecurityTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Security (None | WPA | WPA2 | WPAandWPA2)",
-          "required": true
+          "fullType": "xdsl.templateModem.SecurityTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.templateModem.SecurityTypeEnum"
         },
         "wifiName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Wifi Name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.xdslEmailPro": {
+      "description": "XDSL Email Pro",
       "id": "xdslEmailPro",
       "namespace": "xdsl",
-      "description": "XDSL Email Pro",
       "properties": {
         "currentUsage": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Mailbox usage",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account display name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Email domain",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account first name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "initial": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account initials",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "lastLogoffDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last logoff",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastLogonDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last logon",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Account last name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "login": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account login",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "passwordLastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Time of account's password last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "primaryEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Default email for this mailbox",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "quota": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account maximum size",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "state": {
-          "type": "email.pro.ObjectStateEnum",
-          "fullType": "email.pro.ObjectStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account state",
-          "required": true
+          "fullType": "email.pro.ObjectStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "email.pro.ObjectStateEnum"
         },
         "taskPendingId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Pending tasks for this account",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "xdsl.xdslModemConfig.AddressingTypeEnum": {
-      "id": "AddressingTypeEnum",
-      "namespace": "xdsl.xdslModemConfig",
       "description": "How the modem gets its LAN IP Address",
       "enum": [
         "DHCP",
         "Static"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AddressingTypeEnum",
+      "namespace": "xdsl.xdslModemConfig"
     },
     "xdsl.xdslModemConfig.ChannelModeEnum": {
-      "id": "ChannelModeEnum",
-      "namespace": "xdsl.xdslModemConfig",
       "description": "How the WiFi channel is selected",
       "enum": [
         "Auto",
         "Manual"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ChannelModeEnum",
+      "namespace": "xdsl.xdslModemConfig"
     },
     "xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum": {
-      "id": "ConnectedDeviceAddressSourceEnum",
-      "namespace": "xdsl.xdslModemConfig",
       "description": "How did the device got its IP Address",
       "enum": [
         "DHCP",
         "Static",
         "Unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ConnectedDeviceAddressSourceEnum",
+      "namespace": "xdsl.xdslModemConfig"
     },
     "xdsl.xdslModemConfig.EasyFirewallLevelEnum": {
-      "id": "EasyFirewallLevelEnum",
-      "namespace": "xdsl.xdslModemConfig",
       "description": "Level of the Firewall ( BlockAll will block all connections, Normal will block all incoming connections except those in PortMapping and let go all outgoing connections , Disabled will disable all the Firewall and let all incoming or outgoing connections pass through )",
       "enum": [
         "BlockAll",
         "Disabled",
         "Normal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "EasyFirewallLevelEnum",
+      "namespace": "xdsl.xdslModemConfig"
     },
     "xdsl.xdslModemConfig.FrequencyEnum": {
-      "id": "FrequencyEnum",
-      "namespace": "xdsl.xdslModemConfig",
       "description": "Modem frequency",
       "enum": [
         "2.4GHz",
         "5GHz"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FrequencyEnum",
+      "namespace": "xdsl.xdslModemConfig"
     },
     "xdsl.xdslModemConfig.MTUSizeEnum": {
-      "id": "MTUSizeEnum",
-      "namespace": "xdsl.xdslModemConfig",
       "description": "Size of the Maximum Transmission Unit on the modem's interfaces",
       "enum": [
         "1432",
         "1456",
         "1492"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "MTUSizeEnum",
+      "namespace": "xdsl.xdslModemConfig"
     },
     "xdsl.xdslModemConfig.ProtocolTypeEnum": {
-      "id": "ProtocolTypeEnum",
-      "namespace": "xdsl.xdslModemConfig",
       "description": "Type of protocol for the Port Mapping",
       "enum": [
         "TCP",
         "UDP"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProtocolTypeEnum",
+      "namespace": "xdsl.xdslModemConfig"
     },
     "xdsl.xdslModemConfig.SecurityTypeEnum": {
-      "id": "SecurityTypeEnum",
-      "namespace": "xdsl.xdslModemConfig",
       "description": "Type of WLAN security protection",
       "enum": [
         "None",
@@ -10748,7 +10747,10 @@ export const schema: Schema = {
         "WPA2",
         "WPAandWPA2"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SecurityTypeEnum",
+      "namespace": "xdsl.xdslModemConfig"
     }
-  }
+  },
+  "resourcePath": "/xdsl"
 }

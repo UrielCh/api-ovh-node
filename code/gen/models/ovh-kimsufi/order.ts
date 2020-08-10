@@ -1,52 +1,54 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.kimsufi.com:443/1.0/order.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/order/dedicated/server",
+      "description": "Operations about the DEDICATED service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DEDICATED service"
+      "path": "/order/dedicated/server"
     },
     {
-      "path": "/order/dedicated/server/{serviceName}",
+      "description": "List available options for this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed options",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed options"
+          "responseType": "string[]"
         }
       ],
-      "description": "List available options for this service"
+      "path": "/order/dedicated/server/{serviceName}"
     }
   ],
-  "resourcePath": "/order",
-  "basePath": "https://eu.api.kimsufi.com/1.0"
+  "basePath": "https://eu.api.kimsufi.com/1.0",
+  "resourcePath": "/order"
 }

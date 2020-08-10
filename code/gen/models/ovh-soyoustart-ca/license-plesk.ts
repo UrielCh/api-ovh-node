@@ -1,624 +1,539 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.soyoustart.com:443/1.0/license/plesk.json
+
 export const schema: Schema = {
+  "apiVersion": "1.0",
   "apis": [
     {
-      "operations": [
-        {
-          "resellerOnly": false,
-          "parameters": [
-            {
-              "description": "The name of your Plesk license",
-              "fullType": "string",
-              "required": true,
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path"
-            }
-          ],
-          "responseFullType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties",
-          "responseType": "services.Service",
-          "httpMethod": "GET",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          }
-        },
-        {
-          "httpMethod": "PUT",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "responseType": "void",
-          "description": "Alter this object properties",
-          "resellerOnly": false,
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "required": true,
-              "name": null,
-              "dataType": "services.Service",
-              "paramType": "body"
-            },
-            {
-              "dataType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true,
-              "fullType": "string",
-              "description": "The name of your Plesk license"
-            }
-          ],
-          "responseFullType": "void"
-        }
-      ],
-      "path": "/license/plesk/{serviceName}/serviceInfos",
-      "description": "Details about a Service"
-    },
-    {
       "description": "Terminate your service",
-      "path": "/license/plesk/{serviceName}/terminate",
       "operations": [
         {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Terminate your service",
-          "responseFullType": "string",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "fullType": "string",
-              "description": "The name of your Plesk license",
-              "required": true,
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path"
-            }
-          ],
-          "resellerOnly": false,
           "httpMethod": "POST",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "responseType": "string"
-        }
-      ]
-    },
-    {
-      "description": "licenses Todos",
-      "path": "/license/plesk/{serviceName}/tasks/{taskId}",
-      "operations": [
-        {
-          "responseType": "license.Task",
-          "httpMethod": "GET",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "resellerOnly": false,
           "noAuthentication": false,
-          "responseFullType": "license.Task",
           "parameters": [
             {
-              "paramType": "path",
               "dataType": "string",
-              "name": "serviceName",
-              "required": true,
-              "fullType": "string",
-              "description": "The name of your Plesk license"
-            },
-            {
-              "description": "This Task id",
-              "fullType": "long",
-              "required": true,
-              "name": "taskId",
-              "dataType": "long",
-              "paramType": "path"
-            }
-          ],
-          "description": "Get this object properties"
-        }
-      ]
-    },
-    {
-      "description": "List the license.Task objects",
-      "path": "/license/plesk/{serviceName}/tasks",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "responseType": "long[]",
-          "description": "tasks linked to this license",
-          "resellerOnly": false,
-          "noAuthentication": false,
-          "responseFullType": "long[]",
-          "parameters": [
-            {
-              "dataType": "license.TaskStateEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false,
-              "description": "Filter the value of status property (=)",
-              "fullType": "license.TaskStateEnum"
-            },
-            {
-              "required": false,
-              "name": "action",
-              "dataType": "license.ActionType",
-              "paramType": "query",
-              "description": "Filter the value of action property (=)",
-              "fullType": "license.ActionType"
-            },
-            {
-              "fullType": "string",
-              "description": "The name of your Plesk license",
-              "required": true,
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "operations": [
-        {
-          "responseFullType": "ipBlock[]",
-          "parameters": [
-            {
               "description": "The name of your Plesk license",
               "fullType": "string",
-              "dataType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "noAuthentication": false,
           "resellerOnly": false,
-          "description": "Returns an array of ips where the license can be moved to",
-          "responseType": "ipBlock[]",
-          "httpMethod": "GET",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          }
+          "responseFullType": "string",
+          "responseType": "string"
         }
       ],
-      "path": "/license/plesk/{serviceName}/allowedDestinationIp",
-      "description": "allowedDestinationIp operations"
-    },
-    {
-      "description": "Your Plesk license",
-      "path": "/license/plesk/{serviceName}",
-      "operations": [
-        {
-          "parameters": [
-            {
-              "required": true,
-              "paramType": "path",
-              "name": "serviceName",
-              "dataType": "string",
-              "description": "The name of your Plesk license",
-              "fullType": "string"
-            }
-          ],
-          "noAuthentication": false,
-          "responseFullType": "license.plesk.Plesk",
-          "resellerOnly": false,
-          "description": "Get this object properties",
-          "responseType": "license.plesk.Plesk",
-          "httpMethod": "GET",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          }
-        },
-        {
-          "description": "Alter this object properties",
-          "resellerOnly": false,
-          "parameters": [
-            {
-              "dataType": "license.plesk.Plesk",
-              "name": null,
-              "paramType": "body",
-              "required": true,
-              "description": "New object properties",
-              "fullType": "license.plesk.Plesk"
-            },
-            {
-              "fullType": "string",
-              "description": "The name of your Plesk license",
-              "required": true,
-              "paramType": "path",
-              "name": "serviceName",
-              "dataType": "string"
-            }
-          ],
-          "responseFullType": "void",
-          "noAuthentication": false,
-          "httpMethod": "PUT",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "responseType": "void"
-        }
-      ]
+      "path": "/license/plesk/{serviceName}/terminate"
     },
     {
       "description": "changeIp operations",
-      "path": "/license/plesk/{serviceName}/changeIp",
       "operations": [
         {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Move this license to another Ip",
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "parameters": [
-            {
-              "paramType": "body",
-              "dataType": "ipv4",
-              "name": "destinationIp",
-              "required": true,
-              "fullType": "ipv4",
-              "description": "The Ip on which you want to move this license"
-            },
-            {
-              "description": "The name of your Plesk license",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "noAuthentication": false,
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
           "httpMethod": "POST",
-          "responseType": "license.Task"
-        }
-      ]
-    },
-    {
-      "description": "Your License options",
-      "path": "/license/plesk/{serviceName}/option/{label}",
-      "operations": [
-        {
-          "resellerOnly": false,
           "noAuthentication": false,
-          "responseFullType": "license.Option",
           "parameters": [
             {
-              "fullType": "string",
-              "description": "The name of your Plesk license",
-              "required": true,
-              "paramType": "path",
-              "name": "serviceName",
-              "dataType": "string"
-            },
-            {
-              "required": true,
-              "paramType": "path",
-              "name": "label",
-              "dataType": "license.OptionLabel",
-              "description": "This option designation",
-              "fullType": "license.OptionLabel"
-            }
-          ],
-          "description": "Get this object properties",
-          "responseType": "license.Option",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET"
-        },
-        {
-          "description": "release this Option",
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "parameters": [
-            {
-              "fullType": "string",
-              "description": "The name of your Plesk license",
-              "paramType": "path",
-              "dataType": "string",
-              "name": "serviceName",
+              "dataType": "ipv4",
+              "description": "The Ip on which you want to move this license",
+              "fullType": "ipv4",
+              "name": "destinationIp",
+              "paramType": "body",
               "required": true
             },
             {
-              "required": true,
-              "paramType": "path",
-              "name": "label",
-              "dataType": "license.OptionLabel",
-              "description": "This option designation",
-              "fullType": "license.OptionLabel"
-            }
-          ],
-          "noAuthentication": false,
-          "httpMethod": "DELETE",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "responseType": "license.Task"
-        }
-      ]
-    },
-    {
-      "operations": [
-        {
-          "description": "options attached to this license",
-          "responseFullType": "license.OptionLabel[]",
-          "parameters": [
-            {
-              "required": true,
-              "paramType": "path",
-              "name": "serviceName",
               "dataType": "string",
+              "description": "The name of your Plesk license",
               "fullType": "string",
-              "description": "The name of your Plesk license"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "noAuthentication": false,
           "resellerOnly": false,
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "responseType": "license.OptionLabel[]"
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
         }
       ],
-      "path": "/license/plesk/{serviceName}/option",
-      "description": "List the license.Option objects"
+      "path": "/license/plesk/{serviceName}/changeIp"
     },
     {
-      "description": "Confirm termination of your service",
-      "path": "/license/plesk/{serviceName}/confirmTermination",
+      "description": "canLicenseBeMovedTo operations",
       "operations": [
         {
-          "responseType": "string",
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
-          "resellerOnly": false,
+          "description": "Will tell if the ip can accept the license",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "responseFullType": "string",
           "parameters": [
             {
-              "fullType": "service.TerminationFutureUseEnum",
-              "description": "What next after your termination request",
+              "dataType": "ipv4",
+              "description": "The Ip on which you want to move this license",
+              "fullType": "ipv4",
+              "name": "destinationIp",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.ChangeIpStatus",
+          "responseType": "license.ChangeIpStatus"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}/canLicenseBeMovedTo"
+    },
+    {
+      "description": "Your Plesk license",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.plesk.Plesk",
+          "responseType": "license.plesk.Plesk"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.plesk.Plesk",
+              "description": "New object properties",
+              "fullType": "license.plesk.Plesk",
+              "name": null,
               "paramType": "body",
-              "dataType": "service.TerminationFutureUseEnum",
-              "name": "futureUse",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "services.Service",
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "allowedDestinationIp operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns an array of ips where the license can be moved to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "ipBlock[]",
+          "responseType": "ipBlock[]"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}/allowedDestinationIp"
+    },
+    {
+      "description": "List the license.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "tasks linked to this license",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.TaskStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "license.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
               "required": false
             },
             {
-              "fullType": "service.TerminationReasonEnum",
-              "description": "Reason of your termination request",
-              "required": false,
-              "paramType": "body",
-              "name": "reason",
-              "dataType": "service.TerminationReasonEnum"
-            },
-            {
-              "required": false,
-              "name": "commentary",
-              "dataType": "string",
-              "paramType": "body",
-              "description": "Commentary about your termination request",
-              "fullType": "string"
-            },
-            {
-              "paramType": "body",
-              "dataType": "string",
-              "name": "token",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact",
-              "fullType": "string"
-            },
-            {
-              "dataType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true,
-              "description": "The name of your Plesk license",
-              "fullType": "string"
-            }
-          ],
-          "description": "Confirm termination of your service"
-        }
-      ]
-    },
-    {
-      "operations": [
-        {
-          "responseFullType": "license.ChangeIpStatus",
-          "parameters": [
-            {
-              "description": "The Ip on which you want to move this license",
-              "fullType": "ipv4",
-              "dataType": "ipv4",
-              "name": "destinationIp",
+              "dataType": "license.ActionType",
+              "description": "Filter the value of action property (=)",
+              "fullType": "license.ActionType",
+              "name": "action",
               "paramType": "query",
-              "required": true
+              "required": false
             },
             {
+              "dataType": "string",
               "description": "The name of your Plesk license",
               "fullType": "string",
-              "dataType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "noAuthentication": false,
           "resellerOnly": false,
-          "description": "Will tell if the ip can accept the license",
-          "responseType": "license.ChangeIpStatus",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET"
+          "responseFullType": "long[]",
+          "responseType": "long[]"
         }
       ],
-      "path": "/license/plesk/{serviceName}/canLicenseBeMovedTo",
-      "description": "canLicenseBeMovedTo operations"
+      "path": "/license/plesk/{serviceName}/tasks"
     },
     {
+      "description": "licenses Todos",
       "operations": [
         {
-          "responseType": "string[]",
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
-          "responseFullType": "string[]",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This Task id",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}/tasks/{taskId}"
+    },
+    {
+      "description": "Confirm termination of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Confirm termination of your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}/confirmTermination"
+    },
+    {
+      "description": "List the license.Option objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "options attached to this license",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.OptionLabel[]",
+          "responseType": "license.OptionLabel[]"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}/option"
+    },
+    {
+      "description": "Your License options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OptionLabel",
+              "description": "This option designation",
+              "fullType": "license.OptionLabel",
+              "name": "label",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Option",
+          "responseType": "license.Option"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "release this Option",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OptionLabel",
+              "description": "This option designation",
+              "fullType": "license.OptionLabel",
+              "name": "label",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}/option/{label}"
+    },
+    {
+      "description": "Get the orderable Plesk versions and their associated compatibilities",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the orderable Plesk versions and their associated compatibilities",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.PleskOrderConfiguration[]",
+          "responseType": "license.PleskOrderConfiguration[]"
+        }
+      ],
+      "path": "/license/plesk/orderableVersions"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
           "resellerOnly": false,
-          "description": "List available services"
+          "responseFullType": "string[]",
+          "responseType": "string[]"
         }
       ],
-      "path": "/license/plesk",
-      "description": "Operations about the LICENSE service"
-    },
-    {
-      "operations": [
-        {
-          "responseType": "license.PleskOrderConfiguration[]",
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "paramType": "query",
-              "dataType": "ipv4",
-              "name": "ip",
-              "required": true,
-              "fullType": "ipv4",
-              "description": "Your license Ip"
-            }
-          ],
-          "responseFullType": "license.PleskOrderConfiguration[]",
-          "noAuthentication": false,
-          "resellerOnly": false,
-          "description": "Get the orderable Plesk versions and their associated compatibilities"
-        }
-      ],
-      "path": "/license/plesk/orderableVersions",
-      "description": "Get the orderable Plesk versions and their associated compatibilities"
+      "path": "/license/plesk"
     }
   ],
-  "resourcePath": "/license/plesk",
-  "apiVersion": "1.0",
+  "basePath": "https://ca.api.soyoustart.com/1.0",
   "models": {
-    "license.plesk.Plesk": {
-      "properties": {
-        "productKey": {
-          "readOnly": true,
-          "canBeNull": true,
-          "type": "string",
-          "description": "This license product key",
-          "fullType": "string"
-        },
-        "status": {
-          "description": "This license state",
-          "fullType": "license.StateEnum",
-          "type": "license.StateEnum",
-          "canBeNull": false,
-          "readOnly": true
-        },
-        "domain": {
-          "fullType": "string",
-          "description": "The internal name of your license",
-          "canBeNull": false,
-          "type": "string",
-          "readOnly": true
-        },
-        "licenseId": {
-          "readOnly": true,
-          "type": "string",
-          "canBeNull": false,
-          "fullType": "string",
-          "description": "The license id on license provider side"
-        },
-        "domainNumber": {
-          "fullType": "license.DomainNumberEnum",
-          "description": "The amount of domain this license can manage",
-          "type": "license.DomainNumberEnum",
-          "canBeNull": true,
-          "readOnly": true
-        },
-        "version": {
-          "fullType": "license.PleskVersionEnum",
-          "description": "This license version",
-          "readOnly": true,
-          "type": "license.PleskVersionEnum",
-          "canBeNull": false
-        },
-        "informationKey": {
-          "fullType": "string",
-          "description": "This license Information key",
-          "type": "string",
-          "canBeNull": true,
-          "readOnly": true
-        },
-        "ip": {
-          "fullType": "ipv4",
-          "description": "The ip on which this license is attached",
-          "readOnly": true,
-          "type": "ipv4",
-          "canBeNull": false
-        },
-        "creation": {
-          "fullType": "datetime",
-          "description": "This license creation date",
-          "canBeNull": false,
-          "type": "datetime",
-          "readOnly": true
-        },
-        "key": {
-          "description": "This license key",
-          "fullType": "string",
-          "type": "string",
-          "canBeNull": false,
-          "readOnly": true
-        },
-        "deleteAtExpiration": {
-          "description": "Shall we delete this on expiration ?",
-          "fullType": "boolean",
-          "readOnly": false,
-          "type": "boolean",
-          "canBeNull": false
-        }
-      },
-      "description": "Your Plesk license",
-      "namespace": "license.plesk",
-      "id": "Plesk"
-    },
     "license.ActionType": {
-      "enumType": "string",
-      "id": "ActionType",
-      "namespace": "license",
       "description": "A short description of what does the Task on your license",
       "enum": [
         "addWindowFromExistingSerial",
@@ -628,233 +543,60 @@ export const schema: Schema = {
         "optionUpgrade",
         "releaseOption",
         "versionUpgrade"
-      ]
-    },
-    "license.PleskOrderConfiguration": {
-      "description": "The serviceTypes allowed to Order a plesk version and associated Versions",
-      "properties": {
-        "serviceType": {
-          "canBeNull": false,
-          "type": "license.LicenseTypeEnum",
-          "description": null
-        },
-        "orderableVersions": {
-          "canBeNull": false,
-          "type": "license.OrderablePleskCompatibilityInfos[]",
-          "description": null
-        }
-      },
-      "id": "PleskOrderConfiguration",
-      "namespace": "license"
-    },
-    "license.Task": {
-      "id": "Task",
-      "namespace": "license",
-      "properties": {
-        "name": {
-          "readOnly": true,
-          "type": "string",
-          "canBeNull": false,
-          "description": "This Task name",
-          "fullType": "string"
-        },
-        "action": {
-          "fullType": "license.ActionType",
-          "description": "This Task description",
-          "canBeNull": false,
-          "type": "license.ActionType",
-          "readOnly": true
-        },
-        "lastUpdate": {
-          "readOnly": true,
-          "type": "datetime",
-          "canBeNull": false,
-          "description": "The last time this Task was updated",
-          "fullType": "datetime"
-        },
-        "todoDate": {
-          "fullType": "datetime",
-          "description": "When was this Task created",
-          "canBeNull": false,
-          "type": "datetime",
-          "readOnly": true
-        },
-        "taskId": {
-          "readOnly": true,
-          "canBeNull": false,
-          "type": "long",
-          "description": "This Task id",
-          "fullType": "long"
-        },
-        "status": {
-          "readOnly": true,
-          "type": "license.TaskStateEnum",
-          "canBeNull": false,
-          "description": "Current Taks status",
-          "fullType": "license.TaskStateEnum"
-        },
-        "doneDate": {
-          "description": "When was this Task done",
-          "fullType": "datetime",
-          "readOnly": true,
-          "type": "datetime",
-          "canBeNull": true
-        }
-      },
-      "description": "licenses Todos"
-    },
-    "license.OrderablePleskCompatibilityInfos": {
-      "description": "All versions available for Plesk products",
-      "properties": {
-        "canHaveWordpressToolkit": {
-          "canBeNull": false,
-          "type": "boolean",
-          "description": null
-        },
-        "compliantLanguagePack": {
-          "description": null,
-          "canBeNull": false,
-          "type": "license.OrderablePleskLanguagePackEnum[]"
-        },
-        "potentialProblems": {
-          "canBeNull": false,
-          "type": "license.PotentialProblemPleskEnum[]",
-          "description": null
-        },
-        "compliantApplicationSets": {
-          "type": "license.PleskApplicationSetEnum[]",
-          "canBeNull": false,
-          "description": null
-        },
-        "version": {
-          "description": null,
-          "canBeNull": false,
-          "type": "license.PleskVersionEnum"
-        },
-        "compliantDomains": {
-          "description": null,
-          "canBeNull": false,
-          "type": "license.OrderablePleskDomainNumberEnum[]"
-        },
-        "canHavePowerPack": {
-          "type": "boolean",
-          "canBeNull": false,
-          "description": null
-        },
-        "canHaveResellerManagement": {
-          "description": null,
-          "canBeNull": false,
-          "type": "boolean"
-        },
-        "compliantAntivirus": {
-          "description": null,
-          "canBeNull": false,
-          "type": "license.OrderableAntivirusEnum[]"
-        }
-      },
-      "id": "OrderablePleskCompatibilityInfos",
-      "namespace": "license"
-    },
-    "service.RenewalTypeEnum": {
-      "enumType": "string",
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
-      "enum": [
-        "automaticForcedProduct",
-        "automaticV2012",
-        "automaticV2014",
-        "automaticV2016",
-        "manual",
-        "oneShot",
-        "option"
       ],
-      "description": "Detailed renewal type of a service"
-    },
-    "license.StateEnum": {
       "enumType": "string",
-      "namespace": "license",
-      "id": "StateEnum",
-      "description": "All states a license can be in",
-      "enum": [
-        "ok",
-        "released",
-        "terminated",
-        "toDeliver"
-      ]
+      "id": "ActionType",
+      "namespace": "license"
     },
-    "license.Option": {
-      "id": "Option",
+    "license.ChangeIpMessageEnum": {
+      "description": "Messages from change IP",
+      "enum": [
+        "OK",
+        "destinationNotAllowed",
+        "licenseAlreadyExists",
+        "notAllowedToHandleThis",
+        "notSameType",
+        "sameIp",
+        "versionNotAllowed"
+      ],
+      "enumType": "string",
+      "id": "ChangeIpMessageEnum",
+      "namespace": "license"
+    },
+    "license.ChangeIpStatus": {
+      "description": "License change ip status return",
+      "id": "ChangeIpStatus",
       "namespace": "license",
-      "description": "Your License options",
       "properties": {
-        "canBeDeleted": {
+        "message": {
           "canBeNull": false,
-          "type": "boolean",
-          "readOnly": true,
-          "description": "Specifies whether this option can be released or not",
-          "fullType": "boolean"
+          "description": null,
+          "type": "license.ChangeIpMessageEnum"
         },
-        "label": {
+        "success": {
           "canBeNull": false,
-          "type": "license.OptionLabel",
-          "readOnly": true,
-          "description": "This option designation",
-          "fullType": "license.OptionLabel"
-        },
-        "expirationDate": {
-          "fullType": "datetime",
-          "description": "This option expiration date",
-          "readOnly": true,
-          "type": "datetime",
-          "canBeNull": false
-        },
-        "amount": {
-          "description": "Quantity or corresponding label of the designated option enabled on your license",
-          "fullType": "string",
-          "type": "string",
-          "canBeNull": true,
-          "readOnly": true
-        },
-        "version": {
-          "description": "This option related version",
-          "fullType": "string",
-          "canBeNull": true,
-          "type": "string",
-          "readOnly": true
+          "description": null,
+          "type": "boolean"
         }
       }
     },
-    "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
-      "enumType": "string",
+    "license.DomainNumberEnum": {
+      "description": "All quantities of domain available for a license",
       "enum": [
-        "expired",
-        "inCreation",
-        "ok",
-        "pendingDebt",
-        "unPaid"
+        "0",
+        "1",
+        "10",
+        "100",
+        "30",
+        "300",
+        "unlimited"
       ],
-      "description": ""
-    },
-    "license.ChangeIpStatus": {
-      "namespace": "license",
-      "id": "ChangeIpStatus",
-      "properties": {
-        "success": {
-          "type": "boolean",
-          "canBeNull": false,
-          "description": null
-        },
-        "message": {
-          "type": "license.ChangeIpMessageEnum",
-          "canBeNull": false,
-          "description": null
-        }
-      },
-      "description": "License change ip status return"
+      "enumType": "string",
+      "id": "DomainNumberEnum",
+      "namespace": "license"
     },
     "license.LicenseTypeEnum": {
+      "description": "Possible values for license type",
       "enum": [
         "dedicated",
         "dedicatedCloud",
@@ -868,46 +610,54 @@ export const schema: Schema = {
         "vps_cloud_2016",
         "vps_ssd"
       ],
-      "description": "Possible values for license type",
       "enumType": "string",
       "id": "LicenseTypeEnum",
       "namespace": "license"
     },
-    "service.TerminationReasonEnum": {
-      "enumType": "string",
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
-      "enum": [
-        "FEATURES_DONT_SUIT_ME",
-        "LACK_OF_PERFORMANCES",
-        "MIGRATED_TO_ANOTHER_OVH_PRODUCT",
-        "MIGRATED_TO_COMPETITOR",
-        "NOT_ENOUGH_RECOGNITION",
-        "NOT_NEEDED_ANYMORE",
-        "NOT_RELIABLE",
-        "NO_ANSWER",
-        "OTHER",
-        "PRODUCT_DIMENSION_DONT_SUIT_ME",
-        "PRODUCT_TOOLS_DONT_SUIT_ME",
-        "TOO_EXPENSIVE",
-        "TOO_HARD_TO_USE",
-        "UNSATIFIED_BY_CUSTOMER_SUPPORT"
-      ],
-      "description": "All reasons you can provide for a service termination"
-    },
-    "license.PleskApplicationSetEnum": {
-      "enum": [
-        "applicationpack",
-        "developerpack",
-        "power-pack-for-plesk12",
-        "powerpack"
-      ],
-      "description": "Application set available for Plesk products",
-      "id": "PleskApplicationSetEnum",
+    "license.Option": {
+      "description": "Your License options",
+      "id": "Option",
       "namespace": "license",
-      "enumType": "string"
+      "properties": {
+        "amount": {
+          "canBeNull": true,
+          "description": "Quantity or corresponding label of the designated option enabled on your license",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "canBeDeleted": {
+          "canBeNull": false,
+          "description": "Specifies whether this option can be released or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "This option expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "label": {
+          "canBeNull": false,
+          "description": "This option designation",
+          "fullType": "license.OptionLabel",
+          "readOnly": true,
+          "type": "license.OptionLabel"
+        },
+        "version": {
+          "canBeNull": true,
+          "description": "This option related version",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        }
+      }
     },
     "license.OptionLabel": {
+      "description": "The name of an option currently enabled on your license",
       "enum": [
         "ANTISPAM_SPAMASSASSIN",
         "ANTIVIRUS_DRWEB",
@@ -918,25 +668,75 @@ export const schema: Schema = {
         "SQL_SERVER",
         "VIRTUOZZO_CONTAINERS"
       ],
-      "description": "The name of an option currently enabled on your license",
       "enumType": "string",
       "id": "OptionLabel",
       "namespace": "license"
     },
-    "license.TaskStateEnum": {
-      "description": "All states a license Task can be in",
+    "license.OrderableAntivirusEnum": {
+      "description": "All antivirus available for Plesk products",
       "enum": [
-        "cancelled",
-        "doing",
-        "done",
-        "error",
-        "todo"
+        "DR_WEB",
+        "KASPERSKY_UNLIMITED_MAILBOXES",
+        "kaspersky"
       ],
       "enumType": "string",
+      "id": "OrderableAntivirusEnum",
+      "namespace": "license"
+    },
+    "license.OrderablePleskCompatibilityInfos": {
+      "description": "All versions available for Plesk products",
+      "id": "OrderablePleskCompatibilityInfos",
       "namespace": "license",
-      "id": "TaskStateEnum"
+      "properties": {
+        "canHavePowerPack": {
+          "canBeNull": false,
+          "description": null,
+          "type": "boolean"
+        },
+        "canHaveResellerManagement": {
+          "canBeNull": false,
+          "description": null,
+          "type": "boolean"
+        },
+        "canHaveWordpressToolkit": {
+          "canBeNull": false,
+          "description": null,
+          "type": "boolean"
+        },
+        "compliantAntivirus": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.OrderableAntivirusEnum[]"
+        },
+        "compliantApplicationSets": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.PleskApplicationSetEnum[]"
+        },
+        "compliantDomains": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.OrderablePleskDomainNumberEnum[]"
+        },
+        "compliantLanguagePack": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.OrderablePleskLanguagePackEnum[]"
+        },
+        "potentialProblems": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.PotentialProblemPleskEnum[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.PleskVersionEnum"
+        }
+      }
     },
     "license.OrderablePleskDomainNumberEnum": {
+      "description": "All domain available for Plesk products",
       "enum": [
         "10",
         "100",
@@ -945,15 +745,11 @@ export const schema: Schema = {
         "hostingsuite",
         "unlimited"
       ],
-      "description": "All domain available for Plesk products",
+      "enumType": "string",
       "id": "OrderablePleskDomainNumberEnum",
-      "namespace": "license",
-      "enumType": "string"
+      "namespace": "license"
     },
     "license.OrderablePleskLanguagePackEnum": {
-      "enumType": "string",
-      "namespace": "license",
-      "id": "OrderablePleskLanguagePackEnum",
       "description": "All language pack numbers available for Plesk products",
       "enum": [
         "1",
@@ -968,20 +764,39 @@ export const schema: Schema = {
         "5-extra-languages-for-plesk12",
         "unlimited",
         "unlimited-extra-languages-for-plesk12"
-      ]
-    },
-    "service.TerminationFutureUseEnum": {
-      "description": "All future uses you can provide for a service termination",
-      "enum": [
-        "NOT_REPLACING_SERVICE",
-        "OTHER",
-        "SUBSCRIBE_AN_OTHER_SERVICE",
-        "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
-        "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
       "enumType": "string",
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service"
+      "id": "OrderablePleskLanguagePackEnum",
+      "namespace": "license"
+    },
+    "license.PleskApplicationSetEnum": {
+      "description": "Application set available for Plesk products",
+      "enum": [
+        "applicationpack",
+        "developerpack",
+        "power-pack-for-plesk12",
+        "powerpack"
+      ],
+      "enumType": "string",
+      "id": "PleskApplicationSetEnum",
+      "namespace": "license"
+    },
+    "license.PleskOrderConfiguration": {
+      "description": "The serviceTypes allowed to Order a plesk version and associated Versions",
+      "id": "PleskOrderConfiguration",
+      "namespace": "license",
+      "properties": {
+        "orderableVersions": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.OrderablePleskCompatibilityInfos[]"
+        },
+        "serviceType": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.LicenseTypeEnum"
+        }
+      }
     },
     "license.PleskVersionEnum": {
       "description": "All versions available for Plesk products",
@@ -1039,83 +854,7 @@ export const schema: Schema = {
       "id": "PleskVersionEnum",
       "namespace": "license"
     },
-    "license.DomainNumberEnum": {
-      "namespace": "license",
-      "id": "DomainNumberEnum",
-      "enumType": "string",
-      "description": "All quantities of domain available for a license",
-      "enum": [
-        "0",
-        "1",
-        "10",
-        "100",
-        "30",
-        "300",
-        "unlimited"
-      ]
-    },
-    "license.ChangeIpMessageEnum": {
-      "enumType": "string",
-      "namespace": "license",
-      "id": "ChangeIpMessageEnum",
-      "description": "Messages from change IP",
-      "enum": [
-        "OK",
-        "destinationNotAllowed",
-        "licenseAlreadyExists",
-        "notAllowedToHandleThis",
-        "notSameType",
-        "sameIp",
-        "versionNotAllowed"
-      ]
-    },
-    "service.RenewType": {
-      "namespace": "service",
-      "id": "RenewType",
-      "properties": {
-        "period": {
-          "canBeNull": true,
-          "type": "long",
-          "description": "period of renew in month"
-        },
-        "manualPayment": {
-          "canBeNull": true,
-          "type": "boolean",
-          "description": "The service needs to be manually renewed and paid"
-        },
-        "deleteAtExpiration": {
-          "description": "The service will be deleted at expiration",
-          "canBeNull": false,
-          "type": "boolean"
-        },
-        "forced": {
-          "description": "The service forced to be renewed",
-          "type": "boolean",
-          "canBeNull": false
-        },
-        "automatic": {
-          "description": "The service is automatically renewed",
-          "canBeNull": false,
-          "type": "boolean"
-        }
-      },
-      "description": "Map a possible renew for a specific service"
-    },
-    "license.OrderableAntivirusEnum": {
-      "id": "OrderableAntivirusEnum",
-      "namespace": "license",
-      "enumType": "string",
-      "enum": [
-        "DR_WEB",
-        "KASPERSKY_UNLIMITED_MAILBOXES",
-        "kaspersky"
-      ],
-      "description": "All antivirus available for Plesk products"
-    },
     "license.PotentialProblemPleskEnum": {
-      "enumType": "string",
-      "id": "PotentialProblemPleskEnum",
-      "namespace": "license",
       "description": "Tests that have failed for Plesk products",
       "enum": [
         "isHostOsHyperVLike",
@@ -1128,106 +867,369 @@ export const schema: Schema = {
         "isOsPlesk12",
         "isOsPleskOnyx",
         "isWindowsOs"
-      ]
+      ],
+      "enumType": "string",
+      "id": "PotentialProblemPleskEnum",
+      "namespace": "license"
+    },
+    "license.StateEnum": {
+      "description": "All states a license can be in",
+      "enum": [
+        "ok",
+        "released",
+        "terminated",
+        "toDeliver"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "license"
+    },
+    "license.Task": {
+      "description": "licenses Todos",
+      "id": "Task",
+      "namespace": "license",
+      "properties": {
+        "action": {
+          "canBeNull": false,
+          "description": "This Task description",
+          "fullType": "license.ActionType",
+          "readOnly": true,
+          "type": "license.ActionType"
+        },
+        "doneDate": {
+          "canBeNull": true,
+          "description": "When was this Task done",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "The last time this Task was updated",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "This Task name",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current Taks status",
+          "fullType": "license.TaskStateEnum",
+          "readOnly": true,
+          "type": "license.TaskStateEnum"
+        },
+        "taskId": {
+          "canBeNull": false,
+          "description": "This Task id",
+          "fullType": "long",
+          "readOnly": true,
+          "type": "long"
+        },
+        "todoDate": {
+          "canBeNull": false,
+          "description": "When was this Task created",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        }
+      }
+    },
+    "license.TaskStateEnum": {
+      "description": "All states a license Task can be in",
+      "enum": [
+        "cancelled",
+        "doing",
+        "done",
+        "error",
+        "todo"
+      ],
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "license"
+    },
+    "license.plesk.Plesk": {
+      "description": "Your Plesk license",
+      "id": "Plesk",
+      "namespace": "license.plesk",
+      "properties": {
+        "creation": {
+          "canBeNull": false,
+          "description": "This license creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "deleteAtExpiration": {
+          "canBeNull": false,
+          "description": "Shall we delete this on expiration ?",
+          "fullType": "boolean",
+          "readOnly": false,
+          "type": "boolean"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "The internal name of your license",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "domainNumber": {
+          "canBeNull": true,
+          "description": "The amount of domain this license can manage",
+          "fullType": "license.DomainNumberEnum",
+          "readOnly": true,
+          "type": "license.DomainNumberEnum"
+        },
+        "informationKey": {
+          "canBeNull": true,
+          "description": "This license Information key",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "The ip on which this license is attached",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "type": "ipv4"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "This license key",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "licenseId": {
+          "canBeNull": false,
+          "description": "The license id on license provider side",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "productKey": {
+          "canBeNull": true,
+          "description": "This license product key",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "This license state",
+          "fullType": "license.StateEnum",
+          "readOnly": true,
+          "type": "license.StateEnum"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "This license version",
+          "fullType": "license.PleskVersionEnum",
+          "readOnly": true,
+          "type": "license.PleskVersionEnum"
+        }
+      }
+    },
+    "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
+      "id": "RenewType",
+      "namespace": "service",
+      "properties": {
+        "automatic": {
+          "canBeNull": false,
+          "description": "The service is automatically renewed",
+          "type": "boolean"
+        },
+        "deleteAtExpiration": {
+          "canBeNull": false,
+          "description": "The service will be deleted at expiration",
+          "type": "boolean"
+        },
+        "forced": {
+          "canBeNull": false,
+          "description": "The service forced to be renewed",
+          "type": "boolean"
+        },
+        "manualPayment": {
+          "canBeNull": true,
+          "description": "The service needs to be manually renewed and paid",
+          "type": "boolean"
+        },
+        "period": {
+          "canBeNull": true,
+          "description": "period of renew in month",
+          "type": "long"
+        }
+      }
+    },
+    "service.RenewalTypeEnum": {
+      "description": "Detailed renewal type of a service",
+      "enum": [
+        "automaticForcedProduct",
+        "automaticV2012",
+        "automaticV2014",
+        "automaticV2016",
+        "manual",
+        "oneShot",
+        "option"
+      ],
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
+    },
+    "service.StateEnum": {
+      "description": "",
+      "enum": [
+        "expired",
+        "inCreation",
+        "ok",
+        "pendingDebt",
+        "unPaid"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
+    },
+    "service.TerminationFutureUseEnum": {
+      "description": "All future uses you can provide for a service termination",
+      "enum": [
+        "NOT_REPLACING_SERVICE",
+        "OTHER",
+        "SUBSCRIBE_AN_OTHER_SERVICE",
+        "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
+        "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
+      ],
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
+    },
+    "service.TerminationReasonEnum": {
+      "description": "All reasons you can provide for a service termination",
+      "enum": [
+        "FEATURES_DONT_SUIT_ME",
+        "LACK_OF_PERFORMANCES",
+        "MIGRATED_TO_ANOTHER_OVH_PRODUCT",
+        "MIGRATED_TO_COMPETITOR",
+        "NOT_ENOUGH_RECOGNITION",
+        "NOT_NEEDED_ANYMORE",
+        "NOT_RELIABLE",
+        "NO_ANSWER",
+        "OTHER",
+        "PRODUCT_DIMENSION_DONT_SUIT_ME",
+        "PRODUCT_TOOLS_DONT_SUIT_ME",
+        "TOO_EXPENSIVE",
+        "TOO_HARD_TO_USE",
+        "UNSATIFIED_BY_CUSTOMER_SUPPORT"
+      ],
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
       "description": "Details about a Service",
+      "id": "Service",
+      "namespace": "services",
       "properties": {
-        "domain": {
-          "description": null,
-          "fullType": "string",
+        "canDeleteAtExpiration": {
           "canBeNull": false,
-          "type": "string",
-          "readOnly": true
+          "description": "Indicates that the service can be set up to be deleted at expiration",
+          "fullType": "boolean",
+          "readOnly": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "fullType": "coreTypes.AccountId:string",
+          "canBeNull": false,
           "description": null,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "type": "string",
-          "canBeNull": false
+          "type": "string"
         },
-        "possibleRenewPeriod": {
+        "contactBilling": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "canBeNull": true,
-          "type": "long[]",
-          "fullType": "long[]",
-          "description": "All the possible renew period of your service in month"
+          "type": "string"
         },
-        "renew": {
-          "canBeNull": true,
-          "type": "service.RenewType",
-          "readOnly": false,
-          "description": "Way of handling the renew",
-          "fullType": "service.RenewType"
+        "contactTech": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "creation": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "date",
+          "readOnly": true,
+          "type": "date"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
         },
         "engagedUpTo": {
           "canBeNull": true,
-          "type": "date",
-          "readOnly": true,
           "description": null,
-          "fullType": "date"
-        },
-        "status": {
-          "fullType": "service.StateEnum",
-          "description": null,
+          "fullType": "date",
           "readOnly": true,
-          "canBeNull": false,
-          "type": "service.StateEnum"
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
           "canBeNull": false,
-          "readOnly": true,
           "description": null,
-          "fullType": "date"
-        },
-        "creation": {
-          "readOnly": true,
-          "type": "date",
-          "canBeNull": false,
           "fullType": "date",
-          "description": null
-        },
-        "serviceId": {
           "readOnly": true,
-          "type": "long",
-          "canBeNull": false,
-          "fullType": "coreTypes.ServiceId:long",
-          "description": null
+          "type": "date"
         },
-        "contactTech": {
-          "description": null,
-          "fullType": "coreTypes.AccountId:string",
-          "type": "string",
-          "canBeNull": false,
-          "readOnly": true
-        },
-        "canDeleteAtExpiration": {
+        "possibleRenewPeriod": {
+          "canBeNull": true,
+          "description": "All the possible renew period of your service in month",
+          "fullType": "long[]",
           "readOnly": true,
-          "canBeNull": false,
-          "type": "boolean",
-          "fullType": "boolean",
-          "description": "Indicates that the service can be set up to be deleted at expiration"
+          "type": "long[]"
+        },
+        "renew": {
+          "canBeNull": true,
+          "description": "Way of handling the renew",
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "fullType": "service.RenewalTypeEnum",
-          "description": null,
-          "readOnly": true,
-          "type": "service.RenewalTypeEnum",
-          "canBeNull": false
-        },
-        "contactBilling": {
-          "readOnly": true,
           "canBeNull": false,
-          "type": "string",
-          "fullType": "coreTypes.AccountId:string",
-          "description": null
+          "description": null,
+          "fullType": "service.RenewalTypeEnum",
+          "readOnly": true,
+          "type": "service.RenewalTypeEnum"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.ServiceId:long",
+          "readOnly": true,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "service.StateEnum",
+          "readOnly": true,
+          "type": "service.StateEnum"
         }
-      },
-      "namespace": "services",
-      "id": "Service"
+      }
     }
   },
-  "basePath": "https://ca.api.soyoustart.com/1.0"
+  "resourcePath": "/license/plesk"
 }

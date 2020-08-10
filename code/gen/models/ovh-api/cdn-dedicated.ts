@@ -1,1510 +1,1509 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/cdn/dedicated.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/cdn/dedicated",
+      "description": "Operations about the CDNANYCAST service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the CDNANYCAST service"
-    },
-    {
-      "path": "/cdn/dedicated/pops",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": true,
-          "description": "List of CDN Pops"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the cdnanycast.Pop objects"
+      "path": "/cdn/dedicated"
     },
     {
-      "path": "/cdn/dedicated/pops/{name}",
+      "description": "List the cdnanycast.Pop objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of CDN Pops",
           "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/cdn/dedicated/pops"
+    },
+    {
+      "description": "CDN Pop",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Pop",
-          "noAuthentication": true,
-          "description": "Get this object properties"
+          "responseType": "cdnanycast.Pop"
         }
       ],
-      "description": "CDN Pop"
+      "path": "/cdn/dedicated/pops/{name}"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}",
+      "description": "Anycast IP of a CDN customer",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Anycast",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdnanycast.Anycast"
         }
       ],
-      "description": "Anycast IP of a CDN customer"
+      "path": "/cdn/dedicated/{serviceName}"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/cdn/dedicated/{serviceName}/changeContact"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains",
+      "description": "List the cdnanycast.Domain objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Domains associated to this anycast",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Domains associated to this anycast"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a domain on CDN",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "body",
+              "description": "domain name to add on CDN",
               "fullType": "string",
-              "required": true,
-              "description": "domain name to add on CDN"
+              "name": "domain",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Domain",
-          "noAuthentication": false,
-          "description": "Add a domain on CDN"
+          "responseType": "cdnanycast.Domain"
         }
       ],
-      "description": "List the cdnanycast.Domain objects"
+      "path": "/cdn/dedicated/{serviceName}/domains"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}",
+      "description": "Domain on CDN",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove a domain from the CDN",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "noAuthentication": false,
-          "description": "Remove a domain from the CDN"
+          "responseType": "cdnanycast.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Domain",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdnanycast.Domain"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cdnanycast.Domain",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cdnanycast.Domain",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Domain on CDN"
-    },
-    {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/backends",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            }
-          ],
-          "responseType": "ipv4[]",
-          "noAuthentication": false,
-          "description": "Backend associated to the domain"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "IP to add to backends list"
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Backend",
-          "noAuthentication": false,
-          "description": "Add a backend IP"
+          "responseType": "void"
         }
       ],
-      "description": "List the cdnanycast.Backend objects"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}",
+      "description": "List the cdnanycast.Backend objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
+          "description": "Backend associated to the domain",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
-              "paramType": "path",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip"
+              "required": true
             }
           ],
-          "responseType": "ipv4",
-          "noAuthentication": false,
-          "description": "Remove a backend IP"
+          "responseType": "ipv4[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
+          "description": "Add a backend IP",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "IP to add to backends list",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
               "name": "ip",
-              "dataType": "ipv4",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip"
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Backend",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdnanycast.Backend"
         }
       ],
-      "description": "Backend for a domain"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/backends"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules",
+      "description": "Backend for a domain",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
+          "description": "Remove a backend IP",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "fileMatch",
+              "dataType": "ipv4",
+              "description": "Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipv4"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdnanycast.Backend"
+        }
+      ],
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}"
+    },
+    {
+      "description": "List the cdnanycast.CacheRule objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Cache rules associated to the domain",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of fileMatch property (like)",
+              "fullType": "string",
+              "name": "fileMatch",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of fileMatch property (like)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Cache rules associated to the domain"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a cache rule to a domain",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "fileMatch",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "File match for cache rule to add to the domain"
-            },
-            {
-              "name": "cacheType",
-              "dataType": "cdnanycast.CacheRuleCacheTypeEnum",
-              "paramType": "body",
-              "fullType": "cdnanycast.CacheRuleCacheTypeEnum",
-              "required": true,
-              "description": "Type of cache rule to add to the domain"
-            },
-            {
-              "name": "fileType",
               "dataType": "cdnanycast.CacheRuleFileTypeEnum",
-              "paramType": "body",
+              "description": "File type for cache rule to add to the domain",
               "fullType": "cdnanycast.CacheRuleFileTypeEnum",
-              "required": true,
-              "description": "File type for cache rule to add to the domain"
-            },
-            {
-              "name": "ttl",
-              "dataType": "long",
+              "name": "fileType",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "ttl for cache rule to add to the domain",
               "fullType": "long",
-              "required": true,
-              "description": "ttl for cache rule to add to the domain"
+              "name": "ttl",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "File match for cache rule to add to the domain",
+              "fullType": "string",
+              "name": "fileMatch",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "cdnanycast.CacheRuleCacheTypeEnum",
+              "description": "Type of cache rule to add to the domain",
+              "fullType": "cdnanycast.CacheRuleCacheTypeEnum",
+              "name": "cacheType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.CacheRule",
-          "noAuthentication": false,
-          "description": "Add a cache rule to a domain"
+          "responseType": "cdnanycast.CacheRule"
         }
       ],
-      "description": "List the cdnanycast.CacheRule objects"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}",
+      "description": "CacheRules for a domain",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove cache rule",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "cacheRuleId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Cache rule ID",
               "fullType": "long",
-              "required": true,
-              "description": "Cache rule ID"
+              "name": "cacheRuleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "noAuthentication": false,
-          "description": "Remove cache rule"
+          "responseType": "cdnanycast.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "cacheRuleId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Cache rule ID",
               "fullType": "long",
-              "required": true,
-              "description": "Cache rule ID"
+              "name": "cacheRuleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.CacheRule",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdnanycast.CacheRule"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "cdnanycast.CacheRule",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "cdnanycast.CacheRule",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "cacheRuleId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Cache rule ID",
               "fullType": "long",
-              "required": true,
-              "description": "Cache rule ID"
+              "name": "cacheRuleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "CacheRules for a domain"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush",
+      "description": "flush operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Flush the cache",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "cacheRuleId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Cache rule ID",
               "fullType": "long",
-              "required": true,
-              "description": "Cache rule ID"
+              "name": "cacheRuleId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "noAuthentication": false,
-          "description": "Flush the cache"
+          "responseType": "cdnanycast.Task"
         }
       ],
-      "description": "flush operations"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks",
+      "description": "List the cdnanycast.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Task associated to the cache rule",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "cacheRuleId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Cache rule ID",
               "fullType": "long",
-              "required": true,
-              "description": "Cache rule ID"
+              "name": "cacheRuleId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Task associated to the cache rule"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the cdnanycast.Task objects"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}",
+      "description": "Task on a CDN",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "cacheRuleId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Cache rule ID",
               "fullType": "long",
-              "required": true,
-              "description": "Cache rule ID"
+              "name": "cacheRuleId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Task ID",
+              "fullType": "long",
               "name": "taskId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdnanycast.Task"
         }
       ],
-      "description": "Task on a CDN"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/flush",
+      "description": "flush operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Flush all cache",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "noAuthentication": false,
-          "description": "Flush all cache"
+          "responseType": "cdnanycast.Task"
         }
       ],
-      "description": "flush operations"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/flush"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/logs",
+      "description": "logs operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Generate URL to real time logs",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.LogsURL",
-          "noAuthentication": false,
-          "description": "Generate URL to real time logs"
+          "responseType": "cdnanycast.LogsURL"
         }
       ],
-      "description": "logs operations"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/logs"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/statistics",
+      "description": "statistics operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return stats about a domain",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "period",
-              "dataType": "cdnanycast.StatsPeriodEnum",
-              "paramType": "query",
-              "fullType": "cdnanycast.StatsPeriodEnum",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "value",
-              "dataType": "cdnanycast.StatsValueEnum",
-              "paramType": "query",
-              "fullType": "cdnanycast.StatsValueEnum",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "type",
               "dataType": "cdnanycast.StatsTypeEnum",
-              "paramType": "query",
+              "description": "",
               "fullType": "cdnanycast.StatsTypeEnum",
-              "required": true,
-              "description": ""
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "cdnanycast.StatsPeriodEnum",
+              "description": "",
+              "fullType": "cdnanycast.StatsPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "cdnanycast.StatsValueEnum",
+              "description": "",
+              "fullType": "cdnanycast.StatsValueEnum",
+              "name": "value",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.StatsDataType[]",
-          "noAuthentication": false,
-          "description": "Return stats about a domain"
+          "responseType": "cdnanycast.StatsDataType[]"
         }
       ],
-      "description": "statistics operations"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/statistics"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/tasks",
+      "description": "List the cdnanycast.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Task associated to the domain",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Task associated to the domain"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the cdnanycast.Task objects"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/tasks"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}",
+      "description": "Task on a CDN",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "taskId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Task ID",
               "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdnanycast.Task"
         }
       ],
-      "description": "Task on a CDN"
+      "path": "/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/logs",
+      "description": "logs operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Generate URL to real time logs",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.LogsURL",
-          "noAuthentication": false,
-          "description": "Generate URL to real time logs"
+          "responseType": "cdnanycast.LogsURL"
         }
       ],
-      "description": "logs operations"
+      "path": "/cdn/dedicated/{serviceName}/logs"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/quota",
+      "description": "quota operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Return quota history",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "period",
               "dataType": "cdnanycast.StatsPeriodEnum",
-              "paramType": "query",
+              "description": "",
               "fullType": "cdnanycast.StatsPeriodEnum",
-              "required": true,
-              "description": ""
+              "name": "period",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.StatsDataType[]",
-          "noAuthentication": false,
-          "description": "Return quota history"
+          "responseType": "cdnanycast.StatsDataType[]"
         }
       ],
-      "description": "quota operations"
+      "path": "/cdn/dedicated/{serviceName}/quota"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/cdn/dedicated/{serviceName}/serviceInfos"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/ssl",
+      "description": "CDN Ssl",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove SSL of the CDN",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "noAuthentication": false,
-          "description": "Remove SSL of the CDN"
+          "responseType": "cdnanycast.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Ssl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdnanycast.Ssl"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a SSL on CDN or Generate a Lets Encrypt certificate",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "text",
+              "description": "certificate chain (empty for lets encrypt generation)",
+              "fullType": "text",
+              "name": "chain",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "ssl name to add on CDN",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "ssl name to add on CDN"
+              "required": true
             },
             {
-              "name": "chain",
               "dataType": "text",
-              "paramType": "body",
+              "description": "certificate (empty for lets encrypt generation)",
               "fullType": "text",
-              "required": false,
-              "description": "certificate chain (empty for lets encrypt generation)"
-            },
-            {
-              "name": "key",
-              "dataType": "text",
-              "paramType": "body",
-              "fullType": "text",
-              "required": false,
-              "description": "certificate key (empty for lets encrypt generation)"
-            },
-            {
               "name": "certificate",
-              "dataType": "text",
               "paramType": "body",
-              "fullType": "text",
-              "required": false,
-              "description": "certificate (empty for lets encrypt generation)"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "text",
+              "description": "certificate key (empty for lets encrypt generation)",
+              "fullType": "text",
+              "name": "key",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Ssl",
-          "noAuthentication": false,
-          "description": "Add a SSL on CDN or Generate a Lets Encrypt certificate"
+          "responseType": "cdnanycast.Ssl"
         }
       ],
-      "description": "CDN Ssl"
+      "path": "/cdn/dedicated/{serviceName}/ssl"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/ssl/tasks",
+      "description": "List the cdnanycast.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Task associated to the ssl",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "status",
-              "dataType": "cdnanycast.TaskStateEnum",
-              "paramType": "query",
-              "fullType": "cdnanycast.TaskStateEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "name": "function",
               "dataType": "cdnanycast.TaskFunctionEnum",
-              "paramType": "query",
+              "description": "Filter the value of function property (=)",
               "fullType": "cdnanycast.TaskFunctionEnum",
-              "required": false,
-              "description": "Filter the value of function property (=)"
+              "name": "function",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "cdnanycast.TaskStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "cdnanycast.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Task associated to the ssl"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the cdnanycast.Task objects"
+      "path": "/cdn/dedicated/{serviceName}/ssl/tasks"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}",
+      "description": "Task on a CDN",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "taskId",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Task ID",
+              "fullType": "long",
+              "name": "taskId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdnanycast.Task"
         }
       ],
-      "description": "Task on a CDN"
+      "path": "/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}"
     },
     {
-      "path": "/cdn/dedicated/{serviceName}/ssl/update",
+      "description": "update operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update an existing SSL with a custom certificate",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "key",
               "dataType": "text",
-              "paramType": "body",
+              "description": "certificate",
               "fullType": "text",
-              "required": true,
-              "description": "certificate key"
-            },
-            {
               "name": "certificate",
-              "dataType": "text",
               "paramType": "body",
-              "fullType": "text",
-              "required": true,
-              "description": "certificate"
+              "required": true
             },
             {
+              "dataType": "text",
+              "description": "certificate chain",
+              "fullType": "text",
               "name": "chain",
-              "dataType": "text",
               "paramType": "body",
-              "fullType": "text",
-              "required": false,
-              "description": "certificate chain"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "text",
+              "description": "certificate key",
+              "fullType": "text",
+              "name": "key",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdnanycast.Task",
-          "noAuthentication": false,
-          "description": "Update an existing SSL with a custom certificate"
+          "responseType": "cdnanycast.Task"
         }
       ],
-      "description": "update operations"
+      "path": "/cdn/dedicated/{serviceName}/ssl/update"
     }
   ],
-  "resourcePath": "/cdn/dedicated",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "cdnanycast.Anycast": {
+      "description": "Anycast IP of a CDN customer",
       "id": "Anycast",
       "namespace": "cdnanycast",
-      "description": "Anycast IP of a CDN customer",
       "properties": {
         "anycast": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
+          "fullType": "ipv4",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "ipv4"
         },
         "backendLimit": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "backendUse": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "cacheRuleLimitPerDomain": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "lastQuotaOrder": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "logUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "URL for downloading daily log of your CDN",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "offer": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "service": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The internal name of your CDN offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cdnanycast.Backend": {
+      "description": "Backend for a domain",
       "id": "Backend",
       "namespace": "cdnanycast",
-      "description": "Backend for a domain",
       "properties": {
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
+          "fullType": "ipv4",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "ipv4"
         }
       }
     },
     "cdnanycast.CacheRule": {
+      "description": "CacheRules for a domain",
       "id": "CacheRule",
       "namespace": "cdnanycast",
-      "description": "CacheRules for a domain",
       "properties": {
         "cacheRuleId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id for this cache rule",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "cacheType": {
-          "type": "cdnanycast.CacheRuleCacheTypeEnum",
-          "fullType": "cdnanycast.CacheRuleCacheTypeEnum",
           "canBeNull": false,
+          "fullType": "cdnanycast.CacheRuleCacheTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdnanycast.CacheRuleCacheTypeEnum"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "fileMatch": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "fileType": {
-          "type": "cdnanycast.CacheRuleFileTypeEnum",
-          "fullType": "cdnanycast.CacheRuleFileTypeEnum",
           "canBeNull": false,
+          "fullType": "cdnanycast.CacheRuleFileTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdnanycast.CacheRuleFileTypeEnum"
         },
         "status": {
-          "type": "cdnanycast.CacheRuleStatusEnum",
-          "fullType": "cdnanycast.CacheRuleStatusEnum",
           "canBeNull": false,
+          "fullType": "cdnanycast.CacheRuleStatusEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "cdnanycast.CacheRuleStatusEnum"
         },
         "ttl": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "cdnanycast.CacheRuleCacheTypeEnum": {
-      "id": "CacheRuleCacheTypeEnum",
-      "namespace": "cdnanycast",
       "description": "All type a cache can be in",
       "enum": [
         "forceCache",
         "noCache"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CacheRuleCacheTypeEnum",
+      "namespace": "cdnanycast"
     },
     "cdnanycast.CacheRuleFileTypeEnum": {
-      "id": "CacheRuleFileTypeEnum",
-      "namespace": "cdnanycast",
       "description": "All states an anycast pool can be in",
       "enum": [
         "extension",
         "file",
         "folder"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CacheRuleFileTypeEnum",
+      "namespace": "cdnanycast"
     },
     "cdnanycast.CacheRuleStatusEnum": {
-      "id": "CacheRuleStatusEnum",
-      "namespace": "cdnanycast",
       "description": "All states a status can be in",
       "enum": [
         "creating",
@@ -1514,54 +1513,54 @@ export const schema: Schema = {
         "on",
         "updating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CacheRuleStatusEnum",
+      "namespace": "cdnanycast"
     },
     "cdnanycast.Domain": {
+      "description": "Domain on CDN",
       "id": "Domain",
       "namespace": "cdnanycast",
-      "description": "Domain on CDN",
       "properties": {
         "cacheRuleUse": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "cname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain of this object",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "cdnanycast.DomainStatusEnum",
-          "fullType": "cdnanycast.DomainStatusEnum",
           "canBeNull": false,
+          "fullType": "cdnanycast.DomainStatusEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "cdnanycast.DomainStatusEnum"
         },
         "type": {
-          "type": "cdnanycast.DomainTypeEnum",
-          "fullType": "cdnanycast.DomainTypeEnum",
           "canBeNull": false,
+          "fullType": "cdnanycast.DomainTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdnanycast.DomainTypeEnum"
         }
       }
     },
     "cdnanycast.DomainStatusEnum": {
-      "id": "DomainStatusEnum",
-      "namespace": "cdnanycast",
       "description": "All states a status can be in",
       "enum": [
         "error",
@@ -1569,80 +1568,80 @@ export const schema: Schema = {
         "on",
         "removing"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainStatusEnum",
+      "namespace": "cdnanycast"
     },
     "cdnanycast.DomainTypeEnum": {
-      "id": "DomainTypeEnum",
-      "namespace": "cdnanycast",
       "description": "All type of Domain",
       "enum": [
         "plain",
         "ssl"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainTypeEnum",
+      "namespace": "cdnanycast"
     },
     "cdnanycast.LogsURL": {
+      "description": "URL to real time logs",
       "id": "LogsURL",
       "namespace": "cdnanycast",
-      "description": "URL to real time logs",
       "properties": {
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "URL expiration date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "URL to logs",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cdnanycast.Pop": {
+      "description": "CDN Pop",
       "id": "Pop",
       "namespace": "cdnanycast",
-      "description": "CDN Pop",
       "properties": {
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the pop",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "cdnanycast.PopStatusEnum",
-          "fullType": "cdnanycast.PopStatusEnum",
           "canBeNull": false,
+          "fullType": "cdnanycast.PopStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdnanycast.PopStatusEnum"
         }
       }
     },
     "cdnanycast.PopStatusEnum": {
-      "id": "PopStatusEnum",
-      "namespace": "cdnanycast",
       "description": "All Pop status",
       "enum": [
         "down",
@@ -1650,61 +1649,61 @@ export const schema: Schema = {
         "rerouted",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PopStatusEnum",
+      "namespace": "cdnanycast"
     },
     "cdnanycast.Ssl": {
+      "description": "CDN Ssl",
       "id": "Ssl",
       "namespace": "cdnanycast",
-      "description": "CDN Ssl",
       "properties": {
         "certificateProvider": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Provider of the certificate installed on CDN",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "certificateValidFrom": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "certificateValidTo": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "cn": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "cdnanycast.SslStateEnum",
-          "fullType": "cdnanycast.SslStateEnum",
           "canBeNull": false,
+          "fullType": "cdnanycast.SslStateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdnanycast.SslStateEnum"
         }
       }
     },
     "cdnanycast.SslStateEnum": {
-      "id": "SslStateEnum",
-      "namespace": "cdnanycast",
       "description": "All states a CDN SSL can be in",
       "enum": [
         "checking",
@@ -1716,99 +1715,99 @@ export const schema: Schema = {
         "updating",
         "uploading"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SslStateEnum",
+      "namespace": "cdnanycast"
     },
     "cdnanycast.StatsDataType": {
+      "description": "A structure describing type of a stats hash",
       "id": "StatsDataType",
       "namespace": "cdnanycast",
-      "description": "A structure describing type of a stats hash",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "value": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "long"
         }
       }
     },
     "cdnanycast.StatsPeriodEnum": {
-      "id": "StatsPeriodEnum",
-      "namespace": "cdnanycast",
       "description": "Period of the statistics",
       "enum": [
         "day",
         "month",
         "week"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatsPeriodEnum",
+      "namespace": "cdnanycast"
     },
     "cdnanycast.StatsTypeEnum": {
-      "id": "StatsTypeEnum",
-      "namespace": "cdnanycast",
       "description": "Type of statistics related to cache",
       "enum": [
         "backend",
         "cdn",
         "threat"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatsTypeEnum",
+      "namespace": "cdnanycast"
     },
     "cdnanycast.StatsValueEnum": {
-      "id": "StatsValueEnum",
-      "namespace": "cdnanycast",
       "description": "Value bandwidth or request",
       "enum": [
         "bandwidth",
         "request"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatsValueEnum",
+      "namespace": "cdnanycast"
     },
     "cdnanycast.Task": {
+      "description": "Task on a CDN",
       "id": "Task",
       "namespace": "cdnanycast",
-      "description": "Task on a CDN",
       "properties": {
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "function": {
-          "type": "cdnanycast.TaskFunctionEnum",
-          "fullType": "cdnanycast.TaskFunctionEnum",
           "canBeNull": false,
+          "fullType": "cdnanycast.TaskFunctionEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdnanycast.TaskFunctionEnum"
         },
         "status": {
-          "type": "cdnanycast.TaskStateEnum",
-          "fullType": "cdnanycast.TaskStateEnum",
           "canBeNull": false,
+          "fullType": "cdnanycast.TaskStateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdnanycast.TaskStateEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "cdnanycast.TaskFunctionEnum": {
-      "id": "TaskFunctionEnum",
-      "namespace": "cdnanycast",
       "description": "All function CDN task can be",
       "enum": [
         "flush",
@@ -1820,11 +1819,11 @@ export const schema: Schema = {
         "uninstallSsl",
         "updateCacheRule"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskFunctionEnum",
+      "namespace": "cdnanycast"
     },
     "cdnanycast.TaskStateEnum": {
-      "id": "TaskStateEnum",
-      "namespace": "cdnanycast",
       "description": "All states a CDN task can be in",
       "enum": [
         "cancelled",
@@ -1833,58 +1832,58 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "cdnanycast"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1895,11 +1894,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1907,108 +1906,111 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/cdn/dedicated"
 }

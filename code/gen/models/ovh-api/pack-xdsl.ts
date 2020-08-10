@@ -1,2885 +1,2884 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/pack/xdsl.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/pack/xdsl",
+      "description": "Operations about the PACK service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the PACK service"
+      "path": "/pack/xdsl"
     },
     {
-      "path": "/pack/xdsl/{packName}",
+      "description": "Pack of xDSL services",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.PackAdsl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "pack.xdsl.PackAdsl"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "pack.xdsl.PackAdsl",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "pack.xdsl.PackAdsl",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Pack of xDSL services"
+      "path": "/pack/xdsl/{packName}"
     },
     {
-      "path": "/pack/xdsl/{packName}/addressMove/eligibility",
+      "description": "eligibility operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Eligibility to move the access",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "address",
               "dataType": "xdsl.eligibility.Address",
-              "paramType": "body",
+              "description": "The address to test, if no lineNumber",
               "fullType": "xdsl.eligibility.Address",
-              "required": false,
-              "description": "The address to test, if no lineNumber"
-            },
-            {
-              "name": "lineNumber",
-              "dataType": "string",
+              "name": "address",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The line number to test, if no address"
+              "required": false
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The line number to test, if no address",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "lineNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Pack name",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>",
-          "noAuthentication": false,
-          "description": "Eligibility to move the access"
+          "responseType": "pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>"
         }
       ],
-      "description": "eligibility operations"
+      "path": "/pack/xdsl/{packName}/addressMove/eligibility"
     },
     {
-      "path": "/pack/xdsl/{packName}/addressMove/move",
+      "description": "move operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Move the Xdsl access to another address",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "landline",
               "dataType": "pack.xdsl.addressMove.Landline",
-              "paramType": "body",
+              "description": "Data identifying the landline at the new address, if available",
               "fullType": "pack.xdsl.addressMove.Landline",
-              "required": false,
-              "description": "Data identifying the landline at the new address, if available"
+              "name": "landline",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "moveOutDate",
               "dataType": "datetime",
-              "paramType": "body",
+              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days",
               "fullType": "datetime",
-              "required": false,
-              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days"
+              "name": "moveOutDate",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "keepCurrentNumber",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Whether or not the current number should be kept",
               "fullType": "boolean",
-              "required": true,
-              "description": "Whether or not the current number should be kept"
+              "name": "keepCurrentNumber",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "creation",
               "dataType": "pack.xdsl.addressMove.Creation",
-              "paramType": "body",
+              "description": "The data to create a new line if lineNumber is not available",
               "fullType": "pack.xdsl.addressMove.Creation",
-              "required": false,
-              "description": "The data to create a new line if lineNumber is not available"
+              "name": "creation",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The offerCode from addressMove/eligibility",
+              "fullType": "string",
               "name": "offerCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The offerCode from addressMove/eligibility"
+              "required": true
             },
             {
-              "name": "provider",
               "dataType": "xdsl.eligibility.ProviderEnum",
-              "paramType": "body",
+              "description": "Provider of the new line",
               "fullType": "xdsl.eligibility.ProviderEnum",
-              "required": false,
-              "description": "Provider of the new line"
+              "name": "provider",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.AsyncTask<long>",
-          "noAuthentication": false,
-          "description": "Move the Xdsl access to another address"
+          "responseType": "pack.xdsl.AsyncTask<long>"
         }
       ],
-      "description": "move operations"
+      "path": "/pack/xdsl/{packName}/addressMove/move"
     },
     {
-      "path": "/pack/xdsl/{packName}/addressMove/moveFtth",
+      "description": "moveFtth operations",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-11-22T10:00:00+01:00",
             "deprecatedDate": "2019-10-22T10:00:00+01:00",
-            "replacement": "/pack/xdsl/{packName}/addressMove/moveOffer"
+            "description": "Deprecated, will be removed",
+            "replacement": "/pack/xdsl/{packName}/addressMove/moveOffer",
+            "value": "DEPRECATED"
           },
+          "description": "Move the FTTH access to another address",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Floor identifier, \"null\" if no identifier is available",
+              "fullType": "string",
               "name": "floor",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Floor identifier, \"null\" if no identifier is available"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Reference of the Optical Termination Point",
+              "fullType": "string",
               "name": "otpReference",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Reference of the Optical Termination Point"
+              "required": false
             },
             {
-              "name": "moveOutDate",
               "dataType": "datetime",
-              "paramType": "body",
+              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days. The default date will be the one in 30 days from now.",
               "fullType": "datetime",
-              "required": false,
-              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days. The default date will be the one in 30 days from now."
+              "name": "moveOutDate",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Stair identifier, \"null\" if no identifier is available",
+              "fullType": "string",
               "name": "stair",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Stair identifier, \"null\" if no identifier is available"
+              "required": true
             },
             {
-              "name": "otp",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Do you have an Optical Termination Point (Point de Terminaison Optique) at home ?",
               "fullType": "boolean",
-              "required": true,
-              "description": "Do you have an Optical Termination Point (Point de Terminaison Optique) at home ?"
-            },
-            {
-              "name": "buildingReference",
-              "dataType": "string",
+              "name": "otp",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Building reference for FTTH offers"
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Building reference for FTTH offers",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "buildingReference",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pack name",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.AsyncTask<long>",
-          "noAuthentication": false,
-          "description": "Move the FTTH access to another address"
+          "responseType": "pack.xdsl.AsyncTask<long>"
         }
       ],
-      "description": "moveFtth operations"
+      "path": "/pack/xdsl/{packName}/addressMove/moveFtth"
     },
     {
-      "path": "/pack/xdsl/{packName}/addressMove/moveOffer",
+      "description": "moveOffer operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Move the access to another address",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "acceptContracts",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "You explicitly accept the terms of the contract corresponding to your new offer",
               "fullType": "boolean",
-              "required": true,
-              "description": "You explicitly accept the terms of the contract corresponding to your new offer"
+              "name": "acceptContracts",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Floor identifier, \"null\" if no identifier is available",
+              "fullType": "string",
               "name": "floor",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Floor identifier, \"null\" if no identifier is available"
+              "required": false
             },
             {
-              "name": "moveOutDate",
               "dataType": "datetime",
-              "paramType": "body",
+              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days. The default date will be the one in 30 days from now.",
               "fullType": "datetime",
-              "required": false,
-              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days. The default date will be the one in 30 days from now."
+              "name": "moveOutDate",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Reference of the new offer",
+              "fullType": "string",
               "name": "offerName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Reference of the new offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "nicShipping if a shipping is needed",
+              "fullType": "string",
               "name": "nicShipping",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "nicShipping if a shipping is needed"
+              "required": false
             },
             {
-              "name": "engageMonths",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Number of months of re-engagement",
               "fullType": "long",
-              "required": false,
-              "description": "Number of months of re-engagement"
-            },
-            {
-              "name": "eligibilityReference",
-              "dataType": "string",
+              "name": "engageMonths",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Eligibility reference"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Eligibility reference",
+              "fullType": "string",
+              "name": "eligibilityReference",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Whether or not the current number should be kept",
+              "fullType": "boolean",
               "name": "keepCurrentNumber",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Whether or not the current number should be kept"
+              "required": true
             },
             {
-              "name": "stair",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Stair identifier, \"null\" if no identifier is available",
               "fullType": "string",
-              "required": false,
-              "description": "Stair identifier, \"null\" if no identifier is available"
+              "name": "stair",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "meeting",
               "dataType": "xdsl.eligibility.BookMeetingSlot",
-              "paramType": "body",
+              "description": "Data to book a meeting slot",
               "fullType": "xdsl.eligibility.BookMeetingSlot",
-              "required": false,
-              "description": "Data to book a meeting slot"
-            },
-            {
-              "name": "options",
-              "dataType": "pack.xdsl.migration.OfferOption[]",
+              "name": "meeting",
               "paramType": "body",
-              "fullType": "pack.xdsl.migration.OfferOption[]",
-              "required": false,
-              "description": "Options wanted in the new offer"
+              "required": false
             },
             {
+              "dataType": "pack.xdsl.migration.OfferOption[]",
+              "description": "Options wanted in the new offer",
+              "fullType": "pack.xdsl.migration.OfferOption[]",
+              "name": "options",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Product code, an unique identifier for the product from addressMove/offer",
+              "fullType": "string",
               "name": "productCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Product code, an unique identifier for the product from addressMove/offer"
+              "required": true
             },
             {
-              "name": "mondialRelayId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Mondial relay ID if a shipping is needed",
               "fullType": "long",
-              "required": false,
-              "description": "Mondial relay ID if a shipping is needed"
+              "name": "mondialRelayId",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Building reference for FTTH offers",
+              "fullType": "string",
               "name": "buildingReference",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Building reference for FTTH offers"
+              "required": false
             },
             {
-              "name": "subServicesToDelete",
               "dataType": "pack.xdsl.migration.OfferServiceToDelete[]",
-              "paramType": "body",
+              "description": "List of domains of services to delete if needed",
               "fullType": "pack.xdsl.migration.OfferServiceToDelete[]",
-              "required": false,
-              "description": "List of domains of services to delete if needed"
+              "name": "subServicesToDelete",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Reference of the Optical Termination Point",
+              "fullType": "string",
               "name": "otpReference",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Reference of the Optical Termination Point"
+              "required": false
             },
             {
-              "name": "otp",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Do you have an Optical Termination Point (Point de Terminaison Optique) at home ?",
               "fullType": "boolean",
-              "required": true,
-              "description": "Do you have an Optical Termination Point (Point de Terminaison Optique) at home ?"
-            },
-            {
-              "name": "contactPhone",
-              "dataType": "string",
+              "name": "otp",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Customer contact phone number"
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Customer contact phone number",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "contactPhone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Pack name",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.AsyncTask<long>",
-          "noAuthentication": false,
-          "description": "Move the access to another address"
+          "responseType": "pack.xdsl.AsyncTask<long>"
         }
       ],
-      "description": "moveOffer operations"
+      "path": "/pack/xdsl/{packName}/addressMove/moveOffer"
     },
     {
-      "path": "/pack/xdsl/{packName}/addressMove/offers",
+      "description": "offers operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the possibilities of address move offers available",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Eligibility reference",
+              "fullType": "string",
               "name": "eligibilityReference",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Eligibility reference"
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>",
-          "noAuthentication": false,
-          "description": "Get the possibilities of address move offers available"
+          "responseType": "pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>"
         }
       ],
-      "description": "offers operations"
+      "path": "/pack/xdsl/{packName}/addressMove/offers"
     },
     {
-      "path": "/pack/xdsl/{packName}/canCancelResiliation",
+      "description": "canCancelResiliation operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Check if the resiliation can be cancelled",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Check if the resiliation can be cancelled"
+          "responseType": "boolean"
         }
       ],
-      "description": "canCancelResiliation operations"
+      "path": "/pack/xdsl/{packName}/canCancelResiliation"
     },
     {
-      "path": "/pack/xdsl/{packName}/cancelResiliation",
+      "description": "cancelResiliation operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Cancel the ongoing resiliation",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Cancel the ongoing resiliation"
+          "responseType": "void"
         }
       ],
-      "description": "cancelResiliation operations"
+      "path": "/pack/xdsl/{packName}/cancelResiliation"
     },
     {
-      "path": "/pack/xdsl/{packName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/pack/xdsl/{packName}/changeContact"
     },
     {
-      "path": "/pack/xdsl/{packName}/contactOwner",
+      "description": "contactOwner operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get contact infos about the owner",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.ContactInfos",
-          "noAuthentication": false,
-          "description": "Get contact infos about the owner"
+          "responseType": "pack.xdsl.ContactInfos"
         }
       ],
-      "description": "contactOwner operations"
+      "path": "/pack/xdsl/{packName}/contactOwner"
     },
     {
-      "path": "/pack/xdsl/{packName}/domain/options/tlds",
+      "description": "tlds operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the available tlds for domain order",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get the available tlds for domain order"
+          "responseType": "string[]"
         }
       ],
-      "description": "tlds operations"
+      "path": "/pack/xdsl/{packName}/domain/options/tlds"
     },
     {
-      "path": "/pack/xdsl/{packName}/domain/services",
+      "description": "List the pack.xdsl.DomainService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Domain services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Domain services"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Activate a domain service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Domain name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "name": "domain",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "TLD of the domain",
+              "fullType": "string",
               "name": "tld",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "TLD of the domain"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Needed for transfer from another registrar",
+              "fullType": "string",
               "name": "authInfo",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Needed for transfer from another registrar"
+              "required": false
             },
             {
-              "name": "action",
               "dataType": "pack.xdsl.DomainActionEnum",
-              "paramType": "body",
+              "description": "Domain action",
               "fullType": "pack.xdsl.DomainActionEnum",
-              "required": true,
-              "description": "Domain action"
+              "name": "action",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Task",
-          "noAuthentication": false,
-          "description": "Activate a domain service"
+          "responseType": "pack.xdsl.Task"
         }
       ],
-      "description": "List the pack.xdsl.DomainService objects"
+      "path": "/pack/xdsl/{packName}/domain/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/emailPro/options/domains",
+      "description": "domains operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List the available domains for the Email Pro service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List the available domains for the Email Pro service"
+          "responseType": "string[]"
         }
       ],
-      "description": "domains operations"
+      "path": "/pack/xdsl/{packName}/emailPro/options/domains"
     },
     {
-      "path": "/pack/xdsl/{packName}/emailPro/options/isEmailAvailable",
+      "description": "isEmailAvailable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Check if the given email address is available for an Email Pro activation",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "The email address",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "The email address"
+              "required": true
             }
           ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Check if the given email address is available for an Email Pro activation"
+          "responseType": "boolean"
         }
       ],
-      "description": "isEmailAvailable operations"
+      "path": "/pack/xdsl/{packName}/emailPro/options/isEmailAvailable"
     },
     {
-      "path": "/pack/xdsl/{packName}/emailPro/services",
+      "description": "List the pack.xdsl.EmailProService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List the Email Pro services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List the Email Pro services"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Activate an Email Pro service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "The password",
               "fullType": "password",
-              "required": true,
-              "description": "The password"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
+              "name": "password",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The email address"
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The email address",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pack name",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Task",
-          "noAuthentication": false,
-          "description": "Activate an Email Pro service"
+          "responseType": "pack.xdsl.Task"
         }
       ],
-      "description": "List the pack.xdsl.EmailProService objects"
+      "path": "/pack/xdsl/{packName}/emailPro/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/exchangeAccount/services",
+      "description": "List the pack.xdsl.ExchangeAccountService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Exchange 2013 services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Exchange 2013 services"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the pack.xdsl.ExchangeAccountService objects"
+      "path": "/pack/xdsl/{packName}/exchangeAccount/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/exchangeAccount/services/{domain}",
+      "description": "Exchange 2013 service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.ExchangeAccountService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "pack.xdsl.ExchangeAccountService"
         }
       ],
-      "description": "Exchange 2013 service"
+      "path": "/pack/xdsl/{packName}/exchangeAccount/services/{domain}"
     },
     {
-      "path": "/pack/xdsl/{packName}/exchangeIndividual/options/domains",
+      "description": "domains operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the available domains",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get the available domains"
+          "responseType": "string[]"
         }
       ],
-      "description": "domains operations"
+      "path": "/pack/xdsl/{packName}/exchangeIndividual/options/domains"
     },
     {
-      "path": "/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable",
+      "description": "isEmailAvailable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Check if the email address is available for service creation",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Check if the email address is available for service creation"
+          "responseType": "boolean"
         }
       ],
-      "description": "isEmailAvailable operations"
+      "path": "/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable"
     },
     {
-      "path": "/pack/xdsl/{packName}/exchangeIndividual/services",
+      "description": "List the pack.xdsl.ExchangeIndividual objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Exchange services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Exchange services"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2016-06-30:00:00+01:00",
             "deprecatedDate": "2016-05-30T08:00:00+01:00",
-            "replacement": "/email/exchange/{organizationName}/service/{exchangeService}/account"
+            "description": "Deprecated, will be removed",
+            "replacement": "/email/exchange/{organizationName}/service/{exchangeService}/account",
+            "value": "DEPRECATED"
           },
+          "description": "Activate an exchange service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Email address",
               "fullType": "string",
-              "required": true,
-              "description": "Email address"
+              "name": "email",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Password",
               "fullType": "password",
-              "required": true,
-              "description": "Password"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Task",
-          "noAuthentication": false,
-          "description": "Activate an exchange service"
+          "responseType": "pack.xdsl.Task"
         }
       ],
-      "description": "List the pack.xdsl.ExchangeIndividual objects"
+      "path": "/pack/xdsl/{packName}/exchangeIndividual/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable",
+      "description": "isEmailAvailable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Check if the email address is available for service creation",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "required": true
             }
           ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Check if the email address is available for service creation"
+          "responseType": "boolean"
         }
       ],
-      "description": "isEmailAvailable operations"
+      "path": "/pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable"
     },
     {
-      "path": "/pack/xdsl/{packName}/exchangeLite/services",
+      "description": "List the pack.xdsl.ExchangeLiteService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Exchange lite services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Exchange lite services"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2016-06-30:00:00+01:00",
             "deprecatedDate": "2016-05-30T08:00:00+01:00",
-            "replacement": "/email/exchange/{organizationName}/service/{exchangeService}/account"
+            "description": "Deprecated, will be removed",
+            "replacement": "/email/exchange/{organizationName}/service/{exchangeService}/account",
+            "value": "DEPRECATED"
           },
+          "description": "Activate a exchange lite service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Last name",
+              "fullType": "string",
               "name": "lastName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Last name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "First name",
+              "fullType": "string",
               "name": "firstName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "First name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Display name",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Display name"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Initials",
+              "fullType": "string",
               "name": "initials",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Initials"
+              "required": false
             },
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Password",
               "fullType": "password",
-              "required": true,
-              "description": "Password"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
+              "name": "password",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Email address"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Email address",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Antispam protection",
+              "fullType": "boolean",
               "name": "antispam",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Antispam protection"
+              "required": false
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Task",
-          "noAuthentication": false,
-          "description": "Activate a exchange lite service"
+          "responseType": "pack.xdsl.Task"
         }
       ],
-      "description": "List the pack.xdsl.ExchangeLiteService objects"
+      "path": "/pack/xdsl/{packName}/exchangeLite/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/exchangeLite/services/{domain}",
+      "description": "Exchange account service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.ExchangeLiteService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "pack.xdsl.ExchangeLiteService"
         }
       ],
-      "description": "Exchange account service"
+      "path": "/pack/xdsl/{packName}/exchangeLite/services/{domain}"
     },
     {
-      "path": "/pack/xdsl/{packName}/exchangeOrganization/services",
+      "description": "List the pack.xdsl.ExchangeOrganizationService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Exchange 2013 organization services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Exchange 2013 organization services"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the pack.xdsl.ExchangeOrganizationService objects"
+      "path": "/pack/xdsl/{packName}/exchangeOrganization/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/hostedEmail/options/domains",
+      "description": "domains operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the hostedemail available domains",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get the hostedemail available domains"
+          "responseType": "string[]"
         }
       ],
-      "description": "domains operations"
+      "path": "/pack/xdsl/{packName}/hostedEmail/options/domains"
     },
     {
-      "path": "/pack/xdsl/{packName}/hostedEmail/services",
+      "description": "List the pack.xdsl.HostedEmailService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Hosted email services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Hosted email services"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Activate an hosted email service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Password",
               "fullType": "password",
-              "required": true,
-              "description": "Password"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Email address",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Email address"
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Task",
-          "noAuthentication": false,
-          "description": "Activate an hosted email service"
+          "responseType": "pack.xdsl.Task"
         }
       ],
-      "description": "List the pack.xdsl.HostedEmailService objects"
+      "path": "/pack/xdsl/{packName}/hostedEmail/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/hostedEmail/services/{domain}",
+      "description": "Hosted email services",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete hosted email account",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete hosted email account"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.HostedEmailService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "pack.xdsl.HostedEmailService"
         }
       ],
-      "description": "Hosted email services"
+      "path": "/pack/xdsl/{packName}/hostedEmail/services/{domain}"
     },
     {
-      "path": "/pack/xdsl/{packName}/hostedEmail/services/{domain}/account",
+      "description": "account operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get hosted email account informations",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.HostedEmail.Account",
-          "noAuthentication": false,
-          "description": "Get hosted email account informations"
+          "responseType": "pack.xdsl.HostedEmail.Account"
         }
       ],
-      "description": "account operations"
+      "path": "/pack/xdsl/{packName}/hostedEmail/services/{domain}/account"
     },
     {
-      "path": "/pack/xdsl/{packName}/hostedEmail/services/{domain}/changePassword",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change hosted email account password",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "New password",
               "fullType": "password",
-              "required": true,
-              "description": "New password"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pack name",
+              "fullType": "string",
               "name": "packName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Change hosted email account password"
+          "responseType": "void"
         }
       ],
-      "description": "changePassword operations"
+      "path": "/pack/xdsl/{packName}/hostedEmail/services/{domain}/changePassword"
     },
     {
-      "path": "/pack/xdsl/{packName}/hostedEmail/services/{domain}/configuration",
+      "description": "configuration operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get hosted email configuration informations",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.HostedEmail.Configuration",
-          "noAuthentication": false,
-          "description": "Get hosted email configuration informations"
+          "responseType": "pack.xdsl.HostedEmail.Configuration"
         }
       ],
-      "description": "configuration operations"
+      "path": "/pack/xdsl/{packName}/hostedEmail/services/{domain}/configuration"
     },
     {
-      "path": "/pack/xdsl/{packName}/hubic/services",
+      "description": "List the pack.xdsl.Hubic objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Hubic perso services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Hubic perso services"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the pack.xdsl.Hubic objects"
+      "path": "/pack/xdsl/{packName}/hubic/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/hubic/services/{domain}",
+      "description": "Hubic service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Hubic",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "pack.xdsl.Hubic"
         }
       ],
-      "description": "Hubic service"
+      "path": "/pack/xdsl/{packName}/hubic/services/{domain}"
     },
     {
-      "path": "/pack/xdsl/{packName}/hubic/services/{domain}/details",
+      "description": "details operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Details associated to a voucher",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>",
-          "noAuthentication": false,
-          "description": "Details associated to a voucher"
+          "responseType": "pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>"
         }
       ],
-      "description": "details operations"
+      "path": "/pack/xdsl/{packName}/hubic/services/{domain}/details"
     },
     {
-      "path": "/pack/xdsl/{packName}/migration/migrate",
+      "description": "migrate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Migrate to the selected offer",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "subServicesToDelete",
               "dataType": "pack.xdsl.migration.OfferServiceToDelete[]",
-              "paramType": "body",
+              "description": "List of domains of services to delete if needed",
               "fullType": "pack.xdsl.migration.OfferServiceToDelete[]",
-              "required": false,
-              "description": "List of domains of services to delete if needed"
+              "name": "subServicesToDelete",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "nicShipping if a shipping is needed",
+              "fullType": "string",
               "name": "nicShipping",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "nicShipping if a shipping is needed"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Reference of the Optical Termination Point",
+              "fullType": "string",
               "name": "otpReference",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Reference of the Optical Termination Point"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Number of months of re-engagement",
+              "fullType": "long",
               "name": "engageMonths",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Number of months of re-engagement"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Mondial relay ID if a shipping is needed",
+              "fullType": "long",
               "name": "mondialRelayId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Mondial relay ID if a shipping is needed"
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "Do you have an Optical Termination Point (Point de Terminaison Optique) at home ?",
+              "fullType": "boolean",
               "name": "otp",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Do you have an Optical Termination Point (Point de Terminaison Optique) at home ?"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Stair identifier, \"_NA_\" if no identifier is available",
+              "fullType": "string",
               "name": "stair",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Stair identifier, \"_NA_\" if no identifier is available"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Reference of the new offer",
+              "fullType": "string",
               "name": "offerName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Reference of the new offer"
+              "required": true
             },
             {
-              "name": "options",
               "dataType": "pack.xdsl.migration.OfferOption[]",
-              "paramType": "body",
+              "description": "Options wanted in the new offer",
               "fullType": "pack.xdsl.migration.OfferOption[]",
-              "required": false,
-              "description": "Options wanted in the new offer"
+              "name": "options",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Floor identifier, \"_NA_\" if no identifier is available",
+              "fullType": "string",
               "name": "floor",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Floor identifier, \"_NA_\" if no identifier is available"
+              "required": false
             },
             {
-              "name": "acceptContracts",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "You explicitly accept the terms of the contract corresponding to your new offer",
               "fullType": "boolean",
-              "required": true,
-              "description": "You explicitly accept the terms of the contract corresponding to your new offer"
+              "name": "acceptContracts",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Customer contact phone number",
+              "fullType": "string",
               "name": "contactPhone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Customer contact phone number"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Building reference for FTTH offers",
+              "fullType": "string",
               "name": "buildingReference",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Building reference for FTTH offers"
+              "required": false
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Task",
-          "noAuthentication": false,
-          "description": "Migrate to the selected offer"
+          "responseType": "pack.xdsl.Task"
         }
       ],
-      "description": "migrate operations"
+      "path": "/pack/xdsl/{packName}/migration/migrate"
     },
     {
-      "path": "/pack/xdsl/{packName}/migration/offers",
+      "description": "offers operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the possibilities of migration offers available",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>",
-          "noAuthentication": false,
-          "description": "Get the possibilities of migration offers available"
+          "responseType": "pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>"
         }
       ],
-      "description": "offers operations"
+      "path": "/pack/xdsl/{packName}/migration/offers"
     },
     {
-      "path": "/pack/xdsl/{packName}/migration/servicesToDelete",
+      "description": "servicesToDelete operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Calculate services to delete with new offer and options",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "options",
               "dataType": "pack.xdsl.migration.OfferOption[]",
-              "paramType": "body",
+              "description": "Options wanted in the new offer",
               "fullType": "pack.xdsl.migration.OfferOption[]",
-              "required": false,
-              "description": "Options wanted in the new offer"
+              "name": "options",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Reference of the new offer",
+              "fullType": "string",
               "name": "offerName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Reference of the new offer"
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.migration.SubServiceToDelete[]",
-          "noAuthentication": false,
-          "description": "Calculate services to delete with new offer and options"
+          "responseType": "pack.xdsl.migration.SubServiceToDelete[]"
         }
       ],
-      "description": "servicesToDelete operations"
+      "path": "/pack/xdsl/{packName}/migration/servicesToDelete"
     },
     {
-      "path": "/pack/xdsl/{packName}/promotionCode/capabilities",
+      "description": "capabilities operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about the promotion code generation",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.promotionCode.Capabilities",
-          "noAuthentication": false,
-          "description": "Get informations about the promotion code generation"
+          "responseType": "pack.xdsl.promotionCode.Capabilities"
         }
       ],
-      "description": "capabilities operations"
+      "path": "/pack/xdsl/{packName}/promotionCode/capabilities"
     },
     {
-      "path": "/pack/xdsl/{packName}/promotionCode/generate",
+      "description": "generate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Creates a task to generate a new promotion code",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Task",
-          "noAuthentication": false,
-          "description": "Creates a task to generate a new promotion code"
+          "responseType": "pack.xdsl.Task"
         }
       ],
-      "description": "generate operations"
+      "path": "/pack/xdsl/{packName}/promotionCode/generate"
     },
     {
-      "path": "/pack/xdsl/{packName}/resiliate",
+      "description": "resiliate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Resiliate the pack",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "resiliationSurvey",
               "dataType": "pack.xdsl.ResiliationSurvey",
-              "paramType": "body",
+              "description": "Comment about resiliation reasons",
               "fullType": "pack.xdsl.ResiliationSurvey",
-              "required": true,
-              "description": "Comment about resiliation reasons"
-            },
-            {
-              "name": "resiliationDate",
-              "dataType": "datetime",
+              "name": "resiliationSurvey",
               "paramType": "body",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Effective date of the resiliation"
+              "required": true
             },
             {
-              "name": "servicesToKeep",
+              "dataType": "datetime",
+              "description": "Effective date of the resiliation",
+              "fullType": "datetime",
+              "name": "resiliationDate",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "double[]",
-              "paramType": "body",
+              "description": "Ids of service you will keep on resiliation. (you can get it with /pack/xdsl/{packName}/subServices)",
               "fullType": "double[]",
-              "required": false,
-              "description": "Ids of service you will keep on resiliation. (you can get it with /pack/xdsl/{packName}/subServices)"
+              "name": "servicesToKeep",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.ResiliationFollowUpDetail",
-          "noAuthentication": false,
-          "description": "Resiliate the pack"
+          "responseType": "pack.xdsl.ResiliationFollowUpDetail"
         }
       ],
-      "description": "resiliate operations"
+      "path": "/pack/xdsl/{packName}/resiliate"
     },
     {
-      "path": "/pack/xdsl/{packName}/resiliationFollowUp",
+      "description": "resiliationFollowUp operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get information about the ongoing resiliation",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.ResiliationFollowUpDetail",
-          "noAuthentication": false,
-          "description": "Get information about the ongoing resiliation"
+          "responseType": "pack.xdsl.ResiliationFollowUpDetail"
         }
       ],
-      "description": "resiliationFollowUp operations"
+      "path": "/pack/xdsl/{packName}/resiliationFollowUp"
     },
     {
-      "path": "/pack/xdsl/{packName}/resiliationTerms",
+      "description": "resiliationTerms operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get resiliation terms",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "resiliationDate",
               "dataType": "datetime",
-              "paramType": "query",
+              "description": "The desired resiliation date",
               "fullType": "datetime",
-              "required": false,
-              "description": "The desired resiliation date"
+              "name": "resiliationDate",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "pack.xdsl.ResiliationTerms",
-          "noAuthentication": false,
-          "description": "Get resiliation terms"
+          "responseType": "pack.xdsl.ResiliationTerms"
         }
       ],
-      "description": "resiliationTerms operations"
+      "path": "/pack/xdsl/{packName}/resiliationTerms"
     },
     {
-      "path": "/pack/xdsl/{packName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/pack/xdsl/{packName}/serviceInfos"
     },
     {
-      "path": "/pack/xdsl/{packName}/services",
+      "description": "services operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Informations about the services included in the pack",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.ServiceInformation[]",
-          "noAuthentication": false,
-          "description": "Informations about the services included in the pack"
+          "responseType": "pack.xdsl.ServiceInformation[]"
         }
       ],
-      "description": "services operations"
+      "path": "/pack/xdsl/{packName}/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/shippingAddresses",
+      "description": "shippingAddresses operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Allowed shipping addresses given a context",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "context",
               "dataType": "pack.xdsl.ShippingAddressContextEnum",
-              "paramType": "query",
+              "description": "Context",
               "fullType": "pack.xdsl.ShippingAddressContextEnum",
-              "required": true,
-              "description": "Context"
+              "name": "context",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.ShippingAddress[]",
-          "noAuthentication": false,
-          "description": "Allowed shipping addresses given a context"
+          "responseType": "pack.xdsl.ShippingAddress[]"
         }
       ],
-      "description": "shippingAddresses operations"
+      "path": "/pack/xdsl/{packName}/shippingAddresses"
     },
     {
-      "path": "/pack/xdsl/{packName}/siteBuilderFull/options/domains",
+      "description": "domains operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the available domains",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.SiteBuilderDomain[]",
-          "noAuthentication": false,
-          "description": "Get the available domains"
+          "responseType": "pack.xdsl.SiteBuilderDomain[]"
         }
       ],
-      "description": "domains operations"
+      "path": "/pack/xdsl/{packName}/siteBuilderFull/options/domains"
     },
     {
-      "path": "/pack/xdsl/{packName}/siteBuilderFull/options/templates",
+      "description": "templates operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the available templates",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.SiteBuilderTemplate[]",
-          "noAuthentication": false,
-          "description": "Get the available templates"
+          "responseType": "pack.xdsl.SiteBuilderTemplate[]"
         }
       ],
-      "description": "templates operations"
+      "path": "/pack/xdsl/{packName}/siteBuilderFull/options/templates"
     },
     {
-      "path": "/pack/xdsl/{packName}/siteBuilderFull/services",
+      "description": "List the pack.xdsl.SiteBuilderFullService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Sitebuilder full services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Sitebuilder full services"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Activate a sitebuilder full service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Subdomain",
+              "fullType": "string",
               "name": "subdomain",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Subdomain"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "required": true
             },
             {
-              "name": "templateId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Template ID",
               "fullType": "long",
-              "required": true,
-              "description": "Template ID"
+              "name": "templateId",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Task",
-          "noAuthentication": false,
-          "description": "Activate a sitebuilder full service"
+          "responseType": "pack.xdsl.Task"
         }
       ],
-      "description": "List the pack.xdsl.SiteBuilderFullService objects"
+      "path": "/pack/xdsl/{packName}/siteBuilderFull/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/siteBuilderStart/options/domains",
+      "description": "domains operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the available domains",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.SiteBuilderDomain[]",
-          "noAuthentication": false,
-          "description": "Get the available domains"
+          "responseType": "pack.xdsl.SiteBuilderDomain[]"
         }
       ],
-      "description": "domains operations"
+      "path": "/pack/xdsl/{packName}/siteBuilderStart/options/domains"
     },
     {
-      "path": "/pack/xdsl/{packName}/siteBuilderStart/options/templates",
+      "description": "templates operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the available templates",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.SiteBuilderTemplate[]",
-          "noAuthentication": false,
-          "description": "Get the available templates"
+          "responseType": "pack.xdsl.SiteBuilderTemplate[]"
         }
       ],
-      "description": "templates operations"
+      "path": "/pack/xdsl/{packName}/siteBuilderStart/options/templates"
     },
     {
-      "path": "/pack/xdsl/{packName}/siteBuilderStart/services",
+      "description": "List the pack.xdsl.SiteBuilderStartService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Sitebuilder start services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Sitebuilder start services"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Activate a sitebuilder full service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "templateId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Template ID",
               "fullType": "long",
-              "required": true,
-              "description": "Template ID"
+              "name": "templateId",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Subdomain",
+              "fullType": "string",
               "name": "subdomain",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Subdomain"
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domain",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain name"
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Task",
-          "noAuthentication": false,
-          "description": "Activate a sitebuilder full service"
+          "responseType": "pack.xdsl.Task"
         }
       ],
-      "description": "List the pack.xdsl.SiteBuilderStartService objects"
+      "path": "/pack/xdsl/{packName}/siteBuilderStart/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/subServices",
+      "description": "List the pack.xdsl.Service objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List services contained in the pack",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List services contained in the pack"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the pack.xdsl.Service objects"
+      "path": "/pack/xdsl/{packName}/subServices"
     },
     {
-      "path": "/pack/xdsl/{packName}/subServices/{domain}",
+      "description": "Service link to the pack",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "pack.xdsl.Service"
         }
       ],
-      "description": "Service link to the pack"
+      "path": "/pack/xdsl/{packName}/subServices/{domain}"
     },
     {
-      "path": "/pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms",
+      "description": "keepServiceTerms operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Give the condition to unpack service from pack",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.UnpackTerms",
-          "noAuthentication": false,
-          "description": "Give the condition to unpack service from pack"
+          "responseType": "pack.xdsl.UnpackTerms"
         }
       ],
-      "description": "keepServiceTerms operations"
+      "path": "/pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms"
     },
     {
-      "path": "/pack/xdsl/{packName}/tasks",
+      "description": "List the pack.xdsl.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Tasks scheduled for this pack",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "status",
               "dataType": "pack.xdsl.TaskStatusEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "pack.xdsl.TaskStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "name": "function",
-              "dataType": "string",
+              "name": "status",
               "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of function property (=)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of function property (=)"
+              "name": "function",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks scheduled for this pack"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the pack.xdsl.Task objects"
+      "path": "/pack/xdsl/{packName}/tasks"
     },
     {
-      "path": "/pack/xdsl/{packName}/tasks/{id}",
+      "description": "Describes the current status of a task",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "pack.xdsl.Task"
         }
       ],
-      "description": "Describes the current status of a task"
+      "path": "/pack/xdsl/{packName}/tasks/{id}"
     },
     {
-      "path": "/pack/xdsl/{packName}/voipBillingAccount/services",
+      "description": "List the pack.xdsl.BillingAccountService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "VOIP billing accounts",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "VOIP billing accounts"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the pack.xdsl.BillingAccountService objects"
+      "path": "/pack/xdsl/{packName}/voipBillingAccount/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/voipEcofax/services",
+      "description": "List the pack.xdsl.VoipEcoFaxService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "VOIP ecofax service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "VOIP ecofax service"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Activate a voicefax service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.Task",
-          "noAuthentication": false,
-          "description": "Activate a voicefax service"
+          "responseType": "pack.xdsl.Task"
         }
       ],
-      "description": "List the pack.xdsl.VoipEcoFaxService objects"
+      "path": "/pack/xdsl/{packName}/voipEcofax/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/voipLine/options/customShippingAddress",
+      "description": "customShippingAddress operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new shippingId to be used for voipLine service creation",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Last name",
+              "fullType": "string",
               "name": "lastName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Last name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Zip code",
+              "fullType": "string",
               "name": "zipCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Zip code"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "First name",
+              "fullType": "string",
               "name": "firstName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "First name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "City name",
+              "fullType": "string",
               "name": "cityName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "City name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Address, including street name",
+              "fullType": "string",
               "name": "address",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Address, including street name"
+              "required": true
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long",
-          "noAuthentication": false,
-          "description": "Create a new shippingId to be used for voipLine service creation"
+          "responseType": "long"
         }
       ],
-      "description": "customShippingAddress operations"
+      "path": "/pack/xdsl/{packName}/voipLine/options/customShippingAddress"
     },
     {
-      "path": "/pack/xdsl/{packName}/voipLine/options/hardwares",
+      "description": "hardwares operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get available hardwares",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.VoIPHardware[]",
-          "noAuthentication": false,
-          "description": "Get available hardwares"
+          "responseType": "pack.xdsl.VoIPHardware[]"
         }
       ],
-      "description": "hardwares operations"
+      "path": "/pack/xdsl/{packName}/voipLine/options/hardwares"
     },
     {
-      "path": "/pack/xdsl/{packName}/voipLine/options/shippingAddresses",
+      "description": "shippingAddresses operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get available shipping addresses",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.ShippingAddress[]",
-          "noAuthentication": false,
-          "description": "Get available shipping addresses"
+          "responseType": "pack.xdsl.ShippingAddress[]"
         }
       ],
-      "description": "shippingAddresses operations"
+      "path": "/pack/xdsl/{packName}/voipLine/options/shippingAddresses"
     },
     {
-      "path": "/pack/xdsl/{packName}/voipLine/services",
+      "description": "List the pack.xdsl.VoipLineService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "VOIP line services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "VOIP line services"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Activate a voip line service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "hardwareNames",
               "dataType": "string[]",
-              "paramType": "body",
+              "description": "List of names from hardwares call",
               "fullType": "string[]",
-              "required": true,
-              "description": "List of names from hardwares call"
+              "name": "hardwareNames",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Mondial relay ID",
+              "fullType": "string",
               "name": "mondialRelayId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Mondial relay ID"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Shipping ID for the order",
+              "fullType": "string",
               "name": "shippingId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Shipping ID for the order"
+              "required": false
             },
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.VoIPLineOrder",
-          "noAuthentication": false,
-          "description": "Activate a voip line service"
+          "responseType": "pack.xdsl.VoIPLineOrder"
         }
       ],
-      "description": "List the pack.xdsl.VoipLineService objects"
+      "path": "/pack/xdsl/{packName}/voipLine/services"
     },
     {
-      "path": "/pack/xdsl/{packName}/voipLine/services/{domain}",
+      "description": "VOIP line services",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             }
           ],
-          "responseType": "pack.xdsl.VoipLineService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "pack.xdsl.VoipLineService"
         }
       ],
-      "description": "VOIP line services"
+      "path": "/pack/xdsl/{packName}/voipLine/services/{domain}"
     },
     {
-      "path": "/pack/xdsl/{packName}/xdslAccess/services",
+      "description": "List the pack.xdsl.XdslAccessService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "xDSL access services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "packName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pack name",
               "fullType": "string",
-              "required": true,
-              "description": "Pack name"
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "xDSL access services"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the pack.xdsl.XdslAccessService objects"
+      "path": "/pack/xdsl/{packName}/xdslAccess/services"
     }
   ],
-  "resourcePath": "/pack/xdsl",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "complexType.UnitAndValue<T>": {
-      "id": "UnitAndValue",
-      "namespace": "complexType",
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "connectivity.eligibility.Building": {
+      "description": "Details of a Building",
       "id": "Building",
       "namespace": "connectivity.eligibility",
-      "description": "Details of a Building",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Building name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "nro": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Building NRO (Optical main distribution frame)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "reference": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Identifier which refer to a building uniquely",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "stairs": {
-          "type": "connectivity.eligibility.BuildingStair[]",
-          "fullType": "connectivity.eligibility.BuildingStair[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Stairs for this building",
-          "required": true
+          "fullType": "connectivity.eligibility.BuildingStair[]",
+          "readOnly": false,
+          "required": true,
+          "type": "connectivity.eligibility.BuildingStair[]"
         },
         "type": {
-          "type": "connectivity.eligibility.BuildingTypeEnum",
-          "fullType": "connectivity.eligibility.BuildingTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Building type",
-          "required": true
+          "fullType": "connectivity.eligibility.BuildingTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "connectivity.eligibility.BuildingTypeEnum"
         }
       }
     },
     "connectivity.eligibility.BuildingStair": {
+      "description": "Stair details of a Building",
       "id": "BuildingStair",
       "namespace": "connectivity.eligibility",
-      "description": "Stair details of a Building",
       "properties": {
         "floors": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of floor indentifier, \"_NA_\" if no identifier is available",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "stair": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Stair identifier, \"_NA_\" if no identifier is available",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "connectivity.eligibility.BuildingTypeEnum": {
-      "id": "BuildingTypeEnum",
-      "namespace": "connectivity.eligibility",
       "description": "Building type",
       "enum": [
         "BUILDING",
         "HOUSE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BuildingTypeEnum",
+      "namespace": "connectivity.eligibility"
     },
     "nichandle.CountryEnum": {
-      "id": "CountryEnum",
-      "namespace": "nichandle",
       "description": "Countries a nichandle can choose",
       "enum": [
         "AC",
@@ -3137,39 +3136,39 @@ export const schema: Schema = {
         "ZM",
         "ZW"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "nichandle"
     },
     "order.Contract": {
+      "description": "A contract",
       "id": "Contract",
       "namespace": "order",
-      "description": "A contract",
       "properties": {
         "content": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
+          "fullType": "text",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "text"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.CurrencyCodeEnum": {
-      "id": "CurrencyCodeEnum",
-      "namespace": "order",
       "enum": [
         "AUD",
         "CAD",
@@ -3186,374 +3185,374 @@ export const schema: Schema = {
         "XOF",
         "points"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
     },
     "order.Price": {
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
-      "description": "Price with it's currency and textual representation",
       "properties": {
         "currencyCode": {
-          "type": "order.CurrencyCodeEnum",
-          "fullType": "order.CurrencyCodeEnum",
           "canBeNull": false,
+          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.CurrencyCodeEnum"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         }
       }
     },
     "pack.xdsl.AsyncTask<T>": {
-      "id": "AsyncTask",
-      "namespace": "pack.xdsl",
       "description": "Async task",
       "generics": [
         "T"
       ],
+      "id": "AsyncTask",
+      "namespace": "pack.xdsl",
       "properties": {
         "error": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Error",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "result": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Result of the call",
-          "required": false
+          "fullType": "T",
+          "readOnly": false,
+          "required": false,
+          "type": "T"
         },
         "status": {
-          "type": "pack.xdsl.AsyncTaskStatusEnum",
-          "fullType": "pack.xdsl.AsyncTaskStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of the call",
-          "required": true
+          "fullType": "pack.xdsl.AsyncTaskStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.AsyncTaskStatusEnum"
         }
       }
     },
     "pack.xdsl.AsyncTaskStatusEnum": {
-      "id": "AsyncTaskStatusEnum",
-      "namespace": "pack.xdsl",
       "description": "AsyncTask status",
       "enum": [
         "error",
         "ok",
         "pending"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AsyncTaskStatusEnum",
+      "namespace": "pack.xdsl"
     },
     "pack.xdsl.ContactInfos": {
+      "description": "Information about the contact",
       "id": "ContactInfos",
       "namespace": "pack.xdsl",
-      "description": "Information about the contact",
       "properties": {
         "address": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "contact address",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "city": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "contact city",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "country": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "contact country",
-          "required": true
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "nichandle.CountryEnum"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "contact email",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "firstname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "contact firstname",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "contact name",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "organisation": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "contact organisation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "phone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "contact phone",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "phoneCountry": {
-          "type": "nichandle.CountryEnum",
-          "fullType": "nichandle.CountryEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "contact phoneCountry",
-          "required": false
+          "fullType": "nichandle.CountryEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "nichandle.CountryEnum"
         },
         "zip": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "contact zip",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.DomainActionEnum": {
-      "id": "DomainActionEnum",
-      "namespace": "pack.xdsl",
       "description": "Domain action",
       "enum": [
         "create",
         "trade",
         "transfer"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainActionEnum",
+      "namespace": "pack.xdsl"
     },
     "pack.xdsl.ExchangeAccountService": {
+      "description": "Exchange 2013 service",
       "id": "ExchangeAccountService",
       "namespace": "pack.xdsl",
-      "description": "Exchange 2013 service",
       "properties": {
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "exchangeService": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "organizationName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.ExchangeLiteService": {
+      "description": "Exchange account service",
       "id": "ExchangeLiteService",
       "namespace": "pack.xdsl",
-      "description": "Exchange account service",
       "properties": {
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.HostedEmail.Account": {
+      "description": "HostedEmail account",
       "id": "Account",
       "namespace": "pack.xdsl.HostedEmail",
-      "description": "HostedEmail account",
       "properties": {
         "antispamEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is the anti-spam enabled ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "antivirusEnabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Is the anti-virus enabled ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "offer": {
-          "type": "pack.xdsl.HostedEmail.AccountOfferEnum",
-          "fullType": "pack.xdsl.HostedEmail.AccountOfferEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Offer name",
-          "required": true
+          "fullType": "pack.xdsl.HostedEmail.AccountOfferEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.HostedEmail.AccountOfferEnum"
         },
         "primaryEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Primary email address",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "quota": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Quota of the mailbox",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "size": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Size of the maibox",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         }
       }
     },
     "pack.xdsl.HostedEmail.AccountOfferEnum": {
-      "id": "AccountOfferEnum",
-      "namespace": "pack.xdsl.HostedEmail",
       "description": "Available offers",
       "enum": [
         "individual"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AccountOfferEnum",
+      "namespace": "pack.xdsl.HostedEmail"
     },
     "pack.xdsl.HostedEmail.Configuration": {
+      "description": "HostedEmail configuration",
       "id": "Configuration",
       "namespace": "pack.xdsl.HostedEmail",
-      "description": "HostedEmail configuration",
       "properties": {
         "services": {
-          "type": "pack.xdsl.HostedEmail.ConfigurationService[]",
-          "fullType": "pack.xdsl.HostedEmail.ConfigurationService[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of services configurations",
-          "required": true
+          "fullType": "pack.xdsl.HostedEmail.ConfigurationService[]",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.HostedEmail.ConfigurationService[]"
         },
         "status": {
-          "type": "pack.xdsl.HostedEmail.ConfigurationStatusEnum",
-          "fullType": "pack.xdsl.HostedEmail.ConfigurationStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status",
-          "required": true
+          "fullType": "pack.xdsl.HostedEmail.ConfigurationStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.HostedEmail.ConfigurationStatusEnum"
         },
         "webmailUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Webmail url",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.HostedEmail.ConfigurationService": {
+      "description": "HostedEmail configuration service",
       "id": "ConfigurationService",
       "namespace": "pack.xdsl.HostedEmail",
-      "description": "HostedEmail configuration service",
       "properties": {
         "host": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Service host",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Service IP",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Service port",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "service": {
-          "type": "pack.xdsl.HostedEmail.ConfigurationServiceEnum",
-          "fullType": "pack.xdsl.HostedEmail.ConfigurationServiceEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Service name",
-          "required": true
+          "fullType": "pack.xdsl.HostedEmail.ConfigurationServiceEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.HostedEmail.ConfigurationServiceEnum"
         },
         "smtpAuth": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Does the service use SMTP AUTH ?",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "startTls": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Does the service use STARTTLS ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "pack.xdsl.HostedEmail.ConfigurationServiceEnum": {
-      "id": "ConfigurationServiceEnum",
-      "namespace": "pack.xdsl.HostedEmail",
       "description": "Available types of service",
       "enum": [
         "imap",
@@ -3564,190 +3563,190 @@ export const schema: Schema = {
         "smtps",
         "submission"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ConfigurationServiceEnum",
+      "namespace": "pack.xdsl.HostedEmail"
     },
     "pack.xdsl.HostedEmail.ConfigurationStatusEnum": {
-      "id": "ConfigurationStatusEnum",
-      "namespace": "pack.xdsl.HostedEmail",
       "description": "Available configuration statuses",
       "enum": [
         "active",
         "suspended"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ConfigurationStatusEnum",
+      "namespace": "pack.xdsl.HostedEmail"
     },
     "pack.xdsl.HostedEmailService": {
+      "description": "Hosted email services",
       "id": "HostedEmailService",
       "namespace": "pack.xdsl",
-      "description": "Hosted email services",
       "properties": {
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.Hubic": {
+      "description": "Hubic service",
       "id": "Hubic",
       "namespace": "pack.xdsl",
-      "description": "Hubic service",
       "properties": {
         "bytes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Size of the hubic account in bytes",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "isUsed": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicate if the voucher is used or not",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "size": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Human readable size of the hubic account",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "voucher": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Voucher to enter on HubiC website to activate the account",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.PackAdsl": {
+      "description": "Pack of xDSL services",
       "id": "PackAdsl",
       "namespace": "pack.xdsl",
-      "description": "Pack of xDSL services",
       "properties": {
         "capabilities": {
-          "type": "pack.xdsl.PackCapabilities",
-          "fullType": "pack.xdsl.PackCapabilities",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Capabilities of the pack",
-          "required": true
+          "fullType": "pack.xdsl.PackCapabilities",
+          "readOnly": true,
+          "required": true,
+          "type": "pack.xdsl.PackCapabilities"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Customer pack description",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "offerDescription": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "offerPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Price of the offer",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "packName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of the xdsl pack",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.PackCapabilities": {
+      "description": "Describe the capabilities of this pack",
       "id": "PackCapabilities",
       "namespace": "pack.xdsl",
-      "description": "Describe the capabilities of this pack",
       "properties": {
         "canMoveAddress": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not this pack can move address",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "isLegacyOffer": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not this pack is from an old offer",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "pack.xdsl.ResiliationFollowUpDetail": {
+      "description": "Details about the resiliation",
       "id": "ResiliationFollowUpDetail",
       "namespace": "pack.xdsl",
-      "description": "Details about the resiliation",
       "properties": {
         "dateTodo": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Date when the resiliation will take effect",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "needModemReturn": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If the customer needs to return his modem",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "registrationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Date when the resiliation was asked",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of the resiliation",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.ResiliationReasonEnum": {
-      "id": "ResiliationReasonEnum",
-      "namespace": "pack.xdsl",
       "description": "Reason of a resiliation",
       "enum": [
         "addressMove",
@@ -3759,144 +3758,144 @@ export const schema: Schema = {
         "other",
         "technicalProblems"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ResiliationReasonEnum",
+      "namespace": "pack.xdsl"
     },
     "pack.xdsl.ResiliationSurvey": {
+      "description": "Information about the reason for the resiliation",
       "id": "ResiliationSurvey",
       "namespace": "pack.xdsl",
-      "description": "Information about the reason for the resiliation",
       "properties": {
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Comment about this resiliation",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "type": {
-          "type": "pack.xdsl.ResiliationReasonEnum",
-          "fullType": "pack.xdsl.ResiliationReasonEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of reason for the resiliation",
-          "required": true
+          "fullType": "pack.xdsl.ResiliationReasonEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.ResiliationReasonEnum"
         }
       }
     },
     "pack.xdsl.ResiliationTerms": {
+      "description": "Show the resiliation terms",
       "id": "ResiliationTerms",
       "namespace": "pack.xdsl",
-      "description": "Show the resiliation terms",
       "properties": {
         "due": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price due at resiliationDate",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "engageDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Date until which the customer is engaged",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "minResiliationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum date at which the pack can be resiliated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "resiliationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Date at which the pack will be resiliated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "resiliationReasons": {
-          "type": "pack.xdsl.ResiliationReasonEnum[]",
-          "fullType": "pack.xdsl.ResiliationReasonEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of available resiliation reasons",
-          "required": true
+          "fullType": "pack.xdsl.ResiliationReasonEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.ResiliationReasonEnum[]"
         }
       }
     },
     "pack.xdsl.Service": {
+      "description": "Service link to the pack",
       "id": "Service",
       "namespace": "pack.xdsl",
-      "description": "Service link to the pack",
       "properties": {
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "double"
         },
         "type": {
-          "type": "pack.xdsl.ServiceNameEnum",
-          "fullType": "pack.xdsl.ServiceNameEnum",
           "canBeNull": false,
+          "fullType": "pack.xdsl.ServiceNameEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "pack.xdsl.ServiceNameEnum"
         }
       }
     },
     "pack.xdsl.ServiceInformation": {
+      "description": "Informations about a service",
       "id": "ServiceInformation",
       "namespace": "pack.xdsl",
-      "description": "Informations about a service",
       "properties": {
         "inCreation": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "pack.xdsl.ServiceNameEnum",
-          "fullType": "pack.xdsl.ServiceNameEnum",
           "canBeNull": false,
+          "fullType": "pack.xdsl.ServiceNameEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "pack.xdsl.ServiceNameEnum"
         },
         "total": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "used": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "pack.xdsl.ServiceNameEnum": {
-      "id": "ServiceNameEnum",
-      "namespace": "pack.xdsl",
       "description": "Service name",
       "enum": [
         "domain",
@@ -3919,182 +3918,182 @@ export const schema: Schema = {
         "voipTrunk",
         "xdslAccess"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ServiceNameEnum",
+      "namespace": "pack.xdsl"
     },
     "pack.xdsl.ShippingAddress": {
+      "description": "Shipping address",
       "id": "ShippingAddress",
       "namespace": "pack.xdsl",
-      "description": "Shipping address",
       "properties": {
         "address": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "cityName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "countryCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "firstName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "lastName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "shippingId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "zipCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.ShippingAddressContextEnum": {
-      "id": "ShippingAddressContextEnum",
-      "namespace": "pack.xdsl",
       "description": "Allowed contexts when looking for shipping addresses",
       "enum": [
         "migration",
         "voipLine"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ShippingAddressContextEnum",
+      "namespace": "pack.xdsl"
     },
     "pack.xdsl.SiteBuilderDomain": {
+      "description": "SiteBuilder available domain infos",
       "id": "SiteBuilderDomain",
       "namespace": "pack.xdsl",
-      "description": "SiteBuilder available domain infos",
       "properties": {
         "defaultSubDomain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.SiteBuilderTemplate": {
+      "description": "SiteBuilder template infos",
       "id": "SiteBuilderTemplate",
       "namespace": "pack.xdsl",
-      "description": "SiteBuilder template infos",
       "properties": {
         "bkId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "previewImg": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "reference": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "thumbImage": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.Task": {
+      "description": "Describes the current status of a task",
       "id": "Task",
       "namespace": "pack.xdsl",
-      "description": "Describes the current status of a task",
       "properties": {
         "function": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "pack.xdsl.TaskStatusEnum",
-          "fullType": "pack.xdsl.TaskStatusEnum",
           "canBeNull": false,
+          "fullType": "pack.xdsl.TaskStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "pack.xdsl.TaskStatusEnum"
         },
         "updateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "pack.xdsl.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "pack.xdsl",
       "description": "Status of a task.",
       "enum": [
         "cancelled",
@@ -4104,931 +4103,931 @@ export const schema: Schema = {
         "problem",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "pack.xdsl"
     },
     "pack.xdsl.UnpackTerms": {
+      "description": "Terms to unpack services",
       "id": "UnpackTerms",
       "namespace": "pack.xdsl",
-      "description": "Terms to unpack services",
       "properties": {
         "isAllowed": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Tells whether or not the service can be unpacked",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price bill on the unpack action",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "renewPeriod": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Renew period in month of the service",
-          "required": true
+          "fullType": "double",
+          "readOnly": false,
+          "required": true,
+          "type": "double"
         },
         "renewPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The price it will cost when it will be renew",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "pack.xdsl.VoIPHardware": {
+      "description": "Hardware for VoIP line",
       "id": "VoIPHardware",
       "namespace": "pack.xdsl",
-      "description": "Hardware for VoIP line",
       "properties": {
         "deposit": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": true,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "order.Price"
         },
         "fees": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": true,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "order.Price"
         },
         "image": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "max": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "needShipping": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.VoIPLineOrder": {
+      "description": "Represents an order of VoIP lines",
       "id": "VoIPLineOrder",
       "namespace": "pack.xdsl",
-      "description": "Represents an order of VoIP lines",
       "properties": {
         "needPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not this order need to be payed manually",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "orderUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "taskIds": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": false,
+          "fullType": "long[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long[]"
         }
       }
     },
     "pack.xdsl.VoipLineService": {
+      "description": "VOIP line services",
       "id": "VoipLineService",
       "namespace": "pack.xdsl",
-      "description": "VOIP line services",
       "properties": {
         "billingAccount": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.addressMove.Creation": {
+      "description": "The parameters needed to create a new landline",
       "id": "Creation",
       "namespace": "pack.xdsl.addressMove",
-      "description": "The parameters needed to create a new landline",
       "properties": {
         "address": {
-          "type": "xdsl.eligibility.Address",
-          "fullType": "xdsl.eligibility.Address",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The address",
-          "required": true
+          "fullType": "xdsl.eligibility.Address",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.Address"
         },
         "meeting": {
-          "type": "xdsl.eligibility.BookMeetingSlot",
-          "fullType": "xdsl.eligibility.BookMeetingSlot",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Data to book a meeting slot",
-          "required": true
+          "fullType": "xdsl.eligibility.BookMeetingSlot",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.BookMeetingSlot"
         }
       }
     },
     "pack.xdsl.addressMove.Eligibility": {
+      "description": "Eligibility",
       "id": "Eligibility",
       "namespace": "pack.xdsl.addressMove",
-      "description": "Eligibility",
       "properties": {
         "keepCurrentPortability": {
-          "type": "xdsl.eligibility.Portability",
-          "fullType": "xdsl.eligibility.Portability",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Tells if the current number portability can be kept after the address move. Null if no number were ported.",
-          "required": false
+          "fullType": "xdsl.eligibility.Portability",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.eligibility.Portability"
         },
         "offers": {
-          "type": "pack.xdsl.addressMove.Offer[]",
-          "fullType": "pack.xdsl.addressMove.Offer[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The available offers at this address",
-          "required": true
+          "fullType": "pack.xdsl.addressMove.Offer[]",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.addressMove.Offer[]"
         }
       }
     },
     "pack.xdsl.addressMove.Landline": {
+      "description": "The parameters needed to activate the access on a landline",
       "id": "Landline",
       "namespace": "pack.xdsl.addressMove",
-      "description": "The parameters needed to activate the access on a landline",
       "properties": {
         "lineNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The number of the landline",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "portLineNumber": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not tha lineNumber should be ported to OVH, if eligibile",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "rio": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "A token to prove the ownership of the line number, needed to port the number",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "xdsl.eligibility.LandlineStatusEnum",
-          "fullType": "xdsl.eligibility.LandlineStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The status of the landline",
-          "required": true
+          "fullType": "xdsl.eligibility.LandlineStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.LandlineStatusEnum"
         },
         "unbundling": {
-          "type": "xdsl.DeconsolidationEnum",
-          "fullType": "xdsl.DeconsolidationEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The unbundling of the landline",
-          "required": true
+          "fullType": "xdsl.DeconsolidationEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.DeconsolidationEnum"
         }
       }
     },
     "pack.xdsl.addressMove.MoveOffer": {
+      "description": "Address move offer",
       "id": "MoveOffer",
       "namespace": "pack.xdsl.addressMove",
-      "description": "Address move offer",
       "properties": {
         "contracts": {
-          "type": "order.Contract[]",
-          "fullType": "order.Contract[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Contracts details for this offer",
-          "required": true
+          "fullType": "order.Contract[]",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Contract[]"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description of the offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "engageMonths": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number of months of engagement",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "modemReferenceToReturn": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Modem reference (Mac or Serial) to be returned",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "needModem": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Tells if the offer needs a modem",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "needNewModem": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Tells if the customer will have to change its modem",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "offerName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "options": {
-          "type": "pack.xdsl.migration.OfferAvailableOption[]",
-          "fullType": "pack.xdsl.migration.OfferAvailableOption[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Available options for the migration",
-          "required": true
+          "fullType": "pack.xdsl.migration.OfferAvailableOption[]",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.migration.OfferAvailableOption[]"
         },
         "prices": {
-          "type": "pack.xdsl.addressMove.PriceOffer",
-          "fullType": "pack.xdsl.addressMove.PriceOffer",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Prices detailed applicable for this offer",
-          "required": true
+          "fullType": "pack.xdsl.addressMove.PriceOffer",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.addressMove.PriceOffer"
         },
         "productCodes": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of product from provider available for an offer",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "subServicesToDelete": {
-          "type": "pack.xdsl.migration.SubServiceToDelete[]",
-          "fullType": "pack.xdsl.migration.SubServiceToDelete[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of sub services to delete",
-          "required": true
+          "fullType": "pack.xdsl.migration.SubServiceToDelete[]",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.migration.SubServiceToDelete[]"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "URL of the offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.addressMove.MoveOfferResponse": {
+      "description": "List of available Move address offer",
       "id": "MoveOfferResponse",
       "namespace": "pack.xdsl.addressMove",
-      "description": "List of available Move address offer",
       "properties": {
         "offers": {
-          "type": "pack.xdsl.addressMove.MoveOffer[]",
-          "fullType": "pack.xdsl.addressMove.MoveOffer[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Array of offers",
-          "required": true
+          "fullType": "pack.xdsl.addressMove.MoveOffer[]",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.addressMove.MoveOffer[]"
         }
       }
     },
     "pack.xdsl.addressMove.Offer": {
+      "description": "An offer",
       "id": "Offer",
       "namespace": "pack.xdsl.addressMove",
-      "description": "An offer",
       "properties": {
         "address": {
-          "type": "xdsl.eligibility.Address",
-          "fullType": "xdsl.eligibility.Address",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Address of the landline",
-          "required": true
+          "fullType": "xdsl.eligibility.Address",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.Address"
         },
         "estimatedDownload": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The estimated download synchronisation in kbps",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "estimatedUpload": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The estimated upload synchronisation in kbps",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "lineSectionsLength": {
-          "type": "xdsl.LineSectionLength[]",
-          "fullType": "xdsl.LineSectionLength[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Detailed information about the sections between the DSLAM and the telephone jack",
-          "required": true
+          "fullType": "xdsl.LineSectionLength[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.LineSectionLength[]"
         },
         "lineStatus": {
-          "type": "xdsl.eligibility.LandlineStatusEnum",
-          "fullType": "xdsl.eligibility.LandlineStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The status of the landline",
-          "required": true
+          "fullType": "xdsl.eligibility.LandlineStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.LandlineStatusEnum"
         },
         "meetingSlots": {
-          "type": "xdsl.eligibility.MeetingSlots",
-          "fullType": "xdsl.eligibility.MeetingSlots",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Available meeting slots for the creation of this offer.",
-          "required": false
+          "fullType": "xdsl.eligibility.MeetingSlots",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.eligibility.MeetingSlots"
         },
         "nra": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The NRA of the landline",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "offerCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The code of the offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "portability": {
-          "type": "xdsl.eligibility.Portability",
-          "fullType": "xdsl.eligibility.Portability",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Tells whether the tested number can be ported to OVH or not",
-          "required": true
+          "fullType": "xdsl.eligibility.Portability",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.Portability"
         },
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The price of this offer",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "provider": {
-          "type": "xdsl.eligibility.ProviderEnum",
-          "fullType": "xdsl.eligibility.ProviderEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of the request",
-          "required": true
+          "fullType": "xdsl.eligibility.ProviderEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.ProviderEnum"
         },
         "reseller": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether this is a reseller offer or not",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "syncDownload": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The download synchronisation in kbps",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "syncUpload": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The upload synchronisation in kbps",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "xdsl.DslTypeEnum",
-          "fullType": "xdsl.DslTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "DSL technology",
-          "required": true
+          "fullType": "xdsl.DslTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.DslTypeEnum"
         },
         "unbundling": {
-          "type": "xdsl.DeconsolidationEnum",
-          "fullType": "xdsl.DeconsolidationEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The unbundling type",
-          "required": true
+          "fullType": "xdsl.DeconsolidationEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.DeconsolidationEnum"
         }
       }
     },
     "pack.xdsl.addressMove.Price": {
+      "description": "Price details for an offer",
       "id": "Price",
       "namespace": "pack.xdsl.addressMove",
-      "description": "Price details for an offer",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description of the price",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Price of the offer",
-          "required": false
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
         }
       }
     },
     "pack.xdsl.addressMove.PriceOffer": {
+      "description": "Price details for an offer",
       "id": "PriceOffer",
       "namespace": "pack.xdsl.addressMove",
-      "description": "Price details for an offer",
       "properties": {
         "currentOfferPrice": {
-          "type": "pack.xdsl.addressMove.Price",
-          "fullType": "pack.xdsl.addressMove.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price of the current offer",
-          "required": true
+          "fullType": "pack.xdsl.addressMove.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.addressMove.Price"
         },
         "due": {
-          "type": "pack.xdsl.addressMove.Price",
-          "fullType": "pack.xdsl.addressMove.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Upgrade offer price",
-          "required": true
+          "fullType": "pack.xdsl.addressMove.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.addressMove.Price"
         },
         "firstYearPromo": {
-          "type": "pack.xdsl.addressMove.Price",
-          "fullType": "pack.xdsl.addressMove.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Subscription price the first year",
-          "required": true
+          "fullType": "pack.xdsl.addressMove.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.addressMove.Price"
         },
         "installFees": {
-          "type": "pack.xdsl.addressMove.Price",
-          "fullType": "pack.xdsl.addressMove.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Installation fees",
-          "required": true
+          "fullType": "pack.xdsl.addressMove.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.addressMove.Price"
         },
         "modemRental": {
-          "type": "pack.xdsl.addressMove.Price",
-          "fullType": "pack.xdsl.addressMove.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price for modem rental",
-          "required": true
+          "fullType": "pack.xdsl.addressMove.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.addressMove.Price"
         },
         "price": {
-          "type": "pack.xdsl.addressMove.Price",
-          "fullType": "pack.xdsl.addressMove.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price of the offer",
-          "required": true
+          "fullType": "pack.xdsl.addressMove.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.addressMove.Price"
         }
       }
     },
     "pack.xdsl.migration.MigrationOffer": {
+      "description": "Migration offer",
       "id": "MigrationOffer",
       "namespace": "pack.xdsl.migration",
-      "description": "Migration offer",
       "properties": {
         "contractList": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "DEPRECATED - List of contracts",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "contracts": {
-          "type": "order.Contract[]",
-          "fullType": "order.Contract[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of contracts for this offer",
-          "required": true
+          "fullType": "order.Contract[]",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Contract[]"
         },
         "currentOfferPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price of the current offer",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description of the offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "due": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Price to make the migration",
-          "required": false
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
         },
         "engageMonths": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number of months of engagement",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "engagementMonths": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of number of months possible for engagement",
-          "required": true
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": true,
+          "type": "long[]"
         },
         "firstYearPromo": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Subscription price the first year",
-          "required": false
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
         },
         "installFees": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Installation fees",
-          "required": false
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
         },
         "modemMacToReturn": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Mac address of the modem to be returned",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "modemRental": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Price for modem rental",
-          "required": false
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
         },
         "needModem": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Tells if the offer needs a modem",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "needNewModem": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Tells if the customer will have to change its modem",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "offerName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "options": {
-          "type": "pack.xdsl.migration.OfferAvailableOption[]",
-          "fullType": "pack.xdsl.migration.OfferAvailableOption[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Available options for the migration",
-          "required": true
+          "fullType": "pack.xdsl.migration.OfferAvailableOption[]",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.migration.OfferAvailableOption[]"
         },
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price of the offer",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "subServicesToDelete": {
-          "type": "pack.xdsl.migration.SubServiceToDelete[]",
-          "fullType": "pack.xdsl.migration.SubServiceToDelete[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of sub services to delete",
-          "required": true
+          "fullType": "pack.xdsl.migration.SubServiceToDelete[]",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.migration.SubServiceToDelete[]"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "URL of the offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "pack.xdsl.migration.MigrationOfferResponse": {
+      "description": "List of available Migration offer",
       "id": "MigrationOfferResponse",
       "namespace": "pack.xdsl.migration",
-      "description": "List of available Migration offer",
       "properties": {
         "buildings": {
-          "type": "connectivity.eligibility.Building[]",
-          "fullType": "connectivity.eligibility.Building[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Array of buildings",
-          "required": true
+          "fullType": "connectivity.eligibility.Building[]",
+          "readOnly": false,
+          "required": true,
+          "type": "connectivity.eligibility.Building[]"
         },
         "offers": {
-          "type": "pack.xdsl.migration.MigrationOffer[]",
-          "fullType": "pack.xdsl.migration.MigrationOffer[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Array of offers",
-          "required": true
+          "fullType": "pack.xdsl.migration.MigrationOffer[]",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.migration.MigrationOffer[]"
         }
       }
     },
     "pack.xdsl.migration.OfferAvailableOption": {
+      "description": "Available option for the offer",
       "id": "OfferAvailableOption",
       "namespace": "pack.xdsl.migration",
-      "description": "Available option for the offer",
       "properties": {
         "duration": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of months paid for",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "included": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of slots included by default in this offer",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the option",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "optional": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of optional slots that can be puchased",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "optionalPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Price of an additional slot. You pay this price everytime the duration is expired",
-          "required": false
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
         }
       }
     },
     "pack.xdsl.migration.OfferOption": {
+      "description": "Option of Offer",
       "id": "OfferOption",
       "namespace": "pack.xdsl.migration",
-      "description": "Option of Offer",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the option",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "quantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of slots, couting included slots",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "pack.xdsl.migration.OfferServiceToDelete": {
+      "description": "Option of Offer",
       "id": "OfferServiceToDelete",
       "namespace": "pack.xdsl.migration",
-      "description": "Option of Offer",
       "properties": {
         "service": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of the service",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "pack.xdsl.ServiceNameEnum",
-          "fullType": "pack.xdsl.ServiceNameEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of the service to delete",
-          "required": true
+          "fullType": "pack.xdsl.ServiceNameEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.ServiceNameEnum"
         }
       }
     },
     "pack.xdsl.migration.SubServiceToDelete": {
+      "description": "Sub service to delete",
       "id": "SubServiceToDelete",
       "namespace": "pack.xdsl.migration",
-      "description": "Sub service to delete",
       "properties": {
         "numberToDelete": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of services to be deleted",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "services": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of domains of sub services",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "type": {
-          "type": "pack.xdsl.ServiceNameEnum",
-          "fullType": "pack.xdsl.ServiceNameEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of service to be deleted",
-          "required": true
+          "fullType": "pack.xdsl.ServiceNameEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.ServiceNameEnum"
         }
       }
     },
     "pack.xdsl.promotionCode.Capabilities": {
+      "description": "Informations about a promotion code",
       "id": "Capabilities",
       "namespace": "pack.xdsl.promotionCode",
-      "description": "Informations about a promotion code",
       "properties": {
         "amount": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Amount of the promotion code",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "canGenerate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "True if the promotion code generation is available",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "engagement": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of months of engagement",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "reasonCodes": {
-          "type": "pack.xdsl.promotionCode.ReasonCodes[]",
-          "fullType": "pack.xdsl.promotionCode.ReasonCodes[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Enum of the possible errors",
-          "required": true
+          "fullType": "pack.xdsl.promotionCode.ReasonCodes[]",
+          "readOnly": false,
+          "required": true,
+          "type": "pack.xdsl.promotionCode.ReasonCodes[]"
         }
       }
     },
     "pack.xdsl.promotionCode.ReasonCodes": {
-      "id": "ReasonCodes",
-      "namespace": "pack.xdsl.promotionCode",
       "description": "Reasons why the promotion code can not be generated",
       "enum": [
         "noMoreAvailable",
@@ -5037,58 +5036,58 @@ export const schema: Schema = {
         "stillEngaged",
         "taskInProgress"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ReasonCodes",
+      "namespace": "pack.xdsl.promotionCode"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -5099,11 +5098,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -5111,112 +5110,112 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "xdsl.DeconsolidationEnum": {
-      "id": "DeconsolidationEnum",
-      "namespace": "xdsl",
       "description": "Deconsolidation of the line.",
       "enum": [
         "createNeighbour",
@@ -5225,11 +5224,11 @@ export const schema: Schema = {
         "partial",
         "total"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DeconsolidationEnum",
+      "namespace": "xdsl"
     },
     "xdsl.DslTypeEnum": {
-      "id": "DslTypeEnum",
-      "namespace": "xdsl",
       "description": "Possible DSL technologies",
       "enum": [
         "adsl",
@@ -5237,316 +5236,316 @@ export const schema: Schema = {
         "sdsl",
         "vdsl"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DslTypeEnum",
+      "namespace": "xdsl"
     },
     "xdsl.LineSectionLength": {
       "id": "LineSectionLength",
       "namespace": "xdsl",
       "properties": {
         "diameter": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The diameter of this section in millimeters",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "length": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The length of this section in meters",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "xdsl.eligibility.Address": {
+      "description": "Represents an address",
       "id": "Address",
       "namespace": "xdsl.eligibility",
-      "description": "Represents an address",
       "properties": {
         "building": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the building, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "city": {
-          "type": "xdsl.eligibility.City",
-          "fullType": "xdsl.eligibility.City",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Informations about the city",
-          "required": true
+          "fullType": "xdsl.eligibility.City",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.City"
         },
         "door": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Identifier of the door, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "floor": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Identifier of the floor, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "logo": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Identifier of the historical operator landmark, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "owner": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Owner of the line, this information can be restricted",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "residence": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Name of the residence, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "stair": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Identifier of the stair, if any",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "street": {
-          "type": "xdsl.eligibility.Street",
-          "fullType": "xdsl.eligibility.Street",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Informations about the street",
-          "required": false
+          "fullType": "xdsl.eligibility.Street",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.eligibility.Street"
         },
         "streetNumber": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number on the street",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.BookMeetingSlot": {
+      "description": "Parameters to book a time slot for a meeting",
       "id": "BookMeetingSlot",
       "namespace": "xdsl.eligibility",
-      "description": "Parameters to book a time slot for a meeting",
       "properties": {
         "fakeMeeting": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not to book a fake meeting slots (if no slots are available)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "meetingSlot": {
-          "type": "xdsl.eligibility.MeetingSlot",
-          "fullType": "xdsl.eligibility.MeetingSlot",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The time slot to book, null if fakeMeeting is true",
-          "required": false
+          "fullType": "xdsl.eligibility.MeetingSlot",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.eligibility.MeetingSlot"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The name of the customer",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.City": {
+      "description": "Represent a city",
       "id": "City",
       "namespace": "xdsl.eligibility",
-      "description": "Represent a city",
       "properties": {
         "inseeCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "INSEE code of the city",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "locality": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Locality (subset of a city)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the city",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "zipCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Zip code of the city",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.CodeAndMessage": {
+      "description": "A message and its code",
       "id": "CodeAndMessage",
       "namespace": "xdsl.eligibility",
-      "description": "A message and its code",
       "properties": {
         "code": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A code identifying the message",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A message",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.LandlineStatusEnum": {
-      "id": "LandlineStatusEnum",
-      "namespace": "xdsl.eligibility",
       "description": "Status of a landline",
       "enum": [
         "active",
         "inactive"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LandlineStatusEnum",
+      "namespace": "xdsl.eligibility"
     },
     "xdsl.eligibility.MeetingSlot": {
+      "description": "Represents a time slot for a meeting",
       "id": "MeetingSlot",
       "namespace": "xdsl.eligibility",
-      "description": "Represents a time slot for a meeting",
       "properties": {
         "endDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The end of the time slot",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The beginning of the time slot",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "uiCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "An opaque string that represents an intervention unit",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.eligibility.MeetingSlots": {
+      "description": "List of available meeting time slots",
       "id": "MeetingSlots",
       "namespace": "xdsl.eligibility",
-      "description": "List of available meeting time slots",
       "properties": {
         "canBookFakeMeeting": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not it is possible to book a fake meeting",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "meetingSlots": {
-          "type": "xdsl.eligibility.MeetingSlot[]",
-          "fullType": "xdsl.eligibility.MeetingSlot[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A time slot",
-          "required": true
+          "fullType": "xdsl.eligibility.MeetingSlot[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.MeetingSlot[]"
         }
       }
     },
     "xdsl.eligibility.Portability": {
+      "description": "Eligibility of the portability of the line number",
       "id": "Portability",
       "namespace": "xdsl.eligibility",
-      "description": "Eligibility of the portability of the line number",
       "properties": {
         "comments": {
-          "type": "xdsl.eligibility.CodeAndMessage[]",
-          "fullType": "xdsl.eligibility.CodeAndMessage[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The reason(s) of the negative portability eligibility",
-          "required": true
+          "fullType": "xdsl.eligibility.CodeAndMessage[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.CodeAndMessage[]"
         },
         "eligible": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not it is possible to port the line number. If false, commentList contains the reason(s)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "underCondition": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether or not the portability is possible under condition. If true, warningList contains the reason(s)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "warnings": {
-          "type": "xdsl.eligibility.CodeAndMessage[]",
-          "fullType": "xdsl.eligibility.CodeAndMessage[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The special condition(s) of the portability",
-          "required": true
+          "fullType": "xdsl.eligibility.CodeAndMessage[]",
+          "readOnly": false,
+          "required": true,
+          "type": "xdsl.eligibility.CodeAndMessage[]"
         }
       }
     },
     "xdsl.eligibility.ProviderEnum": {
-      "id": "ProviderEnum",
-      "namespace": "xdsl.eligibility",
       "description": "The providers",
       "enum": [
         "axione",
@@ -5555,45 +5554,48 @@ export const schema: Schema = {
         "ovh",
         "sfr"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProviderEnum",
+      "namespace": "xdsl.eligibility"
     },
     "xdsl.eligibility.Street": {
+      "description": "Represent a street",
       "id": "Street",
       "namespace": "xdsl.eligibility",
-      "description": "Represent a street",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the street",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "rivoliCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "RIVOLI identifier of the street",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "xdsl.hubic.HubicDetailsResponse": {
+      "description": "Details that the user used for his voucher",
       "id": "HubicDetailsResponse",
       "namespace": "xdsl.hubic",
-      "description": "Details that the user used for his voucher",
       "properties": {
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Mail used for the voucher",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/pack/xdsl"
 }

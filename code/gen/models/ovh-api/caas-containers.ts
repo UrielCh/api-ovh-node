@@ -1,1267 +1,1266 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/caas/containers.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/caas/containers",
+      "description": "Operations about the DOCKER service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DOCKER service"
+      "path": "/caas/containers"
     },
     {
-      "path": "/caas/containers/slaves/flavors",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List the /cloud flavors available for the Docker PaaS slaves",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List the /cloud flavors available for the Docker PaaS slaves"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/slaves/flavors"
     },
     {
-      "path": "/caas/containers/slaves/flavors/{flavorId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Inspect the argument slave flavor",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Flavor ID",
+              "fullType": "string",
               "name": "flavorId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Flavor ID"
+              "required": true
             }
           ],
-          "responseType": "docker.slave.flavor",
-          "noAuthentication": false,
-          "description": "Inspect the argument slave flavor"
+          "responseType": "docker.slave.flavor"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/slaves/flavors/{flavorId}"
     },
     {
-      "path": "/caas/containers/{serviceName}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Inspect the argument stack",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "docker.stack",
-          "noAuthentication": false,
-          "description": "Inspect the argument stack"
+          "responseType": "docker.stack"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/{serviceName}"
     },
     {
-      "path": "/caas/containers/{serviceName}/availableFrameworks",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List all the installable Mesos frameworks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List all the installable Mesos frameworks"
+          "responseType": "string[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/{serviceName}/availableFrameworks"
     },
     {
-      "path": "/caas/containers/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/caas/containers/{serviceName}/changeContact"
     },
     {
-      "path": "/caas/containers/{serviceName}/frameworks",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List the frameworks installed on the argument stack",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List the frameworks installed on the argument stack"
+          "responseType": "string[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/{serviceName}/frameworks"
     },
     {
-      "path": "/caas/containers/{serviceName}/frameworks/{frameworkId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Inspect the stack framework",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Framework ID",
+              "fullType": "string",
               "name": "frameworkId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Framework ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "stack.framework",
-          "noAuthentication": false,
-          "description": "Inspect the stack framework"
+          "responseType": "stack.framework"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/{serviceName}/frameworks/{frameworkId}"
     },
     {
-      "path": "/caas/containers/{serviceName}/frameworks/{frameworkId}/apps",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List apps in the framework",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "frameworkId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Framework ID",
               "fullType": "string",
-              "required": true,
-              "description": "Framework ID"
+              "name": "frameworkId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "stack.framework.application",
-          "noAuthentication": false,
-          "description": "List apps in the framework"
+          "responseType": "stack.framework.application"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/{serviceName}/frameworks/{frameworkId}/apps"
     },
     {
-      "path": "/caas/containers/{serviceName}/frameworks/{frameworkId}/password",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Update the framework access password",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "docker.framework.password",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "docker.framework.password",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Framework ID",
+              "fullType": "string",
               "name": "frameworkId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Framework ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Update the framework access password"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/{serviceName}/frameworks/{frameworkId}/password"
     },
     {
-      "path": "/caas/containers/{serviceName}/registry/credentials",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List the registry credentials associated to the stack.",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List the registry credentials associated to the stack."
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Associate the stack with some credentials to an authenticated registry.",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "docker.stack.inputCustomSsl",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "docker.stack.inputCustomSsl",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "docker.stack.registryCredentials",
-          "noAuthentication": false,
-          "description": "Associate the stack with some credentials to an authenticated registry."
+          "responseType": "docker.stack.registryCredentials"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/{serviceName}/registry/credentials"
     },
     {
-      "path": "/caas/containers/{serviceName}/registry/credentials/{credentialsId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete the registry credentials.",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "credentialsId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Credentials ID",
               "fullType": "string",
-              "required": true,
-              "description": "Credentials ID"
+              "name": "credentialsId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete the registry credentials."
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Inspect the image registry credentials associated to the stack",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "credentialsId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Credentials ID",
               "fullType": "string",
-              "required": true,
-              "description": "Credentials ID"
+              "name": "credentialsId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "docker.stack.registryCredentials",
-          "noAuthentication": false,
-          "description": "Inspect the image registry credentials associated to the stack"
+          "responseType": "docker.stack.registryCredentials"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Update the registry credentials.",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "docker.stack.inputCustomSsl",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "docker.stack.inputCustomSsl",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Credentials ID",
+              "fullType": "string",
               "name": "credentialsId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Credentials ID"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "docker.stack.registryCredentials",
-          "noAuthentication": false,
-          "description": "Update the registry credentials."
+          "responseType": "docker.stack.registryCredentials"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/{serviceName}/registry/credentials/{credentialsId}"
     },
     {
-      "path": "/caas/containers/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/caas/containers/{serviceName}/serviceInfos"
     },
     {
-      "path": "/caas/containers/{serviceName}/slaves",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List the id of the registered slave instances",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List the id of the registered slave instances"
+          "responseType": "string[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/{serviceName}/slaves"
     },
     {
-      "path": "/caas/containers/{serviceName}/slaves/{slaveId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Inspect the argument user slave instance",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Slave ID",
+              "fullType": "string",
               "name": "slaveId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Slave ID"
+              "required": true
             }
           ],
-          "responseType": "docker.slave",
-          "noAuthentication": false,
-          "description": "Inspect the argument user slave instance"
+          "responseType": "docker.slave"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/{serviceName}/slaves/{slaveId}"
     },
     {
-      "path": "/caas/containers/{serviceName}/ssl",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete the custom SSL certificate and private key associated to the stack",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "docker.stack.customSslMessage",
-          "noAuthentication": false,
-          "description": "Delete the custom SSL certificate and private key associated to the stack"
+          "responseType": "docker.stack.customSslMessage"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Inspect the custom SSL certificate and private",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "docker.stack.customSsl",
-          "noAuthentication": false,
-          "description": "Inspect the custom SSL certificate and private"
+          "responseType": "docker.stack.customSsl"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Update the custom SSL certificate and private",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "docker.stack.inputCustomSsl",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "docker.stack.inputCustomSsl",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "docker.stack.customSslMessage",
-          "noAuthentication": false,
-          "description": "Update the custom SSL certificate and private"
+          "responseType": "docker.stack.customSslMessage"
         }
       ],
-      "description": "Missing description"
+      "path": "/caas/containers/{serviceName}/ssl"
     }
   ],
-  "resourcePath": "/caas/containers",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "docker.framework.password": {
+      "description": "The new framework password",
       "id": "password",
       "namespace": "docker.framework",
-      "description": "The new framework password",
       "properties": {
         "password": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The new framework password",
-          "required": true
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
         }
       }
     },
     "docker.slave": {
+      "description": "A host on which containers can be deployed",
       "id": "slave",
       "namespace": "docker",
-      "description": "A host on which containers can be deployed",
       "properties": {
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the resource creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "flavorId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The framework UUID",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The slave UUID",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "metrics": {
-          "type": "docker.slave.metrics",
-          "fullType": "docker.slave.metrics",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Metrics about slave usage",
-          "required": true
+          "fullType": "docker.slave.metrics",
+          "readOnly": true,
+          "required": true,
+          "type": "docker.slave.metrics"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The slave hostname",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The region where the slave is located",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "stack": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The stack to which the slave belongs",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "docker.slave.status",
-          "fullType": "docker.slave.status",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The state of the slave",
-          "required": true
+          "fullType": "docker.slave.status",
+          "readOnly": true,
+          "required": true,
+          "type": "docker.slave.status"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the resource last update",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "docker.slave.flavor": {
+      "description": "Attributes of the slave flavor",
       "id": "flavor",
       "namespace": "docker.slave",
-      "description": "Attributes of the slave flavor",
       "properties": {
         "bandwidth": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The network bandwidth, in Mbps",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "cpus": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The amount of (v)CPUs",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "disk": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The disk size, in GB",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "diskHa": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Wether the disk is HA (stored in Ceph) or local (SSD)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The flavor UUID",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "isVm": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether the flavor is an Openstack or dedicated flavor",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "ram": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The amount of RAM, in MB",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "docker.slave.framework.app": {
+      "description": "Application data",
       "id": "app",
       "namespace": "docker.slave.framework",
-      "description": "Application data",
       "properties": {
         "cpu": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Application CPU",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "env": {
-          "type": "docker.slave.framework.app.environment[]",
-          "fullType": "docker.slave.framework.app.environment[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Application environment",
-          "required": true
+          "fullType": "docker.slave.framework.app.environment[]",
+          "readOnly": true,
+          "required": true,
+          "type": "docker.slave.framework.app.environment[]"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Application id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "image": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Application image",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "instances": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Number of running containers instances",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "mem": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Application memory",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "ports": {
-          "type": "docker.slave.framework.app.port[]",
-          "fullType": "docker.slave.framework.app.port[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Application ports",
-          "required": true
+          "fullType": "docker.slave.framework.app.port[]",
+          "readOnly": true,
+          "required": true,
+          "type": "docker.slave.framework.app.port[]"
         },
         "status": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Application status",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "volumes": {
-          "type": "docker.slave.framework.app.volume[]",
-          "fullType": "docker.slave.framework.app.volume[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Application volumes",
-          "required": true
+          "fullType": "docker.slave.framework.app.volume[]",
+          "readOnly": true,
+          "required": true,
+          "type": "docker.slave.framework.app.volume[]"
         }
       }
     },
     "docker.slave.framework.app.environment": {
+      "description": "Application environment variable",
       "id": "environment",
       "namespace": "docker.slave.framework.app",
-      "description": "Application environment variable",
       "properties": {
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "variable key",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "variable value",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "docker.slave.framework.app.port": {
+      "description": "Application ports",
       "id": "port",
       "namespace": "docker.slave.framework.app",
-      "description": "Application ports",
       "properties": {
         "containerPort": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Container port",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "hostPort": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Host port",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "protocol": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Port protocol",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "docker.slave.framework.app.volume": {
+      "description": "Application volumes",
       "id": "volume",
       "namespace": "docker.slave.framework.app",
-      "description": "Application volumes",
       "properties": {
         "containerPath": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Container path",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "hostPath": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Host path",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "mode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Volume mode",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "docker.slave.metrics": {
+      "description": "Metrics about slave usage",
       "id": "metrics",
       "namespace": "docker.slave",
-      "description": "Metrics about slave usage",
       "properties": {
         "resources": {
-          "type": "docker.slave.metrics.resources",
-          "fullType": "docker.slave.metrics.resources",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Metrics about available slave resources",
-          "required": true
+          "fullType": "docker.slave.metrics.resources",
+          "readOnly": true,
+          "required": true,
+          "type": "docker.slave.metrics.resources"
         },
         "usedResources": {
-          "type": "docker.slave.metrics.usedResources",
-          "fullType": "docker.slave.metrics.usedResources",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Metrics about used slave resources",
-          "required": true
+          "fullType": "docker.slave.metrics.usedResources",
+          "readOnly": true,
+          "required": true,
+          "type": "docker.slave.metrics.usedResources"
         }
       }
     },
     "docker.slave.metrics.resources": {
+      "description": "Metrics about available slave resources",
       "id": "resources",
       "namespace": "docker.slave.metrics",
-      "description": "Metrics about available slave resources",
       "properties": {
         "cpu": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Available CPU",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "mem": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Available memory",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "docker.slave.metrics.usedResources": {
+      "description": "Metrics about used slave resources",
       "id": "usedResources",
       "namespace": "docker.slave.metrics",
-      "description": "Metrics about used slave resources",
       "properties": {
         "cpu": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Used CPU",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "mem": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Used memory",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "docker.slave.status": {
-      "id": "status",
-      "namespace": "docker.slave",
       "description": "The state of the slave",
       "enum": [
         "blocked",
         "created",
         "creating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "status",
+      "namespace": "docker.slave"
     },
     "docker.stack": {
+      "description": "An isolated client Docker PaaS environment",
       "id": "stack",
       "namespace": "docker",
-      "description": "An isolated client Docker PaaS environment",
       "properties": {
         "cluster": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The cluster on which the stack is deployed",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the resource creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "loadBalancer": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The DNS address of the stack load balancer",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "metrics": {
-          "type": "docker.slave.metrics",
-          "fullType": "docker.slave.metrics",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Metrics about slave usage",
-          "required": true
+          "fullType": "docker.slave.metrics",
+          "readOnly": true,
+          "required": true,
+          "type": "docker.slave.metrics"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The stack name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "slaves": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A list of slave UUIDs",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the resource last update",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "docker.stack.customSsl": {
+      "description": "A custom SSL certificate associated to a Docker PaaS environment",
       "id": "customSsl",
       "namespace": "docker.stack",
-      "description": "A custom SSL certificate associated to a Docker PaaS environment",
       "properties": {
         "certificate": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The custom SSL public certificate",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the resource creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the resource last update",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "docker.stack.customSslMessage": {
+      "description": "Action validation message",
       "id": "customSslMessage",
       "namespace": "docker.stack",
-      "description": "Action validation message",
       "properties": {
         "message": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The action validation message",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "docker.stack.inputCustomSsl": {
+      "description": "A custom SSL certificate associated to a Docker PaaS environment",
       "id": "inputCustomSsl",
       "namespace": "docker.stack",
-      "description": "A custom SSL certificate associated to a Docker PaaS environment",
       "properties": {
         "certificate": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The custom SSL public certificate",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "key": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The custom SSL certificate private key",
-          "required": true
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
         }
       }
     },
     "docker.stack.registryCredentials": {
+      "description": "Credentials providing authentication to an external registry",
       "id": "registryCredentials",
       "namespace": "docker.stack",
-      "description": "Credentials providing authentication to an external registry",
       "properties": {
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the resource creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "registryUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The URL of the registry",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the resource last update",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "username": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The registry account username",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1272,11 +1271,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1284,170 +1283,173 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "stack.framework": {
+      "description": "A framework installed for a docker PaaS stack",
       "id": "framework",
       "namespace": "stack",
-      "description": "A framework installed for a docker PaaS stack",
       "properties": {
         "accessUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The framework name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the resource creation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The framework UUID",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The framework name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the resource last update",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "stack.framework.application": {
+      "description": "Application deployed on the framework",
       "id": "application",
       "namespace": "stack.framework",
-      "description": "Application deployed on the framework",
       "properties": {
         "apps": {
-          "type": "docker.slave.framework.app[]",
-          "fullType": "docker.slave.framework.app[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Application list",
-          "required": true
+          "fullType": "docker.slave.framework.app[]",
+          "readOnly": true,
+          "required": true,
+          "type": "docker.slave.framework.app[]"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/caas/containers"
 }

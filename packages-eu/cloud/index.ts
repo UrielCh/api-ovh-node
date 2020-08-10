@@ -1447,7 +1447,7 @@ export namespace cloud {
          * Enum values for available regions when creating a cluster
          * type fullname: cloud.kube.ClusterCreationRegionEnum
          */
-        export type ClusterCreationRegionEnum = "GRA5" | "GRA7" | "BHS5" | "SBG5"
+        export type ClusterCreationRegionEnum = "GRA5" | "GRA7" | "BHS5"
         /**
          * Enum values for Status
          * type fullname: cloud.kube.ClusterStatusEnum

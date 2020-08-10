@@ -1,210 +1,186 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.kimsufi.com:443/1.0/order.json
+
 export const schema: Schema = {
-  "resourcePath": "/order",
   "apiVersion": "1.0",
-  "basePath": "https://ca.api.kimsufi.com/1.0",
   "apis": [
     {
+      "description": "List available options for this service",
       "operations": [
         {
-          "responseType": "string[]",
-          "httpMethod": "GET",
-          "resellerOnly": false,
-          "noAuthentication": false,
           "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "The internal name of your dedicated server",
-              "dataType": "string"
+              "required": true
             }
           ],
-          "responseFullType": "string[]"
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
         }
       ],
-      "description": "List available options for this service",
       "path": "/order/dedicated/server/{serviceName}"
     },
     {
+      "description": "Operations about the DEDICATED service",
       "operations": [
         {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
           "httpMethod": "GET",
-          "responseType": "string[]",
-          "resellerOnly": false,
           "noAuthentication": false,
           "parameters": [],
-          "description": "List available services",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "responseFullType": "string[]"
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DEDICATED service",
       "path": "/order/dedicated/server"
     }
   ],
+  "basePath": "https://ca.api.kimsufi.com/1.0",
   "models": {
-    "order.Contract": {
-      "properties": {
-        "name": {
-          "canBeNull": false,
-          "type": "string",
-          "description": null
-        },
-        "content": {
-          "canBeNull": false,
-          "description": null,
-          "type": "text"
-        },
-        "url": {
-          "canBeNull": false,
-          "description": null,
-          "type": "string"
-        }
-      },
-      "description": "A contract",
-      "namespace": "order",
-      "id": "Contract"
-    },
-    "order.Price": {
-      "id": "Price",
-      "namespace": "order",
-      "properties": {
-        "currencyCode": {
-          "description": null,
-          "type": "order.CurrencyCodeEnum",
-          "canBeNull": false
-        },
-        "value": {
-          "canBeNull": false,
-          "description": null,
-          "type": "double"
-        },
-        "text": {
-          "canBeNull": false,
-          "description": null,
-          "type": "string"
-        }
-      },
-      "description": "Price with it's currency and textual representation"
-    },
-    "order.OrderPrices": {
-      "id": "OrderPrices",
-      "namespace": "order",
-      "description": "Prices of an order",
-      "properties": {
-        "withoutTax": {
-          "type": "order.Price",
-          "description": null,
-          "canBeNull": false
-        },
-        "tax": {
-          "description": null,
-          "type": "order.Price",
-          "canBeNull": false
-        },
-        "withTax": {
-          "canBeNull": false,
-          "type": "order.Price",
-          "description": null
-        }
-      }
-    },
     "dedicated.server.SupportLevelOrderableEnum": {
+      "description": "distincts support level",
       "enum": [
         "critical",
         "fastpath",
         "gs"
       ],
-      "namespace": "dedicated.server",
+      "enumType": "string",
       "id": "SupportLevelOrderableEnum",
-      "description": "distincts support level",
-      "enumType": "string"
+      "namespace": "dedicated.server"
     },
-    "order.OrderDetail": {
-      "properties": {
-        "domain": {
-          "type": "string",
-          "description": null,
-          "canBeNull": false
-        },
-        "quantity": {
-          "description": null,
-          "type": "long",
-          "canBeNull": false
-        },
-        "unitPrice": {
-          "type": "order.Price",
-          "description": null,
-          "canBeNull": false
-        },
-        "detailType": {
-          "canBeNull": true,
-          "type": "order.OrderDetailTypeEnum",
-          "description": null
-        },
-        "description": {
-          "description": null,
-          "type": "string",
-          "canBeNull": false
-        },
-        "totalPrice": {
-          "type": "order.Price",
-          "description": null,
-          "canBeNull": false
-        }
-      },
-      "description": "Detail of an order",
+    "order.Contract": {
+      "description": "A contract",
+      "id": "Contract",
       "namespace": "order",
-      "id": "OrderDetail"
+      "properties": {
+        "content": {
+          "canBeNull": false,
+          "description": null,
+          "type": "text"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": null,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": null,
+          "type": "string"
+        }
+      }
+    },
+    "order.CurrencyCodeEnum": {
+      "description": "",
+      "enum": [
+        "AUD",
+        "CAD",
+        "CZK",
+        "EUR",
+        "GBP",
+        "LTL",
+        "MAD",
+        "N/A",
+        "PLN",
+        "SGD",
+        "TND",
+        "USD",
+        "XOF",
+        "points"
+      ],
+      "enumType": "string",
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
     },
     "order.Order": {
       "description": "An order",
+      "id": "Order",
+      "namespace": "order",
       "properties": {
+        "contracts": {
+          "canBeNull": false,
+          "description": null,
+          "type": "order.Contract[]"
+        },
+        "details": {
+          "canBeNull": false,
+          "description": null,
+          "type": "order.OrderDetail[]"
+        },
+        "orderId": {
+          "canBeNull": true,
+          "description": null,
+          "type": "long"
+        },
+        "prices": {
+          "canBeNull": false,
+          "description": null,
+          "type": "order.OrderPrices"
+        },
         "url": {
           "canBeNull": true,
           "description": null,
           "type": "string"
-        },
-        "details": {
-          "description": null,
-          "type": "order.OrderDetail[]",
-          "canBeNull": false
-        },
-        "prices": {
-          "type": "order.OrderPrices",
-          "description": null,
-          "canBeNull": false
-        },
-        "contracts": {
-          "description": null,
-          "type": "order.Contract[]",
-          "canBeNull": false
-        },
-        "orderId": {
-          "canBeNull": true,
-          "type": "long",
-          "description": null
         }
-      },
+      }
+    },
+    "order.OrderDetail": {
+      "description": "Detail of an order",
+      "id": "OrderDetail",
       "namespace": "order",
-      "id": "Order"
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": null,
+          "type": "string"
+        },
+        "detailType": {
+          "canBeNull": true,
+          "description": null,
+          "type": "order.OrderDetailTypeEnum"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": null,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": null,
+          "type": "long"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": null,
+          "type": "order.Price"
+        },
+        "unitPrice": {
+          "canBeNull": false,
+          "description": null,
+          "type": "order.Price"
+        }
+      }
     },
     "order.OrderDetailTypeEnum": {
-      "enumType": "string",
       "description": "Product type of item in order",
-      "namespace": "order",
-      "id": "OrderDetailTypeEnum",
       "enum": [
         "ACCESSORY",
         "CAUTION",
@@ -226,29 +202,55 @@ export const schema: Schema = {
         "SWITCH",
         "TRANSFER",
         "VOUCHER"
-      ]
-    },
-    "order.CurrencyCodeEnum": {
-      "namespace": "order",
-      "id": "CurrencyCodeEnum",
-      "description": "",
+      ],
       "enumType": "string",
-      "enum": [
-        "AUD",
-        "CAD",
-        "CZK",
-        "EUR",
-        "GBP",
-        "LTL",
-        "MAD",
-        "N/A",
-        "PLN",
-        "SGD",
-        "TND",
-        "USD",
-        "XOF",
-        "points"
-      ]
+      "id": "OrderDetailTypeEnum",
+      "namespace": "order"
+    },
+    "order.OrderPrices": {
+      "description": "Prices of an order",
+      "id": "OrderPrices",
+      "namespace": "order",
+      "properties": {
+        "tax": {
+          "canBeNull": false,
+          "description": null,
+          "type": "order.Price"
+        },
+        "withTax": {
+          "canBeNull": false,
+          "description": null,
+          "type": "order.Price"
+        },
+        "withoutTax": {
+          "canBeNull": false,
+          "description": null,
+          "type": "order.Price"
+        }
+      }
+    },
+    "order.Price": {
+      "description": "Price with it's currency and textual representation",
+      "id": "Price",
+      "namespace": "order",
+      "properties": {
+        "currencyCode": {
+          "canBeNull": false,
+          "description": null,
+          "type": "order.CurrencyCodeEnum"
+        },
+        "text": {
+          "canBeNull": false,
+          "description": null,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": null,
+          "type": "double"
+        }
+      }
     }
-  }
+  },
+  "resourcePath": "/order"
 }

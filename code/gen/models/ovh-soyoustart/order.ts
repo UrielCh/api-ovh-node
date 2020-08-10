@@ -1,4586 +1,4585 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.soyoustart.com:443/1.0/order.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/order/cluster/hadoop/new",
+      "description": "Order a new Hadoop cluster",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "nodeProfile",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Node profile you want to order",
               "fullType": "string",
-              "required": true,
-              "description": "Node profile you want to order"
+              "name": "nodeProfile",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Quantity of node you want to order (minimum 3)",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of node you want to order (minimum 3)"
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'new' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Order a new Hadoop cluster"
+      "path": "/order/cluster/hadoop/new"
     },
     {
-      "path": "/order/cluster/hadoop/new/{duration}",
+      "description": "Order a new Hadoop cluster",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "required": true
             },
             {
-              "name": "nodeProfile",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Node profile you want to order",
               "fullType": "string",
-              "required": true,
-              "description": "Node profile you want to order"
+              "name": "nodeProfile",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Quantity of node you want to order (minimum 3)",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of node you want to order (minimum 3)"
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Node profile you want to order",
+              "fullType": "string",
               "name": "nodeProfile",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Node profile you want to order"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of node you want to order (minimum 3)",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of node you want to order (minimum 3)"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Order a new Hadoop cluster"
+      "path": "/order/cluster/hadoop/new/{duration}"
     },
     {
-      "path": "/order/dedicated/server",
+      "description": "Operations about the DEDICATED service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DEDICATED service"
+      "path": "/order/dedicated/server"
     },
     {
-      "path": "/order/dedicated/server/{serviceName}",
+      "description": "List available options for this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed options",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed options"
+          "responseType": "string[]"
         }
       ],
-      "description": "List available options for this service"
+      "path": "/order/dedicated/server/{serviceName}"
     },
     {
-      "path": "/order/dedicated/server/{serviceName}/backupStorage",
+      "description": "Order a backup storage for this server",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed durations for 'backupStorage' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "capacity",
               "dataType": "dedicated.server.BackupStorageCapacityEnum",
-              "paramType": "query",
+              "description": "The capacity in gigabytes of your backup storage",
               "fullType": "dedicated.server.BackupStorageCapacityEnum",
-              "required": true,
-              "description": "The capacity in gigabytes of your backup storage"
+              "name": "capacity",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'backupStorage' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Order a backup storage for this server"
+      "path": "/order/dedicated/server/{serviceName}/backupStorage"
     },
     {
-      "path": "/order/dedicated/server/{serviceName}/backupStorage/{duration}",
+      "description": "Order a backup storage for this server",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "required": true
             },
             {
-              "name": "capacity",
               "dataType": "dedicated.server.BackupStorageCapacityEnum",
-              "paramType": "query",
+              "description": "The capacity in gigabytes of your backup storage",
               "fullType": "dedicated.server.BackupStorageCapacityEnum",
-              "required": true,
-              "description": "The capacity in gigabytes of your backup storage"
+              "name": "capacity",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "capacity",
               "dataType": "dedicated.server.BackupStorageCapacityEnum",
-              "paramType": "body",
+              "description": "The capacity in gigabytes of your backup storage",
               "fullType": "dedicated.server.BackupStorageCapacityEnum",
-              "required": true,
-              "description": "The capacity in gigabytes of your backup storage"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order a backup storage for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/failoverIP",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "country",
-              "dataType": "dedicated.server.IpCountryEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "required": true,
-              "description": "Ip localization"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'failoverIP' option"
-        }
-      ],
-      "description": "Order a failover IP for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/failoverIP/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "country",
-              "dataType": "dedicated.server.IpCountryEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "required": true,
-              "description": "Ip localization"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "country",
-              "dataType": "dedicated.server.IpCountryEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "required": true,
-              "description": "Ip localization"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order a failover IP for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/feature",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "feature",
-              "dataType": "dedicated.server.OrderableSysFeatureEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.OrderableSysFeatureEnum",
-              "required": true,
-              "description": "the feature"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'feature' option"
-        }
-      ],
-      "description": "Order a feature for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/feature/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "feature",
-              "dataType": "dedicated.server.OrderableSysFeatureEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.OrderableSysFeatureEnum",
-              "required": true,
-              "description": "the feature"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "feature",
-              "dataType": "dedicated.server.OrderableSysFeatureEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.OrderableSysFeatureEnum",
-              "required": true,
-              "description": "the feature"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order a feature for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/firewall",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "firewallModel",
-              "dataType": "dedicated.server.FirewallModelEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.FirewallModelEnum",
-              "required": true,
-              "description": "Firewall type"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'firewall' option"
-        }
-      ],
-      "description": "order a Firewall for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/firewall/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "firewallModel",
-              "dataType": "dedicated.server.FirewallModelEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.FirewallModelEnum",
-              "required": true,
-              "description": "Firewall type"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "firewallModel",
-              "dataType": "dedicated.server.FirewallModelEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.FirewallModelEnum",
-              "required": true,
-              "description": "Firewall type"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "order a Firewall for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/ip",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "country",
-              "dataType": "dedicated.server.IpCountryEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "required": false,
-              "description": "IP localization"
-            },
-            {
-              "name": "organisationId",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Your organisation id to add on block informations"
-            },
-            {
-              "name": "type",
-              "dataType": "dedicated.server.IpTypeOrderableEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.IpTypeOrderableEnum",
-              "required": true,
-              "description": "The type of IP"
-            },
-            {
-              "name": "blockSize",
-              "dataType": "dedicated.server.IpBlockSizeEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.IpBlockSizeEnum",
-              "required": true,
-              "description": "IP block size"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'ip' option"
-        }
-      ],
-      "description": "Order IP for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/ip/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "country",
-              "dataType": "dedicated.server.IpCountryEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "required": false,
-              "description": "IP localization"
-            },
-            {
-              "name": "organisationId",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Your organisation id to add on block informations"
-            },
-            {
-              "name": "type",
-              "dataType": "dedicated.server.IpTypeOrderableEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.IpTypeOrderableEnum",
-              "required": true,
-              "description": "The type of IP"
-            },
-            {
-              "name": "blockSize",
-              "dataType": "dedicated.server.IpBlockSizeEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.IpBlockSizeEnum",
-              "required": true,
-              "description": "IP block size"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "country",
-              "dataType": "dedicated.server.IpCountryEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "required": false,
-              "description": "IP localization"
-            },
-            {
-              "name": "organisationId",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Your organisation id to add on block informations"
-            },
-            {
-              "name": "type",
-              "dataType": "dedicated.server.IpTypeOrderableEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.IpTypeOrderableEnum",
-              "required": true,
-              "description": "The type of IP"
-            },
-            {
-              "name": "blockSize",
-              "dataType": "dedicated.server.IpBlockSizeEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.IpBlockSizeEnum",
-              "required": true,
-              "description": "IP block size"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order IP for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/ipMigration",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "query",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "The IP to move to this server"
-            },
-            {
-              "name": "token",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "IP migration token"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'ipMigration' option"
-        }
-      ],
-      "description": "Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/ipMigration/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "query",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "The IP to move to this server"
-            },
-            {
-              "name": "token",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "IP migration token"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "body",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "The IP to move to this server"
-            },
-            {
-              "name": "token",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "IP migration token"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/kvmExpress",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'kvmExpress' option"
-        }
-      ],
-      "description": "Order a kvmip express for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/kvmExpress/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order a kvmip express for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/staticIP",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "country",
-              "dataType": "dedicated.server.IpStaticCountryEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.IpStaticCountryEnum",
-              "required": true,
-              "description": "Ip localization"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'staticIP' option"
-        }
-      ],
-      "description": "Order a static IP for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/staticIP/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "country",
-              "dataType": "dedicated.server.IpStaticCountryEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.IpStaticCountryEnum",
-              "required": true,
-              "description": "Ip localization"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "country",
-              "dataType": "dedicated.server.IpStaticCountryEnum",
-              "paramType": "body",
-              "fullType": "dedicated.server.IpStaticCountryEnum",
-              "required": true,
-              "description": "Ip localization"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order a static IP for this server"
-    },
-    {
-      "path": "/order/dedicated/server/{serviceName}/usbKey",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "capacity",
-              "dataType": "dedicated.server.UsbKeyCapacityEnum",
-              "paramType": "query",
-              "fullType": "dedicated.server.UsbKeyCapacityEnum",
-              "required": true,
-              "description": "Capacity in gigabytes"
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'usbKey' option"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Order an USB key for this server"
+      "path": "/order/dedicated/server/{serviceName}/backupStorage/{duration}"
     },
     {
-      "path": "/order/dedicated/server/{serviceName}/usbKey/{duration}",
+      "description": "Order a failover IP for this server",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed durations for 'failoverIP' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "capacity",
-              "dataType": "dedicated.server.UsbKeyCapacityEnum",
+              "dataType": "dedicated.server.IpCountryEnum",
+              "description": "Ip localization",
+              "fullType": "dedicated.server.IpCountryEnum",
+              "name": "country",
               "paramType": "query",
-              "fullType": "dedicated.server.UsbKeyCapacityEnum",
-              "required": true,
-              "description": "Capacity in gigabytes"
+              "required": true
             }
           ],
-          "responseType": "order.Order",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/failoverIP"
+    },
+    {
+      "description": "Order a failover IP for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.IpCountryEnum",
+              "description": "Ip localization",
+              "fullType": "dedicated.server.IpCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "capacity",
-              "dataType": "dedicated.server.UsbKeyCapacityEnum",
+              "dataType": "dedicated.server.IpCountryEnum",
+              "description": "Ip localization",
+              "fullType": "dedicated.server.IpCountryEnum",
+              "name": "country",
               "paramType": "body",
-              "fullType": "dedicated.server.UsbKeyCapacityEnum",
-              "required": true,
-              "description": "Capacity in gigabytes"
+              "required": true
             },
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Order an USB key for this server"
+      "path": "/order/dedicated/server/{serviceName}/failoverIP/{duration}"
     },
     {
-      "path": "/order/dedicatedCloud",
+      "description": "Order a feature for this server",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'feature' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.OrderableSysFeatureEnum",
+              "description": "the feature",
+              "fullType": "dedicated.server.OrderableSysFeatureEnum",
+              "name": "feature",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/feature"
+    },
+    {
+      "description": "Order a feature for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.OrderableSysFeatureEnum",
+              "description": "the feature",
+              "fullType": "dedicated.server.OrderableSysFeatureEnum",
+              "name": "feature",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.OrderableSysFeatureEnum",
+              "description": "the feature",
+              "fullType": "dedicated.server.OrderableSysFeatureEnum",
+              "name": "feature",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/feature/{duration}"
+    },
+    {
+      "description": "order a Firewall for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'firewall' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.FirewallModelEnum",
+              "description": "Firewall type",
+              "fullType": "dedicated.server.FirewallModelEnum",
+              "name": "firewallModel",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/firewall"
+    },
+    {
+      "description": "order a Firewall for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.FirewallModelEnum",
+              "description": "Firewall type",
+              "fullType": "dedicated.server.FirewallModelEnum",
+              "name": "firewallModel",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.FirewallModelEnum",
+              "description": "Firewall type",
+              "fullType": "dedicated.server.FirewallModelEnum",
+              "name": "firewallModel",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/firewall/{duration}"
+    },
+    {
+      "description": "Order IP for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'ip' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.IpBlockSizeEnum",
+              "description": "IP block size",
+              "fullType": "dedicated.server.IpBlockSizeEnum",
+              "name": "blockSize",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your organisation id to add on block informations",
+              "fullType": "string",
+              "name": "organisationId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.server.IpCountryEnum",
+              "description": "IP localization",
+              "fullType": "dedicated.server.IpCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.server.IpTypeOrderableEnum",
+              "description": "The type of IP",
+              "fullType": "dedicated.server.IpTypeOrderableEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/ip"
+    },
+    {
+      "description": "Order IP for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.IpBlockSizeEnum",
+              "description": "IP block size",
+              "fullType": "dedicated.server.IpBlockSizeEnum",
+              "name": "blockSize",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your organisation id to add on block informations",
+              "fullType": "string",
+              "name": "organisationId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.server.IpCountryEnum",
+              "description": "IP localization",
+              "fullType": "dedicated.server.IpCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.server.IpTypeOrderableEnum",
+              "description": "The type of IP",
+              "fullType": "dedicated.server.IpTypeOrderableEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.IpBlockSizeEnum",
+              "description": "IP block size",
+              "fullType": "dedicated.server.IpBlockSizeEnum",
+              "name": "blockSize",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your organisation id to add on block informations",
+              "fullType": "string",
+              "name": "organisationId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.server.IpCountryEnum",
+              "description": "IP localization",
+              "fullType": "dedicated.server.IpCountryEnum",
+              "name": "country",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.server.IpTypeOrderableEnum",
+              "description": "The type of IP",
+              "fullType": "dedicated.server.IpTypeOrderableEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/ip/{duration}"
+    },
+    {
+      "description": "Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'ipMigration' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "The IP to move to this server",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "IP migration token",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/ipMigration"
+    },
+    {
+      "description": "Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "The IP to move to this server",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "IP migration token",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "The IP to move to this server",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "IP migration token",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/ipMigration/{duration}"
+    },
+    {
+      "description": "Order a kvmip express for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'kvmExpress' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/kvmExpress"
+    },
+    {
+      "description": "Order a kvmip express for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/kvmExpress/{duration}"
+    },
+    {
+      "description": "Order a static IP for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'staticIP' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.IpStaticCountryEnum",
+              "description": "Ip localization",
+              "fullType": "dedicated.server.IpStaticCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/staticIP"
+    },
+    {
+      "description": "Order a static IP for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.IpStaticCountryEnum",
+              "description": "Ip localization",
+              "fullType": "dedicated.server.IpStaticCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.IpStaticCountryEnum",
+              "description": "Ip localization",
+              "fullType": "dedicated.server.IpStaticCountryEnum",
+              "name": "country",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/staticIP/{duration}"
+    },
+    {
+      "description": "Order an USB key for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'usbKey' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.UsbKeyCapacityEnum",
+              "description": "Capacity in gigabytes",
+              "fullType": "dedicated.server.UsbKeyCapacityEnum",
+              "name": "capacity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/usbKey"
+    },
+    {
+      "description": "Order an USB key for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.UsbKeyCapacityEnum",
+              "description": "Capacity in gigabytes",
+              "fullType": "dedicated.server.UsbKeyCapacityEnum",
+              "name": "capacity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.UsbKeyCapacityEnum",
+              "description": "Capacity in gigabytes",
+              "fullType": "dedicated.server.UsbKeyCapacityEnum",
+              "name": "capacity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/usbKey/{duration}"
+    },
+    {
+      "description": "Operations about the PCC service",
+      "operations": [
+        {
+          "apiStatus": {
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the PCC service"
+      "path": "/order/dedicatedCloud"
     },
     {
-      "path": "/order/dedicatedCloud/{serviceName}",
+      "description": "List available options for this service",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Get allowed options",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed options"
+          "responseType": "string[]"
         }
       ],
-      "description": "List available options for this service"
+      "path": "/order/dedicatedCloud/{serviceName}"
     },
     {
-      "path": "/order/dedicatedCloud/{serviceName}/additionalBandwidth",
+      "description": "Order additional bandwidth in your Private Cloud",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Get allowed durations for 'additionalBandwidth' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "bandwidth",
               "dataType": "dedicatedCloud.AdditionalBandwidthEnum",
-              "paramType": "query",
+              "description": "How much additional bandwidth do you want ?",
               "fullType": "dedicatedCloud.AdditionalBandwidthEnum",
-              "required": true,
-              "description": "How much additional bandwidth do you want ?"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'additionalBandwidth' option"
-        }
-      ],
-      "description": "Order additional bandwidth in your Private Cloud"
-    },
-    {
-      "path": "/order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
               "name": "bandwidth",
-              "dataType": "dedicatedCloud.AdditionalBandwidthEnum",
               "paramType": "query",
-              "fullType": "dedicatedCloud.AdditionalBandwidthEnum",
-              "required": true,
-              "description": "How much additional bandwidth do you want ?"
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
-        },
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicatedCloud/{serviceName}/additionalBandwidth"
+    },
+    {
+      "description": "Order additional bandwidth in your Private Cloud",
+      "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
-          "httpMethod": "POST",
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicatedCloud.AdditionalBandwidthEnum",
+              "description": "How much additional bandwidth do you want ?",
+              "fullType": "dedicatedCloud.AdditionalBandwidthEnum",
               "name": "bandwidth",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "dedicatedCloud.AdditionalBandwidthEnum",
-              "paramType": "body",
+              "description": "How much additional bandwidth do you want ?",
               "fullType": "dedicatedCloud.AdditionalBandwidthEnum",
-              "required": true,
-              "description": "How much additional bandwidth do you want ?"
+              "name": "bandwidth",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Order additional bandwidth in your Private Cloud"
+      "path": "/order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}"
     },
     {
-      "path": "/order/dedicatedCloud/{serviceName}/filer",
+      "description": "Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Get allowed durations for 'filer' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Quantity of filer you want to order (default 1)"
-            },
-            {
-              "name": "name",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filer profile you want to order (\"name\" field in a profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)",
               "fullType": "string",
-              "required": true,
-              "description": "Filer profile you want to order (\"name\" field in a profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)"
+              "name": "name",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "datacenterId",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)",
               "fullType": "long",
-              "required": false,
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)"
+              "name": "datacenterId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of filer you want to order (default 1)",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'filer' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)"
+      "path": "/order/dedicatedCloud/{serviceName}/filer"
     },
     {
-      "path": "/order/dedicatedCloud/{serviceName}/filer/{duration}",
+      "description": "Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "required": true
             },
             {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "Quantity of filer you want to order (default 1)"
-            },
-            {
-              "name": "name",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filer profile you want to order (\"name\" field in a profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)",
               "fullType": "string",
-              "required": true,
-              "description": "Filer profile you want to order (\"name\" field in a profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)"
+              "name": "name",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "datacenterId",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)",
               "fullType": "long",
-              "required": false,
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)"
+              "name": "datacenterId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of filer you want to order (default 1)",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Quantity of filer you want to order (default 1)"
-            },
-            {
+              "dataType": "string",
+              "description": "Filer profile you want to order (\"name\" field in a profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Filer profile you want to order (\"name\" field in a profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)"
+              "required": true
             },
             {
-              "name": "datacenterId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)",
               "fullType": "long",
-              "required": false,
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)"
+              "name": "datacenterId",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Quantity of filer you want to order (default 1)",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)"
+      "path": "/order/dedicatedCloud/{serviceName}/filer/{duration}"
     },
     {
-      "path": "/order/dedicatedCloud/{serviceName}/host",
+      "description": "Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Get allowed durations for 'host' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "datacenterId",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": true,
-              "description": "Datacenter where the Host will be added"
-            },
-            {
-              "name": "name",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Host profile you want to order (\"name\" field of a Profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)",
               "fullType": "string",
-              "required": true,
-              "description": "Host profile you want to order (\"name\" field of a Profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)"
+              "name": "name",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Quantity of hosts you want to order (default 1)",
               "fullType": "long",
-              "required": false,
-              "description": "Quantity of hosts you want to order (default 1)"
+              "name": "quantity",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Datacenter where the Host will be added",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'host' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)"
+      "path": "/order/dedicatedCloud/{serviceName}/host"
     },
     {
-      "path": "/order/dedicatedCloud/{serviceName}/host/{duration}",
+      "description": "Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "duration",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "required": true
             },
             {
-              "name": "datacenterId",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": true,
-              "description": "Datacenter where the Host will be added"
-            },
-            {
-              "name": "name",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Host profile you want to order (\"name\" field of a Profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "quantity",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Host profile you want to order (\"name\" field of a Profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)",
+              "fullType": "string",
+              "name": "name",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of hosts you want to order (default 1)",
               "fullType": "long",
-              "required": false,
-              "description": "Quantity of hosts you want to order (default 1)"
+              "name": "quantity",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Datacenter where the Host will be added",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Host profile you want to order (\"name\" field of a Profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)"
-            },
-            {
+              "dataType": "long",
+              "description": "Quantity of hosts you want to order (default 1)",
+              "fullType": "long",
               "name": "quantity",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "Quantity of hosts you want to order (default 1)"
+              "required": false
             },
             {
+              "dataType": "long",
+              "description": "Datacenter where the Host will be added",
+              "fullType": "long",
               "name": "datacenterId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Datacenter where the Host will be added"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Host profile you want to order (\"name\" field of a Profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)"
+      "path": "/order/dedicatedCloud/{serviceName}/host/{duration}"
     },
     {
-      "path": "/order/dedicatedCloud/{serviceName}/ip",
+      "description": "Order an IP block for your Private Cloud",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Get allowed durations for 'ip' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "description",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Information visible on whois (minimum 3 and maximum 250 alphanumeric characters)"
-            },
-            {
-              "name": "usage",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)"
-            },
-            {
-              "name": "size",
-              "dataType": "dedicatedCloud.OrderableIpBlockRangeEnum",
-              "paramType": "query",
-              "fullType": "dedicatedCloud.OrderableIpBlockRangeEnum",
-              "required": true,
-              "description": "The network ranges orderable"
-            },
-            {
-              "name": "country",
-              "dataType": "dedicatedCloud.IpCountriesEnum",
-              "paramType": "query",
-              "fullType": "dedicatedCloud.IpCountriesEnum",
-              "required": true,
-              "description": "This Ip block country"
-            },
-            {
+              "dataType": "long",
+              "description": "How much clients would be hosted on those ips ?",
+              "fullType": "long",
               "name": "estimatedClientsNumber",
-              "dataType": "long",
               "paramType": "query",
-              "fullType": "long",
-              "required": true,
-              "description": "How much clients would be hosted on those ips ?"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)",
+              "fullType": "string",
               "name": "networkName",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'ip' option"
-        }
-      ],
-      "description": "Order an IP block for your Private Cloud"
-    },
-    {
-      "path": "/order/dedicatedCloud/{serviceName}/ip/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "description",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Information visible on whois (minimum 3 and maximum 250 alphanumeric characters)"
-            },
-            {
-              "name": "usage",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)"
-            },
-            {
-              "name": "size",
               "dataType": "dedicatedCloud.OrderableIpBlockRangeEnum",
-              "paramType": "query",
+              "description": "The network ranges orderable",
               "fullType": "dedicatedCloud.OrderableIpBlockRangeEnum",
-              "required": true,
-              "description": "The network ranges orderable"
-            },
-            {
-              "name": "country",
-              "dataType": "dedicatedCloud.IpCountriesEnum",
-              "paramType": "query",
-              "fullType": "dedicatedCloud.IpCountriesEnum",
-              "required": true,
-              "description": "This Ip block country"
-            },
-            {
-              "name": "estimatedClientsNumber",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": true,
-              "description": "How much clients would be hosted on those ips ?"
-            },
-            {
-              "name": "networkName",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
-        },
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "description",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Information visible on whois (minimum 3 and maximum 250 alphanumeric characters)"
-            },
-            {
-              "name": "usage",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)"
-            },
-            {
               "name": "size",
-              "dataType": "dedicatedCloud.OrderableIpBlockRangeEnum",
-              "paramType": "body",
-              "fullType": "dedicatedCloud.OrderableIpBlockRangeEnum",
-              "required": true,
-              "description": "The network ranges orderable"
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "country",
+              "dataType": "string",
+              "description": "Information visible on whois (minimum 3 and maximum 250 alphanumeric characters)",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "dedicatedCloud.IpCountriesEnum",
-              "paramType": "body",
+              "description": "This Ip block country",
               "fullType": "dedicatedCloud.IpCountriesEnum",
-              "required": true,
-              "description": "This Ip block country"
+              "name": "country",
+              "paramType": "query",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)",
+              "fullType": "string",
+              "name": "usage",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicatedCloud/{serviceName}/ip"
+    },
+    {
+      "description": "Order an IP block for your Private Cloud",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "How much clients would be hosted on those ips ?",
+              "fullType": "long",
               "name": "estimatedClientsNumber",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "How much clients would be hosted on those ips ?"
+              "paramType": "query",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)",
+              "fullType": "string",
               "name": "networkName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)"
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "dedicatedCloud.OrderableIpBlockRangeEnum",
+              "description": "The network ranges orderable",
+              "fullType": "dedicatedCloud.OrderableIpBlockRangeEnum",
+              "name": "size",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Information visible on whois (minimum 3 and maximum 250 alphanumeric characters)",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order an IP block for your Private Cloud"
-    },
-    {
-      "path": "/order/dedicatedCloud/{serviceName}/spla",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
-          },
-          "httpMethod": "GET",
-          "parameters": [
+              "name": "description",
+              "paramType": "query",
+              "required": true
+            },
             {
-              "name": "serviceName",
+              "dataType": "dedicatedCloud.IpCountriesEnum",
+              "description": "This Ip block country",
+              "fullType": "dedicatedCloud.IpCountriesEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "usage",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Create order",
           "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.Order",
           "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Enable windows templates (SPLA) in your Private Cloud"
-    },
-    {
-      "path": "/order/dedicatedCloud/{serviceName}/upgradeRessource",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
-          },
-          "httpMethod": "GET",
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "dedicatedCloud.IpCountriesEnum",
+              "description": "This Ip block country",
+              "fullType": "dedicatedCloud.IpCountriesEnum",
+              "name": "country",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "upgradedRessourceId",
+              "dataType": "string",
+              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)",
+              "fullType": "string",
+              "name": "usage",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "query",
+              "description": "How much clients would be hosted on those ips ?",
               "fullType": "long",
-              "required": false,
-              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)"
+              "name": "estimatedClientsNumber",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "upgradeType",
-              "dataType": "dedicatedCloud.ressources.UpgradeTypeEnum",
-              "paramType": "query",
-              "fullType": "dedicatedCloud.ressources.UpgradeTypeEnum",
-              "required": true,
-              "description": "The type of upgrade you want to process on the ressource(s)"
+              "dataType": "string",
+              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)",
+              "fullType": "string",
+              "name": "networkName",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "upgradedRessourceType",
-              "dataType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
-              "paramType": "query",
-              "fullType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
-              "required": true,
-              "description": "The type of ressource you want to upgrade."
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'upgradeRessource' option"
-        }
-      ],
-      "description": "Upgrade ressources billing type. For hourlyToMonthly, already consumed hours will be billed at the end of the month"
-    },
-    {
-      "path": "/order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
-            "deletionDate": "2019-07-01T00:00:00+01:00",
-            "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
-          },
-          "httpMethod": "GET",
-          "parameters": [
+              "dataType": "dedicatedCloud.OrderableIpBlockRangeEnum",
+              "description": "The network ranges orderable",
+              "fullType": "dedicatedCloud.OrderableIpBlockRangeEnum",
+              "name": "size",
+              "paramType": "body",
+              "required": true
+            },
             {
+              "dataType": "string",
+              "description": "Information visible on whois (minimum 3 and maximum 250 alphanumeric characters)",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "upgradedRessourceId",
-              "dataType": "long",
-              "paramType": "query",
-              "fullType": "long",
-              "required": false,
-              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)"
-            },
-            {
-              "name": "upgradeType",
-              "dataType": "dedicatedCloud.ressources.UpgradeTypeEnum",
-              "paramType": "query",
-              "fullType": "dedicatedCloud.ressources.UpgradeTypeEnum",
-              "required": true,
-              "description": "The type of upgrade you want to process on the ressource(s)"
-            },
-            {
-              "name": "upgradedRessourceType",
-              "dataType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
-              "paramType": "query",
-              "fullType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
-              "required": true,
-              "description": "The type of ressource you want to upgrade."
+              "required": true
             }
           ],
-          "responseType": "order.Order",
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/dedicatedCloud/{serviceName}/ip/{duration}"
+    },
+    {
+      "description": "Enable windows templates (SPLA) in your Private Cloud",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "upgradeType",
-              "dataType": "dedicatedCloud.ressources.UpgradeTypeEnum",
-              "paramType": "body",
-              "fullType": "dedicatedCloud.ressources.UpgradeTypeEnum",
-              "required": true,
-              "description": "The type of upgrade you want to process on the ressource(s)"
-            },
-            {
-              "name": "upgradedRessourceType",
-              "dataType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
-              "paramType": "body",
-              "fullType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
-              "required": true,
-              "description": "The type of ressource you want to upgrade."
-            },
-            {
-              "name": "upgradedRessourceId",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)"
-            },
-            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Upgrade ressources billing type. For hourlyToMonthly, already consumed hours will be billed at the end of the month"
+      "path": "/order/dedicatedCloud/{serviceName}/spla"
     },
     {
-      "path": "/order/dedicatedCloud/{serviceName}/vdi",
+      "description": "Upgrade ressources billing type. For hourlyToMonthly, already consumed hours will be billed at the end of the month",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Get allowed durations for 'upgradeRessource' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "secondPublicIpAddress",
+              "dataType": "long",
+              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "fullType": "long",
+              "name": "upgradedRessourceId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
+              "description": "The type of ressource you want to upgrade.",
+              "fullType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
+              "name": "upgradedRessourceType",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "dedicatedCloud.ressources.UpgradeTypeEnum",
+              "description": "The type of upgrade you want to process on the ressource(s)",
+              "fullType": "dedicatedCloud.ressources.UpgradeTypeEnum",
+              "name": "upgradeType",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicatedCloud/{serviceName}/upgradeRessource"
+    },
+    {
+      "description": "Upgrade ressources billing type. For hourlyToMonthly, already consumed hours will be billed at the end of the month",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "fullType": "long",
+              "name": "upgradedRessourceId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
+              "description": "The type of ressource you want to upgrade.",
+              "fullType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
+              "name": "upgradedRessourceType",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "dedicatedCloud.ressources.UpgradeTypeEnum",
+              "description": "The type of upgrade you want to process on the ressource(s)",
+              "fullType": "dedicatedCloud.ressources.UpgradeTypeEnum",
+              "name": "upgradeType",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "fullType": "long",
+              "name": "upgradedRessourceId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
+              "description": "The type of ressource you want to upgrade.",
+              "fullType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
+              "name": "upgradedRessourceType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicatedCloud.ressources.UpgradeTypeEnum",
+              "description": "The type of upgrade you want to process on the ressource(s)",
+              "fullType": "dedicatedCloud.ressources.UpgradeTypeEnum",
+              "name": "upgradeType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}"
+    },
+    {
+      "description": "Order VDI option in a given Datacenter",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-07-01T00:00:00+01:00",
+            "deprecatedDate": "2019-06-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Datacenter where the VDI option will be enabled",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "ip",
-              "paramType": "query",
+              "description": "An avaiable ip from one of your Private Cloud public IP blocks",
               "fullType": "ip",
-              "required": true,
-              "description": "Another avaiable ip from one of your Private Cloud public IP blocks"
-            },
-            {
               "name": "firstPublicIpAddress",
-              "dataType": "ip",
               "paramType": "query",
-              "fullType": "ip",
-              "required": true,
-              "description": "An avaiable ip from one of your Private Cloud public IP blocks"
+              "required": true
             },
             {
-              "name": "datacenterId",
-              "dataType": "long",
+              "dataType": "ip",
+              "description": "Another avaiable ip from one of your Private Cloud public IP blocks",
+              "fullType": "ip",
+              "name": "secondPublicIpAddress",
               "paramType": "query",
-              "fullType": "long",
-              "required": true,
-              "description": "Datacenter where the VDI option will be enabled"
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2019-07-01T00:00:00+01:00",
             "deprecatedDate": "2019-06-01T00:00:00+01:00",
-            "replacement": "/order/cart/{cartId}/privateCloud"
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateCloud",
+            "value": "DEPRECATED"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "secondPublicIpAddress",
-              "dataType": "ip",
-              "paramType": "body",
-              "fullType": "ip",
-              "required": true,
-              "description": "Another avaiable ip from one of your Private Cloud public IP blocks"
-            },
-            {
-              "name": "firstPublicIpAddress",
-              "dataType": "ip",
-              "paramType": "body",
-              "fullType": "ip",
-              "required": true,
-              "description": "An avaiable ip from one of your Private Cloud public IP blocks"
-            },
-            {
-              "name": "datacenterId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Datacenter where the VDI option will be enabled",
               "fullType": "long",
-              "required": true,
-              "description": "Datacenter where the VDI option will be enabled"
+              "name": "datacenterId",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "ip",
+              "description": "An avaiable ip from one of your Private Cloud public IP blocks",
+              "fullType": "ip",
+              "name": "firstPublicIpAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip",
+              "description": "Another avaiable ip from one of your Private Cloud public IP blocks",
+              "fullType": "ip",
+              "name": "secondPublicIpAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Order VDI option in a given Datacenter"
+      "path": "/order/dedicatedCloud/{serviceName}/vdi"
     },
     {
-      "path": "/order/license/cloudLinux/new",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "license.CloudLinuxVersionEnum",
-              "paramType": "query",
+              "description": "This license version",
               "fullType": "license.CloudLinuxVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)"
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'new' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Order a new license on a given Ip with some given options"
+      "path": "/order/license/cloudLinux/new"
     },
     {
-      "path": "/order/license/cloudLinux/new/{duration}",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "version",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "license.CloudLinuxVersionEnum",
-              "paramType": "query",
+              "description": "This license version",
               "fullType": "license.CloudLinuxVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)"
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
               "dataType": "license.CloudLinuxVersionEnum",
-              "paramType": "body",
+              "description": "This license version",
               "fullType": "license.CloudLinuxVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "body",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)"
+              "required": true
             },
             {
-              "name": "duration",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Order a new license on a given Ip with some given options"
+      "path": "/order/license/cloudLinux/new/{duration}"
     },
     {
-      "path": "/order/license/cpanel",
+      "description": "Operations about the LICENSE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the LICENSE service"
+      "path": "/order/license/cpanel"
     },
     {
-      "path": "/order/license/cpanel/new",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
-              "dataType": "ipv4",
-              "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
-            },
-            {
-              "name": "version",
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "paramType": "query",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "query",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'new' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Order a new license on a given Ip with some given options"
+      "path": "/order/license/cpanel/new"
     },
     {
-      "path": "/order/license/cpanel/new/{duration}",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ip",
-              "dataType": "ipv4",
-              "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
-            },
-            {
-              "name": "version",
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "paramType": "query",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "query",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "paramType": "body",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "body",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "serviceType",
               "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
+              "name": "ip",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order a new license on a given Ip with some given options"
-    },
-    {
-      "path": "/order/license/cpanel/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed options"
-        }
-      ],
-      "description": "List available options for this service"
-    },
-    {
-      "path": "/order/license/cpanel/{serviceName}/upgrade",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "version",
               "dataType": "license.OrderableCpanelVersionEnum",
-              "paramType": "query",
+              "description": "This license version",
               "fullType": "license.OrderableCpanelVersionEnum",
-              "required": true,
-              "description": "Wanted new version"
+              "name": "version",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'upgrade' option"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Upgrade this license version"
+      "path": "/order/license/cpanel/new/{duration}"
     },
     {
-      "path": "/order/license/cpanel/{serviceName}/upgrade/{duration}",
+      "description": "List available options for this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed options",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "version",
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "paramType": "query",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "required": true,
-              "description": "Wanted new version"
+              "required": true
             }
           ],
-          "responseType": "order.Order",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/cpanel/{serviceName}"
+    },
+    {
+      "description": "Upgrade this license version",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'upgrade' option",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "Wanted new version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/cpanel/{serviceName}/upgrade"
+    },
+    {
+      "description": "Upgrade this license version",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "Wanted new version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
               "dataType": "license.OrderableCpanelVersionEnum",
-              "paramType": "body",
+              "description": "Wanted new version",
               "fullType": "license.OrderableCpanelVersionEnum",
-              "required": true,
-              "description": "Wanted new version"
+              "name": "version",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Upgrade this license version"
+      "path": "/order/license/cpanel/{serviceName}/upgrade/{duration}"
     },
     {
-      "path": "/order/license/directadmin/new",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
               "dataType": "license.OrderableDirectAdminVersionEnum",
-              "paramType": "query",
+              "description": "This license version",
               "fullType": "license.OrderableDirectAdminVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
+              "required": true
             },
             {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "query",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'new' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Order a new license on a given Ip with some given options"
+      "path": "/order/license/directadmin/new"
     },
     {
-      "path": "/order/license/directadmin/new/{duration}",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "version",
               "dataType": "license.OrderableDirectAdminVersionEnum",
-              "paramType": "query",
+              "description": "This license version",
               "fullType": "license.OrderableDirectAdminVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
+              "required": true
             },
             {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "query",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
               "dataType": "license.OrderableDirectAdminVersionEnum",
-              "paramType": "body",
+              "description": "This license version",
               "fullType": "license.OrderableDirectAdminVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "body",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
+              "required": true
             },
             {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "body",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "duration",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Order a new license on a given Ip with some given options"
+      "path": "/order/license/directadmin/new/{duration}"
     },
     {
-      "path": "/order/license/plesk",
+      "description": "Operations about the LICENSE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the LICENSE service"
+      "path": "/order/license/plesk"
     },
     {
-      "path": "/order/license/plesk/new",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "antivirus",
               "dataType": "license.OrderableAntivirusEnum",
-              "paramType": "query",
+              "description": "The antivirus to enable on this Plesk license",
               "fullType": "license.OrderableAntivirusEnum",
-              "required": false,
-              "description": "The antivirus to enable on this Plesk license"
-            },
-            {
-              "name": "languagePackNumber",
-              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "name": "antivirus",
               "paramType": "query",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "required": false,
-              "description": "The amount of language pack numbers to include in this licences"
+              "required": false
             },
             {
-              "name": "domainNumber",
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "paramType": "query",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "required": false,
-              "description": "This license domain number"
-            },
-            {
-              "name": "serviceType",
-              "dataType": "license.LicenseTypeEnum",
-              "paramType": "query",
-              "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
-            },
-            {
-              "name": "resellerManagement",
               "dataType": "boolean",
-              "paramType": "query",
+              "description": "WordpressToolkit option activation",
               "fullType": "boolean",
-              "required": false,
-              "description": "Reseller management option activation"
-            },
-            {
-              "name": "applicationSet",
-              "dataType": "license.PleskApplicationSetEnum",
-              "paramType": "query",
-              "fullType": "license.PleskApplicationSetEnum",
-              "required": false,
-              "description": "Wanted application set"
-            },
-            {
               "name": "wordpressToolkit",
-              "dataType": "boolean",
               "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "WordpressToolkit option activation"
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
               "name": "powerpack",
-              "dataType": "boolean",
               "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "powerpack current activation state on your license"
+              "required": false
             },
             {
-              "name": "ip",
               "dataType": "ipv4",
-              "paramType": "query",
+              "description": "Ip on which this license would be installed",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
+              "name": "ip",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "version",
-              "dataType": "license.PleskVersionEnum",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
               "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
+              "description": "This license version",
               "fullType": "license.PleskVersionEnum",
-              "required": true,
-              "description": "This license version"
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'new' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Order a new license on a given Ip with some given options"
+      "path": "/order/license/plesk/new"
     },
     {
-      "path": "/order/license/plesk/new/{duration}",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "antivirus",
               "dataType": "license.OrderableAntivirusEnum",
-              "paramType": "query",
+              "description": "The antivirus to enable on this Plesk license",
               "fullType": "license.OrderableAntivirusEnum",
-              "required": false,
-              "description": "The antivirus to enable on this Plesk license"
-            },
-            {
-              "name": "languagePackNumber",
-              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "name": "antivirus",
               "paramType": "query",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "required": false,
-              "description": "The amount of language pack numbers to include in this licences"
+              "required": false
             },
             {
-              "name": "domainNumber",
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "paramType": "query",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "required": false,
-              "description": "This license domain number"
-            },
-            {
-              "name": "serviceType",
-              "dataType": "license.LicenseTypeEnum",
-              "paramType": "query",
-              "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
-            },
-            {
-              "name": "resellerManagement",
               "dataType": "boolean",
-              "paramType": "query",
+              "description": "WordpressToolkit option activation",
               "fullType": "boolean",
-              "required": false,
-              "description": "Reseller management option activation"
-            },
-            {
-              "name": "applicationSet",
-              "dataType": "license.PleskApplicationSetEnum",
-              "paramType": "query",
-              "fullType": "license.PleskApplicationSetEnum",
-              "required": false,
-              "description": "Wanted application set"
-            },
-            {
               "name": "wordpressToolkit",
-              "dataType": "boolean",
               "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "WordpressToolkit option activation"
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
               "name": "powerpack",
-              "dataType": "boolean",
               "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "powerpack current activation state on your license"
+              "required": false
             },
             {
-              "name": "ip",
               "dataType": "ipv4",
-              "paramType": "query",
+              "description": "Ip on which this license would be installed",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
+              "name": "ip",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "version",
-              "dataType": "license.PleskVersionEnum",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
               "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
+              "description": "This license version",
               "fullType": "license.PleskVersionEnum",
-              "required": true,
-              "description": "This license version"
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "resellerManagement",
-              "dataType": "boolean",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Reseller management option activation"
+              "required": false
             },
             {
-              "name": "applicationSet",
-              "dataType": "license.PleskApplicationSetEnum",
-              "paramType": "body",
-              "fullType": "license.PleskApplicationSetEnum",
-              "required": false,
-              "description": "Wanted application set"
-            },
-            {
-              "name": "powerpack",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "powerpack current activation state on your license"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
-              "paramType": "body",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
-            },
-            {
-              "name": "version",
               "dataType": "license.PleskVersionEnum",
-              "paramType": "body",
+              "description": "This license version",
               "fullType": "license.PleskVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "antivirus",
-              "dataType": "license.OrderableAntivirusEnum",
+              "name": "version",
               "paramType": "body",
-              "fullType": "license.OrderableAntivirusEnum",
-              "required": false,
-              "description": "The antivirus to enable on this Plesk license"
+              "required": true
             },
             {
-              "name": "languagePackNumber",
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "paramType": "body",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "required": false,
-              "description": "The amount of language pack numbers to include in this licences"
-            },
-            {
-              "name": "domainNumber",
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "paramType": "body",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "required": false,
-              "description": "This license domain number"
-            },
-            {
-              "name": "serviceType",
-              "dataType": "license.LicenseTypeEnum",
-              "paramType": "body",
-              "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
-            },
-            {
-              "name": "wordpressToolkit",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Reseller management option activation",
               "fullType": "boolean",
-              "required": false,
-              "description": "WordpressToolkit option activation"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order a new license on a given Ip with some given options"
-    },
-    {
-      "path": "/order/license/plesk/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed options"
-        }
-      ],
-      "description": "List available options for this service"
-    },
-    {
-      "path": "/order/license/plesk/{serviceName}/upgrade",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "languagePackNumber",
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "paramType": "query",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "required": false,
-              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences"
-            },
-            {
-              "name": "antivirus",
-              "dataType": "license.OrderableAntivirusEnum",
-              "paramType": "query",
-              "fullType": "license.OrderableAntivirusEnum",
-              "required": false,
-              "description": "The antivirus to enable on this Plesk license"
-            },
-            {
-              "name": "applicationSet",
-              "dataType": "license.PleskApplicationSetEnum",
-              "paramType": "query",
-              "fullType": "license.PleskApplicationSetEnum",
-              "required": false,
-              "description": "Wanted application set"
-            },
-            {
               "name": "resellerManagement",
-              "dataType": "boolean",
-              "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Reseller management option activation"
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "antispam",
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "WordpressToolkit option activation",
+              "fullType": "boolean",
+              "name": "wordpressToolkit",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/plesk/new/{duration}"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/plesk/{serviceName}"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'upgrade' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
+              "description": "This license version",
+              "fullType": "license.PleskVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "WordpressToolkit option activation",
+              "fullType": "boolean",
+              "name": "wordpressToolkit",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "license.OrderableAntispamEnum",
-              "paramType": "query",
+              "description": "The antispam currently enabled on this Plesk License",
               "fullType": "license.OrderableAntispamEnum",
-              "required": false,
-              "description": "The antispam currently enabled on this Plesk License"
-            },
-            {
-              "name": "domainNumber",
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "paramType": "query",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "required": false,
-              "description": "This license domain number"
-            },
-            {
-              "name": "powerpack",
-              "dataType": "boolean",
-              "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "powerpack current activation state on your license"
-            },
-            {
-              "name": "wordpressToolkit",
-              "dataType": "boolean",
-              "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "WordpressToolkit option activation"
-            },
-            {
-              "name": "version",
-              "dataType": "license.PleskVersionEnum",
-              "paramType": "query",
-              "fullType": "license.PleskVersionEnum",
-              "required": false,
-              "description": "This license version"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'upgrade' option"
-        }
-      ],
-      "description": "Upgrade this license with some given options"
-    },
-    {
-      "path": "/order/license/plesk/{serviceName}/upgrade/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "languagePackNumber",
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "paramType": "query",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "required": false,
-              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences"
-            },
-            {
-              "name": "antivirus",
-              "dataType": "license.OrderableAntivirusEnum",
-              "paramType": "query",
-              "fullType": "license.OrderableAntivirusEnum",
-              "required": false,
-              "description": "The antivirus to enable on this Plesk license"
-            },
-            {
-              "name": "applicationSet",
-              "dataType": "license.PleskApplicationSetEnum",
-              "paramType": "query",
-              "fullType": "license.PleskApplicationSetEnum",
-              "required": false,
-              "description": "Wanted application set"
-            },
-            {
-              "name": "resellerManagement",
-              "dataType": "boolean",
-              "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Reseller management option activation"
-            },
-            {
               "name": "antispam",
-              "dataType": "license.OrderableAntispamEnum",
               "paramType": "query",
-              "fullType": "license.OrderableAntispamEnum",
-              "required": false,
-              "description": "The antispam currently enabled on this Plesk License"
+              "required": false
             },
             {
-              "name": "domainNumber",
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "paramType": "query",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "required": false,
-              "description": "This license domain number"
-            },
-            {
-              "name": "powerpack",
-              "dataType": "boolean",
-              "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "powerpack current activation state on your license"
-            },
-            {
-              "name": "wordpressToolkit",
-              "dataType": "boolean",
-              "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "WordpressToolkit option activation"
-            },
-            {
-              "name": "version",
-              "dataType": "license.PleskVersionEnum",
-              "paramType": "query",
-              "fullType": "license.PleskVersionEnum",
-              "required": false,
-              "description": "This license version"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "antivirus",
               "dataType": "license.OrderableAntivirusEnum",
-              "paramType": "body",
+              "description": "The antivirus to enable on this Plesk license",
               "fullType": "license.OrderableAntivirusEnum",
-              "required": false,
-              "description": "The antivirus to enable on this Plesk license"
+              "name": "antivirus",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/plesk/{serviceName}/upgrade"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "applicationSet",
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "license.PleskApplicationSetEnum",
-              "paramType": "body",
+              "description": "Wanted application set",
               "fullType": "license.PleskApplicationSetEnum",
-              "required": false,
-              "description": "Wanted application set"
+              "name": "applicationSet",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "resellerManagement",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Reseller management option activation"
-            },
-            {
-              "name": "version",
-              "dataType": "license.PleskVersionEnum",
-              "paramType": "body",
-              "fullType": "license.PleskVersionEnum",
-              "required": false,
-              "description": "This license version"
-            },
-            {
-              "name": "languagePackNumber",
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "paramType": "body",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "required": false,
-              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences"
-            },
-            {
-              "name": "domainNumber",
               "dataType": "license.OrderablePleskDomainNumberEnum",
-              "paramType": "body",
+              "description": "This license domain number",
               "fullType": "license.OrderablePleskDomainNumberEnum",
-              "required": false,
-              "description": "This license domain number"
+              "name": "domainNumber",
+              "paramType": "query",
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
+              "description": "This license version",
+              "fullType": "license.PleskVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
               "name": "powerpack",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "powerpack current activation state on your license"
+              "paramType": "query",
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "WordpressToolkit option activation",
+              "fullType": "boolean",
               "name": "wordpressToolkit",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "WordpressToolkit option activation"
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "antispam",
               "dataType": "license.OrderableAntispamEnum",
-              "paramType": "body",
+              "description": "The antispam currently enabled on this Plesk License",
               "fullType": "license.OrderableAntispamEnum",
-              "required": false,
-              "description": "The antispam currently enabled on this Plesk License"
+              "name": "antispam",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Upgrade this license with some given options"
-    },
-    {
-      "path": "/order/license/sqlserver",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the LICENSE service"
-    },
-    {
-      "path": "/order/license/sqlserver/new",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "version",
-              "dataType": "license.SqlServerVersionEnum",
-              "paramType": "query",
-              "fullType": "license.SqlServerVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
-              "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'new' option"
-        }
-      ],
-      "description": "Order a new license on a given Ip with some given options"
-    },
-    {
-      "path": "/order/license/sqlserver/new/{duration}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "version",
-              "dataType": "license.SqlServerVersionEnum",
-              "paramType": "query",
-              "fullType": "license.SqlServerVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
-              "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "license.PleskVersionEnum",
+              "description": "This license version",
+              "fullType": "license.PleskVersionEnum",
               "name": "version",
-              "dataType": "license.SqlServerVersionEnum",
               "paramType": "body",
-              "fullType": "license.SqlServerVersionEnum",
-              "required": true,
-              "description": "This license version"
+              "required": false
             },
             {
-              "name": "ip",
+              "dataType": "license.OrderableAntispamEnum",
+              "description": "The antispam currently enabled on this Plesk License",
+              "fullType": "license.OrderableAntispamEnum",
+              "name": "antispam",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "WordpressToolkit option activation",
+              "fullType": "boolean",
+              "name": "wordpressToolkit",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/plesk/{serviceName}/upgrade/{duration}"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/sqlserver"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "ipv4",
-              "paramType": "body",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order a new license on a given Ip with some given options"
-    },
-    {
-      "path": "/order/license/sqlserver/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed options"
-        }
-      ],
-      "description": "List available options for this service"
-    },
-    {
-      "path": "/order/license/sqlserver/{serviceName}/upgrade",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "version",
-              "dataType": "license.SqlServerVersionEnum",
+              "name": "ip",
               "paramType": "query",
-              "fullType": "license.SqlServerVersionEnum",
-              "required": true,
-              "description": "This license version"
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'upgrade' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Upgrade this license with some given options"
+      "path": "/order/license/sqlserver/new"
     },
     {
-      "path": "/order/license/sqlserver/{serviceName}/upgrade/{duration}",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "version",
               "dataType": "license.SqlServerVersionEnum",
-              "paramType": "query",
+              "description": "This license version",
               "fullType": "license.SqlServerVersionEnum",
-              "required": true,
-              "description": "This license version"
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
               "dataType": "license.SqlServerVersionEnum",
-              "paramType": "body",
+              "description": "This license version",
               "fullType": "license.SqlServerVersionEnum",
-              "required": true,
-              "description": "This license version"
+              "name": "version",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "duration",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Upgrade this license with some given options"
+      "path": "/order/license/sqlserver/new/{duration}"
     },
     {
-      "path": "/order/license/virtuozzo",
+      "description": "List available options for this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed options",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the LICENSE service"
-    },
-    {
-      "path": "/order/license/virtuozzo/new",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/sqlserver/{serviceName}"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'upgrade' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
               "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/sqlserver/{serviceName}/upgrade"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/sqlserver/{serviceName}/upgrade/{duration}"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/virtuozzo"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "license.OrderableVirtuozzoVersionEnum",
-              "paramType": "query",
+              "description": "This license version",
               "fullType": "license.OrderableVirtuozzoVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
+              "required": true
             },
             {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "query",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "containerNumber",
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
               "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "required": true,
-              "description": "How much container is this license able to manage ..."
+              "name": "containerNumber",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'new' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Order a new license on a given Ip with some given options"
+      "path": "/order/license/virtuozzo/new"
     },
     {
-      "path": "/order/license/virtuozzo/new/{duration}",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "version",
               "dataType": "license.OrderableVirtuozzoVersionEnum",
-              "paramType": "query",
+              "description": "This license version",
               "fullType": "license.OrderableVirtuozzoVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
+              "required": true
             },
             {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "query",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "containerNumber",
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
               "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "required": true,
-              "description": "How much container is this license able to manage ..."
+              "name": "containerNumber",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
               "dataType": "license.OrderableVirtuozzoVersionEnum",
-              "paramType": "body",
+              "description": "This license version",
               "fullType": "license.OrderableVirtuozzoVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "body",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed"
+              "required": true
             },
             {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "body",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
-            },
-            {
-              "name": "containerNumber",
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "serviceType",
               "paramType": "body",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "required": true,
-              "description": "How much container is this license able to manage ..."
+              "required": false
             },
             {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order a new license on a given Ip with some given options"
-    },
-    {
-      "path": "/order/license/virtuozzo/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed options"
-        }
-      ],
-      "description": "List available options for this service"
-    },
-    {
-      "path": "/order/license/virtuozzo/{serviceName}/upgrade",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "containerNumber",
               "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "paramType": "query",
+              "description": "How much container is this license able to manage ...",
               "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "required": true,
-              "description": "How much container is this license able to manage ..."
+              "name": "containerNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'upgrade' option"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Upgrade this license with some given options"
+      "path": "/order/license/virtuozzo/new/{duration}"
     },
     {
-      "path": "/order/license/virtuozzo/{serviceName}/upgrade/{duration}",
+      "description": "List available options for this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed options",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "containerNumber",
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "paramType": "query",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "required": true,
-              "description": "How much container is this license able to manage ..."
+              "required": true
             }
           ],
-          "responseType": "order.Order",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/virtuozzo/{serviceName}"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'upgrade' option",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/virtuozzo/{serviceName}/upgrade"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "containerNumber",
               "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "paramType": "body",
+              "description": "How much container is this license able to manage ...",
               "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "required": true,
-              "description": "How much container is this license able to manage ..."
+              "name": "containerNumber",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Upgrade this license with some given options"
+      "path": "/order/license/virtuozzo/{serviceName}/upgrade/{duration}"
     },
     {
-      "path": "/order/license/windows",
+      "description": "Operations about the LICENSE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the LICENSE service"
+      "path": "/order/license/windows"
     },
     {
-      "path": "/order/license/windows/new",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
               "dataType": "license.WindowsOsVersionEnum",
-              "paramType": "query",
+              "description": "This license version",
               "fullType": "license.WindowsOsVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)"
+              "required": true
             },
             {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "query",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "sqlVersion",
-              "dataType": "license.WindowsSqlVersionEnum",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
               "fullType": "license.WindowsSqlVersionEnum",
-              "required": false,
-              "description": "The SQL Server version to enable on this license Windows license"
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'new' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Order a new license on a given Ip with some given options"
+      "path": "/order/license/windows/new"
     },
     {
-      "path": "/order/license/windows/new/{duration}",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "version",
               "dataType": "license.WindowsOsVersionEnum",
-              "paramType": "query",
+              "description": "This license version",
               "fullType": "license.WindowsOsVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)"
+              "required": true
             },
             {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "query",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "sqlVersion",
-              "dataType": "license.WindowsSqlVersionEnum",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
               "fullType": "license.WindowsSqlVersionEnum",
-              "required": false,
-              "description": "The SQL Server version to enable on this license Windows license"
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "sqlVersion",
-              "dataType": "license.WindowsSqlVersionEnum",
-              "paramType": "body",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "required": false,
-              "description": "The SQL Server version to enable on this license Windows license"
-            },
-            {
-              "name": "version",
               "dataType": "license.WindowsOsVersionEnum",
-              "paramType": "body",
+              "description": "This license version",
               "fullType": "license.WindowsOsVersionEnum",
-              "required": true,
-              "description": "This license version"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipv4",
+              "name": "version",
               "paramType": "body",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)"
+              "required": true
             },
             {
-              "name": "serviceType",
               "dataType": "license.LicenseTypeEnum",
-              "paramType": "body",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
               "fullType": "license.LicenseTypeEnum",
-              "required": false,
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #"
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            }
-          ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
-        }
-      ],
-      "description": "Order a new license on a given Ip with some given options"
-    },
-    {
-      "path": "/order/license/windows/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed options"
-        }
-      ],
-      "description": "List available options for this service"
-    },
-    {
-      "path": "/order/license/windows/{serviceName}/upgrade",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "sqlVersion",
               "dataType": "license.WindowsSqlVersionEnum",
-              "paramType": "query",
+              "description": "The SQL Server version to enable on this license Windows license",
               "fullType": "license.WindowsSqlVersionEnum",
-              "required": false,
-              "description": "The SQL Server version to enable on this license Windows license"
+              "name": "sqlVersion",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "version",
-              "dataType": "license.WindowsOsVersionEnum",
-              "paramType": "query",
-              "fullType": "license.WindowsOsVersionEnum",
-              "required": false,
-              "description": "The windows version you want to enable on your windows license"
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'upgrade' option"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Upgrade this license with some given options"
+      "path": "/order/license/windows/new/{duration}"
     },
     {
-      "path": "/order/license/windows/{serviceName}/upgrade/{duration}",
+      "description": "List available options for this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed options",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
-              "name": "sqlVersion",
-              "dataType": "license.WindowsSqlVersionEnum",
-              "paramType": "query",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "required": false,
-              "description": "The SQL Server version to enable on this license Windows license"
-            },
-            {
-              "name": "version",
-              "dataType": "license.WindowsOsVersionEnum",
-              "paramType": "query",
-              "fullType": "license.WindowsOsVersionEnum",
-              "required": false,
-              "description": "The windows version you want to enable on your windows license"
+              "required": true
             }
           ],
-          "responseType": "order.Order",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/windows/{serviceName}"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'upgrade' option",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "The windows version you want to enable on your windows license",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/windows/{serviceName}/upgrade"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "The windows version you want to enable on your windows license",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "sqlVersion",
-              "dataType": "license.WindowsSqlVersionEnum",
-              "paramType": "body",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "required": false,
-              "description": "The SQL Server version to enable on this license Windows license"
-            },
-            {
-              "name": "version",
               "dataType": "license.WindowsOsVersionEnum",
-              "paramType": "body",
+              "description": "The windows version you want to enable on your windows license",
               "fullType": "license.WindowsOsVersionEnum",
-              "required": false,
-              "description": "The windows version you want to enable on your windows license"
+              "name": "version",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "duration",
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Upgrade this license with some given options"
+      "path": "/order/license/windows/{serviceName}/upgrade/{duration}"
     },
     {
-      "path": "/order/veeamCloudConnect",
+      "description": "Operations about the VEEAMCC service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the VEEAMCC service"
+      "path": "/order/veeamCloudConnect"
     },
     {
-      "path": "/order/veeamCloudConnect/{serviceName}",
+      "description": "List available options for this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed options",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed options"
+          "responseType": "string[]"
         }
       ],
-      "description": "List available options for this service"
+      "path": "/order/veeamCloudConnect/{serviceName}"
     },
     {
-      "path": "/order/veeamCloudConnect/{serviceName}/upgrade",
+      "description": "Order an upgrade upon your Veeam Cloud Connect account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get allowed durations for 'upgrade' option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "offer",
               "dataType": "veeamCloudConnect.Offer",
-              "paramType": "query",
+              "description": "The offer on which you want to be upgraded",
               "fullType": "veeamCloudConnect.Offer",
-              "required": true,
-              "description": "The offer on which you want to be upgraded"
+              "name": "offer",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get allowed durations for 'upgrade' option"
+          "responseType": "string[]"
         }
       ],
-      "description": "Order an upgrade upon your Veeam Cloud Connect account"
+      "path": "/order/veeamCloudConnect/{serviceName}/upgrade"
     },
     {
-      "path": "/order/veeamCloudConnect/{serviceName}/upgrade/{duration}",
+      "description": "Order an upgrade upon your Veeam Cloud Connect account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "required": true
             },
             {
-              "name": "offer",
               "dataType": "veeamCloudConnect.Offer",
-              "paramType": "query",
+              "description": "The offer on which you want to be upgraded",
               "fullType": "veeamCloudConnect.Offer",
-              "required": true,
-              "description": "The offer on which you want to be upgraded"
+              "name": "offer",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "offer",
               "dataType": "veeamCloudConnect.Offer",
-              "paramType": "body",
+              "description": "The offer on which you want to be upgraded",
               "fullType": "veeamCloudConnect.Offer",
-              "required": true,
-              "description": "The offer on which you want to be upgraded"
+              "name": "offer",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "string",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Order an upgrade upon your Veeam Cloud Connect account"
+      "path": "/order/veeamCloudConnect/{serviceName}/upgrade/{duration}"
     }
   ],
-  "resourcePath": "/order",
   "basePath": "https://eu.api.soyoustart.com/1.0",
   "models": {
     "dedicated.server.BackupStorageCapacityEnum": {
-      "id": "BackupStorageCapacityEnum",
-      "namespace": "dedicated.server",
       "description": "Different backup storage capacity in gigabytes",
       "enum": [
         "1000",
@@ -4588,22 +4587,22 @@ export const schema: Schema = {
         "500",
         "5000"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "BackupStorageCapacityEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.FirewallModelEnum": {
-      "id": "FirewallModelEnum",
-      "namespace": "dedicated.server",
       "description": "Firewall model name",
       "enum": [
         "asa5505",
         "asa5510",
         "asa5520"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FirewallModelEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.IpBlockSizeEnum": {
-      "id": "IpBlockSizeEnum",
-      "namespace": "dedicated.server",
       "description": "IP block size",
       "enum": [
         "1",
@@ -4615,11 +4614,11 @@ export const schema: Schema = {
         "64",
         "8"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "IpBlockSizeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.IpCountryEnum": {
-      "id": "IpCountryEnum",
-      "namespace": "dedicated.server",
       "description": "Available localization for this static IP",
       "enum": [
         "au",
@@ -4640,11 +4639,11 @@ export const schema: Schema = {
         "uk",
         "us"
       ],
-      "enumType": "coreTypes.CountryEnum"
+      "enumType": "coreTypes.CountryEnum",
+      "id": "IpCountryEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.IpStaticCountryEnum": {
-      "id": "IpStaticCountryEnum",
-      "namespace": "dedicated.server",
       "description": "Available localization for this static IP",
       "enum": [
         "be",
@@ -4661,32 +4660,32 @@ export const schema: Schema = {
         "pt",
         "uk"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpStaticCountryEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.IpTypeOrderableEnum": {
-      "id": "IpTypeOrderableEnum",
-      "namespace": "dedicated.server",
       "description": "Orderable IP type",
       "enum": [
         "failover",
         "static",
         "unshielded"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpTypeOrderableEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.OrderableSysFeatureEnum": {
-      "id": "OrderableSysFeatureEnum",
-      "namespace": "dedicated.server",
       "description": "Dedicated server orderable features",
       "enum": [
         "backupProtocol",
         "monitoring"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderableSysFeatureEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.UsbKeyCapacityEnum": {
-      "id": "UsbKeyCapacityEnum",
-      "namespace": "dedicated.server",
       "description": " Different USB key capacity in gigabytes",
       "enum": [
         "128",
@@ -4695,20 +4694,20 @@ export const schema: Schema = {
         "32",
         "64"
       ],
-      "enumType": "long"
+      "enumType": "long",
+      "id": "UsbKeyCapacityEnum",
+      "namespace": "dedicated.server"
     },
     "dedicatedCloud.AdditionalBandwidthEnum": {
-      "id": "AdditionalBandwidthEnum",
-      "namespace": "dedicatedCloud",
       "description": "All available additional bandwidth amounts in Mbps",
       "enum": [
         "1500"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AdditionalBandwidthEnum",
+      "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.IpCountriesEnum": {
-      "id": "IpCountriesEnum",
-      "namespace": "dedicatedCloud",
       "description": "All countries in which an Ip Block may be ordered",
       "enum": [
         "be",
@@ -4728,11 +4727,11 @@ export const schema: Schema = {
         "pt",
         "us"
       ],
-      "enumType": "coreTypes.CountryEnum"
+      "enumType": "coreTypes.CountryEnum",
+      "id": "IpCountriesEnum",
+      "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.OrderableIpBlockRangeEnum": {
-      "id": "OrderableIpBlockRangeEnum",
-      "namespace": "dedicatedCloud",
       "description": "All orderable IP Block ranges in your Dedicated Cloud",
       "enum": [
         "24",
@@ -4741,11 +4740,11 @@ export const schema: Schema = {
         "27",
         "28"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderableIpBlockRangeEnum",
+      "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.ressources.UpgradeRessourceTypeEnum": {
-      "id": "UpgradeRessourceTypeEnum",
-      "namespace": "dedicatedCloud.ressources",
       "description": "The Dedicated Cloud ressource types that can be upgraded",
       "enum": [
         "account",
@@ -4753,22 +4752,22 @@ export const schema: Schema = {
         "filer",
         "host"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "UpgradeRessourceTypeEnum",
+      "namespace": "dedicatedCloud.ressources"
     },
     "dedicatedCloud.ressources.UpgradeTypeEnum": {
-      "id": "UpgradeTypeEnum",
-      "namespace": "dedicatedCloud.ressources",
       "description": "The available billing type upgrade for Dedicated Cloud ressource",
       "enum": [
         "demoToMonthly",
         "freeSpareToHourly",
         "hourlyToMonthly"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "UpgradeTypeEnum",
+      "namespace": "dedicatedCloud.ressources"
     },
     "license.CloudLinuxVersionEnum": {
-      "id": "CloudLinuxVersionEnum",
-      "namespace": "license",
       "description": "All versions for CloudLinux product",
       "enum": [
         "SINGLE",
@@ -4776,11 +4775,11 @@ export const schema: Schema = {
         "WITH_PLESK12",
         "cloudlinux-license"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CloudLinuxVersionEnum",
+      "namespace": "license"
     },
     "license.LicenseTypeEnum": {
-      "id": "LicenseTypeEnum",
-      "namespace": "license",
       "description": "Possible values for license type",
       "enum": [
         "dedicated",
@@ -4795,31 +4794,31 @@ export const schema: Schema = {
         "vps_cloud_2016",
         "vps_ssd"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LicenseTypeEnum",
+      "namespace": "license"
     },
     "license.OrderableAntispamEnum": {
-      "id": "OrderableAntispamEnum",
-      "namespace": "license",
       "description": "All antispam available for Plesk products",
       "enum": [
         "SPAM_ASSASSIN"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderableAntispamEnum",
+      "namespace": "license"
     },
     "license.OrderableAntivirusEnum": {
-      "id": "OrderableAntivirusEnum",
-      "namespace": "license",
       "description": "All antivirus available for Plesk products",
       "enum": [
         "DR_WEB",
         "KASPERSKY_UNLIMITED_MAILBOXES",
         "kaspersky"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderableAntivirusEnum",
+      "namespace": "license"
     },
     "license.OrderableCpanelVersionEnum": {
-      "id": "OrderableCpanelVersionEnum",
-      "namespace": "license",
       "description": "All versions available for Cpanel products",
       "enum": [
         "VERSION_11_FOR_LINUX",
@@ -5227,21 +5226,21 @@ export const schema: Schema = {
         "version-solo-cloud",
         "version-solo-metal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderableCpanelVersionEnum",
+      "namespace": "license"
     },
     "license.OrderableDirectAdminVersionEnum": {
-      "id": "OrderableDirectAdminVersionEnum",
-      "namespace": "license",
       "description": "All versions available for DirectAdmin products",
       "enum": [
         "DIRECTADMIN_1",
         "directadmin-license"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderableDirectAdminVersionEnum",
+      "namespace": "license"
     },
     "license.OrderablePleskDomainNumberEnum": {
-      "id": "OrderablePleskDomainNumberEnum",
-      "namespace": "license",
       "description": "All domain available for Plesk products",
       "enum": [
         "10",
@@ -5251,11 +5250,11 @@ export const schema: Schema = {
         "hostingsuite",
         "unlimited"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderablePleskDomainNumberEnum",
+      "namespace": "license"
     },
     "license.OrderablePleskLanguagePackEnum": {
-      "id": "OrderablePleskLanguagePackEnum",
-      "namespace": "license",
       "description": "All language pack numbers available for Plesk products",
       "enum": [
         "1",
@@ -5271,11 +5270,11 @@ export const schema: Schema = {
         "unlimited",
         "unlimited-extra-languages-for-plesk12"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderablePleskLanguagePackEnum",
+      "namespace": "license"
     },
     "license.OrderableVirtuozzoContainerNumberEnum": {
-      "id": "OrderableVirtuozzoContainerNumberEnum",
-      "namespace": "license",
       "description": "All quantities of container available for a Virtuozzo license",
       "enum": [
         "2_CPU_001_CONTAINER",
@@ -5285,11 +5284,11 @@ export const schema: Schema = {
         "2_CPU_060_CONTAINER",
         "2_CPU_100_CONTAINER"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderableVirtuozzoContainerNumberEnum",
+      "namespace": "license"
     },
     "license.OrderableVirtuozzoVersionEnum": {
-      "id": "OrderableVirtuozzoVersionEnum",
-      "namespace": "license",
       "description": "All versions available for Virtuozzo products",
       "enum": [
         "VIRTUOZZO_CONTAINERS_4_FOR_LINUX",
@@ -5297,11 +5296,11 @@ export const schema: Schema = {
         "virtuozzo-4",
         "virtuozzo-4-for-windows"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderableVirtuozzoVersionEnum",
+      "namespace": "license"
     },
     "license.PleskApplicationSetEnum": {
-      "id": "PleskApplicationSetEnum",
-      "namespace": "license",
       "description": "Application set available for Plesk products",
       "enum": [
         "applicationpack",
@@ -5309,11 +5308,11 @@ export const schema: Schema = {
         "power-pack-for-plesk12",
         "powerpack"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PleskApplicationSetEnum",
+      "namespace": "license"
     },
     "license.PleskVersionEnum": {
-      "id": "PleskVersionEnum",
-      "namespace": "license",
       "description": "All versions available for Plesk products",
       "enum": [
         "PLESK_10_AND_LATER",
@@ -5365,11 +5364,11 @@ export const schema: Schema = {
         "plesk-12-webpro",
         "plesk-12-webpro-for-vps"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PleskVersionEnum",
+      "namespace": "license"
     },
     "license.SqlServerVersionEnum": {
-      "id": "SqlServerVersionEnum",
-      "namespace": "license",
       "description": "All versions for SQL Server product",
       "enum": [
         "SQL_SERVER_2008_STANDARD_EDITION_2_CPU",
@@ -5607,11 +5606,11 @@ export const schema: Schema = {
         "sql-server-2019-license-web-edition-6-cores",
         "sql-server-2019-license-web-edition-8-cores"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "SqlServerVersionEnum",
+      "namespace": "license"
     },
     "license.WindowsOsVersionEnum": {
-      "id": "WindowsOsVersionEnum",
-      "namespace": "license",
       "description": "All versions for Windows products",
       "enum": [
         "WINDOWS_SERVER_2003_ENTERPRISE_EDITION",
@@ -5887,11 +5886,11 @@ export const schema: Schema = {
         "windows-server-2019-license-standard-edition-64-cores",
         "windows-server-2019-license-standard-edition-8-cores"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "WindowsOsVersionEnum",
+      "namespace": "license"
     },
     "license.WindowsSqlVersionEnum": {
-      "id": "WindowsSqlVersionEnum",
-      "namespace": "license",
       "description": "All SQL Server versions for Windows products",
       "enum": [
         "SQL_SERVER_2008_STANDARD_EDITION",
@@ -5919,39 +5918,39 @@ export const schema: Schema = {
         "SQL_SERVER_2012_WEB_EDITION_6_CORES",
         "SQL_SERVER_2012_WEB_EDITION_8_CORES"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "WindowsSqlVersionEnum",
+      "namespace": "license"
     },
     "order.Contract": {
+      "description": "A contract",
       "id": "Contract",
       "namespace": "order",
-      "description": "A contract",
       "properties": {
         "content": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
+          "fullType": "text",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "text"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.CurrencyCodeEnum": {
-      "id": "CurrencyCodeEnum",
-      "namespace": "order",
       "enum": [
         "AUD",
         "CAD",
@@ -5968,102 +5967,102 @@ export const schema: Schema = {
         "XOF",
         "points"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
     },
     "order.Order": {
+      "description": "An order",
       "id": "Order",
       "namespace": "order",
-      "description": "An order",
       "properties": {
         "contracts": {
-          "type": "order.Contract[]",
-          "fullType": "order.Contract[]",
           "canBeNull": false,
+          "fullType": "order.Contract[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Contract[]"
         },
         "details": {
-          "type": "order.OrderDetail[]",
-          "fullType": "order.OrderDetail[]",
           "canBeNull": false,
+          "fullType": "order.OrderDetail[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.OrderDetail[]"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "prices": {
-          "type": "order.OrderPrices",
-          "fullType": "order.OrderPrices",
           "canBeNull": false,
+          "fullType": "order.OrderPrices",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.OrderPrices"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "order.OrderDetail": {
+      "description": "Detail of an order",
       "id": "OrderDetail",
       "namespace": "order",
-      "description": "Detail of an order",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "detailType": {
-          "type": "order.OrderDetailTypeEnum",
-          "fullType": "order.OrderDetailTypeEnum",
           "canBeNull": true,
+          "fullType": "order.OrderDetailTypeEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "order.OrderDetailTypeEnum"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "quantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "totalPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "unitPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "order.OrderDetailTypeEnum": {
-      "id": "OrderDetailTypeEnum",
-      "namespace": "order",
       "description": "Product type of item in order",
       "enum": [
         "ACCESSORY",
@@ -6087,74 +6086,77 @@ export const schema: Schema = {
         "TRANSFER",
         "VOUCHER"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderDetailTypeEnum",
+      "namespace": "order"
     },
     "order.OrderPrices": {
+      "description": "Prices of an order",
       "id": "OrderPrices",
       "namespace": "order",
-      "description": "Prices of an order",
       "properties": {
         "tax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "withTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "withoutTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "order.Price": {
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
-      "description": "Price with it's currency and textual representation",
       "properties": {
         "currencyCode": {
-          "type": "order.CurrencyCodeEnum",
-          "fullType": "order.CurrencyCodeEnum",
           "canBeNull": false,
+          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.CurrencyCodeEnum"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         }
       }
     },
     "veeamCloudConnect.Offer": {
-      "id": "Offer",
-      "namespace": "veeamCloudConnect",
       "description": "All orderable Veeam Cloud Connect offers",
       "enum": [
         "advanced",
         "demo",
         "starter"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Offer",
+      "namespace": "veeamCloudConnect"
     }
-  }
+  },
+  "resourcePath": "/order"
 }

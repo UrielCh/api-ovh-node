@@ -1,57 +1,56 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/status.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/status/task",
+      "description": "API to get incidents or maintenances linked to nichandle services",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Find all the incidents or maintenances linked to your services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "impact",
               "dataType": "ovhstatus.task.TaskImpactEnum",
-              "paramType": "query",
+              "description": "Filter by impact",
               "fullType": "ovhstatus.task.TaskImpactEnum",
-              "required": false,
-              "description": "Filter by impact"
+              "name": "impact",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "status",
               "dataType": "ovhstatus.task.TaskStatusEnum",
-              "paramType": "query",
+              "description": "Filter by status",
               "fullType": "ovhstatus.task.TaskStatusEnum",
-              "required": false,
-              "description": "Filter by status"
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "type",
               "dataType": "ovhstatus.task.TaskTypeEnum",
-              "paramType": "query",
+              "description": "Filter by type",
               "fullType": "ovhstatus.task.TaskTypeEnum",
-              "required": false,
-              "description": "Filter by type"
+              "name": "type",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "status.Task.Task[]",
-          "noAuthentication": false,
-          "description": "Find all the incidents or maintenances linked to your services"
+          "responseType": "status.Task.Task[]"
         }
       ],
-      "description": "API to get incidents or maintenances linked to nichandle services"
+      "path": "/status/task"
     }
   ],
-  "resourcePath": "/status",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "ovhstatus.task.TaskImpactEnum": {
-      "id": "TaskImpactEnum",
-      "namespace": "ovhstatus.task",
       "description": "Description not available",
       "enum": [
         "partialUnavailability",
@@ -60,163 +59,166 @@ export const schema: Schema = {
         "none",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskImpactEnum",
+      "namespace": "ovhstatus.task"
     },
     "ovhstatus.task.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "ovhstatus.task",
       "description": "Description not available",
       "enum": [
         "planned",
         "inProgress",
         "finished"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "ovhstatus.task"
     },
     "ovhstatus.task.TaskTypeEnum": {
-      "id": "TaskTypeEnum",
-      "namespace": "ovhstatus.task",
       "description": "Description not available",
       "enum": [
         "incident",
         "maintenance",
         "upgrade"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskTypeEnum",
+      "namespace": "ovhstatus.task"
     },
     "status.Reply.Reply": {
+      "description": "A reply is useful to know the progress of a task",
       "id": "Reply",
       "namespace": "status.Reply",
-      "description": "A reply is useful to know the progress of a task",
       "properties": {
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The comment of the reply",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The date of the reply",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "status.Task.Task": {
+      "description": "A task linked to one of your services",
       "id": "Task",
       "namespace": "status.Task",
-      "description": "A task linked to one of your services",
       "properties": {
         "category": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The category of the task",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "endDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The end date of the task",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "impact": {
-          "type": "ovhstatus.task.TaskImpactEnum",
-          "fullType": "ovhstatus.task.TaskImpactEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The impact of the task",
-          "required": true
+          "fullType": "ovhstatus.task.TaskImpactEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "ovhstatus.task.TaskImpactEnum"
         },
         "impactedService": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Your impacted service linked to the task",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "progress": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The task progression from 0 to 100",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "project": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The project of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "reference": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The reference of the task",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "replies": {
-          "type": "status.Reply.Reply[]",
-          "fullType": "status.Reply.Reply[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The replies of the task",
-          "required": true
+          "fullType": "status.Reply.Reply[]",
+          "readOnly": false,
+          "required": true,
+          "type": "status.Reply.Reply[]"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The start date of the task",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "status": {
-          "type": "ovhstatus.task.TaskStatusEnum",
-          "fullType": "ovhstatus.task.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The status of the task",
-          "required": true
+          "fullType": "ovhstatus.task.TaskStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "ovhstatus.task.TaskStatusEnum"
         },
         "title": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The title of the task",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "type": {
-          "type": "ovhstatus.task.TaskTypeEnum",
-          "fullType": "ovhstatus.task.TaskTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The type of the task",
-          "required": true
+          "fullType": "ovhstatus.task.TaskTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "ovhstatus.task.TaskTypeEnum"
         },
         "uuid": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The task uuid",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/status"
 }

@@ -1,418 +1,417 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.ovh.com:443/1.0/license/cpanel.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/license/cpanel",
+      "description": "Operations about the LICENSE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the LICENSE service"
+      "path": "/license/cpanel"
     },
     {
-      "path": "/license/cpanel/orderableVersions",
+      "description": "Get the orderable CPanel versions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the orderable CPanel versions",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipv4",
-              "paramType": "query",
+              "description": "Your license Ip",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Your license Ip"
+              "name": "ip",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "license.CpanelOrderConfiguration[]",
-          "noAuthentication": false,
-          "description": "Get the orderable CPanel versions"
+          "responseType": "license.CpanelOrderConfiguration[]"
         }
       ],
-      "description": "Get the orderable CPanel versions"
+      "path": "/license/cpanel/orderableVersions"
     },
     {
-      "path": "/license/cpanel/{serviceName}",
+      "description": "Your Cpanel license",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "license.cpanel.Cpanel",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "license.cpanel.Cpanel"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "license.cpanel.Cpanel",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "license.cpanel.Cpanel",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Your Cpanel license"
+      "path": "/license/cpanel/{serviceName}"
     },
     {
-      "path": "/license/cpanel/{serviceName}/allowedDestinationIp",
+      "description": "allowedDestinationIp operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Returns an array of ips where the license can be moved to",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "Returns an array of ips where the license can be moved to"
+          "responseType": "ipBlock[]"
         }
       ],
-      "description": "allowedDestinationIp operations"
+      "path": "/license/cpanel/{serviceName}/allowedDestinationIp"
     },
     {
-      "path": "/license/cpanel/{serviceName}/canLicenseBeMovedTo",
+      "description": "canLicenseBeMovedTo operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Will tell if the ip can accept the license",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "destinationIp",
               "dataType": "ipv4",
+              "description": "The Ip on which you want to move this license",
+              "fullType": "ipv4",
+              "name": "destinationIp",
               "paramType": "query",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "The Ip on which you want to move this license"
+              "required": true
             }
           ],
-          "responseType": "license.ChangeIpStatus",
-          "noAuthentication": false,
-          "description": "Will tell if the ip can accept the license"
+          "responseType": "license.ChangeIpStatus"
         }
       ],
-      "description": "canLicenseBeMovedTo operations"
+      "path": "/license/cpanel/{serviceName}/canLicenseBeMovedTo"
     },
     {
-      "path": "/license/cpanel/{serviceName}/changeIp",
+      "description": "changeIp operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Move this license to another Ip",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "destinationIp",
               "dataType": "ipv4",
-              "paramType": "body",
+              "description": "The Ip on which you want to move this license",
               "fullType": "ipv4",
-              "required": true,
-              "description": "The Ip on which you want to move this license"
+              "name": "destinationIp",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "license.Task",
-          "noAuthentication": false,
-          "description": "Move this license to another Ip"
+          "responseType": "license.Task"
         }
       ],
-      "description": "changeIp operations"
+      "path": "/license/cpanel/{serviceName}/changeIp"
     },
     {
-      "path": "/license/cpanel/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/license/cpanel/{serviceName}/confirmTermination"
     },
     {
-      "path": "/license/cpanel/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/license/cpanel/{serviceName}/serviceInfos"
     },
     {
-      "path": "/license/cpanel/{serviceName}/tasks",
+      "description": "List the license.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "tasks linked to this license",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "action",
               "dataType": "license.ActionType",
-              "paramType": "query",
+              "description": "Filter the value of action property (=)",
               "fullType": "license.ActionType",
-              "required": false,
-              "description": "Filter the value of action property (=)"
-            },
-            {
-              "name": "status",
-              "dataType": "license.TaskStateEnum",
+              "name": "action",
               "paramType": "query",
-              "fullType": "license.TaskStateEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "tasks linked to this license"
-        }
-      ],
-      "description": "List the license.Task objects"
-    },
-    {
-      "path": "/license/cpanel/{serviceName}/tasks/{taskId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "taskId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "required": false
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "dataType": "license.TaskStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "license.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "license.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "long[]"
         }
       ],
-      "description": "licenses Todos"
+      "path": "/license/cpanel/{serviceName}/tasks"
     },
     {
-      "path": "/license/cpanel/{serviceName}/terminate",
+      "description": "licenses Todos",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Task ID",
+              "fullType": "long",
+              "name": "taskId",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "license.Task"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/license/cpanel/{serviceName}/tasks/{taskId}"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/license/cpanel/{serviceName}/terminate"
     }
   ],
-  "resourcePath": "/license/cpanel",
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "license.ActionType": {
-      "id": "ActionType",
-      "namespace": "license",
       "description": "A short description of what does the Task on your license",
       "enum": [
         "addWindowFromExistingSerial",
@@ -423,11 +422,11 @@ export const schema: Schema = {
         "releaseOption",
         "versionUpgrade"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ActionType",
+      "namespace": "license"
     },
     "license.ChangeIpMessageEnum": {
-      "id": "ChangeIpMessageEnum",
-      "namespace": "license",
       "description": "Messages from change IP",
       "enum": [
         "OK",
@@ -438,53 +437,53 @@ export const schema: Schema = {
         "sameIp",
         "versionNotAllowed"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ChangeIpMessageEnum",
+      "namespace": "license"
     },
     "license.ChangeIpStatus": {
+      "description": "License change ip status return",
       "id": "ChangeIpStatus",
       "namespace": "license",
-      "description": "License change ip status return",
       "properties": {
         "message": {
-          "type": "license.ChangeIpMessageEnum",
-          "fullType": "license.ChangeIpMessageEnum",
           "canBeNull": false,
+          "fullType": "license.ChangeIpMessageEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "license.ChangeIpMessageEnum"
         },
         "success": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
+          "fullType": "boolean",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "license.CpanelOrderConfiguration": {
+      "description": "The serviceTypes allowed to Order a CPanel version",
       "id": "CpanelOrderConfiguration",
       "namespace": "license",
-      "description": "The serviceTypes allowed to Order a CPanel version",
       "properties": {
         "orderableVersions": {
-          "type": "license.OrderableCpanelCompatibilityInfos[]",
-          "fullType": "license.OrderableCpanelCompatibilityInfos[]",
           "canBeNull": false,
+          "fullType": "license.OrderableCpanelCompatibilityInfos[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "license.OrderableCpanelCompatibilityInfos[]"
         },
         "serviceType": {
-          "type": "license.LicenseTypeEnum",
-          "fullType": "license.LicenseTypeEnum",
           "canBeNull": false,
+          "fullType": "license.LicenseTypeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "license.LicenseTypeEnum"
         }
       }
     },
     "license.CpanelVersionEnum": {
-      "id": "CpanelVersionEnum",
-      "namespace": "license",
       "description": "All versions available for Cpanel products",
       "enum": [
         "VERSION_11_FOR_LINUX",
@@ -698,11 +697,11 @@ export const schema: Schema = {
         "version-solo-cloud",
         "version-solo-metal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CpanelVersionEnum",
+      "namespace": "license"
     },
     "license.LicenseTypeEnum": {
-      "id": "LicenseTypeEnum",
-      "namespace": "license",
       "description": "Possible values for license type",
       "enum": [
         "dedicated",
@@ -717,25 +716,25 @@ export const schema: Schema = {
         "vps_cloud_2016",
         "vps_ssd"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "LicenseTypeEnum",
+      "namespace": "license"
     },
     "license.OrderableCpanelCompatibilityInfos": {
+      "description": "All versions available for Cpanel products",
       "id": "OrderableCpanelCompatibilityInfos",
       "namespace": "license",
-      "description": "All versions available for Cpanel products",
       "properties": {
         "version": {
-          "type": "license.OrderableCpanelVersionEnum",
-          "fullType": "license.OrderableCpanelVersionEnum",
           "canBeNull": false,
+          "fullType": "license.OrderableCpanelVersionEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "license.OrderableCpanelVersionEnum"
         }
       }
     },
     "license.OrderableCpanelVersionEnum": {
-      "id": "OrderableCpanelVersionEnum",
-      "namespace": "license",
       "description": "All versions available for Cpanel products",
       "enum": [
         "VERSION_11_FOR_LINUX",
@@ -1143,11 +1142,11 @@ export const schema: Schema = {
         "version-solo-cloud",
         "version-solo-metal"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderableCpanelVersionEnum",
+      "namespace": "license"
     },
     "license.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "license",
       "description": "All states a license can be in",
       "enum": [
         "ok",
@@ -1155,74 +1154,74 @@ export const schema: Schema = {
         "terminated",
         "toDeliver"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "license"
     },
     "license.Task": {
+      "description": "licenses Todos",
       "id": "Task",
       "namespace": "license",
-      "description": "licenses Todos",
       "properties": {
         "action": {
-          "type": "license.ActionType",
-          "fullType": "license.ActionType",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This Task description",
-          "required": true
+          "fullType": "license.ActionType",
+          "readOnly": true,
+          "required": true,
+          "type": "license.ActionType"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "When was this Task done",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The last time this Task was updated",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This Task name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "license.TaskStateEnum",
-          "fullType": "license.TaskStateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current Taks status",
-          "required": true
+          "fullType": "license.TaskStateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "license.TaskStateEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This Task id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "When was this Task created",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "license.TaskStateEnum": {
-      "id": "TaskStateEnum",
-      "namespace": "license",
       "description": "All states a license Task can be in",
       "enum": [
         "cancelled",
@@ -1231,121 +1230,121 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "license"
     },
     "license.cpanel.Cpanel": {
+      "description": "Your Cpanel license",
       "id": "Cpanel",
       "namespace": "license.cpanel",
-      "description": "Your Cpanel license",
       "properties": {
         "creation": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This license creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Shall we delete this on expiration ?",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The internal name of your license",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The ip on which this license is attached",
-          "required": true
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": true,
+          "type": "ipv4"
         },
         "licenseId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The license id on license provider side",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "license.StateEnum",
-          "fullType": "license.StateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This license state",
-          "required": true
+          "fullType": "license.StateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "license.StateEnum"
         },
         "version": {
-          "type": "license.CpanelVersionEnum",
-          "fullType": "license.CpanelVersionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "This license version",
-          "required": true
+          "fullType": "license.CpanelVersionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "license.CpanelVersionEnum"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1356,11 +1355,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1368,11 +1367,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -1381,11 +1380,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -1403,108 +1402,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/license/cpanel"
 }

@@ -1,197 +1,196 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.soyoustart.com:443/1.0/price.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/price/cluster/hadoop/cluster/{duration}",
+      "description": "Get the price of a Hadoop cluster consumptions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the price of a Hadoop cluster consumptions",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "price.Cluster.Hadoop.ClusterEnum",
-              "paramType": "path",
+              "description": "Duration",
               "fullType": "price.Cluster.Hadoop.ClusterEnum",
-              "required": true,
-              "description": "Duration"
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Price",
-          "noAuthentication": false,
-          "description": "Get the price of a Hadoop cluster consumptions"
+          "responseType": "order.Price"
         }
       ],
-      "description": "Get the price of a Hadoop cluster consumptions"
+      "path": "/price/cluster/hadoop/cluster/{duration}"
     },
     {
-      "path": "/price/cluster/hadoop/node/hourly/{nodeProfile}",
+      "description": "Get the hourly price of the available node profiles",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the hourly price of the available node profiles",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "nodeProfile",
               "dataType": "price.Cluster.Hadoop.Node.HourlyEnum",
-              "paramType": "path",
+              "description": "Node profile",
               "fullType": "price.Cluster.Hadoop.Node.HourlyEnum",
-              "required": true,
-              "description": "Node profile"
-            }
-          ],
-          "responseType": "order.Price",
-          "noAuthentication": false,
-          "description": "Get the hourly price of the available node profiles"
-        }
-      ],
-      "description": "Get the hourly price of the available node profiles"
-    },
-    {
-      "path": "/price/cluster/hadoop/node/monthly/{nodeProfile}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
               "name": "nodeProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/cluster/hadoop/node/hourly/{nodeProfile}"
+    },
+    {
+      "description": "Get the monthly price of the available node profiles",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the monthly price of the available node profiles",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "price.Cluster.Hadoop.Node.MonthlyEnum",
-              "paramType": "path",
+              "description": "Node profile",
               "fullType": "price.Cluster.Hadoop.Node.MonthlyEnum",
-              "required": true,
-              "description": "Node profile"
+              "name": "nodeProfile",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Price",
-          "noAuthentication": false,
-          "description": "Get the monthly price of the available node profiles"
+          "responseType": "order.Price"
         }
       ],
-      "description": "Get the monthly price of the available node profiles"
+      "path": "/price/cluster/hadoop/node/monthly/{nodeProfile}"
     },
     {
-      "path": "/price/dedicated/server/antiDDoSPro/{commercialRange}",
+      "description": "Get price of anti-DDos Pro option",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get price of anti-DDos Pro option",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "commercialRange",
               "dataType": "price.Dedicated.Server.AntiDDoSProEnum",
-              "paramType": "path",
+              "description": "Commercial range",
               "fullType": "price.Dedicated.Server.AntiDDoSProEnum",
-              "required": true,
-              "description": "Commercial range"
+              "name": "commercialRange",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Price",
-          "noAuthentication": false,
-          "description": "Get price of anti-DDos Pro option"
+          "responseType": "order.Price"
         }
       ],
-      "description": "Get price of anti-DDos Pro option"
+      "path": "/price/dedicated/server/antiDDoSPro/{commercialRange}"
     },
     {
-      "path": "/price/dedicated/server/backupStorage/{capacity}",
+      "description": "Get price of backup storage offer",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get price of backup storage offer",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "capacity",
               "dataType": "price.Dedicated.Server.BackupStorageEnum",
-              "paramType": "path",
+              "description": "Capacity",
               "fullType": "price.Dedicated.Server.BackupStorageEnum",
-              "required": true,
-              "description": "Capacity"
+              "name": "capacity",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Price",
-          "noAuthentication": false,
-          "description": "Get price of backup storage offer"
+          "responseType": "order.Price"
         }
       ],
-      "description": "Get price of backup storage offer"
+      "path": "/price/dedicated/server/backupStorage/{capacity}"
     },
     {
-      "path": "/price/dedicated/server/firewall/{firewallModel}",
+      "description": "Get price of available firewall models",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get price of available firewall models",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "firewallModel",
               "dataType": "price.Dedicated.Server.FirewallEnum",
-              "paramType": "path",
+              "description": "Firewall model",
               "fullType": "price.Dedicated.Server.FirewallEnum",
-              "required": true,
-              "description": "Firewall model"
+              "name": "firewallModel",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Price",
-          "noAuthentication": false,
-          "description": "Get price of available firewall models"
+          "responseType": "order.Price"
         }
       ],
-      "description": "Get price of available firewall models"
+      "path": "/price/dedicated/server/firewall/{firewallModel}"
     },
     {
-      "path": "/price/dedicated/server/ip/{routedTo}",
+      "description": "Get price of IPs",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get price of IPs",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "routedTo",
               "dataType": "price.Dedicated.Server.IpEnum",
-              "paramType": "path",
+              "description": "Routed to",
               "fullType": "price.Dedicated.Server.IpEnum",
-              "required": true,
-              "description": "Routed to"
+              "name": "routedTo",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Price",
-          "noAuthentication": false,
-          "description": "Get price of IPs"
+          "responseType": "order.Price"
         }
       ],
-      "description": "Get price of IPs"
+      "path": "/price/dedicated/server/ip/{routedTo}"
     }
   ],
-  "resourcePath": "/price",
   "basePath": "https://eu.api.soyoustart.com/1.0",
   "models": {
     "order.CurrencyCodeEnum": {
-      "id": "CurrencyCodeEnum",
-      "namespace": "order",
       "enum": [
         "AUD",
         "CAD",
@@ -208,35 +207,38 @@ export const schema: Schema = {
         "XOF",
         "points"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
     },
     "order.Price": {
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
-      "description": "Price with it's currency and textual representation",
       "properties": {
         "currencyCode": {
-          "type": "order.CurrencyCodeEnum",
-          "fullType": "order.CurrencyCodeEnum",
           "canBeNull": false,
+          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.CurrencyCodeEnum"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/price"
 }

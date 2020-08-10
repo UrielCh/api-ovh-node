@@ -1,742 +1,741 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/cdn/website.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/cdn/website",
+      "description": "Operations about the CDNWEBSITE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the CDNWEBSITE service"
+      "path": "/cdn/website"
     },
     {
-      "path": "/cdn/website/{serviceName}",
+      "description": "Website CDN",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Website",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdn.website.Website"
         }
       ],
-      "description": "Website CDN"
+      "path": "/cdn/website/{serviceName}"
     },
     {
-      "path": "/cdn/website/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/cdn/website/{serviceName}/serviceInfos"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone",
+      "description": "Zone on CDN",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove a zone from the CDN",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Task",
-          "noAuthentication": false,
-          "description": "Remove a zone from the CDN"
+          "responseType": "cdn.website.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Zone",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdn.website.Zone"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Configure a zone on CDN",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "zone DNS name to add on CDN",
+              "fullType": "string",
               "name": "zone",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "zone DNS name to add on CDN"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Zone",
-          "noAuthentication": false,
-          "description": "Configure a zone on CDN"
+          "responseType": "cdn.website.Zone"
         }
       ],
-      "description": "Zone on CDN"
+      "path": "/cdn/website/{serviceName}/zone"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/backends",
+      "description": "List the cdn.website.Backend objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Backend associated to this zone",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipv4[]",
-          "noAuthentication": false,
-          "description": "Backend associated to this zone"
+          "responseType": "ipv4[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Configure a backend on the zone",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ipv4",
               "dataType": "ipv4",
-              "paramType": "body",
+              "description": "ip to configure on the zone",
               "fullType": "ipv4",
-              "required": true,
-              "description": "ip to configure on the zone"
+              "name": "ipv4",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Task",
-          "noAuthentication": false,
-          "description": "Configure a backend on the zone"
+          "responseType": "cdn.website.Task"
         }
       ],
-      "description": "List the cdn.website.Backend objects"
+      "path": "/cdn/website/{serviceName}/zone/backends"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/backends/{ipv4}",
+      "description": "Backend on zone",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove a backend from the zone",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipv4",
               "dataType": "ipv4",
-              "paramType": "path",
+              "description": "Ipv4",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Ipv4"
+              "name": "ipv4",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Task",
-          "noAuthentication": false,
-          "description": "Remove a backend from the zone"
+          "responseType": "cdn.website.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipv4",
               "dataType": "ipv4",
-              "paramType": "path",
+              "description": "Ipv4",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Ipv4"
+              "name": "ipv4",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Backend",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdn.website.Backend"
         }
       ],
-      "description": "Backend on zone"
+      "path": "/cdn/website/{serviceName}/zone/backends/{ipv4}"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks",
+      "description": "List the cdn.website.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Task associated to this backend",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ipv4",
               "dataType": "ipv4",
-              "paramType": "path",
+              "description": "Ipv4",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Ipv4"
+              "name": "ipv4",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Task associated to this backend"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the cdn.website.Task objects"
+      "path": "/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}",
+      "description": "Task on CDN",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "ipv4",
-              "dataType": "ipv4",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "ipv4",
-              "required": true,
-              "description": "Ipv4"
+              "required": true
             },
             {
-              "name": "taskId",
+              "dataType": "ipv4",
+              "description": "Ipv4",
+              "fullType": "ipv4",
+              "name": "ipv4",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Task ID",
               "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdn.website.Task"
         }
       ],
-      "description": "Task on CDN"
+      "path": "/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/domains",
+      "description": "List the cdn.website.Domain objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Domain associated to this zone",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Domain associated to this zone"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Configure a domain on CDN",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
+              "description": "domain to add on CDN",
+              "fullType": "string",
+              "name": "domain",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "domain to add on CDN"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Domain",
-          "noAuthentication": false,
-          "description": "Configure a domain on CDN"
+          "responseType": "cdn.website.Domain"
         }
       ],
-      "description": "List the cdn.website.Domain objects"
+      "path": "/cdn/website/{serviceName}/zone/domains"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/domains/{domain}",
+      "description": "Domain on CDN",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove a domain from the CDN",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Task",
-          "noAuthentication": false,
-          "description": "Remove a domain from the CDN"
+          "responseType": "cdn.website.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Domain",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdn.website.Domain"
         }
       ],
-      "description": "Domain on CDN"
+      "path": "/cdn/website/{serviceName}/zone/domains/{domain}"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/domains/{domain}/flush",
+      "description": "flush operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Flush all cache",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Task",
-          "noAuthentication": false,
-          "description": "Flush all cache"
+          "responseType": "cdn.website.Task"
         }
       ],
-      "description": "flush operations"
+      "path": "/cdn/website/{serviceName}/zone/domains/{domain}/flush"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/domains/{domain}/statistics",
+      "description": "statistics operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get statistics about request on CDN, bandwidth value in Bytes",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "period",
               "dataType": "cdn.website.StatsPeriodEnum",
-              "paramType": "query",
+              "description": "",
               "fullType": "cdn.website.StatsPeriodEnum",
-              "required": true,
-              "description": ""
+              "name": "period",
+              "paramType": "query",
+              "required": true
             },
             {
-              "name": "value",
               "dataType": "cdn.website.StatsValueEnum",
-              "paramType": "query",
+              "description": "",
               "fullType": "cdn.website.StatsValueEnum",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "type",
-              "dataType": "cdn.website.StatsTypeEnum",
+              "name": "value",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "cdn.website.StatsTypeEnum",
+              "description": "",
               "fullType": "cdn.website.StatsTypeEnum",
-              "required": true,
-              "description": ""
+              "name": "type",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.StatsDataType[]",
-          "noAuthentication": false,
-          "description": "Get statistics about request on CDN, bandwidth value in Bytes"
+          "responseType": "cdn.website.StatsDataType[]"
         }
       ],
-      "description": "statistics operations"
+      "path": "/cdn/website/{serviceName}/zone/domains/{domain}/statistics"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/domains/{domain}/tasks",
+      "description": "List the cdn.website.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Task associated to this domain",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Task associated to this domain"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the cdn.website.Task objects"
+      "path": "/cdn/website/{serviceName}/zone/domains/{domain}/tasks"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}",
+      "description": "Task on CDN",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "taskId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Task ID",
               "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdn.website.Task"
         }
       ],
-      "description": "Task on CDN"
+      "path": "/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/tasks",
+      "description": "List the cdn.website.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Task associated to this zone",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Task associated to this zone"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the cdn.website.Task objects"
+      "path": "/cdn/website/{serviceName}/zone/tasks"
     },
     {
-      "path": "/cdn/website/{serviceName}/zone/tasks/{taskId}",
+      "description": "Task on CDN",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "taskId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Task ID",
               "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "cdn.website.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "cdn.website.Task"
         }
       ],
-      "description": "Task on CDN"
+      "path": "/cdn/website/{serviceName}/zone/tasks/{taskId}"
     }
   ],
-  "resourcePath": "/cdn/website",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "cdn.website.Backend": {
+      "description": "Backend on zone",
       "id": "Backend",
       "namespace": "cdn.website",
-      "description": "Backend on zone",
       "properties": {
         "ipv4": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
+          "fullType": "ipv4",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "ipv4"
         },
         "status": {
-          "type": "cdn.website.BackendStatusEnum",
-          "fullType": "cdn.website.BackendStatusEnum",
           "canBeNull": false,
+          "fullType": "cdn.website.BackendStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdn.website.BackendStatusEnum"
         }
       }
     },
     "cdn.website.BackendStatusEnum": {
-      "id": "BackendStatusEnum",
-      "namespace": "cdn.website",
       "description": "All states a status can be in",
       "enum": [
         "creating",
@@ -744,141 +743,141 @@ export const schema: Schema = {
         "on",
         "removing"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "BackendStatusEnum",
+      "namespace": "cdn.website"
     },
     "cdn.website.Domain": {
+      "description": "Domain on CDN",
       "id": "Domain",
       "namespace": "cdn.website",
-      "description": "Domain on CDN",
       "properties": {
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "cdn.website.DomainStatusEnum",
-          "fullType": "cdn.website.DomainStatusEnum",
           "canBeNull": false,
+          "fullType": "cdn.website.DomainStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdn.website.DomainStatusEnum"
         }
       }
     },
     "cdn.website.DomainStatusEnum": {
-      "id": "DomainStatusEnum",
-      "namespace": "cdn.website",
       "description": "All states a status can be in",
       "enum": [
         "error",
         "on",
         "removing"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainStatusEnum",
+      "namespace": "cdn.website"
     },
     "cdn.website.DomainZoneStatusEnum": {
-      "id": "DomainZoneStatusEnum",
-      "namespace": "cdn.website",
       "description": "All states a status can be in",
       "enum": [
         "error",
         "on",
         "removing"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainZoneStatusEnum",
+      "namespace": "cdn.website"
     },
     "cdn.website.StatsDataType": {
+      "description": "A structure describing type of a stats hash",
       "id": "StatsDataType",
       "namespace": "cdn.website",
-      "description": "A structure describing type of a stats hash",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "value": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "cdn.website.StatsPeriodEnum": {
-      "id": "StatsPeriodEnum",
-      "namespace": "cdn.website",
       "description": "Period of the statistics",
       "enum": [
         "day",
         "month",
         "week"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatsPeriodEnum",
+      "namespace": "cdn.website"
     },
     "cdn.website.StatsTypeEnum": {
-      "id": "StatsTypeEnum",
-      "namespace": "cdn.website",
       "description": "Type of statistics related to cache",
       "enum": [
         "backend",
         "cdn"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatsTypeEnum",
+      "namespace": "cdn.website"
     },
     "cdn.website.StatsValueEnum": {
-      "id": "StatsValueEnum",
-      "namespace": "cdn.website",
       "description": "Value bandwidth or request",
       "enum": [
         "bandwidth",
         "request"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatsValueEnum",
+      "namespace": "cdn.website"
     },
     "cdn.website.Task": {
+      "description": "Task on CDN",
       "id": "Task",
       "namespace": "cdn.website",
-      "description": "Task on CDN",
       "properties": {
         "comment": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "function": {
-          "type": "cdn.website.TaskFunctionEnum",
-          "fullType": "cdn.website.TaskFunctionEnum",
           "canBeNull": false,
+          "fullType": "cdn.website.TaskFunctionEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdn.website.TaskFunctionEnum"
         },
         "status": {
-          "type": "cdn.website.TaskStateEnum",
-          "fullType": "cdn.website.TaskStateEnum",
           "canBeNull": false,
+          "fullType": "cdn.website.TaskStateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdn.website.TaskStateEnum"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         }
       }
     },
     "cdn.website.TaskFunctionEnum": {
-      "id": "TaskFunctionEnum",
-      "namespace": "cdn.website",
       "description": "All function CDN task can be",
       "enum": [
         "flushAll",
@@ -887,11 +886,11 @@ export const schema: Schema = {
         "removeDomain",
         "removeZone"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskFunctionEnum",
+      "namespace": "cdn.website"
     },
     "cdn.website.TaskStateEnum": {
-      "id": "TaskStateEnum",
-      "namespace": "cdn.website",
       "description": "All states a CDN task can be in",
       "enum": [
         "cancelled",
@@ -900,107 +899,107 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "cdn.website"
     },
     "cdn.website.Website": {
+      "description": "Website CDN",
       "id": "Website",
       "namespace": "cdn.website",
-      "description": "Website CDN",
       "properties": {
         "anycast": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": false,
+          "fullType": "ipv4",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "ipv4"
         },
         "offer": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "service": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "cdn.website.Zone": {
+      "description": "Zone on CDN",
       "id": "Zone",
       "namespace": "cdn.website",
-      "description": "Zone on CDN",
       "properties": {
         "status": {
-          "type": "cdn.website.DomainZoneStatusEnum",
-          "fullType": "cdn.website.DomainZoneStatusEnum",
           "canBeNull": false,
+          "fullType": "cdn.website.DomainZoneStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "cdn.website.DomainZoneStatusEnum"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1011,11 +1010,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1023,108 +1022,111 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/cdn/website"
 }

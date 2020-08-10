@@ -1,5721 +1,5720 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://api.us.ovhcloud.com:443/1.0/order.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/order/cart",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of your OVH order carts",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "description",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of description property (=)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of description property (=)"
+              "name": "description",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of your OVH order carts"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new OVH order cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "description",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Description of your cart",
               "fullType": "string",
-              "required": false,
-              "description": "Description of your cart"
-            },
-            {
-              "name": "expire",
-              "dataType": "datetime",
+              "name": "description",
               "paramType": "body",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Time of expiration of the cart"
+              "required": false
             },
             {
-              "name": "ovhSubsidiary",
+              "dataType": "datetime",
+              "description": "Time of expiration of the cart",
+              "fullType": "datetime",
+              "name": "expire",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "body",
+              "description": "OVH Subsidiary where you want to order",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "OVH Subsidiary where you want to order"
+              "name": "ovhSubsidiary",
+              "paramType": "body",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Cart",
-          "noAuthentication": true,
-          "description": "Create a new OVH order cart"
+          "responseType": "order.cart.Cart"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart"
     },
     {
-      "path": "/order/cart/{cartId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a cart",
           "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "cartId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
-            }
-          ],
-          "responseType": "void",
           "noAuthentication": false,
-          "description": "Delete a cart"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Cart",
-          "noAuthentication": true,
-          "description": "Retrieve information about a specific cart"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve information about a specific cart",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Cart"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Modify information about a specific cart",
           "httpMethod": "PUT",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "expire",
-              "dataType": "datetime",
-              "paramType": "body",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Time of expiration of the cart"
-            },
-            {
+              "dataType": "string",
+              "description": "Description of your cart",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Description of your cart"
+              "required": false
             },
             {
-              "name": "cartId",
+              "dataType": "datetime",
+              "description": "Time of expiration of the cart",
+              "fullType": "datetime",
+              "name": "expire",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Cart",
-          "noAuthentication": true,
-          "description": "Modify information about a specific cart"
+          "responseType": "order.cart.Cart"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}"
     },
     {
-      "path": "/order/cart/{cartId}/assign",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Assign a shopping cart to an loggedin client",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Assign a shopping cart to an loggedin client"
+          "responseType": "void"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/assign"
     },
     {
-      "path": "/order/cart/{cartId}/baremetalServers",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about a baremetal server",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about a baremetal server"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new baremetal server item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "pricingMode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Duration selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of a baremetal server offer"
-            },
-            {
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a baremetal server offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new baremetal server item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/baremetalServers"
     },
     {
-      "path": "/order/cart/{cartId}/baremetalServers/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about baremetal server options",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
+              "description": "Identifier of a baremetal server offer",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of a baremetal server offer"
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about baremetal server options"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new baremetal server option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "itemId",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Cart item to be linked"
-            },
-            {
+              "dataType": "string",
+              "description": "Identifier of a baremetal server offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of a baremetal server offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
+              "name": "itemId",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new baremetal server option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/baremetalServers/options"
     },
     {
-      "path": "/order/cart/{cartId}/checkout",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get prices and contracts information for your cart",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Get prices and contracts information for your cart"
+          "responseType": "order.Order"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Validate your shopping and create order",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "autoPayWithPreferredPaymentMethod",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
-              "required": false,
-              "description": "Indicates that order will be automatically paid with preferred payment method"
+              "name": "autoPayWithPreferredPaymentMethod",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "Indicates that order will be processed with waiving retractation period",
+              "fullType": "boolean",
               "name": "waiveRetractationPeriod",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Indicates that order will be processed with waiving retractation period"
+              "required": false
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": false,
-          "description": "Validate your shopping and create order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/checkout"
     },
     {
-      "path": "/order/cart/{cartId}/cloud",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about Public Cloud offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Public Cloud offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new Public Cloud item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
+              "dataType": "string",
+              "description": "Identifier of the Public Cloud offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Public Cloud offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "cartId",
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Public Cloud item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/cloud"
     },
     {
-      "path": "/order/cart/{cartId}/cloud/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about Public Cloud options",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
+              "description": "Identifier of the Public Cloud you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Public Cloud you want to consult options"
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Public Cloud options"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new Public Cloud option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "planCode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Identifier of a Public Cloud option offer"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
               "name": "quantity",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
               "name": "itemId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Cart item to be linked"
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identifier of a Public Cloud option offer",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Public Cloud option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/cloud/options"
     },
     {
-      "path": "/order/cart/{cartId}/coupon",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a coupon from cart",
           "httpMethod": "DELETE",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Coupon identifier",
+              "fullType": "string",
               "name": "coupon",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Coupon identifier"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": true,
-          "description": "Delete a coupon from cart"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve coupons associated to cart",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": true,
-          "description": "Retrieve coupons associated to cart"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a new coupon to cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Coupon identifier",
+              "fullType": "string",
               "name": "coupon",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Coupon identifier"
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": true,
-          "description": "Add a new coupon to cart"
+          "responseType": "string[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/coupon"
     },
     {
-      "path": "/order/cart/{cartId}/dedicated",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about a dedicated server",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
               "name": "cartId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of planCode property (=)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of planCode property (=)"
+              "name": "planCode",
+              "paramType": "query",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of family property (=)",
+              "fullType": "string",
               "name": "family",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of family property (=)"
+              "required": false
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about a dedicated server"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new dedicated server item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "planCode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Identifier of a dedicated server offer"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identifier of a dedicated server offer",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new dedicated server item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/dedicated"
     },
     {
-      "path": "/order/cart/{cartId}/dedicated/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about dedicated server options",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
               "name": "cartId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Identifier of a dedicated server offer",
               "fullType": "string",
-              "required": true,
-              "description": "Identifier of a dedicated server offer"
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Filter the value of family property (=)",
+              "fullType": "string",
               "name": "family",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of family property (=)"
+              "required": false
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about dedicated server options"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new dedicated server option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "itemId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Cart item to be linked"
-            },
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of a dedicated server offer"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
-              "name": "pricingMode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
               "name": "quantity",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "required": true
             },
             {
-              "name": "cartId",
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
+              "name": "itemId",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identifier of a dedicated server offer",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new dedicated server option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/dedicated/options"
     },
     {
-      "path": "/order/cart/{cartId}/discover",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about Dedicated Discover server offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Dedicated Discover server offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new Dedicated Discover server item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Identifier of the Dedicated Discover server offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Dedicated Discover server offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Dedicated Discover server item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/discover"
     },
     {
-      "path": "/order/cart/{cartId}/discover/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about Dedicated Discover server options",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
+              "description": "Identifier of the Dedicated Discover server you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Dedicated Discover server you want to consult options"
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Dedicated Discover server options"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new Dedicated Discover server option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
               "name": "itemId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Cart item to be linked"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Identifier of a Dedicated Discover server option offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of a Dedicated Discover server option offer"
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Dedicated Discover server option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/discover/options"
     },
     {
-      "path": "/order/cart/{cartId}/ip",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get information about IP addresses offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get information about IP addresses offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new IP addresses item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "planCode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Duration selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Identifier of the IP addresses offer"
-            },
-            {
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identifier of the IP addresses offer",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new IP addresses item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/ip"
     },
     {
-      "path": "/order/cart/{cartId}/ip/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get information about IP addresses options",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
+              "description": "Identifier of the IP addresses you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the IP addresses you want to consult options"
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": true,
-          "description": "Get information about IP addresses options"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new IP addresses option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of an IP addresses option offer"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
-              "name": "pricingMode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Cart item to be linked",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
               "name": "itemId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Cart item to be linked"
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identifier of an IP addresses option offer",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new IP addresses option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/ip/options"
     },
     {
-      "path": "/order/cart/{cartId}/ipLoadbalancing",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about IP Load-Balancing offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about IP Load-Balancing offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new IP Load-Balancing item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Identifier of the IP Load-Balancing offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the IP Load-Balancing offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new IP Load-Balancing item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/ipLoadbalancing"
     },
     {
-      "path": "/order/cart/{cartId}/ipLoadbalancing/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about IP Load-Balancing options",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
+              "description": "Identifier of the IP Load-Balancing you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the IP Load-Balancing you want to consult options"
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about IP Load-Balancing options"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new IP Load-Balancing option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
               "name": "itemId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Cart item to be linked"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Identifier of a IP Load-Balancing option offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of a IP Load-Balancing option offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new IP Load-Balancing option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/ipLoadbalancing/options"
     },
     {
-      "path": "/order/cart/{cartId}/item",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List all the items of a cart",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": true,
-          "description": "List all the items of a cart"
+          "responseType": "long[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/item"
     },
     {
-      "path": "/order/cart/{cartId}/item/{itemId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete an item from a cart",
           "httpMethod": "DELETE",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "itemId",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Item ID"
+              "required": true
             },
             {
-              "name": "cartId",
-              "dataType": "string",
+              "dataType": "long",
+              "description": "Item ID",
+              "fullType": "long",
+              "name": "itemId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": true,
-          "description": "Delete an item from a cart"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve information about a specific item of a cart",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "itemId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Item ID",
               "fullType": "long",
-              "required": true,
-              "description": "Item ID"
+              "name": "itemId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Retrieve information about a specific item of a cart"
+          "responseType": "order.cart.Item"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update some values on a cart item",
           "httpMethod": "PUT",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "New quantity for item",
+              "fullType": "long",
               "name": "quantity",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": false,
-              "description": "New quantity for item"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "New duration for item",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "New duration for item"
+              "required": false
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "itemId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Item ID",
               "fullType": "long",
-              "required": true,
-              "description": "Item ID"
+              "name": "itemId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Update some values on a cart item"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/item/{itemId}"
     },
     {
-      "path": "/order/cart/{cartId}/item/{itemId}/configuration",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve all configuration item of the cart item",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
               "name": "cartId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "required": true
             },
             {
-              "name": "itemId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Item ID",
               "fullType": "long",
-              "required": true,
-              "description": "Item ID"
+              "name": "itemId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "label",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Filter the value of label property (=)",
               "fullType": "string",
-              "required": false,
-              "description": "Filter the value of label property (=)"
+              "name": "label",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": true,
-          "description": "Retrieve all configuration item of the cart item"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Setup configuration item for the product",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "value",
+              "dataType": "string",
+              "description": "Label for your configuration item",
+              "fullType": "string",
+              "name": "label",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "text",
-              "paramType": "body",
+              "description": "Value or resource URL on API.OVH.COM of your configuration item",
               "fullType": "text",
-              "required": true,
-              "description": "Value or resource URL on API.OVH.COM of your configuration item"
-            },
-            {
-              "name": "label",
-              "dataType": "string",
+              "name": "value",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Label for your configuration item"
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "itemId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Item ID",
               "fullType": "long",
-              "required": true,
-              "description": "Item ID"
+              "name": "itemId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.ConfigurationItem",
-          "noAuthentication": true,
-          "description": "Setup configuration item for the product"
+          "responseType": "order.cart.ConfigurationItem"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/item/{itemId}/configuration"
     },
     {
-      "path": "/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete configuration item",
           "httpMethod": "DELETE",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
-            },
-            {
-              "name": "itemId",
-              "dataType": "long",
+              "name": "cartId",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Item ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Item ID",
+              "fullType": "long",
+              "name": "itemId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Configuration ID",
+              "fullType": "long",
               "name": "configurationId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Configuration ID"
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": true,
-          "description": "Delete configuration item"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve configuration item",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
-            },
-            {
-              "name": "itemId",
-              "dataType": "long",
+              "name": "cartId",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Item ID"
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Item ID",
+              "fullType": "long",
+              "name": "itemId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Configuration ID",
+              "fullType": "long",
               "name": "configurationId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Configuration ID"
+              "required": true
             }
           ],
-          "responseType": "order.cart.ConfigurationItem",
-          "noAuthentication": true,
-          "description": "Retrieve configuration item"
+          "responseType": "order.cart.ConfigurationItem"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}"
     },
     {
-      "path": "/order/cart/{cartId}/item/{itemId}/requiredConfiguration",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve all required configuration item of the cart item",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "long",
+              "description": "Item ID",
+              "fullType": "long",
               "name": "itemId",
-              "dataType": "long",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Item ID"
+              "required": true
             }
           ],
-          "responseType": "order.cart.ConfigurationRequirements[]",
-          "noAuthentication": true,
-          "description": "Retrieve all required configuration item of the cart item"
+          "responseType": "order.cart.ConfigurationRequirements[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/item/{itemId}/requiredConfiguration"
     },
     {
-      "path": "/order/cart/{cartId}/licenseCloudLinux",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about CloudLinux licenses offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about CloudLinux licenses offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new CloudLinux license item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "pricingMode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Identifier of the CloudLinux license offer",
               "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the rental of the product"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the CloudLinux license offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the rental of the product"
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pricing mode selected for the rental of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new CloudLinux license item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/licenseCloudLinux"
     },
     {
-      "path": "/order/cart/{cartId}/licenseDirectadmin",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about Directadmin licenses offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Directadmin licenses offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new Directadmin license item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Identifier of the Directadmin license offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Directadmin license offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the rental of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the rental of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the rental of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Directadmin license item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/licenseDirectadmin"
     },
     {
-      "path": "/order/cart/{cartId}/licensePlesk",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about Plesk licenses offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Plesk licenses offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new Plesk license item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Identifier of the Plesk license offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Plesk license offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the rental of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the rental of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the rental of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Plesk license item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/licensePlesk"
     },
     {
-      "path": "/order/cart/{cartId}/licensePlesk/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about Plesk license options",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
+              "description": "Identifier of the Plesk license you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Plesk license you want to consult options"
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Plesk license options"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new Plesk license option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
               "name": "itemId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Cart item to be linked"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Identifier of a Plesk license option offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of a Plesk license option offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Plesk license option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/licensePlesk/options"
     },
     {
-      "path": "/order/cart/{cartId}/licenseSqlServer",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about SqlServer licenses offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about SqlServer licenses offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new SqlServer license item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Identifier of the SqlServer license offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the SqlServer license offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the rental of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the rental of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the rental of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new SqlServer license item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/licenseSqlServer"
     },
     {
-      "path": "/order/cart/{cartId}/licenseVirtuozzo",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about Virtuozzo licenses offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Virtuozzo licenses offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new Virtuozzo license item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Identifier of the Virtuozzo license offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Virtuozzo license offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the rental of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the rental of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the rental of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Virtuozzo license item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/licenseVirtuozzo"
     },
     {
-      "path": "/order/cart/{cartId}/licenseVirtuozzo/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about Virtuozzo license options",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
+              "description": "Identifier of the Virtuozzo license you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Virtuozzo license you want to consult options"
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Virtuozzo license options"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new Virtuozzo license option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Duration selected for the product",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
               "name": "itemId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Cart item to be linked"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Identifier of a Virtuozzo license option offer",
+              "fullType": "string",
               "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Identifier of a Virtuozzo license option offer"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the product"
-            },
-            {
-              "name": "pricingMode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the product"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
               "name": "cartId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Virtuozzo license option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/licenseVirtuozzo/options"
     },
     {
-      "path": "/order/cart/{cartId}/licenseWindows",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about Windows licenses offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Windows licenses offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new Windows license item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "planCode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Duration selected for the rental of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Windows license offer"
-            },
-            {
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the rental of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the rental of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the rental of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identifier of the Windows license offer",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Windows license item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/licenseWindows"
     },
     {
-      "path": "/order/cart/{cartId}/licenseWorklight",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about Worklight licenses offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Worklight licenses offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new Worklight license item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Identifier of the Worklight license offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Worklight license offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the rental of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the rental of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the rental of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Worklight license item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/licenseWorklight"
     },
     {
-      "path": "/order/cart/{cartId}/licensecPanel",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about cPanel licenses offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about cPanel licenses offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new cPanel license item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Identifier of the cPanel license offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the cPanel license offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the rental of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the rental of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the rental of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new cPanel license item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/licensecPanel"
     },
     {
-      "path": "/order/cart/{cartId}/ovhCloudConnect",
+      "description": "List of OVHcloud Connect product",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about OVHcloud Connect offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about OVHcloud Connect offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new OVHcloud Connect item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Identifier of the OVHcloud Connect offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the OVHcloud Connect offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new OVHcloud Connect item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "List of OVHcloud Connect product"
+      "path": "/order/cart/{cartId}/ovhCloudConnect"
     },
     {
-      "path": "/order/cart/{cartId}/sslComodo",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about SSL Comodo offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about SSL Comodo offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new SSL Comodo item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Identifier of the SSL Comodo offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the SSL Comodo offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new SSL Comodo item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/sslComodo"
     },
     {
-      "path": "/order/cart/{cartId}/sslComodo/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about SSL Comodo options",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
+              "description": "Identifier of the SSL Comodo you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the SSL Comodo you want to consult options"
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about SSL Comodo options"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post a new SSL Comodo option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "itemId",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Cart item to be linked"
-            },
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of a SSL Comodo option offer"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
-              "name": "pricingMode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
               "name": "quantity",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "required": true
             },
             {
-              "name": "cartId",
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
+              "name": "itemId",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identifier of a SSL Comodo option offer",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new SSL Comodo option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/sslComodo/options"
     },
     {
-      "path": "/order/cart/{cartId}/summary",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get a summary of your current order",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.Order",
-          "noAuthentication": true,
-          "description": "Get a summary of your current order"
+          "responseType": "order.Order"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/summary"
     },
     {
-      "path": "/order/cart/{cartId}/veeamEnterprise",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about Veeam Enterprise offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Veeam Enterprise offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new Veeam Enterprise item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "pricingMode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Duration selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Veeam Enterprise offer"
-            },
-            {
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the Veeam Enterprise offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Veeam Enterprise item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/veeamEnterprise"
     },
     {
-      "path": "/order/cart/{cartId}/veeamEnterprise/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about Veeam Enterprise options",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
+              "description": "Identifier of the Veeam Enterprise you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the Veeam Enterprise you want to consult options"
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about Veeam Enterprise options"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new Veeam Enterprise option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of a Veeam Enterprise option offer"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
-              "name": "pricingMode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Cart item to be linked",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
               "name": "itemId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Cart item to be linked"
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identifier of a Veeam Enterprise option offer",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new Veeam Enterprise option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/veeamEnterprise/options"
     },
     {
-      "path": "/order/cart/{cartId}/vps",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about VPS offers",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about VPS offers"
+          "responseType": "order.cart.GenericProductDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new VPS item in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Identifier of the VPS offer",
               "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
-              "name": "pricingMode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the VPS offer"
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new VPS item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/vps"
     },
     {
-      "path": "/order/cart/{cartId}/vps/options",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about VPS options",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "planCode",
               "dataType": "string",
+              "description": "Identifier of the VPS you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "query",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the VPS you want to consult options"
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": true,
-          "description": "Get informations about VPS options"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post a new VPS option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
               "name": "itemId",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Cart item to be linked"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Identifier of a VPS option offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of a VPS option offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "body",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
               "name": "cartId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/vps/options"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about vRack offers",
+          "httpMethod": "GET",
           "noAuthentication": true,
-          "description": "Post a new VPS option in your cart"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/order/cart/{cartId}/vrack",
-      "operations": [
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "cartId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]",
+          "description": "Post a new vRack item in your cart",
+          "httpMethod": "POST",
           "noAuthentication": true,
-          "description": "Get informations about vRack offers"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Identifier of the vRack offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the vRack offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart ID",
               "fullType": "string",
-              "required": true,
-              "description": "Cart ID"
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": true,
-          "description": "Post a new vRack item in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/cart/{cartId}/vrack"
     },
     {
-      "path": "/order/cartServiceOption/baremetalServers",
+      "description": "Operations about the DEDICATED service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DEDICATED service"
+      "path": "/order/cartServiceOption/baremetalServers"
     },
     {
-      "path": "/order/cartServiceOption/baremetalServers/{serviceName}",
+      "description": "Listing offers /order/cartServiceOptions/baremetalServers/#serviceName#",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about additional baremetal servers offer for your service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": false,
-          "description": "Get informations about additional baremetal servers offer for your service"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post an additional baremetal servers option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "pricingMode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Duration selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
-              "name": "cartId",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart identifier"
-            },
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the additional baremetal servers offer"
-            },
-            {
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the additional baremetal servers offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": false,
-          "description": "Post an additional baremetal servers option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Listing offers /order/cartServiceOptions/baremetalServers/#serviceName#"
+      "path": "/order/cartServiceOption/baremetalServers/{serviceName}"
     },
     {
-      "path": "/order/cartServiceOption/cloud",
+      "description": "Operations about the PUBLICCLOUD service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the PUBLICCLOUD service"
+      "path": "/order/cartServiceOption/cloud"
     },
     {
-      "path": "/order/cartServiceOption/cloud/{serviceName}",
+      "description": "Listing offers /order/cartServiceOptions/cloud/#serviceName#",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about additional Cloud offer for your service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": false,
-          "description": "Get informations about additional Cloud offer for your service"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post an additional Cloud option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
               "name": "cartId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart identifier"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Identifier of the additional Cloud offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the additional Cloud offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": false,
-          "description": "Post an additional Cloud option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Listing offers /order/cartServiceOptions/cloud/#serviceName#"
+      "path": "/order/cartServiceOption/cloud/{serviceName}"
     },
     {
-      "path": "/order/cartServiceOption/dedicated",
+      "description": "Operations about the DEDICATED service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DEDICATED service"
+      "path": "/order/cartServiceOption/dedicated"
     },
     {
-      "path": "/order/cartServiceOption/dedicated/{serviceName}",
+      "description": "Listing offers /order/cartServiceOptions/dedicated/#serviceName#",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about additional dedicated offer for your service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": false,
-          "description": "Get informations about additional dedicated offer for your service"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post an additional dedicated option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
               "name": "cartId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart identifier"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Identifier of the additional dedicated offer",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the additional dedicated offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": false,
-          "description": "Post an additional dedicated option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Listing offers /order/cartServiceOptions/dedicated/#serviceName#"
+      "path": "/order/cartServiceOption/dedicated/{serviceName}"
     },
     {
-      "path": "/order/cartServiceOption/ipLoadbalancing",
+      "description": "Operations about the IPLB service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the IPLB service"
+      "path": "/order/cartServiceOption/ipLoadbalancing"
     },
     {
-      "path": "/order/cartServiceOption/ipLoadbalancing/{serviceName}",
+      "description": "Listing offers /order/cartServiceOptions/ipLoadbalancing/#serviceName#",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about additional IP Load-Balancing offer for your service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": false,
-          "description": "Get informations about additional IP Load-Balancing offer for your service"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post an additional IP Load-Balancing option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Identifier of the additional IP Load-Balancing offer",
               "fullType": "string",
-              "required": true,
-              "description": "Cart identifier"
-            },
-            {
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the additional IP Load-Balancing offer"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart identifier",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": false,
-          "description": "Post an additional IP Load-Balancing option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Listing offers /order/cartServiceOptions/ipLoadbalancing/#serviceName#"
+      "path": "/order/cartServiceOption/ipLoadbalancing/{serviceName}"
     },
     {
-      "path": "/order/cartServiceOption/logs",
+      "description": "Operations about the DBAAS-LOGS service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the DBAAS-LOGS service"
+      "path": "/order/cartServiceOption/logs"
     },
     {
-      "path": "/order/cartServiceOption/logs/{serviceName}",
+      "description": "Listing offers /order/cartServiceOptions/logs/#serviceName#",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about additional Logs offer for your service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": false,
-          "description": "Get informations about additional Logs offer for your service"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post an additional Logs option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "planCode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Cart identifier",
               "fullType": "string",
-              "required": true,
-              "description": "Identifier of the additional Logs offer"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
-              "name": "pricingMode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
               "name": "cartId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart identifier"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identifier of the additional Logs offer",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": false,
-          "description": "Post an additional Logs option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Listing offers /order/cartServiceOptions/logs/#serviceName#"
+      "path": "/order/cartServiceOption/logs/{serviceName}"
     },
     {
-      "path": "/order/cartServiceOption/privateCloud",
+      "description": "Operations about the PCC service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the PCC service"
+      "path": "/order/cartServiceOption/privateCloud"
     },
     {
-      "path": "/order/cartServiceOption/privateCloud/{serviceName}",
+      "description": "Listing offers /order/cartServiceOptions/privateCloud/#serviceName#",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about additional Private Cloud offer for your service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": false,
-          "description": "Get informations about additional Private Cloud offer for your service"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post an additional Private Cloud option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Identifier of the additional private cloud offer",
               "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
-              "name": "pricingMode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
-              "name": "cartId",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart identifier"
-            },
-            {
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the additional private cloud offer"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": false,
-          "description": "Post an additional Private Cloud option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Listing offers /order/cartServiceOptions/privateCloud/#serviceName#"
+      "path": "/order/cartServiceOption/privateCloud/{serviceName}"
     },
     {
-      "path": "/order/cartServiceOption/privateCloudEnterprise",
+      "description": "Operations about the PCC service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the PCC service"
+      "path": "/order/cartServiceOption/privateCloudEnterprise"
     },
     {
-      "path": "/order/cartServiceOption/privateCloudEnterprise/{serviceName}",
+      "description": "Listing offers /order/cartServiceOptions/privateCloudEnterprise/#serviceName#",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about additional Private Cloud offer for your service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": false,
-          "description": "Get informations about additional Private Cloud offer for your service"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post an additional Private Cloud option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "planCode",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Cart identifier",
               "fullType": "string",
-              "required": true,
-              "description": "Identifier of the additional private cloud offer"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
-              "name": "pricingMode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
               "name": "cartId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart identifier"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Identifier of the additional private cloud offer",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": false,
-          "description": "Post an additional Private Cloud option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Listing offers /order/cartServiceOptions/privateCloudEnterprise/#serviceName#"
+      "path": "/order/cartServiceOption/privateCloudEnterprise/{serviceName}"
     },
     {
-      "path": "/order/cartServiceOption/privateCloudReseller",
+      "description": "Operations about the PCC service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the PCC service"
+      "path": "/order/cartServiceOption/privateCloudReseller"
     },
     {
-      "path": "/order/cartServiceOption/privateCloudReseller/{serviceName}",
+      "description": "Listing offers /order/cartServiceOptions/privateCloudReseller/#serviceName#",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about additional Private Cloud offer for your service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": false,
-          "description": "Get informations about additional Private Cloud offer for your service"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post an additional Private Cloud option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Cart identifier"
-            },
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the additional private cloud offer"
-            },
-            {
-              "name": "duration",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart identifier",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the additional private cloud offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": false,
-          "description": "Post an additional Private Cloud option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Listing offers /order/cartServiceOptions/privateCloudReseller/#serviceName#"
+      "path": "/order/cartServiceOption/privateCloudReseller/{serviceName}"
     },
     {
-      "path": "/order/cartServiceOption/privateCloudResellerEnterprise",
+      "description": "Operations about the PCC service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the PCC service"
+      "path": "/order/cartServiceOption/privateCloudResellerEnterprise"
     },
     {
-      "path": "/order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}",
+      "description": "Listing offers /order/cartServiceOptions/privateCloudResellerEnterprise/#serviceName#",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get informations about additional Private Cloud Enterprise offer for your service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": false,
-          "description": "Get informations about additional Private Cloud Enterprise offer for your service"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Post an additional Private Cloud Enterprise option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "cartId",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Duration selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Cart identifier"
-            },
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the additional private cloud enterprise offer"
-            },
-            {
               "name": "duration",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
               "name": "pricingMode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
+              "required": true
             },
             {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Quantity of product desired",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Cart identifier",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the additional private cloud enterprise offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": false,
-          "description": "Post an additional Private Cloud Enterprise option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Listing offers /order/cartServiceOptions/privateCloudResellerEnterprise/#serviceName#"
+      "path": "/order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}"
     },
     {
-      "path": "/order/cartServiceOption/vps",
+      "description": "Operations about the PUBLICCLOUD service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the PUBLICCLOUD service"
+      "path": "/order/cartServiceOption/vps"
     },
     {
-      "path": "/order/cartServiceOption/vps/{serviceName}",
+      "description": "Listing offers /order/cartServiceOptions/vps/#serviceName#",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about additional VPS offer for your service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.GenericOptionDefinition[]",
-          "noAuthentication": false,
-          "description": "Get informations about additional VPS offer for your service"
+          "responseType": "order.cart.GenericOptionDefinition[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Post an additional VPS option in your cart",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "duration",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Identifier of the additional VPS offer",
               "fullType": "string",
-              "required": true,
-              "description": "Duration selected for the purchase of the product"
-            },
-            {
-              "name": "pricingMode",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Pricing mode selected for the purchase of the product"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity of product desired"
-            },
-            {
-              "name": "cartId",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Cart identifier"
-            },
-            {
               "name": "planCode",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Identifier of the additional VPS offer"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.cart.Item",
-          "noAuthentication": false,
-          "description": "Post an additional VPS option in your cart"
+          "responseType": "order.cart.Item"
         }
       ],
-      "description": "Listing offers /order/cartServiceOptions/vps/#serviceName#"
+      "path": "/order/cartServiceOption/vps/{serviceName}"
     },
     {
-      "path": "/order/catalog/formatted",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED",
             "deletionDate": "2018-05-01T00:00:00+01:00",
-            "deprecatedDate": "2018-03-26T00:00:00+01:00"
+            "deprecatedDate": "2018-03-26T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
+          "description": "Retrieve list of catalog name",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": true,
-          "description": "Retrieve list of catalog name"
+          "responseType": "string[]"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted"
     },
     {
-      "path": "/order/catalog/formatted/cloud",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of Public Cloud catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of Public Cloud catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/cloud"
     },
     {
-      "path": "/order/catalog/formatted/dedicated",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of dedicated server catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of dedicated server catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/dedicated"
     },
     {
-      "path": "/order/catalog/formatted/discover",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve information of dedicated discover offer server catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of dedicated discover offer server catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/discover"
     },
     {
-      "path": "/order/catalog/formatted/ip",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of IP addresses catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of IP addresses catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/ip"
     },
     {
-      "path": "/order/catalog/formatted/licenseCloudLinux",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of CloudLinux licenses catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of CloudLinux licenses catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/licenseCloudLinux"
     },
     {
-      "path": "/order/catalog/formatted/licenseDirectadmin",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of Directadmin licenses offers catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of Directadmin licenses offers catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/licenseDirectadmin"
     },
     {
-      "path": "/order/catalog/formatted/licensePlesk",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of Plesk licenses catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of Plesk licenses catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/licensePlesk"
     },
     {
-      "path": "/order/catalog/formatted/licenseSqlServer",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of SqlServer licenses catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of SqlServer licenses catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/licenseSqlServer"
     },
     {
-      "path": "/order/catalog/formatted/licenseVirtuozzo",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of Virtuozzo licenses catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of Virtuozzo licenses catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/licenseVirtuozzo"
     },
     {
-      "path": "/order/catalog/formatted/licenseWindows",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of Windows licenses catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of Windows licenses catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/licenseWindows"
     },
     {
-      "path": "/order/catalog/formatted/licenseWorklight",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of Worklight licenses catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of Worklight licenses catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/licenseWorklight"
     },
     {
-      "path": "/order/catalog/formatted/licensecPanel",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of cPanel licenses catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of cPanel licenses catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/licensecPanel"
     },
     {
-      "path": "/order/catalog/formatted/vps",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of VPS catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve information of VPS catalog"
+          "responseType": "order.catalog.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/formatted/vps"
     },
     {
-      "path": "/order/catalog/public/baremetalServers",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve bare-metal servers catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.public.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve bare-metal servers catalog"
+          "responseType": "order.catalog.public.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/public/baremetalServers"
     },
     {
-      "path": "/order/catalog/public/cloud",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve Public Cloud catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.public.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve Public Cloud catalog"
+          "responseType": "order.catalog.public.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/public/cloud"
     },
     {
-      "path": "/order/catalog/public/enterpriseCloudDatabases",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve Enterprise Cloud Databases catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.public.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve Enterprise Cloud Databases catalog"
+          "responseType": "order.catalog.public.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/public/enterpriseCloudDatabases"
     },
     {
-      "path": "/order/catalog/public/privateCloud",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve Private Cloud catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.public.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve Private Cloud catalog"
+          "responseType": "order.catalog.public.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/public/privateCloud"
     },
     {
-      "path": "/order/catalog/public/privateSQL",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve Private SQL catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.public.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve Private SQL catalog"
+          "responseType": "order.catalog.public.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/public/privateSQL"
     },
     {
-      "path": "/order/catalog/public/telephony",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve Telephony catalog",
           "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "name": "ovhSubsidiary",
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
+              "description": "Subsidiary of the country you want to consult catalog",
               "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "order.catalog.public.Catalog",
-          "noAuthentication": true,
-          "description": "Retrieve Telephony catalog"
+          "responseType": "order.catalog.public.Catalog"
         }
       ],
-      "description": "Missing description"
+      "path": "/order/catalog/public/telephony"
     },
     {
-      "path": "/order/catalog/public/vps",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Retrieve VPS catalog",
           "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "ovhSubsidiary",
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "paramType": "query",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "required": true,
-              "description": "Subsidiary of the country you want to consult catalog"
-            }
-          ],
-          "responseType": "order.catalog.public.Catalog",
           "noAuthentication": true,
-          "description": "Retrieve VPS catalog"
-        }
-      ],
-      "description": "Missing description"
-    },
-    {
-      "path": "/order/upgrade/baremetalPrivateBandwidth",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the DEDICATED-OPTION service"
-    },
-    {
-      "path": "/order/upgrade/baremetalPrivateBandwidth/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
           "parameters": [
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": false,
-          "description": "Retrieve available offers to upgrade your service to"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/baremetalPrivateBandwidth"
-    },
-    {
-      "path": "/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
               "paramType": "query",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/vps"
+    },
+    {
+      "description": "Operations about the DEDICATED-OPTION service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get a provisional order for the selected upgrade of your service"
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/upgrade/baremetalPrivateBandwidth"
+    },
+    {
+      "description": "Listing offers /order/upgrade/baremetalPrivateBandwidth",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available offers to upgrade your service to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        }
+      ],
+      "path": "/order/upgrade/baremetalPrivateBandwidth/{serviceName}"
+    },
+    {
+      "description": "Listing offers /order/upgrade/baremetalPrivateBandwidth/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a provisional order for the selected upgrade of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "autoPayWithPreferredPaymentMethod",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
-              "required": false,
-              "description": "Indicates that order will be automatically paid with preferred payment method"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
+              "name": "autoPayWithPreferredPaymentMethod",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "required": false
             },
             {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
-          "noAuthentication": false,
-          "description": "Perform the requested upgrade of your service"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/baremetalPrivateBandwidth/#serviceName#"
-    },
-    {
-      "path": "/order/upgrade/baremetalPublicBandwidth",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the DEDICATED-OPTION service"
-    },
-    {
-      "path": "/order/upgrade/baremetalPublicBandwidth/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": false,
-          "description": "Retrieve available offers to upgrade your service to"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/baremetalPublicBandwidth"
-    },
-    {
-      "path": "/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+        }
+      ],
+      "path": "/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}"
+    },
+    {
+      "description": "Operations about the DEDICATED-OPTION service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get a provisional order for the selected upgrade of your service"
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/upgrade/baremetalPublicBandwidth"
+    },
+    {
+      "description": "Listing offers /order/upgrade/baremetalPublicBandwidth",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available offers to upgrade your service to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        }
+      ],
+      "path": "/order/upgrade/baremetalPublicBandwidth/{serviceName}"
+    },
+    {
+      "description": "Listing offers /order/upgrade/baremetalPublicBandwidth/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a provisional order for the selected upgrade of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "autoPayWithPreferredPaymentMethod",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
-              "required": false,
-              "description": "Indicates that order will be automatically paid with preferred payment method"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
+              "name": "autoPayWithPreferredPaymentMethod",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "required": false
             },
             {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
-          "noAuthentication": false,
-          "description": "Perform the requested upgrade of your service"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/baremetalPublicBandwidth/#serviceName#"
-    },
-    {
-      "path": "/order/upgrade/licensePlesk",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the LICENSE service"
-    },
-    {
-      "path": "/order/upgrade/licensePlesk/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": false,
-          "description": "Retrieve available offers to upgrade your service to"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/licensePlesk"
-    },
-    {
-      "path": "/order/upgrade/licensePlesk/{serviceName}/{planCode}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+        }
+      ],
+      "path": "/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get a provisional order for the selected upgrade of your service"
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/upgrade/licensePlesk"
+    },
+    {
+      "description": "Listing offers /order/upgrade/licensePlesk",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available offers to upgrade your service to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        }
+      ],
+      "path": "/order/upgrade/licensePlesk/{serviceName}"
+    },
+    {
+      "description": "Listing offers /order/upgrade/licensePlesk/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a provisional order for the selected upgrade of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "autoPayWithPreferredPaymentMethod",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
-              "required": false,
-              "description": "Indicates that order will be automatically paid with preferred payment method"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
+              "name": "autoPayWithPreferredPaymentMethod",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "required": false
             },
             {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
-          "noAuthentication": false,
-          "description": "Perform the requested upgrade of your service"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/licensePlesk/#serviceName#"
-    },
-    {
-      "path": "/order/upgrade/licensecPanel",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the LICENSE service"
-    },
-    {
-      "path": "/order/upgrade/licensecPanel/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": false,
-          "description": "Retrieve available offers to upgrade your service to"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/licensecPanel"
-    },
-    {
-      "path": "/order/upgrade/licensecPanel/{serviceName}/{planCode}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+        }
+      ],
+      "path": "/order/upgrade/licensePlesk/{serviceName}/{planCode}"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get a provisional order for the selected upgrade of your service"
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/upgrade/licensecPanel"
+    },
+    {
+      "description": "Listing offers /order/upgrade/licensecPanel",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available offers to upgrade your service to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        }
+      ],
+      "path": "/order/upgrade/licensecPanel/{serviceName}"
+    },
+    {
+      "description": "Listing offers /order/upgrade/licensecPanel/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a provisional order for the selected upgrade of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "quantity",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
-            },
-            {
-              "name": "autoPayWithPreferredPaymentMethod",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
-              "required": false,
-              "description": "Indicates that order will be automatically paid with preferred payment method"
+              "name": "autoPayWithPreferredPaymentMethod",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
-          "noAuthentication": false,
-          "description": "Perform the requested upgrade of your service"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/licensecPanel/#serviceName#"
-    },
-    {
-      "path": "/order/upgrade/privateCloud",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the PCC service"
-    },
-    {
-      "path": "/order/upgrade/privateCloud/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": false,
-          "description": "Retrieve available offers to upgrade your service to"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/privateCloud"
-    },
-    {
-      "path": "/order/upgrade/privateCloud/{serviceName}/{planCode}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+        }
+      ],
+      "path": "/order/upgrade/licensecPanel/{serviceName}/{planCode}"
+    },
+    {
+      "description": "Operations about the PCC service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get a provisional order for the selected upgrade of your service"
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/upgrade/privateCloud"
+    },
+    {
+      "description": "Listing offers /order/upgrade/privateCloud",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available offers to upgrade your service to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        }
+      ],
+      "path": "/order/upgrade/privateCloud/{serviceName}"
+    },
+    {
+      "description": "Listing offers /order/upgrade/privateCloud/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a provisional order for the selected upgrade of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "autoPayWithPreferredPaymentMethod",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
-              "required": false,
-              "description": "Indicates that order will be automatically paid with preferred payment method"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
+              "name": "autoPayWithPreferredPaymentMethod",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "required": false
             },
             {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
-          "noAuthentication": false,
-          "description": "Perform the requested upgrade of your service"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/privateCloud/#serviceName#"
-    },
-    {
-      "path": "/order/upgrade/vps",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the PUBLICCLOUD service"
-    },
-    {
-      "path": "/order/upgrade/vps/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": false,
-          "description": "Retrieve available offers to upgrade your service to"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/vps"
-    },
-    {
-      "path": "/order/upgrade/vps/{serviceName}/{planCode}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+        }
+      ],
+      "path": "/order/upgrade/privateCloud/{serviceName}/{planCode}"
+    },
+    {
+      "description": "Operations about the PUBLICCLOUD service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get a provisional order for the selected upgrade of your service"
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/upgrade/vps"
+    },
+    {
+      "description": "Listing offers /order/upgrade/vps",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available offers to upgrade your service to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        }
+      ],
+      "path": "/order/upgrade/vps/{serviceName}"
+    },
+    {
+      "description": "Listing offers /order/upgrade/vps/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a provisional order for the selected upgrade of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "autoPayWithPreferredPaymentMethod",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
-              "required": false,
-              "description": "Indicates that order will be automatically paid with preferred payment method"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
+              "name": "autoPayWithPreferredPaymentMethod",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "required": false
             },
             {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
-          "noAuthentication": false,
-          "description": "Perform the requested upgrade of your service"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/vps/#serviceName#"
-    },
-    {
-      "path": "/order/upgrade/vpsAdditionalDisk",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
-        }
-      ],
-      "description": "Operations about the PUBLICCLOUD service"
-    },
-    {
-      "path": "/order/upgrade/vpsAdditionalDisk/{serviceName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]",
-          "noAuthentication": false,
-          "description": "Retrieve available offers to upgrade your service to"
-        }
-      ],
-      "description": "Listing offers /order/upgrade/vpsAdditionalDisk"
-    },
-    {
-      "path": "/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "planCode",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "quantity",
               "dataType": "long",
-              "paramType": "query",
+              "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+        }
+      ],
+      "path": "/order/upgrade/vps/{serviceName}/{planCode}"
+    },
+    {
+      "description": "Operations about the PUBLICCLOUD service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Get a provisional order for the selected upgrade of your service"
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/upgrade/vpsAdditionalDisk"
+    },
+    {
+      "description": "Listing offers /order/upgrade/vpsAdditionalDisk",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available offers to upgrade your service to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        }
+      ],
+      "path": "/order/upgrade/vpsAdditionalDisk/{serviceName}"
+    },
+    {
+      "description": "Listing offers /order/upgrade/vpsAdditionalDisk/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a provisional order for the selected upgrade of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Perform the requested upgrade of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "autoPayWithPreferredPaymentMethod",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
-              "required": false,
-              "description": "Indicates that order will be automatically paid with preferred payment method"
-            },
-            {
-              "name": "quantity",
-              "dataType": "long",
+              "name": "autoPayWithPreferredPaymentMethod",
               "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
               "fullType": "long",
-              "required": true,
-              "description": "Quantity you want to upgrade to"
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
               "name": "planCode",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Plan code"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder",
-          "noAuthentication": false,
-          "description": "Perform the requested upgrade of your service"
+          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
         }
       ],
-      "description": "Listing offers /order/upgrade/vpsAdditionalDisk/#serviceName#"
+      "path": "/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}"
     }
   ],
-  "resourcePath": "/order",
   "basePath": "https://api.us.ovhcloud.com/1.0",
   "models": {
     "complexType.SafeKeyValue<T>": {
-      "id": "SafeKeyValue",
-      "namespace": "complexType",
       "description": "Key and value, with proper key strings",
       "generics": [
         "T"
       ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
       "properties": {
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "nichandle.OvhSubsidiaryEnum": {
-      "id": "OvhSubsidiaryEnum",
-      "namespace": "nichandle",
       "description": "OVH subsidiaries",
       "enum": [
         "ASIA",
@@ -5743,39 +5742,39 @@ export const schema: Schema = {
         "WE",
         "WS"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OvhSubsidiaryEnum",
+      "namespace": "nichandle"
     },
     "order.Contract": {
+      "description": "A contract",
       "id": "Contract",
       "namespace": "order",
-      "description": "A contract",
       "properties": {
         "content": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": false,
+          "fullType": "text",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "text"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.CurrencyCodeEnum": {
-      "id": "CurrencyCodeEnum",
-      "namespace": "order",
       "enum": [
         "AUD",
         "CAD",
@@ -5792,102 +5791,102 @@ export const schema: Schema = {
         "XOF",
         "points"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
     },
     "order.Order": {
+      "description": "An order",
       "id": "Order",
       "namespace": "order",
-      "description": "An order",
       "properties": {
         "contracts": {
-          "type": "order.Contract[]",
-          "fullType": "order.Contract[]",
           "canBeNull": false,
+          "fullType": "order.Contract[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Contract[]"
         },
         "details": {
-          "type": "order.OrderDetail[]",
-          "fullType": "order.OrderDetail[]",
           "canBeNull": false,
+          "fullType": "order.OrderDetail[]",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.OrderDetail[]"
         },
         "orderId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "long"
         },
         "prices": {
-          "type": "order.OrderPrices",
-          "fullType": "order.OrderPrices",
           "canBeNull": false,
+          "fullType": "order.OrderPrices",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.OrderPrices"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         }
       }
     },
     "order.OrderDetail": {
+      "description": "Detail of an order",
       "id": "OrderDetail",
       "namespace": "order",
-      "description": "Detail of an order",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "detailType": {
-          "type": "order.OrderDetailTypeEnum",
-          "fullType": "order.OrderDetailTypeEnum",
           "canBeNull": true,
+          "fullType": "order.OrderDetailTypeEnum",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "order.OrderDetailTypeEnum"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "quantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "totalPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "unitPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "order.OrderDetailTypeEnum": {
-      "id": "OrderDetailTypeEnum",
-      "namespace": "order",
       "description": "Product type of item in order",
       "enum": [
         "ACCESSORY",
@@ -5911,415 +5910,415 @@ export const schema: Schema = {
         "TRANSFER",
         "VOUCHER"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OrderDetailTypeEnum",
+      "namespace": "order"
     },
     "order.OrderPrices": {
+      "description": "Prices of an order",
       "id": "OrderPrices",
       "namespace": "order",
-      "description": "Prices of an order",
       "properties": {
         "tax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "withTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         },
         "withoutTax": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
+          "fullType": "order.Price",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "order.Price": {
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
-      "description": "Price with it's currency and textual representation",
       "properties": {
         "currencyCode": {
-          "type": "order.CurrencyCodeEnum",
-          "fullType": "order.CurrencyCodeEnum",
           "canBeNull": false,
+          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.CurrencyCodeEnum"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         }
       }
     },
     "order.cart.Cart": {
+      "description": "A shopping cart",
       "id": "Cart",
       "namespace": "order.cart",
-      "description": "A shopping cart",
       "properties": {
         "cartId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cart identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description of your cart",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "expire": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Expiration time",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "items": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Items of your cart",
-          "required": true
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": true,
+          "type": "long[]"
         },
         "readOnly": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if the cart has already been validated",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "order.cart.ConfigurationItem": {
+      "description": "Representation of a configuration item for personalizing product",
       "id": "ConfigurationItem",
       "namespace": "order.cart",
-      "description": "Representation of a configuration item for personalizing product",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Configuration ID",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Identifier of the resource",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Path to the resource in API.OVH.COM",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.cart.ConfigurationRequirements": {
+      "description": "Information about a configuration",
       "id": "ConfigurationRequirements",
       "namespace": "order.cart",
-      "description": "Information about a configuration",
       "properties": {
         "fields": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Indicates if some particular fields have to be inputed during the creation of `type` resource",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Label for your configuration item",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "required": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates if the configuration item is required",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of the configuration item",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.cart.DomainSettings": {
+      "description": "Representation of domain name order properties",
       "id": "DomainSettings",
       "namespace": "order.cart",
-      "description": "Representation of domain name order properties",
       "properties": {
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Domain name requested",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.cart.DurationUnitEnum": {
-      "id": "DurationUnitEnum",
-      "namespace": "order.cart",
       "description": "Unit that correspond to a duration range",
       "enum": [
         "month",
         "day",
         "none"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DurationUnitEnum",
+      "namespace": "order.cart"
     },
     "order.cart.GenericOptionDefinition": {
+      "description": "Representation of a generic product option",
       "id": "GenericOptionDefinition",
       "namespace": "order.cart",
-      "description": "Representation of a generic product option",
       "properties": {
         "exclusive": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Define if options of this family are exclusive with each other",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "family": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Option family",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "mandatory": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Define if an option of this family is mandatory",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Product offer identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "prices": {
-          "type": "order.cart.GenericProductPricing[]",
-          "fullType": "order.cart.GenericProductPricing[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Prices of the product offer",
-          "required": true
+          "fullType": "order.cart.GenericProductPricing[]",
+          "readOnly": false,
+          "required": true,
+          "type": "order.cart.GenericProductPricing[]"
         },
         "productName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the product",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "productType": {
-          "type": "order.cart.GenericProductTypeEnum",
-          "fullType": "order.cart.GenericProductTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Product type",
-          "required": true
+          "fullType": "order.cart.GenericProductTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "order.cart.GenericProductTypeEnum"
         }
       }
     },
     "order.cart.GenericProductDefinition": {
+      "description": "Representation of a generic product",
       "id": "GenericProductDefinition",
       "namespace": "order.cart",
-      "description": "Representation of a generic product",
       "properties": {
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Product offer identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "prices": {
-          "type": "order.cart.GenericProductPricing[]",
-          "fullType": "order.cart.GenericProductPricing[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Prices of the product offer",
-          "required": true
+          "fullType": "order.cart.GenericProductPricing[]",
+          "readOnly": false,
+          "required": true,
+          "type": "order.cart.GenericProductPricing[]"
         },
         "productName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the product",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "productType": {
-          "type": "order.cart.GenericProductTypeEnum",
-          "fullType": "order.cart.GenericProductTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Product type",
-          "required": true
+          "fullType": "order.cart.GenericProductTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "order.cart.GenericProductTypeEnum"
         }
       }
     },
     "order.cart.GenericProductPricing": {
+      "description": "Representation of a product pricing",
       "id": "GenericProductPricing",
       "namespace": "order.cart",
-      "description": "Representation of a product pricing",
       "properties": {
         "capacities": {
-          "type": "order.cart.GenericProductPricingCapacitiesEnum[]",
-          "fullType": "order.cart.GenericProductPricingCapacitiesEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Capacities of the pricing (type of pricing)",
-          "required": true
+          "fullType": "order.cart.GenericProductPricingCapacitiesEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "order.cart.GenericProductPricingCapacitiesEnum[]"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description of the pricing",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "duration": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Duration for ordering the product",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "interval": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Interval of renewal",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "maximumQuantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum quantity that can be ordered",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "maximumRepeat": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Maximum repeat for renewal",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "minimumQuantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum quantity that can be ordered",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "minimumRepeat": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum repeat for renewal",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price of the product",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "priceInUcents": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price of the product in micro-centims",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "pricingMode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Pricing model identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "pricingType": {
-          "type": "order.cart.GenericProductPricingTypeEnum",
-          "fullType": "order.cart.GenericProductPricingTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Pricing type",
-          "required": true
+          "fullType": "order.cart.GenericProductPricingTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "order.cart.GenericProductPricingTypeEnum"
         }
       }
     },
     "order.cart.GenericProductPricingCapacitiesEnum": {
-      "id": "GenericProductPricingCapacitiesEnum",
-      "namespace": "order.cart",
       "description": "Capacity of a pricing (type)",
       "enum": [
         "installation",
@@ -6328,33 +6327,33 @@ export const schema: Schema = {
         "downgrade",
         "detach"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "GenericProductPricingCapacitiesEnum",
+      "namespace": "order.cart"
     },
     "order.cart.GenericProductPricingStrategyEnum": {
-      "id": "GenericProductPricingStrategyEnum",
-      "namespace": "order.cart",
       "description": "Strategy of a Pricing",
       "enum": [
         "stairstep",
         "volume",
         "tiered"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "GenericProductPricingStrategyEnum",
+      "namespace": "order.cart"
     },
     "order.cart.GenericProductPricingTypeEnum": {
-      "id": "GenericProductPricingTypeEnum",
-      "namespace": "order.cart",
       "description": "Type of a pricing",
       "enum": [
         "rental",
         "consumption",
         "purchase"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "GenericProductPricingTypeEnum",
+      "namespace": "order.cart"
     },
     "order.cart.GenericProductTypeEnum": {
-      "id": "GenericProductTypeEnum",
-      "namespace": "order.cart",
       "description": "Type of a product",
       "enum": [
         "delivery",
@@ -6365,121 +6364,121 @@ export const schema: Schema = {
         "storage",
         "domain"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "GenericProductTypeEnum",
+      "namespace": "order.cart"
     },
     "order.cart.Item": {
+      "description": "Representation of a cart item",
       "id": "Item",
       "namespace": "order.cart",
-      "description": "Representation of a cart item",
       "properties": {
         "cartId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cart identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "configurations": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Configuration set for this product",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "duration": {
-          "type": "duration",
-          "fullType": "duration",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Duration for the service",
-          "required": false
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
         },
         "itemId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current product identifier",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "offerId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Offer unique identifier of the product added",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "options": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Options item ID attached to this item",
-          "required": true
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": true,
+          "type": "long[]"
         },
         "parentItemId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Id of parent item (if item is an option)",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "prices": {
-          "type": "order.cart.Price[]",
-          "fullType": "order.cart.Price[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Price of the item",
-          "required": true
+          "fullType": "order.cart.Price[]",
+          "readOnly": true,
+          "required": true,
+          "type": "order.cart.Price[]"
         },
         "productId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of the product added",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "settings": {
-          "type": "order.cart.DomainSettings",
-          "fullType": "order.cart.DomainSettings",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain related settings",
-          "required": true
+          "fullType": "order.cart.DomainSettings",
+          "readOnly": true,
+          "required": true,
+          "type": "order.cart.DomainSettings"
         }
       }
     },
     "order.cart.Price": {
+      "description": "Price informations with label",
       "id": "Price",
       "namespace": "order.cart",
-      "description": "Price informations with label",
       "properties": {
         "label": {
-          "type": "order.cart.PriceLabelEnum",
-          "fullType": "order.cart.PriceLabelEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Label corresponding to a price",
-          "required": true
+          "fullType": "order.cart.PriceLabelEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "order.cart.PriceLabelEnum"
         },
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Price of the product",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "order.cart.PriceLabelEnum": {
-      "id": "PriceLabelEnum",
-      "namespace": "order.cart",
       "description": "Label corresponding to different type of price",
       "enum": [
         "PRICE",
@@ -6488,918 +6487,918 @@ export const schema: Schema = {
         "TOTAL",
         "RENEW"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PriceLabelEnum",
+      "namespace": "order.cart"
     },
     "order.catalog.AddonItem": {
+      "description": "Describes an Addon",
       "id": "AddonItem",
       "namespace": "order.catalog",
-      "description": "Describes an Addon",
       "properties": {
         "addons": {
-          "type": "order.catalog.AddonOffer[]",
-          "fullType": "order.catalog.AddonOffer[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of the addons of this family",
-          "required": true
+          "fullType": "order.catalog.AddonOffer[]",
+          "readOnly": false,
+          "required": true,
+          "type": "order.catalog.AddonOffer[]"
         },
         "exclusive": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether you can only have one instance of this addon family (xor)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "family": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Addon family name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "mandatory": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Indicated if addon family must be contracted",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "order.catalog.AddonOffer": {
+      "description": "Describes of Addon offer",
       "id": "AddonOffer",
       "namespace": "order.catalog",
-      "description": "Describes of Addon offer",
       "properties": {
         "invoiceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name that appears on invoice",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "plan": {
-          "type": "order.catalog.ProductPlan",
-          "fullType": "order.catalog.ProductPlan",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Describes of commercial offer of a product",
-          "required": true
+          "fullType": "order.catalog.ProductPlan",
+          "readOnly": false,
+          "required": true,
+          "type": "order.catalog.ProductPlan"
         }
       }
     },
     "order.catalog.Catalog": {
+      "description": "Describes a Catalog",
       "id": "Catalog",
       "namespace": "order.catalog",
-      "description": "Describes a Catalog",
       "properties": {
         "catalogId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Identifier of the catalog",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "merchantCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "OVH Subsidiary concerned by this catalog",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "plansFamily": {
-          "type": "order.catalog.PlansItem[]",
-          "fullType": "order.catalog.PlansItem[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of plans of the catalog",
-          "required": true
+          "fullType": "order.catalog.PlansItem[]",
+          "readOnly": false,
+          "required": true,
+          "type": "order.catalog.PlansItem[]"
         }
       }
     },
     "order.catalog.ConfigurationItem": {
+      "description": "Composition of a configuration",
       "id": "ConfigurationItem",
       "namespace": "order.catalog",
-      "description": "Composition of a configuration",
       "properties": {
         "defaultValue": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Default value of the configuration if not provided",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "isCustom": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Indicates if the configuration is free for writing (true) or have to follow an enum (false - have to follow values field)",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "isMandatory": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Indicates if configuration is required",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Label of the configuration",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "values": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Values allowed if configuration isn't custom",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         }
       }
     },
     "order.catalog.PlansItem": {
+      "description": "Describe an item that contains multiple plans",
       "id": "PlansItem",
       "namespace": "order.catalog",
-      "description": "Describe an item that contains multiple plans",
       "properties": {
         "family": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Family of the product",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "plans": {
-          "type": "order.catalog.ProductPlan[]",
-          "fullType": "order.catalog.ProductPlan[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of the plans for this catalog",
-          "required": true
+          "fullType": "order.catalog.ProductPlan[]",
+          "readOnly": false,
+          "required": true,
+          "type": "order.catalog.ProductPlan[]"
         }
       }
     },
     "order.catalog.Pricing": {
+      "description": "Describes a pricing",
       "id": "Pricing",
       "namespace": "order.catalog",
-      "description": "Describes a pricing",
       "properties": {
         "capacities": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Install, renew ... What the pricing can be used for",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "commitment": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Engagement period",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "interval": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number length of the interval",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "intervalUnit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Unit interval for duration",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "maximumQuantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Maximum quantity buyable",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "maximumRepeat": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Maximum repeat duration",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "minimumQuantity": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum quantity",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "minimumRepeat": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum repeat duration",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "mustBeCompleted": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Whether the catalog must reach max repeat before subscription can use another one",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price of the product",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": false,
+          "required": true,
+          "type": "order.Price"
         },
         "priceCapInUcents": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Max price customer will pay at the end of the period (cap)",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "priceInUcents": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Price in microcents",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "pricingStrategy": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Strategy on which the pricing can change",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.catalog.PricingDefault": {
+      "description": "Describe default pricings",
       "id": "PricingDefault",
       "namespace": "order.catalog",
-      "description": "Describe default pricings",
       "properties": {
         "default": {
-          "type": "order.catalog.Pricing[]",
-          "fullType": "order.catalog.Pricing[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Information about default pricing",
-          "required": true
+          "fullType": "order.catalog.Pricing[]",
+          "readOnly": false,
+          "required": true,
+          "type": "order.catalog.Pricing[]"
         }
       }
     },
     "order.catalog.Product": {
+      "description": "Describe a Product in the Catalog",
       "id": "Product",
       "namespace": "order.catalog",
-      "description": "Describe a Product in the Catalog",
       "properties": {
         "configurations": {
-          "type": "order.catalog.ConfigurationItem[]",
-          "fullType": "order.catalog.ConfigurationItem[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of the configurations available for the product",
-          "required": true
+          "fullType": "order.catalog.ConfigurationItem[]",
+          "readOnly": false,
+          "required": true,
+          "type": "order.catalog.ConfigurationItem[]"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Designation of the product",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Plan code identifier of the product",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "technicalDetails": {
-          "type": "complexType.SafeKeyValue<string>[]",
-          "fullType": "complexType.SafeKeyValue<string>[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Technicals details about product",
-          "required": false
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.SafeKeyValue<string>[]"
         }
       }
     },
     "order.catalog.ProductOfferDetails": {
+      "description": "Describe the details of a commercial offer",
       "id": "ProductOfferDetails",
       "namespace": "order.catalog",
-      "description": "Describe the details of a commercial offer",
       "properties": {
         "metadatas": {
-          "type": "complexType.SafeKeyValue<string>[]",
-          "fullType": "complexType.SafeKeyValue<string>[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of the metadatas attached",
-          "required": true
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": false,
+          "required": true,
+          "type": "complexType.SafeKeyValue<string>[]"
         },
         "pricings": {
-          "type": "order.catalog.PricingDefault",
-          "fullType": "order.catalog.PricingDefault",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Describe default pricings",
-          "required": true
+          "fullType": "order.catalog.PricingDefault",
+          "readOnly": false,
+          "required": true,
+          "type": "order.catalog.PricingDefault"
         },
         "product": {
-          "type": "order.catalog.Product",
-          "fullType": "order.catalog.Product",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Information about the product",
-          "required": true
+          "fullType": "order.catalog.Product",
+          "readOnly": false,
+          "required": true,
+          "type": "order.catalog.Product"
         }
       }
     },
     "order.catalog.ProductPlan": {
+      "description": "Describes of commercial offer of a product",
       "id": "ProductPlan",
       "namespace": "order.catalog",
-      "description": "Describes of commercial offer of a product",
       "properties": {
         "addonsFamily": {
-          "type": "order.catalog.AddonItem[]",
-          "fullType": "order.catalog.AddonItem[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of addons",
-          "required": true
+          "fullType": "order.catalog.AddonItem[]",
+          "readOnly": false,
+          "required": true,
+          "type": "order.catalog.AddonItem[]"
         },
         "consumptionBillingStrategy": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Strategy that follow the pricing when product is in consumption mode",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "details": {
-          "type": "order.catalog.ProductOfferDetails",
-          "fullType": "order.catalog.ProductOfferDetails",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Describe the details of a commercial offer",
-          "required": true
+          "fullType": "order.catalog.ProductOfferDetails",
+          "readOnly": false,
+          "required": true,
+          "type": "order.catalog.ProductOfferDetails"
         },
         "invoiceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name that appears on invoice",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Plan code identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "pricingType": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Main mode: rental, consumption",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.catalog.public.AddonFamily": {
+      "description": "Describes an Addon family for a Commercial offer",
       "id": "AddonFamily",
       "namespace": "order.catalog.public",
-      "description": "Describes an Addon family for a Commercial offer",
       "properties": {
         "addons": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of Commercial offers that can be ordered as an Addon of the current Commerical offer for the current Family",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "default": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Default Commercial offer that can be ordered as an Addon of the current Commercial offer for the current Family",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "exclusive": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Whether this Addon family is exclusive and can be ordered only once for the main Commercial offer",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "mandatory": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Whether this Addon family is mandatory",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Family name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.catalog.public.Catalog": {
+      "description": "Describes a Catalog inside a Subsidiary",
       "id": "Catalog",
       "namespace": "order.catalog.public",
-      "description": "Describes a Catalog inside a Subsidiary",
       "properties": {
         "addons": {
-          "type": "order.catalog.public.Plan[]",
-          "fullType": "order.catalog.public.Plan[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of addons of the catalog",
-          "required": true
+          "fullType": "order.catalog.public.Plan[]",
+          "readOnly": true,
+          "required": true,
+          "type": "order.catalog.public.Plan[]"
         },
         "catalogId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Identifier of the catalog",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "locale": {
-          "type": "order.catalog.public.Locale",
-          "fullType": "order.catalog.public.Locale",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Subsidiary specific information",
-          "required": true
+          "fullType": "order.catalog.public.Locale",
+          "readOnly": true,
+          "required": true,
+          "type": "order.catalog.public.Locale"
         },
         "planFamilies": {
-          "type": "order.catalog.public.PlanFamily[]",
-          "fullType": "order.catalog.public.PlanFamily[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of plan families of the catalog",
-          "required": true
+          "fullType": "order.catalog.public.PlanFamily[]",
+          "readOnly": true,
+          "required": true,
+          "type": "order.catalog.public.PlanFamily[]"
         },
         "plans": {
-          "type": "order.catalog.public.Plan[]",
-          "fullType": "order.catalog.public.Plan[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of main plans of the catalog",
-          "required": true
+          "fullType": "order.catalog.public.Plan[]",
+          "readOnly": true,
+          "required": true,
+          "type": "order.catalog.public.Plan[]"
         },
         "products": {
-          "type": "order.catalog.public.Product[]",
-          "fullType": "order.catalog.public.Product[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of products of the catalog",
-          "required": true
+          "fullType": "order.catalog.public.Product[]",
+          "readOnly": true,
+          "required": true,
+          "type": "order.catalog.public.Product[]"
         }
       }
     },
     "order.catalog.public.Configuration": {
+      "description": "Describes the Configuration for a Commercial offer",
       "id": "Configuration",
       "namespace": "order.catalog.public",
-      "description": "Describes the Configuration for a Commercial offer",
       "properties": {
         "isCustom": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Whether the value of this Configuration is custom",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "isMandatory": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Whether this Configuration is mandatory",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Identifier of the Configuration",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "values": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Possible values for this Configuration, if not custom",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         }
       }
     },
     "order.catalog.public.Locale": {
+      "description": "Describes specifics for a given Subsidiary",
       "id": "Locale",
       "namespace": "order.catalog.public",
-      "description": "Describes specifics for a given Subsidiary",
       "properties": {
         "currencyCode": {
-          "type": "order.CurrencyCodeEnum",
-          "fullType": "order.CurrencyCodeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Currency used by the Subsidiary",
-          "required": true
+          "fullType": "order.CurrencyCodeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "order.CurrencyCodeEnum"
         },
         "subsidiary": {
-          "type": "nichandle.OvhSubsidiaryEnum",
-          "fullType": "nichandle.OvhSubsidiaryEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current Subsidiary",
-          "required": true
+          "fullType": "nichandle.OvhSubsidiaryEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "nichandle.OvhSubsidiaryEnum"
         },
         "taxRate": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Default VAT rate used by the Subsidiary",
-          "required": true
+          "fullType": "double",
+          "readOnly": true,
+          "required": true,
+          "type": "double"
         }
       }
     },
     "order.catalog.public.Plan": {
+      "description": "Describes a Commercial offer inside a Catalog",
       "id": "Plan",
       "namespace": "order.catalog.public",
-      "description": "Describes a Commercial offer inside a Catalog",
       "properties": {
         "addonFamilies": {
-          "type": "order.catalog.public.AddonFamily[]",
-          "fullType": "order.catalog.public.AddonFamily[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Addon families for this offer",
-          "required": true
+          "fullType": "order.catalog.public.AddonFamily[]",
+          "readOnly": true,
+          "required": true,
+          "type": "order.catalog.public.AddonFamily[]"
         },
         "configurations": {
-          "type": "order.catalog.public.Configuration[]",
-          "fullType": "order.catalog.public.Configuration[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of possible Configurations for this Commercial offer",
-          "required": true
+          "fullType": "order.catalog.public.Configuration[]",
+          "readOnly": true,
+          "required": true,
+          "type": "order.catalog.public.Configuration[]"
         },
         "family": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Name of the family this Commercial offer belongs to",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "invoiceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Commercial offer description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "planCode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Commercial offer identifier",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "pricingType": {
-          "type": "order.cart.GenericProductPricingTypeEnum",
-          "fullType": "order.cart.GenericProductPricingTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of Pricing used by this Commercial offer",
-          "required": true
+          "fullType": "order.cart.GenericProductPricingTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "order.cart.GenericProductPricingTypeEnum"
         },
         "pricings": {
-          "type": "order.catalog.public.Pricing[]",
-          "fullType": "order.catalog.public.Pricing[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of possible Pricings for this Commercial offer",
-          "required": true
+          "fullType": "order.catalog.public.Pricing[]",
+          "readOnly": true,
+          "required": true,
+          "type": "order.catalog.public.Pricing[]"
         },
         "product": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Identifier of the Product linked to this Commercial offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.catalog.public.PlanFamily": {
+      "description": "Describes a PlanFamily for a Catalog",
       "id": "PlanFamily",
       "namespace": "order.catalog.public",
-      "description": "Describes a PlanFamily for a Catalog",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Family name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.catalog.public.Pricing": {
+      "description": "Describes a Pricing for a Commercial offer",
       "id": "Pricing",
       "namespace": "order.catalog.public",
-      "description": "Describes a Pricing for a Commercial offer",
       "properties": {
         "capacities": {
-          "type": "order.cart.GenericProductPricingCapacitiesEnum[]",
-          "fullType": "order.cart.GenericProductPricingCapacitiesEnum[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Capacities of the Pricing, describes what the Pricing can be used for",
-          "required": true
+          "fullType": "order.cart.GenericProductPricingCapacitiesEnum[]",
+          "readOnly": true,
+          "required": true,
+          "type": "order.cart.GenericProductPricingCapacitiesEnum[]"
         },
         "commitment": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Engagement period",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pricing description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "interval": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Length of the interval",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "intervalUnit": {
-          "type": "order.cart.DurationUnitEnum",
-          "fullType": "order.cart.DurationUnitEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Unit of the interval",
-          "required": true
+          "fullType": "order.cart.DurationUnitEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "order.cart.DurationUnitEnum"
         },
         "mode": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pricing mode",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "mustBeCompleted": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pricing must be completed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "phase": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Phase for the Pricing",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "price": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Price, in micro-cents",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "quantity": {
-          "type": "order.catalog.public.PricingMinMax",
-          "fullType": "order.catalog.public.PricingMinMax",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Describes how many times the Commercial offer can be added to the Cart",
-          "required": true
+          "fullType": "order.catalog.public.PricingMinMax",
+          "readOnly": true,
+          "required": true,
+          "type": "order.catalog.public.PricingMinMax"
         },
         "repeat": {
-          "type": "order.catalog.public.PricingMinMax",
-          "fullType": "order.catalog.public.PricingMinMax",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Describes how many times the interval can be repeated",
-          "required": true
+          "fullType": "order.catalog.public.PricingMinMax",
+          "readOnly": true,
+          "required": true,
+          "type": "order.catalog.public.PricingMinMax"
         },
         "strategy": {
-          "type": "order.cart.GenericProductPricingStrategyEnum",
-          "fullType": "order.cart.GenericProductPricingStrategyEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pricing strategy",
-          "required": true
+          "fullType": "order.cart.GenericProductPricingStrategyEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "order.cart.GenericProductPricingStrategyEnum"
         },
         "tax": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Tax that can be applied, in micro-cents",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "order.cart.GenericProductPricingTypeEnum",
-          "fullType": "order.cart.GenericProductPricingTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Pricing type",
-          "required": true
+          "fullType": "order.cart.GenericProductPricingTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "order.cart.GenericProductPricingTypeEnum"
         }
       }
     },
     "order.catalog.public.PricingMinMax": {
+      "description": "Describes minimal and maximal values for a Pricing",
       "id": "PricingMinMax",
       "namespace": "order.catalog.public",
-      "description": "Describes minimal and maximal values for a Pricing",
       "properties": {
         "max": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Maximal value",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "min": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Minimal value",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "order.catalog.public.Product": {
+      "description": "Describes a Product attached to a Commercial offer",
       "id": "Product",
       "namespace": "order.catalog.public",
-      "description": "Describes a Product attached to a Commercial offer",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Description of the Product",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Identifier of the Product",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.upgrade.Operation": {
+      "description": "Describes an operation",
       "id": "Operation",
       "namespace": "order.upgrade",
-      "description": "Describes an operation",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Identifier of the operation",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "product": {
-          "type": "order.upgrade.OperationProduct",
-          "fullType": "order.upgrade.OperationProduct",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Product concerned by the operation",
-          "required": true
+          "fullType": "order.upgrade.OperationProduct",
+          "readOnly": false,
+          "required": true,
+          "type": "order.upgrade.OperationProduct"
         },
         "status": {
-          "type": "order.upgrade.OperationStatusEnum",
-          "fullType": "order.upgrade.OperationStatusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of the operation",
-          "required": true
+          "fullType": "order.upgrade.OperationStatusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "order.upgrade.OperationStatusEnum"
         },
         "type": {
-          "type": "order.upgrade.OperationTypeEnum",
-          "fullType": "order.upgrade.OperationTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of the operation",
-          "required": true
+          "fullType": "order.upgrade.OperationTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "order.upgrade.OperationTypeEnum"
         }
       }
     },
     "order.upgrade.OperationProduct": {
+      "description": "Describes a product inside a operation",
       "id": "OperationProduct",
       "namespace": "order.upgrade",
-      "description": "Describes a product inside a operation",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Detailled description of a product",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of the product",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "order.upgrade.OperationStatusEnum": {
-      "id": "OperationStatusEnum",
-      "namespace": "order.upgrade",
       "description": "Unit that represent the status of an operation",
       "enum": [
         "TODO",
@@ -7410,39 +7409,42 @@ export const schema: Schema = {
         "CANCELLED",
         "SCHEDULED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationStatusEnum",
+      "namespace": "order.upgrade"
     },
     "order.upgrade.OperationTypeEnum": {
-      "id": "OperationTypeEnum",
-      "namespace": "order.upgrade",
       "description": "Unit that represent the type of an operation",
       "enum": [
         "UPGRADE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OperationTypeEnum",
+      "namespace": "order.upgrade"
     },
     "order.upgrade.order.upgrade.OperationAndOrder": {
+      "description": "Describes an Operation and the associated Order",
       "id": "OperationAndOrder",
       "namespace": "order.upgrade.order.upgrade",
-      "description": "Describes an Operation and the associated Order",
       "properties": {
         "operation": {
-          "type": "order.upgrade.Operation",
-          "fullType": "order.upgrade.Operation",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Upgrade operation",
-          "required": false
+          "fullType": "order.upgrade.Operation",
+          "readOnly": false,
+          "required": false,
+          "type": "order.upgrade.Operation"
         },
         "order": {
-          "type": "order.Order",
-          "fullType": "order.Order",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Order placed",
-          "required": false
+          "fullType": "order.Order",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Order"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/order"
 }

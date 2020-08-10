@@ -1,646 +1,645 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/kube.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/kube",
+      "description": "Operations about the KUBERNETES service",
       "operations": [
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the KUBERNETES service"
+      "path": "/kube"
     },
     {
-      "path": "/kube/{serviceName}",
+      "description": "Manage your cluster",
       "operations": [
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Get information about your managed Kubernetes cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "kube.Cluster",
-          "noAuthentication": false,
-          "description": "Get information about your managed Kubernetes cluster"
+          "responseType": "kube.Cluster"
         },
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Update information about your managed Kubernetes cluster",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Cluster new name",
               "fullType": "string",
-              "required": true,
-              "description": "Cluster new name"
+              "name": "name",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Update information about your managed Kubernetes cluster"
+          "responseType": "void"
         }
       ],
-      "description": "Manage your cluster"
+      "path": "/kube/{serviceName}"
     },
     {
-      "path": "/kube/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/kube/{serviceName}/changeContact"
     },
     {
-      "path": "/kube/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
-              "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
-              "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
-            },
-            {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/kube/{serviceName}/confirmTermination"
     },
     {
-      "path": "/kube/{serviceName}/kubeconfig",
+      "description": "Get your cluster configuration",
       "operations": [
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Get kubeconfig file",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "kube.Kubeconfig",
-          "noAuthentication": false,
-          "description": "Get kubeconfig file"
+          "responseType": "kube.Kubeconfig"
         }
       ],
-      "description": "Get your cluster configuration"
+      "path": "/kube/{serviceName}/kubeconfig"
     },
     {
-      "path": "/kube/{serviceName}/publiccloud/node",
+      "description": "Manage your Public Cloud cluster nodes",
       "operations": [
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "List your nodes on Public Cloud",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "kube.Node[]",
-          "noAuthentication": false,
-          "description": "List your nodes on Public Cloud"
+          "responseType": "kube.Node[]"
         },
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Deploy a node for your cluster on Public Cloud",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Public Cloud flavor name",
+              "fullType": "string",
               "name": "flavorName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Public Cloud flavor name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Node name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Node name"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "kube.Node",
-          "noAuthentication": false,
-          "description": "Deploy a node for your cluster on Public Cloud"
+          "responseType": "kube.Node"
         }
       ],
-      "description": "Manage your Public Cloud cluster nodes"
+      "path": "/kube/{serviceName}/publiccloud/node"
     },
     {
-      "path": "/kube/{serviceName}/publiccloud/node/{nodeId}",
+      "description": "Manage a single node on your cluster",
       "operations": [
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Delete a node on your cluster",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "nodeId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Node ID"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Node ID",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "nodeId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete a node on your cluster"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Get information on a specific node on your cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "nodeId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Node ID",
               "fullType": "string",
-              "required": true,
-              "description": "Node ID"
+              "name": "nodeId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "kube.Node",
-          "noAuthentication": false,
-          "description": "Get information on a specific node on your cluster"
+          "responseType": "kube.Node"
         }
       ],
-      "description": "Manage a single node on your cluster"
+      "path": "/kube/{serviceName}/publiccloud/node/{nodeId}"
     },
     {
-      "path": "/kube/{serviceName}/publiccloud/project",
+      "description": "Manage your Public Cloud projects linked to your cluster",
       "operations": [
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Get your Public Cloud project linked to your cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "kube.PublicCloudProject",
-          "noAuthentication": false,
-          "description": "Get your Public Cloud project linked to your cluster"
+          "responseType": "kube.PublicCloudProject"
         }
       ],
-      "description": "Manage your Public Cloud projects linked to your cluster"
+      "path": "/kube/{serviceName}/publiccloud/project"
     },
     {
-      "path": "/kube/{serviceName}/reset",
+      "description": "Reset your cluster",
       "operations": [
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
               "dataType": "kube.Version",
-              "paramType": "body",
+              "description": "Kubernetes version to use after reset, by default it keeps the current version",
               "fullType": "kube.Version",
-              "required": false,
-              "description": "Kubernetes version to use after reset, by default it keeps the current version"
-            },
-            {
-              "name": "workerNodesPolicy",
-              "dataType": "kube.ResetWorkerNodesPolicy",
+              "name": "version",
               "paramType": "body",
-              "fullType": "kube.ResetWorkerNodesPolicy",
-              "required": false,
-              "description": "Worker nodes reset policy, default is delete"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "kube.ResetWorkerNodesPolicy",
+              "description": "Worker nodes reset policy, default is delete",
+              "fullType": "kube.ResetWorkerNodesPolicy",
+              "name": "workerNodesPolicy",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled"
+          "responseType": "void"
         }
       ],
-      "description": "Reset your cluster"
+      "path": "/kube/{serviceName}/reset"
     },
     {
-      "path": "/kube/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
-        }
-      ],
-      "description": "Details about a Service"
-    },
-    {
-      "path": "/kube/{serviceName}/terminate",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
-        }
-      ],
-      "description": "Terminate your service"
-    },
-    {
-      "path": "/kube/{serviceName}/update",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Update cluster to the latest patch version"
-        }
-      ],
-      "description": "Update cluster"
-    },
-    {
-      "path": "/kube/{serviceName}/updatePolicy",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "httpMethod": "PUT",
-          "parameters": [
-            {
-              "name": "updatePolicy",
-              "dataType": "kube.UpdatePolicy",
               "paramType": "body",
-              "fullType": "kube.UpdatePolicy",
-              "required": true,
-              "description": "Update policy"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Change the update policy of your cluster"
+          "responseType": "void"
         }
       ],
-      "description": "Manage the update policy of your cluster"
+      "path": "/kube/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/kube/{serviceName}/terminate"
+    },
+    {
+      "description": "Update cluster",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
+          },
+          "description": "Update cluster to the latest patch version",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/kube/{serviceName}/update"
+    },
+    {
+      "description": "Manage the update policy of your cluster",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
+          },
+          "description": "Change the update policy of your cluster",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "kube.UpdatePolicy",
+              "description": "Update policy",
+              "fullType": "kube.UpdatePolicy",
+              "name": "updatePolicy",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/kube/{serviceName}/updatePolicy"
     }
   ],
-  "resourcePath": "/kube",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "kube.Cluster": {
+      "description": "Managed Kubernetes cluster description",
       "id": "Cluster",
       "namespace": "kube",
-      "description": "Managed Kubernetes cluster description",
       "properties": {
         "controlPlaneIsUpToDate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "True if control-plane is up to date",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster ID",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "isUpToDate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "True if all nodes and control-plane are up to date",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "nodesUrl": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster nodes URL",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "kube.ClusterStatus",
-          "fullType": "kube.ClusterStatus",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster status",
-          "required": true
+          "fullType": "kube.ClusterStatus",
+          "readOnly": true,
+          "required": true,
+          "type": "kube.ClusterStatus"
         },
         "updatePolicy": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster last update date",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Cluster last update date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Management URL of your cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "version": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Kubernetes version of your cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "kube.ClusterStatus": {
-      "id": "ClusterStatus",
-      "namespace": "kube",
       "description": "Enum values for Status",
       "enum": [
         "INSTALLING",
@@ -655,113 +654,113 @@ export const schema: Schema = {
         "USER_QUOTA_ERROR",
         "READY"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ClusterStatus",
+      "namespace": "kube"
     },
     "kube.Kubeconfig": {
+      "description": "Kubeconfig description",
       "id": "Kubeconfig",
       "namespace": "kube",
-      "description": "Kubeconfig description",
       "properties": {
         "content": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": true,
           "description": "kubeconfig file",
-          "required": true
+          "fullType": "password",
+          "readOnly": true,
+          "required": true,
+          "type": "password"
         }
       }
     },
     "kube.Node": {
+      "description": "Node installed on your cluster",
       "id": "Node",
       "namespace": "kube",
-      "description": "Node installed on your cluster",
       "properties": {
         "createdAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "flavor": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Public Cloud flavor name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Node ID",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "instanceId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Public Cloud instance id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "isUpToDate": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "True if the node is up to date",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Node name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "projectId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Public Cloud project ID where the node is started",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "kube.NodeStatus",
-          "fullType": "kube.NodeStatus",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Status",
-          "required": true
+          "fullType": "kube.NodeStatus",
+          "readOnly": true,
+          "required": true,
+          "type": "kube.NodeStatus"
         },
         "updatedAt": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Node last update date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "version": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Node version",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "kube.NodeStatus": {
-      "id": "NodeStatus",
-      "namespace": "kube",
       "description": "Enum values for Status",
       "enum": [
         "INSTALLING",
@@ -778,113 +777,113 @@ export const schema: Schema = {
         "USER_NODE_SUSPENDED_SERVICE",
         "READY"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "NodeStatus",
+      "namespace": "kube"
     },
     "kube.PublicCloudProject": {
+      "description": "Public Cloud project linked to a Kube cluster",
       "id": "PublicCloudProject",
       "namespace": "kube",
-      "description": "Public Cloud project linked to a Kube cluster",
       "properties": {
         "projectId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Public Cloud project ID",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Public Cloud region associated with your cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "kube.ResetWorkerNodesPolicy": {
-      "id": "ResetWorkerNodesPolicy",
-      "namespace": "kube",
       "description": "Enum values for worker nodes reset policy",
       "enum": [
         "reinstall",
         "delete"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ResetWorkerNodesPolicy",
+      "namespace": "kube"
     },
     "kube.UpdatePolicy": {
-      "id": "UpdatePolicy",
-      "namespace": "kube",
       "description": "Enum values for UpdatePolicy",
       "enum": [
         "ALWAYS_UPDATE",
         "MINIMAL_DOWNTIME",
         "NEVER_UPDATE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "UpdatePolicy",
+      "namespace": "kube"
     },
     "kube.Version": {
-      "id": "Version",
-      "namespace": "kube",
       "description": "List of available versions for installation",
       "enum": [
         "1.13",
         "1.14",
         "1.15"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Version",
+      "namespace": "kube"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -895,11 +894,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -907,11 +906,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -920,11 +919,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -942,108 +941,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/kube"
 }

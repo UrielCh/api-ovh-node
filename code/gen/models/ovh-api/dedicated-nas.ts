@@ -1,719 +1,718 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/dedicated/nas.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/dedicated/nas",
+      "description": "Operations about the STORAGE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the STORAGE service"
+      "path": "/dedicated/nas"
     },
     {
-      "path": "/dedicated/nas/{serviceName}",
+      "description": "Storage nas",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.nas.Nas",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.nas.Nas"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.nas.Nas",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.nas.Nas",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Storage nas"
+      "path": "/dedicated/nas/{serviceName}"
     },
     {
-      "path": "/dedicated/nas/{serviceName}/partition",
+      "description": "List the dedicated.nas.Partition objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get partition list",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get partition list"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a  new partition",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "partitionName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Partition name"
-            },
-            {
-              "name": "size",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Partition size"
-            },
-            {
-              "name": "protocol",
               "dataType": "dedicated.storage.ProtocolEnum",
-              "paramType": "body",
+              "description": "",
               "fullType": "dedicated.storage.ProtocolEnum",
-              "required": true,
-              "description": ""
+              "name": "protocol",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partition name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "partitionName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Partition size",
+              "fullType": "long",
+              "name": "size",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "noAuthentication": false,
-          "description": "Create a  new partition"
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
-      "description": "List the dedicated.nas.Partition objects"
+      "path": "/dedicated/nas/{serviceName}/partition"
     },
     {
-      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}",
+      "description": "Storage partition",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this partition",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "partitionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partition name",
               "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "name": "partitionName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "noAuthentication": false,
-          "description": "Delete this partition"
+          "responseType": "dedicated.nasTask.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "partitionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partition name",
               "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "name": "partitionName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.nas.Partition",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.nas.Partition"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "dedicated.nas.Partition",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "dedicated.nas.Partition",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "partitionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partition name",
               "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "name": "partitionName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Storage partition"
+      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}"
     },
     {
-      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/access",
+      "description": "List the dedicated.nas.Access objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "get ACL for this partition",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partition name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "partitionName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "partitionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "get ACL for this partition"
+          "responseType": "ipBlock[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add an Acl to this  partition",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
               "dataType": "ipv4",
-              "paramType": "body",
+              "description": "Ip to add",
               "fullType": "ipv4",
-              "required": true,
-              "description": "Ip to add"
+              "name": "ip",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "partitionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partition name",
               "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "name": "partitionName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "noAuthentication": false,
-          "description": "Add an Acl to this  partition"
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
-      "description": "List the dedicated.nas.Access objects"
+      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/access"
     },
     {
-      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}",
+      "description": "Define Acl for partition",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a given snapshot",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
-            },
-            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "partitionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partition name",
               "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "name": "partitionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "noAuthentication": false,
-          "description": "Delete a given snapshot"
+          "responseType": "dedicated.nasTask.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Partition name",
+              "fullType": "string",
               "name": "partitionName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "required": true
             },
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.nas.Access",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.nas.Access"
         }
       ],
-      "description": "Define Acl for partition"
+      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}"
     },
     {
-      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps",
+      "description": "authorizableIps operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get all IPs that can be used in the ACL",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "partitionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partition name",
               "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "name": "partitionName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip[]",
-          "noAuthentication": false,
-          "description": "Get all IPs that can be used in the ACL"
+          "responseType": "ip[]"
         }
       ],
-      "description": "authorizableIps operations"
+      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps"
     },
     {
-      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/quota",
+      "description": "List the dedicated.nas.Quota objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get quota for this partition",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partition name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "partitionName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "partitionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get quota for this partition"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Set a new quota",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "the uid to set quota on",
+              "fullType": "long",
+              "name": "uid",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "the size to set in MB",
+              "fullType": "long",
               "name": "size",
-              "dataType": "long",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "the size to set in MB"
+              "required": true
             },
             {
-              "name": "uid",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "the uid to set quota on"
-            },
-            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "partitionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Partition name",
               "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "name": "partitionName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "noAuthentication": false,
-          "description": "Set a new quota"
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
-      "description": "List the dedicated.nas.Quota objects"
+      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/quota"
     },
     {
-      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}",
+      "description": "Partition Quota",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a given quota",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Partition name",
+              "fullType": "string",
               "name": "partitionName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "required": true
             },
             {
-              "name": "uid",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Uid",
               "fullType": "long",
-              "required": true,
-              "description": "Uid"
+              "name": "uid",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "noAuthentication": false,
-          "description": "Delete a given quota"
+          "responseType": "dedicated.nasTask.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Partition name",
+              "fullType": "string",
               "name": "partitionName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Partition name"
+              "required": true
             },
             {
-              "name": "uid",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Uid",
               "fullType": "long",
-              "required": true,
-              "description": "Uid"
+              "name": "uid",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.nas.Quota",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.nas.Quota"
         }
       ],
-      "description": "Partition Quota"
+      "path": "/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}"
     },
     {
-      "path": "/dedicated/nas/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/dedicated/nas/{serviceName}/serviceInfos"
     },
     {
-      "path": "/dedicated/nas/{serviceName}/task",
+      "description": "List the dedicated.nasTask.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "View task list",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "operation",
-              "dataType": "dedicated.storage.TaskFunctionEnum",
-              "paramType": "query",
-              "fullType": "dedicated.storage.TaskFunctionEnum",
-              "required": false,
-              "description": "Filter the value of operation property (=)"
-            },
-            {
-              "name": "status",
               "dataType": "dedicated.TaskStatusEnum",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "dedicated.TaskStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.storage.TaskFunctionEnum",
+              "description": "Filter the value of operation property (=)",
+              "fullType": "dedicated.storage.TaskFunctionEnum",
+              "name": "operation",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "View task list"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the dedicated.nasTask.Task objects"
+      "path": "/dedicated/nas/{serviceName}/task"
     },
     {
-      "path": "/dedicated/nas/{serviceName}/task/{taskId}",
+      "description": "Storage task",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "taskId",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Task ID",
               "fullType": "long",
-              "required": true,
-              "description": "Task ID"
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.nasTask.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "dedicated.nasTask.Task"
         }
       ],
-      "description": "Storage task"
+      "path": "/dedicated/nas/{serviceName}/task/{taskId}"
     }
   ],
-  "resourcePath": "/dedicated/nas",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "dedicated.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "dedicated",
       "description": "different task status",
       "enum": [
         "cancelled",
@@ -724,241 +723,241 @@ export const schema: Schema = {
         "ovhError",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "dedicated"
     },
     "dedicated.nas.Access": {
+      "description": "Define Acl for partition",
       "id": "Access",
       "namespace": "dedicated.nas",
-      "description": "Define Acl for partition",
       "properties": {
         "accessId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the id of the access",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "ip": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the ip in root on storage",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         }
       }
     },
     "dedicated.nas.Nas": {
+      "description": "Storage nas",
       "id": "Nas",
       "namespace": "dedicated.nas",
-      "description": "Storage nas",
       "properties": {
         "canCreatePartition": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "True, if partition creation is allowed on this nas",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "customName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The name you give to the nas",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "datacenter": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "area of nas",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "ip": {
-          "type": "ipv4",
-          "fullType": "ipv4",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Access ip of nas",
-          "required": false
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
         },
         "mountPath": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The storage mount path",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The storage service name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "zpoolSize": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the size of the nas",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dedicated.nas.Partition": {
+      "description": "Storage partition",
       "id": "Partition",
       "namespace": "dedicated.nas",
-      "description": "Storage partition",
       "properties": {
         "partitionName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the given name of partition",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "protocol": {
-          "type": "dedicated.storage.ProtocolEnum",
-          "fullType": "dedicated.storage.ProtocolEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "must be nfs cifs or both",
-          "required": true
+          "fullType": "dedicated.storage.ProtocolEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.storage.ProtocolEnum"
         },
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Partition size",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dedicated.nas.Quota": {
+      "description": "Partition Quota",
       "id": "Quota",
       "namespace": "dedicated.nas",
-      "description": "Partition Quota",
       "properties": {
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the size to set in MB",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "uid": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "the uid to set quota on",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dedicated.nasTask.Task": {
+      "description": "Storage task",
       "id": "Task",
       "namespace": "dedicated.nasTask",
-      "description": "Storage task",
       "properties": {
         "details": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "information about operation",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "the date when the task finished",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "last modification of task",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "operation": {
-          "type": "dedicated.storage.TaskFunctionEnum",
-          "fullType": "dedicated.storage.TaskFunctionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task type of operation",
-          "required": true
+          "fullType": "dedicated.storage.TaskFunctionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.storage.TaskFunctionEnum"
         },
         "partitionName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "name of the partition",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "dedicated.TaskStatusEnum",
-          "fullType": "dedicated.TaskStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The actual state of the task",
-          "required": true
+          "fullType": "dedicated.TaskStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "dedicated.TaskStatusEnum"
         },
         "storageName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "the name of your service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "taskId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "id of the task",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "todoDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Insertion of task in the todo",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "dedicated.storage.ProtocolEnum": {
-      "id": "ProtocolEnum",
-      "namespace": "dedicated.storage",
       "description": "Partition Protocol",
       "enum": [
         "CIFS",
         "NFS",
         "NFS_CIFS"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "ProtocolEnum",
+      "namespace": "dedicated.storage"
     },
     "dedicated.storage.TaskFunctionEnum": {
-      "id": "TaskFunctionEnum",
-      "namespace": "dedicated.storage",
       "description": "Distincts task",
       "enum": [
         "backupRecursiveDestroy",
@@ -983,58 +982,58 @@ export const schema: Schema = {
         "nasQuotaUpdate",
         "remoteBackupRecursiveDestroy"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskFunctionEnum",
+      "namespace": "dedicated.storage"
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1045,11 +1044,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1057,108 +1056,111 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/dedicated/nas"
 }

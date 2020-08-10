@@ -1,663 +1,662 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/dbaas/timeseries.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/dbaas/timeseries",
+      "description": "Operations about the PAAS_TIMESERIES service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the PAAS_TIMESERIES service"
+      "path": "/dbaas/timeseries"
     },
     {
-      "path": "/dbaas/timeseries/region",
+      "description": "Regions",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get available regions",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "paas.timeseries.Region[]",
           "noAuthentication": false,
-          "description": "Get available regions"
+          "parameters": [],
+          "responseType": "paas.timeseries.Region[]"
         }
       ],
-      "description": "Regions"
+      "path": "/dbaas/timeseries/region"
     },
     {
-      "path": "/dbaas/timeseries/{serviceName}",
+      "description": "Timeseries project",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "timeseries.Project",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "timeseries.Project"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "timeseries.Project",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "timeseries.Project",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Timeseries project"
+      "path": "/dbaas/timeseries/{serviceName}"
     },
     {
-      "path": "/dbaas/timeseries/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactBilling",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The contact to set as admin contact",
               "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
-            },
-            {
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The contact to set as billing contact",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "contactBilling",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/dbaas/timeseries/{serviceName}/changeContact"
     },
     {
-      "path": "/dbaas/timeseries/{serviceName}/consumption",
+      "description": "Consumption",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get consumption",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "paas.timeseries.Consumption[]",
-          "noAuthentication": false,
-          "description": "Get consumption"
+          "responseType": "paas.timeseries.Consumption[]"
         }
       ],
-      "description": "Consumption"
+      "path": "/dbaas/timeseries/{serviceName}/consumption"
     },
     {
-      "path": "/dbaas/timeseries/{serviceName}/key",
+      "description": "Keys",
       "operations": [
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Get keys for a project",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "paas.timeseries.Key[]",
-          "noAuthentication": false,
-          "description": "Get keys for a project"
+          "responseType": "paas.timeseries.Key[]"
         },
         {
           "apiStatus": {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
+          "description": "Create a key for a project",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "description",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Description",
               "fullType": "string",
-              "required": false,
-              "description": "Description"
+              "name": "description",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "permissions",
               "dataType": "string[]",
-              "paramType": "body",
+              "description": "Permissions for this token",
               "fullType": "string[]",
-              "required": true,
-              "description": "Permissions for this token"
-            },
-            {
-              "name": "tags",
-              "dataType": "paas.timeseries.Tag[]",
-              "paramType": "body",
-              "fullType": "paas.timeseries.Tag[]",
-              "required": true,
-              "description": "Descriptive tags"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "paas.timeseries.Key",
-          "noAuthentication": false,
-          "description": "Create a key for a project"
-        }
-      ],
-      "description": "Keys"
-    },
-    {
-      "path": "/dbaas/timeseries/{serviceName}/key/{keyId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "keyId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Key ID"
-            }
-          ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Delete a OpenTSDB token"
-        },
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "keyId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Key ID"
-            }
-          ],
-          "responseType": "paas.timeseries.Key",
-          "noAuthentication": false,
-          "description": "Get a key"
-        },
-        {
-          "apiStatus": {
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "httpMethod": "PUT",
-          "parameters": [
-            {
-              "name": "tags",
-              "dataType": "paas.timeseries.Tag[]",
-              "paramType": "body",
-              "fullType": "paas.timeseries.Tag[]",
-              "required": true,
-              "description": "Descriptive tags"
-            },
-            {
-              "name": "description",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Description"
-            },
-            {
               "name": "permissions",
-              "dataType": "tsaas.PermissionEnum[]",
               "paramType": "body",
-              "fullType": "tsaas.PermissionEnum[]",
-              "required": true,
-              "description": "Permissions associated to this key"
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "paas.timeseries.Tag[]",
+              "description": "Descriptive tags",
+              "fullType": "paas.timeseries.Tag[]",
+              "name": "tags",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "paas.timeseries.Key"
+        }
+      ],
+      "path": "/dbaas/timeseries/{serviceName}/key"
+    },
+    {
+      "description": "Key",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
+          },
+          "description": "Delete a OpenTSDB token",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Key ID",
+              "fullType": "string",
               "name": "keyId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Key ID"
+              "required": true
             }
           ],
-          "responseType": "paas.timeseries.Key",
+          "responseType": "boolean"
+        },
+        {
+          "apiStatus": {
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
+          },
+          "description": "Get a key",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "description": "Create a key"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Key ID",
+              "fullType": "string",
+              "name": "keyId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "paas.timeseries.Key"
+        },
+        {
+          "apiStatus": {
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
+          },
+          "description": "Create a key",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "tsaas.PermissionEnum[]",
+              "description": "Permissions associated to this key",
+              "fullType": "tsaas.PermissionEnum[]",
+              "name": "permissions",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "paas.timeseries.Tag[]",
+              "description": "Descriptive tags",
+              "fullType": "paas.timeseries.Tag[]",
+              "name": "tags",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Key ID",
+              "fullType": "string",
+              "name": "keyId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "paas.timeseries.Key"
         }
       ],
-      "description": "Key"
+      "path": "/dbaas/timeseries/{serviceName}/key/{keyId}"
     },
     {
-      "path": "/dbaas/timeseries/{serviceName}/quota",
+      "description": "Quotas",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get quotas",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "paas.timeseries.Quota[]",
-          "noAuthentication": false,
-          "description": "Get quotas"
+          "responseType": "paas.timeseries.Quota[]"
         }
       ],
-      "description": "Quotas"
+      "path": "/dbaas/timeseries/{serviceName}/quota"
     },
     {
-      "path": "/dbaas/timeseries/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/dbaas/timeseries/{serviceName}/serviceInfos"
     },
     {
-      "path": "/dbaas/timeseries/{serviceName}/setup",
+      "description": "Setup your project on our platform",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Setup a project",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Project name",
+              "fullType": "string",
               "name": "displayName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Project name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Project description",
+              "fullType": "string",
               "name": "description",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Project description"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Region to use",
+              "fullType": "string",
               "name": "regionId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Region to use"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Your runabove app token id",
+              "fullType": "string",
               "name": "raTokenId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Your runabove app token id"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Your runabove app token key",
+              "fullType": "string",
               "name": "raTokenKey",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Your runabove app token key"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "paas.timeseries.Project",
-          "noAuthentication": false,
-          "description": "Setup a project"
+          "responseType": "paas.timeseries.Project"
         }
       ],
-      "description": "Setup your project on our platform"
+      "path": "/dbaas/timeseries/{serviceName}/setup"
     },
     {
-      "path": "/dbaas/timeseries/{serviceName}/token/opentsdb",
+      "description": "OpenTSDBTokens",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get OpenTSDB tokens",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "tsaas.OpenTSDBToken[]",
-          "noAuthentication": false,
-          "description": "Get OpenTSDB tokens"
+          "responseType": "tsaas.OpenTSDBToken[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a OpenTSDB token",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "description",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Permission",
               "fullType": "string",
-              "required": false,
-              "description": "Token description"
-            },
-            {
               "name": "permission",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Permission"
+              "required": true
             },
             {
-              "name": "tags",
               "dataType": "paas.timeseries.Tag[]",
-              "paramType": "body",
+              "description": "Tags to apply",
               "fullType": "paas.timeseries.Tag[]",
-              "required": true,
-              "description": "Tags to apply"
+              "name": "tags",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Token description",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "tsaas.OpenTSDBToken",
-          "noAuthentication": false,
-          "description": "Create a OpenTSDB token"
+          "responseType": "tsaas.OpenTSDBToken"
         }
       ],
-      "description": "OpenTSDBTokens"
+      "path": "/dbaas/timeseries/{serviceName}/token/opentsdb"
     },
     {
-      "path": "/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}",
+      "description": "Key",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete an OpenTSDB token",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "tokenId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Token ID",
               "fullType": "string",
-              "required": true,
-              "description": "Token ID"
+              "name": "tokenId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "boolean",
-          "noAuthentication": false,
-          "description": "Delete an OpenTSDB token"
+          "responseType": "boolean"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get a OpenTSDB token",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "tokenId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Token ID",
               "fullType": "string",
-              "required": true,
-              "description": "Token ID"
+              "name": "tokenId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "tsaas.OpenTSDBToken",
-          "noAuthentication": false,
-          "description": "Get a OpenTSDB token"
+          "responseType": "tsaas.OpenTSDBToken"
         }
       ],
-      "description": "Key"
+      "path": "/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}"
     }
   ],
-  "resourcePath": "/dbaas/timeseries",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "complexType.UnitAndValue<T>": {
-      "id": "UnitAndValue",
-      "namespace": "complexType",
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "order.CurrencyCodeEnum": {
-      "id": "CurrencyCodeEnum",
-      "namespace": "order",
       "enum": [
         "AUD",
         "CAD",
@@ -674,343 +673,343 @@ export const schema: Schema = {
         "XOF",
         "points"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
     },
     "order.Price": {
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
-      "description": "Price with it's currency and textual representation",
       "properties": {
         "currencyCode": {
-          "type": "order.CurrencyCodeEnum",
-          "fullType": "order.CurrencyCodeEnum",
           "canBeNull": false,
+          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "order.CurrencyCodeEnum"
         },
         "text": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
+          "fullType": "double",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "double"
         }
       }
     },
     "paas.timeseries.Consumption": {
+      "description": "Consumption",
       "id": "Consumption",
       "namespace": "paas.timeseries",
-      "description": "Consumption",
       "properties": {
         "from": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Consumption start date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "generated": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Timestamp of consumption generation",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "items": {
-          "type": "paas.timeseries.ConsumptionItem[]",
-          "fullType": "paas.timeseries.ConsumptionItem[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of consumption items",
-          "required": true
+          "fullType": "paas.timeseries.ConsumptionItem[]",
+          "readOnly": true,
+          "required": true,
+          "type": "paas.timeseries.ConsumptionItem[]"
         },
         "to": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Consumption end date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "total": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Total",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "paas.timeseries.ConsumptionItem": {
+      "description": "ConsumptionItem",
       "id": "ConsumptionItem",
       "namespace": "paas.timeseries",
-      "description": "ConsumptionItem",
       "properties": {
         "metricName": {
-          "type": "tsaas.MetricNameEnum",
-          "fullType": "tsaas.MetricNameEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Metric name",
-          "required": true
+          "fullType": "tsaas.MetricNameEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "tsaas.MetricNameEnum"
         },
         "price": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Price",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         },
         "quantity": {
-          "type": "complexType.UnitAndValue<double>",
-          "fullType": "complexType.UnitAndValue<double>",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Quantity consumed in unit",
-          "required": true
+          "fullType": "complexType.UnitAndValue<double>",
+          "readOnly": true,
+          "required": true,
+          "type": "complexType.UnitAndValue<double>"
         },
         "unitPrice": {
-          "type": "order.Price",
-          "fullType": "order.Price",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Unit price",
-          "required": true
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": true,
+          "type": "order.Price"
         }
       }
     },
     "paas.timeseries.Key": {
+      "description": "Key",
       "id": "Key",
       "namespace": "paas.timeseries",
-      "description": "Key",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "permissions": {
-          "type": "tsaas.PermissionEnum[]",
-          "fullType": "tsaas.PermissionEnum[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of permissions",
-          "required": true
+          "fullType": "tsaas.PermissionEnum[]",
+          "readOnly": true,
+          "required": true,
+          "type": "tsaas.PermissionEnum[]"
         },
         "secret": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Secret part",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "tags": {
-          "type": "paas.timeseries.Tag[]",
-          "fullType": "paas.timeseries.Tag[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of tags",
-          "required": true
+          "fullType": "paas.timeseries.Tag[]",
+          "readOnly": true,
+          "required": true,
+          "type": "paas.timeseries.Tag[]"
         }
       }
     },
     "paas.timeseries.Project": {
+      "description": "Project",
       "id": "Project",
       "namespace": "paas.timeseries",
-      "description": "Project",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Description",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "region": {
-          "type": "paas.timeseries.Region",
-          "fullType": "paas.timeseries.Region",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Region",
-          "required": true
+          "fullType": "paas.timeseries.Region",
+          "readOnly": true,
+          "required": true,
+          "type": "paas.timeseries.Region"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "paas.timeseries.Quota": {
+      "description": "Quota",
       "id": "Quota",
       "namespace": "paas.timeseries",
-      "description": "Quota",
       "properties": {
         "current": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Current value",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "max": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Max allowed",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "tsaas.QuotaTypeEnum",
-          "fullType": "tsaas.QuotaTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type (ie: mads, ddp, ...)",
-          "required": true
+          "fullType": "tsaas.QuotaTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "tsaas.QuotaTypeEnum"
         }
       }
     },
     "paas.timeseries.Region": {
+      "description": "Region",
       "id": "Region",
       "namespace": "paas.timeseries",
-      "description": "Region",
       "properties": {
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "URL",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "paas.timeseries.Tag": {
+      "description": "Tag",
       "id": "Tag",
       "namespace": "paas.timeseries",
-      "description": "Tag",
       "properties": {
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Key",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Value",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1021,11 +1020,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1033,167 +1032,167 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "timeseries.Project": {
+      "description": "Timeseries project",
       "id": "Project",
       "namespace": "timeseries",
-      "description": "Timeseries project",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "description of your project",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "name of your project",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "offerId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "subscribed offer",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "regionId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "region where your data are located",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "timeseries Project id",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "timeseries.StatusTypeEnum",
-          "fullType": "timeseries.StatusTypeEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "project status",
-          "required": false
+          "fullType": "timeseries.StatusTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "timeseries.StatusTypeEnum"
         }
       }
     },
     "timeseries.StatusTypeEnum": {
-      "id": "StatusTypeEnum",
-      "namespace": "timeseries",
       "description": "The current status for the project",
       "enum": [
         "ACTIVE",
@@ -1201,92 +1200,95 @@ export const schema: Schema = {
         "DELETED",
         "UNCONFIGURED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusTypeEnum",
+      "namespace": "timeseries"
     },
     "tsaas.MetricNameEnum": {
-      "id": "MetricNameEnum",
-      "namespace": "tsaas",
       "description": "Metric name",
       "enum": [
         "storage",
         "input",
         "output"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MetricNameEnum",
+      "namespace": "tsaas"
     },
     "tsaas.OpenTSDBToken": {
+      "description": "Description not available",
       "id": "OpenTSDBToken",
       "namespace": "tsaas",
-      "description": "Description not available",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "permission": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "protocol": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "protocol",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "secret": {
-          "type": "password",
-          "fullType": "password",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Secret part",
-          "required": true
+          "fullType": "password",
+          "readOnly": true,
+          "required": true,
+          "type": "password"
         },
         "tags": {
-          "type": "paas.timeseries.Tag[]",
-          "fullType": "paas.timeseries.Tag[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "List of tags",
-          "required": true
+          "fullType": "paas.timeseries.Tag[]",
+          "readOnly": true,
+          "required": true,
+          "type": "paas.timeseries.Tag[]"
         }
       }
     },
     "tsaas.PermissionEnum": {
-      "id": "PermissionEnum",
-      "namespace": "tsaas",
       "description": "Tokens permissions",
       "enum": [
         "READ",
         "WRITE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PermissionEnum",
+      "namespace": "tsaas"
     },
     "tsaas.QuotaTypeEnum": {
-      "id": "QuotaTypeEnum",
-      "namespace": "tsaas",
       "description": "Project quotas",
       "enum": [
         "ddp",
         "mads"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "QuotaTypeEnum",
+      "namespace": "tsaas"
     }
-  }
+  },
+  "resourcePath": "/dbaas/timeseries"
 }

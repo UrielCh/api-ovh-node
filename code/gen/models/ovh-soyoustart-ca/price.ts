@@ -1,124 +1,127 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.soyoustart.com:443/1.0/price.json
+
 export const schema: Schema = {
-  "basePath": "https://ca.api.soyoustart.com/1.0",
+  "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Get price of anti-DDos Pro option",
-      "path": "/price/dedicated/server/antiDDoSPro/{commercialRange}",
-      "operations": [
-        {
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "responseType": "order.Price",
-          "description": "Get price of anti-DDos Pro option",
-          "resellerOnly": false,
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "responseFullType": "order.Price",
-          "parameters": [
-            {
-              "fullType": "price.Dedicated.Server.AntiDDoSProEnum",
-              "paramType": "path",
-              "dataType": "price.Dedicated.Server.AntiDDoSProEnum",
-              "name": "commercialRange",
-              "required": true,
-              "description": "commercial range of your dedicated server"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "description": "Get price of IPs",
-      "path": "/price/dedicated/server/ip/{routedTo}",
       "operations": [
         {
           "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "responseType": "order.Price",
-          "resellerOnly": false,
           "description": "Get price of IPs",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "required": true,
+              "dataType": "price.Dedicated.Server.IpEnum",
               "description": "Ip",
               "fullType": "price.Dedicated.Server.IpEnum",
+              "name": "routedTo",
               "paramType": "path",
-              "dataType": "price.Dedicated.Server.IpEnum",
-              "name": "routedTo"
+              "required": true
             }
           ],
-          "responseFullType": "order.Price"
+          "resellerOnly": false,
+          "responseFullType": "order.Price",
+          "responseType": "order.Price"
         }
-      ]
+      ],
+      "path": "/price/dedicated/server/ip/{routedTo}"
     },
     {
+      "description": "Get price of available firewall models",
       "operations": [
         {
           "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "responseType": "order.Price",
-          "httpMethod": "GET",
-          "resellerOnly": false,
           "description": "Get price of available firewall models",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "required": true,
+              "dataType": "price.Dedicated.Server.FirewallEnum",
               "description": "Model of firewall",
               "fullType": "price.Dedicated.Server.FirewallEnum",
-              "paramType": "path",
               "name": "firewallModel",
-              "dataType": "price.Dedicated.Server.FirewallEnum"
+              "paramType": "path",
+              "required": true
             }
           ],
+          "resellerOnly": false,
           "responseFullType": "order.Price",
-          "noAuthentication": false
+          "responseType": "order.Price"
         }
       ],
-      "path": "/price/dedicated/server/firewall/{firewallModel}",
-      "description": "Get price of available firewall models"
+      "path": "/price/dedicated/server/firewall/{firewallModel}"
     },
     {
       "description": "Get price of backup storage offer",
-      "path": "/price/dedicated/server/backupStorage/{capacity}",
       "operations": [
         {
           "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "responseType": "order.Price",
           "description": "Get price of backup storage offer",
-          "resellerOnly": false,
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "price.Dedicated.Server.BackupStorageEnum",
+              "description": "Capacity in gigabytes of backup storage offer",
+              "fullType": "price.Dedicated.Server.BackupStorageEnum",
               "name": "capacity",
               "paramType": "path",
-              "fullType": "price.Dedicated.Server.BackupStorageEnum",
-              "description": "Capacity in gigabytes of backup storage offer",
               "required": true
             }
           ],
-          "responseFullType": "order.Price"
+          "resellerOnly": false,
+          "responseFullType": "order.Price",
+          "responseType": "order.Price"
         }
-      ]
+      ],
+      "path": "/price/dedicated/server/backupStorage/{capacity}"
+    },
+    {
+      "description": "Get price of anti-DDos Pro option",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of anti-DDos Pro option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.Dedicated.Server.AntiDDoSProEnum",
+              "description": "commercial range of your dedicated server",
+              "fullType": "price.Dedicated.Server.AntiDDoSProEnum",
+              "name": "commercialRange",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Price",
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicated/server/antiDDoSPro/{commercialRange}"
     }
   ],
+  "basePath": "https://ca.api.soyoustart.com/1.0",
   "models": {
     "order.CurrencyCodeEnum": {
-      "namespace": "order",
+      "description": "",
       "enum": [
         "AUD",
         "CAD",
@@ -136,13 +139,13 @@ export const schema: Schema = {
         "points"
       ],
       "enumType": "string",
-      "description": "",
-      "id": "CurrencyCodeEnum"
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
     },
     "order.Price": {
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
-      "description": "Price with it's currency and textual representation",
       "properties": {
         "currencyCode": {
           "canBeNull": false,
@@ -150,60 +153,59 @@ export const schema: Schema = {
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
+          "canBeNull": false,
           "description": null,
-          "type": "string",
-          "canBeNull": false
+          "type": "string"
         },
         "value": {
-          "type": "double",
+          "canBeNull": false,
           "description": null,
-          "canBeNull": false
+          "type": "double"
         }
       }
     },
-    "price.Dedicated.Server.FirewallEnum": {
-      "id": "FirewallEnum",
-      "enumType": "string",
-      "description": "Enum of Firewalls",
-      "namespace": "price.Dedicated.Server",
-      "enum": [
-        "asa5505",
-        "asa5510",
-        "asa5520"
-      ]
-    },
     "price.Dedicated.Server.AntiDDoSProEnum": {
+      "description": "Enum of AntiDDoSPros",
       "enum": [
         "sk"
       ],
-      "namespace": "price.Dedicated.Server",
       "enumType": "string",
-      "description": "Enum of AntiDDoSPros",
-      "id": "AntiDDoSProEnum"
-    },
-    "price.Dedicated.Server.IpEnum": {
-      "id": "IpEnum",
-      "enum": [
-        "kimsufi",
-        "parking"
-      ],
-      "namespace": "price.Dedicated.Server",
-      "enumType": "string",
-      "description": "Enum of Ips"
+      "id": "AntiDDoSProEnum",
+      "namespace": "price.Dedicated.Server"
     },
     "price.Dedicated.Server.BackupStorageEnum": {
-      "id": "BackupStorageEnum",
       "description": "Enum of BackupStorages",
-      "enumType": "string",
       "enum": [
         "1000",
         "10000",
         "500",
         "5000"
       ],
+      "enumType": "string",
+      "id": "BackupStorageEnum",
+      "namespace": "price.Dedicated.Server"
+    },
+    "price.Dedicated.Server.FirewallEnum": {
+      "description": "Enum of Firewalls",
+      "enum": [
+        "asa5505",
+        "asa5510",
+        "asa5520"
+      ],
+      "enumType": "string",
+      "id": "FirewallEnum",
+      "namespace": "price.Dedicated.Server"
+    },
+    "price.Dedicated.Server.IpEnum": {
+      "description": "Enum of Ips",
+      "enum": [
+        "kimsufi",
+        "parking"
+      ],
+      "enumType": "string",
+      "id": "IpEnum",
       "namespace": "price.Dedicated.Server"
     }
   },
-  "resourcePath": "/price",
-  "apiVersion": "1.0"
+  "resourcePath": "/price"
 }

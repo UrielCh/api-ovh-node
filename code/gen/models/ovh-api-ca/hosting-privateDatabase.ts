@@ -1,2128 +1,2127 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.ovh.com:443/1.0/hosting/privateDatabase.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/hosting/privateDatabase",
+      "description": "Operations about the SQLPRIVE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the SQLPRIVE service"
+      "path": "/hosting/privateDatabase"
     },
     {
-      "path": "/hosting/privateDatabase/availableOrderCapacities",
+      "description": "Get available order capacitie",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get available order capacitie",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "offer",
               "dataType": "hosting.PrivateDatabase.OfferEnum",
-              "paramType": "query",
+              "description": "Offer available order capacities to choose",
               "fullType": "hosting.PrivateDatabase.OfferEnum",
-              "required": true,
-              "description": "Offer available order capacities to choose"
+              "name": "offer",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.AvailableOrderCapacities",
-          "noAuthentication": false,
-          "description": "Get available order capacitie"
+          "responseType": "hosting.PrivateDatabase.AvailableOrderCapacities"
         }
       ],
-      "description": "Get available order capacitie"
+      "path": "/hosting/privateDatabase/availableOrderCapacities"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}",
+      "description": "Private database",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "hosting.privateDatabase.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "hosting.privateDatabase.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "hosting.privateDatabase.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Private database"
+      "path": "/hosting/privateDatabase/{serviceName}"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/availableVersions",
+      "description": "availableVersions operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get the availables versions for this private database",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.AvailableVersionEnum[]",
-          "noAuthentication": false,
-          "description": "Get the availables versions for this private database"
+          "responseType": "hosting.PrivateDatabase.AvailableVersionEnum[]"
         }
       ],
-      "description": "availableVersions operations"
+      "path": "/hosting/privateDatabase/{serviceName}/availableVersions"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "contactTech",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The contact to set as admin contact",
               "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
-            },
-            {
-              "name": "contactBilling",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
-            },
-            {
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The contact to set as tech contact",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "contactTech",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
+              "name": "contactBilling",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/hosting/privateDatabase/{serviceName}/changeContact"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/changeFtpPassword",
+      "description": "changeFtpPassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change your ftp admin password",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "New ftp admin password ( alphanumeric and 8 characters minimum )",
               "fullType": "password",
-              "required": true,
-              "description": "New ftp admin password ( alphanumeric and 8 characters minimum )"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Change your ftp admin password"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "changeFtpPassword operations"
+      "path": "/hosting/privateDatabase/{serviceName}/changeFtpPassword"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/changeVersion",
+      "description": "changeVersion operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change the private database engine version",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "version",
               "dataType": "hosting.PrivateDatabase.AvailableVersionEnum",
-              "paramType": "body",
+              "description": "Private database versions",
               "fullType": "hosting.PrivateDatabase.AvailableVersionEnum",
-              "required": true,
-              "description": "Private database versions"
+              "name": "version",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Change the private database engine version"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "changeVersion operations"
+      "path": "/hosting/privateDatabase/{serviceName}/changeVersion"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/config",
+      "description": "Configuration",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.Configuration",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "hosting.privateDatabase.Configuration"
         }
       ],
-      "description": "Configuration"
+      "path": "/hosting/privateDatabase/{serviceName}/config"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/config/update",
+      "description": "update operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update the configuration",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "parameters",
               "dataType": "complexType.SafeKeyValue<string>[]",
-              "paramType": "body",
+              "description": "Array of instance configuration parameters",
               "fullType": "complexType.SafeKeyValue<string>[]",
-              "required": true,
-              "description": "Array of instance configuration parameters"
+              "name": "parameters",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.Configuration",
-          "noAuthentication": false,
-          "description": "Update the configuration"
+          "responseType": "hosting.privateDatabase.Configuration"
         }
       ],
-      "description": "update operations"
+      "path": "/hosting/privateDatabase/{serviceName}/config/update"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "commentary",
               "dataType": "string",
-              "paramType": "body",
+              "description": "The termination token sent by mail to the admin contact",
               "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
-            },
-            {
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
-        }
-      ],
-      "description": "Confirm termination of your service"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/database",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Databases linked to your private database service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "databaseName",
-              "dataType": "string",
+              "name": "reason",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of your new database"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Commentary about your termination request",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Create a new database on your private database service"
+          "responseType": "string"
         }
       ],
-      "description": "List the hosting.privateDatabase.database objects"
+      "path": "/hosting/privateDatabase/{serviceName}/confirmTermination"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}",
+      "description": "List the hosting.privateDatabase.database objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
+          "description": "Databases linked to your private database service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "databaseName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Delete the database"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
+          "description": "Create a new database on your private database service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "databaseName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name of your new database",
               "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "name": "databaseName",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.database",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "Databas"
+      "path": "/hosting/privateDatabase/{serviceName}/database"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump",
+      "description": "Databas",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
+          "description": "Delete the database",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
               "name": "databaseName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.database"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}"
+    },
+    {
+      "description": "List the hosting.privateDatabase.database.dump objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Dump available for your databases",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDate property (like)",
+              "fullType": "datetime",
               "name": "creationDate",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of creationDate property (like)"
+              "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Filter the value of deletionDate property (like)",
+              "fullType": "datetime",
               "name": "deletionDate",
-              "dataType": "datetime",
               "paramType": "query",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Filter the value of deletionDate property (like)"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Dump available for your databases"
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Request the dump of this database ( an email will be send with a link available 30 days )",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "sendEmail",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Send an email when dump will be available? Default: false",
               "fullType": "boolean",
-              "required": false,
-              "description": "Send an email when dump will be available? Default: false"
+              "name": "sendEmail",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "databaseName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Database name",
               "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Request the dump of this database ( an email will be send with a link available 30 days )"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "List the hosting.privateDatabase.database.dump objects"
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}",
+      "description": "Dump",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete dump before expiration date",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
               "name": "databaseName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Delete dump before expiration date"
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "databaseName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Database name",
               "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.database.dump",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "hosting.privateDatabase.database.dump"
         }
       ],
-      "description": "Dump"
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore",
+      "description": "restore operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Request the restore from this dump",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            },
-            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "databaseName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Database name",
               "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Request the restore from this dump"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "restore operations"
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension",
+      "description": "List the hosting.privateDatabase.database.extension objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Extensions linked to your database",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
               "name": "databaseName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "required": true
             },
             {
-              "name": "status",
+              "dataType": "string",
+              "description": "Filter the value of extensionName property (like)",
+              "fullType": "string",
+              "name": "extensionName",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "hosting.PrivateDatabase.Database.Extension.Status",
-              "paramType": "query",
+              "description": "Filter the value of status property (=)",
               "fullType": "hosting.PrivateDatabase.Database.Extension.Status",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "name": "extensionName",
-              "dataType": "string",
+              "name": "status",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of extensionName property (like)"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Extensions linked to your database"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the hosting.privateDatabase.database.extension objects"
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}",
+      "description": "Databases extension",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Database name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "databaseName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "required": true
             },
             {
-              "name": "extensionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Extension name",
               "fullType": "string",
-              "required": true,
-              "description": "Extension name"
+              "name": "extensionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.database.extension",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "hosting.privateDatabase.database.extension"
         }
       ],
-      "description": "Databases extension"
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/disable",
+      "description": "disable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Disable an extension from a database",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "databaseName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Database name"
-            },
-            {
-              "name": "extensionName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Extension name"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Database name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Extension name",
+              "fullType": "string",
+              "name": "extensionName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Disable an extension from a database"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "disable operations"
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/disable"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable",
+      "description": "enable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Enable an extension on a database",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Database name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "databaseName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "required": true
             },
             {
-              "name": "extensionName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Extension name",
               "fullType": "string",
-              "required": true,
-              "description": "Extension name"
+              "name": "extensionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Enable an extension on a database"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "enable operations"
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/import",
+      "description": "import operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Request the import in this database",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "flushDatabase",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Send an email when the import will be done? Default: false",
               "fullType": "boolean",
-              "required": false,
-              "description": "If database will be flushed before importing the dump. Default: false"
-            },
-            {
-              "name": "documentId",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Documents ID of the dump from /me/documents"
-            },
-            {
               "name": "sendEmail",
-              "dataType": "boolean",
               "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "If database will be flushed before importing the dump. Default: false",
               "fullType": "boolean",
-              "required": false,
-              "description": "Send an email when the import will be done? Default: false"
+              "name": "flushDatabase",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Documents ID of the dump from /me/documents",
+              "fullType": "string",
+              "name": "documentId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "databaseName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Database name",
               "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Request the import in this database"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "import operations"
+      "path": "/hosting/privateDatabase/{serviceName}/database/{databaseName}/import"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/databaseWizard",
+      "description": "databaseWizard operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new database/user and grant it",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "grant",
-              "dataType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "paramType": "body",
-              "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "required": true,
-              "description": "Grant of the user on this database"
-            },
-            {
-              "name": "databaseName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of your new database"
-            },
-            {
-              "name": "userName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "New user name used to connect on your database"
-            },
-            {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Password for the new user ( alphanumeric and 8 characters minimum )",
               "fullType": "password",
-              "required": true,
-              "description": "Password for the new user ( alphanumeric and 8 characters minimum )"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Create a new database/user and grant it"
-        }
-      ],
-      "description": "databaseWizard operations"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/dump",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "orphan",
-              "dataType": "boolean",
-              "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Filter the value of orphan property (=)"
-            },
-            {
-              "name": "databaseName",
-              "dataType": "string",
-              "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Filter the value of databaseName property (like)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Dumps available for your private database service"
-        }
-      ],
-      "description": "List the hosting.privateDatabase.dump objects"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/dump/{dumpId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "dumpId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Dump ID"
-            }
-          ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Delete dump before expiration date"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "dumpId",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Dump ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "hosting.privateDatabase.dump",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Dump"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "databaseName",
-              "dataType": "string",
+              "name": "password",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The database where you want to restore this dump"
+              "required": true
             },
             {
-              "name": "serviceName",
+              "dataType": "hosting.PrivateDatabase.grant.GrantEnum",
+              "description": "Grant of the user on this database",
+              "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
+              "name": "grant",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "New user name used to connect on your database",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "userName",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "dumpId",
+              "dataType": "string",
+              "description": "Name of your new database",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.task"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/databaseWizard"
+    },
+    {
+      "description": "List the hosting.privateDatabase.dump objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Dumps available for your private database service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of databaseName property (like)",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Filter the value of orphan property (=)",
+              "fullType": "boolean",
+              "name": "orphan",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/dump"
+    },
+    {
+      "description": "Dump",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete dump before expiration date",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "path",
+              "description": "Dump ID",
               "fullType": "long",
-              "required": true,
-              "description": "Dump ID"
-            }
-          ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Request the restore from this dump"
-        }
-      ],
-      "description": "restore operations"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
+              "name": "dumpId",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "hosting.PrivateDatabase.TemporaryLogsLink",
-          "noAuthentication": false,
-          "description": "Generate a temporary url to retrieve instance logs"
-        }
-      ],
-      "description": "generateTemporaryLogsLink operations"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/oom",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "hosting.PrivateDatabase.Oom[]",
-          "noAuthentication": false,
-          "description": "List of privatesql OOM kill"
-        }
-      ],
-      "description": "oom operations"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/quotaRefresh",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Refresh the quota of your private database"
-        }
-      ],
-      "description": "quotaRefresh operations"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/restart",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Restart the private database"
-        }
-      ],
-      "description": "restart operations"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/serviceInfos",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Dump ID",
+              "fullType": "long",
+              "name": "dumpId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.dump"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/dump/{dumpId}"
+    },
+    {
+      "description": "restore operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Request the restore from this dump",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The database where you want to restore this dump",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Dump ID",
+              "fullType": "long",
+              "name": "dumpId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.task"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore"
+    },
+    {
+      "description": "generateTemporaryLogsLink operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Generate a temporary url to retrieve instance logs",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.PrivateDatabase.TemporaryLogsLink"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink"
+    },
+    {
+      "description": "oom operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of privatesql OOM kill",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.PrivateDatabase.Oom[]"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/oom"
+    },
+    {
+      "description": "quotaRefresh operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Refresh the quota of your private database",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.task"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/quotaRefresh"
+    },
+    {
+      "description": "restart operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Restart the private database",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.task"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/restart"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/hosting/privateDatabase/{serviceName}/serviceInfos"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/start",
+      "description": "start operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Start the private database",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Start the private database"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "start operations"
+      "path": "/hosting/privateDatabase/{serviceName}/start"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/stop",
+      "description": "stop operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Stop the private database",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Stop the private database"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "stop operations"
+      "path": "/hosting/privateDatabase/{serviceName}/stop"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/tasks",
+      "description": "List the hosting.privateDatabase.task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Tasks attached to your private database service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "status",
-              "dataType": "hosting.PrivateDatabase.task.StatusEnum",
-              "paramType": "query",
-              "fullType": "hosting.PrivateDatabase.task.StatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "name": "function",
               "dataType": "hosting.PrivateDatabase.task.FunctionEnum",
-              "paramType": "query",
+              "description": "Filter the value of function property (=)",
               "fullType": "hosting.PrivateDatabase.task.FunctionEnum",
-              "required": false,
-              "description": "Filter the value of function property (=)"
+              "name": "function",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "hosting.PrivateDatabase.task.StatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "hosting.PrivateDatabase.task.StatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks attached to your private database service"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the hosting.privateDatabase.task objects"
+      "path": "/hosting/privateDatabase/{serviceName}/tasks"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/tasks/{id}",
+      "description": "Task",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "Task"
+      "path": "/hosting/privateDatabase/{serviceName}/tasks/{id}"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/hosting/privateDatabase/{serviceName}/terminate"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/user",
+      "description": "List the hosting.privateDatabase.user objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "User allowed to connect on your databases",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "User allowed to connect on your databases"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create a new user on your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Password for the new user ( alphanumeric and 8 characters minimum )",
               "fullType": "password",
-              "required": true,
-              "description": "Password for the new user ( alphanumeric and 8 characters minimum )"
-            },
-            {
-              "name": "userName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "User name used to connect on your databases"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Create a new user on your service"
-        }
-      ],
-      "description": "List the hosting.privateDatabase.user objects"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/user/{userName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "userName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User name"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Delete a user"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User name"
-            }
-          ],
-          "responseType": "hosting.privateDatabase.user",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "User"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/changePassword",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
               "name": "password",
-              "dataType": "password",
               "paramType": "body",
-              "fullType": "password",
-              "required": true,
-              "description": "The new user password ( alphanumeric and 8 characters minimum )"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User name used to connect on your databases",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "userName",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "User name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Request a change password for a user"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "changePassword operations"
+      "path": "/hosting/privateDatabase/{serviceName}/user"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant",
+      "description": "User",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "User grant's on your databases"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "grant",
-              "dataType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "paramType": "body",
-              "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "required": true,
-              "description": "Grant you want set on the database for this user"
-            },
-            {
-              "name": "databaseName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Database name where add grant"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "userName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User name"
-            }
-          ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Add grant on a database"
-        }
-      ],
-      "description": "List the hosting.privateDatabase.grant objects"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Delete a user",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "userName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "User name"
-            },
-            {
-              "name": "databaseName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Database name"
-            },
-            {
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "userName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Delete a grant on a database"
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "databaseName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User name",
               "fullType": "string",
-              "required": true,
-              "description": "Database name"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "userName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "User name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.grant",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "hosting.privateDatabase.user"
         }
       ],
-      "description": "Grant"
+      "path": "/hosting/privateDatabase/{serviceName}/user/{userName}"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Request a change password for a user",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "grant",
+              "dataType": "password",
+              "description": "The new user password ( alphanumeric and 8 characters minimum )",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User name",
+              "fullType": "string",
+              "name": "userName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.task"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/changePassword"
+    },
+    {
+      "description": "List the hosting.privateDatabase.grant objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "User grant's on your databases",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User name",
+              "fullType": "string",
+              "name": "userName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add grant on a database",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Database name where add grant",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "paramType": "body",
+              "description": "Grant you want set on the database for this user",
               "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
-              "required": true,
-              "description": "Grant you want set on the database for this user"
+              "name": "grant",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "User name",
+              "fullType": "string",
               "name": "userName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.task"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant"
+    },
+    {
+      "description": "Grant",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete a grant on a database",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "User name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "User name",
+              "fullType": "string",
+              "name": "userName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
               "name": "databaseName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Database name"
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Update user grant"
-        }
-      ],
-      "description": "update operations"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/webs",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List linked webs"
-        }
-      ],
-      "description": "webs operations"
-    },
-    {
-      "path": "/hosting/privateDatabase/{serviceName}/whitelist",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "sftp",
-              "dataType": "boolean",
-              "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Filter the value of sftp property (=)"
-            },
-            {
-              "name": "service",
-              "dataType": "boolean",
-              "paramType": "query",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Filter the value of service property (=)"
-            },
-            {
-              "name": "ip",
-              "dataType": "ipBlock",
-              "paramType": "query",
-              "fullType": "ipBlock",
-              "required": false,
-              "description": "Filter the value of ip property (contains or equals)"
-            }
-          ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "Whitelist allowed on your privatesql"
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "sftp",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Authorize this IP to access sftp port"
+              "dataType": "string",
+              "description": "User name",
+              "fullType": "string",
+              "name": "userName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "service",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": false,
-              "description": "Authorize this IP to access service port"
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ip",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.grant"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}"
+    },
+    {
+      "description": "update operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update user grant",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "hosting.PrivateDatabase.grant.GrantEnum",
+              "description": "Grant you want set on the database for this user",
+              "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
+              "name": "grant",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User name",
+              "fullType": "string",
+              "name": "userName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.privateDatabase.task"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update"
+    },
+    {
+      "description": "webs operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List linked webs",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/hosting/privateDatabase/{serviceName}/webs"
+    },
+    {
+      "description": "List the hosting.privateDatabase.whitelist objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Whitelist allowed on your privatesql",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "ipBlock",
-              "paramType": "body",
+              "description": "Filter the value of ip property (contains or equals)",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "The IP to whitelist in your instance"
+              "name": "ip",
+              "paramType": "query",
+              "required": false
             },
             {
+              "dataType": "boolean",
+              "description": "Filter the value of sftp property (=)",
+              "fullType": "boolean",
+              "name": "sftp",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Filter the value of service property (=)",
+              "fullType": "boolean",
+              "name": "service",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "ipBlock[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new IP whitelist",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Custom name for your Whitelisted IP",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Custom name for your Whitelisted IP"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "boolean",
+              "description": "Authorize this IP to access service port",
+              "fullType": "boolean",
+              "name": "service",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Authorize this IP to access sftp port",
+              "fullType": "boolean",
+              "name": "sftp",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "The IP to whitelist in your instance",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Create a new IP whitelist"
+          "responseType": "hosting.privateDatabase.task"
         }
       ],
-      "description": "List the hosting.privateDatabase.whitelist objects"
+      "path": "/hosting/privateDatabase/{serviceName}/whitelist"
     },
     {
-      "path": "/hosting/privateDatabase/{serviceName}/whitelist/{ip}",
+      "description": "IP whitelisting for your instance",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete ain IP whitelist",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "ip",
-              "dataType": "ipBlock",
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.task",
-          "noAuthentication": false,
-          "description": "Delete ain IP whitelist"
+          "responseType": "hosting.privateDatabase.task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "hosting.privateDatabase.whitelist",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "hosting.privateDatabase.whitelist"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "hosting.privateDatabase.whitelist",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "hosting.privateDatabase.whitelist",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ip",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Ip",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Ip"
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "IP whitelisting for your instance"
+      "path": "/hosting/privateDatabase/{serviceName}/whitelist/{ip}"
     }
   ],
-  "resourcePath": "/hosting/privateDatabase",
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "complexType.SafeKeyValue<T>": {
-      "id": "SafeKeyValue",
-      "namespace": "complexType",
       "description": "Key and value, with proper key strings",
       "generics": [
         "T"
       ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
       "properties": {
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "complexType.UnitAndValue<T>": {
-      "id": "UnitAndValue",
-      "namespace": "complexType",
       "description": "A numeric value tagged with its unit",
       "generics": [
         "T"
       ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
       "properties": {
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "value": {
-          "type": "T",
-          "fullType": "T",
           "canBeNull": false,
+          "fullType": "T",
           "readOnly": false,
-          "required": true
+          "required": true,
+          "type": "T"
         }
       }
     },
     "hosting.PrivateDatabase.AvailableOrderCapacities": {
+      "description": "Description for available order capacities following an offer",
       "id": "AvailableOrderCapacities",
       "namespace": "hosting.PrivateDatabase",
-      "description": "Description for available order capacities following an offer",
       "properties": {
         "datacenter": {
-          "type": "hosting.PrivateDatabase.DatacenterEnum[]",
-          "fullType": "hosting.PrivateDatabase.DatacenterEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A list of datacenter available for this offer",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.DatacenterEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.PrivateDatabase.DatacenterEnum[]"
         },
         "offer": {
-          "type": "hosting.PrivateDatabase.OfferEnum",
-          "fullType": "hosting.PrivateDatabase.OfferEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Offer",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.OfferEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.PrivateDatabase.OfferEnum"
         },
         "ram": {
-          "type": "hosting.PrivateDatabase.AvailableRamSizeEnum[]",
-          "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A list of ram size available for this offer",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.PrivateDatabase.AvailableRamSizeEnum[]"
         },
         "version": {
-          "type": "hosting.PrivateDatabase.AvailableVersionEnum[]",
-          "fullType": "hosting.PrivateDatabase.AvailableVersionEnum[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A list of version available for this offer",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.AvailableVersionEnum[]",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.PrivateDatabase.AvailableVersionEnum[]"
         }
       }
     },
     "hosting.PrivateDatabase.AvailableRamSizeEnum": {
-      "id": "AvailableRamSizeEnum",
-      "namespace": "hosting.PrivateDatabase",
       "description": "Private database available ram sizes",
       "enum": [
         "1024",
@@ -2130,11 +2129,11 @@ export const schema: Schema = {
         "4096",
         "512"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AvailableRamSizeEnum",
+      "namespace": "hosting.PrivateDatabase"
     },
     "hosting.PrivateDatabase.AvailableVersionEnum": {
-      "id": "AvailableVersionEnum",
-      "namespace": "hosting.PrivateDatabase",
       "description": "Private database available versions",
       "enum": [
         "mariadb_10.1",
@@ -2159,142 +2158,142 @@ export const schema: Schema = {
         "redis_3.2",
         "redis_4.0"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "AvailableVersionEnum",
+      "namespace": "hosting.PrivateDatabase"
     },
     "hosting.PrivateDatabase.Capability": {
+      "description": "Private database capability",
       "id": "Capability",
       "namespace": "hosting.PrivateDatabase",
-      "description": "Private database capability",
       "properties": {
         "create": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Can the object be created",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "delete": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Can the object be deleted",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "object": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Object name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "update": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Can the object be updated",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "hosting.PrivateDatabase.Configuration.Detail": {
+      "description": "Configuration detail property",
       "id": "Detail",
       "namespace": "hosting.PrivateDatabase.Configuration",
-      "description": "Configuration detail property",
       "properties": {
         "availableValues": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Configuration available values",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
         },
         "defaultValue": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Configuration default value",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Configuration description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Configuration key name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Configuration last update date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "type": {
-          "type": "hosting.PrivateDatabase.Configuration.DetailType",
-          "fullType": "hosting.PrivateDatabase.Configuration.DetailType",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Configuration value type",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.Configuration.DetailType",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.PrivateDatabase.Configuration.DetailType"
         },
         "unit": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Configuration unit type",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Configuration current value",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "hosting.PrivateDatabase.Configuration.DetailType": {
-      "id": "DetailType",
-      "namespace": "hosting.PrivateDatabase.Configuration",
       "description": "Configuration detail type",
       "enum": [
         "boolean",
         "number",
         "string"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DetailType",
+      "namespace": "hosting.PrivateDatabase.Configuration"
     },
     "hosting.PrivateDatabase.Configuration.Status": {
-      "id": "Status",
-      "namespace": "hosting.PrivateDatabase.Configuration",
       "description": "Configuration status",
       "enum": [
         "applied",
         "updating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "hosting.PrivateDatabase.Configuration"
     },
     "hosting.PrivateDatabase.Database.Extension.Status": {
-      "id": "Status",
-      "namespace": "hosting.PrivateDatabase.Database.Extension",
       "description": "Extension status",
       "enum": [
         "disabled",
@@ -2302,42 +2301,42 @@ export const schema: Schema = {
         "enabled",
         "enabling"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "hosting.PrivateDatabase.Database.Extension"
     },
     "hosting.PrivateDatabase.Database.User": {
+      "description": "User granted to a database",
       "id": "User",
       "namespace": "hosting.PrivateDatabase.Database",
-      "description": "User granted to a database",
       "properties": {
         "grantId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The grantId associated for this databaseName and this userName",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "grantType": {
-          "type": "hosting.PrivateDatabase.grant.GrantEnum",
-          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "User's rights on this database",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.PrivateDatabase.grant.GrantEnum"
         },
         "userName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "User's name granted on this database",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "hosting.PrivateDatabase.DatacenterEnum": {
-      "id": "DatacenterEnum",
-      "namespace": "hosting.PrivateDatabase",
       "description": "Available datacenters",
       "enum": [
         "bhs1",
@@ -2345,75 +2344,75 @@ export const schema: Schema = {
         "gra2",
         "p19"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DatacenterEnum",
+      "namespace": "hosting.PrivateDatabase"
     },
     "hosting.PrivateDatabase.GraphEndpoint": {
+      "description": "Parameters required to query metrics from OpenTSDB",
       "id": "GraphEndpoint",
       "namespace": "hosting.PrivateDatabase",
-      "description": "Parameters required to query metrics from OpenTSDB",
       "properties": {
         "host": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The OpenTSDB host",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "readToken": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A read-only token",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "readTokenId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "A read-only token ID",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "hosting.PrivateDatabase.OfferEnum": {
-      "id": "OfferEnum",
-      "namespace": "hosting.PrivateDatabase",
       "description": "Available offers",
       "enum": [
         "classic",
         "public"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "OfferEnum",
+      "namespace": "hosting.PrivateDatabase"
     },
     "hosting.PrivateDatabase.Oom": {
+      "description": "OOM kill informations",
       "id": "Oom",
       "namespace": "hosting.PrivateDatabase",
-      "description": "OOM kill informations",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Date of the OOM kill",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "sizeReached": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Memory size reached",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "hosting.PrivateDatabase.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "hosting.PrivateDatabase",
       "description": "Private database state",
       "enum": [
         "detached",
@@ -2423,34 +2422,34 @@ export const schema: Schema = {
         "stopPending",
         "stopped"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "hosting.PrivateDatabase"
     },
     "hosting.PrivateDatabase.TemporaryLogsLink": {
+      "description": "Temporary url informations",
       "id": "TemporaryLogsLink",
       "namespace": "hosting.PrivateDatabase",
-      "description": "Temporary url informations",
       "properties": {
         "expirationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Temporary url expiration date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Temporary url",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "hosting.PrivateDatabase.TypeEnum": {
-      "id": "TypeEnum",
-      "namespace": "hosting.PrivateDatabase",
       "description": "Private database type",
       "enum": [
         "mariadb",
@@ -2459,42 +2458,42 @@ export const schema: Schema = {
         "postgresql",
         "redis"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "hosting.PrivateDatabase"
     },
     "hosting.PrivateDatabase.User.Database": {
+      "description": "Databases linked to an user",
       "id": "Database",
       "namespace": "hosting.PrivateDatabase.User",
-      "description": "Databases linked to an user",
       "properties": {
         "databaseName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Database's name linked to this user",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "grantId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The grantId associated to this userName for this databaseName",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "grantType": {
-          "type": "hosting.PrivateDatabase.grant.GrantEnum",
-          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Grant of this user for this database",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "hosting.PrivateDatabase.grant.GrantEnum"
         }
       }
     },
     "hosting.PrivateDatabase.Whitelist.Status": {
-      "id": "Status",
-      "namespace": "hosting.PrivateDatabase.Whitelist",
       "description": "Whitelist status",
       "enum": [
         "created",
@@ -2502,11 +2501,11 @@ export const schema: Schema = {
         "deleting",
         "updating"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "hosting.PrivateDatabase.Whitelist"
     },
     "hosting.PrivateDatabase.grant.GrantEnum": {
-      "id": "GrantEnum",
-      "namespace": "hosting.PrivateDatabase.grant",
       "description": "Grant on a database for a specific user",
       "enum": [
         "admin",
@@ -2514,11 +2513,11 @@ export const schema: Schema = {
         "ro",
         "rw"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "GrantEnum",
+      "namespace": "hosting.PrivateDatabase.grant"
     },
     "hosting.PrivateDatabase.task.FunctionEnum": {
-      "id": "FunctionEnum",
-      "namespace": "hosting.PrivateDatabase.task",
       "description": "Task's function",
       "enum": [
         "boot",
@@ -2557,11 +2556,11 @@ export const schema: Schema = {
         "whitelist/delete",
         "whitelist/update"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "FunctionEnum",
+      "namespace": "hosting.PrivateDatabase.task"
     },
     "hosting.PrivateDatabase.task.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "hosting.PrivateDatabase.task",
       "description": "Task's status",
       "enum": [
         "cancelled",
@@ -2571,704 +2570,704 @@ export const schema: Schema = {
         "init",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "hosting.PrivateDatabase.task"
     },
     "hosting.privateDatabase.Configuration": {
+      "description": "Configuration",
       "id": "Configuration",
       "namespace": "hosting.privateDatabase",
-      "description": "Configuration",
       "properties": {
         "details": {
-          "type": "hosting.PrivateDatabase.Configuration.Detail[]",
-          "fullType": "hosting.PrivateDatabase.Configuration.Detail[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Configuration full details",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.Configuration.Detail[]",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.Configuration.Detail[]"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Last update date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "hosting.PrivateDatabase.Configuration.Status",
-          "fullType": "hosting.PrivateDatabase.Configuration.Status",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Configuration status",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.Configuration.Status",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.Configuration.Status"
         },
         "taskId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Configuration linked task id",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "hosting.privateDatabase.Service": {
+      "description": "Private database",
       "id": "Service",
       "namespace": "hosting.privateDatabase",
-      "description": "Private database",
       "properties": {
         "capabilities": {
-          "type": "hosting.PrivateDatabase.Capability[]",
-          "fullType": "hosting.PrivateDatabase.Capability[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Private database capabilities",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.Capability[]",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.Capability[]"
         },
         "cpu": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Number of cpu on your private database",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "datacenter": {
-          "type": "hosting.PrivateDatabase.DatacenterEnum",
-          "fullType": "hosting.PrivateDatabase.DatacenterEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Datacenter where this private database is located",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.DatacenterEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.DatacenterEnum"
         },
         "displayName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Set the name displayed in customer panel for your private database (max 50 chars)",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "graphEndpoint": {
-          "type": "hosting.PrivateDatabase.GraphEndpoint",
-          "fullType": "hosting.PrivateDatabase.GraphEndpoint",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Parameters required to query metrics from OpenTSDB",
-          "required": false
+          "fullType": "hosting.PrivateDatabase.GraphEndpoint",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.PrivateDatabase.GraphEndpoint"
         },
         "guiURL": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "URL for the graphical user interface",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "hostname": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Private database hostname",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "hostnameFtp": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Private database ftp hostname",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "infrastructure": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Infrastructure where service was stored",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "ip": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Private database ip",
-          "required": false
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
         },
         "lastCheck": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Date of the last data synchronization",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "offer": {
-          "type": "hosting.PrivateDatabase.OfferEnum",
-          "fullType": "hosting.PrivateDatabase.OfferEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of the private database offer",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.OfferEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.OfferEnum"
         },
         "port": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Private database service port",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "portFtp": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Private database ftp port",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "quotaSize": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Space allowed on your private database",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "quotaUsed": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Total space used on your private database",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "ram": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Amount of ram on your private database",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "server": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Private database server name",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "hosting.PrivateDatabase.StateEnum",
-          "fullType": "hosting.PrivateDatabase.StateEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Private database state",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.StateEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.StateEnum"
         },
         "tlsCa": {
-          "type": "text",
-          "fullType": "text",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Return the TLS certificate authority used by the private database",
-          "required": false
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
         },
         "type": {
-          "type": "hosting.PrivateDatabase.TypeEnum",
-          "fullType": "hosting.PrivateDatabase.TypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Private database type",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.TypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.TypeEnum"
         },
         "version": {
-          "type": "hosting.PrivateDatabase.AvailableVersionEnum",
-          "fullType": "hosting.PrivateDatabase.AvailableVersionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Private database version",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.AvailableVersionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.AvailableVersionEnum"
         },
         "versionLabel": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Private database version label",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "versionNumber": {
-          "type": "double",
-          "fullType": "double",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Private database version number",
-          "required": true
+          "fullType": "double",
+          "readOnly": true,
+          "required": true,
+          "type": "double"
         }
       }
     },
     "hosting.privateDatabase.database": {
+      "description": "Databases",
       "id": "database",
       "namespace": "hosting.privateDatabase",
-      "description": "Databases",
       "properties": {
         "backupTime": {
-          "type": "time",
-          "fullType": "time",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Time of the next backup ( every day )",
-          "required": false
+          "fullType": "time",
+          "readOnly": true,
+          "required": false,
+          "type": "time"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of the database",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "databaseName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Database name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "quotaUsed": {
-          "type": "complexType.UnitAndValue<long>",
-          "fullType": "complexType.UnitAndValue<long>",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Space used by the database",
-          "required": true
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": true,
+          "type": "complexType.UnitAndValue<long>"
         },
         "users": {
-          "type": "hosting.PrivateDatabase.Database.User[]",
-          "fullType": "hosting.PrivateDatabase.Database.User[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Users granted to this database",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.Database.User[]",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.Database.User[]"
         }
       }
     },
     "hosting.privateDatabase.database.dump": {
+      "description": "Dump",
       "id": "dump",
       "namespace": "hosting.privateDatabase.database",
-      "description": "Dump",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of the dump",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "databaseName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dump of this database name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "deletionDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Automatic deletion date of the dump",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dump id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dump url access",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "hosting.privateDatabase.database.extension": {
+      "description": "Databases extension",
       "id": "extension",
       "namespace": "hosting.privateDatabase.database",
-      "description": "Databases extension",
       "properties": {
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Extension description",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "extensionName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Extension name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "requiredExtensions": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of required extensions to enable this one",
-          "required": true
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": true,
+          "type": "string[]"
         },
         "status": {
-          "type": "hosting.PrivateDatabase.Database.Extension.Status",
-          "fullType": "hosting.PrivateDatabase.Database.Extension.Status",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Extension status",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.Database.Extension.Status",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.Database.Extension.Status"
         }
       }
     },
     "hosting.privateDatabase.dump": {
+      "description": "Dump",
       "id": "dump",
       "namespace": "hosting.privateDatabase",
-      "description": "Dump",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of the dump",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "databaseName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dump of this database name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "deletionDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Automatic deletion date of the dump",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "dumpId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dump id",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "orphan": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dump orphan flag ( true if database does not exists )",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "url": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Dump url access",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "hosting.privateDatabase.grant": {
+      "description": "Grants",
       "id": "grant",
       "namespace": "hosting.privateDatabase",
-      "description": "Grants",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of the grant",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "databaseName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Database name where grant is set",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "grant": {
-          "type": "hosting.PrivateDatabase.grant.GrantEnum",
-          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Grant set",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.grant.GrantEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.grant.GrantEnum"
         }
       }
     },
     "hosting.privateDatabase.task": {
+      "description": "Tasks",
       "id": "task",
       "namespace": "hosting.privateDatabase",
-      "description": "Tasks",
       "properties": {
         "databaseName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Database name on which the task is working",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "doneDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Completion date",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "dumpId": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "DumpId on which the task is working",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "function": {
-          "type": "hosting.PrivateDatabase.task.FunctionEnum",
-          "fullType": "hosting.PrivateDatabase.task.FunctionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Function name",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.task.FunctionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.task.FunctionEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The id of the task",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last update",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "startDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task Creation date",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "hosting.PrivateDatabase.task.StatusEnum",
-          "fullType": "hosting.PrivateDatabase.task.StatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Task status",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.task.StatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.task.StatusEnum"
         },
         "userName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "User name on which the task is working",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "hosting.privateDatabase.user": {
+      "description": "Users",
       "id": "user",
       "namespace": "hosting.privateDatabase",
-      "description": "Users",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of the user",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "databases": {
-          "type": "hosting.PrivateDatabase.User.Database[]",
-          "fullType": "hosting.PrivateDatabase.User.Database[]",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Databases granted for this user",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.User.Database[]",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.User.Database[]"
         },
         "userName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "User name used to connect to your databases",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "hosting.privateDatabase.whitelist": {
+      "description": "IP whitelisting for your instance",
       "id": "whitelist",
       "namespace": "hosting.privateDatabase",
-      "description": "IP whitelisting for your instance",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of this whitelist",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "ip": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The whitelisted IP in your instance",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         },
         "lastUpdate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The last update date of this whitelist",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Custom name for your Whitelisted IP",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "service": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Authorize this IP to access service port",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "sftp": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Authorize this IP to access sftp port",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "status": {
-          "type": "hosting.PrivateDatabase.Whitelist.Status",
-          "fullType": "hosting.PrivateDatabase.Whitelist.Status",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Whitelist status",
-          "required": true
+          "fullType": "hosting.PrivateDatabase.Whitelist.Status",
+          "readOnly": true,
+          "required": true,
+          "type": "hosting.PrivateDatabase.Whitelist.Status"
         },
         "taskId": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "The id of the task working on this object",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -3279,11 +3278,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -3291,11 +3290,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -3304,11 +3303,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -3326,108 +3325,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/hosting/privateDatabase"
 }

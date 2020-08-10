@@ -1,1038 +1,1037 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/router.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/router",
+      "description": "Operations about the ROUTER service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the ROUTER service"
+      "path": "/router"
     },
     {
-      "path": "/router/{serviceName}",
+      "description": "Router",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.Router",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "router.Router"
         }
       ],
-      "description": "Router"
+      "path": "/router/{serviceName}"
     },
     {
-      "path": "/router/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "token",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
-            },
-            {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The termination token sent by mail to the admin contact",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/router/{serviceName}/confirmTermination"
     },
     {
-      "path": "/router/{serviceName}/network",
+      "description": "List the router.Network objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Networks mounted on this Router",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "ip[]",
-          "noAuthentication": false,
-          "description": "Networks mounted on this Router"
+          "responseType": "ip[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a network to your router",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "description",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "ipNet",
-              "dataType": "ip",
-              "paramType": "body",
-              "fullType": "ip",
-              "required": true,
-              "description": "Gateway IP / CIDR Netmask, (e.g. 192.168.1.254/24)"
-            },
-            {
-              "name": "vlanTag",
               "dataType": "long",
-              "paramType": "body",
+              "description": "Vlan tag from range 1 to 4094 or NULL for untagged traffic",
               "fullType": "long",
-              "required": false,
-              "description": "Vlan tag from range 1 to 4094 or NULL for untagged traffic"
+              "name": "vlanTag",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "description",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip",
+              "description": "Gateway IP / CIDR Netmask, (e.g. 192.168.1.254/24)",
+              "fullType": "ip",
+              "name": "ipNet",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.Task",
-          "noAuthentication": false,
-          "description": "Add a network to your router"
+          "responseType": "router.Task"
         }
       ],
-      "description": "List the router.Network objects"
+      "path": "/router/{serviceName}/network"
     },
     {
-      "path": "/router/{serviceName}/network/{ipNet}",
+      "description": "Network",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove this network from your router",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipNet",
               "dataType": "ipInterface",
-              "paramType": "path",
+              "description": "Ip net",
               "fullType": "ipInterface",
-              "required": true,
-              "description": "Ip net"
+              "name": "ipNet",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.Task",
-          "noAuthentication": false,
-          "description": "Remove this network from your router"
+          "responseType": "router.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipNet",
               "dataType": "ipInterface",
-              "paramType": "path",
+              "description": "Ip net",
               "fullType": "ipInterface",
-              "required": true,
-              "description": "Ip net"
+              "name": "ipNet",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.Network",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "router.Network"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "router.Network",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "router.Network",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "ipNet",
               "dataType": "ipInterface",
-              "paramType": "path",
+              "description": "Ip net",
               "fullType": "ipInterface",
-              "required": true,
-              "description": "Ip net"
+              "name": "ipNet",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Network"
+      "path": "/router/{serviceName}/network/{ipNet}"
     },
     {
-      "path": "/router/{serviceName}/privateLink",
+      "description": "List the router.PrivateLink objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Private links set up on this router",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Private links set up on this router"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a new Private Link to your Router service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "body",
+              "description": "serviceName of the router service you want to create a private link with",
               "fullType": "string",
-              "required": true,
-              "description": "Your memory-friendly name for this private link"
-            },
-            {
               "name": "peerServiceName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "serviceName of the router service you want to create a private link with"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Your memory-friendly name for this private link",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Add a new Private Link to your Router service"
+          "responseType": "string"
         }
       ],
-      "description": "List the router.PrivateLink objects"
+      "path": "/router/{serviceName}/privateLink"
     },
     {
-      "path": "/router/{serviceName}/privateLink/{peerServiceName}",
+      "description": "Private Link to another service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Remove an existing Private Link from your Router service",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "peerServiceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Peer service name",
               "fullType": "string",
-              "required": true,
-              "description": "Peer service name"
+              "name": "peerServiceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.Task",
-          "noAuthentication": false,
-          "description": "Remove an existing Private Link from your Router service"
+          "responseType": "router.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "peerServiceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Peer service name",
               "fullType": "string",
-              "required": true,
-              "description": "Peer service name"
+              "name": "peerServiceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.PrivateLink",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "router.PrivateLink"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "router.PrivateLink",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "router.PrivateLink",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "peerServiceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Peer service name",
               "fullType": "string",
-              "required": true,
-              "description": "Peer service name"
+              "name": "peerServiceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Private Link to another service"
+      "path": "/router/{serviceName}/privateLink/{peerServiceName}"
     },
     {
-      "path": "/router/{serviceName}/privateLink/{peerServiceName}/request",
+      "description": "Received Private Link requests",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "peerServiceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Peer service name",
               "fullType": "string",
-              "required": true,
-              "description": "Peer service name"
+              "name": "peerServiceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.PrivateLinkRequest",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "router.PrivateLinkRequest"
         }
       ],
-      "description": "Received Private Link requests"
+      "path": "/router/{serviceName}/privateLink/{peerServiceName}/request"
     },
     {
-      "path": "/router/{serviceName}/privateLink/{peerServiceName}/request/manage",
+      "description": "manage operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Accept, reject or cancel a pending request",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "action",
               "dataType": "router.PrivLinkReqActionEnum",
-              "paramType": "body",
+              "description": "",
               "fullType": "router.PrivLinkReqActionEnum",
-              "required": true,
-              "description": ""
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "peerServiceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Peer service name"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Accept, reject or cancel a pending request"
-        }
-      ],
-      "description": "manage operations"
-    },
-    {
-      "path": "/router/{serviceName}/privateLink/{peerServiceName}/route",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "peerServiceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Peer service name"
-            }
-          ],
-          "responseType": "ipBlock[]",
-          "noAuthentication": false,
-          "description": "Routes set up in a Private Link"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "network",
-              "dataType": "ipBlock",
+              "name": "action",
               "paramType": "body",
-              "fullType": "ipBlock",
-              "required": true,
-              "description": "Network to be routed outside your router (CIDR format, e.g. 10.1.0.0./16"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
-              "name": "peerServiceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Peer service name",
               "fullType": "string",
-              "required": true,
-              "description": "Peer service name"
+              "name": "peerServiceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.Task",
-          "noAuthentication": false,
-          "description": "Add a new outgoing route to your router"
+          "responseType": "string"
         }
       ],
-      "description": "List the router.PrivateLinkRoute objects"
+      "path": "/router/{serviceName}/privateLink/{peerServiceName}/request/manage"
     },
     {
-      "path": "/router/{serviceName}/privateLink/{peerServiceName}/route/{network}",
+      "description": "List the router.PrivateLinkRoute objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Routes set up in a Private Link",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Peer service name",
+              "fullType": "string",
+              "name": "peerServiceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a new outgoing route to your router",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Network to be routed outside your router (CIDR format, e.g. 10.1.0.0./16",
+              "fullType": "ipBlock",
+              "name": "network",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Peer service name",
+              "fullType": "string",
+              "name": "peerServiceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "router.Task"
+        }
+      ],
+      "path": "/router/{serviceName}/privateLink/{peerServiceName}/route"
+    },
+    {
+      "description": "Outgoing routes configured inside a Private Link",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete an existing route from your router",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Peer service name",
+              "fullType": "string",
               "name": "peerServiceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Peer service name"
+              "required": true
             },
             {
-              "name": "network",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Network",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Network"
+              "name": "network",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.Task",
-          "noAuthentication": false,
-          "description": "Delete an existing route from your router"
+          "responseType": "router.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Peer service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "peerServiceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Peer service name"
+              "required": true
             },
             {
-              "name": "network",
               "dataType": "ipBlock",
-              "paramType": "path",
+              "description": "Network",
               "fullType": "ipBlock",
-              "required": true,
-              "description": "Network"
+              "name": "network",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.PrivateLinkRoute",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "router.PrivateLinkRoute"
         }
       ],
-      "description": "Outgoing routes configured inside a Private Link"
+      "path": "/router/{serviceName}/privateLink/{peerServiceName}/route/{network}"
     },
     {
-      "path": "/router/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/router/{serviceName}/serviceInfos"
     },
     {
-      "path": "/router/{serviceName}/task",
+      "description": "List the router.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Tasks for this Router",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "status",
-              "dataType": "router.TaskStatusEnum",
-              "paramType": "query",
-              "fullType": "router.TaskStatusEnum",
-              "required": false,
-              "description": "Filter the value of status property (=)"
-            },
-            {
-              "name": "function",
               "dataType": "router.TaskFunctionEnum",
-              "paramType": "query",
+              "description": "Filter the value of function property (=)",
               "fullType": "router.TaskFunctionEnum",
-              "required": false,
-              "description": "Filter the value of function property (=)"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Tasks for this Router"
-        }
-      ],
-      "description": "List the router.Task objects"
-    },
-    {
-      "path": "/router/{serviceName}/task/{id}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "function",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "dataType": "router.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "router.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "router.Task",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "long[]"
         }
       ],
-      "description": "Task"
+      "path": "/router/{serviceName}/task"
     },
     {
-      "path": "/router/{serviceName}/terminate",
+      "description": "Task",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
-        }
-      ],
-      "description": "Terminate your service"
-    },
-    {
-      "path": "/router/{serviceName}/vpn",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
+          "responseType": "router.Task"
+        }
+      ],
+      "path": "/router/{serviceName}/task/{id}"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
           "noAuthentication": false,
-          "description": "VPN associated with this Router"
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/router/{serviceName}/terminate"
+    },
+    {
+      "description": "List the router.Vpn objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "VPN associated with this Router",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add a VPN to your router",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serverPrivNet",
-              "dataType": "ip",
-              "paramType": "body",
-              "fullType": "ip",
-              "required": true,
-              "description": "Server's private network"
-            },
-            {
-              "name": "psk",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Your PSK key",
               "fullType": "password",
-              "required": true,
-              "description": "Your PSK key"
+              "name": "psk",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "ip",
+              "description": "Client's private network",
+              "fullType": "ip",
               "name": "clientPrivNet",
-              "dataType": "ip",
               "paramType": "body",
-              "fullType": "ip",
-              "required": true,
-              "description": "Client's private network"
+              "required": true
             },
             {
+              "dataType": "ip",
+              "description": "IP you will be connecting from / NULL (allow all)",
+              "fullType": "ip",
               "name": "clientIp",
-              "dataType": "ip",
               "paramType": "body",
-              "fullType": "ip",
-              "required": false,
-              "description": "IP you will be connecting from / NULL (allow all)"
+              "required": false
             },
             {
-              "name": "serviceName",
+              "dataType": "ip",
+              "description": "Server's private network",
+              "fullType": "ip",
+              "name": "serverPrivNet",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.Vpn",
-          "noAuthentication": false,
-          "description": "Add a VPN to your router"
+          "responseType": "router.Vpn"
         }
       ],
-      "description": "List the router.Vpn objects"
+      "path": "/router/{serviceName}/vpn"
     },
     {
-      "path": "/router/{serviceName}/vpn/{id}",
+      "description": "Virtual Private Network",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete a VPN from your router",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.Task",
-          "noAuthentication": false,
-          "description": "Delete a VPN from your router"
+          "responseType": "router.Task"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.Vpn",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "router.Vpn"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "router.Vpn",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "router.Vpn",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Virtual Private Network"
+      "path": "/router/{serviceName}/vpn/{id}"
     },
     {
-      "path": "/router/{serviceName}/vpn/{id}/setPsk",
+      "description": "setPsk operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change your VPN's PSK",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "psk",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Your PSK key",
               "fullType": "password",
-              "required": true,
-              "description": "Your PSK key"
+              "name": "psk",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "router.Task",
-          "noAuthentication": false,
-          "description": "Change your VPN's PSK"
+          "responseType": "router.Task"
         }
       ],
-      "description": "setPsk operations"
+      "path": "/router/{serviceName}/vpn/{id}/setPsk"
     }
   ],
-  "resourcePath": "/router",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "router.IpStatusEnum": {
-      "id": "IpStatusEnum",
-      "namespace": "router",
       "description": "All states this object can be in",
       "enum": [
         "blacklisted",
@@ -1044,72 +1043,72 @@ export const schema: Schema = {
         "removing",
         "suspended"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "IpStatusEnum",
+      "namespace": "router"
     },
     "router.Network": {
+      "description": "Network",
       "id": "Network",
       "namespace": "router",
-      "description": "Network",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
+          "fullType": "string",
           "readOnly": false,
-          "required": false
+          "required": false,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "ipNet": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Gateway IP / CIDR Netmask",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "status": {
-          "type": "router.IpStatusEnum",
-          "fullType": "router.IpStatusEnum",
           "canBeNull": false,
+          "fullType": "router.IpStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "router.IpStatusEnum"
         },
         "vlanTag": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
+          "fullType": "long",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "long"
         }
       }
     },
     "router.PrivLinkReqActionEnum": {
-      "id": "PrivLinkReqActionEnum",
-      "namespace": "router",
       "description": "Action to be taken against the Private Link request",
       "enum": [
         "accept",
         "cancel",
         "reject"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PrivLinkReqActionEnum",
+      "namespace": "router"
     },
     "router.PrivLinkReqStatusEnum": {
-      "id": "PrivLinkReqStatusEnum",
-      "namespace": "router",
       "description": "Request status of this private link (all links have to be accepted before being created)",
       "enum": [
         "accepted",
@@ -1118,141 +1117,141 @@ export const schema: Schema = {
         "pending",
         "rejected"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "PrivLinkReqStatusEnum",
+      "namespace": "router"
     },
     "router.PrivateLink": {
+      "description": "Private Link to another service",
       "id": "PrivateLink",
       "namespace": "router",
-      "description": "Private Link to another service",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Your memory-friendly name of this private link",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "peerServiceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service name of the other side of this link",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "router.StatusEnum",
-          "fullType": "router.StatusEnum",
           "canBeNull": false,
+          "fullType": "router.StatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "router.StatusEnum"
         }
       }
     },
     "router.PrivateLinkRequest": {
+      "description": "Received Private Link requests",
       "id": "PrivateLinkRequest",
       "namespace": "router",
-      "description": "Received Private Link requests",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "status": {
-          "type": "router.PrivLinkReqStatusEnum",
-          "fullType": "router.PrivLinkReqStatusEnum",
           "canBeNull": false,
+          "fullType": "router.PrivLinkReqStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "router.PrivLinkReqStatusEnum"
         }
       }
     },
     "router.PrivateLinkRoute": {
+      "description": "Outgoing routes configured inside a Private Link",
       "id": "PrivateLinkRoute",
       "namespace": "router",
-      "description": "Outgoing routes configured inside a Private Link",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "network": {
-          "type": "ipBlock",
-          "fullType": "ipBlock",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Network allowed to be routed outside",
-          "required": true
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": true,
+          "type": "ipBlock"
         },
         "status": {
-          "type": "router.StatusEnum",
-          "fullType": "router.StatusEnum",
           "canBeNull": false,
+          "fullType": "router.StatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "router.StatusEnum"
         }
       }
     },
     "router.Router": {
+      "description": "Router",
       "id": "Router",
       "namespace": "router",
-      "description": "Router",
       "properties": {
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "service": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "The internal name of your Router offer",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "router.StatusEnum",
-          "fullType": "router.StatusEnum",
           "canBeNull": false,
+          "fullType": "router.StatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "router.StatusEnum"
         }
       }
     },
     "router.StatusEnum": {
-      "id": "StatusEnum",
-      "namespace": "router",
       "description": "All states this object can be in",
       "enum": [
         "creating",
@@ -1262,53 +1261,53 @@ export const schema: Schema = {
         "removing",
         "suspended"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "router"
     },
     "router.Task": {
+      "description": "Task",
       "id": "Task",
       "namespace": "router",
-      "description": "Task",
       "properties": {
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "finishDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "datetime"
         },
         "function": {
-          "type": "router.TaskFunctionEnum",
-          "fullType": "router.TaskFunctionEnum",
           "canBeNull": false,
+          "fullType": "router.TaskFunctionEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "router.TaskFunctionEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "status": {
-          "type": "router.TaskStatusEnum",
-          "fullType": "router.TaskStatusEnum",
           "canBeNull": false,
+          "fullType": "router.TaskStatusEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "router.TaskStatusEnum"
         }
       }
     },
     "router.TaskFunctionEnum": {
-      "id": "TaskFunctionEnum",
-      "namespace": "router",
       "description": "All executable types of tasks",
       "enum": [
         "addDnat",
@@ -1338,11 +1337,11 @@ export const schema: Schema = {
         "vpnSetSecrets",
         "vpnSetSecretsMaster"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskFunctionEnum",
+      "namespace": "router"
     },
     "router.TaskStatusEnum": {
-      "id": "TaskStatusEnum",
-      "namespace": "router",
       "description": "All states a Task can be in",
       "enum": [
         "cancelled",
@@ -1351,104 +1350,104 @@ export const schema: Schema = {
         "error",
         "todo"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TaskStatusEnum",
+      "namespace": "router"
     },
     "router.Vpn": {
+      "description": "Virtual Private Network",
       "id": "Vpn",
       "namespace": "router",
-      "description": "Virtual Private Network",
       "properties": {
         "clientIp": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": true,
-          "readOnly": false,
           "description": "IP you will be connecting from / NULL (allow all)",
-          "required": false
+          "fullType": "ip",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
         },
         "clientPrivNet": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Client's private network",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "serverIp": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Your VPN server IP",
-          "required": true
+          "fullType": "ip",
+          "readOnly": true,
+          "required": true,
+          "type": "ip"
         },
         "serverPrivNet": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Server's private network",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1459,11 +1458,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1471,11 +1470,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -1484,11 +1483,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -1506,108 +1505,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/router"
 }

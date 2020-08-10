@@ -1,395 +1,426 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.soyoustart.com:443/1.0/license/virtuozzo.json
+
 export const schema: Schema = {
+  "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Confirm termination of your service",
-      "path": "/license/virtuozzo/{serviceName}/confirmTermination",
+      "description": "Get the orderable Virtuozzo versions",
       "operations": [
         {
-          "responseType": "string",
           "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "httpMethod": "POST",
+          "description": "Get the orderable Virtuozzo versions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
           "resellerOnly": false,
-          "description": "Confirm termination of your service",
+          "responseFullType": "license.VirtuozzoOrderConfiguration[]",
+          "responseType": "license.VirtuozzoOrderConfiguration[]"
+        }
+      ],
+      "path": "/license/virtuozzo/orderableVersions"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
           "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/license/virtuozzo/{serviceName}/terminate"
+    },
+    {
+      "description": "Confirm termination of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Confirm termination of your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
               "name": "futureUse",
               "paramType": "body",
-              "fullType": "service.TerminationFutureUseEnum",
-              "description": "What next after your termination request",
               "required": false
             },
             {
-              "fullType": "service.TerminationReasonEnum",
-              "paramType": "body",
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
-            },
-            {
-              "name": "commentary",
-              "dataType": "string",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
               "paramType": "body",
-              "fullType": "string",
-              "description": "Commentary about your termination request",
               "required": false
             },
             {
-              "required": true,
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "The termination token sent by mail to the admin contact",
               "fullType": "string",
+              "name": "token",
               "paramType": "body",
-              "dataType": "string",
-              "name": "token"
-            },
-            {
-              "required": true,
-              "description": "The name of your Virtuozzo license",
-              "fullType": "string",
-              "paramType": "path",
-              "dataType": "string",
-              "name": "serviceName"
-            }
-          ],
-          "noAuthentication": false
-        }
-      ]
-    },
-    {
-      "path": "/license/virtuozzo/{serviceName}/canLicenseBeMovedTo",
-      "operations": [
-        {
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "name": "destinationIp",
-              "paramType": "query",
-              "fullType": "ipv4",
-              "description": "The Ip on which you want to move this license",
               "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
               "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
-          "responseFullType": "license.ChangeIpStatus",
-          "noAuthentication": false,
-          "responseType": "license.ChangeIpStatus",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "httpMethod": "GET",
           "resellerOnly": false,
-          "description": "Will tell if the ip can accept the license"
+          "responseFullType": "string",
+          "responseType": "string"
         }
       ],
-      "description": "canLicenseBeMovedTo operations"
+      "path": "/license/virtuozzo/{serviceName}/confirmTermination"
     },
     {
-      "operations": [
-        {
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "description": "The name of your Virtuozzo license",
-              "required": true,
-              "dataType": "string",
-              "name": "serviceName",
-              "fullType": "string",
-              "paramType": "path"
-            }
-          ],
-          "responseFullType": "services.Service",
-          "description": "Get this object properties",
-          "resellerOnly": false,
-          "httpMethod": "GET",
-          "responseType": "services.Service",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          }
-        },
-        {
-          "noAuthentication": false,
-          "responseFullType": "void",
-          "parameters": [
-            {
-              "paramType": "body",
-              "fullType": "services.Service",
-              "dataType": "services.Service",
-              "name": null,
-              "required": true,
-              "description": "New object properties"
-            },
-            {
-              "description": "The name of your Virtuozzo license",
-              "required": true,
-              "name": "serviceName",
-              "dataType": "string",
-              "fullType": "string",
-              "paramType": "path"
-            }
-          ],
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "responseType": "void",
-          "description": "Alter this object properties",
-          "resellerOnly": false,
-          "httpMethod": "PUT"
-        }
-      ],
-      "path": "/license/virtuozzo/{serviceName}/serviceInfos",
-      "description": "Details about a Service"
-    },
-    {
+      "description": "List the license.Task objects",
       "operations": [
         {
           "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "responseType": "long[]",
-          "httpMethod": "GET",
-          "resellerOnly": false,
           "description": "tasks linked to this license",
-          "responseFullType": "long[]",
+          "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "status",
               "dataType": "license.TaskStateEnum",
-              "fullType": "license.TaskStateEnum",
-              "paramType": "query",
               "description": "Filter the value of status property (=)",
+              "fullType": "license.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
               "required": false
             },
             {
-              "description": "Filter the value of action property (=)",
-              "required": false,
-              "name": "action",
               "dataType": "license.ActionType",
+              "description": "Filter the value of action property (=)",
               "fullType": "license.ActionType",
-              "paramType": "query"
+              "name": "action",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
-              "name": "serviceName",
-              "fullType": "string",
-              "paramType": "path",
               "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
-          "noAuthentication": false
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
         }
       ],
-      "path": "/license/virtuozzo/{serviceName}/tasks",
-      "description": "List the license.Task objects"
+      "path": "/license/virtuozzo/{serviceName}/tasks"
     },
     {
       "description": "licenses Todos",
-      "path": "/license/virtuozzo/{serviceName}/tasks/{taskId}",
       "operations": [
         {
-          "httpMethod": "GET",
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Get this object properties",
-          "resellerOnly": false,
-          "responseType": "license.Task",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "parameters": [
-            {
-              "required": true,
-              "description": "The name of your Virtuozzo license",
-              "paramType": "path",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "serviceName"
-            },
-            {
-              "description": "This Task id",
-              "required": true,
-              "name": "taskId",
-              "dataType": "long",
-              "fullType": "long",
-              "paramType": "path"
-            }
-          ],
-          "responseFullType": "license.Task",
-          "noAuthentication": false
-        }
-      ]
-    },
-    {
-      "path": "/license/virtuozzo/{serviceName}/terminate",
-      "operations": [
-        {
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "responseType": "string",
-          "httpMethod": "POST",
-          "description": "Terminate your service",
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "parameters": [
-            {
-              "paramType": "path",
-              "fullType": "string",
-              "name": "serviceName",
-              "dataType": "string",
-              "required": true,
-              "description": "The name of your Virtuozzo license"
-            }
-          ],
-          "noAuthentication": false
-        }
-      ],
-      "description": "Terminate your service"
-    },
-    {
-      "description": "changeIp operations",
-      "operations": [
-        {
-          "description": "Move this license to another Ip",
-          "resellerOnly": false,
-          "httpMethod": "POST",
-          "responseType": "license.Task",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
+          "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "paramType": "body",
-              "fullType": "ipv4",
-              "name": "destinationIp",
-              "dataType": "ipv4",
-              "required": true,
-              "description": "The Ip on which you want to move this license"
-            },
-            {
-              "required": true,
+              "dataType": "string",
               "description": "The name of your Virtuozzo license",
-              "paramType": "path",
               "fullType": "string",
               "name": "serviceName",
-              "dataType": "string"
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This Task id",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseFullType": "license.Task"
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
         }
       ],
-      "path": "/license/virtuozzo/{serviceName}/changeIp"
+      "path": "/license/virtuozzo/{serviceName}/tasks/{taskId}"
     },
     {
       "description": "Your Virtuozzo license",
       "operations": [
         {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "responseFullType": "license.virtuozzo.Virtuozzo",
           "parameters": [
             {
-              "required": true,
+              "dataType": "string",
               "description": "The name of your Virtuozzo license",
-              "paramType": "path",
               "fullType": "string",
               "name": "serviceName",
-              "dataType": "string"
+              "paramType": "path",
+              "required": true
             }
           ],
           "resellerOnly": false,
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
+          "responseFullType": "license.virtuozzo.Virtuozzo",
           "responseType": "license.virtuozzo.Virtuozzo"
         },
         {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
-              "paramType": "body",
-              "fullType": "license.virtuozzo.Virtuozzo",
               "dataType": "license.virtuozzo.Virtuozzo",
+              "description": "New object properties",
+              "fullType": "license.virtuozzo.Virtuozzo",
               "name": null,
-              "required": true,
-              "description": "New object properties"
+              "paramType": "body",
+              "required": true
             },
             {
-              "paramType": "path",
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
               "fullType": "string",
               "name": "serviceName",
-              "dataType": "string",
-              "required": true,
-              "description": "The name of your Virtuozzo license"
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseFullType": "void",
-          "noAuthentication": false,
-          "responseType": "void",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "httpMethod": "PUT",
           "resellerOnly": false,
-          "description": "Alter this object properties"
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}"
     },
     {
+      "description": "changeIp operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Move this license to another Ip",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "The Ip on which you want to move this license",
+              "fullType": "ipv4",
+              "name": "destinationIp",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
+        }
+      ],
+      "path": "/license/virtuozzo/{serviceName}/changeIp"
+    },
+    {
+      "description": "canLicenseBeMovedTo operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Will tell if the ip can accept the license",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "The Ip on which you want to move this license",
+              "fullType": "ipv4",
+              "name": "destinationIp",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.ChangeIpStatus",
+          "responseType": "license.ChangeIpStatus"
+        }
+      ],
+      "path": "/license/virtuozzo/{serviceName}/canLicenseBeMovedTo"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "services.Service",
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/license/virtuozzo/{serviceName}/serviceInfos"
+    },
+    {
       "description": "List the license.Option objects",
       "operations": [
         {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Options linked to this license",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "responseFullType": "license.OptionLabel[]",
           "parameters": [
             {
-              "required": false,
+              "dataType": "license.OptionLabel",
               "description": "Filter the value of label property (=)",
-              "paramType": "query",
               "fullType": "license.OptionLabel",
               "name": "label",
-              "dataType": "license.OptionLabel"
+              "paramType": "query",
+              "required": false
             },
             {
-              "required": true,
+              "dataType": "string",
               "description": "The name of your Virtuozzo license",
-              "paramType": "path",
               "fullType": "string",
               "name": "serviceName",
-              "dataType": "string"
+              "paramType": "path",
+              "required": true
             }
           ],
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "responseType": "license.OptionLabel[]",
-          "description": "Options linked to this license",
           "resellerOnly": false,
-          "httpMethod": "GET"
+          "responseFullType": "license.OptionLabel[]",
+          "responseType": "license.OptionLabel[]"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/option"
@@ -398,306 +429,120 @@ export const schema: Schema = {
       "description": "Your License options",
       "operations": [
         {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Get this object properties",
-          "resellerOnly": false,
           "httpMethod": "GET",
-          "responseType": "license.Option",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
           "noAuthentication": false,
-          "responseFullType": "license.Option",
           "parameters": [
             {
-              "required": true,
-              "description": "The name of your Virtuozzo license",
-              "paramType": "path",
-              "fullType": "string",
               "dataType": "string",
-              "name": "serviceName"
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "paramType": "path",
-              "fullType": "license.OptionLabel",
-              "name": "label",
               "dataType": "license.OptionLabel",
-              "required": true,
-              "description": "This option designation"
-            }
-          ]
-        },
-        {
-          "description": "release this Option",
-          "resellerOnly": false,
-          "httpMethod": "DELETE",
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "responseType": "license.Task",
-          "noAuthentication": false,
-          "responseFullType": "license.Task",
-          "parameters": [
-            {
-              "required": true,
-              "description": "The name of your Virtuozzo license",
-              "paramType": "path",
-              "fullType": "string",
-              "dataType": "string",
-              "name": "serviceName"
-            },
-            {
-              "name": "label",
-              "dataType": "license.OptionLabel",
-              "fullType": "license.OptionLabel",
-              "paramType": "path",
               "description": "This option designation",
+              "fullType": "license.OptionLabel",
+              "name": "label",
+              "paramType": "path",
               "required": true
             }
-          ]
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Option",
+          "responseType": "license.Option"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "release this Option",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OptionLabel",
+              "description": "This option designation",
+              "fullType": "license.OptionLabel",
+              "name": "label",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/option/{label}"
     },
     {
+      "description": "allowedDestinationIp operations",
       "operations": [
         {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns an array of ips where the license can be moved to",
+          "httpMethod": "GET",
           "noAuthentication": false,
-          "responseFullType": "ipBlock[]",
           "parameters": [
             {
-              "required": true,
+              "dataType": "string",
               "description": "The name of your Virtuozzo license",
-              "paramType": "path",
               "fullType": "string",
               "name": "serviceName",
-              "dataType": "string"
+              "paramType": "path",
+              "required": true
             }
           ],
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "responseType": "ipBlock[]",
           "resellerOnly": false,
-          "description": "Returns an array of ips where the license can be moved to",
-          "httpMethod": "GET"
+          "responseFullType": "ipBlock[]",
+          "responseType": "ipBlock[]"
         }
       ],
-      "path": "/license/virtuozzo/{serviceName}/allowedDestinationIp",
-      "description": "allowedDestinationIp operations"
-    },
-    {
-      "description": "Get the orderable Virtuozzo versions",
-      "operations": [
-        {
-          "responseFullType": "license.VirtuozzoOrderConfiguration[]",
-          "parameters": [
-            {
-              "description": "Your license Ip",
-              "required": true,
-              "dataType": "ipv4",
-              "name": "ip",
-              "fullType": "ipv4",
-              "paramType": "query"
-            }
-          ],
-          "noAuthentication": false,
-          "httpMethod": "GET",
-          "description": "Get the orderable Virtuozzo versions",
-          "resellerOnly": false,
-          "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
-          },
-          "responseType": "license.VirtuozzoOrderConfiguration[]"
-        }
-      ],
-      "path": "/license/virtuozzo/orderableVersions"
+      "path": "/license/virtuozzo/{serviceName}/allowedDestinationIp"
     },
     {
       "description": "Operations about the LICENSE service",
-      "path": "/license/virtuozzo",
       "operations": [
         {
           "apiStatus": {
-            "value": "PRODUCTION",
-            "description": "Stable production version"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "responseType": "string[]",
-          "httpMethod": "GET",
           "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
           "resellerOnly": false,
           "responseFullType": "string[]",
-          "parameters": [],
-          "noAuthentication": false
+          "responseType": "string[]"
         }
-      ]
+      ],
+      "path": "/license/virtuozzo"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",
-  "apiVersion": "1.0",
-  "resourcePath": "/license/virtuozzo",
   "models": {
-    "license.ChangeIpStatus": {
-      "id": "ChangeIpStatus",
-      "properties": {
-        "message": {
-          "type": "license.ChangeIpMessageEnum",
-          "description": null,
-          "canBeNull": false
-        },
-        "success": {
-          "canBeNull": false,
-          "type": "boolean",
-          "description": null
-        }
-      },
-      "namespace": "license",
-      "description": "License change ip status return"
-    },
-    "license.Option": {
-      "description": "Your License options",
-      "namespace": "license",
-      "properties": {
-        "amount": {
-          "readOnly": true,
-          "canBeNull": true,
-          "fullType": "string",
-          "description": "Quantity or corresponding label of the designated option enabled on your license",
-          "type": "string"
-        },
-        "label": {
-          "canBeNull": false,
-          "readOnly": true,
-          "fullType": "license.OptionLabel",
-          "type": "license.OptionLabel",
-          "description": "This option designation"
-        },
-        "version": {
-          "readOnly": true,
-          "canBeNull": true,
-          "fullType": "string",
-          "description": "This option related version",
-          "type": "string"
-        },
-        "expirationDate": {
-          "canBeNull": false,
-          "readOnly": true,
-          "fullType": "datetime",
-          "type": "datetime",
-          "description": "This option expiration date"
-        },
-        "canBeDeleted": {
-          "type": "boolean",
-          "description": "Specifies whether this option can be released or not",
-          "readOnly": true,
-          "fullType": "boolean",
-          "canBeNull": false
-        }
-      },
-      "id": "Option"
-    },
-    "license.Task": {
-      "id": "Task",
-      "description": "licenses Todos",
-      "namespace": "license",
-      "properties": {
-        "lastUpdate": {
-          "description": "The last time this Task was updated",
-          "type": "datetime",
-          "readOnly": true,
-          "fullType": "datetime",
-          "canBeNull": false
-        },
-        "action": {
-          "canBeNull": false,
-          "readOnly": true,
-          "fullType": "license.ActionType",
-          "type": "license.ActionType",
-          "description": "This Task description"
-        },
-        "name": {
-          "type": "string",
-          "description": "This Task name",
-          "fullType": "string",
-          "readOnly": true,
-          "canBeNull": false
-        },
-        "status": {
-          "description": "Current Taks status",
-          "type": "license.TaskStateEnum",
-          "readOnly": true,
-          "fullType": "license.TaskStateEnum",
-          "canBeNull": false
-        },
-        "doneDate": {
-          "type": "datetime",
-          "description": "When was this Task done",
-          "readOnly": true,
-          "fullType": "datetime",
-          "canBeNull": true
-        },
-        "todoDate": {
-          "type": "datetime",
-          "description": "When was this Task created",
-          "fullType": "datetime",
-          "readOnly": true,
-          "canBeNull": false
-        },
-        "taskId": {
-          "canBeNull": false,
-          "readOnly": true,
-          "fullType": "long",
-          "description": "This Task id",
-          "type": "long"
-        }
-      }
-    },
-    "license.TaskStateEnum": {
-      "enumType": "string",
-      "description": "All states a license Task can be in",
-      "namespace": "license",
-      "enum": [
-        "cancelled",
-        "doing",
-        "done",
-        "error",
-        "todo"
-      ],
-      "id": "TaskStateEnum"
-    },
-    "service.StateEnum": {
-      "id": "StateEnum",
-      "enum": [
-        "expired",
-        "inCreation",
-        "ok",
-        "pendingDebt",
-        "unPaid"
-      ],
-      "namespace": "service",
-      "enumType": "string",
-      "description": ""
-    },
-    "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "enum": [
-        "automaticForcedProduct",
-        "automaticV2012",
-        "automaticV2014",
-        "automaticV2016",
-        "manual",
-        "oneShot",
-        "option"
-      ],
-      "namespace": "service",
-      "description": "Detailed renewal type of a service",
-      "enumType": "string"
-    },
     "license.ActionType": {
-      "namespace": "license",
+      "description": "A short description of what does the Task on your license",
       "enum": [
         "addWindowFromExistingSerial",
         "changeIp",
@@ -708,11 +553,438 @@ export const schema: Schema = {
         "versionUpgrade"
       ],
       "enumType": "string",
-      "description": "A short description of what does the Task on your license",
-      "id": "ActionType"
+      "id": "ActionType",
+      "namespace": "license"
+    },
+    "license.ChangeIpMessageEnum": {
+      "description": "Messages from change IP",
+      "enum": [
+        "OK",
+        "destinationNotAllowed",
+        "licenseAlreadyExists",
+        "notAllowedToHandleThis",
+        "notSameType",
+        "sameIp",
+        "versionNotAllowed"
+      ],
+      "enumType": "string",
+      "id": "ChangeIpMessageEnum",
+      "namespace": "license"
+    },
+    "license.ChangeIpStatus": {
+      "description": "License change ip status return",
+      "id": "ChangeIpStatus",
+      "namespace": "license",
+      "properties": {
+        "message": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.ChangeIpMessageEnum"
+        },
+        "success": {
+          "canBeNull": false,
+          "description": null,
+          "type": "boolean"
+        }
+      }
+    },
+    "license.LicenseTypeEnum": {
+      "description": "Possible values for license type",
+      "enum": [
+        "dedicated",
+        "dedicatedCloud",
+        "dedicatedFailover",
+        "failover",
+        "vm",
+        "vps",
+        "vps_ceph",
+        "vps_classic",
+        "vps_cloud",
+        "vps_cloud_2016",
+        "vps_ssd"
+      ],
+      "enumType": "string",
+      "id": "LicenseTypeEnum",
+      "namespace": "license"
+    },
+    "license.Option": {
+      "description": "Your License options",
+      "id": "Option",
+      "namespace": "license",
+      "properties": {
+        "amount": {
+          "canBeNull": true,
+          "description": "Quantity or corresponding label of the designated option enabled on your license",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "canBeDeleted": {
+          "canBeNull": false,
+          "description": "Specifies whether this option can be released or not",
+          "fullType": "boolean",
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "This option expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "label": {
+          "canBeNull": false,
+          "description": "This option designation",
+          "fullType": "license.OptionLabel",
+          "readOnly": true,
+          "type": "license.OptionLabel"
+        },
+        "version": {
+          "canBeNull": true,
+          "description": "This option related version",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        }
+      }
+    },
+    "license.OptionLabel": {
+      "description": "The name of an option currently enabled on your license",
+      "enum": [
+        "ANTISPAM_SPAMASSASSIN",
+        "ANTIVIRUS_DRWEB",
+        "ANTIVIRUS_KASPERSKY",
+        "DOMAINS",
+        "LANGUAGE_PACK",
+        "POWERPACK",
+        "SQL_SERVER",
+        "VIRTUOZZO_CONTAINERS"
+      ],
+      "enumType": "string",
+      "id": "OptionLabel",
+      "namespace": "license"
+    },
+    "license.OrderableVirtuozzoCompatibilityInfos": {
+      "description": "All versions available for Virtuozzo products",
+      "id": "OrderableVirtuozzoCompatibilityInfos",
+      "namespace": "license",
+      "properties": {
+        "compliantContainers": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.OrderableVirtuozzoContainerNumberEnum[]"
+        },
+        "potentialProblems": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.PotentialProblemVirtuozzoEnum[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.OrderableVirtuozzoVersionEnum"
+        }
+      }
+    },
+    "license.OrderableVirtuozzoContainerNumberEnum": {
+      "description": "All quantities of container available for a Virtuozzo license",
+      "enum": [
+        "2_CPU_001_CONTAINER",
+        "2_CPU_003_CONTAINER",
+        "2_CPU_010_CONTAINER",
+        "2_CPU_030_CONTAINER",
+        "2_CPU_060_CONTAINER",
+        "2_CPU_100_CONTAINER"
+      ],
+      "enumType": "string",
+      "id": "OrderableVirtuozzoContainerNumberEnum",
+      "namespace": "license"
+    },
+    "license.OrderableVirtuozzoVersionEnum": {
+      "description": "All versions available for Virtuozzo products",
+      "enum": [
+        "VIRTUOZZO_CONTAINERS_4_FOR_LINUX",
+        "VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS",
+        "virtuozzo-4",
+        "virtuozzo-4-for-windows"
+      ],
+      "enumType": "string",
+      "id": "OrderableVirtuozzoVersionEnum",
+      "namespace": "license"
+    },
+    "license.PotentialProblemVirtuozzoEnum": {
+      "description": "Tests that have failed for Virtuozzo products",
+      "enum": [
+        "isLinuxOs",
+        "isOsVirtuozzo4Like",
+        "isWindowsOs"
+      ],
+      "enumType": "string",
+      "id": "PotentialProblemVirtuozzoEnum",
+      "namespace": "license"
+    },
+    "license.StateEnum": {
+      "description": "All states a license can be in",
+      "enum": [
+        "ok",
+        "released",
+        "terminated",
+        "toDeliver"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "license"
+    },
+    "license.Task": {
+      "description": "licenses Todos",
+      "id": "Task",
+      "namespace": "license",
+      "properties": {
+        "action": {
+          "canBeNull": false,
+          "description": "This Task description",
+          "fullType": "license.ActionType",
+          "readOnly": true,
+          "type": "license.ActionType"
+        },
+        "doneDate": {
+          "canBeNull": true,
+          "description": "When was this Task done",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "The last time this Task was updated",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "This Task name",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current Taks status",
+          "fullType": "license.TaskStateEnum",
+          "readOnly": true,
+          "type": "license.TaskStateEnum"
+        },
+        "taskId": {
+          "canBeNull": false,
+          "description": "This Task id",
+          "fullType": "long",
+          "readOnly": true,
+          "type": "long"
+        },
+        "todoDate": {
+          "canBeNull": false,
+          "description": "When was this Task created",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        }
+      }
+    },
+    "license.TaskStateEnum": {
+      "description": "All states a license Task can be in",
+      "enum": [
+        "cancelled",
+        "doing",
+        "done",
+        "error",
+        "todo"
+      ],
+      "enumType": "string",
+      "id": "TaskStateEnum",
+      "namespace": "license"
+    },
+    "license.VirtuozzoContainerNumberEnum": {
+      "description": "All quantities of container available for a Virtuozzo license",
+      "enum": [
+        "2_CPU_001_CONTAINER",
+        "2_CPU_003_CONTAINER",
+        "2_CPU_010_CONTAINER",
+        "2_CPU_030_CONTAINER",
+        "2_CPU_060_CONTAINER",
+        "2_CPU_100_CONTAINER"
+      ],
+      "enumType": "string",
+      "id": "VirtuozzoContainerNumberEnum",
+      "namespace": "license"
+    },
+    "license.VirtuozzoOrderConfiguration": {
+      "description": "The serviceTypes allowed to Order a Virtuozzo version",
+      "id": "VirtuozzoOrderConfiguration",
+      "namespace": "license",
+      "properties": {
+        "orderableVersions": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.OrderableVirtuozzoCompatibilityInfos[]"
+        },
+        "serviceType": {
+          "canBeNull": false,
+          "description": null,
+          "type": "license.LicenseTypeEnum"
+        }
+      }
+    },
+    "license.VirtuozzoVersionEnum": {
+      "description": "All versions available for Virtuozzo products",
+      "enum": [
+        "VIRTUOZZO_CONTAINERS_4_FOR_LINUX",
+        "VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS"
+      ],
+      "enumType": "string",
+      "id": "VirtuozzoVersionEnum",
+      "namespace": "license"
+    },
+    "license.virtuozzo.Virtuozzo": {
+      "description": "Your Virtuozzo license",
+      "id": "Virtuozzo",
+      "namespace": "license.virtuozzo",
+      "properties": {
+        "containerNumber": {
+          "canBeNull": false,
+          "description": "The amount of containers this license can manage",
+          "fullType": "license.VirtuozzoContainerNumberEnum",
+          "readOnly": true,
+          "type": "license.VirtuozzoContainerNumberEnum"
+        },
+        "creation": {
+          "canBeNull": false,
+          "description": "This license creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "type": "datetime"
+        },
+        "deleteAtExpiration": {
+          "canBeNull": false,
+          "description": "Shall we delete this on expiration ?",
+          "fullType": "boolean",
+          "readOnly": false,
+          "type": "boolean"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "The internal name of your license",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "informationKey": {
+          "canBeNull": true,
+          "description": "This license Information key",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": false,
+          "description": "The ip on which this license is attached",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "type": "ipv4"
+        },
+        "licenseId": {
+          "canBeNull": false,
+          "description": "The license id on license provider side",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "productKey": {
+          "canBeNull": true,
+          "description": "This license product key",
+          "fullType": "string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "This license state",
+          "fullType": "license.StateEnum",
+          "readOnly": true,
+          "type": "license.StateEnum"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "This license version",
+          "fullType": "license.VirtuozzoVersionEnum",
+          "readOnly": true,
+          "type": "license.VirtuozzoVersionEnum"
+        }
+      }
+    },
+    "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
+      "id": "RenewType",
+      "namespace": "service",
+      "properties": {
+        "automatic": {
+          "canBeNull": false,
+          "description": "The service is automatically renewed",
+          "type": "boolean"
+        },
+        "deleteAtExpiration": {
+          "canBeNull": false,
+          "description": "The service will be deleted at expiration",
+          "type": "boolean"
+        },
+        "forced": {
+          "canBeNull": false,
+          "description": "The service forced to be renewed",
+          "type": "boolean"
+        },
+        "manualPayment": {
+          "canBeNull": true,
+          "description": "The service needs to be manually renewed and paid",
+          "type": "boolean"
+        },
+        "period": {
+          "canBeNull": true,
+          "description": "period of renew in month",
+          "type": "long"
+        }
+      }
+    },
+    "service.RenewalTypeEnum": {
+      "description": "Detailed renewal type of a service",
+      "enum": [
+        "automaticForcedProduct",
+        "automaticV2012",
+        "automaticV2014",
+        "automaticV2016",
+        "manual",
+        "oneShot",
+        "option"
+      ],
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
+    },
+    "service.StateEnum": {
+      "description": "",
+      "enum": [
+        "expired",
+        "inCreation",
+        "ok",
+        "pendingDebt",
+        "unPaid"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "namespace": "service",
+      "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
         "OTHER",
@@ -721,10 +993,11 @@ export const schema: Schema = {
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
       "enumType": "string",
-      "description": "All future uses you can provide for a service termination",
-      "id": "TerminationFutureUseEnum"
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
+      "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
         "LACK_OF_PERFORMANCES",
@@ -741,379 +1014,108 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "namespace": "service",
       "enumType": "string",
-      "description": "All reasons you can provide for a service termination",
-      "id": "TerminationReasonEnum"
-    },
-    "license.LicenseTypeEnum": {
-      "namespace": "license",
-      "enum": [
-        "dedicated",
-        "dedicatedCloud",
-        "dedicatedFailover",
-        "failover",
-        "vm",
-        "vps",
-        "vps_ceph",
-        "vps_classic",
-        "vps_cloud",
-        "vps_cloud_2016",
-        "vps_ssd"
-      ],
-      "enumType": "string",
-      "description": "Possible values for license type",
-      "id": "LicenseTypeEnum"
-    },
-    "license.VirtuozzoContainerNumberEnum": {
-      "id": "VirtuozzoContainerNumberEnum",
-      "enum": [
-        "2_CPU_001_CONTAINER",
-        "2_CPU_003_CONTAINER",
-        "2_CPU_010_CONTAINER",
-        "2_CPU_030_CONTAINER",
-        "2_CPU_060_CONTAINER",
-        "2_CPU_100_CONTAINER"
-      ],
-      "namespace": "license",
-      "enumType": "string",
-      "description": "All quantities of container available for a Virtuozzo license"
-    },
-    "license.OrderableVirtuozzoCompatibilityInfos": {
-      "description": "All versions available for Virtuozzo products",
-      "namespace": "license",
-      "properties": {
-        "version": {
-          "description": null,
-          "type": "license.OrderableVirtuozzoVersionEnum",
-          "canBeNull": false
-        },
-        "potentialProblems": {
-          "type": "license.PotentialProblemVirtuozzoEnum[]",
-          "description": null,
-          "canBeNull": false
-        },
-        "compliantContainers": {
-          "type": "license.OrderableVirtuozzoContainerNumberEnum[]",
-          "description": null,
-          "canBeNull": false
-        }
-      },
-      "id": "OrderableVirtuozzoCompatibilityInfos"
-    },
-    "license.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "license",
-      "enum": [
-        "ok",
-        "released",
-        "terminated",
-        "toDeliver"
-      ],
-      "description": "All states a license can be in",
-      "enumType": "string"
-    },
-    "license.ChangeIpMessageEnum": {
-      "enumType": "string",
-      "description": "Messages from change IP",
-      "namespace": "license",
-      "enum": [
-        "OK",
-        "destinationNotAllowed",
-        "licenseAlreadyExists",
-        "notAllowedToHandleThis",
-        "notSameType",
-        "sameIp",
-        "versionNotAllowed"
-      ],
-      "id": "ChangeIpMessageEnum"
-    },
-    "license.OrderableVirtuozzoVersionEnum": {
-      "enumType": "string",
-      "description": "All versions available for Virtuozzo products",
-      "namespace": "license",
-      "enum": [
-        "VIRTUOZZO_CONTAINERS_4_FOR_LINUX",
-        "VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS",
-        "virtuozzo-4",
-        "virtuozzo-4-for-windows"
-      ],
-      "id": "OrderableVirtuozzoVersionEnum"
-    },
-    "license.OrderableVirtuozzoContainerNumberEnum": {
-      "enum": [
-        "2_CPU_001_CONTAINER",
-        "2_CPU_003_CONTAINER",
-        "2_CPU_010_CONTAINER",
-        "2_CPU_030_CONTAINER",
-        "2_CPU_060_CONTAINER",
-        "2_CPU_100_CONTAINER"
-      ],
-      "namespace": "license",
-      "enumType": "string",
-      "description": "All quantities of container available for a Virtuozzo license",
-      "id": "OrderableVirtuozzoContainerNumberEnum"
-    },
-    "license.virtuozzo.Virtuozzo": {
-      "id": "Virtuozzo",
-      "properties": {
-        "licenseId": {
-          "description": "The license id on license provider side",
-          "type": "string",
-          "canBeNull": false,
-          "readOnly": true,
-          "fullType": "string"
-        },
-        "containerNumber": {
-          "readOnly": true,
-          "canBeNull": false,
-          "fullType": "license.VirtuozzoContainerNumberEnum",
-          "type": "license.VirtuozzoContainerNumberEnum",
-          "description": "The amount of containers this license can manage"
-        },
-        "ip": {
-          "fullType": "ipv4",
-          "readOnly": true,
-          "canBeNull": false,
-          "description": "The ip on which this license is attached",
-          "type": "ipv4"
-        },
-        "status": {
-          "description": "This license state",
-          "type": "license.StateEnum",
-          "readOnly": true,
-          "fullType": "license.StateEnum",
-          "canBeNull": false
-        },
-        "version": {
-          "fullType": "license.VirtuozzoVersionEnum",
-          "readOnly": true,
-          "canBeNull": false,
-          "description": "This license version",
-          "type": "license.VirtuozzoVersionEnum"
-        },
-        "domain": {
-          "description": "The internal name of your license",
-          "type": "string",
-          "readOnly": true,
-          "fullType": "string",
-          "canBeNull": false
-        },
-        "deleteAtExpiration": {
-          "type": "boolean",
-          "description": "Shall we delete this on expiration ?",
-          "canBeNull": false,
-          "readOnly": false,
-          "fullType": "boolean"
-        },
-        "informationKey": {
-          "fullType": "string",
-          "readOnly": true,
-          "canBeNull": true,
-          "type": "string",
-          "description": "This license Information key"
-        },
-        "creation": {
-          "type": "datetime",
-          "description": "This license creation date",
-          "readOnly": true,
-          "fullType": "datetime",
-          "canBeNull": false
-        },
-        "productKey": {
-          "fullType": "string",
-          "readOnly": true,
-          "canBeNull": true,
-          "type": "string",
-          "description": "This license product key"
-        }
-      },
-      "namespace": "license.virtuozzo",
-      "description": "Your Virtuozzo license"
-    },
-    "license.VirtuozzoOrderConfiguration": {
-      "properties": {
-        "orderableVersions": {
-          "description": null,
-          "type": "license.OrderableVirtuozzoCompatibilityInfos[]",
-          "canBeNull": false
-        },
-        "serviceType": {
-          "type": "license.LicenseTypeEnum",
-          "description": null,
-          "canBeNull": false
-        }
-      },
-      "description": "The serviceTypes allowed to Order a Virtuozzo version",
-      "namespace": "license",
-      "id": "VirtuozzoOrderConfiguration"
-    },
-    "service.RenewType": {
-      "namespace": "service",
-      "description": "Map a possible renew for a specific service",
-      "properties": {
-        "period": {
-          "type": "long",
-          "description": "period of renew in month",
-          "canBeNull": true
-        },
-        "automatic": {
-          "canBeNull": false,
-          "description": "The service is automatically renewed",
-          "type": "boolean"
-        },
-        "forced": {
-          "canBeNull": false,
-          "type": "boolean",
-          "description": "The service forced to be renewed"
-        },
-        "manualPayment": {
-          "type": "boolean",
-          "description": "The service needs to be manually renewed and paid",
-          "canBeNull": true
-        },
-        "deleteAtExpiration": {
-          "canBeNull": false,
-          "description": "The service will be deleted at expiration",
-          "type": "boolean"
-        }
-      },
-      "id": "RenewType"
-    },
-    "license.PotentialProblemVirtuozzoEnum": {
-      "id": "PotentialProblemVirtuozzoEnum",
-      "enumType": "string",
-      "description": "Tests that have failed for Virtuozzo products",
-      "enum": [
-        "isLinuxOs",
-        "isOsVirtuozzo4Like",
-        "isWindowsOs"
-      ],
-      "namespace": "license"
-    },
-    "license.VirtuozzoVersionEnum": {
-      "enumType": "string",
-      "description": "All versions available for Virtuozzo products",
-      "namespace": "license",
-      "enum": [
-        "VIRTUOZZO_CONTAINERS_4_FOR_LINUX",
-        "VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS"
-      ],
-      "id": "VirtuozzoVersionEnum"
-    },
-    "license.OptionLabel": {
-      "enumType": "string",
-      "description": "The name of an option currently enabled on your license",
-      "namespace": "license",
-      "enum": [
-        "ANTISPAM_SPAMASSASSIN",
-        "ANTIVIRUS_DRWEB",
-        "ANTIVIRUS_KASPERSKY",
-        "DOMAINS",
-        "LANGUAGE_PACK",
-        "POWERPACK",
-        "SQL_SERVER",
-        "VIRTUOZZO_CONTAINERS"
-      ],
-      "id": "OptionLabel"
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
+      "id": "Service",
+      "namespace": "services",
       "properties": {
-        "possibleRenewPeriod": {
-          "readOnly": true,
-          "canBeNull": true,
-          "fullType": "long[]",
-          "type": "long[]",
-          "description": "All the possible renew period of your service in month"
-        },
-        "serviceId": {
-          "description": null,
-          "type": "long",
-          "readOnly": true,
-          "fullType": "coreTypes.ServiceId:long",
-          "canBeNull": false
-        },
-        "status": {
-          "fullType": "service.StateEnum",
-          "readOnly": true,
+        "canDeleteAtExpiration": {
           "canBeNull": false,
-          "type": "service.StateEnum",
-          "description": null
-        },
-        "domain": {
-          "type": "string",
-          "description": null,
+          "description": "Indicates that the service can be set up to be deleted at expiration",
+          "fullType": "boolean",
           "readOnly": true,
-          "fullType": "string",
-          "canBeNull": false
+          "type": "boolean"
         },
-        "renewalType": {
-          "fullType": "service.RenewalTypeEnum",
-          "readOnly": true,
+        "contactAdmin": {
           "canBeNull": false,
-          "type": "service.RenewalTypeEnum",
-          "description": null
-        },
-        "renew": {
-          "readOnly": false,
-          "canBeNull": true,
-          "fullType": "service.RenewType",
-          "type": "service.RenewType",
-          "description": "Way of handling the renew"
-        },
-        "contactBilling": {
+          "description": null,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "type": "string"
+        },
+        "contactBilling": {
           "canBeNull": false,
           "description": null,
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "contactTech": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "type": "string"
+        },
+        "creation": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "date",
+          "readOnly": true,
+          "type": "date"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "string",
+          "readOnly": true,
           "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
+          "canBeNull": true,
           "description": null,
-          "readOnly": true,
           "fullType": "date",
-          "canBeNull": true
-        },
-        "contactTech": {
-          "description": null,
-          "type": "string",
-          "canBeNull": false,
           "readOnly": true,
-          "fullType": "coreTypes.AccountId:string"
-        },
-        "canDeleteAtExpiration": {
-          "fullType": "boolean",
-          "readOnly": true,
-          "canBeNull": false,
-          "type": "boolean",
-          "description": "Indicates that the service can be set up to be deleted at expiration"
-        },
-        "contactAdmin": {
-          "description": null,
-          "type": "string",
-          "readOnly": true,
-          "fullType": "coreTypes.AccountId:string",
-          "canBeNull": false
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
+          "canBeNull": false,
           "description": null,
-          "readOnly": true,
           "fullType": "date",
-          "canBeNull": false
+          "readOnly": true,
+          "type": "date"
         },
-        "creation": {
-          "description": null,
-          "type": "date",
+        "possibleRenewPeriod": {
+          "canBeNull": true,
+          "description": "All the possible renew period of your service in month",
+          "fullType": "long[]",
           "readOnly": true,
-          "fullType": "date",
-          "canBeNull": false
+          "type": "long[]"
+        },
+        "renew": {
+          "canBeNull": true,
+          "description": "Way of handling the renew",
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "type": "service.RenewType"
+        },
+        "renewalType": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "service.RenewalTypeEnum",
+          "readOnly": true,
+          "type": "service.RenewalTypeEnum"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "coreTypes.ServiceId:long",
+          "readOnly": true,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": null,
+          "fullType": "service.StateEnum",
+          "readOnly": true,
+          "type": "service.StateEnum"
         }
-      },
-      "description": "Details about a Service",
-      "namespace": "services",
-      "id": "Service"
+      }
     }
-  }
+  },
+  "resourcePath": "/license/virtuozzo"
 }

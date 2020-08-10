@@ -1,1298 +1,1297 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://ca.api.ovh.com:443/1.0/dedicated/ceph.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/dedicated/ceph",
+      "description": "Operations about the CEPH service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List available services",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List available services"
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the CEPH service"
+      "path": "/dedicated/ceph"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}",
+      "description": "dedicated.ceph.clusterGet",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get cluster details",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.ceph.clusterGet.response",
-          "noAuthentication": false,
-          "description": "Get cluster details"
+          "responseType": "dedicated.ceph.clusterGet.response"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Update cluster details",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "crushTunables",
               "dataType": "dedicated.ceph.clusterUpdate.crushTunablesEnum",
-              "paramType": "body",
+              "description": "Tunables of cluster",
               "fullType": "dedicated.ceph.clusterUpdate.crushTunablesEnum",
-              "required": true,
-              "description": "Tunables of cluster"
+              "name": "crushTunables",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name of the cluster",
+              "fullType": "string",
               "name": "label",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of the cluster"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Update cluster details"
+          "responseType": "string"
         }
       ],
-      "description": "dedicated.ceph.clusterGet"
+      "path": "/dedicated/ceph/{serviceName}"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/acl",
+      "description": "dedicated.ceph.aclCreate",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get list of all IP ACLs in a cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.ceph.aclList.response[]",
-          "noAuthentication": false,
-          "description": "Get list of all IP ACLs in a cluster"
+          "responseType": "dedicated.ceph.aclList.response[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create one or more new IP ACLs",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "aclList",
               "dataType": "ip[]",
-              "paramType": "body",
+              "description": "List of new ACLs",
               "fullType": "ip[]",
-              "required": true,
-              "description": "List of new ACLs"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Create one or more new IP ACLs"
-        }
-      ],
-      "description": "dedicated.ceph.aclCreate"
-    },
-    {
-      "path": "/dedicated/ceph/{serviceName}/acl/{aclId}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "aclId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Acl ID"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Delete single IP ACL"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "aclId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Acl ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.ceph.aclGet.response",
-          "noAuthentication": false,
-          "description": "Get details about IP ACL"
-        }
-      ],
-      "description": "dedicated.ceph.aclDeleteSingle"
-    },
-    {
-      "path": "/dedicated/ceph/{serviceName}/cephfs",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            }
-          ],
-          "responseType": "dedicated.ceph.cephfsList.response[]",
-          "noAuthentication": false,
-          "description": "List CephFS filestystems"
-        }
-      ],
-      "description": "dedicated.ceph.cephfsList"
-    },
-    {
-      "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "fsName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Fs name"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Purge CephFS filesystem"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "fsName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Fs name"
-            }
-          ],
-          "responseType": "dedicated.ceph.cephfsGet.response",
-          "noAuthentication": false,
-          "description": "Get CephFS filestystem information"
-        }
-      ],
-      "description": "dedicated.ceph.cephfsGet"
-    },
-    {
-      "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}/disable",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "fsName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Fs name"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Disable CephFS filesystem"
-        }
-      ],
-      "description": "dedicated.ceph.cephfsDisable"
-    },
-    {
-      "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}/enable",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
-              "name": "fsName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Fs name"
-            }
-          ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Enable CephFS filesystem"
-        }
-      ],
-      "description": "dedicated.ceph.cephfsEnable"
-    },
-    {
-      "path": "/dedicated/ceph/{serviceName}/changeContact",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "contactAdmin",
-              "dataType": "string",
+              "name": "aclList",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/dedicated/ceph/{serviceName}/acl"
+    },
+    {
+      "description": "dedicated.ceph.aclDeleteSingle",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete single IP ACL",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Acl ID",
+              "fullType": "string",
+              "name": "aclId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about IP ACL",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Acl ID",
+              "fullType": "string",
+              "name": "aclId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.ceph.aclGet.response"
+        }
+      ],
+      "path": "/dedicated/ceph/{serviceName}/acl/{aclId}"
+    },
+    {
+      "description": "dedicated.ceph.cephfsList",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List CephFS filestystems",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.ceph.cephfsList.response[]"
+        }
+      ],
+      "path": "/dedicated/ceph/{serviceName}/cephfs"
+    },
+    {
+      "description": "dedicated.ceph.cephfsGet",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Purge CephFS filesystem",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Fs name",
+              "fullType": "string",
+              "name": "fsName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get CephFS filestystem information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Fs name",
+              "fullType": "string",
+              "name": "fsName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.ceph.cephfsGet.response"
+        }
+      ],
+      "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}"
+    },
+    {
+      "description": "dedicated.ceph.cephfsDisable",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Disable CephFS filesystem",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Fs name",
+              "fullType": "string",
+              "name": "fsName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}/disable"
+    },
+    {
+      "description": "dedicated.ceph.cephfsEnable",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Enable CephFS filesystem",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Fs name",
+              "fullType": "string",
+              "name": "fsName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/dedicated/ceph/{serviceName}/cephfs/{fsName}/enable"
+    },
+    {
+      "description": "Change the contacts of this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Launch a contact change procedure",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "The contact to set as admin contact",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "contactAdmin",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/dedicated/ceph/{serviceName}/changeContact"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/confirmTermination",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "futureUse",
               "dataType": "service.TerminationFutureUseEnum",
-              "paramType": "body",
+              "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
-              "required": false,
-              "description": "What next after your termination request"
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "reason",
               "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
+              "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
+              "name": "reason",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your service"
+          "responseType": "string"
         }
       ],
-      "description": "Confirm termination of your service"
+      "path": "/dedicated/ceph/{serviceName}/confirmTermination"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/health",
+      "description": "dedicated.ceph.clusterHealth",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get cluster health",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.ceph.clusterHealth.response",
-          "noAuthentication": false,
-          "description": "Get cluster health"
+          "responseType": "dedicated.ceph.clusterHealth.response"
         }
       ],
-      "description": "dedicated.ceph.clusterHealth"
+      "path": "/dedicated/ceph/{serviceName}/health"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/pool",
+      "description": "dedicated.ceph.poolCreate",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get list of all pools in a cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.ceph.poolList.response[]",
-          "noAuthentication": false,
-          "description": "Get list of all pools in a cluster"
+          "responseType": "dedicated.ceph.poolList.response[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a new ceph pool",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "poolName",
               "dataType": "string",
+              "description": "Name of new pool",
+              "fullType": "string",
+              "name": "poolName",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of new pool"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Create a new ceph pool"
+          "responseType": "string"
         }
       ],
-      "description": "dedicated.ceph.poolCreate"
+      "path": "/dedicated/ceph/{serviceName}/pool"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/pool/{poolName}",
+      "description": "dedicated.ceph.poolDelete",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete a single ceph pool",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "poolName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pool name",
               "fullType": "string",
-              "required": true,
-              "description": "Pool name"
+              "name": "poolName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Delete a single ceph pool"
+          "responseType": "string"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get details about an existing ceph pool",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "poolName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pool name",
               "fullType": "string",
-              "required": true,
-              "description": "Pool name"
+              "name": "poolName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.ceph.poolGet.response",
-          "noAuthentication": false,
-          "description": "Get details about an existing ceph pool"
+          "responseType": "dedicated.ceph.poolGet.response"
         }
       ],
-      "description": "dedicated.ceph.poolDelete"
+      "path": "/dedicated/ceph/{serviceName}/pool/{poolName}"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/dedicated/ceph/{serviceName}/serviceInfos"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/task",
+      "description": "dedicated.ceph.taskList",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List tasks in progress",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.ceph.taskList.response[]",
-          "noAuthentication": false,
-          "description": "List tasks in progress"
+          "responseType": "dedicated.ceph.taskList.response[]"
         }
       ],
-      "description": "dedicated.ceph.taskList"
+      "path": "/dedicated/ceph/{serviceName}/task"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/task/{taskId}",
+      "description": "dedicated.ceph.taskGet",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get task details",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Task ID",
+              "fullType": "string",
               "name": "taskId",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Task ID"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "required": true
             }
           ],
-          "responseType": "dedicated.ceph.taskGet.response[]",
-          "noAuthentication": false,
-          "description": "Get task details"
+          "responseType": "dedicated.ceph.taskGet.response[]"
         }
       ],
-      "description": "dedicated.ceph.taskGet"
+      "path": "/dedicated/ceph/{serviceName}/task/{taskId}"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/terminate",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Terminate your service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your service"
+          "responseType": "string"
         }
       ],
-      "description": "Terminate your service"
+      "path": "/dedicated/ceph/{serviceName}/terminate"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/user",
+      "description": "dedicated.ceph.userCreate",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get list of all users in a cluster",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.ceph.userList.response[]",
-          "noAuthentication": false,
-          "description": "Get list of all users in a cluster"
+          "responseType": "dedicated.ceph.userList.response[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create a new ceph user",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "userName",
               "dataType": "string",
+              "description": "Name of new user",
+              "fullType": "string",
+              "name": "userName",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of new user"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Create a new ceph user"
+          "responseType": "string"
         }
       ],
-      "description": "dedicated.ceph.userCreate"
+      "path": "/dedicated/ceph/{serviceName}/user"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/user/{userName}",
+      "description": "dedicated.ceph.userDelete",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Delete an existing single ceph user",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "userName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User name",
               "fullType": "string",
-              "required": true,
-              "description": "User name"
+              "name": "userName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Delete an existing single ceph user"
+          "responseType": "string"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get details about a ceph user",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "userName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "userName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "User name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.ceph.userGet.response",
-          "noAuthentication": false,
-          "description": "Get details about a ceph user"
+          "responseType": "dedicated.ceph.userGet.response"
         }
       ],
-      "description": "dedicated.ceph.userDelete"
+      "path": "/dedicated/ceph/{serviceName}/user/{userName}"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/user/{userName}/pool",
+      "description": "dedicated.ceph.userPoolPermList",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List user-pool permissions",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "userName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "User name",
               "fullType": "string",
-              "required": true,
-              "description": "User name"
+              "name": "userName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "dedicated.ceph.userPoolPermList.response[]",
-          "noAuthentication": false,
-          "description": "List user-pool permissions"
+          "responseType": "dedicated.ceph.userPoolPermList.response[]"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Create new user-pool permissions. All old permissions will be cleared",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "permissions",
               "dataType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
-              "paramType": "body",
+              "description": "Permissions",
               "fullType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
-              "required": false,
-              "description": "Permissions"
+              "name": "permissions",
+              "paramType": "body",
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "User name",
+              "fullType": "string",
               "name": "userName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User name"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Create new user-pool permissions. All old permissions will be cleared"
+          "responseType": "string"
         },
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Update user-pool permission for single pool",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "boolean",
+              "description": "Write permission",
+              "fullType": "boolean",
               "name": "write",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Write permission"
+              "required": true
             },
             {
+              "dataType": "boolean",
+              "description": "Execute permission",
+              "fullType": "boolean",
               "name": "execute",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Execute permission"
+              "required": true
             },
             {
+              "dataType": "boolean",
+              "description": "Class write permission",
+              "fullType": "boolean",
               "name": "classWrite",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Class write permission"
+              "required": true
             },
             {
+              "dataType": "boolean",
+              "description": "Read permission",
+              "fullType": "boolean",
               "name": "read",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "Read permission"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name of Ceph pool",
+              "fullType": "string",
               "name": "poolName",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Name of Ceph pool"
+              "required": true
             },
             {
-              "name": "classRead",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "Class read permission",
               "fullType": "boolean",
-              "required": true,
-              "description": "Class read permission"
+              "name": "classRead",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "User name",
+              "fullType": "string",
               "name": "userName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "User name"
+              "required": true
             },
             {
-              "name": "serviceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Service name",
               "fullType": "string",
-              "required": true,
-              "description": "Service name"
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Update user-pool permission for single pool"
+          "responseType": "string"
         }
       ],
-      "description": "dedicated.ceph.userPoolPermList"
+      "path": "/dedicated/ceph/{serviceName}/user/{userName}/pool"
     },
     {
-      "path": "/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}",
+      "description": "dedicated.ceph.userPoolPermDelete",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Clear user-pool permission for single pool",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "userName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Pool name",
               "fullType": "string",
-              "required": true,
-              "description": "User name"
-            },
-            {
-              "name": "serviceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Service name"
-            },
-            {
               "name": "poolName",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User name",
               "fullType": "string",
-              "required": true,
-              "description": "Pool name"
+              "name": "userName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Clear user-pool permission for single pool"
+          "responseType": "string"
         }
       ],
-      "description": "dedicated.ceph.userPoolPermDelete"
+      "path": "/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}"
     }
   ],
-  "resourcePath": "/dedicated/ceph",
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
     "dedicated.ceph.aclGet.response": {
+      "description": "IP ACL",
       "id": "response",
       "namespace": "dedicated.ceph.aclGet",
-      "description": "IP ACL",
       "properties": {
         "family": {
-          "type": "dedicated.ceph.aclGet.response.familyEnum",
-          "fullType": "dedicated.ceph.aclGet.response.familyEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Family of IP ACL",
-          "required": true
+          "fullType": "dedicated.ceph.aclGet.response.familyEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.ceph.aclGet.response.familyEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ID of IP ACL",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "netmask": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Netmask of IP ACL",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "network": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Network of IP ACL",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         }
       }
     },
     "dedicated.ceph.aclGet.response.familyEnum": {
-      "id": "familyEnum",
-      "namespace": "dedicated.ceph.aclGet.response",
       "description": "Family of IP ACL",
       "enum": [
         "IPV4",
         "IPV6"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "familyEnum",
+      "namespace": "dedicated.ceph.aclGet.response"
     },
     "dedicated.ceph.aclList.response": {
+      "description": "Structure holding IP ACLs",
       "id": "response",
       "namespace": "dedicated.ceph.aclList",
-      "description": "Structure holding IP ACLs",
       "properties": {
         "family": {
-          "type": "dedicated.ceph.aclList.response.familyEnum",
-          "fullType": "dedicated.ceph.aclList.response.familyEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Family of IP ACL",
-          "required": true
+          "fullType": "dedicated.ceph.aclList.response.familyEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.ceph.aclList.response.familyEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ID of IP ACL",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "netmask": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Netmask of IP ACL",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         },
         "network": {
-          "type": "ip",
-          "fullType": "ip",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Network of IP ACL",
-          "required": true
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
         }
       }
     },
     "dedicated.ceph.aclList.response.familyEnum": {
-      "id": "familyEnum",
-      "namespace": "dedicated.ceph.aclList.response",
       "description": "Family of IP ACL",
       "enum": [
         "IPV4",
         "IPV6"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "familyEnum",
+      "namespace": "dedicated.ceph.aclList.response"
     },
     "dedicated.ceph.cephfsGet.response": {
+      "description": "CephFS filesystem data",
       "id": "response",
       "namespace": "dedicated.ceph.cephfsGet",
-      "description": "CephFS filesystem data",
       "properties": {
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Filesystem state",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "fsName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Filesystem name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.ceph.cephfsList.response": {
+      "description": "List of CephFS filesystems",
       "id": "response",
       "namespace": "dedicated.ceph.cephfsList",
-      "description": "List of CephFS filesystems",
       "properties": {
         "enabled": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Filesystem state",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "fsName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Filesystem name",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.ceph.clusterGet.response": {
+      "description": "Details about ceph cluster",
       "id": "response",
       "namespace": "dedicated.ceph.clusterGet",
-      "description": "Details about ceph cluster",
       "properties": {
         "cephMons": {
-          "type": "ip[]",
-          "fullType": "ip[]",
           "canBeNull": false,
-          "readOnly": false,
           "description": "List of CEPH monitor IPs",
-          "required": true
+          "fullType": "ip[]",
+          "readOnly": false,
+          "required": true,
+          "type": "ip[]"
         },
         "cephVersion": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Used version of ceph",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "createDate": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Creation date",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "crushTunables": {
-          "type": "dedicated.ceph.clusterGet.response.crushTunablesEnum",
-          "fullType": "dedicated.ceph.clusterGet.response.crushTunablesEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Tunables of cluster",
-          "required": true
+          "fullType": "dedicated.ceph.clusterGet.response.crushTunablesEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.ceph.clusterGet.response.crushTunablesEnum"
         },
         "label": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "region": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of region where cluster is located",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ID of cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Size of cluster in TB",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "state": {
-          "type": "dedicated.ceph.clusterGet.response.stateEnum",
-          "fullType": "dedicated.ceph.clusterGet.response.stateEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "State of cluster",
-          "required": true
+          "fullType": "dedicated.ceph.clusterGet.response.stateEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.ceph.clusterGet.response.stateEnum"
         },
         "status": {
-          "type": "dedicated.ceph.clusterGet.response.statusEnum",
-          "fullType": "dedicated.ceph.clusterGet.response.statusEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of cluster",
-          "required": true
+          "fullType": "dedicated.ceph.clusterGet.response.statusEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.ceph.clusterGet.response.statusEnum"
         },
         "updateDate": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Last update date",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.ceph.clusterGet.response.crushTunablesEnum": {
-      "id": "crushTunablesEnum",
-      "namespace": "dedicated.ceph.clusterGet.response",
       "description": "Tunables of cluster",
       "enum": [
         "OPTIMAL",
@@ -1304,21 +1303,21 @@ export const schema: Schema = {
         "HAMMER",
         "JEWEL"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "crushTunablesEnum",
+      "namespace": "dedicated.ceph.clusterGet.response"
     },
     "dedicated.ceph.clusterGet.response.stateEnum": {
-      "id": "stateEnum",
-      "namespace": "dedicated.ceph.clusterGet.response",
       "description": "State of cluster",
       "enum": [
         "ACTIVE",
         "SUSPENDED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "stateEnum",
+      "namespace": "dedicated.ceph.clusterGet.response"
     },
     "dedicated.ceph.clusterGet.response.statusEnum": {
-      "id": "statusEnum",
-      "namespace": "dedicated.ceph.clusterGet.response",
       "description": "Status of cluster",
       "enum": [
         "CREATING",
@@ -1327,66 +1326,66 @@ export const schema: Schema = {
         "DELETED",
         "TASK_IN_PROGRESS"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "statusEnum",
+      "namespace": "dedicated.ceph.clusterGet.response"
     },
     "dedicated.ceph.clusterHealth.response": {
+      "description": "Health of ceph cluster",
       "id": "response",
       "namespace": "dedicated.ceph.clusterHealth",
-      "description": "Health of ceph cluster",
       "properties": {
         "availableBytes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "All available space in bytes",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "healthy": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "True or False",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ID of cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "status": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Status of ceph cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "totalBytes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Total cluster space in bytes",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "usedBytes": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Used cluster space in bytes",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "dedicated.ceph.clusterUpdate.crushTunablesEnum": {
-      "id": "crushTunablesEnum",
-      "namespace": "dedicated.ceph.clusterUpdate",
       "description": "Tunables of cluster",
       "enum": [
         "OPTIMAL",
@@ -1398,489 +1397,489 @@ export const schema: Schema = {
         "HAMMER",
         "JEWEL"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "crushTunablesEnum",
+      "namespace": "dedicated.ceph.clusterUpdate"
     },
     "dedicated.ceph.poolGet.response": {
+      "description": "Ceph pool",
       "id": "response",
       "namespace": "dedicated.ceph.poolGet",
-      "description": "Ceph pool",
       "properties": {
         "backup": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Determine if pool should be backuped",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "minActiveReplicas": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum active replicas",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of ceph user",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "poolType": {
-          "type": "dedicated.ceph.poolGet.response.poolTypeEnum",
-          "fullType": "dedicated.ceph.poolGet.response.poolTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of pool",
-          "required": true
+          "fullType": "dedicated.ceph.poolGet.response.poolTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.ceph.poolGet.response.poolTypeEnum"
         },
         "replicaCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of replica",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ID of cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.ceph.poolGet.response.poolTypeEnum": {
-      "id": "poolTypeEnum",
-      "namespace": "dedicated.ceph.poolGet.response",
       "description": "Type of pool",
       "enum": [
         "REPLICATED",
         "ERASURE_CODED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "poolTypeEnum",
+      "namespace": "dedicated.ceph.poolGet.response"
     },
     "dedicated.ceph.poolList.response": {
+      "description": "List of cluster pools",
       "id": "response",
       "namespace": "dedicated.ceph.poolList",
-      "description": "List of cluster pools",
       "properties": {
         "backup": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Determine if pool should be backuped",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "minActiveReplicas": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Minimum active replicas",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of ceph user",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "poolType": {
-          "type": "dedicated.ceph.poolList.response.poolTypeEnum",
-          "fullType": "dedicated.ceph.poolList.response.poolTypeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of pool",
-          "required": true
+          "fullType": "dedicated.ceph.poolList.response.poolTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "dedicated.ceph.poolList.response.poolTypeEnum"
         },
         "replicaCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of replica",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ID of cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.ceph.poolList.response.poolTypeEnum": {
-      "id": "poolTypeEnum",
-      "namespace": "dedicated.ceph.poolList.response",
       "description": "Type of pool",
       "enum": [
         "REPLICATED",
         "ERASURE_CODED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "poolTypeEnum",
+      "namespace": "dedicated.ceph.poolList.response"
     },
     "dedicated.ceph.taskGet.response": {
+      "description": "list of task subtasks",
       "id": "response",
       "namespace": "dedicated.ceph.taskGet",
-      "description": "list of task subtasks",
       "properties": {
         "createDate": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Creation date of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "finishDate": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Finish date of task",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "state": {
-          "type": "dedicated.ceph.taskGet.response.stateEnum",
-          "fullType": "dedicated.ceph.taskGet.response.stateEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "State of task",
-          "required": false
+          "fullType": "dedicated.ceph.taskGet.response.stateEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.ceph.taskGet.response.stateEnum"
         },
         "type": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Type of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.ceph.taskGet.response.stateEnum": {
-      "id": "stateEnum",
-      "namespace": "dedicated.ceph.taskGet.response",
       "description": "State of task",
       "enum": [
         "IN PROGRESS",
         "DONE",
         "FAILED"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "stateEnum",
+      "namespace": "dedicated.ceph.taskGet.response"
     },
     "dedicated.ceph.taskList.response": {
+      "description": "List of active tasks",
       "id": "response",
       "namespace": "dedicated.ceph.taskList",
-      "description": "List of active tasks",
       "properties": {
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ID of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.ceph.userGet.response": {
+      "description": "Ceph user",
       "id": "response",
       "namespace": "dedicated.ceph.userGet",
-      "description": "Ceph user",
       "properties": {
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Key of user to connect into cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "mdsCaps": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Capabilities of user on MDS",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "monCaps": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Capabilities of user on MON",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of ceph user",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "osdCaps": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Capabilities of user on OSD",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ID of cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.ceph.userList.response": {
+      "description": "List of cluster users",
       "id": "response",
       "namespace": "dedicated.ceph.userList",
-      "description": "List of cluster users",
       "properties": {
         "key": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Key of user to connect into cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "mdsCaps": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Capabilities of user on MDS",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "monCaps": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Capabilities of user on MON",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of ceph user",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "osdCaps": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Capabilities of user on OSD",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "serviceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "ID of cluster",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "dedicated.ceph.userPoolPermList.response": {
+      "description": "List of permissions",
       "id": "response",
       "namespace": "dedicated.ceph.userPoolPermList",
-      "description": "List of permissions",
       "properties": {
         "classRead": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Class read permission",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "classWrite": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Class write permission",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "execute": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Execute permission",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "poolName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of Ceph pool",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "read": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Read permission",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "write": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Write permission",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "dedicated.ceph.userPoolPermSetAll.permissions": {
+      "description": "List of permissions",
       "id": "permissions",
       "namespace": "dedicated.ceph.userPoolPermSetAll",
-      "description": "List of permissions",
       "properties": {
         "classRead": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Class read permission",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "classWrite": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Class write permission",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "execute": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Execute permission",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "poolName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Name of Ceph pool",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "read": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Read permission",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "write": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Write permission",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -1891,11 +1890,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -1903,11 +1902,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationFutureUseEnum": {
-      "id": "TerminationFutureUseEnum",
-      "namespace": "service",
       "description": "All future uses you can provide for a service termination",
       "enum": [
         "NOT_REPLACING_SERVICE",
@@ -1916,11 +1915,11 @@ export const schema: Schema = {
         "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR",
         "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationFutureUseEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -1938,108 +1937,111 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     }
-  }
+  },
+  "resourcePath": "/dedicated/ceph"
 }

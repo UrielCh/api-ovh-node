@@ -1,3884 +1,3883 @@
 import {Schema} from '../../src/schema';
 
+// imported from https://eu.api.ovh.com:443/1.0/email/domain.json
+
 export const schema: Schema = {
   "apiVersion": "1",
   "apis": [
     {
-      "path": "/email/domain",
+      "description": "Operations about the MX service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List available services",
           "httpMethod": "GET",
-          "parameters": [],
-          "responseType": "string[]",
           "noAuthentication": false,
-          "description": "List available services"
+          "parameters": [],
+          "responseType": "string[]"
         }
       ],
-      "description": "Operations about the MX service"
+      "path": "/email/domain"
     },
     {
-      "path": "/email/domain/delegatedAccount",
+      "description": "List the email.domain.AccountDelegated objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delegated emails",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Name of email address",
               "fullType": "string",
-              "required": false,
-              "description": "Domain of email address"
+              "name": "accountName",
+              "paramType": "query",
+              "required": false
             },
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Domain of email address",
               "fullType": "string",
-              "required": false,
-              "description": "Name of email address"
+              "name": "domain",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Delegated emails"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the email.domain.AccountDelegated objects"
+      "path": "/email/domain/delegatedAccount"
     },
     {
-      "path": "/email/domain/delegatedAccount/{email}",
+      "description": "Account List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.AccountDelegated",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.AccountDelegated"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.domain.AccountDelegated",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.domain.AccountDelegated",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Account List"
+      "path": "/email/domain/delegatedAccount/{email}"
     },
     {
-      "path": "/email/domain/delegatedAccount/{email}/changePassword",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change mailbox password (length : [9;30], no space at begin and end, no accent)",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "New password",
               "fullType": "password",
-              "required": true,
-              "description": "New password"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskPop",
-          "noAuthentication": false,
-          "description": "Change mailbox password (length : [9;30], no space at begin and end, no accent)"
+          "responseType": "email.domain.TaskPop"
         }
       ],
-      "description": "changePassword operations"
+      "path": "/email/domain/delegatedAccount/{email}/changePassword"
     },
     {
-      "path": "/email/domain/delegatedAccount/{email}/filter",
+      "description": "List the email.domain.Filter objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get filters",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get filters"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new filter for account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "operand",
-              "dataType": "domain.DomainFilterOperandEnum",
-              "paramType": "body",
-              "fullType": "domain.DomainFilterOperandEnum",
-              "required": true,
-              "description": "Rule of filter"
-            },
-            {
-              "name": "action",
-              "dataType": "domain.DomainFilterActionEnum",
-              "paramType": "body",
-              "fullType": "domain.DomainFilterActionEnum",
-              "required": true,
-              "description": "Action of filter"
-            },
-            {
-              "name": "priority",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Priority of filter"
-            },
-            {
-              "name": "header",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Header to be filtered"
-            },
-            {
-              "name": "value",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Rule parameter of filter"
-            },
-            {
+              "dataType": "boolean",
+              "description": "If true filter is active",
+              "fullType": "boolean",
               "name": "active",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "If true filter is active"
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Rule parameter of filter",
               "fullType": "string",
-              "required": true,
-              "description": "Filter name"
-            },
-            {
-              "name": "actionParam",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Action parameter of filter"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "email.domain.TaskFilter",
-          "noAuthentication": false,
-          "description": "Create new filter for account"
-        }
-      ],
-      "description": "List the email.domain.Filter objects"
-    },
-    {
-      "path": "/email/domain/delegatedAccount/{email}/filter/{name}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            }
-          ],
-          "responseType": "email.domain.TaskFilter[]",
-          "noAuthentication": false,
-          "description": "Delete an existing filter"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            }
-          ],
-          "responseType": "email.domain.Filter",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Filter List"
-    },
-    {
-      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "activity",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "New activity"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            }
-          ],
-          "responseType": "email.domain.TaskFilter",
-          "noAuthentication": false,
-          "description": "Change filter activity"
-        }
-      ],
-      "description": "changeActivity operations"
-    },
-    {
-      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/changePriority",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "priority",
-              "dataType": "long",
-              "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "New priority"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            }
-          ],
-          "responseType": "email.domain.TaskFilter",
-          "noAuthentication": false,
-          "description": "Change filter priority"
-        }
-      ],
-      "description": "changePriority operations"
-    },
-    {
-      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/rule",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            },
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get rules"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
               "name": "value",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Rule parameter of filter"
+              "required": true
             },
             {
-              "name": "operand",
+              "dataType": "string",
+              "description": "Action parameter of filter",
+              "fullType": "string",
+              "name": "actionParam",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Priority of filter",
+              "fullType": "long",
+              "name": "priority",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "domain.DomainFilterOperandEnum",
-              "paramType": "body",
+              "description": "Rule of filter",
               "fullType": "domain.DomainFilterOperandEnum",
-              "required": true,
-              "description": "Rule of filter"
+              "name": "operand",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Filter name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Header to be filtered",
+              "fullType": "string",
               "name": "header",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Header to be filtered"
+              "required": true
             },
             {
+              "dataType": "domain.DomainFilterActionEnum",
+              "description": "Action of filter",
+              "fullType": "domain.DomainFilterActionEnum",
+              "name": "action",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskFilter",
-          "noAuthentication": false,
-          "description": "Create new rule for filter"
+          "responseType": "email.domain.TaskFilter"
         }
       ],
-      "description": "List the email.domain.Rule objects"
+      "path": "/email/domain/delegatedAccount/{email}/filter"
     },
     {
-      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}",
+      "description": "Filter List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete an existing filter",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
-            },
-            {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            },
-            {
               "name": "email",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskFilter[]",
-          "noAuthentication": false,
-          "description": "Delete an existing filter"
+          "responseType": "email.domain.TaskFilter[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
-            },
-            {
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             },
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
             }
           ],
-          "responseType": "email.domain.Rule",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.Filter"
         }
       ],
-      "description": "Rule List"
+      "path": "/email/domain/delegatedAccount/{email}/filter/{name}"
     },
     {
-      "path": "/email/domain/delegatedAccount/{email}/responder",
+      "description": "changeActivity operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "email.domain.TaskSpecialAccount",
-          "noAuthentication": false,
-          "description": "Delete an existing responder in server"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "email",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Email"
-            }
-          ],
-          "responseType": "email.domain.ResponderAccount",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
+          "description": "Change filter activity",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "from",
-              "dataType": "datetime",
-              "paramType": "body",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Date of start responder"
-            },
-            {
-              "name": "copy",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "New activity",
               "fullType": "boolean",
-              "required": true,
-              "description": "If true, emails will be copy to emailToCopy address"
-            },
-            {
-              "name": "to",
-              "dataType": "datetime",
+              "name": "activity",
               "paramType": "body",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Date of end responder"
+              "required": true
             },
             {
-              "name": "content",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Content of responder"
-            },
-            {
-              "name": "copyTo",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Account where copy emails"
-            },
-            {
               "name": "email",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskSpecialAccount",
+          "responseType": "email.domain.TaskFilter"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity"
+    },
+    {
+      "description": "changePriority operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change filter priority",
+          "httpMethod": "POST",
           "noAuthentication": false,
-          "description": "Create new responder in server"
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "New priority",
+              "fullType": "long",
+              "name": "priority",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/changePriority"
+    },
+    {
+      "description": "List the email.domain.Rule objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get rules",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new rule for filter",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Header to be filtered",
+              "fullType": "string",
+              "name": "header",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Rule parameter of filter",
+              "fullType": "string",
+              "name": "value",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "domain.DomainFilterOperandEnum",
+              "description": "Rule of filter",
+              "fullType": "domain.DomainFilterOperandEnum",
+              "name": "operand",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/rule"
+    },
+    {
+      "description": "Rule List",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete an existing filter",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.Rule"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}"
+    },
+    {
+      "description": "Responder of account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete an existing responder in server",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskSpecialAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.ResponderAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create new responder in server",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "datetime",
+              "description": "Date of end responder",
+              "fullType": "datetime",
+              "name": "to",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Account where copy emails",
+              "fullType": "string",
+              "name": "copyTo",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Date of start responder",
+              "fullType": "datetime",
+              "name": "from",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "If true, emails will be copy to emailToCopy address",
+              "fullType": "boolean",
+              "name": "copy",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Content of responder",
+              "fullType": "string",
+              "name": "content",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskSpecialAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.domain.ResponderAccount",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.domain.ResponderAccount",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Responder of account"
+      "path": "/email/domain/delegatedAccount/{email}/responder"
     },
     {
-      "path": "/email/domain/delegatedAccount/{email}/updateUsage",
+      "description": "updateUsage operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update usage of account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Update usage of account"
+          "responseType": "void"
         }
       ],
-      "description": "updateUsage operations"
+      "path": "/email/domain/delegatedAccount/{email}/updateUsage"
     },
     {
-      "path": "/email/domain/delegatedAccount/{email}/usage",
+      "description": "usage operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "usage of account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.DomainUsageAccountStruct",
-          "noAuthentication": false,
-          "description": "usage of account"
+          "responseType": "domain.DomainUsageAccountStruct"
         }
       ],
-      "description": "usage operations"
+      "path": "/email/domain/delegatedAccount/{email}/usage"
     },
     {
-      "path": "/email/domain/mailingListLimits",
+      "description": "Get limits of mailing list",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get limits of mailing list",
           "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "moderatorMessage",
-              "dataType": "boolean",
-              "paramType": "query",
-              "fullType": "boolean",
-              "required": true,
-              "description": "If true, messages are moderate"
-            }
-          ],
-          "responseType": "domain.DomainMlLimits",
           "noAuthentication": true,
-          "description": "Get limits of mailing list"
-        }
-      ],
-      "description": "Get limits of mailing list"
-    },
-    {
-      "path": "/email/domain/{domain}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
           "parameters": [
             {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "dataType": "boolean",
+              "description": "If true, messages are moderate",
+              "fullType": "boolean",
+              "name": "moderatorMessage",
+              "paramType": "query",
+              "required": true
             }
           ],
-          "responseType": "email.domain.DomainService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "domain.DomainMlLimits"
         }
       ],
-      "description": "Domain service"
+      "path": "/email/domain/mailingListLimits"
     },
     {
-      "path": "/email/domain/{domain}/account",
+      "description": "Domain service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.DomainService"
+        }
+      ],
+      "path": "/email/domain/{domain}"
+    },
+    {
+      "description": "List the email.domain.Account objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get accounts",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
               "name": "accountName",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Account name"
+              "required": false
             },
             {
-              "name": "description",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Account description",
               "fullType": "string",
-              "required": false,
-              "description": "Account description"
+              "name": "description",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get accounts"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new mailbox in server",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "accountName",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "Account password",
               "fullType": "password",
-              "required": true,
-              "description": "Account password"
-            },
-            {
-              "name": "description",
-              "dataType": "string",
+              "name": "password",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Description Account"
+              "required": true
             },
             {
-              "name": "size",
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
+              "name": "accountName",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "body",
+              "description": "Account size in bytes (default : 5000000000) (possible values : /email/domain/{domain}/allowedAccountSize )",
               "fullType": "long",
-              "required": false,
-              "description": "Account size in bytes (default : 5000000000) (possible values : /email/domain/{domain}/allowedAccountSize )"
+              "name": "size",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Description Account",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskPop",
-          "noAuthentication": false,
-          "description": "Create new mailbox in server"
+          "responseType": "email.domain.TaskPop"
         }
       ],
-      "description": "List the email.domain.Account objects"
+      "path": "/email/domain/{domain}/account"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}",
+      "description": "Account List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete an existing mailbox in server",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskPop",
-          "noAuthentication": false,
-          "description": "Delete an existing mailbox in server"
+          "responseType": "email.domain.TaskPop"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.Account",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.Account"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.domain.Account",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.domain.Account",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Account List"
+      "path": "/email/domain/{domain}/account/{accountName}"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/changePassword",
+      "description": "changePassword operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change mailbox password (length : [9;30], no space at begin and end, no accent)",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "New password",
               "fullType": "password",
-              "required": true,
-              "description": "New password"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskPop",
-          "noAuthentication": false,
-          "description": "Change mailbox password (length : [9;30], no space at begin and end, no accent)"
+          "responseType": "email.domain.TaskPop"
         }
       ],
-      "description": "changePassword operations"
+      "path": "/email/domain/{domain}/account/{accountName}/changePassword"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/delegation",
+      "description": "List the email.domain.Delegation objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get delegations",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get delegations"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create delegation for this account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "OVH customer unique identifier",
+              "fullType": "string",
               "name": "accountId",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "OVH customer unique identifier"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Create delegation for this account"
+          "responseType": "string"
         }
       ],
-      "description": "List the email.domain.Delegation objects"
+      "path": "/email/domain/{domain}/account/{accountName}/delegation"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/delegation/{accountId}",
+      "description": "Delegation List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete an existing delegation",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
               "name": "accountName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "required": true
             },
             {
-              "name": "accountId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account ID",
               "fullType": "string",
-              "required": true,
-              "description": "Account ID"
+              "name": "accountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Delete an existing delegation"
+          "responseType": "string"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
-              "name": "accountId",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account ID"
-            },
-            {
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account ID",
+              "fullType": "string",
+              "name": "accountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.Delegation",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.Delegation"
         }
       ],
-      "description": "Delegation List"
+      "path": "/email/domain/{domain}/account/{accountName}/delegation/{accountId}"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/filter",
+      "description": "List the email.domain.Filter objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get filters",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get filters"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new filter for account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "active",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "If true filter is active"
-            },
-            {
-              "name": "name",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Header to be filtered",
               "fullType": "string",
-              "required": true,
-              "description": "Filter name"
-            },
-            {
-              "name": "actionParam",
-              "dataType": "string",
+              "name": "header",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Action parameter of filter"
+              "required": true
             },
             {
-              "name": "operand",
-              "dataType": "domain.DomainFilterOperandEnum",
-              "paramType": "body",
-              "fullType": "domain.DomainFilterOperandEnum",
-              "required": true,
-              "description": "Rule of filter"
-            },
-            {
-              "name": "action",
               "dataType": "domain.DomainFilterActionEnum",
-              "paramType": "body",
+              "description": "Action of filter",
               "fullType": "domain.DomainFilterActionEnum",
-              "required": true,
-              "description": "Action of filter"
-            },
-            {
-              "name": "priority",
-              "dataType": "long",
+              "name": "action",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "Priority of filter"
+              "required": true
             },
             {
-              "name": "header",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Header to be filtered"
-            },
-            {
-              "name": "value",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Rule parameter of filter"
-            },
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
-              "name": "accountName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            }
-          ],
-          "responseType": "email.domain.TaskFilter",
-          "noAuthentication": false,
-          "description": "Create new filter for account"
-        }
-      ],
-      "description": "List the email.domain.Filter objects"
-    },
-    {
-      "path": "/email/domain/{domain}/account/{accountName}/filter/{name}",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "DELETE",
-          "parameters": [
-            {
-              "name": "accountName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            },
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            }
-          ],
-          "responseType": "email.domain.TaskFilter[]",
-          "noAuthentication": false,
-          "description": "Delete an existing filter"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
-              "name": "accountName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            }
-          ],
-          "responseType": "email.domain.Filter",
-          "noAuthentication": false,
-          "description": "Get this object properties"
-        }
-      ],
-      "description": "Filter List"
-    },
-    {
-      "path": "/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "activity",
               "dataType": "boolean",
-              "paramType": "body",
+              "description": "If true filter is active",
               "fullType": "boolean",
-              "required": true,
-              "description": "New activity"
-            },
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
-              "name": "accountName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            }
-          ],
-          "responseType": "email.domain.TaskFilter",
-          "noAuthentication": false,
-          "description": "Change filter activity"
-        }
-      ],
-      "description": "changeActivity operations"
-    },
-    {
-      "path": "/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "priority",
-              "dataType": "long",
+              "name": "active",
               "paramType": "body",
-              "fullType": "long",
-              "required": true,
-              "description": "New priority"
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Rule parameter of filter",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
-              "name": "accountName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            }
-          ],
-          "responseType": "email.domain.TaskFilter",
-          "noAuthentication": false,
-          "description": "Change filter priority"
-        }
-      ],
-      "description": "changePriority operations"
-    },
-    {
-      "path": "/email/domain/{domain}/account/{accountName}/filter/{name}/rule",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "GET",
-          "parameters": [
-            {
-              "name": "domain",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
-              "name": "accountName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            }
-          ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get rules"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "httpMethod": "POST",
-          "parameters": [
-            {
-              "name": "header",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Header to be filtered"
-            },
-            {
               "name": "value",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Rule parameter of filter"
+              "required": true
             },
             {
-              "name": "operand",
+              "dataType": "string",
+              "description": "Action parameter of filter",
+              "fullType": "string",
+              "name": "actionParam",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Priority of filter",
+              "fullType": "long",
+              "name": "priority",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "domain.DomainFilterOperandEnum",
-              "paramType": "body",
+              "description": "Rule of filter",
               "fullType": "domain.DomainFilterOperandEnum",
-              "required": true,
-              "description": "Rule of filter"
+              "name": "operand",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Filter name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
-              "name": "accountName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
               "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskFilter",
-          "noAuthentication": false,
-          "description": "Create new rule for filter"
+          "responseType": "email.domain.TaskFilter"
         }
       ],
-      "description": "List the email.domain.Rule objects"
+      "path": "/email/domain/{domain}/account/{accountName}/filter"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}",
+      "description": "Filter List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete an existing filter",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
-              "name": "accountName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             },
             {
-              "name": "id",
-              "dataType": "long",
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
               "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskFilter[]",
-          "noAuthentication": false,
-          "description": "Delete an existing filter"
+          "responseType": "email.domain.TaskFilter[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "id",
-              "dataType": "long",
-              "paramType": "path",
-              "fullType": "long",
-              "required": true,
-              "description": "Id"
-            },
-            {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
               "name": "accountName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.Rule",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.Filter"
         }
       ],
-      "description": "Rule List"
+      "path": "/email/domain/{domain}/account/{accountName}/filter/{name}"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/migrate",
+      "description": "changeActivity operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change filter activity",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "New activity",
+              "fullType": "boolean",
+              "name": "activity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter"
+        }
+      ],
+      "path": "/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity"
+    },
+    {
+      "description": "changePriority operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change filter priority",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "New priority",
+              "fullType": "long",
+              "name": "priority",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter"
+        }
+      ],
+      "path": "/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority"
+    },
+    {
+      "description": "List the email.domain.Rule objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get rules",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create new rule for filter",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Rule parameter of filter",
+              "fullType": "string",
+              "name": "value",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "domain.DomainFilterOperandEnum",
+              "description": "Rule of filter",
+              "fullType": "domain.DomainFilterOperandEnum",
+              "name": "operand",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Header to be filtered",
+              "fullType": "string",
+              "name": "header",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter"
+        }
+      ],
+      "path": "/email/domain/{domain}/account/{accountName}/filter/{name}/rule"
+    },
+    {
+      "description": "Rule List",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete an existing filter",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.Rule"
+        }
+      ],
+      "path": "/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}"
+    },
+    {
+      "description": "List the email.domain.MigrationService objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get migration service",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
               "name": "accountName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "required": true
             },
             {
-              "name": "type",
               "dataType": "email.domain.MigrationServiceType",
-              "paramType": "query",
+              "description": "Type of migration service",
               "fullType": "email.domain.MigrationServiceType",
-              "required": false,
-              "description": "Type of migration service"
+              "name": "type",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get migration service"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the email.domain.MigrationService objects"
+      "path": "/email/domain/{domain}/account/{accountName}/migrate"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}",
+      "description": "Migration service",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
               "name": "accountName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "required": true
             },
             {
-              "name": "destinationServiceName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Destination service name",
               "fullType": "string",
-              "required": true,
-              "description": "Destination service name"
+              "name": "destinationServiceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.MigrationService",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.MigrationService"
         }
       ],
-      "description": "Migration service"
+      "path": "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress",
+      "description": "List the email.domain.MigrationAccount objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "List of email address available for migration",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
-              "name": "destinationServiceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Destination service name"
-            },
-            {
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "quota",
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Destination service name",
+              "fullType": "string",
+              "name": "destinationServiceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "paramType": "query",
+              "description": "Account maximum size",
               "fullType": "long",
-              "required": false,
-              "description": "Account maximum size"
+              "name": "quota",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of email address available for migration"
+          "responseType": "string[]"
         }
       ],
-      "description": "List the email.domain.MigrationAccount objects"
+      "path": "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}",
+      "description": "Migration account",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
               "name": "accountName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Destination service name",
+              "fullType": "string",
               "name": "destinationServiceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Destination service name"
+              "required": true
             },
             {
-              "name": "destinationEmailAddress",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Destination email address",
               "fullType": "string",
-              "required": true,
-              "description": "Destination email address"
+              "name": "destinationEmailAddress",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.MigrationAccount",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.MigrationAccount"
         }
       ],
-      "description": "Migration account"
+      "path": "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate",
+      "description": "checkMigrate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Check if it's possible to migrate",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Destination email address",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
-              "name": "accountName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
-            },
-            {
-              "name": "destinationServiceName",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Destination service name"
-            },
-            {
               "name": "destinationEmailAddress",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Destination email address"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Destination service name",
+              "fullType": "string",
+              "name": "destinationServiceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.MigrationCheckStruct",
-          "noAuthentication": false,
-          "description": "Check if it's possible to migrate"
+          "responseType": "email.domain.MigrationCheckStruct"
         }
       ],
-      "description": "checkMigrate operations"
+      "path": "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate",
+      "description": "migrate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Migrate account to destination account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "password",
               "dataType": "password",
-              "paramType": "body",
+              "description": "New password used for migration",
               "fullType": "password",
-              "required": true,
-              "description": "New password used for migration"
+              "name": "password",
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
               "name": "accountName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Destination service name",
+              "fullType": "string",
               "name": "destinationServiceName",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Destination service name"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Destination email address",
+              "fullType": "string",
               "name": "destinationEmailAddress",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Destination email address"
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskPop",
-          "noAuthentication": false,
-          "description": "Migrate account to destination account"
+          "responseType": "email.domain.TaskPop"
         }
       ],
-      "description": "migrate operations"
+      "path": "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/updateUsage",
+      "description": "updateUsage operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Update usage of account",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Update usage of account"
+          "responseType": "void"
         }
       ],
-      "description": "updateUsage operations"
+      "path": "/email/domain/{domain}/account/{accountName}/updateUsage"
     },
     {
-      "path": "/email/domain/{domain}/account/{accountName}/usage",
+      "description": "usage operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "usage of account",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accountName",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account name",
               "fullType": "string",
-              "required": true,
-              "description": "Account name"
+              "name": "accountName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.DomainUsageAccountStruct",
-          "noAuthentication": false,
-          "description": "usage of account"
+          "responseType": "domain.DomainUsageAccountStruct"
         }
       ],
-      "description": "usage operations"
+      "path": "/email/domain/{domain}/account/{accountName}/usage"
     },
     {
-      "path": "/email/domain/{domain}/acl",
+      "description": "List the email.domain.Acl objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get ACL on your domain",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get ACL on your domain"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new ACL",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "accountId",
               "dataType": "string",
+              "description": "Deleguates rights to",
+              "fullType": "string",
+              "name": "accountId",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Deleguates rights to"
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.Acl",
-          "noAuthentication": false,
-          "description": "Create new ACL"
+          "responseType": "email.domain.Acl"
         }
       ],
-      "description": "List the email.domain.Acl objects"
+      "path": "/email/domain/{domain}/acl"
     },
     {
-      "path": "/email/domain/{domain}/acl/{accountId}",
+      "description": "Email ACL",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete ACL",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "accountId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account ID",
               "fullType": "string",
-              "required": true,
-              "description": "Account ID"
+              "name": "accountId",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Delete ACL"
+          "responseType": "void"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "accountId",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account ID",
               "fullType": "string",
-              "required": true,
-              "description": "Account ID"
+              "name": "accountId",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.Acl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.Acl"
         }
       ],
-      "description": "Email ACL"
+      "path": "/email/domain/{domain}/acl/{accountId}"
     },
     {
-      "path": "/email/domain/{domain}/changeContact",
+      "description": "Change the contacts of this service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Launch a contact change procedure",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "string",
               "name": "contactAdmin",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as admin contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "string",
               "name": "contactTech",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as tech contact"
+              "required": false
             },
             {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "string",
               "name": "contactBilling",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "The contact to set as billing contact"
+              "required": false
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Launch a contact change procedure"
+          "responseType": "long[]"
         }
       ],
-      "description": "Change the contacts of this service"
+      "path": "/email/domain/{domain}/changeContact"
     },
     {
-      "path": "/email/domain/{domain}/changeDnsMXFilter",
+      "description": "changeDnsMXFilter operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change MX filter, so change MX DNS records",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "mxFilter",
-              "dataType": "domain.DomainMXFilterEnum",
-              "paramType": "body",
-              "fullType": "domain.DomainMXFilterEnum",
-              "required": true,
-              "description": "New MX filter"
-            },
-            {
-              "name": "subDomain",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Target server for custom MX",
               "fullType": "string",
-              "required": false,
-              "description": "Sub domain"
-            },
-            {
               "name": "customTarget",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Target server for custom MX"
+              "required": false
             },
             {
-              "name": "domain",
+              "dataType": "domain.DomainMXFilterEnum",
+              "description": "New MX filter",
+              "fullType": "domain.DomainMXFilterEnum",
+              "name": "mxFilter",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Sub domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "subDomain",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Change MX filter, so change MX DNS records"
+          "responseType": "void"
         }
       ],
-      "description": "changeDnsMXFilter operations"
+      "path": "/email/domain/{domain}/changeDnsMXFilter"
     },
     {
-      "path": "/email/domain/{domain}/confirmTermination",
+      "description": "confirmTermination operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Confirm termination of your email service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "reason",
-              "dataType": "service.TerminationReasonEnum",
-              "paramType": "body",
-              "fullType": "service.TerminationReasonEnum",
-              "required": false,
-              "description": "Reason of your termination request"
-            },
-            {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
               "name": "token",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "The termination token sent by mail to the admin contact"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
               "name": "commentary",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Commentary about your termination request"
+              "required": false
             },
             {
-              "name": "domain",
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Confirm termination of your email service"
+          "responseType": "string"
         }
       ],
-      "description": "confirmTermination operations"
+      "path": "/email/domain/{domain}/confirmTermination"
     },
     {
-      "path": "/email/domain/{domain}/dnsMXFilter",
+      "description": "dnsMXFilter operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Domain MX filter",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Sub domain",
+              "fullType": "string",
               "name": "subDomain",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Sub domain"
+              "required": false
             }
           ],
-          "responseType": "domain.DomainMXFilterEnum",
-          "noAuthentication": false,
-          "description": "Domain MX filter"
+          "responseType": "domain.DomainMXFilterEnum"
         }
       ],
-      "description": "dnsMXFilter operations"
+      "path": "/email/domain/{domain}/dnsMXFilter"
     },
     {
-      "path": "/email/domain/{domain}/dnsMXRecords",
+      "description": "dnsMXRecords operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Domain MX records",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Sub domain",
+              "fullType": "string",
               "name": "subDomain",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Sub domain"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Domain MX records"
+          "responseType": "string[]"
         }
       ],
-      "description": "dnsMXRecords operations"
+      "path": "/email/domain/{domain}/dnsMXRecords"
     },
     {
-      "path": "/email/domain/{domain}/mailingList",
+      "description": "List the email.domain.MailingList objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get mailing lists",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Mailing list name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Mailing list name"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get mailing lists"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new mailingList",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "options",
               "dataType": "domain.DomainMlOptionsStruct",
-              "paramType": "body",
+              "description": "Options of mailing list",
               "fullType": "domain.DomainMlOptionsStruct",
-              "required": true,
-              "description": "Options of mailing list"
-            },
-            {
-              "name": "language",
-              "dataType": "domain.DomainMlLanguageEnum",
+              "name": "options",
               "paramType": "body",
-              "fullType": "domain.DomainMlLanguageEnum",
-              "required": true,
-              "description": "Language of mailing list"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Email to reply of mailing list",
+              "fullType": "string",
               "name": "replyTo",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": false,
-              "description": "Email to reply of mailing list"
+              "required": false
             },
             {
-              "name": "ownerEmail",
-              "dataType": "string",
+              "dataType": "domain.DomainMlLanguageEnum",
+              "description": "Language of mailing list",
+              "fullType": "domain.DomainMlLanguageEnum",
+              "name": "language",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Owner Email"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Mailing list name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Mailing list name"
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Owner Email",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "ownerEmail",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskMl",
-          "noAuthentication": false,
-          "description": "Create new mailingList"
+          "responseType": "email.domain.TaskMl"
         }
       ],
-      "description": "List the email.domain.MailingList objects"
+      "path": "/email/domain/{domain}/mailingList"
     },
     {
-      "path": "/email/domain/{domain}/mailingList/{name}",
+      "description": "Mailing List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete existing Mailing list",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskMl",
-          "noAuthentication": false,
-          "description": "Delete existing Mailing list"
+          "responseType": "email.domain.TaskMl"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.MailingList",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.MailingList"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.domain.MailingList",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.domain.MailingList",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Mailing List"
+      "path": "/email/domain/{domain}/mailingList/{name}"
     },
     {
-      "path": "/email/domain/{domain}/mailingList/{name}/changeOptions",
+      "description": "changeOptions operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change mailing list options",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "options",
               "dataType": "domain.DomainMlOptionsStruct",
-              "paramType": "body",
+              "description": "Options of mailing list",
               "fullType": "domain.DomainMlOptionsStruct",
-              "required": true,
-              "description": "Options of mailing list"
+              "name": "options",
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskMl",
-          "noAuthentication": false,
-          "description": "Change mailing list options"
+          "responseType": "email.domain.TaskMl"
         }
       ],
-      "description": "changeOptions operations"
+      "path": "/email/domain/{domain}/mailingList/{name}/changeOptions"
     },
     {
-      "path": "/email/domain/{domain}/mailingList/{name}/moderator",
+      "description": "List the email.domain.Moderator objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of moderators",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Moderator email",
               "fullType": "string",
-              "required": false,
-              "description": "Moderator email"
+              "name": "email",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of moderators"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add moderator to mailing list",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Email of moderator",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Email of moderator"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskMl",
-          "noAuthentication": false,
-          "description": "Add moderator to mailing list"
+          "responseType": "email.domain.TaskMl"
         }
       ],
-      "description": "List the email.domain.Moderator objects"
+      "path": "/email/domain/{domain}/mailingList/{name}/moderator"
     },
     {
-      "path": "/email/domain/{domain}/mailingList/{name}/moderator/{email}",
+      "description": "Moderators List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete existing moderator",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskMl",
-          "noAuthentication": false,
-          "description": "Delete existing moderator"
+          "responseType": "email.domain.TaskMl"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.Moderator",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.Moderator"
         }
       ],
-      "description": "Moderators List"
+      "path": "/email/domain/{domain}/mailingList/{name}/moderator/{email}"
     },
     {
-      "path": "/email/domain/{domain}/mailingList/{name}/sendListByEmail",
+      "description": "sendListByEmail operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Send moderators list and subscribers list of this mailing list by email",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Email destination",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Email destination"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskMl",
-          "noAuthentication": false,
-          "description": "Send moderators list and subscribers list of this mailing list by email"
+          "responseType": "email.domain.TaskMl"
         }
       ],
-      "description": "sendListByEmail operations"
+      "path": "/email/domain/{domain}/mailingList/{name}/sendListByEmail"
     },
     {
-      "path": "/email/domain/{domain}/mailingList/{name}/subscriber",
+      "description": "List the email.domain.Subscriber objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List of subscribers",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
+              "description": "Subscriber email",
+              "fullType": "string",
+              "name": "email",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Subscriber email"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "List of subscribers"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Add subscriber to mailing list",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Email of subscriber",
+              "fullType": "string",
               "name": "email",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Email of subscriber"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "name",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Name",
               "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskMl",
-          "noAuthentication": false,
-          "description": "Add subscriber to mailing list"
+          "responseType": "email.domain.TaskMl"
         }
       ],
-      "description": "List the email.domain.Subscriber objects"
+      "path": "/email/domain/{domain}/mailingList/{name}/subscriber"
     },
     {
-      "path": "/email/domain/{domain}/mailingList/{name}/subscriber/{email}",
+      "description": "Subscribers List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete existing subscriber",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
+              "required": true
             },
             {
-              "name": "email",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "email",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskMl",
-          "noAuthentication": false,
-          "description": "Delete existing subscriber"
+          "responseType": "email.domain.TaskMl"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Email",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
-            },
-            {
-              "name": "name",
-              "dataType": "string",
-              "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Name"
-            },
-            {
               "name": "email",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Email"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.Subscriber",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.Subscriber"
         }
       ],
-      "description": "Subscribers List"
+      "path": "/email/domain/{domain}/mailingList/{name}/subscriber/{email}"
     },
     {
-      "path": "/email/domain/{domain}/migrateDelegationV3toV6",
+      "description": "migrateDelegationV3toV6 operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create delegation of domain with same nic than V3",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Create delegation of domain with same nic than V3"
+          "responseType": "void"
         }
       ],
-      "description": "migrateDelegationV3toV6 operations"
+      "path": "/email/domain/{domain}/migrateDelegationV3toV6"
     },
     {
-      "path": "/email/domain/{domain}/quota",
+      "description": "quota operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "List all quotas for this domain",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.DomainQuota",
-          "noAuthentication": false,
-          "description": "List all quotas for this domain"
+          "responseType": "domain.DomainQuota"
         }
       ],
-      "description": "quota operations"
+      "path": "/email/domain/{domain}/quota"
     },
     {
-      "path": "/email/domain/{domain}/recommendedDNSRecords",
+      "description": "recommendedDNSRecords operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Recommended domain DNS records",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.zone.Record[]",
-          "noAuthentication": false,
-          "description": "Recommended domain DNS records"
+          "responseType": "domain.zone.Record[]"
         }
       ],
-      "description": "recommendedDNSRecords operations"
+      "path": "/email/domain/{domain}/recommendedDNSRecords"
     },
     {
-      "path": "/email/domain/{domain}/redirection",
+      "description": "List the email.domain.RedirectionGlobal objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get redirections",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "to",
               "dataType": "string",
-              "paramType": "query",
+              "description": "Name of redirection",
               "fullType": "string",
-              "required": false,
-              "description": "Email of redirection target"
-            },
-            {
               "name": "from",
-              "dataType": "string",
               "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Email of redirection target",
               "fullType": "string",
-              "required": false,
-              "description": "Name of redirection"
+              "name": "to",
+              "paramType": "query",
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get redirections"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new redirection in server",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Name of redirection",
+              "fullType": "string",
+              "name": "from",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "If true keep a local copy",
+              "fullType": "boolean",
               "name": "localCopy",
-              "dataType": "boolean",
               "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "If true keep a local copy"
+              "required": true
             },
             {
-              "name": "from",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Target of account",
               "fullType": "string",
-              "required": true,
-              "description": "Name of redirection"
-            },
-            {
               "name": "to",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Target of account"
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskSpecialAccount",
-          "noAuthentication": false,
-          "description": "Create new redirection in server"
+          "responseType": "email.domain.TaskSpecialAccount"
         }
       ],
-      "description": "List the email.domain.RedirectionGlobal objects"
+      "path": "/email/domain/{domain}/redirection"
     },
     {
-      "path": "/email/domain/{domain}/redirection/{id}",
+      "description": "Global Redirection",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete an existing redirection in server",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "string",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskSpecialAccount",
-          "noAuthentication": false,
-          "description": "Delete an existing redirection in server"
+          "responseType": "email.domain.TaskSpecialAccount"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "string",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.RedirectionGlobal",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.RedirectionGlobal"
         }
       ],
-      "description": "Global Redirection"
+      "path": "/email/domain/{domain}/redirection/{id}"
     },
     {
-      "path": "/email/domain/{domain}/redirection/{id}/changeRedirection",
+      "description": "changeRedirection operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Change redirection",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Target of account",
+              "fullType": "string",
               "name": "to",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Target of account"
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Id"
-            },
-            {
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Id",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskSpecialAccount",
-          "noAuthentication": false,
-          "description": "Change redirection"
+          "responseType": "email.domain.TaskSpecialAccount"
         }
       ],
-      "description": "changeRedirection operations"
+      "path": "/email/domain/{domain}/redirection/{id}/changeRedirection"
     },
     {
-      "path": "/email/domain/{domain}/responder",
+      "description": "List the email.domain.Responder objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get responders",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "account",
               "dataType": "string",
+              "description": "Responder name",
+              "fullType": "string",
+              "name": "account",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Responder name"
+              "required": false
             }
           ],
-          "responseType": "string[]",
-          "noAuthentication": false,
-          "description": "Get responders"
+          "responseType": "string[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Create new responder in server",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "copyTo",
               "dataType": "string",
-              "paramType": "body",
+              "description": "Content of responder",
               "fullType": "string",
-              "required": false,
-              "description": "Account where copy emails"
-            },
-            {
-              "name": "account",
-              "dataType": "string",
-              "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Account of domain"
-            },
-            {
-              "name": "from",
-              "dataType": "datetime",
-              "paramType": "body",
-              "fullType": "datetime",
-              "required": false,
-              "description": "Date of start responder"
-            },
-            {
-              "name": "copy",
-              "dataType": "boolean",
-              "paramType": "body",
-              "fullType": "boolean",
-              "required": true,
-              "description": "If false, emails will be dropped. If true and copyTo field is empty, emails will be delivered to your mailbox. If true and copyTo is set with an address, emails will be delivered to this address"
-            },
-            {
               "name": "content",
-              "dataType": "string",
               "paramType": "body",
-              "fullType": "string",
-              "required": true,
-              "description": "Content of responder"
+              "required": true
             },
             {
-              "name": "to",
               "dataType": "datetime",
-              "paramType": "body",
+              "description": "Date of end responder",
               "fullType": "datetime",
-              "required": false,
-              "description": "Date of end responder"
+              "name": "to",
+              "paramType": "body",
+              "required": false
             },
             {
-              "name": "domain",
+              "dataType": "boolean",
+              "description": "If false, emails will be dropped. If true and copyTo field is empty, emails will be delivered to your mailbox. If true and copyTo is set with an address, emails will be delivered to this address",
+              "fullType": "boolean",
+              "name": "copy",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Date of start responder",
+              "fullType": "datetime",
+              "name": "from",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account where copy emails",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "copyTo",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Account of domain",
+              "fullType": "string",
+              "name": "account",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskSpecialAccount",
-          "noAuthentication": false,
-          "description": "Create new responder in server"
+          "responseType": "email.domain.TaskSpecialAccount"
         }
       ],
-      "description": "List the email.domain.Responder objects"
+      "path": "/email/domain/{domain}/responder"
     },
     {
-      "path": "/email/domain/{domain}/responder/{account}",
+      "description": "Responder",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete an existing responder in server",
           "httpMethod": "DELETE",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "account",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Account"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "account",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskSpecialAccount",
-          "noAuthentication": false,
-          "description": "Delete an existing responder in server"
+          "responseType": "email.domain.TaskSpecialAccount"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "account",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account",
               "fullType": "string",
-              "required": true,
-              "description": "Account"
+              "name": "account",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.Responder",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.Responder"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "email.domain.Responder",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "email.domain.Responder",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Domain",
+              "fullType": "string",
               "name": "domain",
-              "dataType": "string",
               "paramType": "path",
-              "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "required": true
             },
             {
-              "name": "account",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Account",
               "fullType": "string",
-              "required": true,
-              "description": "Account"
+              "name": "account",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Responder"
+      "path": "/email/domain/{domain}/responder/{account}"
     },
     {
-      "path": "/email/domain/{domain}/serviceInfos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "services.Service",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "services.Service"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
+          "noAuthentication": false,
           "parameters": [
             {
               "dataType": "services.Service",
-              "paramType": "body",
+              "description": "Request Body",
               "fullType": "services.Service",
-              "required": true,
-              "description": "Request Body"
+              "paramType": "body",
+              "required": true
             },
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "void",
-          "noAuthentication": false,
-          "description": "Alter this object properties"
+          "responseType": "void"
         }
       ],
-      "description": "Details about a Service"
+      "path": "/email/domain/{domain}/serviceInfos"
     },
     {
-      "path": "/email/domain/{domain}/summary",
+      "description": "summary operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Summary for this domain",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "domain.DomainSummary",
-          "noAuthentication": false,
-          "description": "Summary for this domain"
+          "responseType": "domain.DomainSummary"
         }
       ],
-      "description": "summary operations"
+      "path": "/email/domain/{domain}/summary"
     },
     {
-      "path": "/email/domain/{domain}/task/account",
+      "description": "List the email.domain.TaskPop objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get account tasks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
               "name": "name",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Account name"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get account tasks"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the email.domain.TaskPop objects"
+      "path": "/email/domain/{domain}/task/account"
     },
     {
-      "path": "/email/domain/{domain}/task/account/{id}",
+      "description": "Task Pop List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskPop",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.TaskPop"
         }
       ],
-      "description": "Task Pop List"
+      "path": "/email/domain/{domain}/task/account/{id}"
     },
     {
-      "path": "/email/domain/{domain}/task/filter",
+      "description": "List the email.domain.TaskFilter objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get filter tasks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
               "name": "account",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Account name"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get filter tasks"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the email.domain.TaskFilter objects"
+      "path": "/email/domain/{domain}/task/filter"
     },
     {
-      "path": "/email/domain/{domain}/task/filter/{id}",
+      "description": "Task filter List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskFilter",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.TaskFilter"
         }
       ],
-      "description": "Task filter List"
+      "path": "/email/domain/{domain}/task/filter/{id}"
     },
     {
-      "path": "/email/domain/{domain}/task/mailinglist",
+      "description": "List the email.domain.TaskMl objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get Mailing List tasks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
               "name": "account",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Account name"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get Mailing List tasks"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the email.domain.TaskMl objects"
+      "path": "/email/domain/{domain}/task/mailinglist"
     },
     {
-      "path": "/email/domain/{domain}/task/mailinglist/{id}",
+      "description": "Task Mailing List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskMl",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.TaskMl"
         }
       ],
-      "description": "Task Mailing List"
+      "path": "/email/domain/{domain}/task/mailinglist/{id}"
     },
     {
-      "path": "/email/domain/{domain}/task/redirection",
+      "description": "List the email.domain.TaskSpecialAccount objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get redirection tasks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Account name",
+              "fullType": "string",
               "name": "account",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Account name"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get redirection tasks"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the email.domain.TaskSpecialAccount objects"
+      "path": "/email/domain/{domain}/task/redirection"
     },
     {
-      "path": "/email/domain/{domain}/task/redirection/{id}",
+      "description": "Task special account List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskSpecialAccount",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.TaskSpecialAccount"
         }
       ],
-      "description": "Task special account List"
+      "path": "/email/domain/{domain}/task/redirection/{id}"
     },
     {
-      "path": "/email/domain/{domain}/task/responder",
+      "description": "List the email.domain.TaskSpecialAccount objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get responder tasks",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
+              "dataType": "string",
+              "description": "Name of responder",
+              "fullType": "string",
               "name": "account",
-              "dataType": "string",
               "paramType": "query",
-              "fullType": "string",
-              "required": false,
-              "description": "Name of responder"
+              "required": false
             }
           ],
-          "responseType": "long[]",
-          "noAuthentication": false,
-          "description": "Get responder tasks"
+          "responseType": "long[]"
         }
       ],
-      "description": "List the email.domain.TaskSpecialAccount objects"
+      "path": "/email/domain/{domain}/task/responder"
     },
     {
-      "path": "/email/domain/{domain}/task/responder/{id}",
+      "description": "Task special account List",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Get this object properties",
           "httpMethod": "GET",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
-              "name": "id",
               "dataType": "long",
-              "paramType": "path",
+              "description": "Id",
               "fullType": "long",
-              "required": true,
-              "description": "Id"
+              "name": "id",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "email.domain.TaskSpecialAccount",
-          "noAuthentication": false,
-          "description": "Get this object properties"
+          "responseType": "email.domain.TaskSpecialAccount"
         }
       ],
-      "description": "Task special account List"
+      "path": "/email/domain/{domain}/task/responder/{id}"
     },
     {
-      "path": "/email/domain/{domain}/terminate",
+      "description": "terminate operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Terminate your email service",
           "httpMethod": "POST",
+          "noAuthentication": false,
           "parameters": [
             {
-              "name": "domain",
               "dataType": "string",
-              "paramType": "path",
+              "description": "Domain",
               "fullType": "string",
-              "required": true,
-              "description": "Domain"
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "string",
-          "noAuthentication": false,
-          "description": "Terminate your email service"
+          "responseType": "string"
         }
       ],
-      "description": "terminate operations"
+      "path": "/email/domain/{domain}/terminate"
     }
   ],
-  "resourcePath": "/email/domain",
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
     "domain.DomainFilterActionEnum": {
-      "id": "DomainFilterActionEnum",
-      "namespace": "domain",
       "description": "Possible values for filter action",
       "enum": [
         "accept",
@@ -3886,22 +3885,22 @@ export const schema: Schema = {
         "delete",
         "redirect"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainFilterActionEnum",
+      "namespace": "domain"
     },
     "domain.DomainFilterOperandEnum": {
-      "id": "DomainFilterOperandEnum",
-      "namespace": "domain",
       "description": "Possible values for filter operation",
       "enum": [
         "checkspf",
         "contains",
         "noContains"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainFilterOperandEnum",
+      "namespace": "domain"
     },
     "domain.DomainMXFilterEnum": {
-      "id": "DomainMXFilterEnum",
-      "namespace": "domain",
       "description": "Possible values for MX filter",
       "enum": [
         "CUSTOM",
@@ -3910,11 +3909,11 @@ export const schema: Schema = {
         "REDIRECT",
         "SIMPLE_FILTERING"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainMXFilterEnum",
+      "namespace": "domain"
     },
     "domain.DomainMlLanguageEnum": {
-      "id": "DomainMlLanguageEnum",
-      "namespace": "domain",
       "description": "Possible values for mailing list language",
       "enum": [
         "de",
@@ -3926,57 +3925,57 @@ export const schema: Schema = {
         "pl",
         "pt"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainMlLanguageEnum",
+      "namespace": "domain"
     },
     "domain.DomainMlLimits": {
+      "description": "Structure of mailinglist limits",
       "id": "DomainMlLimits",
       "namespace": "domain",
-      "description": "Structure of mailinglist limits",
       "properties": {
         "subscribers": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum number of subscribers",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "domain.DomainMlOptionsStruct": {
+      "description": "Structure of imapCopy",
       "id": "DomainMlOptionsStruct",
       "namespace": "domain",
-      "description": "Structure of imapCopy",
       "properties": {
         "moderatorMessage": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If true, messages are moderate",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "subscribeByModerator": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If true, enabled moderation for subscribe",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "usersPostOnly": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "If true, just user can post",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     },
     "domain.DomainPopActionEnum": {
-      "id": "DomainPopActionEnum",
-      "namespace": "domain",
       "description": "Possible values for pop action task",
       "enum": [
         "addAccount",
@@ -3988,69 +3987,69 @@ export const schema: Schema = {
         "temporaryTask",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainPopActionEnum",
+      "namespace": "domain"
     },
     "domain.DomainQuota": {
+      "description": "Values of quota account (pop, mailing list, redirection, responder and big pop)",
       "id": "DomainQuota",
       "namespace": "domain",
-      "description": "Values of quota account (pop, mailing list, redirection, responder and big pop)",
       "properties": {
         "account": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum number of mailboxes",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "alias": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum number of aliases",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "mailingList": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum number of mailing lists",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "redirection": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum number of redirections",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "responder": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Maximum number of responders",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "domain.DomainSpecialAccountActionEnum": {
-      "id": "DomainSpecialAccountActionEnum",
-      "namespace": "domain",
       "description": "Possible values for pop action task",
       "enum": [
         "add",
         "change",
         "delete"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainSpecialAccountActionEnum",
+      "namespace": "domain"
     },
     "domain.DomainSpecialAccountTypeEnum": {
-      "id": "DomainSpecialAccountTypeEnum",
-      "namespace": "domain",
       "description": "Possible type task",
       "enum": [
         "25g",
@@ -4060,11 +4059,11 @@ export const schema: Schema = {
         "forward",
         "responder"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainSpecialAccountTypeEnum",
+      "namespace": "domain"
     },
     "domain.DomainStatusEnum": {
-      "id": "DomainStatusEnum",
-      "namespace": "domain",
       "description": "Possible values for status domain",
       "enum": [
         "close",
@@ -4072,512 +4071,512 @@ export const schema: Schema = {
         "readOnly",
         "unknown"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "DomainStatusEnum",
+      "namespace": "domain"
     },
     "domain.DomainSummary": {
+      "description": "Values of number account (account, mailing list, redirection and responder)",
       "id": "DomainSummary",
       "namespace": "domain",
-      "description": "Values of number account (account, mailing list, redirection and responder)",
       "properties": {
         "account": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of mailboxes",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "mailingList": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of mailing lists",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "redirection": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of redirections",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         },
         "responder": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Number of responders",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "domain.DomainUsageAccountStruct": {
+      "description": "Structure of usage account",
       "id": "DomainUsageAccountStruct",
       "namespace": "domain",
-      "description": "Structure of usage account",
       "properties": {
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Timestamp",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "emailCount": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Number of message in mailbox",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Size of mailbox (bytes)",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "domain.zone.Record": {
+      "description": "Zone resource records",
       "id": "Record",
       "namespace": "domain.zone",
-      "description": "Zone resource records",
       "properties": {
         "fieldType": {
-          "type": "zone.NamedResolutionFieldTypeEnum",
-          "fullType": "zone.NamedResolutionFieldTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Resource record Name",
-          "required": true
+          "fullType": "zone.NamedResolutionFieldTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "zone.NamedResolutionFieldTypeEnum"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of the zone resource record",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "subDomain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Resource record subdomain",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "target": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Resource record target",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "ttl": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Resource record ttl",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         },
         "zone": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Resource record zone",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "email.domain.Account": {
+      "description": "Account List",
       "id": "Account",
       "namespace": "email.domain",
-      "description": "Account List",
       "properties": {
         "accountName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of account",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Account description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of domain",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Email",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "isBlocked": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your account is blocked",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Size of your account in bytes",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.domain.AccountDelegated": {
+      "description": "Account List",
       "id": "AccountDelegated",
       "namespace": "email.domain",
-      "description": "Account List",
       "properties": {
         "accountName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of account",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "allowedAccountSize": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "List of allowed sizes for this account in bytes",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "description": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Account description",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of domain",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Email",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "isBlocked": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true your account is blocked",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "size": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Size of your account in bytes",
-          "required": true
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.domain.Acl": {
+      "description": "Email ACL",
       "id": "Acl",
       "namespace": "email.domain",
-      "description": "Email ACL",
       "properties": {
         "accountId": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OVH customer unique identifier",
-          "required": true
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         }
       }
     },
     "email.domain.Delegation": {
+      "description": "Delegation List",
       "id": "Delegation",
       "namespace": "email.domain",
-      "description": "Delegation List",
       "properties": {
         "accountId": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "OVH customer unique identifier",
-          "required": true
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         }
       }
     },
     "email.domain.DomainService": {
+      "description": "Domain service",
       "id": "DomainService",
       "namespace": "email.domain",
-      "description": "Domain service",
       "properties": {
         "allowedAccountSize": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "List of allowed sizes for this domain in bytes",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "creationDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Creation date of domain",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of domain",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "filerz": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Filerz of domain",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "linkTo": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Name of servicelinked with this domain",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "migratedMXPlanServiceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Name of new MXPlan service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "offer": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Offer of email service",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "status": {
-          "type": "domain.DomainStatusEnum",
-          "fullType": "domain.DomainStatusEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain Status",
-          "required": true
+          "fullType": "domain.DomainStatusEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.DomainStatusEnum"
         }
       }
     },
     "email.domain.Filter": {
+      "description": "Filter List",
       "id": "Filter",
       "namespace": "email.domain",
-      "description": "Filter List",
       "properties": {
         "action": {
-          "type": "domain.DomainFilterActionEnum",
-          "fullType": "domain.DomainFilterActionEnum",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Action of filter",
-          "required": false
+          "fullType": "domain.DomainFilterActionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.DomainFilterActionEnum"
         },
         "actionParam": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Action parameter of filter",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "active": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true filter is active",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain name of filter",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Filter name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "pop": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account name of filter",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "priority": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Priority of filter",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.domain.MailingList": {
+      "description": "Mailing List",
       "id": "MailingList",
       "namespace": "email.domain",
-      "description": "Mailing List",
       "properties": {
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of mailing list",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "language": {
-          "type": "domain.DomainMlLanguageEnum",
-          "fullType": "domain.DomainMlLanguageEnum",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Language of mailing list",
-          "required": false
+          "fullType": "domain.DomainMlLanguageEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.DomainMlLanguageEnum"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of mailing list",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "nbSubscribers": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Subscribers number of mailing list",
-          "required": false
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "nbSubscribersUpdateDate": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Last update subscribers",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "options": {
-          "type": "domain.DomainMlOptionsStruct",
-          "fullType": "domain.DomainMlOptionsStruct",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Options of mailing list",
-          "required": true
+          "fullType": "domain.DomainMlOptionsStruct",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.DomainMlOptionsStruct"
         },
         "ownerEmail": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Owner email of mailing list",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "replyTo": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Email to reply of mailing list",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "email.domain.MigrationAccount": {
+      "description": "Migration account",
       "id": "MigrationAccount",
       "namespace": "email.domain",
-      "description": "Migration account",
       "properties": {
         "destinationEmailAddress": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Destination account name",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "quota": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account maximum size",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         }
       }
     },
     "email.domain.MigrationCheckCodeEnum": {
-      "id": "MigrationCheckCodeEnum",
-      "namespace": "email.domain",
       "description": "Result code of check migration",
       "enum": [
         "ACCOUNT_EMPTY",
@@ -4598,144 +4597,144 @@ export const schema: Schema = {
         "RESPONDER_INPROGRESS",
         "UNKNOW"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MigrationCheckCodeEnum",
+      "namespace": "email.domain"
     },
     "email.domain.MigrationCheckResultStruct": {
+      "description": "Check Migration result",
       "id": "MigrationCheckResultStruct",
       "namespace": "email.domain",
-      "description": "Check Migration result",
       "properties": {
         "code": {
-          "type": "email.domain.MigrationCheckCodeEnum",
-          "fullType": "email.domain.MigrationCheckCodeEnum",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Result code of check migration",
-          "required": true
+          "fullType": "email.domain.MigrationCheckCodeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "email.domain.MigrationCheckCodeEnum"
         },
         "details": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Details of result code",
-          "required": false
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
     "email.domain.MigrationCheckStruct": {
+      "description": "Check Migration result",
       "id": "MigrationCheckStruct",
       "namespace": "email.domain",
-      "description": "Check Migration result",
       "properties": {
         "alias": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "List of aliases",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "error": {
-          "type": "email.domain.MigrationCheckResultStruct[]",
-          "fullType": "email.domain.MigrationCheckResultStruct[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "List of errors",
-          "required": false
+          "fullType": "email.domain.MigrationCheckResultStruct[]",
+          "readOnly": false,
+          "required": false,
+          "type": "email.domain.MigrationCheckResultStruct[]"
         },
         "filter": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "List of filters",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "forward": {
-          "type": "string[]",
-          "fullType": "string[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "List of forwards",
-          "required": false
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         },
         "warning": {
-          "type": "email.domain.MigrationCheckResultStruct[]",
-          "fullType": "email.domain.MigrationCheckResultStruct[]",
           "canBeNull": true,
-          "readOnly": false,
           "description": "List of warnings",
-          "required": false
+          "fullType": "email.domain.MigrationCheckResultStruct[]",
+          "readOnly": false,
+          "required": false,
+          "type": "email.domain.MigrationCheckResultStruct[]"
         }
       }
     },
     "email.domain.MigrationService": {
+      "description": "Migration service",
       "id": "MigrationService",
       "namespace": "email.domain",
-      "description": "Migration service",
       "properties": {
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Admin contact of service",
-          "required": true
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Billing contact of service",
-          "required": true
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Tech contact of service",
-          "required": true
+          "fullType": "coreTypes.AccountId:string",
+          "readOnly": true,
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of service",
-          "required": true
+          "fullType": "date",
+          "readOnly": true,
+          "required": true,
+          "type": "date"
         },
         "destinationServiceName": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Service name allowed as migration destination",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Expiration date of service",
-          "required": true
+          "fullType": "date",
+          "readOnly": true,
+          "required": true,
+          "type": "date"
         },
         "type": {
-          "type": "email.domain.MigrationServiceType",
-          "fullType": "email.domain.MigrationServiceType",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Offer type of service",
-          "required": true
+          "fullType": "email.domain.MigrationServiceType",
+          "readOnly": true,
+          "required": true,
+          "type": "email.domain.MigrationServiceType"
         }
       }
     },
     "email.domain.MigrationServiceType": {
-      "id": "MigrationServiceType",
-      "namespace": "email.domain",
       "description": "Types of migration service",
       "enum": [
         "EMAIL PRO",
@@ -4743,488 +4742,488 @@ export const schema: Schema = {
         "PRIVATE EXCHANGE",
         "PROVIDER EXCHANGE"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "MigrationServiceType",
+      "namespace": "email.domain"
     },
     "email.domain.Moderator": {
+      "description": "Moderators List",
       "id": "Moderator",
       "namespace": "email.domain",
-      "description": "Moderators List",
       "properties": {
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "mailinglist": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "email.domain.RedirectionGlobal": {
+      "description": "Global Redirection",
       "id": "RedirectionGlobal",
       "namespace": "email.domain",
-      "description": "Global Redirection",
       "properties": {
         "from": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "to": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "email.domain.Responder": {
+      "description": "Responder",
       "id": "Responder",
       "namespace": "email.domain",
-      "description": "Responder",
       "properties": {
         "account": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of account",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "content": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Content of responder",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "copy": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If false, emails will be dropped. If true and copyTo field is empty, emails will be delivered to your mailbox. If true and copyTo is set with an address, emails will be delivered to this address",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "copyTo": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Account where copy emails",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "from": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Date of start responder",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "to": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Date of end responder",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "email.domain.ResponderAccount": {
+      "description": "Responder of account",
       "id": "ResponderAccount",
       "namespace": "email.domain",
-      "description": "Responder of account",
       "properties": {
         "account": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Name of account",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "content": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": false,
           "description": "Content of responder",
-          "required": true
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
         },
         "copy": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "If true, emails will be copy to emailToCopy address",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "copyTo": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": true,
-          "readOnly": true,
           "description": "Account where copy emails",
-          "required": false
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "from": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Date of start responder",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         },
         "to": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Date of end responder",
-          "required": false
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
     "email.domain.Rule": {
+      "description": "Rule List",
       "id": "Rule",
       "namespace": "email.domain",
-      "description": "Rule List",
       "properties": {
         "header": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Header to be filtered",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "operand": {
-          "type": "domain.DomainFilterOperandEnum",
-          "fullType": "domain.DomainFilterOperandEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Rule of filter",
-          "required": true
+          "fullType": "domain.DomainFilterOperandEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.DomainFilterOperandEnum"
         },
         "value": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Rule parameter of filter",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "email.domain.Subscriber": {
+      "description": "Subscribers List",
       "id": "Subscriber",
       "namespace": "email.domain",
-      "description": "Subscribers List",
       "properties": {
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "email": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "mailinglist": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         }
       }
     },
     "email.domain.TaskFilter": {
+      "description": "Task filter List",
       "id": "TaskFilter",
       "namespace": "email.domain",
-      "description": "Task filter List",
       "properties": {
         "account": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account name of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "action": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Action of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain name of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of task",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "timestamp": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of task",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         }
       }
     },
     "email.domain.TaskMl": {
+      "description": "Task Mailing List",
       "id": "TaskMl",
       "namespace": "email.domain",
-      "description": "Task Mailing List",
       "properties": {
         "account": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "action": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
+          "fullType": "datetime",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "datetime"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
+          "fullType": "long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "long"
         },
         "language": {
-          "type": "domain.DomainMlLanguageEnum",
-          "fullType": "domain.DomainMlLanguageEnum",
           "canBeNull": false,
+          "fullType": "domain.DomainMlLanguageEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "domain.DomainMlLanguageEnum"
         }
       }
     },
     "email.domain.TaskPop": {
+      "description": "Task Pop List",
       "id": "TaskPop",
       "namespace": "email.domain",
-      "description": "Task Pop List",
       "properties": {
         "action": {
-          "type": "domain.DomainPopActionEnum",
-          "fullType": "domain.DomainPopActionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Action of task",
-          "required": true
+          "fullType": "domain.DomainPopActionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.DomainPopActionEnum"
         },
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of task",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain name of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of task",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "name": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account name of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         }
       }
     },
     "email.domain.TaskSpecialAccount": {
+      "description": "Task special account List",
       "id": "TaskSpecialAccount",
       "namespace": "email.domain",
-      "description": "Task special account List",
       "properties": {
         "account": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Account name of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "action": {
-          "type": "domain.DomainSpecialAccountActionEnum",
-          "fullType": "domain.DomainSpecialAccountActionEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Action of task",
-          "required": true
+          "fullType": "domain.DomainSpecialAccountActionEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.DomainSpecialAccountActionEnum"
         },
         "date": {
-          "type": "datetime",
-          "fullType": "datetime",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Creation date of task",
-          "required": true
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": true,
+          "type": "datetime"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Domain name of task",
-          "required": true
+          "fullType": "string",
+          "readOnly": true,
+          "required": true,
+          "type": "string"
         },
         "id": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Id of task",
-          "required": true
+          "fullType": "long",
+          "readOnly": true,
+          "required": true,
+          "type": "long"
         },
         "type": {
-          "type": "domain.DomainSpecialAccountTypeEnum",
-          "fullType": "domain.DomainSpecialAccountTypeEnum",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Type of action filter",
-          "required": true
+          "fullType": "domain.DomainSpecialAccountTypeEnum",
+          "readOnly": true,
+          "required": true,
+          "type": "domain.DomainSpecialAccountTypeEnum"
         }
       }
     },
     "service.RenewType": {
+      "description": "Map a possible renew for a specific service",
       "id": "RenewType",
       "namespace": "service",
-      "description": "Map a possible renew for a specific service",
       "properties": {
         "automatic": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service is automatically renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "deleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service will be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "forced": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": false,
           "description": "The service forced to be renewed",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         },
         "manualPayment": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": true,
-          "readOnly": false,
           "description": "The service needs to be manually renewed and paid",
-          "required": false
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "period": {
-          "type": "long",
-          "fullType": "long",
           "canBeNull": true,
-          "readOnly": false,
           "description": "period of renew in month",
-          "required": false
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
     "service.RenewalTypeEnum": {
-      "id": "RenewalTypeEnum",
-      "namespace": "service",
       "description": "Detailed renewal type of a service",
       "enum": [
         "automaticForcedProduct",
@@ -5235,11 +5234,11 @@ export const schema: Schema = {
         "oneShot",
         "option"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "RenewalTypeEnum",
+      "namespace": "service"
     },
     "service.StateEnum": {
-      "id": "StateEnum",
-      "namespace": "service",
       "enum": [
         "expired",
         "inCreation",
@@ -5247,11 +5246,11 @@ export const schema: Schema = {
         "pendingDebt",
         "unPaid"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "service"
     },
     "service.TerminationReasonEnum": {
-      "id": "TerminationReasonEnum",
-      "namespace": "service",
       "description": "All reasons you can provide for a service termination",
       "enum": [
         "FEATURES_DONT_SUIT_ME",
@@ -5269,112 +5268,112 @@ export const schema: Schema = {
         "TOO_HARD_TO_USE",
         "UNSATIFIED_BY_CUSTOMER_SUPPORT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "TerminationReasonEnum",
+      "namespace": "service"
     },
     "services.Service": {
+      "description": "Details about a Service",
       "id": "Service",
       "namespace": "services",
-      "description": "Details about a Service",
       "properties": {
         "canDeleteAtExpiration": {
-          "type": "boolean",
-          "fullType": "boolean",
           "canBeNull": false,
-          "readOnly": true,
           "description": "Indicates that the service can be set up to be deleted at expiration",
-          "required": true
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": true,
+          "type": "boolean"
         },
         "contactAdmin": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactBilling": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "contactTech": {
-          "type": "coreTypes.AccountId:string",
-          "fullType": "coreTypes.AccountId:string",
           "canBeNull": false,
+          "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.AccountId:string"
         },
         "creation": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "domain": {
-          "type": "string",
-          "fullType": "string",
           "canBeNull": false,
+          "fullType": "string",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "string"
         },
         "engagedUpTo": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": true,
+          "fullType": "date",
           "readOnly": true,
-          "required": false
+          "required": false,
+          "type": "date"
         },
         "expiration": {
-          "type": "date",
-          "fullType": "date",
           "canBeNull": false,
+          "fullType": "date",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "date"
         },
         "possibleRenewPeriod": {
-          "type": "long[]",
-          "fullType": "long[]",
           "canBeNull": true,
-          "readOnly": true,
           "description": "All the possible renew period of your service in month",
-          "required": false
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         },
         "renew": {
-          "type": "service.RenewType",
-          "fullType": "service.RenewType",
           "canBeNull": true,
-          "readOnly": false,
           "description": "Way of handling the renew",
-          "required": false
+          "fullType": "service.RenewType",
+          "readOnly": false,
+          "required": false,
+          "type": "service.RenewType"
         },
         "renewalType": {
-          "type": "service.RenewalTypeEnum",
-          "fullType": "service.RenewalTypeEnum",
           "canBeNull": false,
+          "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
-          "type": "coreTypes.ServiceId:long",
-          "fullType": "coreTypes.ServiceId:long",
           "canBeNull": false,
+          "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "coreTypes.ServiceId:long"
         },
         "status": {
-          "type": "service.StateEnum",
-          "fullType": "service.StateEnum",
           "canBeNull": false,
+          "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true
+          "required": true,
+          "type": "service.StateEnum"
         }
       }
     },
     "zone.NamedResolutionFieldTypeEnum": {
-      "id": "NamedResolutionFieldTypeEnum",
-      "namespace": "zone",
       "description": "Resource record fieldType",
       "enum": [
         "A",
@@ -5394,7 +5393,10 @@ export const schema: Schema = {
         "TLSA",
         "TXT"
       ],
-      "enumType": "string"
+      "enumType": "string",
+      "id": "NamedResolutionFieldTypeEnum",
+      "namespace": "zone"
     }
-  }
+  },
+  "resourcePath": "/email/domain"
 }
