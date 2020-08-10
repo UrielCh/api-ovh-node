@@ -1,0 +1,253 @@
+import fse from 'fs-extra'
+import path from 'path'
+import GenApiTypes from './GenApiTypes';
+import { CodeGenerator } from './CodeGenerator';
+import Bluebird from 'bluebird';
+import rimraf from 'rimraf'
+import { IEndpoint } from './endpoints';
+import { formatUpperCamlCase, formatLowerCamlCase } from './utils';
+
+const pathToApiName = (api: string) => api.substring(1).replace(/\//g, '-').replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`).replace(/^-/, '');
+
+export class RegionGenerator {
+    constructor(private endpoint: IEndpoint) {
+        this.workDir = path.join('..', '..', this.endpoint.directory);
+    }
+
+    private _apis?: string[];
+    private workDir: string;
+    /**
+     * get all available APIs for this region
+     */
+    async listApis(): Promise<string[]> {
+        if (this._apis)
+            return this._apis;
+        const { host, port } = this.endpoint;
+        let genApiTypes = new GenApiTypes({ host: host, port: port.toString() });
+        // get all available APIs for this region
+        this._apis = await genApiTypes.listSchemas()
+        return this._apis;
+    }
+
+    getPackageDir(pkgName: string): string {
+        return path.join(this.workDir, pkgName);
+    }
+    /**
+     * Delete deprecated API removed from the region
+     */
+    async deleteOldApis() {
+        let apis = await this.listApis();
+        let allApi = apis.map(pathToApiName);
+        let apiSet = new Set(allApi);
+        await fse.mkdirp(this.workDir);
+        let oldApis = await fse.readdir(this.workDir)
+        oldApis = oldApis.filter(name => !apiSet.has(name))
+        oldApis.forEach(name => {
+            console.log(`${name} can be remove`);
+            rimraf.sync(path.join(this.workDir, name));
+        })
+    }
+
+    async genRegion() {
+        const { host, port, directory, namespace, region } = this.endpoint;
+        let apis = await this.listApis();
+        let allApi = apis.map(pathToApiName);
+        // debug gen a subset of API
+        if (false)
+            apis = apis.filter((api) => {
+                //return ~api.indexOf('veeam')
+                //if (api.endsWith('ceph')) return true;
+                //if ('/cloud' == api) return true;
+                if ('/domain' == api) return true;
+                //if ('/email/domain' == api) return true;
+                //if ('/me' == api) return true;
+                // if (this.api == '/cloud' || this.api == '/domain' || this.api == '/email/domain' || this.api == '/me'
+                // || this.api == '/pack/xdsl' || this.api == '/veeam/veeamEnterprise' || this.api == '/telephony' || this.api == '/xdsl')
+                //if ('/price' == api) return true;
+                //if ('/order' == api) return true;
+                //if ('/cdn/webstorage' == api) return true;
+                //if ('/distribution/image' == api) return true;
+                return false;
+            })
+        // DEBUG gen a single API
+        // apis = apis.filter((api) => '/me' == api)
+        await this.deleteOldApis()
+
+        /**
+         * : ${allApi.join(',')}
+         */
+        const concurrency = 4;
+        console.log(`Found ${allApi.length} Api available on ${host}`);
+        await Bluebird.map(apis, async api => {
+            let cg = new CodeGenerator({ host: host, port: port.toString() }, api);
+            try {
+                await cg.loadSchema();
+            } catch (e) {
+                console.log(`${host} / ${api} faild`, e);
+                return;
+            }
+            // ignore empry API
+            if (cg.schema?.apis.length == 0)
+                return;
+            let flat = pathToApiName(api);
+            let dir = this.getPackageDir(flat);
+            await fse.ensureDir(dir);
+
+            ////////////
+            // index.ts
+            //
+
+            let fn = path.join(dir, 'index.ts');
+            let code = await cg.generate();
+            await fse.writeFile(fn, code);
+
+            await this.genPackageReadme(dir, cg);
+            await this.genPackageJson(dir, flat);
+            await this.genTsConfig(dir);
+            // DONE
+        }, { concurrency });
+    }
+
+    private async genPackageReadme(dir: string, cg: CodeGenerator) {
+        const { host, port, directory, namespace, region } = this.endpoint;
+        let flat = pathToApiName(cg.api);
+        const fn = path.join(dir, 'README.md');
+        const content: string[] = [];
+        content.push(`# OVHCloud API client for **${flat}** region ${region}`);
+        content.push(``);
+        content.push(`This module contains all typing needed to use OvhCloud **${flat}** APIs, with hi-level IntelliSense / Code Completion`);
+        content.push(``);
+        content.push(`[![NPM Version](https://img.shields.io/npm/v/@${namespace}/${flat}.svg?style=flat)](https://www.npmjs.org/package/@${namespace}/${flat})`);
+        content.push(``);
+        content.push(`## Setup`);
+        content.push(``);
+        content.push(`With npm:`);
+        content.push(``);
+        content.push('```bash');
+        content.push('npm install --save @ovh-api/api');
+        if (flat != 'me') {
+            content.push(`npm install --save @${namespace}/me`);
+        }
+        content.push(`npm install --save @${namespace}/${flat}`);
+        content.push(`... Add all APIs you needs`);
+        content.push('```');
+        content.push(``);
+        content.push(`## Usage`);
+        content.push(``);
+        content.push('```typescript');
+        content.push(`import OvhEngine from '@ovh-api/api';`);
+        if (flat != 'me') {
+            content.push(`import apiMe from '@${namespace}/me';`);
+        }
+
+        content.push(`import api${formatUpperCamlCase(flat)} from '@${namespace}/${flat}';`);
+        content.push('');
+        content.push(`const ovhEngine = new OvhEngine({ `);
+        content.push(`    certCache: './cert-cache.json', // optional cache certificat on disk.`);
+        let privileges = `GET ${cg.api}, GET ${cg.api}/*`
+        if (flat != 'me') {
+            privileges += ', GET /me';
+        }
+        content.push(`    accessRules: '${privileges}', // optional limit the requested privileges.`);
+        content.push(`});`);
+        content.push('');
+        content.push('const api = {');
+        if (flat != 'me') {
+            content.push(`    me: apiMe(ovhEngine),`);
+        }
+        content.push(`    ${formatLowerCamlCase(flat)}: api${formatUpperCamlCase(flat)}(ovhEngine),`);
+        content.push('}');
+        content.push('');
+        content.push('const test = async () => {');
+        if (flat != 'me') {
+            content.push(`    const { nichandle } = await api.me.$get();`);
+        }
+        content.push(`    const data = await api.${formatLowerCamlCase(flat)}.$get();`);
+        if (flat != 'me') {
+            content.push('    console.log(`${nichandle} have the following services:`);');
+        }
+        content.push('    console.log(data);');
+        content.push('}');
+        content.push('```');
+        content.push('');
+        // import { EOL } from 'os';
+        await fse.writeFile(fn, content.join('\n'));
+
+    }
+
+
+    private async genPackageJson(dir: string, flat: string) {
+        const { namespace } = this.endpoint;
+        const fn = path.join(dir, 'package.json');
+        let rwfile = true;
+        try {
+            await fse.stat(fn);
+            rwfile = false;
+        } catch { }
+        //rwfile = true;
+        if (rwfile)
+            await fse.writeJSON(fn, {
+                name: `@${namespace}/${flat}`,
+                description: `Add typing to to ovh api ${flat}`,
+                version: "3.0.0",
+                keywords: [
+                    "ovh",
+                    "ovhCloud",
+                    "api",
+                    "typing",
+                    "typescript"
+                ],
+                typings: "index.d.ts",
+                license: "MIT",
+                author: "Uriel Chemouni <uchemouni@gmail.com>",
+                dependencies: {
+                    "@ovh-api/common": "^3.1.2",
+                },
+                publishConfig: {
+                    access: "public"
+                },
+                bugs: "https://github.com/UrielCh/api-ovh-node/issues",
+                repository: {
+                    type: "git",
+                    url: "git+https://github.com/UrielCh/api-ovh-node.git"
+                },
+                scripts: {
+                    build: "tsc",
+                    "build:watch": "tsc --watch",
+                    prepare: "npm run build"
+                },
+                files: [
+                    "index.js",
+                    "index.d.ts"
+                ]
+            }, { spaces: 4 })
+
+    }
+
+    /**
+     * gen tsconfig.json
+     * @param dir generation dir
+     */
+    private async genTsConfig(dir: string) {
+        const fn = path.join(dir, 'tsconfig.json');
+        let rwfile = true;
+        try {
+            await fse.stat(fn);
+            rwfile = false;
+        } catch (e) {
+        }
+        if (rwfile)
+            await fse.writeJSON(fn, {
+                "compilerOptions": {
+                    "target": "es2017",
+                    "module": "commonjs",
+                    "declaration": true,
+                    "strict": true,
+                    "moduleResolution": "node",
+                    "esModuleInterop": true,
+                }
+            }, { spaces: 4 });
+        // DONE
+    }
+
+}
