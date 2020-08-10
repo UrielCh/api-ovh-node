@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/dedicated-housing",
     "description": "Add typing to to ovh api dedicated-housing",
-    "version": "3.1.8",
+    "version": "3.1.9",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
