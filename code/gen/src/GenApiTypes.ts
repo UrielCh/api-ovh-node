@@ -149,7 +149,7 @@ export default class GenApiTypes {
         });
 
         if (destination) {
-            const prefix = `import {Schema} from '../../src/schema';${EOL}${EOL}export const schema: Schema = `;
+            const prefix = `import {Schema} from '../../src/schema';${EOL}${EOL}// imported from  https://${this.host}:${this.port}${this.basePath}${apiPath}${EOL}${EOL}export const schema: Schema = `;
             await fse.writeFile(destination, prefix + JSON.stringify(schema, undefined, 2), { encoding: 'UTF8' });
         }
 
