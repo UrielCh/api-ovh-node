@@ -1,23 +1,26 @@
 import GenApiTypes, { CacheApi, CacheModel, filterReservedKw, OvhParams } from './GenApiTypes';
 import { indentGen, protectModelField, className, protectJsonKey, rawRemapNode, formatUpperCamlCase, protectHarmonyField } from './utils';
 import { Parameter, Schema, FieldProp, API } from './schema';
-import { EOL } from 'os';
 
 let eol = '\n';
 
 export class CodeGenerator {
-    api: string;
+    /**
+     * /license/office
+     * /me
+     */
+    apiPath: string;
     gen: GenApiTypes;
     schema?: Schema;
     NSCollision: { [key: string]: string } = {};
 
-    constructor(ovhParam: OvhParams, api: string) {
-        this.api = api;
-        this.gen = new GenApiTypes(ovhParam);
+    constructor(parentName: string, ovhParam: OvhParams, apiPath: string) {
+        this.apiPath = apiPath;
+        this.gen = new GenApiTypes(parentName, ovhParam);
     }
 
     async loadSchema(): Promise<any> {
-        this.schema = await this.gen.loadSchema(`${this.api}.json`)
+        this.schema = await this.gen.loadSchema(`${this.apiPath}.json`)
     }
 
     async generate(): Promise<string> {
@@ -25,22 +28,22 @@ export class CodeGenerator {
             await this.loadSchema();
         // start generation
         let code = `import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';${eol}${eol}/**${eol}`;
-        code += ` * START API ${this.api} Models${eol}`;
-        code += ` * Source: ${this.gen.getFullPath(this.api)}${eol} */${eol}`;
+        code += ` * START API ${this.apiPath} Models${eol}`;
+        code += ` * Source: ${this.gen.getFullPath(this.apiPath)}${eol} */${eol}`;
 
         code = this.dumpModel(0, this.gen.models, code, '');
-        code += `${eol}/**${eol} * END API ${this.api} Models${eol} */${eol}`;
+        code += `${eol}/**${eol} * END API ${this.apiPath} Models${eol} */${eol}`;
 
-        let proxyCall = 'proxy' + formatUpperCamlCase(this.api.replace(/\//g, '_'));
+        let proxyCall = 'proxy' + formatUpperCamlCase(this.apiPath.replace(/\//g, '_'));
 
-        let c1 = this.api.split('/')[1];
+        let c1 = this.apiPath.split('/')[1];
         let mainClass = className(c1) // formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
 
         //        code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {${eol}    return buildOvhProxy(ovhEngine, '${this.api}');${eol}}${eol}`
         code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {${eol}    return buildOvhProxy(ovhEngine, '/${c1}');${eol}}${eol}`
         code += `export default ${proxyCall};${eol}`
 
-        code += `/**${eol} * Api model for ${this.api}${eol} */${eol}`
+        code += `/**${eol} * Api model for ${this.apiPath}${eol} */${eol}`
         // //code += `${ident0} * path ${api._path}${eol}`;
         code += this.dumpApiHarmony(0, this.gen.apis, ''); // `// Apis harmony${eol}`
         // extra alias fo bypass namespace colision errors
@@ -52,7 +55,6 @@ export class CodeGenerator {
             // this.NSColision[rawType];
             code += `type ${this.NSCollision[type]} = ${type};${eol}`
         }
-
         return code;
     }
 
@@ -252,7 +254,7 @@ export class CodeGenerator {
      */
     GenAllPathSet() {
         let code = '';
-        let avaliablePath = formatUpperCamlCase("Paths_" + this.api.replace(/\//g, '_'))
+        let avaliablePath = formatUpperCamlCase("Paths_" + this.apiPath.replace(/\//g, '_'))
         // let mainClass = formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
         let indexApi = { GET: [], PUT: [], POST: [], DELETE: [] };
         (<Schema>this.schema).apis.forEach(
@@ -304,21 +306,24 @@ export class CodeGenerator {
                         let body = op.parameters.filter(p => p.paramType == paramType);
                         body = body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
                         if (body.length == 1 && body[0].name == null) {
-                            let modelsProp = (<Schema>this.schema).models[body[0].fullType];
-                            if (!modelsProp || !modelsProp.properties)
-                                console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
-                            else {
-                                for (let propName of Object.keys(modelsProp.properties).sort()) {
-                                    let p = modelsProp.properties[propName];
-                                    if (done.has(propName))
-                                        continue;
-                                    let param = `${protectJsonKey(propName)}`;
-                                    if (!p.required)
-                                        param += '?'
-                                    else
-                                        mandatoryParams++;
-                                    param += ': ' + this.typeFromParameter(p);
-                                    params.push(param)
+                            const { schema } = this;
+                            if (schema && schema.models) {
+                                let modelsProp = schema.models[body[0].fullType];
+                                if (!modelsProp || !modelsProp.properties)
+                                    console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
+                                else {
+                                    for (let propName of Object.keys(modelsProp.properties).sort()) {
+                                        let p = modelsProp.properties[propName];
+                                        if (done.has(propName))
+                                            continue;
+                                        let param = `${protectJsonKey(propName)}`;
+                                        if (!p.required)
+                                            param += '?'
+                                        else
+                                            mandatoryParams++;
+                                        param += ': ' + this.typeFromParameter(p);
+                                        params.push(param)
+                                    }
                                 }
                             }
                         } else {
@@ -424,21 +429,24 @@ export class CodeGenerator {
                 let body = op.parameters.filter(p => p.paramType === paramType)
                 body = body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
                 if (body.length == 1 && body[0].name == null) {
-                    let modelsProp = (<Schema>this.schema).models[body[0].fullType];
-                    if (!modelsProp || !modelsProp.properties)
-                        console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
-                    else {
-                        for (let propName of Object.keys(modelsProp.properties).sort()) {
-                            let p = modelsProp.properties[propName];
-                            if (done.has(propName))
-                                continue;
-                            let param = `${protectJsonKey(propName)}`;
-                            if (!p.required)
-                                param += '?'
-                            else
-                                mandatoryParams++;
-                            param += ': ' + this.typeFromParameter(p);
-                            params.push(param)
+                    const { schema } = this;
+                    if (schema && schema.models) {
+                        let modelsProp = schema.models[body[0].fullType];
+                        if (!modelsProp || !modelsProp.properties)
+                            console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
+                        else {
+                            for (let propName of Object.keys(modelsProp.properties).sort()) {
+                                let p = modelsProp.properties[propName];
+                                if (done.has(propName))
+                                    continue;
+                                let param = `${protectJsonKey(propName)}`;
+                                if (!p.required)
+                                    param += '?'
+                                else
+                                    mandatoryParams++;
+                                param += ': ' + this.typeFromParameter(p);
+                                params.push(param)
+                            }
                         }
                     }
                 } else {

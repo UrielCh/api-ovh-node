@@ -44,6 +44,26 @@ export namespace dedicated {
                 export type familyEnum = "IPV4" | "IPV6"
             }
         }
+        export namespace cephfsGet {
+            /**
+             * CephFS filesystem data
+             * interface fullName: dedicated.ceph.cephfsGet.response.response
+             */
+            export interface response {
+                enabled: boolean;
+                fsName: string;
+            }
+        }
+        export namespace cephfsList {
+            /**
+             * List of CephFS filesystems
+             * interface fullName: dedicated.ceph.cephfsList.response.response
+             */
+            export interface response {
+                enabled: boolean;
+                fsName: string;
+            }
+        }
         export namespace clusterGet {
             /**
              * Details about ceph cluster
@@ -353,6 +373,55 @@ export interface Dedicated {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
+            cephfs: {
+                /**
+                 * List CephFS filestystems
+                 * GET /dedicated/ceph/{serviceName}/cephfs
+                 */
+                $get(): Promise<dedicated.ceph.cephfsList.response[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(fsName: string): {
+                    /**
+                     * Purge CephFS filesystem
+                     * DELETE /dedicated/ceph/{serviceName}/cephfs/{fsName}
+                     */
+                    $delete(): Promise<string>;
+                    /**
+                     * Get CephFS filestystem information
+                     * GET /dedicated/ceph/{serviceName}/cephfs/{fsName}
+                     */
+                    $get(): Promise<dedicated.ceph.cephfsGet.response>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    disable: {
+                        /**
+                         * Disable CephFS filesystem
+                         * POST /dedicated/ceph/{serviceName}/cephfs/{fsName}/disable
+                         */
+                        $post(): Promise<string>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    enable: {
+                        /**
+                         * Enable CephFS filesystem
+                         * POST /dedicated/ceph/{serviceName}/cephfs/{fsName}/enable
+                         */
+                        $post(): Promise<string>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                };
+            }
             changeContact: {
                 /**
                  * Launch a contact change procedure
@@ -428,7 +497,7 @@ export interface Dedicated {
                  * Alter this object properties
                  * PUT /dedicated/ceph/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

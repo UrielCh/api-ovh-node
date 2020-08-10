@@ -419,7 +419,7 @@ export interface MsServices {
                  * Alter this object properties
                  * PUT /msServices/sharepoint/{domain}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -437,7 +437,7 @@ export interface MsServices {
          * Alter this object properties
          * PUT /msServices/{serviceName}
          */
-        $put(params?: { complexityEnabled?: boolean, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, minPasswordAge?: number, minPasswordLength?: number, name?: string, officeTenantServiceName?: string, state?: msServices.ServiceStateEnum, taskPendingId?: number }): Promise<void>;
+        $put(params: { complexityEnabled: boolean, lockoutDuration: number, lockoutObservationWindow: number, lockoutThreshold?: number, maxPasswordAge?: number, minPasswordAge?: number, minPasswordLength?: number, name: string, officeTenantServiceName?: string, state: msServices.ServiceStateEnum, taskPendingId: number }): Promise<void>;
         /**
          * Controle cache
          */
@@ -462,7 +462,7 @@ export interface MsServices {
                  * Alter this object properties
                  * PUT /msServices/{serviceName}/account/{userPrincipalName}
                  */
-                $put(params?: { SAMAccountName?: string, creationDate?: string, displayName?: string, firstName?: string, guid?: string, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, passwordLastUpdate?: string, state?: msServices.ObjectStateEnum, taskPendingId?: number, userPrincipalName?: string }): Promise<void>;
+                $put(params: { SAMAccountName?: string, creationDate?: string, displayName?: string, firstName?: string, guid?: string, id: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, passwordLastUpdate?: string, state: msServices.ObjectStateEnum, taskPendingId: number, userPrincipalName: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -488,7 +488,7 @@ export interface MsServices {
                      * Alter this object properties
                      * PUT /msServices/{serviceName}/account/{userPrincipalName}/exchange
                      */
-                    $put(params?: { accountLicense?: msServices.ExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: msServices.MailingFilterEnum[], numberOfAliases?: number, outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: msServices.RenewPeriodEnum, renewPeriod?: msServices.RenewPeriodEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                    $put(params: { accountLicense: msServices.ExchangeLicenceEnum, configured: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL: boolean, id: number, litigation: boolean, litigationPeriod?: number, mailingFilter?: msServices.MailingFilterEnum[], numberOfAliases: number, outlookLicense: boolean, owaLimited: boolean, primaryEmailAddress: string, quota: number, renewOutlookPeriod?: msServices.RenewPeriodEnum, renewPeriod?: msServices.RenewPeriodEnum, spamAndVirusConfiguration: msServices.SpamAndVirusConfiguration, spamDetected: boolean, spamTicketNumber?: number, state: msServices.ObjectStateEnum, taskPendingId: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -569,7 +569,7 @@ export interface MsServices {
                      * Alter this object properties
                      * PUT /msServices/{serviceName}/account/{userPrincipalName}/sharepoint
                      */
-                    $put(params?: { accessRights?: msServices.SharepointAccountAccessRightsEnum, activeDirectoryAccountId?: number, configured?: boolean, currentUsage?: number, deleteAtExpiration?: boolean, id?: number, license?: msServices.SharepointLicenseEnum, officeLicense?: boolean, quota?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                    $put(params: { accessRights: msServices.SharepointAccountAccessRightsEnum, activeDirectoryAccountId: number, configured: boolean, currentUsage?: number, deleteAtExpiration?: boolean, id: number, license: msServices.SharepointLicenseEnum, officeLicense: boolean, quota: number, state: msServices.ObjectStateEnum, taskPendingId: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -652,7 +652,7 @@ export interface MsServices {
              * Alter this object properties
              * PUT /msServices/{serviceName}/exchange
              */
-            $put(params?: { displayName?: string, domain?: string, hostname?: string, maxReceiveSize?: number, maxSendSize?: number, offer?: msServices.ServiceOfferEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, sslExpirationDate?: string, state?: msServices.ServiceStateEnum, taskPendingId?: number }): Promise<void>;
+            $put(params: { displayName?: string, domain: string, hostname?: string, maxReceiveSize: number, maxSendSize: number, offer: msServices.ServiceOfferEnum, spamAndVirusConfiguration: msServices.SpamAndVirusConfiguration, sslExpirationDate?: string, state: msServices.ServiceStateEnum, taskPendingId: number }): Promise<void>;
             /**
              * Controle cache
              */
@@ -712,7 +712,7 @@ export interface MsServices {
              * Alter this object properties
              * PUT /msServices/{serviceName}/sharepoint
              */
-            $put(params?: { currentUsage?: number, displayName?: string, domain?: string, farmUrl?: string, offer?: msServices.SharepointServiceOfferEnum, quota?: number, state?: msServices.ServiceStateEnum, taskPendingId?: number, url?: string }): Promise<void>;
+            $put(params: { currentUsage?: number, displayName?: string, domain: string, farmUrl: string, offer: msServices.SharepointServiceOfferEnum, quota: number, state: msServices.ServiceStateEnum, taskPendingId: number, url?: string }): Promise<void>;
             /**
              * Controle cache
              */

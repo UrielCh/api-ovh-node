@@ -6,19 +6,6 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  */
 export namespace router {
     /**
-     * Network Dnat
-     * interface fullName: router.Dnat.Dnat
-     */
-    export interface Dnat {
-        destinationPort?: number;
-        id: number;
-        newDestinationNet: string;
-        newDestinationPort?: number;
-        protocol: router.ProtocolEnum;
-        sourceNet?: string;
-        status: router.StatusEnum;
-    }
-    /**
      * All states this object can be in
      * type fullname: router.IpStatusEnum
      */
@@ -75,30 +62,12 @@ export namespace router {
         status: router.StatusEnum;
     }
     /**
-     * Allowed protocols
-     * type fullname: router.ProtocolEnum
-     */
-    export type ProtocolEnum = "any" | "tcp" | "udp"
-    /**
      * Router
      * interface fullName: router.Router.Router
      */
     export interface Router {
         name: string;
         service: string;
-        status: router.StatusEnum;
-    }
-    /**
-     * Network Snat
-     * interface fullName: router.Snat.Snat
-     */
-    export interface Snat {
-        destinationNet?: string;
-        destinationPort?: number;
-        id: number;
-        newSourceNet: string;
-        newSourcePort?: number;
-        protocol: router.ProtocolEnum;
         status: router.StatusEnum;
     }
     /**
@@ -264,7 +233,7 @@ export interface Router {
                  * Alter this object properties
                  * PUT /router/{serviceName}/network/{ipNet}
                  */
-                $put(params?: { creationDate?: string, description?: string, id?: number, ipNet?: string, status?: router.IpStatusEnum, vlanTag?: number }): Promise<void>;
+                $put(params: { creationDate: string, description?: string, id: number, ipNet: string, status: router.IpStatusEnum, vlanTag?: number }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -301,7 +270,7 @@ export interface Router {
                  * Alter this object properties
                  * PUT /router/{serviceName}/privateLink/{peerServiceName}
                  */
-                $put(params?: { creationDate?: string, id?: number, name?: string, peerServiceName?: string, status?: router.StatusEnum }): Promise<void>;
+                $put(params: { creationDate: string, id: number, name: string, peerServiceName: string, status: router.StatusEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -372,7 +341,7 @@ export interface Router {
              * Alter this object properties
              * PUT /router/{serviceName}/serviceInfos
              */
-            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -441,7 +410,7 @@ export interface Router {
                  * Alter this object properties
                  * PUT /router/{serviceName}/vpn/{id}
                  */
-                $put(params?: { clientIp?: string, clientPrivNet?: string, id?: number, serverIp?: string, serverPrivNet?: string }): Promise<void>;
+                $put(params: { clientIp?: string, clientPrivNet: string, id: number, serverIp: string, serverPrivNet: string }): Promise<void>;
                 /**
                  * Controle cache
                  */

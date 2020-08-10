@@ -181,7 +181,7 @@ export interface Freefax {
          * Alter this object properties
          * PUT /freefax/{serviceName}
          */
-        $put(params?: { faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[] }): Promise<void>;
+        $put(params: { faxMaxCall: telephony.FaxSendingTries, faxQuality: telephony.FaxQualityEnum, faxTagLine: string, fromEmail: string, fromName: string, number: string, redirectionEmail: string[] }): Promise<void>;
         /**
          * Controle cache
          */
@@ -218,7 +218,7 @@ export interface Freefax {
              * Alter this object properties
              * PUT /freefax/{serviceName}/serviceInfos
              */
-            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -234,7 +234,7 @@ export interface Freefax {
              * Alter this object properties
              * PUT /freefax/{serviceName}/voicemail
              */
-            $put(params?: { annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number }): Promise<void>;
+            $put(params: { annouceMessage: string, audioFormat: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord: boolean, forcePassword: boolean, fromEmail: string, fromName: string, fullGreetingSoundId?: number, greetingType: telephony.VoicemailGreetingEnum, isNewVersion: boolean, keepMessage: boolean, redirectionEmails: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated: boolean, temporaryGreetingSoundId?: number, unreadMessages: number }): Promise<void>;
             /**
              * Controle cache
              */

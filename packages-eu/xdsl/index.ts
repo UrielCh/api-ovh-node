@@ -1690,7 +1690,7 @@ export interface Xdsl {
                  * Alter this object properties
                  * PUT /xdsl/email/pro/{email}
                  */
-                $put(params?: { currentUsage?: complexType.UnitAndValue<number>, displayName?: string, domain?: string, firstName?: string, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, login?: string, passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: complexType.UnitAndValue<number>, state?: emailproObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                $put(params: { currentUsage: complexType.UnitAndValue<number>, displayName?: string, domain: string, firstName?: string, id: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, login: string, passwordLastUpdate?: string, primaryEmailAddress: string, quota: complexType.UnitAndValue<number>, state: emailproObjectStateEnum, taskPendingId?: number }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1810,7 +1810,7 @@ export interface Xdsl {
                  * Alter this object properties
                  * PUT /xdsl/spare/{spare}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1848,7 +1848,7 @@ export interface Xdsl {
              * Alter this object properties
              * PUT /xdsl/templateModem/{name}
              */
-            $put(params?: { DHCP?: xdsl.templateModem.DHCP[], LAN?: xdsl.templateModem.LAN[], WLAN?: xdsl.templateModem.WLAN[], capabilities?: string, creationDate?: string, dmzIP?: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum, name?: string, parametersToIgnore?: xdsl.templateModem.ParametersToIgnore, portMapping?: xdsl.templateModem.PortMapping[] }): Promise<void>;
+            $put(params: { DHCP: xdsl.templateModem.DHCP[], LAN: xdsl.templateModem.LAN[], WLAN: xdsl.templateModem.WLAN[], capabilities: string, creationDate: string, dmzIP?: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum, name: string, parametersToIgnore?: xdsl.templateModem.ParametersToIgnore, portMapping: xdsl.templateModem.PortMapping[] }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1865,7 +1865,7 @@ export interface Xdsl {
          * Alter this object properties
          * PUT /xdsl/{serviceName}
          */
-        $put(params?: { accessName?: string, accessType?: xdsl.DslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, packName?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum }): Promise<void>;
+        $put(params: { accessName: string, accessType: xdsl.DslTypeEnum, address: xdsl.AddressDetail, capabilities: xdsl.AccessCapabilities, description: string, ipv6Enabled: boolean, lnsRateLimit?: number, monitoring: boolean, nra: string, packName?: string, pairsNumber: number, role: xdsl.AccessRoleEnum, status: xdsl.AccessStatusEnum }): Promise<void>;
         /**
          * Controle cache
          */
@@ -2163,7 +2163,7 @@ export interface Xdsl {
              * Alter this object properties
              * PUT /xdsl/{serviceName}/modem
              */
-            $put(params?: { brandName?: string, capabilities?: xdsl.ModemCapabilities, dmzIP?: string, easyFirewallLevel?: xdsl.xdslModemConfig.EasyFirewallLevelEnum, ipv6Support?: boolean, isBridged?: boolean, lastCwmpRequestDate?: string, macAddress?: string, managedByOvh?: boolean, model?: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum }): Promise<void>;
+            $put(params: { brandName: string, capabilities: xdsl.ModemCapabilities, dmzIP?: string, easyFirewallLevel?: xdsl.xdslModemConfig.EasyFirewallLevelEnum, ipv6Support: boolean, isBridged: boolean, lastCwmpRequestDate?: string, macAddress: string, managedByOvh: boolean, model: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -2355,7 +2355,7 @@ export interface Xdsl {
                      * Alter this object properties
                      * PUT /xdsl/{serviceName}/modem/lan/{lanName}
                      */
-                    $put(params?: { IPAddress?: string, addressingType?: xdsl.xdslModemConfig.AddressingTypeEnum, lanName?: string, subnetMask?: string, taskId?: number }): Promise<void>;
+                    $put(params: { IPAddress: string, addressingType: xdsl.xdslModemConfig.AddressingTypeEnum, lanName: string, subnetMask: string, taskId?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -2380,7 +2380,7 @@ export interface Xdsl {
                              * Alter this object properties
                              * PUT /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}
                              */
-                            $put(params?: { defaultGateway?: string, dhcpName?: string, domainName?: string, endAddress?: string, leaseTime?: number, primaryDNS?: string, secondaryDNS?: string, serverEnabled?: boolean, startAddress?: string, subnetMask?: string, taskId?: number }): Promise<void>;
+                            $put(params: { defaultGateway: string, dhcpName: string, domainName: string, endAddress: string, leaseTime: number, primaryDNS: string, secondaryDNS?: string, serverEnabled: boolean, startAddress: string, subnetMask: string, taskId?: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -2415,7 +2415,7 @@ export interface Xdsl {
                                      * Alter this object properties
                                      * PUT /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
                                      */
-                                    $put(params?: { IPAddress?: string, MACAddress?: string, name?: string, taskId?: number }): Promise<void>;
+                                    $put(params: { IPAddress: string, MACAddress: string, name?: string, taskId?: number }): Promise<void>;
                                     /**
                                      * Controle cache
                                      */
@@ -2456,7 +2456,7 @@ export interface Xdsl {
                      * Alter this object properties
                      * PUT /xdsl/{serviceName}/modem/portMappings/{name}
                      */
-                    $put(params?: { allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart?: number, id?: number, internalClient?: string, internalPort?: number, name?: string, protocol?: xdsl.xdslModemConfig.ProtocolTypeEnum, taskId?: number }): Promise<void>;
+                    $put(params: { allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart: number, id: number, internalClient: string, internalPort: number, name: string, protocol: xdsl.xdslModemConfig.ProtocolTypeEnum, taskId?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -2581,7 +2581,7 @@ export interface Xdsl {
                      * Alter this object properties
                      * PUT /xdsl/{serviceName}/modem/wifi/{wifiName}
                      */
-                    $put(params?: { SSID?: string, SSIDAdvertisementEnabled?: boolean, bandSteering?: boolean, channel?: number, channelMode?: xdsl.xdslModemConfig.ChannelModeEnum, enabled?: boolean, frequency?: xdsl.xdslModemConfig.FrequencyEnum, guest?: boolean, securityKey?: string, securityType?: xdsl.xdslModemConfig.SecurityTypeEnum, taskId?: number, wifiName?: string }): Promise<void>;
+                    $put(params: { SSID: string, SSIDAdvertisementEnabled: boolean, bandSteering: boolean, channel: number, channelMode: xdsl.xdslModemConfig.ChannelModeEnum, enabled: boolean, frequency: xdsl.xdslModemConfig.FrequencyEnum, guest: boolean, securityKey: string, securityType: xdsl.xdslModemConfig.SecurityTypeEnum, taskId?: number, wifiName: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -2619,7 +2619,7 @@ export interface Xdsl {
                  * Alter this object properties
                  * PUT /xdsl/{serviceName}/monitoringNotifications/{id}
                  */
-                $put(params?: { allowIncident?: boolean, downThreshold?: number, email?: string, enabled?: boolean, frequency?: xdsl.monitoringNotifications.FrequencyEnum, id?: number, phone?: string, smsAccount?: string, type?: xdsl.monitoringNotifications.TypeEnum }): Promise<void>;
+                $put(params: { allowIncident: boolean, downThreshold: number, email?: string, enabled: boolean, frequency: xdsl.monitoringNotifications.FrequencyEnum, id: number, phone?: string, smsAccount?: string, type: xdsl.monitoringNotifications.TypeEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2750,7 +2750,7 @@ export interface Xdsl {
                  * Alter this object properties
                  * PUT /xdsl/{serviceName}/rma/{id}
                  */
-                $put(params?: { cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, id?: string, newMerchandise?: string, offerTypeNew?: telephony.RmaOfferTypeEnum, offerTypeOld?: telephony.RmaOfferTypeEnum, process?: telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: telephony.Contact, status?: telephony.RmaStatusEnum, steps?: telephony.RmaStep[], terminationDatetime?: string, type?: telephony.RmaTypeEnum }): Promise<void>;
+                $put(params: { cancellable: boolean, creationDatetime: string, equipmentReference: string, id: string, newMerchandise?: string, offerTypeNew?: telephony.RmaOfferTypeEnum, offerTypeOld: telephony.RmaOfferTypeEnum, process: telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact: telephony.Contact, status: telephony.RmaStatusEnum, steps: telephony.RmaStep[], terminationDatetime?: string, type: telephony.RmaTypeEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2789,7 +2789,7 @@ export interface Xdsl {
              * Alter this object properties
              * PUT /xdsl/{serviceName}/serviceInfos
              */
-            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
             /**
              * Controle cache
              */

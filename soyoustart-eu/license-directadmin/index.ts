@@ -195,7 +195,7 @@ export interface License {
              * Alter this object properties
              * PUT /license/directadmin/{serviceName}
              */
-            $put(params?: { clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: license.DirectAdminOsEnum, status?: license.StateEnum, version?: license.DirectAdminVersionEnum }): Promise<void>;
+            $put(params: { clientId: number, creation: string, deleteAtExpiration: boolean, domain: string, ip: string, licenseId: string, os: license.DirectAdminOsEnum, status: license.StateEnum, version: license.DirectAdminVersionEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -265,7 +265,7 @@ export interface License {
                  * Alter this object properties
                  * PUT /license/directadmin/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

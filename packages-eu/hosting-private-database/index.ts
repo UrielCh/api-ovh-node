@@ -43,7 +43,7 @@ export namespace hosting {
          * Private database available versions
          * type fullname: hosting.PrivateDatabase.AvailableVersionEnum
          */
-        export type AvailableVersionEnum = "mariadb_10.1" | "mariadb_10.2" | "mongodb_3.4" | "mongodb_4.0" | "mysql_4.1" | "mysql_5.0" | "mysql_5.1" | "mysql_5.5" | "mysql_5.6" | "mysql_5.7" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_9.4" | "postgresql_9.5" | "postgresql_9.6" | "redis_3.2" | "redis_4.0"
+        export type AvailableVersionEnum = "mariadb_10.1" | "mariadb_10.2" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mongodb_3.4" | "mongodb_4.0" | "mysql_4.1" | "mysql_5.0" | "mysql_5.1" | "mysql_5.5" | "mysql_5.6" | "mysql_5.7" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_9.4" | "postgresql_9.5" | "postgresql_9.6" | "redis_3.2" | "redis_4.0"
         /**
          * Private database capability
          * interface fullName: hosting.PrivateDatabase.Capability.Capability
@@ -234,26 +234,28 @@ export namespace hosting {
             quotaUsed: complexType.UnitAndValue<number>;
             users: hosting.PrivateDatabase.Database.User[];
         }
-        /**
-         * Dump
-         * interface fullName: hosting.privateDatabase.database_dump.database_dump
-         */
-        export interface database_dump {
-            creationDate: string;
-            databaseName: string;
-            deletionDate: string;
-            id: number;
-            url: string;
-        }
-        /**
-         * Databases extension
-         * interface fullName: hosting.privateDatabase.database_extension.database_extension
-         */
-        export interface database_extension {
-            description: string;
-            extensionName: string;
-            requiredExtensions: string[];
-            status: hosting.PrivateDatabase.Database.Extension.Status;
+        export namespace database {
+            /**
+             * Dump
+             * interface fullName: hosting.privateDatabase.database.dump.dump
+             */
+            export interface dump {
+                creationDate: string;
+                databaseName: string;
+                deletionDate: string;
+                id: number;
+                url: string;
+            }
+            /**
+             * Databases extension
+             * interface fullName: hosting.privateDatabase.database.extension.extension
+             */
+            export interface extension {
+                description: string;
+                extensionName: string;
+                requiredExtensions: string[];
+                status: hosting.PrivateDatabase.Database.Extension.Status;
+            }
         }
         /**
          * Dump
@@ -412,7 +414,7 @@ export interface Hosting {
              * Alter this object properties
              * PUT /hosting/privateDatabase/{serviceName}
              */
-            $put(params?: { capabilities?: hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, ram?: complexType.UnitAndValue<number>, server?: string, serviceName?: string, state?: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: hosting.PrivateDatabase.TypeEnum, version?: hosting.PrivateDatabase.AvailableVersionEnum, versionLabel?: string, versionNumber?: number }): Promise<void>;
+            $put(params: { capabilities: hosting.PrivateDatabase.Capability[], cpu: number, datacenter: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure: string, ip?: string, lastCheck: string, offer: hosting.PrivateDatabase.OfferEnum, port: number, portFtp?: number, quotaSize: complexType.UnitAndValue<number>, quotaUsed: complexType.UnitAndValue<number>, ram: complexType.UnitAndValue<number>, server?: string, serviceName: string, state: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type: hosting.PrivateDatabase.TypeEnum, version: hosting.PrivateDatabase.AvailableVersionEnum, versionLabel: string, versionNumber: number }): Promise<void>;
             /**
              * Controle cache
              */
@@ -549,7 +551,7 @@ export interface Hosting {
                              * Get this object properties
                              * GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}
                              */
-                            $get(): Promise<hosting.privateDatabase.database_dump>;
+                            $get(): Promise<hosting.privateDatabase.database.dump>;
                             /**
                              * Controle cache
                              */
@@ -582,7 +584,7 @@ export interface Hosting {
                              * Get this object properties
                              * GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}
                              */
-                            $get(): Promise<hosting.privateDatabase.database_extension>;
+                            $get(): Promise<hosting.privateDatabase.database.extension>;
                             /**
                              * Controle cache
                              */
@@ -727,7 +729,7 @@ export interface Hosting {
                  * Alter this object properties
                  * PUT /hosting/privateDatabase/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -915,7 +917,7 @@ export interface Hosting {
                      * Alter this object properties
                      * PUT /hosting/privateDatabase/{serviceName}/whitelist/{ip}
                      */
-                    $put(params?: { creationDate?: string, ip?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: hosting.PrivateDatabase.Whitelist.Status, taskId?: string }): Promise<void>;
+                    $put(params: { creationDate: string, ip: string, lastUpdate: string, name?: string, service: boolean, sftp: boolean, status: hosting.PrivateDatabase.Whitelist.Status, taskId?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */

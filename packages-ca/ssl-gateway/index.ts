@@ -215,7 +215,7 @@ export interface SslGateway {
          * Alter this object properties
          * PUT /sslGateway/{serviceName}
          */
-        $put(params?: { allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: sslGateway.OfferEnum, reverse?: string, serverHttps?: boolean, serviceName?: string, sslConfiguration?: sslGateway.SslConfigurationEnum, state?: sslGateway.StateEnum, zones?: string[] }): Promise<void>;
+        $put(params: { allowedSource?: string[], displayName?: string, hsts: boolean, httpsRedirect: boolean, ipv4: string, ipv6?: string, metricsToken?: string, offer: sslGateway.OfferEnum, reverse?: string, serverHttps: boolean, serviceName: string, sslConfiguration?: sslGateway.SslConfigurationEnum, state: sslGateway.StateEnum, zones: string[] }): Promise<void>;
         /**
          * Controle cache
          */
@@ -326,7 +326,7 @@ export interface SslGateway {
                  * Alter this object properties
                  * PUT /sslGateway/{serviceName}/server/{id}
                  */
-                $put(params?: { address?: string, id?: number, port?: number, state?: sslGateway.ServerStateEnum }): Promise<void>;
+                $put(params: { address: string, id: number, port: number, state: sslGateway.ServerStateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -343,7 +343,7 @@ export interface SslGateway {
              * Alter this object properties
              * PUT /sslGateway/{serviceName}/serviceInfos
              */
-            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
             /**
              * Controle cache
              */

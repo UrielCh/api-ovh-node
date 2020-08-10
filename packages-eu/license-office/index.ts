@@ -33,19 +33,6 @@ export namespace license {
             txtEntry: string;
         }
         /**
-         * Office subscription
-         * interface fullName: license.office.OfficeSubscription.OfficeSubscription
-         */
-        export interface OfficeSubscription {
-            creationDate: string;
-            id: number;
-            lastUpdate?: string;
-            licenseId: number;
-            quantity: number;
-            status: string;
-            taskPendingId: number;
-        }
-        /**
          * Office task
          * interface fullName: license.office.OfficeTask.OfficeTask
          */
@@ -97,15 +84,6 @@ export namespace license {
          * type fullname: license.office.ServiceTypeEnum
          */
         export type ServiceTypeEnum = "payAsYouGo" | "prepaid"
-        /**
-         * License usage statistic.
-         * interface fullName: license.office.Statistic.Statistic
-         */
-        export interface Statistic {
-            available: number;
-            licenseId: number;
-            used: number;
-        }
         /**
          * License usage statistics.
          * interface fullName: license.office.Statistics.Statistics
@@ -210,7 +188,7 @@ export interface License {
              * Alter this object properties
              * PUT /license/office/{serviceName}
              */
-            $put(params?: { address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: license.office.ServiceTypeEnum, status?: license.office.ServiceStateEnum, zipCode?: string }): Promise<void>;
+            $put(params: { address: string, city: string, creationDate: string, displayName: string, firstName: string, lastName: string, phone: string, serviceType: license.office.ServiceTypeEnum, status: license.office.ServiceStateEnum, zipCode: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -269,7 +247,7 @@ export interface License {
                  * Alter this object properties
                  * PUT /license/office/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -316,7 +294,7 @@ export interface License {
                      * Alter this object properties
                      * PUT /license/office/{serviceName}/user/{activationEmail}
                      */
-                    $put(params?: { activationEmail?: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: license.office.LicenceEnum[], status?: license.office.UserStateEnum, taskPendingId?: number, usageLocation?: coreTypes.CountryEnum }): Promise<void>;
+                    $put(params: { activationEmail: string, deleteAtExpiration: boolean, firstName: string, isVirtual: boolean, lastName: string, licences: license.office.LicenceEnum[], status: license.office.UserStateEnum, taskPendingId: number, usageLocation: coreTypes.CountryEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */

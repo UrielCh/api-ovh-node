@@ -1,6 +1,9 @@
 import * as https from 'https';
 import { Schema, OvhIndex, API, ModelsProp } from './schema';
 import { endpoints } from './endpoints';
+import path from 'path';
+import fse from 'fs-extra';
+import { EOL } from 'os';
 
 export const INDEX_BY_NAME = false;
 
@@ -91,7 +94,7 @@ export default class GenApiTypes {
     host: string;
     port: number;
 
-    constructor(params?: OvhParams) {
+    constructor(private namespace: string, params?: OvhParams) {
         params = params || {};
         // Custom configuration of the API endpoint
         let { host, port, endpoint } = params;
@@ -121,26 +124,40 @@ export default class GenApiTypes {
         })
         return data.apis.map(api => api.path)
     }
-    getFullPath(path: string) : string {
+    getFullPath(path: string): string {
         return 'https://' + `${this.host}/${this.basePath}${path}.json`.replace('//', '/');
     }
     /**
      * Recursively loads the schemas of the specified used APIs.
      *
-     * @param {String} path
+     * @param {String} apiPath Api Path strting with / like /license/cloudLinux; or /me
      */
-    async loadSchema(path: string): Promise<Schema> {
+    async loadSchema(apiPath: string): Promise<Schema> {
         // Fetch all APIs
+        let destination = '';
+        if (apiPath) {
+            destination = path.join(__dirname, '..', 'models' , this.namespace);
+            await fse.ensureDir(destination);
+            const filename = apiPath.substr(1).replace(/\//g, '-').replace('.json', '.ts');
+            destination = path.join(destination, filename);
+        }
+
         let schema: Schema = await loadJson({ // https://eu.api.ovh.com/1.0/
             host: this.host, // eu.api.ovh.com
             port: this.port, // 443
-            path: this.basePath + path // /1.0/
+            path: this.basePath + apiPath // /1.0/
         });
+
+        if (destination) {
+            const prefix = `import {Schema} from '../../src/schema';${EOL}${EOL}export const schema: Schema = `;
+            await fse.writeFile(destination, prefix + JSON.stringify(schema, undefined, 2), { encoding: 'UTF8' });
+        }
+
         // Entry Points
         schema.apis.map((api: API) => {
             api.operations.forEach(op => {
                 op.responseType = filterReservedKw(op.responseType);
-                op.responseFullType = filterReservedKw(op.responseFullType);
+                op.responseFullType = filterReservedKw(op.responseFullType || '');
                 op.parameters.forEach(p => {
                     p.dataType = filterReservedKw(p.dataType);
                     p.fullType = filterReservedKw(p.fullType);
@@ -150,25 +167,26 @@ export default class GenApiTypes {
             this.addApi(apiPath, api, this.apis);
         });
         // Model
-        for (const aliasName of Object.keys(schema.models)) {
-            const model = schema.models[aliasName];
-            // remove . from modelId
-            //if (aliasName.startsWith('price.DedicatedCloud.2016v4'))
-            //    console.log('in price.DedicatedCloud.2016v4');
-            if (~model.id.indexOf('.')) {
-                // console.log('hardFixing typeId: ' + model.id)
-                model.id = model.id.replace(/\./g, '_');
-            }
-            if (INDEX_BY_NAME) {
-                this.alias[aliasName] = aliasName;// model.namespace + '.' + model.id;
-            } else {
-                if (this.alias[aliasName]) {
-                    console.log('COLISION aliasName:' + aliasName)
+        if (schema.models)
+            for (const aliasName of Object.keys(schema.models)) {
+                const model = schema.models[aliasName];
+                // remove . from modelId
+                //if (aliasName.startsWith('price.DedicatedCloud.2016v4'))
+                //    console.log('in price.DedicatedCloud.2016v4');
+                if (~model.id.indexOf('.')) {
+                    // console.log('hardFixing typeId: ' + model.id)
+                    model.id = model.id.replace(/\./g, '_');
                 }
-                this.alias[aliasName] = model.namespace + '.' + model.id;
+                if (INDEX_BY_NAME) {
+                    this.alias[aliasName] = aliasName;// model.namespace + '.' + model.id;
+                } else {
+                    if (this.alias[aliasName]) {
+                        console.log('COLISION aliasName:' + aliasName)
+                    }
+                    this.alias[aliasName] = model.namespace + '.' + model.id;
+                }
+                this.addModel(model, aliasName, this.models);
             }
-            this.addModel(model, aliasName, this.models);
-        }
         return schema;
     }
 

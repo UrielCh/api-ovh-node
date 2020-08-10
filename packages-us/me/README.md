@@ -31,7 +31,6 @@ const api = {
 
 const test = async () => {
     const data = await api.me.$get();
-    console.log(`${nichandle} have the following services:`);
     console.log(data);
 }
 ```

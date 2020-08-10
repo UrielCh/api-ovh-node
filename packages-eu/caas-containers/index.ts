@@ -349,7 +349,7 @@ export interface Caas {
                          * Update the framework access password
                          * PUT /caas/containers/{serviceName}/frameworks/{frameworkId}/password
                          */
-                        $put(params?: { password?: string }): Promise<void>;
+                        $put(params: { password: string }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -368,7 +368,7 @@ export interface Caas {
                      * Associate the stack with some credentials to an authenticated registry.
                      * POST /caas/containers/{serviceName}/registry/credentials
                      */
-                    $post(params?: { certificate?: string, key?: string }): Promise<docker.stack.registryCredentials>;
+                    $post(params: { certificate: string, key: string }): Promise<docker.stack.registryCredentials>;
                     /**
                      * Controle cache
                      */
@@ -388,7 +388,7 @@ export interface Caas {
                          * Update the registry credentials.
                          * PUT /caas/containers/{serviceName}/registry/credentials/{credentialsId}
                          */
-                        $put(params?: { certificate?: string, key?: string }): Promise<docker.stack.registryCredentials>;
+                        $put(params: { certificate: string, key: string }): Promise<docker.stack.registryCredentials>;
                         /**
                          * Controle cache
                          */
@@ -406,7 +406,7 @@ export interface Caas {
                  * Alter this object properties
                  * PUT /caas/containers/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -449,7 +449,7 @@ export interface Caas {
                  * Update the custom SSL certificate and private
                  * PUT /caas/containers/{serviceName}/ssl
                  */
-                $put(params?: { certificate?: string, key?: string }): Promise<docker.stack.customSslMessage>;
+                $put(params: { certificate: string, key: string }): Promise<docker.stack.customSslMessage>;
                 /**
                  * Controle cache
                  */

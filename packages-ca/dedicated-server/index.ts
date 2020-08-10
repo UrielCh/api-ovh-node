@@ -38,13 +38,6 @@ export namespace complexType {
         value: T;
     }
 }
-export namespace coreTypes {
-    /**
-     * ISO country codes
-     * type fullname: coreTypes.CountryEnum
-     */
-    export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
-}
 export namespace dedicated {
     /**
      * A structure describing the availabilities of dedicated server
@@ -149,11 +142,6 @@ export namespace dedicated {
      * type fullname: dedicated.ProfileFirewallEnum
      */
     export type ProfileFirewallEnum = "cisco.asa5505" | "cisco.asa5510" | "cisco.asa5520"
-    /**
-     * enable or disable
-     * type fullname: dedicated.StatusEnum
-     */
-    export type StatusEnum = "disable" | "enable"
     /**
      * different task operation
      * type fullname: dedicated.TaskFunctionEnum
@@ -1006,19 +994,6 @@ export namespace dedicated {
          */
         export type SupportLevelEnum = "critical" | "fastpath" | "gs" | "pro"
         /**
-         * A structure describing informations support level orderable for this dedicated server
-         * interface fullName: dedicated.server.SupportLevelOrderable.SupportLevelOrderable
-         */
-        export interface SupportLevelOrderable {
-            levels?: dedicated.server.SupportLevelOrderableEnum[];
-            orderable: boolean;
-        }
-        /**
-         * distincts support level
-         * type fullname: dedicated.server.SupportLevelOrderableEnum
-         */
-        export type SupportLevelOrderableEnum = "critical" | "fastpath" | "gs"
-        /**
          * Hdd replace support request details. 
          * interface fullName: dedicated.server.SupportReplaceHddInfo.SupportReplaceHddInfo
          */
@@ -1525,7 +1500,7 @@ export interface Dedicated {
              * Alter this object properties
              * PUT /dedicated/server/{serviceName}
              */
-            $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
+            $put(params: { bootId?: number, commercialRange?: string, datacenter: dedicated.DatacenterEnum, ip: string, linkSpeed?: number, monitoring: boolean, name: string, os: string, professionalUse: boolean, rack: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId: number, state: dedicated.server.StateEnum, supportLevel: dedicated.server.SupportLevelEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1660,7 +1635,7 @@ export interface Dedicated {
                  * Alter this object properties
                  * PUT /dedicated/server/{serviceName}/burst
                  */
-                $put(params?: { capacity?: complexType.UnitAndValue<number>, status?: dedicated.server.BurstStatusEnum }): Promise<void>;
+                $put(params: { capacity?: complexType.UnitAndValue<number>, status: dedicated.server.BurstStatusEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1771,7 +1746,7 @@ export interface Dedicated {
                              * Alter this object properties
                              * PUT /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
                              */
-                            $put(params?: { cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean }): Promise<void>;
+                            $put(params: { cifs: boolean, ftp: boolean, ipBlock: string, isApplied: boolean, lastUpdate: string, nfs: boolean }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1811,7 +1786,7 @@ export interface Dedicated {
                      * Alter this object properties
                      * PUT /dedicated/server/{serviceName}/features/firewall
                      */
-                    $put(params?: { enabled?: boolean, firewall?: string, ip?: string, mode?: dedicated.server.FirewallModeEnum, model?: dedicated.server.FirewallModelEnum }): Promise<void>;
+                    $put(params: { enabled: boolean, firewall: string, ip: string, mode: dedicated.server.FirewallModeEnum, model?: dedicated.server.FirewallModelEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -2359,7 +2334,7 @@ export interface Dedicated {
                      * Alter this object properties
                      * PUT /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
                      */
-                    $put(params?: { creationDate?: string, dns?: string, domain?: string, ipMaster?: string }): Promise<void>;
+                    $put(params: { creationDate: string, dns: string, domain: string, ipMaster: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -2409,7 +2384,7 @@ export interface Dedicated {
                  * Alter this object properties
                  * PUT /dedicated/server/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2445,7 +2420,7 @@ export interface Dedicated {
                      * Alter this object properties
                      * PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
                      */
-                    $put(params?: { challengeText?: string, enabled?: boolean, interval?: dedicated.server.MonitoringIntervalEnum, ip?: string, monitoringId?: number, port?: number, protocol?: dedicated.server.MonitoringProtocolEnum, url?: string }): Promise<void>;
+                    $put(params: { challengeText?: string, enabled: boolean, interval: dedicated.server.MonitoringIntervalEnum, ip: string, monitoringId: number, port: number, protocol: dedicated.server.MonitoringProtocolEnum, url?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -2481,7 +2456,7 @@ export interface Dedicated {
                                  * Alter this object properties
                                  * PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
                                  */
-                                $put(params?: { alertId?: number, email?: string, enabled?: boolean, language?: dedicated.server.AlertLanguageEnum }): Promise<void>;
+                                $put(params: { alertId: number, email: string, enabled: boolean, language: dedicated.server.AlertLanguageEnum }): Promise<void>;
                                 /**
                                  * Controle cache
                                  */
@@ -2518,7 +2493,7 @@ export interface Dedicated {
                                  * Alter this object properties
                                  * PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
                                  */
-                                $put(params?: { alertId?: number, enabled?: boolean, fromHour?: number, language?: dedicated.server.AlertLanguageEnum, phoneNumberTo?: string, smsAccount?: string, toHour?: number }): Promise<void>;
+                                $put(params: { alertId: number, enabled: boolean, fromHour?: number, language: dedicated.server.AlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number }): Promise<void>;
                                 /**
                                  * Controle cache
                                  */
@@ -2588,7 +2563,7 @@ export interface Dedicated {
                      * Alter this object properties
                      * PUT /dedicated/server/{serviceName}/spla/{id}
                      */
-                    $put(params?: { id?: number, lastUpdate?: string, serialNumber?: string, status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum }): Promise<void>;
+                    $put(params: { id: number, lastUpdate: string, serialNumber: string, status: dedicated.server.SplaStatusEnum, type: dedicated.server.SplaTypeEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -3008,7 +2983,7 @@ export interface Dedicated {
                      * Alter this object properties
                      * PUT /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
                      */
-                    $put(params?: { enabled?: boolean, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, networkInterfaceController?: string[], serverName?: string, uuid?: string, vrack?: string }): Promise<void>;
+                    $put(params: { enabled: boolean, mode: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name: string, networkInterfaceController: string[], serverName: string, uuid: string, vrack?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */

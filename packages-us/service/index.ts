@@ -14,21 +14,6 @@ export namespace complexType {
         value: T;
     }
 }
-export namespace order {
-    /**
-     * type fullname: order.CurrencyCodeEnum
-     */
-    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    /**
-     * Price with it's currency and textual representation
-     * interface fullName: order.Price.Price
-     */
-    export interface Price {
-        currencyCode: order.CurrencyCodeEnum;
-        text: string;
-        value: number;
-    }
-}
 export namespace service {
     /**
      * Possible billing states
@@ -76,44 +61,6 @@ export namespace service {
         path?: string;
         url?: string;
         vars: complexType.SafeKeyValue<string>[];
-    }
-    export namespace consumption {
-        /**
-         * List of consumptions recorded in a range
-         * interface fullName: service.consumption.Transaction.Transaction
-         */
-        export interface Transaction {
-            beginDate: string;
-            creationDate?: string;
-            elements: service.consumption.transaction.Element[];
-            endDate?: string;
-            id?: number;
-            lastUpdate?: string;
-            price: order.Price;
-            serviceId: number;
-        }
-        export namespace transaction {
-            /**
-             * Element of consumption for resource
-             * interface fullName: service.consumption.transaction.Element.Element
-             */
-            export interface Element {
-                details: service.consumption.transaction.Element.Detail[];
-                planCode: string;
-                price: order.Price;
-                quantity: number;
-            }
-            export namespace Element {
-                /**
-                 * Element of consumption for resource
-                 * interface fullName: service.consumption.transaction.Element.Detail.Detail
-                 */
-                export interface Detail {
-                    quantity: number;
-                    unique_id?: string;
-                }
-            }
-        }
     }
     export namespace plan {
         /**
@@ -187,7 +134,7 @@ export interface Service {
          * Alter this object properties
          * PUT /service/{serviceId}
          */
-        $put(params?: { creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum }): Promise<void>;
+        $put(params: { creationDate: string, details: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan: service.Plan, quantity: number, renew?: service.Renew, resource: service.Resource, route: service.Route, state: service.BillingStateEnum }): Promise<void>;
         /**
          * Controle cache
          */

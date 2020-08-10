@@ -149,34 +149,6 @@ export namespace order {
 }
 export namespace services {
     export namespace billing {
-        /**
-         * Description of an invoice
-         * interface fullName: services.billing.Invoice.Invoice
-         */
-        export interface Invoice {
-            date: string;
-            id: string;
-            lines: services.billing.InvoiceLine[];
-        }
-        /**
-         * Description of an invoice line
-         * interface fullName: services.billing.InvoiceLine.InvoiceLine
-         */
-        export interface InvoiceLine {
-            description: string;
-            periodEnd?: string;
-            periodStart?: string;
-            price: order.Price;
-            quantity: number;
-            serviceName: string;
-            totalPrice: order.Price;
-            type?: services.billing.InvoiceLineTypeEnum;
-        }
-        /**
-         * Type of item
-         * type fullname: services.billing.InvoiceLineTypeEnum
-         */
-        export type InvoiceLineTypeEnum = "accessory" | "consumption" | "creation" | "deposit" | "duration" | "gift" | "installation" | "misc" | "other" | "outplan" | "quantity" | "special" | "voucher"
         export namespace engagement {
             /**
              * Description of the rule applied at the end of the Engagement
@@ -207,32 +179,6 @@ export namespace services {
                 endDate?: string;
                 startDate: string;
             }
-            /**
-             * Update your Engagement end rules
-             * interface fullName: services.billing.engagement.UpdateEndRuleRequest.UpdateEndRuleRequest
-             */
-            export interface UpdateEndRuleRequest {
-                strategy: services.billing.engagement.EndStrategyEnum;
-            }
-        }
-    }
-    export namespace contacts {
-        /**
-         * Contact change request
-         * interface fullName: services.contacts.ContactChangeRequest.ContactChangeRequest
-         */
-        export interface ContactChangeRequest {
-            admin: string[];
-            billing: string[];
-            technical: string[];
-        }
-        /**
-         * Contact change task
-         * interface fullName: services.contacts.Task.Task
-         */
-        export interface Task {
-            id: number;
-            route: string;
         }
     }
     export namespace expanded {
@@ -362,38 +308,6 @@ export namespace services {
          */
         export interface Order {
             order?: order.Order;
-        }
-    }
-    export namespace terminate {
-        /**
-         * Confirm service termination request
-         * interface fullName: services.terminate.ConfirmServiceTerminationRequest.ConfirmServiceTerminationRequest
-         */
-        export interface ConfirmServiceTerminationRequest {
-            acknowledgePotentialFees: boolean;
-            token: string;
-        }
-        /**
-         * Termination instructions
-         * interface fullName: services.terminate.TerminationAnswer.TerminationAnswer
-         */
-        export interface TerminationAnswer {
-            message: string;
-        }
-        /**
-         * Termination fees
-         * interface fullName: services.terminate.TerminationFees.TerminationFees
-         */
-        export interface TerminationFees {
-            durationLeft: string;
-            fees: order.Price;
-        }
-        /**
-         * Service termination request
-         * interface fullName: services.terminate.TerminationRequest.TerminationRequest
-         */
-        export interface TerminationRequest {
-            acknowledgePotentialFees: boolean;
         }
     }
 }

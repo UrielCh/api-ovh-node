@@ -77,44 +77,6 @@ export namespace service {
         url?: string;
         vars: complexType.SafeKeyValue<string>[];
     }
-    export namespace consumption {
-        /**
-         * List of consumptions recorded in a range
-         * interface fullName: service.consumption.Transaction.Transaction
-         */
-        export interface Transaction {
-            beginDate: string;
-            creationDate?: string;
-            elements: service.consumption.transaction.Element[];
-            endDate?: string;
-            id?: number;
-            lastUpdate?: string;
-            price: order.Price;
-            serviceId: number;
-        }
-        export namespace transaction {
-            /**
-             * Element of consumption for resource
-             * interface fullName: service.consumption.transaction.Element.Element
-             */
-            export interface Element {
-                details: service.consumption.transaction.Element.Detail[];
-                planCode: string;
-                price: order.Price;
-                quantity: number;
-            }
-            export namespace Element {
-                /**
-                 * Element of consumption for resource
-                 * interface fullName: service.consumption.transaction.Element.Detail.Detail
-                 */
-                export interface Detail {
-                    quantity: number;
-                    unique_id?: string;
-                }
-            }
-        }
-    }
     export namespace plan {
         /**
          * Product plan information
@@ -142,34 +104,6 @@ export namespace service {
         export interface RenewDescription {
             renewPeriod: string;
             strategies: service.renew.RenewStrategy[];
-        }
-        /**
-         * Representation of service's renew forecasting
-         * interface fullName: service.renew.RenewForecast.RenewForecast
-         */
-        export interface RenewForecast {
-            details: service.renew.RenewForecastDetail[];
-            prices: service.renew.RenewForecastDetailPrices;
-        }
-        /**
-         * Representation of a product renew pricing
-         * interface fullName: service.renew.RenewForecastDetail.RenewForecastDetail
-         */
-        export interface RenewForecastDetail {
-            description?: string;
-            quantity: number;
-            serviceName: string;
-            totalPrice: order.Price;
-            unitPrice: order.Price;
-        }
-        /**
-         * Prices for renew forecasting
-         * interface fullName: service.renew.RenewForecastDetailPrices.RenewForecastDetailPrices
-         */
-        export interface RenewForecastDetailPrices {
-            tax: order.Price;
-            withTax: order.Price;
-            withoutTax: order.Price;
         }
         /**
          * Details about a renew Order
@@ -258,7 +192,7 @@ export interface Service {
          * Alter this object properties
          * PUT /service/{serviceId}
          */
-        $put(params?: { creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum }): Promise<void>;
+        $put(params: { creationDate: string, details: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan: service.Plan, quantity: number, renew?: service.Renew, resource: service.Resource, route: service.Route, state: service.BillingStateEnum }): Promise<void>;
         /**
          * Controle cache
          */

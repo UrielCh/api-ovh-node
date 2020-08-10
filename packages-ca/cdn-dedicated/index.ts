@@ -298,7 +298,7 @@ export interface Cdn {
                      * Alter this object properties
                      * PUT /cdn/dedicated/{serviceName}/domains/{domain}
                      */
-                    $put(params?: { cacheRuleUse?: number, cname?: string, domain?: string, status?: cdnanycast.DomainStatusEnum, type?: cdnanycast.DomainTypeEnum }): Promise<void>;
+                    $put(params: { cacheRuleUse: number, cname: string, domain: string, status: cdnanycast.DomainStatusEnum, type: cdnanycast.DomainTypeEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -365,7 +365,7 @@ export interface Cdn {
                              * Alter this object properties
                              * PUT /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
                              */
-                            $put(params?: { cacheRuleId?: number, cacheType?: cdnanycast.CacheRuleCacheTypeEnum, domain?: string, fileMatch?: string, fileType?: cdnanycast.CacheRuleFileTypeEnum, status?: cdnanycast.CacheRuleStatusEnum, ttl?: number }): Promise<void>;
+                            $put(params: { cacheRuleId: number, cacheType: cdnanycast.CacheRuleCacheTypeEnum, domain: string, fileMatch: string, fileType: cdnanycast.CacheRuleFileTypeEnum, status: cdnanycast.CacheRuleStatusEnum, ttl: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -494,7 +494,7 @@ export interface Cdn {
                  * Alter this object properties
                  * PUT /cdn/dedicated/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

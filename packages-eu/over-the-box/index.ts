@@ -310,7 +310,7 @@ export interface OverTheBox {
          * Alter this object properties
          * PUT /overTheBox/{serviceName}
          */
-        $put(params?: { SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel?: string, serviceName?: string, status?: overTheBox.ServiceStatusEnum, tunnelMode?: overTheBox.TunnelModeEnum }): Promise<void>;
+        $put(params: { SOCKSProxyEnabled: boolean, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel: string, serviceName: string, status: overTheBox.ServiceStatusEnum, tunnelMode: overTheBox.TunnelModeEnum }): Promise<void>;
         /**
          * Controle cache
          */
@@ -534,7 +534,7 @@ export interface OverTheBox {
              * Alter this object properties
              * PUT /overTheBox/{serviceName}/serviceInfos
              */
-            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
             /**
              * Controle cache
              */

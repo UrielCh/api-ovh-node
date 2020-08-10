@@ -367,13 +367,6 @@ export namespace vps {
      */
     export type VncProtocolEnum = "VNC" | "VNCOverWebSocket"
     /**
-     * VPS billing version
-     * interface fullName: vps.VpsBillingVersion.VpsBillingVersion
-     */
-    export interface VpsBillingVersion {
-        version: number;
-    }
-    /**
      * All values keymap can be in
      * type fullname: vps.VpsKeymapEnum
      */
@@ -516,14 +509,6 @@ export namespace vps {
             status: vps.migration.StatusEnum;
         }
         /**
-         * Description not available
-         * interface fullName: vps.migration.Migration.Migration
-         */
-        export interface Migration {
-            date: string;
-            id: string;
-        }
-        /**
          * Mapping between a VPS 2014 option code and a VPS 2020 option code
          * interface fullName: vps.migration.OptionMapping.OptionMapping
          */
@@ -656,7 +641,7 @@ export interface Vps {
          * Alter this object properties
          * PUT /vps/{serviceName}
          */
-        $put(params?: { cluster?: string, displayName?: string, keymap?: vps.VpsKeymapEnum, memoryLimit?: number, model?: vps.Model, monitoringIpBlocks?: string[], name?: string, netbootMode?: vps.VpsNetbootEnum, offerType?: vps.VpsOfferEnum, slaMonitoring?: boolean, state?: vps.VpsStateEnum, vcore?: number, zone?: string }): Promise<void>;
+        $put(params: { cluster: string, displayName?: string, keymap?: vps.VpsKeymapEnum, memoryLimit: number, model: vps.Model, monitoringIpBlocks: string[], name: string, netbootMode: vps.VpsNetbootEnum, offerType: vps.VpsOfferEnum, slaMonitoring?: boolean, state: vps.VpsStateEnum, vcore: number, zone: string }): Promise<void>;
         /**
          * Controle cache
          */
@@ -778,7 +763,7 @@ export interface Vps {
                      * Alter this object properties
                      * PUT /vps/{serviceName}/backupftp/access/{ipBlock}
                      */
-                    $put(params?: { cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean }): Promise<void>;
+                    $put(params: { cifs: boolean, ftp: boolean, ipBlock: string, isApplied: boolean, lastUpdate: string, nfs: boolean }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -872,7 +857,7 @@ export interface Vps {
                  * Alter this object properties
                  * PUT /vps/{serviceName}/disks/{id}
                  */
-                $put(params?: { bandwidthLimit?: number, id?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vps.disk.StateEnum, type?: vps.disk.TypeEnum }): Promise<void>;
+                $put(params: { bandwidthLimit: number, id: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size: number, state: vps.disk.StateEnum, type: vps.disk.TypeEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1016,7 +1001,7 @@ export interface Vps {
                  * Alter this object properties
                  * PUT /vps/{serviceName}/ips/{ipAddress}
                  */
-                $put(params?: { gateway?: string, geolocation?: vps.ip.GeolocationEnum, ipAddress?: string, macAddress?: string, reverse?: string, type?: vps.ip.TypeEnum, version?: coreTypes.IpVersionEnum }): Promise<void>;
+                $put(params: { gateway?: string, geolocation: vps.ip.GeolocationEnum, ipAddress: string, macAddress?: string, reverse?: string, type: vps.ip.TypeEnum, version: coreTypes.IpVersionEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1162,7 +1147,7 @@ export interface Vps {
                  * Alter this object properties
                  * PUT /vps/{serviceName}/secondaryDnsDomains/{domain}
                  */
-                $put(params?: { creationDate?: string, dns?: string, domain?: string, ipMaster?: string }): Promise<void>;
+                $put(params: { creationDate: string, dns: string, domain: string, ipMaster: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1201,7 +1186,7 @@ export interface Vps {
              * Alter this object properties
              * PUT /vps/{serviceName}/serviceInfos
              */
-            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1233,7 +1218,7 @@ export interface Vps {
              * Alter this object properties
              * PUT /vps/{serviceName}/snapshot
              */
-            $put(params?: { creationDate?: string, description?: string }): Promise<void>;
+            $put(params: { creationDate: string, description: string }): Promise<void>;
             /**
              * Controle cache
              */

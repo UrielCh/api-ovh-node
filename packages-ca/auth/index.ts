@@ -59,11 +59,6 @@ export namespace auth {
      * type fullname: auth.MethodEnum
      */
     export type MethodEnum = "account" | "provider" | "user"
-    /**
-     * All ShouldDisplayMFAEnrollment values
-     * type fullname: auth.ShouldDisplayMFAEnrollmentEnum
-     */
-    export type ShouldDisplayMFAEnrollmentEnum = "false" | "forced" | "true"
 }
 export namespace http {
     /**

@@ -398,106 +398,6 @@ export namespace billing {
         slaApplication: string;
         slaPlan: string;
     }
-    /**
-     * Details about a Voucher account
-     * interface fullName: billing.VoucherAccount.VoucherAccount
-     */
-    export interface VoucherAccount {
-        balance: orderPrice;
-        lastUpdate: string;
-        openDate: string;
-        voucherAccountId: string;
-    }
-    /**
-     * Details about a voucher account
-     * interface fullName: billing.VoucherMovement.VoucherMovement
-     */
-    export interface VoucherMovement {
-        amount: orderPrice;
-        balance: orderPrice;
-        date: string;
-        description: string;
-        movementId: number;
-        operation: billing.voucherAccount.OperationEnum;
-        order: number;
-        previousBalance: orderPrice;
-    }
-    export namespace credit {
-        /**
-         * Credit balance
-         * interface fullName: billing.credit.Balance.Balance
-         */
-        export interface Balance {
-            amount: orderPrice;
-            balanceDetails: billing.credit.balance.BalanceDetail[];
-            balanceName: string;
-            booked: billing.credit.balance.BookedMovement[];
-            creationDate: string;
-            expiring: billing.credit.balance.ExpiringMovement[];
-            expiringSummary: billing.credit.balance.ExpiringMovement[];
-            lastUpdate: string;
-            type: billing.credit.balance.Type;
-        }
-        export namespace balance {
-            /**
-             * Part of a balance
-             * interface fullName: billing.credit.balance.BalanceDetail.BalanceDetail
-             */
-            export interface BalanceDetail {
-                amount: orderPrice;
-                serviceId?: number;
-            }
-            /**
-             * Movement already booked on orders
-             * interface fullName: billing.credit.balance.BookedMovement.BookedMovement
-             */
-            export interface BookedMovement {
-                amount: orderPrice;
-                orderId: number;
-            }
-            /**
-             * Movement expiring soon
-             * interface fullName: billing.credit.balance.ExpiringMovement.ExpiringMovement
-             */
-            export interface ExpiringMovement {
-                amount: orderPrice;
-                creationDate: string;
-                expirationDate: string;
-                lastUpdate: string;
-                sourceObject: billing.credit.balance.movement.SubObject;
-            }
-            /**
-             * Credit balance
-             * interface fullName: billing.credit.balance.Movement.Movement
-             */
-            export interface Movement {
-                amount: orderPrice;
-                balanceName: string;
-                creationDate: string;
-                expirationDate?: string;
-                lastUpdate: string;
-                movementId: number;
-                orderId?: number;
-                sourceObject: billing.credit.balance.movement.SubObject;
-                type: string;
-            }
-            /**
-             * Balance type
-             * type fullname: billing.credit.balance.Type
-             */
-            export type Type = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
-            export namespace movement {
-                /**
-                 * Movement sub object
-                 * interface fullName: billing.credit.balance.movement.SubObject.SubObject
-                 */
-                export interface SubObject {
-                    id?: string;
-                    name?: string;
-                }
-            }
-        }
-    }
     export namespace fidelityAccount {
         /**
          * Operations a fidelity account movement can represent
@@ -515,14 +415,6 @@ export namespace billing {
             type?: billing.order.associatedObject.TypeEnum;
         }
         /**
-         * The object containing all capacities about automatic payment methods
-         * interface fullName: billing.order.AutomaticPaymentCapacities.AutomaticPaymentCapacities
-         */
-        export interface AutomaticPaymentCapacities {
-            canBePaidAutomatically: boolean;
-            paymentMethodId?: number;
-        }
-        /**
          * Payment method that can be used on an Order
          * interface fullName: billing.order.AvailablePaymentMethod.AvailablePaymentMethod
          */
@@ -538,13 +430,6 @@ export namespace billing {
             history: billing.order.followUp.History[];
             status: billing.order.followUp.StatusEnum;
             step: billing.order.followUp.StepEnum;
-        }
-        /**
-         * The object containing all capacities about a given order
-         * interface fullName: billing.order.OrderCapacities.OrderCapacities
-         */
-        export interface OrderCapacities {
-            payment?: billing.order.AutomaticPaymentCapacities;
         }
         /**
          * All possible order status
@@ -653,13 +538,6 @@ export namespace billing {
          * type fullname: billing.paymentMethod.StatusEnum
          */
         export type StatusEnum = "BLOCKED" | "BLOCKED_BY_CUSTOMER" | "BROKEN" | "CANCELED" | "CANCELED_BY_CUSTOMER" | "CREATED" | "ERROR" | "EXPIRED" | "PAUSED" | "VALID" | "VALID_FOR_CREDIT"
-    }
-    export namespace voucherAccount {
-        /**
-         * Operations a voucher account movement can represent
-         * type fullname: billing.voucherAccount.OperationEnum
-         */
-        export type OperationEnum = "cancel-credit" | "cancel-debit" | "cancel-pre-debit" | "credit" | "debit" | "pre-credit" | "pre-debit"
     }
 }
 export namespace complexType {
@@ -917,34 +795,6 @@ export namespace http {
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 export namespace me {
-    /**
-     * Country Migration
-     * interface fullName: me.Migration.Migration
-     */
-    export interface Migration {
-        from: nichandle.OvhSubsidiaryEnum;
-        id: number;
-        status: me.migration.StatusEnum;
-        steps?: me.migration.Step[];
-        to: nichandle.OvhSubsidiaryEnum;
-    }
-    export namespace agreements {
-        /**
-         * State of the agreement
-         * type fullname: me.agreements.AgreementStatusEnum
-         */
-        export type AgreementStatusEnum = "obsolete" | "todo" | "ko" | "ok"
-        /**
-         * Contract Agreement
-         * interface fullName: me.agreements.ContractAgreement.ContractAgreement
-         */
-        export interface ContractAgreement {
-            agreed: me.agreements.AgreementStatusEnum;
-            contractId: number;
-            date: string;
-            id: number;
-        }
-    }
     export namespace billing {
         export namespace group {
             /**
@@ -1155,72 +1005,6 @@ export namespace me {
             }
         }
     }
-    export namespace migration {
-        /**
-         * contract
-         * interface fullName: me.migration.Contract.Contract
-         */
-        export interface Contract {
-            active: boolean;
-            date: string;
-            id: number;
-            name: string;
-            pdf: string;
-            text: string;
-        }
-        /**
-         * Status of the migration
-         * type fullname: me.migration.StatusEnum
-         */
-        export type StatusEnum = "CANCELED" | "CHECKED" | "DOING" | "MIGRATED" | "TO_CHECK" | "TODO"
-        /**
-         * Country Migration Step
-         * interface fullName: me.migration.Step.Step
-         */
-        export interface Step {
-            contracts?: me.migration.step.Contracts;
-            debt?: me.migration.step.Debt;
-            name: me.migration.step.NameEnum;
-            orders?: me.migration.step.Orders;
-            status: me.migration.step.StatusEnum;
-        }
-        export namespace step {
-            /**
-             * Country Migration step contracts data
-             * interface fullName: me.migration.step.Contracts.Contracts
-             */
-            export interface Contracts {
-                agreements: me.agreements.ContractAgreement[];
-            }
-            /**
-             * Country Migration step debt data
-             * interface fullName: me.migration.step.Debt.Debt
-             */
-            export interface Debt {
-                balanceAmount?: orderPrice;
-                ovhAccountAmount?: orderPrice;
-            }
-            /**
-             * Name of the migration step
-             * type fullname: me.migration.step.NameEnum
-             */
-            export type NameEnum = "ORDERS" | "DEBT" | "NIC" | "CONTRACTS"
-            /**
-             * Country Migration step orders data
-             * interface fullName: me.migration.step.Orders.Orders
-             */
-            export interface Orders {
-                pendingOperations: boolean;
-                pendingPromotions: boolean;
-                pendingSubscriptions: boolean;
-            }
-            /**
-             * Status of the migration step
-             * type fullname: me.migration.step.StatusEnum
-             */
-            export type StatusEnum = "OK" | "PENDING"
-        }
-    }
     export namespace payment {
         export namespace method {
             /**
@@ -1323,14 +1107,6 @@ export namespace me {
 export namespace nichandle {
     export namespace Authentication {
         /**
-         * X509 Certificate
-         * interface fullName: nichandle.Authentication.Certificate.Certificate
-         */
-        export interface Certificate {
-            expiration: string;
-            subject: string;
-        }
-        /**
          * A group
          * interface fullName: nichandle.Authentication.Group.Group
          */
@@ -1342,26 +1118,6 @@ export namespace nichandle {
             name: string;
             role: nichandle.RoleEnum;
         }
-        /**
-         * A SAML 2.0 provider
-         * interface fullName: nichandle.Authentication.Provider.Provider
-         */
-        export interface Provider {
-            creation: string;
-            groupAttributeName: string;
-            idpSigningCertificate: nichandle.Authentication.Certificate;
-            lastUpdate: string;
-            ssoServiceUrl: string;
-        }
-    }
-    /**
-     * Internal customer billing capacities for customer control panel
-     * interface fullName: nichandle.BillingCapacities.BillingCapacities
-     */
-    export interface BillingCapacities {
-        canUseDebtSystem: boolean;
-        canUsePostalMailForInvoices: boolean;
-        requiredPaymentMethod: nichandle.RequiredPaymentMethodEnum;
     }
     /**
      * Countries a nichandle can choose
@@ -1439,14 +1195,6 @@ export namespace nichandle {
      */
     export type LegalFormEnum = "administration" | "association" | "corporation" | "individual" | "other" | "personalcorporation"
     /**
-     * Manager preference
-     * interface fullName: nichandle.ManagerPreference.ManagerPreference
-     */
-    export interface ManagerPreference {
-        key: string;
-        value: string;
-    }
-    /**
      * Details about your OVH identifier
      * interface fullName: nichandle.Nichandle.Nichandle
      */
@@ -1482,22 +1230,6 @@ export namespace nichandle {
         zip?: string;
     }
     /**
-     * SMS notifications
-     * interface fullName: nichandle.NichandleSmsNotification.NichandleSmsNotification
-     */
-    export interface NichandleSmsNotification {
-        abuse: boolean;
-        creationDate: string;
-        phoneNumber: string;
-        status: nichandle.NotificationStatusEnum;
-        updateDate?: string;
-    }
-    /**
-     * Status of your notification
-     * type fullname: nichandle.NotificationStatusEnum
-     */
-    export type NotificationStatusEnum = "ok" | "waitingForValidation"
-    /**
      * OVH subsidiaries
      * type fullname: nichandle.OvhCompanyEnum
      */
@@ -1506,12 +1238,7 @@ export namespace nichandle {
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN" | "ASIA" | "AU" | "CA" | "QC" | "SG" | "WE" | "WS" | "US"
-    /**
-     * Indicates the mandatory nature of having a valid payment method
-     * type fullname: nichandle.RequiredPaymentMethodEnum
-     */
-    export type RequiredPaymentMethodEnum = "mandatoryForAutorenew" | "mandatoryForPostpaid" | "notMandatory"
+    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
     /**
      * Permission given on the account
      * type fullname: nichandle.RoleEnum
@@ -1757,12 +1484,11 @@ export namespace nichandle {
 }
 export namespace order {
     /**
-     * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
-     * Price with its currency and textual representation
+     * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
      */
     export interface Price {
@@ -1858,7 +1584,7 @@ export interface Me {
      * Alter this object properties
      * PUT /me
      */
-    $put(params?: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
+    $put(params: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country: nichandle.CountryEnum, currency: nichandle.Currency, customerCode?: string, email: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle: string, organisation?: string, ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
     /**
      * Controle cache
      */
@@ -1928,7 +1654,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/accessRestriction/developerMode
              */
-            $put(params?: { enabled?: boolean }): Promise<void>;
+            $put(params: { enabled: boolean }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1964,7 +1690,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/accessRestriction/ip/{id}
                  */
-                $put(params?: { id?: number, ip?: string, rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean }): Promise<void>;
+                $put(params: { id: number, ip: string, rule: nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1981,7 +1707,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/accessRestriction/ipDefaultRule
              */
-            $put(params?: { rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean }): Promise<void>;
+            $put(params: { rule: nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean }): Promise<void>;
             /**
              * Controle cache
              */
@@ -2017,7 +1743,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/accessRestriction/sms/{id}
                  */
-                $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, phoneNumber?: string, status?: nichandle.accessRestriction.SmsStatusEnum }): Promise<void>;
+                $put(params: { creationDate: string, description: string, id: number, lastUsedDate?: string, phoneNumber: string, status: nichandle.accessRestriction.SmsStatusEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2098,7 +1824,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/accessRestriction/totp/{id}
                  */
-                $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.TOTPStatusEnum }): Promise<void>;
+                $put(params: { creationDate: string, description: string, id: number, lastUsedDate?: string, status: nichandle.accessRestriction.TOTPStatusEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2168,7 +1894,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/accessRestriction/u2f/{id}
                  */
-                $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.U2FStatusEnum }): Promise<void>;
+                $put(params: { creationDate: string, description: string, id: number, lastUsedDate?: string, status: nichandle.accessRestriction.U2FStatusEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2317,7 +2043,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/api/credential/{credentialId}
                  */
-                $put(params?: { allowedIPs?: string[], applicationId?: number, creation?: string, credentialId?: number, expiration?: string, lastUse?: string, ovhSupport?: boolean, rules?: auth.AccessRule[], status?: auth.CredentialStateEnum }): Promise<void>;
+                $put(params: { allowedIPs?: string[], applicationId: number, creation: string, credentialId: number, expiration?: string, lastUse?: string, ovhSupport: boolean, rules: auth.AccessRule[], status: auth.CredentialStateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2966,7 +2692,7 @@ export interface Me {
          * Alter this object properties
          * PUT /me/fidelityAccount
          */
-        $put(params?: { alertThreshold?: number, balance?: number, canBeCredited?: boolean, lastUpdate?: string, openDate?: string }): Promise<void>;
+        $put(params: { alertThreshold?: number, balance: number, canBeCredited: boolean, lastUpdate: string, openDate: string }): Promise<void>;
         /**
          * Controle cache
          */
@@ -3144,7 +2870,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
+            $put(params: { availableLanguages: dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat: dedicated.server.BitFormatEnum, category: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage: dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description: string, distribution: string, family: dedicated.TemplateOsTypeEnum, filesystems: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3190,7 +2916,7 @@ export interface Me {
                      * Alter this object properties
                      * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                      */
-                    $put(params?: { name?: string, priority?: number }): Promise<void>;
+                    $put(params: { name: string, priority: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -3225,7 +2951,7 @@ export interface Me {
                              * Alter this object properties
                              * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
                              */
-                            $put(params?: { disks?: string[], mode?: dedicated.TemplateOsHardwareRaidEnum, name?: string, step?: number }): Promise<void>;
+                            $put(params: { disks: string[], mode: dedicated.TemplateOsHardwareRaidEnum, name: string, step: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -3262,7 +2988,7 @@ export interface Me {
                              * Alter this object properties
                              * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                              */
-                            $put(params?: { filesystem?: dedicated.TemplateOsFileSystemEnum, mountpoint?: string, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                            $put(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, order: number, raid?: dedicated.server.PartitionRaidEnum, size: complexType.UnitAndValue<number>, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -3303,7 +3029,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/ipOrganisation/{organisationId}
              */
-            $put(params?: { abuse_mailbox?: string, address?: string, city?: string, country?: nichandle.CountryEnum, firstname?: string, lastname?: string, organisationId?: string, phone?: string, registry?: nichandle.IpRegistryEnum, state?: string, zip?: string }): Promise<void>;
+            $put(params: { abuse_mailbox: string, address: string, city: string, country: nichandle.CountryEnum, firstname: string, lastname: string, organisationId: string, phone: string, registry: nichandle.IpRegistryEnum, state?: string, zip?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3875,7 +3601,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/sshKey/{keyName}
              */
-            $put(params?: { default_?: boolean, key?: string, keyName?: string }): Promise<void>;
+            $put(params: { default_: boolean, key: string, keyName: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3907,7 +3633,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/subAccount/{id}
              */
-            $put(params?: { creationDate?: string, description?: string, id?: number }): Promise<void>;
+            $put(params: { creationDate: string, description?: string, id: number }): Promise<void>;
             /**
              * Controle cache
              */

@@ -241,7 +241,7 @@ export interface License {
              * Alter this object properties
              * PUT /license/plesk/{serviceName}
              */
-            $put(params?: { creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: license.DomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.PleskVersionEnum }): Promise<void>;
+            $put(params: { creation: string, deleteAtExpiration: boolean, domain: string, domainNumber?: license.DomainNumberEnum, informationKey?: string, ip: string, key: string, licenseId: string, productKey?: string, status: license.StateEnum, version: license.PleskVersionEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -327,7 +327,7 @@ export interface License {
                  * Alter this object properties
                  * PUT /license/plesk/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

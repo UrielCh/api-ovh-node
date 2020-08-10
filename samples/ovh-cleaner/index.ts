@@ -121,7 +121,10 @@ async function cleanMultiSite(webHosting?: string) {
                 }
                 const validIPs = new Set();
                 validIPs.add(hostingInfo.clusterIp);
-                hostingInfo.countriesIp?.forEach(e => validIPs.add(e.ip));
+                const {countriesIp} = hostingInfo;
+                if (countriesIp) {
+                    countriesIp.forEach(e => validIPs.add(e.ip));
+                }
                 let attached = await api.web.web.$(serviceName).attachedDomain.$get();
                 // console.log(attached.join(', '));
                 let cosite = 0;

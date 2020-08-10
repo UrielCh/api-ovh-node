@@ -13,26 +13,13 @@ export namespace complexType {
         key: string;
         value: T;
     }
-    /**
-     * A numeric value tagged with its unit
-     * interface fullName: complexType.UnitAndValue.UnitAndValue
-     */
-    export interface UnitAndValue<T> {
-        unit: string;
-        value: T;
-    }
 }
 export namespace nichandle {
-    /**
-     * Countries a nichandle can choose
-     * type fullname: nichandle.CountryEnum
-     */
-    export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
     /**
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN" | "ASIA" | "AU" | "CA" | "QC" | "SG" | "WE" | "WS" | "US"
+    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
 }
 export namespace order {
     /**
@@ -45,7 +32,6 @@ export namespace order {
         url: string;
     }
     /**
-     * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
@@ -65,14 +51,10 @@ export namespace order {
      * interface fullName: order.OrderDetail.OrderDetail
      */
     export interface OrderDetail {
-        cartItemID?: number;
         description: string;
         detailType?: order.OrderDetailTypeEnum;
         domain: string;
-        originalTotalPrice: order.Price;
         quantity: number;
-        reductionTotalPrice: order.Price;
-        reductions: order.Reduction[];
         totalPrice: order.Price;
         unitPrice: order.Price;
     }
@@ -86,14 +68,12 @@ export namespace order {
      * interface fullName: order.OrderPrices.OrderPrices
      */
     export interface OrderPrices {
-        originalWithoutTax?: order.Price;
-        reduction?: order.Price;
         tax: order.Price;
         withTax: order.Price;
         withoutTax: order.Price;
     }
     /**
-     * Price with its currency and textual representation
+     * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
      */
     export interface Price {
@@ -101,26 +81,6 @@ export namespace order {
         text: string;
         value: number;
     }
-    /**
-     * Order detail reduction
-     * interface fullName: order.Reduction.Reduction
-     */
-    export interface Reduction {
-        context: order.ReductionContextEnum;
-        price: order.Price;
-        type: order.ReductionTypeEnum;
-        value: order.Price;
-    }
-    /**
-     * Context of the reduction
-     * type fullname: order.ReductionContextEnum
-     */
-    export type ReductionContextEnum = "promotion" | "voucher"
-    /**
-     * Type of reduction
-     * type fullname: order.ReductionTypeEnum
-     */
-    export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
     export namespace cart {
         /**
          * A shopping cart
@@ -360,158 +320,6 @@ export namespace order {
             planCode: string;
             pricingType: string;
         }
-        export namespace pcc {
-            /**
-             * Describe a Private Cloud commercial catalog
-             * interface fullName: order.catalog.pcc.Catalog.Catalog
-             */
-            export interface Catalog {
-                catalogId: number;
-                catalogName: string;
-                commercialRanges: order.catalog.pcc.CommercialRange[];
-                merchantCode: string;
-                plans: order.catalog.ProductPlan[];
-            }
-            /**
-             * Describes the Commercial Range of a Private Cloud
-             * interface fullName: order.catalog.pcc.CommercialRange.CommercialRange
-             */
-            export interface CommercialRange {
-                datacenters: order.catalog.pcc.Datacenter[];
-                defaultZone: string;
-                name: string;
-            }
-            /**
-             * Describes a Private Cloud Datacenter
-             * interface fullName: order.catalog.pcc.Datacenter.Datacenter
-             */
-            export interface Datacenter {
-                cityCode: string;
-                cityName: string;
-                countryCode: nichandle.CountryEnum;
-                defaultHypervisor: string;
-                hypervisors: order.catalog.pcc.Hypervisor[];
-                mainPlan: string;
-                orderable: boolean;
-                orderableOptions: boolean;
-                orderableResources: boolean;
-                storagesNoPack: string[];
-                zoneFullName: string;
-                zoneName: string;
-            }
-            /**
-             * Describes a Private Cloud Host
-             * interface fullName: order.catalog.pcc.Host.Host
-             */
-            export interface Host {
-                name: string;
-                onInitialOrder: boolean;
-                onUpgradeOrder: boolean;
-                planCode: string;
-                specifications: order.catalog.pcc.HostSpecifications;
-                storagesPack: string[];
-            }
-            /**
-             * Describes a Private Cloud Host CPU
-             * interface fullName: order.catalog.pcc.HostCpuSpecifications.HostCpuSpecifications
-             */
-            export interface HostCpuSpecifications {
-                cores: number;
-                frequency: complexType.UnitAndValue<number>;
-                generation: string;
-                model: string;
-                socket: number;
-                threads: number;
-            }
-            /**
-             * Describes a Private Cloud Host Memory
-             * interface fullName: order.catalog.pcc.HostMemorySpecifications.HostMemorySpecifications
-             */
-            export interface HostMemorySpecifications {
-                ram: complexType.UnitAndValue<number>;
-            }
-            /**
-             * Describes a Private Cloud Host Network
-             * interface fullName: order.catalog.pcc.HostNetworkSpecifications.HostNetworkSpecifications
-             */
-            export interface HostNetworkSpecifications {
-                nics: number;
-                speed: complexType.UnitAndValue<number>;
-            }
-            /**
-             * Describes a Private Cloud Host Hardware
-             * interface fullName: order.catalog.pcc.HostSpecifications.HostSpecifications
-             */
-            export interface HostSpecifications {
-                cpu: order.catalog.pcc.HostCpuSpecifications;
-                memory: order.catalog.pcc.HostMemorySpecifications;
-                network: order.catalog.pcc.HostNetworkSpecifications[];
-            }
-            /**
-             * Describes a Private Cloud Hypervisor
-             * interface fullName: order.catalog.pcc.Hypervisor.Hypervisor
-             */
-            export interface Hypervisor {
-                hosts: order.catalog.pcc.Host[];
-                name: string;
-                options: order.catalog.pcc.Option[];
-                orderable: boolean;
-                servicePacks: order.catalog.pcc.ServicePack[];
-                shortName: string;
-                storages: order.catalog.pcc.Storage[];
-                type: string;
-            }
-            /**
-             * Describes a Private Cloud Option
-             * interface fullName: order.catalog.pcc.Option.Option
-             */
-            export interface Option {
-                maxInitialQuantity: number;
-                name: string;
-                onInitialOrder: boolean;
-                onUpgradeOrder: boolean;
-                planCode: string;
-                type: string;
-            }
-            /**
-             * Describes a Private Cloud Service Pack
-             * interface fullName: order.catalog.pcc.ServicePack.ServicePack
-             */
-            export interface ServicePack {
-                name: string;
-                options: order.catalog.pcc.ServicePackOption[];
-                planCode: string;
-                upgradableTo: string[];
-            }
-            /**
-             * Describes a Private Cloud service pack option
-             * interface fullName: order.catalog.pcc.ServicePackOption.ServicePackOption
-             */
-            export interface ServicePackOption {
-                name: string;
-                planCode: string;
-                type: string;
-            }
-            /**
-             * Describes a Private Cloud Storage
-             * interface fullName: order.catalog.pcc.Storage.Storage
-             */
-            export interface Storage {
-                name: string;
-                onInitialOrder: boolean;
-                onUpgradeOrder: boolean;
-                planCode: string;
-                specifications: order.catalog.pcc.StorageSpecifications;
-            }
-            /**
-             * Describes a Private Cloud Storage
-             * interface fullName: order.catalog.pcc.StorageSpecifications.StorageSpecifications
-             */
-            export interface StorageSpecifications {
-                size: complexType.UnitAndValue<number>;
-                type: string;
-            }
-        }
         export namespace publik {
             /**
              * Describes an Addon family for a Commercial offer
@@ -545,123 +353,6 @@ export namespace order {
                 isMandatory: boolean;
                 name: string;
                 values: string[];
-            }
-            /**
-             * Describes a Dedicated server Catalog inside a Subsidiary
-             * interface fullName: order.catalog.publik.DedicatedServerCatalog.DedicatedServerCatalog
-             */
-            export interface DedicatedServerCatalog {
-                addons: order.catalog.publik.Plan[];
-                catalogId: number;
-                locale: order.catalog.publik.Locale;
-                planFamilies: order.catalog.publik.AddonFamily[];
-                plans: order.catalog.publik.Plan[];
-                products: order.catalog.publik.DedicatedServerProduct[];
-            }
-            /**
-             * Describes a Dedicated Server Product
-             * interface fullName: order.catalog.publik.DedicatedServerProduct.DedicatedServerProduct
-             */
-            export interface DedicatedServerProduct {
-                blobs?: order.catalog.publik.DedicatedServerProductBlob;
-                description: string;
-                name: string;
-            }
-            /**
-             * Describes a Blob for a Dedicated Server
-             * interface fullName: order.catalog.publik.DedicatedServerProductBlob.DedicatedServerProductBlob
-             */
-            export interface DedicatedServerProductBlob {
-                technical?: order.catalog.publik.DedicatedServerProductBlobTechnical;
-            }
-            /**
-             * Describes a Technical Blob for a Dedicated Server
-             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnical.DedicatedServerProductBlobTechnical
-             */
-            export interface DedicatedServerProductBlobTechnical {
-                bandwidth?: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork;
-                cpu?: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU;
-                gpu?: order.catalog.publik.DedicatedServerProductBlobTechnicalGPU;
-                memory?: order.catalog.publik.DedicatedServerProductBlobTechnicalMemory;
-                server?: order.catalog.publik.DedicatedServerProductBlobTechnicalServer;
-                storage?: order.catalog.publik.DedicatedServerProductBlobTechnicalStorage;
-                vrack?: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork;
-            }
-            /**
-             * Describes a CPU for a Dedicated Server
-             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU.DedicatedServerProductBlobTechnicalCPU
-             */
-            export interface DedicatedServerProductBlobTechnicalCPU {
-                boost: number;
-                brand: string;
-                cores: number;
-                frequency: number;
-                model: string;
-                score: number;
-                threads: number;
-            }
-            /**
-             * Describes a Disk for a Dedicated Server
-             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalDisk.DedicatedServerProductBlobTechnicalDisk
-             */
-            export interface DedicatedServerProductBlobTechnicalDisk {
-                capacity: number;
-                interface: string;
-                number: number;
-                specs: string;
-                technology: string;
-            }
-            /**
-             * Describes a Frame for a Dedicated Server
-             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalFrame.DedicatedServerProductBlobTechnicalFrame
-             */
-            export interface DedicatedServerProductBlobTechnicalFrame {
-                model: string;
-                size: string;
-            }
-            /**
-             * Describes a GPU for a Dedicated Server
-             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalGPU.DedicatedServerProductBlobTechnicalGPU
-             */
-            export interface DedicatedServerProductBlobTechnicalGPU {
-                memory: number;
-            }
-            /**
-             * Describes a Memory technical Blob for a Dedicated Server
-             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalMemory.DedicatedServerProductBlobTechnicalMemory
-             */
-            export interface DedicatedServerProductBlobTechnicalMemory {
-                ecc: boolean;
-                frequency: number;
-                ramType: string;
-                size: number;
-            }
-            /**
-             * Describes a Network technical Blob for a Dedicated Server
-             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork.DedicatedServerProductBlobTechnicalNetwork
-             */
-            export interface DedicatedServerProductBlobTechnicalNetwork {
-                burst?: number;
-                guaranteed: boolean;
-                level: number;
-                limit?: number;
-            }
-            /**
-             * Describes some technicals informations of a Dedicated Server
-             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalServer.DedicatedServerProductBlobTechnicalServer
-             */
-            export interface DedicatedServerProductBlobTechnicalServer {
-                cpu: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU;
-                frame: order.catalog.publik.DedicatedServerProductBlobTechnicalFrame;
-                range: string;
-            }
-            /**
-             * Describes a Storage technical Blob for a Dedicated Server
-             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalStorage.DedicatedServerProductBlobTechnicalStorage
-             */
-            export interface DedicatedServerProductBlobTechnicalStorage {
-                disks: order.catalog.publik.DedicatedServerProductBlobTechnicalDisk[];
-                raid: string;
             }
             /**
              * Describes specifics for a given Subsidiary
@@ -738,9 +429,9 @@ export namespace order {
          */
         export interface Operation {
             id: number;
-            product: order.upgrade.OperationProduct;
-            status: order.upgrade.OperationStatusEnum;
-            type: order.upgrade.OperationTypeEnum;
+            product: orderupgradeOperationProduct;
+            status: orderupgradeOperationStatusEnum;
+            type: orderupgradeOperationTypeEnum;
         }
         /**
          * Describes a product inside a operation
@@ -760,13 +451,17 @@ export namespace order {
          * type fullname: order.upgrade.OperationTypeEnum
          */
         export type OperationTypeEnum = "UPGRADE"
-        /**
-         * Describes an Operation and the associated Order
-         * interface fullName: order.upgrade.order_upgrade_OperationAndOrder.order_upgrade_OperationAndOrder
-         */
-        export interface order_upgrade_OperationAndOrder {
-            operation?: order.upgrade.Operation;
-            order?: order.Order;
+        export namespace order {
+            export namespace upgrade {
+                /**
+                 * Describes an Operation and the associated Order
+                 * interface fullName: order.upgrade.order.upgrade.OperationAndOrder.OperationAndOrder
+                 */
+                export interface OperationAndOrder {
+                    operation?: orderupgradeOperation;
+                    order?: orderOrder;
+                }
+            }
         }
     }
 }
@@ -1866,7 +1561,7 @@ export interface Order {
                  * Retrieve bare-metal servers catalog
                  * GET /order/catalog/public/baremetalServers
                  */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.DedicatedServerCatalog>;
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
                  * Controle cache
                  */
@@ -1966,12 +1661,12 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
                      */
-                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Controle cache
                      */
@@ -2004,12 +1699,12 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
                      */
-                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Controle cache
                      */
@@ -2042,12 +1737,12 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/licensePlesk/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/licensePlesk/{serviceName}/{planCode}
                      */
-                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Controle cache
                      */
@@ -2080,12 +1775,12 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/licensecPanel/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/licensecPanel/{serviceName}/{planCode}
                      */
-                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Controle cache
                      */
@@ -2118,12 +1813,12 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/privateCloud/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/privateCloud/{serviceName}/{planCode}
                      */
-                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Controle cache
                      */
@@ -2156,12 +1851,12 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/vps/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/vps/{serviceName}/{planCode}
                      */
-                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Controle cache
                      */
@@ -2194,12 +1889,12 @@ export interface Order {
                      * Get a provisional order for the selected upgrade of your service
                      * GET /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}
                      */
-                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: { quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}
                      */
-                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order.upgrade.OperationAndOrder>;
                     /**
                      * Controle cache
                      */
@@ -2209,3 +1904,11 @@ export interface Order {
         }
     }
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type orderupgradeOperationProduct = order.upgrade.OperationProduct;
+type orderupgradeOperationStatusEnum = order.upgrade.OperationStatusEnum;
+type orderupgradeOperationTypeEnum = order.upgrade.OperationTypeEnum;
+type orderupgradeOperation = order.upgrade.Operation;
+type orderOrder = order.Order;

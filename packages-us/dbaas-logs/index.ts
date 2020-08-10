@@ -306,17 +306,6 @@ export namespace dbaas {
             title: string;
         }
         /**
-         * Kibana instance
-         * interface fullName: dbaas.logs.Kibana.Kibana
-         */
-        export interface Kibana {
-            createdAt: string;
-            isEditable: boolean;
-            kibanaId: string;
-            name: string;
-            updatedAt?: string;
-        }
-        /**
          * Logstash configuration
          * interface fullName: dbaas.logs.LogstashConfiguration.LogstashConfiguration
          */
@@ -685,14 +674,6 @@ export namespace dbaas {
          */
         export interface RolePermissionIndexCreation {
             indexId: string;
-            permissionType?: dbaas.logs.PermissionTypeEnum;
-        }
-        /**
-         * Missing description
-         * interface fullName: dbaas.logs.RolePermissionKibanaCreation.RolePermissionKibanaCreation
-         */
-        export interface RolePermissionKibanaCreation {
-            kibanaId: string;
             permissionType?: dbaas.logs.PermissionTypeEnum;
         }
         /**
@@ -1084,7 +1065,7 @@ export interface Dbaas {
                          * Allow an IP to contact cluster
                          * POST /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork
                          */
-                        $post(params?: { flowType?: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum, network?: string }): Promise<dbaas.logs.Operation>;
+                        $post(params: { flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum, network: string }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1140,7 +1121,7 @@ export interface Dbaas {
                  * Register a new input object
                  * POST /dbaas/logs/{serviceName}/input
                  */
-                $post(params?: { allowedNetworks?: string[], autoSelectOption?: boolean, description?: string, engineId?: string, exposedPort?: string, nbInstance?: number, optionId?: string, singleInstanceEnabled?: boolean, streamId?: string, title?: string }): Promise<dbaas.logs.Operation>;
+                $post(params: { allowedNetworks?: string[], autoSelectOption?: boolean, description: string, engineId: string, exposedPort?: string, nbInstance?: number, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string }): Promise<dbaas.logs.Operation>;
                 /**
                  * Controle cache
                  */
@@ -1160,7 +1141,7 @@ export interface Dbaas {
                      * Update information of specified input object
                      * PUT /dbaas/logs/{serviceName}/input/{inputId}
                      */
-                    $put(params?: { allowedNetworks?: string[], description?: string, engineId?: string, exposedPort?: string, nbInstance?: number, optionId?: string, singleInstanceEnabled?: boolean, streamId?: string, title?: string }): Promise<dbaas.logs.Operation>;
+                    $put(params: { allowedNetworks?: string[], description: string, engineId: string, exposedPort?: string, nbInstance?: number, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string }): Promise<dbaas.logs.Operation>;
                     /**
                      * Controle cache
                      */
@@ -1186,7 +1167,7 @@ export interface Dbaas {
                          * Allow an ip to join input
                          * POST /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork
                          */
-                        $post(params?: { network?: string }): Promise<dbaas.logs.Operation>;
+                        $post(params: { network: string }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1241,7 +1222,7 @@ export interface Dbaas {
                              * Update the flowgger configuration
                              * PUT /dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger
                              */
-                            $put(params?: { logFormat?: dbaas.logs.FlowggerConfigurationLogFormatEnum, logFraming?: dbaas.logs.FlowggerConfigurationLogFramingEnum }): Promise<dbaas.logs.Operation>;
+                            $put(params: { logFormat: dbaas.logs.FlowggerConfigurationLogFormatEnum, logFraming: dbaas.logs.FlowggerConfigurationLogFramingEnum }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1257,7 +1238,7 @@ export interface Dbaas {
                              * Update the logstash configuration
                              * PUT /dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash
                              */
-                            $put(params?: { filterSection?: string, inputSection?: string, patternSection?: string }): Promise<dbaas.logs.Operation>;
+                            $put(params: { filterSection?: string, inputSection: string, patternSection?: string }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1412,7 +1393,7 @@ export interface Dbaas {
                          * Register a new elasticsearch alias
                          * POST /dbaas/logs/{serviceName}/output/elasticsearch/alias
                          */
-                        $post(params?: { autoSelectOption?: boolean, description?: string, optionId?: string, suffix?: string }): Promise<dbaas.logs.Operation>;
+                        $post(params: { autoSelectOption?: boolean, description: string, optionId?: string, suffix: string }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1432,7 +1413,7 @@ export interface Dbaas {
                              * Update specified elasticsearch alias
                              * PUT /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}
                              */
-                            $put(params?: { description?: string, optionId?: string }): Promise<dbaas.logs.Operation>;
+                            $put(params: { description: string, optionId?: string }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1448,7 +1429,7 @@ export interface Dbaas {
                                  * Attach a elasticsearch index to specified elasticsearch alias
                                  * POST /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index
                                  */
-                                $post(params?: { indexId?: string }): Promise<dbaas.logs.Operation>;
+                                $post(params: { indexId: string }): Promise<dbaas.logs.Operation>;
                                 /**
                                  * Controle cache
                                  */
@@ -1476,7 +1457,7 @@ export interface Dbaas {
                                  * Attach a graylog stream to specified elasticsearch alias
                                  * POST /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream
                                  */
-                                $post(params?: { streamId?: string }): Promise<dbaas.logs.Operation>;
+                                $post(params: { streamId: string }): Promise<dbaas.logs.Operation>;
                                 /**
                                  * Controle cache
                                  */
@@ -1516,7 +1497,7 @@ export interface Dbaas {
                          * Register a new elasticsearch index
                          * POST /dbaas/logs/{serviceName}/output/elasticsearch/index
                          */
-                        $post(params?: { alertNotifyEnabled?: boolean, autoSelectOption?: boolean, description?: string, nbShard?: number, optionId?: string, suffix?: string }): Promise<dbaas.logs.Operation>;
+                        $post(params: { alertNotifyEnabled?: boolean, autoSelectOption?: boolean, description: string, nbShard?: number, optionId?: string, suffix: string }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1536,7 +1517,7 @@ export interface Dbaas {
                              * Update specified elasticsearch index
                              * PUT /dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}
                              */
-                            $put(params?: { alertNotifyEnabled?: boolean, description?: string }): Promise<dbaas.logs.Operation>;
+                            $put(params: { alertNotifyEnabled?: boolean, description: string }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1577,7 +1558,7 @@ export interface Dbaas {
                          * Register a new graylog dashboard
                          * POST /dbaas/logs/{serviceName}/output/graylog/dashboard
                          */
-                        $post(params?: { autoSelectOption?: boolean, description?: string, optionId?: string, title?: string }): Promise<dbaas.logs.Operation>;
+                        $post(params: { autoSelectOption?: boolean, description: string, optionId?: string, title: string }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1597,7 +1578,7 @@ export interface Dbaas {
                              * Update information of specified graylog dashboard
                              * PUT /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}
                              */
-                            $put(params?: { description?: string, optionId?: string, title?: string }): Promise<dbaas.logs.Operation>;
+                            $put(params: { description: string, optionId?: string, title: string }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1607,7 +1588,7 @@ export interface Dbaas {
                                  * Copy all widgets from specified dashboard to a new one
                                  * POST /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate
                                  */
-                                $post(params?: { autoSelectOption?: boolean, description?: string, optionId?: string, streamId?: string, title?: string }): Promise<dbaas.logs.Operation>;
+                                $post(params: { autoSelectOption?: boolean, description: string, optionId?: string, streamId?: string, title: string }): Promise<dbaas.logs.Operation>;
                                 /**
                                  * Controle cache
                                  */
@@ -1636,7 +1617,7 @@ export interface Dbaas {
                          * Register a new graylog stream
                          * POST /dbaas/logs/{serviceName}/output/graylog/stream
                          */
-                        $post(params?: { autoSelectOption?: boolean, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description?: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, optionId?: string, parentStreamId?: string, pauseIndexingOnMaxSize?: boolean, retentionId?: string, title?: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
+                        $post(params: { autoSelectOption?: boolean, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, optionId?: string, parentStreamId?: string, pauseIndexingOnMaxSize?: boolean, retentionId?: string, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1656,7 +1637,7 @@ export interface Dbaas {
                              * Update information of specified graylog stream
                              * PUT /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
                              */
-                            $put(params?: { coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description?: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, optionId?: string, pauseIndexingOnMaxSize?: boolean, title?: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
+                            $put(params: { coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, optionId?: string, pauseIndexingOnMaxSize?: boolean, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1671,7 +1652,7 @@ export interface Dbaas {
                                  * Register a new alert on specified graylog stream
                                  * POST /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert
                                  */
-                                $post(params?: { backlog?: number, conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace?: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title?: string, value?: string }): Promise<dbaas.logs.Operation>;
+                                $post(params: { backlog: number, conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string }): Promise<dbaas.logs.Operation>;
                                 /**
                                  * Controle cache
                                  */
@@ -1691,7 +1672,7 @@ export interface Dbaas {
                                      * Update alert information of specified graylog stream
                                      * PUT /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}
                                      */
-                                    $put(params?: { backlog?: number, conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace?: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title?: string, value?: string }): Promise<dbaas.logs.Operation>;
+                                    $put(params: { backlog: number, conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string }): Promise<dbaas.logs.Operation>;
                                     /**
                                      * Controle cache
                                      */
@@ -1741,7 +1722,7 @@ export interface Dbaas {
                                  * Register a new rule on specified graylog stream
                                  * POST /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule
                                  */
-                                $post(params?: { field?: string, isInverted?: boolean, operator?: dbaas.logs.StreamRuleOperatorEnum, value?: string }): Promise<dbaas.logs.Operation>;
+                                $post(params: { field: string, isInverted?: boolean, operator: dbaas.logs.StreamRuleOperatorEnum, value: string }): Promise<dbaas.logs.Operation>;
                                 /**
                                  * Controle cache
                                  */
@@ -1799,7 +1780,7 @@ export interface Dbaas {
                  * Register a new role
                  * POST /dbaas/logs/{serviceName}/role
                  */
-                $post(params?: { autoSelectOption?: boolean, description?: string, name?: string, optionId?: string }): Promise<dbaas.logs.Operation>;
+                $post(params: { autoSelectOption?: boolean, description: string, name: string, optionId?: string }): Promise<dbaas.logs.Operation>;
                 /**
                  * Controle cache
                  */
@@ -1819,7 +1800,7 @@ export interface Dbaas {
                      * Update information of specified role
                      * PUT /dbaas/logs/{serviceName}/role/{roleId}
                      */
-                    $put(params?: { description?: string, name?: string, optionId?: string }): Promise<dbaas.logs.Operation>;
+                    $put(params: { description: string, name: string, optionId?: string }): Promise<dbaas.logs.Operation>;
                     /**
                      * Controle cache
                      */
@@ -1834,7 +1815,7 @@ export interface Dbaas {
                          * Append user into the member list of specified role
                          * POST /dbaas/logs/{serviceName}/role/{roleId}/member
                          */
-                        $post(params?: { note?: string, username?: string }): Promise<dbaas.logs.Operation>;
+                        $post(params: { note?: string, username: string }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1876,7 +1857,7 @@ export interface Dbaas {
                              * Append a elasticsearch alias permission to role
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/alias
                              */
-                            $post(params?: { aliasId?: string }): Promise<dbaas.logs.Operation>;
+                            $post(params: { aliasId: string }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1887,7 +1868,7 @@ export interface Dbaas {
                              * Append a graylog dashboard permission to role
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard
                              */
-                            $post(params?: { dashboardId?: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
+                            $post(params: { dashboardId: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1898,7 +1879,7 @@ export interface Dbaas {
                              * Append a elasticsearch index permission to role
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/index
                              */
-                            $post(params?: { indexId?: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
+                            $post(params: { indexId: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1909,7 +1890,7 @@ export interface Dbaas {
                              * Append a graylog stream permission to role
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/stream
                              */
-                            $post(params?: { streamId?: string }): Promise<dbaas.logs.Operation>;
+                            $post(params: { streamId: string }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1944,7 +1925,7 @@ export interface Dbaas {
                  * Alter this object properties
                  * PUT /dbaas/logs/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1960,7 +1941,7 @@ export interface Dbaas {
                  * Add a new token
                  * POST /dbaas/logs/{serviceName}/token
                  */
-                $post(params?: { clusterId?: string, name?: string }): Promise<dbaas.logs.Operation>;
+                $post(params: { clusterId?: string, name: string }): Promise<dbaas.logs.Operation>;
                 /**
                  * Controle cache
                  */
@@ -1999,7 +1980,7 @@ export interface Dbaas {
                      * Initiate a password change procedure.
                      * POST /dbaas/logs/{serviceName}/user/changePassword
                      */
-                    $post(params?: { password?: string }): Promise<dbaas.logs.Operation>;
+                    $post(params: { password: string }): Promise<dbaas.logs.Operation>;
                     /**
                      * Controle cache
                      */

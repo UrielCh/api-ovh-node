@@ -396,18 +396,6 @@ export namespace domain {
     }
     export namespace configurations {
         /**
-         * Representation of the domain custom fields
-         * interface fullName: domain.configurations.CustomFields.CustomFields
-         */
-        export interface CustomFields {
-            audience?: string;
-            authInfo?: string;
-            isFor?: domain.IsForEnum[];
-            otherPurpose?: string;
-            reason?: string;
-            represent?: string;
-        }
-        /**
          * Representation of the obfuscated emails configuration
          * interface fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
          */
@@ -597,13 +585,6 @@ export namespace domain {
         }
     }
     export namespace zone {
-        /**
-         * DNS Anycast service
-         * interface fullName: domain.zone.Anycast.Anycast
-         */
-        export interface Anycast {
-            name: string;
-        }
         /**
          * Manage Dnssec for this zone
          * interface fullName: domain.zone.Dnssec.Dnssec
@@ -1249,7 +1230,7 @@ export interface Domain {
                      * Alter this object properties
                      * PUT /domain/zone/{zoneName}/record/{id}
                      */
-                    $put(params?: { fieldType?: zoneNamedResolutionFieldTypeEnum, id?: number, subDomain?: string, target?: string, ttl?: number, zone?: string }): Promise<void>;
+                    $put(params: { fieldType: zoneNamedResolutionFieldTypeEnum, id: number, subDomain?: string, target: string, ttl?: number, zone: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1286,7 +1267,7 @@ export interface Domain {
                      * Alter this object properties
                      * PUT /domain/zone/{zoneName}/redirection/{id}
                      */
-                    $put(params?: { description?: string, id?: number, keywords?: string, subDomain?: string, target?: string, title?: string, type?: zoneRedirectionTypeEnum, zone?: string }): Promise<void>;
+                    $put(params: { description?: string, id: number, keywords?: string, subDomain?: string, target: string, title?: string, type: zoneRedirectionTypeEnum, zone: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1325,7 +1306,7 @@ export interface Domain {
                  * Alter this object properties
                  * PUT /domain/zone/{zoneName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1341,7 +1322,7 @@ export interface Domain {
                  * Alter this object properties
                  * PUT /domain/zone/{zoneName}/soa
                  */
-                $put(params?: { email?: string, expire?: number, nxDomainTtl?: number, refresh?: number, serial?: number, server?: string, ttl?: number }): Promise<void>;
+                $put(params: { email: string, expire: number, nxDomainTtl: number, refresh: number, serial: number, server: string, ttl: number }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1436,7 +1417,7 @@ export interface Domain {
          * Alter this object properties
          * PUT /domain/{serviceName}
          */
-        $put(params?: { dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string }): Promise<void>;
+        $put(params: { dnssecSupported: boolean, domain: string, glueRecordIpv6Supported: boolean, glueRecordMultiIpSupported: boolean, lastUpdate: string, nameServerType: domain.DomainNsTypeEnum, offer: domain.OfferEnum, owoSupported: boolean, parentService?: domain.ParentService, transferLockStatus: domain.DomainLockStatusEnum, whoisOwner: string }): Promise<void>;
         /**
          * Controle cache
          */
@@ -1764,7 +1745,7 @@ export interface Domain {
              * Alter this object properties
              * PUT /domain/{serviceName}/serviceInfos
              */
-            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
             /**
              * Controle cache
              */

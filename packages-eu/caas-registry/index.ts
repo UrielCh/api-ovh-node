@@ -234,7 +234,7 @@ export interface Caas {
                  * Create namespace
                  * POST /caas/registry/{serviceName}/namespaces
                  */
-                $post(params?: { name?: string }): Promise<registry.namespace>;
+                $post(params: { name: string }): Promise<registry.namespace>;
                 /**
                  * Controle cache
                  */
@@ -279,7 +279,7 @@ export interface Caas {
                              * Update image
                              * PUT /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}
                              */
-                            $put(params?: { public?: boolean }): Promise<registry.image>;
+                            $put(params: { public: boolean }): Promise<registry.image>;
                             /**
                              * Controle cache
                              */
@@ -294,7 +294,7 @@ export interface Caas {
                                  * Create image permissions
                                  * POST /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions
                                  */
-                                $post(params?: { canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string }): Promise<registry.permissions>;
+                                $post(params: { canRead: boolean, canWrite: boolean, isAdmin: boolean, status: registry.permission.status, userId: string }): Promise<registry.permissions>;
                                 /**
                                  * Controle cache
                                  */
@@ -350,7 +350,7 @@ export interface Caas {
                          * Create namespace permissions
                          * POST /caas/registry/{serviceName}/namespaces/{namespaceId}/permissions
                          */
-                        $post(params?: { canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string }): Promise<registry.permissions>;
+                        $post(params: { canRead: boolean, canWrite: boolean, isAdmin: boolean, status: registry.permission.status, userId: string }): Promise<registry.permissions>;
                         /**
                          * Controle cache
                          */
@@ -384,7 +384,7 @@ export interface Caas {
                  * Alter this object properties
                  * PUT /caas/registry/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -400,7 +400,7 @@ export interface Caas {
                  * Create user
                  * POST /caas/registry/{serviceName}/users
                  */
-                $post(params?: { description?: string }): Promise<registry.user>;
+                $post(params: { description: string }): Promise<registry.user>;
                 /**
                  * Controle cache
                  */

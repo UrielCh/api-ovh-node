@@ -224,7 +224,7 @@ export interface License {
              * Alter this object properties
              * PUT /license/virtuozzo/{serviceName}
              */
-            $put(params?: { containerNumber?: license.VirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.VirtuozzoVersionEnum }): Promise<void>;
+            $put(params: { containerNumber: license.VirtuozzoContainerNumberEnum, creation: string, deleteAtExpiration: boolean, domain: string, informationKey?: string, ip: string, licenseId: string, productKey?: string, status: license.StateEnum, version: license.VirtuozzoVersionEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -310,7 +310,7 @@ export interface License {
                  * Alter this object properties
                  * PUT /license/virtuozzo/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

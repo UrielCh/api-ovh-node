@@ -173,14 +173,6 @@ export namespace vrack {
         vlanId: number;
     }
     /**
-     * vrack (1.5) nasha server interfaces
-     * interface fullName: vrack.nasha.nasha
-     */
-    export interface nasha {
-        serviceIp: string;
-        zpool: string;
-    }
-    /**
      * ovhCloudConnect in vrack
      * interface fullName: vrack.ovhCloudConnect.ovhCloudConnect
      */
@@ -196,13 +188,6 @@ export namespace vrack {
         datacenter: string;
         dedicatedCloud: string;
         vrack: string;
-    }
-    /**
-     * A structure describing the public routing option
-     * interface fullName: vrack.publicRoutingOption.publicRoutingOption
-     */
-    export interface publicRoutingOption {
-        bandwidth?: number;
     }
     /**
      * vrack
@@ -244,7 +229,7 @@ export interface Vrack {
          * Alter this object properties
          * PUT /vrack/{serviceName}
          */
-        $put(params?: { description?: string, name?: string }): Promise<void>;
+        $put(params: { description: string, name: string }): Promise<void>;
         /**
          * Controle cache
          */
@@ -388,7 +373,7 @@ export interface Vrack {
                  * Alter this object properties
                  * PUT /vrack/{serviceName}/dedicatedConnect/{name}
                  */
-                $put(params?: { name?: string }): Promise<void>;
+                $put(params: { name: string }): Promise<void>;
                 /**
                  * Controle cache
                  */

@@ -10,6 +10,7 @@ export namespace ovhcloudconnect {
      * interface fullName: ovhcloudconnect.Datacenter.Datacenter
      */
     export interface Datacenter {
+        available: boolean;
         id: number;
         name: string;
     }
@@ -22,7 +23,7 @@ export namespace ovhcloudconnect {
         id: number;
         ovhBgpArea: number;
         status: ovhcloudconnect.popConfig.StatusEnum;
-        subnet: string;
+        subnet?: string;
     }
     /**
      * OVHcloud Connect Service Datacenter Extra Configuration
@@ -499,7 +500,7 @@ export interface OvhCloudConnect {
              * Alter this object properties
              * PUT /ovhCloudConnect/{serviceName}/serviceInfos
              */
-            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
             /**
              * Controle cache
              */

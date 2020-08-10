@@ -305,11 +305,6 @@ export namespace email {
          */
         export type activeSyncNotificationStateEnum = "creating" | "deleting" | "ok"
         /**
-         * Authorized IP State
-         * type fullname: email.exchange.authorizedIpStatusEnum
-         */
-        export type authorizedIpStatusEnum = "creating" | "deleting" | "ok"
-        /**
          * Exchange organization disclaimer
          * interface fullName: email.exchange.disclaimer.disclaimer
          */
@@ -496,15 +491,6 @@ export namespace email {
             notifiedAccountId: number;
             primaryEmailAddress: string;
             state: email.exchange.activeSyncNotificationStateEnum;
-        }
-        /**
-         * Get authorized IPs for POP, IMAP and webmail
-         * interface fullName: email.exchange.exchangeServiceAuthorizedIp.exchangeServiceAuthorizedIp
-         */
-        export interface exchangeServiceAuthorizedIp {
-            creationDate: string;
-            ip: string;
-            status: email.exchange.authorizedIpStatusEnum;
         }
         /**
          * Get the list of your ActiveSync devices registered on this Exchange service
@@ -753,7 +739,7 @@ export interface Email {
                      * Alter this object properties
                      * PUT /email/exchange/{organizationName}/service/{exchangeService}
                      */
-                    $put(params?: { complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.exchange.ServiceOfferEnum, passwordHistoryCount?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, sslExpirationDate?: string, state?: email.exchange.ServiceStateEnum, taskPendingId?: number, webUrl?: string }): Promise<void>;
+                    $put(params: { complexityEnabled: boolean, displayName?: string, domain: string, hostname?: string, lastUpdateDate?: string, lockoutDuration: number, lockoutObservationWindow: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize: number, maxSendSize: number, minPasswordAge?: number, minPasswordLength?: number, offer: email.exchange.ServiceOfferEnum, passwordHistoryCount?: number, spamAndVirusConfiguration: email.exchange.spamAndVirusConfiguration, sslExpirationDate?: string, state: email.exchange.ServiceStateEnum, taskPendingId: number, webUrl?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -788,7 +774,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
                              */
-                            $put(params?: { SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, company?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: email.exchange.MailingFilterEnum[], numberOfAliases?: number, outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                            $put(params: { SAMAccountName?: string, accountLicense: email.exchange.OvhLicenceEnum, company?: string, configured: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, displayName?: string, domain: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, guid?: string, hiddenFromGAL: boolean, id: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], numberOfAliases: number, outlookLicense: boolean, owaLimited: boolean, passwordLastUpdate?: string, primaryEmailAddress: string, quota: number, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, spamAndVirusConfiguration: email.exchange.spamAndVirusConfiguration, spamDetected: boolean, spamTicketNumber?: number, state: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -845,7 +831,7 @@ export interface Email {
                                  * Alter this object properties
                                  * PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive
                                  */
-                                $put(params?: { creationDate?: string, currentUsage?: number, guid?: string, quota?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                                $put(params: { creationDate: string, currentUsage?: number, guid?: string, quota: number, state: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
                                 /**
                                  * Controle cache
                                  */
@@ -973,7 +959,7 @@ export interface Email {
                                  * Alter this object properties
                                  * PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol
                                  */
-                                $put(params?: { IMAP?: boolean, POP?: boolean, activeSync?: boolean, creationDate?: string, lastUpdate?: string, taskPendingId?: number, webMail?: boolean }): Promise<void>;
+                                $put(params: { IMAP: boolean, POP: boolean, activeSync: boolean, creationDate: string, lastUpdate?: string, taskPendingId: number, webMail: boolean }): Promise<void>;
                                 /**
                                  * Controle cache
                                  */
@@ -1131,7 +1117,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}
                              */
-                            $put(params?: { IMEI?: string, creationDate?: string, deviceId?: string, deviceModel?: string, deviceState?: email.exchange.DeviceActiveSyncStateEnum, guid?: string, identity?: string, lastUpdate?: string, taskPendingId?: number }): Promise<void>;
+                            $put(params: { IMEI: string, creationDate: string, deviceId: string, deviceModel: string, deviceState: email.exchange.DeviceActiveSyncStateEnum, guid: string, identity: string, lastUpdate?: string, taskPendingId: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1179,7 +1165,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
                              */
-                            $put(params?: { cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum }): Promise<void>;
+                            $put(params: { cnameToCheck?: string, domainAliases: string[], domainValidated: boolean, isAliasDomain: boolean, main?: boolean, mxIsValid: boolean, mxRecord?: string[], mxRelay?: string, name: string, organization2010?: string, srvIsValid: boolean, srvRecord?: string[], state: email.exchange.ObjectStateEnum, taskPendingId: number, type: email.exchange.DomainTypeEnum }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1204,7 +1190,7 @@ export interface Email {
                                  * Alter this object properties
                                  * PUT /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer
                                  */
-                                $put(params?: { content?: string, creationDate?: string, name?: string, outsideOnly?: boolean, taskPendingId?: number }): Promise<void>;
+                                $put(params: { content: string, creationDate: string, name: string, outsideOnly: boolean, taskPendingId: number }): Promise<void>;
                                 /**
                                  * Controle cache
                                  */
@@ -1253,7 +1239,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}
                              */
-                            $put(params?: { creationDate?: string, displayName?: string, externalEmailAddress?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, organization2010?: string, state?: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                            $put(params: { creationDate: string, displayName: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL: boolean, id: number, initials?: string, lastName?: string, organization2010?: string, state: email.exchange.ObjectStateEnum, taskPendingId: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1301,7 +1287,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
                              */
-                            $put(params?: { creationDate?: string, departRestriction?: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction?: email.exchange.MailingListJoinRestrictionEnum, lastUpdateDate?: string, mailingListAddress?: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                            $put(params: { creationDate: string, departRestriction: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL: boolean, joinRestriction: email.exchange.MailingListJoinRestrictionEnum, lastUpdateDate?: string, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification: boolean, spamDetected: boolean, spamTicketNumber?: number, state: email.exchange.ObjectStateEnum, taskPendingId: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1525,7 +1511,7 @@ export interface Email {
                          * Alter this object properties
                          * PUT /email/exchange/{organizationName}/service/{exchangeService}/protocol
                          */
-                        $put(params?: { IMAP?: boolean, POP?: boolean, activeSync?: boolean, activeSyncPolicy?: email.exchange.ActiveSyncPolicyEnum, creationDate?: string, lastUpdate?: string, taskPendingId?: number, webMail?: boolean }): Promise<void>;
+                        $put(params: { IMAP: boolean, POP: boolean, activeSync: boolean, activeSyncPolicy: email.exchange.ActiveSyncPolicyEnum, creationDate: string, lastUpdate?: string, taskPendingId: number, webMail: boolean }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -1593,7 +1579,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}
                              */
-                            $put(params?: { anonymousPermission?: email.exchange.PublicFolderRightTypeEnum, creationDate?: string, defaultPermission?: email.exchange.PublicFolderRightTypeEnum, hasSubFolders?: boolean, itemCount?: number, lastAccessTime?: string, lastModificationTime?: string, lastUserAccessTime?: string, lastUserModificationTime?: string, path?: string, quota?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number, totalItemSize?: number, type?: email.exchange.PublicFolderTypeEnum }): Promise<void>;
+                            $put(params: { anonymousPermission: email.exchange.PublicFolderRightTypeEnum, creationDate?: string, defaultPermission: email.exchange.PublicFolderRightTypeEnum, hasSubFolders?: boolean, itemCount?: number, lastAccessTime?: string, lastModificationTime?: string, lastUserAccessTime?: string, lastUserModificationTime?: string, path: string, quota: number, state: email.exchange.ObjectStateEnum, taskPendingId: number, totalItemSize?: number, type: email.exchange.PublicFolderTypeEnum }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1628,7 +1614,7 @@ export interface Email {
                                      * Alter this object properties
                                      * PUT /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}
                                      */
-                                    $put(params?: { accessRights?: email.exchange.PublicFolderRightTypeEnum, allowedAccountId?: number, creationDate?: string, state?: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                                    $put(params: { accessRights: email.exchange.PublicFolderRightTypeEnum, allowedAccountId: number, creationDate: string, state: email.exchange.ObjectStateEnum, taskPendingId: number }): Promise<void>;
                                     /**
                                      * Controle cache
                                      */
@@ -1689,7 +1675,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
                              */
-                            $put(params?: { addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity?: number, creationDate?: string, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress?: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.ResourceTypeEnum }): Promise<void>;
+                            $put(params: { addOrganizerToSubject: boolean, allowConflict: boolean, bookingWindow: number, capacity: number, creationDate?: string, deleteComments: boolean, deleteSubject: boolean, displayName: string, location: string, maximumDuration: number, resourceEmailAddress: string, showMeetingDetails: email.exchange.ShowMeetingDetailsEnum, state: email.exchange.ObjectStateEnum, taskPendingId: number, type: email.exchange.ResourceTypeEnum }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -1738,7 +1724,7 @@ export interface Email {
                          * Alter this object properties
                          * PUT /email/exchange/{organizationName}/service/{exchangeService}/server
                          */
-                        $put(params?: { commercialVersion?: email.exchange.exchangeCommercialVersionEnum, currentDiskUsage?: number, diskSize?: number, individual2010?: boolean, ip?: string, ipV6?: string, isAValid?: boolean, isAaaaValid?: boolean, isPtrV6Valid?: boolean, isPtrValid?: boolean, owaMfa?: boolean, state?: email.exchange.ServerStateEnum, taskPendingId?: number, version?: number }): Promise<void>;
+                        $put(params: { commercialVersion: email.exchange.exchangeCommercialVersionEnum, currentDiskUsage?: number, diskSize?: number, individual2010: boolean, ip: string, ipV6?: string, isAValid: boolean, isAaaaValid: boolean, isPtrV6Valid: boolean, isPtrValid: boolean, owaMfa: boolean, state: email.exchange.ServerStateEnum, taskPendingId: number, version?: number }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -1754,7 +1740,7 @@ export interface Email {
                          * Alter this object properties
                          * PUT /email/exchange/{organizationName}/service/{exchangeService}/serviceInfos
                          */
-                        $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                        $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -1790,7 +1776,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}
                              */
-                            $put(params?: { creationDate?: string, currentUsage?: number, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], quota?: number, sharedEmailAddress?: string, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                            $put(params: { creationDate?: string, currentUsage?: number, displayName?: string, firstName?: string, hiddenFromGAL: boolean, id: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], quota: number, sharedEmailAddress: string, spamDetected: boolean, spamTicketNumber?: number, state: email.exchange.ObjectStateEnum, taskPendingId: number }): Promise<void>;
                             /**
                              * Controle cache
                              */

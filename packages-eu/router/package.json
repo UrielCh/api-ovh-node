@@ -1,7 +1,14 @@
 {
     "name": "@ovh-api/router",
     "description": "Add typing to to ovh api router",
-    "version": "3.1.8",
+    "version": "3.0.0",
+    "keywords": [
+        "ovh",
+        "ovhCloud",
+        "api",
+        "typing",
+        "typescript"
+    ],
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
@@ -24,13 +31,5 @@
     "files": [
         "index.js",
         "index.d.ts"
-    ],
-    "gitHead": "3fbc412b060ce7c7e04b91156596f37428629579",
-    "keywords": [
-        "ovh",
-        "ovhCloud",
-        "api",
-        "typing",
-        "typescript"
     ]
 }

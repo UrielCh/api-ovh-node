@@ -24,7 +24,7 @@ export class RegionGenerator {
         if (this._apis)
             return this._apis;
         const { host, port } = this.endpoint;
-        let genApiTypes = new GenApiTypes({ host: host, port: port.toString() });
+        let genApiTypes = new GenApiTypes(this.endpoint.namespace, { host: host, port: port.toString() });
         // get all available APIs for this region
         this._apis = await genApiTypes.listSchemas()
         return this._apis;
@@ -52,7 +52,7 @@ export class RegionGenerator {
     }
 
     async genRegion() {
-        const { host, port, directory, namespace, region } = this.endpoint;
+        const { host, port } = this.endpoint;
         let apis = await this.listApis();
         let allApi = apis.map(pathToApiName);
         // debug gen a subset of API
@@ -79,20 +79,24 @@ export class RegionGenerator {
         /**
          * : ${allApi.join(',')}
          */
-        const concurrency = 4;
+        const concurrency = 1;
         console.log(`Found ${allApi.length} Api available on ${host}`);
-        await Bluebird.map(apis, async api => {
-            let cg = new CodeGenerator({ host: host, port: port.toString() }, api);
+        await Bluebird.map(apis, async apiPath => {
+            let cg = new CodeGenerator(this.endpoint.namespace, { host: host, port: port.toString() }, apiPath);
             try {
                 await cg.loadSchema();
             } catch (e) {
-                console.log(`${host} / ${api} faild`, e);
+                console.error(`${host} / ${apiPath} faild`, e);
+                try {
+                    await cg.loadSchema();
+                } catch (e) {
+                }
                 return;
             }
             // ignore empry API
-            if (cg.schema?.apis.length == 0)
+            if (!cg.schema || cg.schema.apis.length == 0)
                 return;
-            let flat = pathToApiName(api);
+            let flat = pathToApiName(apiPath);
             let dir = this.getPackageDir(flat);
             await fse.ensureDir(dir);
 
@@ -113,7 +117,7 @@ export class RegionGenerator {
 
     private async genPackageReadme(dir: string, cg: CodeGenerator) {
         const { host, port, directory, namespace, region } = this.endpoint;
-        let flat = pathToApiName(cg.api);
+        let flat = pathToApiName(cg.apiPath);
         const fn = path.join(dir, 'README.md');
         const content: string[] = [];
         content.push(`# OVHCloud API client for **${flat}** region ${region}`);
@@ -147,7 +151,7 @@ export class RegionGenerator {
         content.push('');
         content.push(`const ovhEngine = new OvhEngine({ `);
         content.push(`    certCache: './cert-cache.json', // optional cache certificat on disk.`);
-        let privileges = `GET ${cg.api}, GET ${cg.api}/*`
+        let privileges = `GET ${cg.apiPath}, GET ${cg.apiPath}/*`
         if (flat != 'me') {
             privileges += ', GET /me';
         }

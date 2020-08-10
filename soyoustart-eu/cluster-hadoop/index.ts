@@ -291,7 +291,7 @@ export interface Cluster {
                      * Alter this object properties
                      * PUT /cluster/hadoop/{serviceName}/networkAcl/{block}
                      */
-                    $put(params?: { block?: string, description?: string, state?: cluster.hadoop.NetworkAclStateEnum }): Promise<void>;
+                    $put(params: { block: string, description?: string, state: cluster.hadoop.NetworkAclStateEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -512,7 +512,7 @@ export interface Cluster {
                  * Alter this object properties
                  * PUT /cluster/hadoop/{serviceName}/serviceInfos
                  */
-                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -603,7 +603,7 @@ export interface Cluster {
                      * Alter this object properties
                      * PUT /cluster/hadoop/{serviceName}/user/{username}
                      */
-                    $put(params?: { clouderaManager?: boolean, httpFrontend?: boolean, hue?: boolean, username?: string }): Promise<void>;
+                    $put(params: { clouderaManager: boolean, httpFrontend: boolean, hue: boolean, username: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
