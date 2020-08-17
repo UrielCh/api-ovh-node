@@ -1,7 +1,7 @@
 {
     "name": "@ovh-soyoustart/saas-csp2",
     "description": "Add typing to to ovh api saas-csp2",
-    "version": "3.0.0",
+    "version": "3.1.10",
     "keywords": [
         "ovh",
         "ovhCloud",

@@ -1,7 +1,7 @@
 {
     "name": "@ovh-kimsufi/email-mxplan",
     "description": "Add typing to to ovh api email-mxplan",
-    "version": "3.0.0",
+    "version": "3.1.10",
     "keywords": [
         "ovh",
         "ovhCloud",

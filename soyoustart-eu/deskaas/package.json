@@ -1,7 +1,7 @@
 {
     "name": "@ovh-soyoustart/deskaas",
     "description": "Add typing to to ovh api deskaas",
-    "version": "3.0.0",
+    "version": "3.1.10",
     "keywords": [
         "ovh",
         "ovhCloud",

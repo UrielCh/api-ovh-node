@@ -1,7 +1,7 @@
 {
     "name": "@ovh-soyoustart/hpcspot",
     "description": "Add typing to to ovh api hpcspot",
-    "version": "3.0.0",
+    "version": "3.1.10",
     "keywords": [
         "ovh",
         "ovhCloud",
